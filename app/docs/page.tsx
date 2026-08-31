@@ -24,7 +24,7 @@ export default function Docs(){
   const [selected,setSelected]=useState<string[]>([]);
   const [filtersOpen,setFiltersOpen]=useState(false);
   const [sort,setSort]=useState('relevance');
-  useEffect(()=>{fetch(process.env.NEXT_PUBLIC_API_URL ? `${process.env.NEXT_PUBLIC_API_URL}/api/articles` : '').then(r=>r.ok?r.json():null).then(data=>{if(data?.articles?.length)setArticles(data.articles.map((a:any)=>({...a,tags:JSON.parse(a.tags_json||'[]'),sourceSlug:a.source_slug,publishedAt:a.published_at,imageUrl:a.image_url,contentType:a.content_type})));}).catch(()=>{});const q=new URLSearchParams(location.search).get('q')||'';setDraft(q);setQuery(q)},[]);
+  useEffect(()=>{const api=process.env.NEXT_PUBLIC_API_URL||'https://potover-api.suuu-sh.workers.dev';fetch(`${api}/api/articles?limit=500`).then(r=>r.ok?r.json():null).then(data=>{if(data?.articles?.length)setArticles(data.articles.map((a:any)=>({...a,tags:JSON.parse(a.tags_json||'[]'),sourceSlug:a.source_slug,publishedAt:a.published_at,imageUrl:a.image_url,contentType:a.content_type})));}).catch(()=>{});const q=new URLSearchParams(location.search).get('q')||'';setDraft(q);setQuery(q)},[]);
   const toggle=(value:string)=>setSelected(old=>old.includes(value)?old.filter(x=>x!==value):[...old,value]);
   const reset=()=>{setSelected([]);setDraft('');setQuery('')};
   const results=useMemo(()=>{
