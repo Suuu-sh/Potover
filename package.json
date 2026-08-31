@@ -9,6 +9,7 @@
     "typecheck": "tsc --noEmit",
     "test": "vitest run",
     "collect:gtowizard": "node scripts/collect-gtowizard.mjs",
+    "collect:public-sources": "node scripts/collect-public-sources.mjs",
     "build:pages": "next build",
     "deploy:worker": "wrangler deploy --config worker/wrangler.jsonc",
     "deploy:pages": "wrangler pages deploy out --project-name potover"

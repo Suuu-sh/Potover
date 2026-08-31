@@ -1,6 +1,15 @@
 # Deployment
 
-`main` への push（プルリクエストのマージを含む）で、GitHub Actions がFrontendとBackendを自動デプロイします。
+FrontendはCloudflare PagesのGit連携で、`main` へのpush（プルリクエストのマージを含む）時に自動デプロイします。BackendのWorkerのみ、`main`へのpushでGitHub Actionsが自動デプロイします。
+
+## Cloudflare PagesのGit連携
+
+Cloudflare Dashboardの Workers & Pages から `potover` を開き、Settings > Builds > Git repository でGitHubの `Suuu-sh/Potover` を接続してください。
+
+- Production branch: `main`
+- Build command: `npm run build:pages`
+- Build output directory: `out`
+- Root directory: `/`
 
 ## GitHub Secrets
 
