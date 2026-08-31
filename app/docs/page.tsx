@@ -13,6 +13,7 @@ const groups=[
   {title:'言語',items:['Japanese','English']},
 ];
 const suggestions=['3bet pot c-bet','Bluff catch','ICM spots','Check-raise','Turn barrel','River bluff','Delayed c-bet'];
+const sourceImages:Record<string,string>={'gto-wizard':'/sources/gto-wizard.png','upswing-poker':'/sources/upswing.png','pokernews':'/sources/pokernews.png','pokercoaching':'/sources/pokercoaching.png'};
 
 export default function Docs(){
   const [articles,setArticles]=useState<Article[]>(initialArticles);
@@ -42,7 +43,7 @@ export default function Docs(){
         <div className="feed-toolbar"><span><strong>{results.length}</strong>件の記事</span><label>並び替え<select value={sort} onChange={e=>setSort(e.target.value)}><option value="relevance">関連度順</option><option value="newest">新着順</option><option value="shortest">短い順</option></select></label></div>
         {results.length===0?<div className="docs-empty"><BookOpen size={31}/><h2>条件に合う記事がありません</h2><p>別のキーワードまたは条件を試してください。</p><button onClick={reset}>条件をリセット</button></div>:
         <div className="docs-feed-list">{results.slice(0,20).map(article=><article className="docs-feed-row" key={article.slug}>
-          <a href={`/articles/${article.slug}`} className="article-cover"><Image src={article.imageUrl||'/sources/gto-wizard.png'} alt="" fill sizes="(max-width: 720px) 34vw, 280px"/></a>
+          <a href={`/articles/${article.slug}`} className="article-cover"><Image src={article.imageUrl||sourceImages[article.sourceSlug]||'/icon.png'} alt="" fill sizes="(max-width: 720px) 34vw, 280px"/></a>
           <div className="feed-copy"><div className="feed-source"><span className="source-glyph">W</span><strong>{article.source}</strong><span className="content-kind">{article.contentType==='video'?'動画':'記事'}</span></div>
             <a href={`/articles/${article.slug}`}><h2>{article.title}</h2></a><p>{article.summary}</p>
             <div className="feed-tags">{article.tags.slice(0,3).map(tag=><button key={tag} onClick={()=>toggle(tag)}>{tag}</button>)}</div>
