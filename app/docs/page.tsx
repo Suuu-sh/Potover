@@ -63,7 +63,6 @@ export default function Home() {
     </aside>
 
     <section className="results-area" id="top">
-      <div className="results-heading"><div><p className="kicker">CURATED FOR YOU</p><h1>あなたに合う記事</h1><p>{results.length}件の記事 · 複数の信頼できる情報源から</p></div>{selected.length > 0 && <span className="active-filter-count">{selected.length} filters</span>}</div>
       {results.length === 0 ? <div className="empty-state"><BookOpen size={30}/><h2>条件に合う記事がありません</h2><p>フィルターを減らすか、別のキーワードを試してください。</p><button onClick={reset}>条件をリセット</button></div> : <div className="article-list">{results.map((article, index) => <article className={`result-row ${index === 0 ? 'featured' : ''}`} key={article.slug}>
         <div className={`source-mark source-mark-${article.sourceSlug}`}><Image src={sourceLogos[article.source] || '/icon.png'} alt={`${article.source} logo`} width={84} height={84}/></div>
         <div className="result-copy">
