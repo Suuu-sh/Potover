@@ -56,7 +56,6 @@ export default function Docs(){
           <div className="feed-actions"><button aria-label="ブックマーク"><Bookmark size={20}/></button><a href={article.url} target="_blank" rel="noreferrer" aria-label="元記事を開く"><ExternalLink size={20}/></a></div>
         </article>)}</div>}
       </section>
-      <aside className="related-search"><h2>検索を深める</h2>{suggestions.map(term=>{const count=articles.filter(a=>[a.title,a.summary,...a.tags].join(' ').toLowerCase().includes(term.split(' ')[0].toLowerCase())).length;return <button key={term} onClick={()=>search(term)}><Search size={17}/><span>{term}</span><small>{count}件</small></button>})}</aside>
     </div>
 
     {filtersOpen&&<div className="filter-dialog-backdrop" onMouseDown={()=>setFiltersOpen(false)}><aside className="filter-dialog" onMouseDown={e=>e.stopPropagation()}><div className="filter-dialog-head"><div><p>FILTERS</p><h2>絞り込み</h2></div><button onClick={()=>setFiltersOpen(false)}><X/></button></div>{groups.map(group=><section key={group.title}><h3>{group.title}</h3><div>{group.items.map(item=><label key={item}><input type="checkbox" checked={selected.includes(item)} onChange={()=>toggle(item)}/><span>{item}</span></label>)}</div></section>)}<div className="filter-dialog-actions"><button onClick={reset}><RotateCcw size={15}/>リセット</button><button onClick={()=>setFiltersOpen(false)}>{results.length}件を表示</button></div></aside></div>}
