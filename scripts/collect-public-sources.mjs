@@ -14,6 +14,7 @@ const additions = [];
 const rss = await get('https://upswingpoker.com/feed/');
 for (const m of rss.matchAll(/<item>([\s\S]*?)<\/item>/g)) { const x = m[1]; const pick = (n) => decode(new RegExp(`<${n}[^>]*>([\s\S]*?)<\/${n}>`, 'i').exec(x)?.[1] || ''); additions.push(item({ source:'Upswing Poker', sourceSlug:'upswing-poker', sourceUrl:'https://upswingpoker.com/', title:pick('title'), url:pick('link'), summary:pick('description'), publishedAt:pick('pubDate') })); }
 for (const x of additions.filter((x) => x.sourceSlug === 'upswing-poker' && x.originalUrl)) { try { const html = await get(x.originalUrl); x.imageUrl = meta(html, 'og:image') || /<meta[^>]+property=["']og:image["'][^>]+content=["']([^"']+)/i.exec(html)?.[1] || null; } catch {} }
+for (const x of articles.articles.filter((x) => x.source === 'Upswing Poker' && x.originalUrl && !x.imageUrl)) { try { const html = await get(x.originalUrl); x.imageUrl = meta(html, 'og:image') || /<meta[^>]+property=["']og:image["'][^>]+content=["']([^"']+)/i.exec(html)?.[1] || null; } catch {} }
 
 // PokerCoaching exposes a public WordPress REST feed for posts.
 const wp = await get('https://pokercoaching.com/blog/wp-json/wp/v2/posts?per_page=100&_embed');
