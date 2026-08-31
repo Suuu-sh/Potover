@@ -56,3 +56,7 @@ html,body{overscroll-behavior-y:none}.atlas-home,.docs-light{overscroll-behavior
 @media(min-width:1001px){.docs-v3 .docs-v3-layout{margin-top:164px;padding-top:0}.docs-v3 .docs-feed,.docs-v3 .related-search{height:100%}}
 /* Potover brand lockup */
 .brand-lockup{display:flex;align-items:center;width:150px;height:45px;overflow:hidden;flex:none}.brand-lockup img{display:block;width:150px;height:auto;object-fit:contain}@media(max-width:560px){.brand-lockup{width:126px;height:40px}.brand-lockup img{width:126px}}
+/* Compact search bar with filters inside the input group */
+.docs-command{padding-top:15px;padding-bottom:15px}.docs-command form{height:48px}.docs-command .search-filter-button{width:auto;min-width:108px;padding:0 16px;border:0;border-left:1px solid #dce5ef;background:#fff;color:#405570;display:flex;align-items:center;justify-content:center;gap:7px;font-weight:600}.docs-command .search-filter-button em{display:grid;place-items:center;width:18px;height:18px;border-radius:50%;background:#1769e8;color:#fff;font-size:10px;font-style:normal}.docs-command .search-filter-button+button{width:96px}.docs-chipbar{display:none}
+@media(min-width:1001px){.docs-v3 .docs-command{height:78px}.docs-v3 .docs-v3-layout{height:calc(100vh - 146px);margin-top:78px}}
+@media(max-width:700px){.docs-command .search-filter-button{min-width:46px;width:46px;padding:0;font-size:0}.docs-command .search-filter-button em{position:absolute;margin:-27px 0 0 28px}.docs-command .search-filter-button+button{width:66px}}

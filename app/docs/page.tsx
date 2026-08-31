@@ -36,12 +36,7 @@ export default function Docs(){
   const search=(value:string)=>{setDraft(value);setQuery(value);window.scrollTo({top:0,behavior:'smooth'})};
   return <main className="docs-v3"><SiteHeader/>
     <section className="docs-command">
-      <form onSubmit={e=>{e.preventDefault();setQuery(draft.trim())}}><Search size={21}/><input value={draft} onChange={e=>setDraft(e.target.value)} aria-label="記事を検索" placeholder="戦略・状況・キーワードで検索（例：3bet pot c-bet, ICM, bluff catch）"/><kbd>⌘ K</kbd><button>検索</button></form>
-      <div className="docs-chipbar">
-        {selected.map(item=><button key={item} className="active-chip" onClick={()=>toggle(item)}>{item}<X size={13}/></button>)}
-        {!selected.length&&<span className="chip-hint">条件を追加して記事を絞り込めます</span>}
-        <button className="open-filters" onClick={()=>setFiltersOpen(true)}><SlidersHorizontal size={16}/>絞り込み{selected.length>0&&<em>{selected.length}</em>}</button>
-      </div>
+      <form onSubmit={e=>{e.preventDefault();setQuery(draft.trim())}}><Search size={19}/><input value={draft} onChange={e=>setDraft(e.target.value)} aria-label="記事を検索" placeholder="戦略・状況・キーワードで検索（例：3bet pot c-bet, ICM, bluff catch）"/><kbd>⌘ K</kbd><button type="button" className="search-filter-button" onClick={()=>setFiltersOpen(true)}><SlidersHorizontal size={16}/>絞り込み{selected.length>0&&<em>{selected.length}</em>}</button><button type="submit">検索</button></form>
     </section>
 
     <div className="docs-v3-layout">
