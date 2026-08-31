@@ -35,10 +35,7 @@ export default function Docs(){
     return [...filtered].sort((a,b)=>sort==='newest'?b.publishedAt.localeCompare(a.publishedAt):sort==='shortest'?a.minutes-b.minutes:0);
   },[query,selected,sort]);
   const search=(value:string)=>{setDraft(value);setQuery(value);window.scrollTo({top:0,behavior:'smooth'})};
-  return <main className="docs-v3"><SiteHeader/>
-    <section className="docs-command">
-      <form onSubmit={e=>{e.preventDefault();setQuery(draft.trim())}}><Search size={19}/><input value={draft} onChange={e=>setDraft(e.target.value)} aria-label="記事を検索" placeholder="戦略・状況・キーワードで検索（例：3bet pot c-bet, ICM, bluff catch）"/><kbd>⌘ K</kbd><button type="button" className="search-filter-button" onClick={()=>setFiltersOpen(true)}><SlidersHorizontal size={16}/>絞り込み{selected.length>0&&<em>{selected.length}</em>}</button><button type="submit">検索</button></form>
-    </section>
+  return <main className="docs-v3"><SiteHeader search={<form className="header-docs-search" onSubmit={e=>{e.preventDefault();setQuery(draft.trim())}}><Search size={17}/><input value={draft} onChange={e=>setDraft(e.target.value)} aria-label="記事を検索" placeholder="戦略・状況・キーワードで検索"/><kbd>⌘ K</kbd><button type="button" className="search-filter-button" onClick={()=>setFiltersOpen(true)}><SlidersHorizontal size={15}/>絞り込み{selected.length>0&&<em>{selected.length}</em>}</button><button type="submit">検索</button></form>}/>
 
     <div className="docs-v3-layout">
       <section className="docs-feed">
