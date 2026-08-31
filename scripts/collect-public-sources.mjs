@@ -15,14 +15,16 @@ const rss = await get('https://upswingpoker.com/feed/');
 for (const m of rss.matchAll(/<item>([\s\S]*?)<\/item>/g)) { const x = m[1]; const pick = (n) => decode(new RegExp(`<${n}[^>]*>([\s\S]*?)<\/${n}>`, 'i').exec(x)?.[1] || ''); additions.push(item({ source:'Upswing Poker', sourceSlug:'upswing-poker', sourceUrl:'https://upswingpoker.com/', title:pick('title'), url:pick('link'), summary:pick('description'), publishedAt:pick('pubDate') })); }
 
 // PokerCoaching exposes a public WordPress REST feed for posts.
-const wp = await get('https://pokercoaching.com/blog/wp-json/wp/v2/posts?per_page=100&_fields=link,date,title,excerpt,jetpack_featured_media_url');
-for (const x of JSON.parse(wp)) additions.push(item({ source:'PokerCoaching.com', sourceSlug:'pokercoaching', sourceUrl:'https://pokercoaching.com/blog/', title:decode(x.title?.rendered), url:x.link, summary:decode(x.excerpt?.rendered), publishedAt:x.date, imageUrl:x.jetpack_featured_media_url }));
+const wp = await get('https://pokercoaching.com/blog/wp-json/wp/v2/posts?per_page=100&_embed&_fields=link,date,title,excerpt,_embedded');
+for (const x of JSON.parse(wp)) additions.push(item({ source:'PokerCoaching.com', sourceSlug:'pokercoaching', sourceUrl:'https://pokercoaching.com/blog/', title:decode(x.title?.rendered), url:x.link, summary:decode(x.excerpt?.rendered), publishedAt:x.date, imageUrl:x._embedded?.['wp:featuredmedia']?.[0]?.source_url }));
 
 // PokerNews publishes its strategy index as a public HTML listing.
 const pn = await get('https://www.pokernews.com/strategy/');
 const urls = [...new Set([...pn.matchAll(/href=["'](\/strategy\/[a-z0-9][^"']+\.htm)["']/gi)].map((m) => `https://www.pokernews.com${m[1]}`))].slice(-40);
 for (const url of urls) { try { const html = await get(url); const title = meta(html, 'og:title') || meta(html, 'title'); const summary = meta(html, 'description') || meta(html, 'og:description'); if (title) additions.push(item({ source:'PokerNews', sourceSlug:'pokernews', sourceUrl:'https://www.pokernews.com/strategy/', title, url, summary, publishedAt:meta(html, 'article:published_time'), imageUrl:meta(html, 'og:image') })); } catch {} }
 
+const existing = new Map(articles.articles.map((x) => [x.originalUrl, x]));
+for (const x of additions) if (x.imageUrl && existing.has(x.originalUrl)) existing.get(x.originalUrl).imageUrl = x.imageUrl;
 const seen = new Set(articles.articles.map((x) => x.originalUrl));
 for (const x of additions) if (x.title && x.originalUrl && !seen.has(x.originalUrl)) { seen.add(x.originalUrl); articles.articles.push(x); }
 articles.collectedAt = new Date().toISOString();
