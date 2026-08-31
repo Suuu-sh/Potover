@@ -11,6 +11,7 @@ const groups=[
   {title:'戦略・テーマ',items:['GTO','Bluff','ICM','Exploit','Cash Game','MTT']},
   {title:'難易度',items:['Beginner','Intermediate','Advanced']},
   {title:'言語',items:['Japanese','English']},
+  {title:'ソース',items:['GTO Wizard','Upswing Poker','PokerNews','PokerCoaching.com']},
 ];
 const suggestions=['3bet pot c-bet','Bluff catch','ICM spots','Check-raise','Turn barrel','River bluff','Delayed c-bet'];
 const sourceImages:Record<string,string>={'gto-wizard':'/sources/gto-wizard.png','upswing-poker':'/sources/upswing.png','pokernews':'/sources/pokernews.png','pokercoaching':'/sources/pokercoaching.png'};
@@ -31,8 +32,10 @@ export default function Docs(){
       const text=[article.title,article.summary,article.source,...article.tags,article.category].join(' ').toLowerCase();
       const difficulty=selected.filter(x=>['Beginner','Intermediate','Advanced'].includes(x));
       const language=selected.filter(x=>['Japanese','English'].includes(x));
-      const topics=selected.filter(x=>!difficulty.includes(x)&&!language.includes(x));
-      return (!query||text.includes(query.toLowerCase()))&&(!difficulty.length||difficulty.includes(article.difficulty))&&(!language.length||language.includes(article.language))&&(!topics.length||topics.some(x=>text.includes(x.toLowerCase())));
+      const sourceNames=['GTO Wizard','Upswing Poker','PokerNews','PokerCoaching.com'];
+      const sourceFilters=selected.filter(x=>sourceNames.includes(x));
+      const topics=selected.filter(x=>!difficulty.includes(x)&&!language.includes(x)&&!sourceFilters.includes(x));
+      return (!query||text.includes(query.toLowerCase()))&&(!difficulty.length||difficulty.includes(article.difficulty))&&(!language.length||language.includes(article.language))&&(!sourceFilters.length||sourceFilters.includes(article.source))&&(!topics.length||topics.some(x=>text.includes(x.toLowerCase())));
     });
     return [...filtered].sort((a,b)=>sort==='newest'?b.publishedAt.localeCompare(a.publishedAt):sort==='shortest'?a.minutes-b.minutes:0);
   },[query,selected,sort]);
