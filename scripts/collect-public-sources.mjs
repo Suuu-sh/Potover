@@ -15,7 +15,7 @@ const rss = await get('https://upswingpoker.com/feed/');
 for (const m of rss.matchAll(/<item>([\s\S]*?)<\/item>/g)) { const x = m[1]; const pick = (n) => decode(new RegExp(`<${n}[^>]*>([\s\S]*?)<\/${n}>`, 'i').exec(x)?.[1] || ''); additions.push(item({ source:'Upswing Poker', sourceSlug:'upswing-poker', sourceUrl:'https://upswingpoker.com/', title:pick('title'), url:pick('link'), summary:pick('description'), publishedAt:pick('pubDate') })); }
 
 // PokerCoaching exposes a public WordPress REST feed for posts.
-const wp = await get('https://pokercoaching.com/blog/wp-json/wp/v2/posts?per_page=100&_embed&_fields=link,date,title,excerpt,_embedded');
+const wp = await get('https://pokercoaching.com/blog/wp-json/wp/v2/posts?per_page=100&_embed');
 for (const x of JSON.parse(wp)) additions.push(item({ source:'PokerCoaching.com', sourceSlug:'pokercoaching', sourceUrl:'https://pokercoaching.com/blog/', title:decode(x.title?.rendered), url:x.link, summary:decode(x.excerpt?.rendered), publishedAt:x.date, imageUrl:x._embedded?.['wp:featuredmedia']?.[0]?.source_url }));
 
 // PokerNews publishes its strategy index as a public HTML listing.
