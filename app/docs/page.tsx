@@ -1,78 +1,66 @@
 'use client';
 
-import { useEffect, useMemo, useState } from 'react';
+import {useEffect,useMemo,useState} from 'react';
 import Image from 'next/image';
-import { ExternalLink, Clock3, ChevronUp, ChevronDown, RotateCcw, BookOpen, X } from 'lucide-react';
-import { DocsHeader } from '@/components/DocsHeader';
-import { SiteHeader } from '@/components/SiteHeader';
-import { articles } from '@/lib/data';
+import {Bookmark,BookOpen,CalendarDays,Clock3,ExternalLink,Globe2,RotateCcw,Search,SlidersHorizontal,X} from 'lucide-react';
+import {SiteHeader} from '@/components/SiteHeader';
+import {articles} from '@/lib/data';
 
-const streets = ['Preflop', 'Flop', 'Turn', 'River'];
-const strategies = ['GTO', 'Bluff Catch', 'ICM', 'Overbet', 'Cash Game'];
-const levels = ['Beginner', 'Intermediate', 'Advanced'];
-const languages = ['Japanese', 'English'];
-const sourceLogos: Record<string,string> = {'Upswing Poker':'/sources/upswing.png','PokerNews':'/sources/pokernews.png','GTO Wizard':'/sources/gto-wizard.png','PokerCoaching':'/sources/pokercoaching.png','Poker Hack':'/sources/poker-hack.png','Run It Once':'/sources/run-it-once.png'};
-const japaneseTitles: Record<string,string> = {'river-bluff-catching-explained':'ブラフキャッチの精度を高める3つのポイント','poker-position-guide':'ポジション別オープンレンジの最適化','understanding-icm':'トーナメント中盤のスタック戦略','cbet-flop-basics':'フロップCBの基本を学ぶ','bankroll-management':'バンクロール管理の実践ガイド','turn-overbet-strategy':'ターンオーバーベットの考え方'};
+const groups=[
+  {title:'ストリート',items:['Preflop','Flop','Turn','River']},
+  {title:'戦略・テーマ',items:['GTO','Bluff','ICM','Exploit','Cash Game','MTT']},
+  {title:'難易度',items:['Beginner','Intermediate','Advanced']},
+  {title:'言語',items:['Japanese','English']},
+];
+const suggestions=['3bet pot c-bet','Bluff catch','ICM spots','Check-raise','Turn barrel','River bluff','Delayed c-bet'];
 
-export default function Home() {
-  const [query, setQuery] = useState('');
-  const [draft, setDraft] = useState('');
-  const [selected, setSelected] = useState<string[]>([]);
-  const [mobileFilters, setMobileFilters] = useState(false);
-  const [collapsed, setCollapsed] = useState<Record<string, boolean>>({});
-  useEffect(() => { const q = new URLSearchParams(window.location.search).get('q') || ''; setDraft(q); setQuery(q); }, []);
-
-  const toggle = (value: string) => setSelected((old) => old.includes(value) ? old.filter((x) => x !== value) : [...old, value]);
-  const reset = () => { setSelected([]); setQuery(''); setDraft(''); };
-  const results = useMemo(() => articles.filter((article) => {
-    const text = [article.title, article.summary, article.source, ...article.tags].join(' ').toLowerCase();
-    const searchMatch = !query || text.includes(query.toLowerCase());
-    const difficultyFilters = selected.filter((x) => levels.includes(x));
-    const languageFilters = selected.filter((x) => languages.includes(x));
-    const topicFilters = selected.filter((x) => [...streets, ...strategies].includes(x));
-    return searchMatch
-      && (!difficultyFilters.length || difficultyFilters.includes(article.difficulty))
-      && (!languageFilters.length || languageFilters.includes(article.language))
-      && (!topicFilters.length || topicFilters.some((filter) => article.tags.some((tag) => tag.toLowerCase().includes(filter.toLowerCase())) || article.category === filter));
-  }), [query, selected]);
-
-  function submit(event: React.FormEvent) { event.preventDefault(); setQuery(draft.trim()); }
-
-  const FilterGroup = ({ title, items }: { title: string; items: string[] }) => {
-    const isCollapsed = Boolean(collapsed[title]);
-    const count = items.filter((item) => selected.includes(item)).length;
-    return <section className={`filter-section ${isCollapsed ? 'collapsed' : ''}`}>
-      <button className="filter-title" onClick={() => setCollapsed((old) => ({...old, [title]: !old[title]}))} aria-expanded={!isCollapsed}>
-        <span>{title}{count > 0 && <em>{count}</em>}</span>{isCollapsed ? <ChevronDown size={15}/> : <ChevronUp size={15}/>}
-      </button>
-      {!isCollapsed && <div className="filter-options">{items.map((item) => <label key={item} className="check-row"><input type="checkbox" checked={selected.includes(item)} onChange={() => toggle(item)}/><span>{item}</span></label>)}</div>}
-    </section>;
-  };
-
-  return <><SiteHeader/><main className="workspace docs-light docs-with-site-header">
-    <DocsHeader draft={draft} setDraft={setDraft} onSubmit={submit} openFilters={() => setMobileFilters(true)}/>
-
-    <aside className={`filter-rail ${mobileFilters ? 'open' : ''}`}>
-      <div className="mobile-filter-head"><strong>絞り込み</strong><button onClick={() => setMobileFilters(false)}><X/></button></div>
-      <FilterGroup title="ストリート" items={streets}/>
-      <FilterGroup title="戦略・テーマ" items={strategies}/>
-      <FilterGroup title="難易度" items={levels}/>
-      <FilterGroup title="言語" items={languages}/>
-      <button className="reset-button" onClick={reset}><RotateCcw size={17}/>フィルターをリセット</button>
-      <div className="filter-date">最終更新: 2026-08-31</div>
-    </aside>
-
-    <section className="results-area" id="top">
-      {results.length === 0 ? <div className="empty-state"><BookOpen size={30}/><h2>条件に合う記事がありません</h2><p>フィルターを減らすか、別のキーワードを試してください。</p><button onClick={reset}>条件をリセット</button></div> : <div className="article-list">{results.map((article, index) => <article className={`result-row ${index === 0 ? 'featured' : ''}`} key={article.slug}>
-        <div className={`source-mark source-mark-${article.sourceSlug}`}><Image src={sourceLogos[article.source] || '/icon.png'} alt={`${article.source} logo`} width={84} height={84}/></div>
-        <div className="result-copy">
-          {index === 0 && <span className="featured-label">注目記事</span>}
-          <a href={`/articles/${article.slug}`}><h2>{japaneseTitles[article.slug] || article.title}</h2></a>
-          <p className="result-summary"><strong>{article.source}</strong><span>·</span>{article.summary}</p>
-          <div className="result-meta">{article.tags.slice(0, 3).map((tag) => <button key={tag} onClick={() => toggle(tag)}>{tag}</button>)}<span>{article.difficulty}</span><span>{article.language}</span><span className="read-time"><Clock3 size={14}/>{article.minutes}分</span></div>
-        </div>
-        <a className="external-button" aria-label="元記事を開く" href={article.url} target="_blank" rel="noreferrer"><ExternalLink size={21}/></a>
-      </article>)}</div>}
+export default function Docs(){
+  const [draft,setDraft]=useState('');
+  const [query,setQuery]=useState('');
+  const [selected,setSelected]=useState<string[]>([]);
+  const [filtersOpen,setFiltersOpen]=useState(false);
+  const [sort,setSort]=useState('relevance');
+  useEffect(()=>{const q=new URLSearchParams(location.search).get('q')||'';setDraft(q);setQuery(q)},[]);
+  const toggle=(value:string)=>setSelected(old=>old.includes(value)?old.filter(x=>x!==value):[...old,value]);
+  const reset=()=>{setSelected([]);setDraft('');setQuery('')};
+  const results=useMemo(()=>{
+    const filtered=articles.filter(article=>{
+      const text=[article.title,article.summary,article.source,...article.tags,article.category].join(' ').toLowerCase();
+      const difficulty=selected.filter(x=>['Beginner','Intermediate','Advanced'].includes(x));
+      const language=selected.filter(x=>['Japanese','English'].includes(x));
+      const topics=selected.filter(x=>!difficulty.includes(x)&&!language.includes(x));
+      return (!query||text.includes(query.toLowerCase()))&&(!difficulty.length||difficulty.includes(article.difficulty))&&(!language.length||language.includes(article.language))&&(!topics.length||topics.some(x=>text.includes(x.toLowerCase())));
+    });
+    return [...filtered].sort((a,b)=>sort==='newest'?b.publishedAt.localeCompare(a.publishedAt):sort==='shortest'?a.minutes-b.minutes:0);
+  },[query,selected,sort]);
+  const search=(value:string)=>{setDraft(value);setQuery(value);window.scrollTo({top:0,behavior:'smooth'})};
+  return <main className="docs-v3"><SiteHeader/>
+    <section className="docs-command">
+      <form onSubmit={e=>{e.preventDefault();setQuery(draft.trim())}}><Search size={21}/><input value={draft} onChange={e=>setDraft(e.target.value)} aria-label="記事を検索" placeholder="戦略・状況・キーワードで検索（例：3bet pot c-bet, ICM, bluff catch）"/><kbd>⌘ K</kbd><button>検索</button></form>
+      <div className="docs-chipbar">
+        {selected.map(item=><button key={item} className="active-chip" onClick={()=>toggle(item)}>{item}<X size={13}/></button>)}
+        {!selected.length&&<span className="chip-hint">条件を追加して記事を絞り込めます</span>}
+        <button className="open-filters" onClick={()=>setFiltersOpen(true)}><SlidersHorizontal size={16}/>絞り込み{selected.length>0&&<em>{selected.length}</em>}</button>
+      </div>
     </section>
-  </main></>;
+
+    <div className="docs-v3-layout">
+      <section className="docs-feed">
+        <div className="feed-toolbar"><span><strong>{results.length}</strong>件の記事</span><label>並び替え<select value={sort} onChange={e=>setSort(e.target.value)}><option value="relevance">関連度順</option><option value="newest">新着順</option><option value="shortest">短い順</option></select></label></div>
+        {results.length===0?<div className="docs-empty"><BookOpen size={31}/><h2>条件に合う記事がありません</h2><p>別のキーワードまたは条件を試してください。</p><button onClick={reset}>条件をリセット</button></div>:
+        <div className="docs-feed-list">{results.slice(0,20).map(article=><article className="docs-feed-row" key={article.slug}>
+          <a href={`/articles/${article.slug}`} className="article-cover"><Image src={article.imageUrl||'/sources/gto-wizard.png'} alt="" fill sizes="(max-width: 720px) 34vw, 280px"/></a>
+          <div className="feed-copy"><div className="feed-source"><span className="source-glyph">W</span><strong>{article.source}</strong><span className="content-kind">{article.contentType==='video'?'動画':'記事'}</span></div>
+            <a href={`/articles/${article.slug}`}><h2>{article.title}</h2></a><p>{article.summary}</p>
+            <div className="feed-tags">{article.tags.slice(0,3).map(tag=><button key={tag} onClick={()=>toggle(tag)}>{tag}</button>)}</div>
+            <div className="feed-meta"><span>{article.difficulty}</span><span><Globe2 size={13}/>{article.language}</span><span><CalendarDays size={13}/>{article.publishedAt}</span><span><Clock3 size={13}/>{article.contentType==='video'?`${article.minutes}分`:`${article.minutes}分で読了`}</span></div>
+          </div>
+          <div className="feed-actions"><button aria-label="ブックマーク"><Bookmark size={20}/></button><a href={article.url} target="_blank" rel="noreferrer" aria-label="元記事を開く"><ExternalLink size={20}/></a></div>
+        </article>)}</div>}
+      </section>
+      <aside className="related-search"><h2>検索を深める</h2>{suggestions.map(term=>{const count=articles.filter(a=>[a.title,a.summary,...a.tags].join(' ').toLowerCase().includes(term.split(' ')[0].toLowerCase())).length;return <button key={term} onClick={()=>search(term)}><Search size={17}/><span>{term}</span><small>{count}件</small></button>})}</aside>
+    </div>
+
+    {filtersOpen&&<div className="filter-dialog-backdrop" onMouseDown={()=>setFiltersOpen(false)}><aside className="filter-dialog" onMouseDown={e=>e.stopPropagation()}><div className="filter-dialog-head"><div><p>FILTERS</p><h2>絞り込み</h2></div><button onClick={()=>setFiltersOpen(false)}><X/></button></div>{groups.map(group=><section key={group.title}><h3>{group.title}</h3><div>{group.items.map(item=><label key={item}><input type="checkbox" checked={selected.includes(item)} onChange={()=>toggle(item)}/><span>{item}</span></label>)}</div></section>)}<div className="filter-dialog-actions"><button onClick={reset}><RotateCcw size={15}/>リセット</button><button onClick={()=>setFiltersOpen(false)}>{results.length}件を表示</button></div></aside></div>}
+  </main>
 }
