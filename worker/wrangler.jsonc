@@ -3,5 +3,6 @@
   "name": "potover-api",
   "main": "src/index.ts",
   "compatibility_date": "2026-08-31",
-  "observability": { "enabled": true }
+  "observability": { "enabled": true },
+  "d1_databases": [{ "binding": "DB", "database_name": "potover", "database_id": "__D1_DATABASE_ID__", "migrations_dir": "./migrations" }]
 }

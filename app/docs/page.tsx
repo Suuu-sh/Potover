@@ -4,7 +4,7 @@ import {useEffect,useMemo,useState} from 'react';
 import Image from 'next/image';
 import {Bookmark,BookOpen,CalendarDays,Clock3,ExternalLink,Globe2,RotateCcw,Search,SlidersHorizontal,X} from 'lucide-react';
 import {SiteHeader} from '@/components/SiteHeader';
-import {articles} from '@/lib/data';
+import {articles as initialArticles,Article} from '@/lib/data';
 
 const groups=[
   {title:'ストリート',items:['Preflop','Flop','Turn','River']},
@@ -15,12 +15,13 @@ const groups=[
 const suggestions=['3bet pot c-bet','Bluff catch','ICM spots','Check-raise','Turn barrel','River bluff','Delayed c-bet'];
 
 export default function Docs(){
+  const [articles,setArticles]=useState<Article[]>(initialArticles);
   const [draft,setDraft]=useState('');
   const [query,setQuery]=useState('');
   const [selected,setSelected]=useState<string[]>([]);
   const [filtersOpen,setFiltersOpen]=useState(false);
   const [sort,setSort]=useState('relevance');
-  useEffect(()=>{const q=new URLSearchParams(location.search).get('q')||'';setDraft(q);setQuery(q)},[]);
+  useEffect(()=>{fetch(process.env.NEXT_PUBLIC_API_URL ? `${process.env.NEXT_PUBLIC_API_URL}/api/articles` : '').then(r=>r.ok?r.json():null).then(data=>{if(data?.articles?.length)setArticles(data.articles.map((a:any)=>({...a,tags:JSON.parse(a.tags_json||'[]'),sourceSlug:a.source_slug,publishedAt:a.published_at,imageUrl:a.image_url,contentType:a.content_type}))}).catch(()=>{});const q=new URLSearchParams(location.search).get('q')||'';setDraft(q);setQuery(q)},[]);
   const toggle=(value:string)=>setSelected(old=>old.includes(value)?old.filter(x=>x!==value):[...old,value]);
   const reset=()=>{setSelected([]);setDraft('');setQuery('')};
   const results=useMemo(()=>{
