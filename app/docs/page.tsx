@@ -4,6 +4,7 @@ import {useEffect,useMemo,useState} from 'react';
 import Image from 'next/image';
 import {Bookmark,BookOpen,CalendarDays,Clock3,ExternalLink,Globe2,RotateCcw,Search,SlidersHorizontal,X} from 'lucide-react';
 import {SiteHeader} from '@/components/SiteHeader';
+import {BookmarkButton} from '@/components/BookmarkButton';
 import {articles as initialArticles,Article} from '@/lib/data';
 
 const groups=[
@@ -52,7 +53,7 @@ export default function Docs(){
             <div className="feed-tags">{article.tags.slice(0,3).map(tag=><button key={tag} onClick={()=>toggle(tag)}>{tag}</button>)}</div>
             <div className="feed-meta"><span>{article.difficulty}</span><span><Globe2 size={13}/>{article.language}</span><span><CalendarDays size={13}/>{article.publishedAt}</span><span><Clock3 size={13}/>{article.contentType==='video'?`${article.minutes}分`:`${article.minutes}分で読了`}</span></div>
           </div>
-          <div className="feed-actions"><button aria-label="ブックマーク"><Bookmark size={20}/></button><a href={article.url} target="_blank" rel="noreferrer" aria-label="元記事を開く"><ExternalLink size={20}/></a></div>
+          <div className="feed-actions"><BookmarkButton slug={article.slug}/><a href={article.url} target="_blank" rel="noreferrer" aria-label="元記事を開く"><ExternalLink size={20}/></a></div>
         </article>)}</div>}
       </section>
     </div>
