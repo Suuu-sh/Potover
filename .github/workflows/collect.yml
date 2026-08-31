@@ -1,6 +1,7 @@
 name: Collect articles
 on:
   workflow_dispatch:
+  # 12:00 JST every day. GitHub Actions cron is UTC.
   schedule: [{cron: '0 3 * * *'}]
 jobs:
   collect:

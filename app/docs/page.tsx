@@ -5,26 +5,27 @@ import Image from 'next/image';
 import {Bookmark,BookOpen,CalendarDays,Clock3,ExternalLink,Globe2,RotateCcw,Search,SlidersHorizontal,X} from 'lucide-react';
 import {SiteHeader} from '@/components/SiteHeader';
 import {BookmarkButton} from '@/components/BookmarkButton';
-import {articles as initialArticles,Article} from '@/lib/data';
+import {articles as initialArticles,Article,sources} from '@/lib/data';
 
+const sourceNames=sources.map(source=>source.name);
 const groups=[
   {title:'ストリート',items:['Preflop','Flop','Turn','River']},
   {title:'戦略・テーマ',items:['GTO','Bluff','ICM','Exploit','Cash Game','MTT']},
   {title:'難易度',items:['Beginner','Intermediate','Advanced']},
   {title:'言語',items:['Japanese','English']},
-  {title:'ソース',items:['GTO Wizard','Upswing Poker','PokerNews','PokerCoaching.com']},
+  {title:'ソース',items:sourceNames},
 ];
 const sourceImages:Record<string,string>={'gto-wizard':'/sources/gto-wizard.png','upswing-poker':'/sources/upswing.png','pokernews':'/sources/pokernews.png','pokercoaching':'/sources/pokercoaching.png'};
 const sourceGlyphs:Record<string,string>={'gto-wizard':'W','upswing-poker':'U','pokernews':'P','pokercoaching':'P'};
 
 export default function Docs(){
-  const [articles,setArticles]=useState<Article[]>(initialArticles);
+  const articles:Article[]=initialArticles;
   const [draft,setDraft]=useState('');
   const [query,setQuery]=useState('');
   const [selected,setSelected]=useState<string[]>([]);
   const [filtersOpen,setFiltersOpen]=useState(false);
   const [sort,setSort]=useState('relevance');
-  useEffect(()=>{const api=process.env.NEXT_PUBLIC_API_URL||'https://potover-api.suuu-sh.workers.dev';fetch(`${api}/api/articles?limit=500`).then(r=>r.ok?r.json():null).then(data=>{if(data?.articles?.length)setArticles(data.articles.map((a:any)=>({...a,tags:JSON.parse(a.tags_json||'[]'),sourceSlug:a.source_slug,publishedAt:a.published_at,imageUrl:a.image_url,contentType:a.content_type})));}).catch(()=>{});const q=new URLSearchParams(location.search).get('q')||'';setDraft(q);setQuery(q)},[]);
+  useEffect(()=>{const q=new URLSearchParams(location.search).get('q')||'';setDraft(q);setQuery(q)},[]);
   const toggle=(value:string)=>setSelected(old=>old.includes(value)?old.filter(x=>x!==value):[...old,value]);
   const reset=()=>{setSelected([]);setDraft('');setQuery('')};
   const results=useMemo(()=>{
@@ -32,7 +33,6 @@ export default function Docs(){
       const text=[article.title,article.summary,article.source,...article.tags,article.category].join(' ').toLowerCase();
       const difficulty=selected.filter(x=>['Beginner','Intermediate','Advanced'].includes(x));
       const language=selected.filter(x=>['Japanese','English'].includes(x));
-      const sourceNames=['GTO Wizard','Upswing Poker','PokerNews','PokerCoaching.com'];
       const sourceFilters=selected.filter(x=>sourceNames.includes(x));
       const topics=selected.filter(x=>!difficulty.includes(x)&&!language.includes(x)&&!sourceFilters.includes(x));
       return (!query||text.includes(query.toLowerCase()))&&(!difficulty.length||difficulty.includes(article.difficulty))&&(!language.length||language.includes(article.language))&&(!sourceFilters.length||sourceFilters.includes(article.source))&&(!topics.length||topics.some(x=>text.includes(x.toLowerCase())));
