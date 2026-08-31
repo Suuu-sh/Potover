@@ -1,0 +1,1 @@
+import {describe,it,expect} from 'vitest'; import {RuleBasedClassifier} from './index'; describe('classifier',()=>it('classifies tags and difficulty',()=>{const x=new RuleBasedClassifier().classify({title:'Advanced river bluff catch GTO'});expect(x.difficulty).toBe('advanced');expect(x.tags).toContain('river')}))

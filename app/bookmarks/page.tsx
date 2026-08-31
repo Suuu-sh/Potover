@@ -1,0 +1,6 @@
+import Link from 'next/link';
+import {Bookmark, ExternalLink, Clock3, ArrowRight} from 'lucide-react';
+import {SiteHeader} from '@/components/SiteHeader';
+import {articles} from '@/lib/data';
+export const metadata={title:'ブックマーク — Potover'};
+export default function Bookmarks(){return <main className="library-page"><SiteHeader/><div className="library-wrap"><div className="library-intro"><p className="page-kicker">YOUR LIBRARY</p><h1>ブックマーク</h1><p>あとで読みたい記事を、ここに保存しておけます。</p></div><div className="library-toolbar"><span>{articles.slice(0,3).length}件の記事</span><Link href="/docs">記事を探す <ArrowRight size={15}/></Link></div><section className="bookmark-list">{articles.slice(0,3).map(a=><article className="bookmark-row" key={a.slug}><div className="bookmark-icon"><Bookmark size={20}/></div><div className="bookmark-copy"><p>{a.source}</p><Link href={`/articles/${a.slug}`}><h2>{a.title}</h2></Link><span>{a.summary}</span></div><div className="bookmark-meta"><span>{a.difficulty}</span><span><Clock3 size={14}/>{a.minutes}分</span><a href={a.url} target="_blank" rel="noreferrer" aria-label="元記事を開く"><ExternalLink size={16}/></a></div></article>)}</section><div className="library-note"><Bookmark size={18}/><span>記事ページのブックマークから、いつでもここへ戻れます。</span></div></div></main>}

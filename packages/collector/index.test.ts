@@ -1,0 +1,1 @@
+import {describe,it,expect} from 'vitest'; import {deduplicate,normalize} from './index'; describe('collector utilities',()=>{it('deduplicates by original URL',()=>expect(deduplicate([{title:'a',url:'x'},{title:'b',url:'x'}])).toHaveLength(1));it('normalizes metadata',()=>expect(normalize({title:'  Hi ',url:'u'}).title).toBe('Hi'))})

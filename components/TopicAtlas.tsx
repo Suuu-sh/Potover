@@ -1,0 +1,4 @@
+import Link from 'next/link';
+import { Layers3,GitBranch,ChartNoAxesCombined,Trophy,Brain,Coins,ArrowRight } from 'lucide-react';
+const groups=[['プリフロップ',Layers3,['オープンレンジ','3ベット戦略','スクイーズ','コールレンジ']],['ポストフロップ',GitBranch,['CB戦略','バレル','チェックレイズ','ブロッカー']],['GTO・ソルバー',ChartNoAxesCombined,['レンジ構築','ノードロック','エクスプロイト調整']],['トーナメント',Trophy,['ICM・ピック','スタック戦略','終盤のプレイ']],['メンタル・思考',Brain,['意思決定プロセス','バイアス','レビュー・振り返り']],['バンクロール',Coins,['資金管理','ベットサイズ','ショットテイク']]] as const;
+export function TopicAtlas(){return <section className="topic-atlas" id="topics">{groups.map(([title,Icon,items])=><Link href={`/docs?q=${encodeURIComponent(title)}`} className="topic-family" key={title}><span className="topic-icon"><Icon size={29}/></span><span><strong>{title}</strong><small>{items.join('　')}</small></span><ArrowRight className="topic-arrow" size={17}/></Link>)}</section>}

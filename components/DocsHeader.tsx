@@ -1,0 +1,3 @@
+import {Menu,Search} from 'lucide-react';
+type Props={draft:string;setDraft:(v:string)=>void;onSubmit:(e:React.FormEvent)=>void;openFilters:()=>void};
+export function DocsHeader({draft,setDraft,onSubmit,openFilters}:Props){return <div className="workspace-header docs-search-toolbar"><strong>記事を探す</strong><form className="command-search" onSubmit={onSubmit}><Search size={19}/><input aria-label="記事を検索" value={draft} onChange={e=>setDraft(e.target.value)} placeholder="戦略・状況・キーワードを検索"/><button>検索</button></form><div className="header-actions"><span>1 source</span></div><button className="mobile-filter-button" onClick={openFilters}><Menu size={20}/> 絞り込み</button></div>}
