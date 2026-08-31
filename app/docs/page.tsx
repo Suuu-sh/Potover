@@ -4,6 +4,7 @@ import {useEffect,useMemo,useState} from 'react';
 import Image from 'next/image';
 import {Bookmark,BookOpen,CalendarDays,Clock3,ExternalLink,Globe2,RotateCcw,Search,SlidersHorizontal,X} from 'lucide-react';
 import {SiteHeader} from '@/components/SiteHeader';
+import {BookmarkButton} from '@/components/BookmarkButton';
 import {articles as initialArticles,Article} from '@/lib/data';
 
 const groups=[
@@ -13,7 +14,6 @@ const groups=[
   {title:'言語',items:['Japanese','English']},
   {title:'ソース',items:['GTO Wizard','Upswing Poker','PokerNews','PokerCoaching.com']},
 ];
-const suggestions=['3bet pot c-bet','Bluff catch','ICM spots','Check-raise','Turn barrel','River bluff','Delayed c-bet'];
 const sourceImages:Record<string,string>={'gto-wizard':'/sources/gto-wizard.png','upswing-poker':'/sources/upswing.png','pokernews':'/sources/pokernews.png','pokercoaching':'/sources/pokercoaching.png'};
 const sourceGlyphs:Record<string,string>={'gto-wizard':'W','upswing-poker':'U','pokernews':'P','pokercoaching':'P'};
 
@@ -53,10 +53,9 @@ export default function Docs(){
             <div className="feed-tags">{article.tags.slice(0,3).map(tag=><button key={tag} onClick={()=>toggle(tag)}>{tag}</button>)}</div>
             <div className="feed-meta"><span>{article.difficulty}</span><span><Globe2 size={13}/>{article.language}</span><span><CalendarDays size={13}/>{article.publishedAt}</span><span><Clock3 size={13}/>{article.contentType==='video'?`${article.minutes}分`:`${article.minutes}分で読了`}</span></div>
           </div>
-          <div className="feed-actions"><button aria-label="ブックマーク"><Bookmark size={20}/></button><a href={article.url} target="_blank" rel="noreferrer" aria-label="元記事を開く"><ExternalLink size={20}/></a></div>
+          <div className="feed-actions"><BookmarkButton slug={article.slug}/><a href={article.url} target="_blank" rel="noreferrer" aria-label="元記事を開く"><ExternalLink size={20}/></a></div>
         </article>)}</div>}
       </section>
-      <aside className="related-search"><h2>検索を深める</h2>{suggestions.map(term=>{const count=articles.filter(a=>[a.title,a.summary,...a.tags].join(' ').toLowerCase().includes(term.split(' ')[0].toLowerCase())).length;return <button key={term} onClick={()=>search(term)}><Search size={17}/><span>{term}</span><small>{count}件</small></button>})}</aside>
     </div>
 
     {filtersOpen&&<div className="filter-dialog-backdrop" onMouseDown={()=>setFiltersOpen(false)}><aside className="filter-dialog" onMouseDown={e=>e.stopPropagation()}><div className="filter-dialog-head"><div><p>FILTERS</p><h2>絞り込み</h2></div><button onClick={()=>setFiltersOpen(false)}><X/></button></div>{groups.map(group=><section key={group.title}><h3>{group.title}</h3><div>{group.items.map(item=><label key={item}><input type="checkbox" checked={selected.includes(item)} onChange={()=>toggle(item)}/><span>{item}</span></label>)}</div></section>)}<div className="filter-dialog-actions"><button onClick={reset}><RotateCcw size={15}/>リセット</button><button onClick={()=>setFiltersOpen(false)}>{results.length}件を表示</button></div></aside></div>}
