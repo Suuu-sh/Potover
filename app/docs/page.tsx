@@ -3,7 +3,7 @@
 import {useEffect,useMemo,useState} from 'react';
 import Image from 'next/image';
 import {Bookmark,BookOpen,CalendarDays,Clock3,ExternalLink,Globe2,RotateCcw,Search,SlidersHorizontal,X} from 'lucide-react';
-import {SiteHeader} from '@/components/SiteHeader';
+
 import {BookmarkButton} from '@/components/BookmarkButton';
 import {LearningLink} from '@/components/LearningLink';
 import {articles as initialArticles,Article,sources} from '@/lib/data';
@@ -41,7 +41,7 @@ export default function Docs(){
     return [...filtered].sort((a,b)=>sort==='newest'?b.publishedAt.localeCompare(a.publishedAt):sort==='shortest'?a.minutes-b.minutes:0);
   },[query,selected,sort]);
   const search=(value:string)=>{setDraft(value);setQuery(value);window.scrollTo({top:0,behavior:'smooth'})};
-  return <main className="docs-v3"><SiteHeader/><div className="docs-command"><form onSubmit={e=>{e.preventDefault();setQuery(draft.trim())}}><Search size={17}/><input value={draft} onChange={e=>setDraft(e.target.value)} aria-label="記事を検索" placeholder="戦略・状況・キーワードで検索"/><kbd>⌘ K</kbd><button type="button" className="search-filter-button" onClick={()=>setFiltersOpen(true)}><SlidersHorizontal size={15}/>絞り込み{selected.length>0&&<em>{selected.length}</em>}</button><button type="submit">検索</button></form></div>
+  return <main className="docs-v3"><div className="docs-command"><form onSubmit={e=>{e.preventDefault();setQuery(draft.trim())}}><Search size={17}/><input value={draft} onChange={e=>setDraft(e.target.value)} aria-label="記事を検索" placeholder="戦略・状況・キーワードで検索"/><kbd>⌘ K</kbd><button type="button" className="search-filter-button" onClick={()=>setFiltersOpen(true)}><SlidersHorizontal size={15}/>絞り込み{selected.length>0&&<em>{selected.length}</em>}</button><button type="submit">検索</button></form></div>
 
     <div className="docs-v3-layout">
       <section className="docs-feed">

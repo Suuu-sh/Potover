@@ -18,3 +18,6 @@ Current Home header at desktop width: white 64px bar, Potover lockup on the left
 - All routes use the shared `SiteHeader` component.
 
 final result: passed
+
+## Root-layout correction
+The shared header is now mounted once in `app/layout.tsx`, outside all page-specific containers. This removes route CSS and containing-block interactions that could crop or reposition the fixed header.

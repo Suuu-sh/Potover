@@ -111,3 +111,6 @@ html.dark-mode{color-scheme:dark}html.dark-mode body{background:#080f18;color:#e
 @media(max-width:480px){.site-header-inner,.docs-v3 .site-header-inner{grid-template-columns:116px 1fr auto;padding:0 12px!important}.brand-lockup,.docs-v3 .brand-lockup{width:116px!important}.brand-lockup img,.docs-v3 .brand-lockup img{width:116px!important}.site-header .atlas-actions{gap:5px!important}}
 .dark-mode .site-header nav a,.dark-mode .site-header .atlas-actions>a{color:#c4d0de}.dark-mode .site-header nav a:hover,.dark-mode .site-header nav a.is-active,.dark-mode .site-header .atlas-actions>a:hover,.dark-mode .site-header .atlas-actions>a.is-active{color:#8cb8ff;background:#172738}
 .shared-header-page{padding-top:64px!important}
+/* Render the shared header once at the app root, outside every route layout. */
+.app-shell{padding-top:64px}
+.app-shell>.with-fixed-header,.app-shell>.library-page,.app-shell>.docs-v3,.app-shell>.review-page,.app-shell>.shared-header-page{padding-top:0!important}
