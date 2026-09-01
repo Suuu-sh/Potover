@@ -1,7 +1,7 @@
 'use client';
 
 import {useEffect,useMemo,useState} from 'react';
-import {BookOpen,RotateCcw,Search,SlidersHorizontal,X} from 'lucide-react';
+import {BookOpen,RotateCcw,SlidersHorizontal,X} from 'lucide-react';
 
 import {ArticleFeedRow} from '@/components/ArticleFeedRow';
 import {articles as initialArticles,Article,sources} from '@/lib/data';
@@ -17,14 +17,13 @@ const groups=[
 
 export default function Docs(){
   const articles:Article[]=initialArticles;
-  const [draft,setDraft]=useState('');
   const [query,setQuery]=useState('');
   const [selected,setSelected]=useState<string[]>([]);
   const [filtersOpen,setFiltersOpen]=useState(false);
   const [sort,setSort]=useState('relevance');
-  useEffect(()=>{const q=new URLSearchParams(location.search).get('q')||'';setDraft(q);setQuery(q)},[]);
+  useEffect(()=>{setQuery(new URLSearchParams(location.search).get('q')||'')},[]);
   const toggle=(value:string)=>setSelected(old=>old.includes(value)?old.filter(x=>x!==value):[...old,value]);
-  const reset=()=>{setSelected([]);setDraft('');setQuery('')};
+  const reset=()=>{setSelected([]);setQuery('')};
   const results=useMemo(()=>{
     const filtered=articles.filter(article=>{
       const text=[article.title,article.summary,article.source,...article.tags,article.category].join(' ').toLowerCase();
@@ -36,12 +35,9 @@ export default function Docs(){
     });
     return [...filtered].sort((a,b)=>sort==='newest'?b.publishedAt.localeCompare(a.publishedAt):sort==='shortest'?a.minutes-b.minutes:0);
   },[query,selected,sort]);
-  const search=(value:string)=>{setDraft(value);setQuery(value);window.scrollTo({top:0,behavior:'smooth'})};
-  return <main className="docs-v3"><div className="docs-command"><form onSubmit={e=>{e.preventDefault();setQuery(draft.trim())}}><Search size={17}/><input value={draft} onChange={e=>setDraft(e.target.value)} aria-label="記事を検索" placeholder="戦略・状況・キーワードで検索"/><kbd>⌘ K</kbd><button type="button" className="search-filter-button" onClick={()=>setFiltersOpen(true)}><SlidersHorizontal size={15}/>絞り込み{selected.length>0&&<em>{selected.length}</em>}</button><button type="submit">検索</button></form></div>
-
-    <div className="docs-v3-layout">
+  return <main className="docs-v3"><div className="docs-v3-layout">
       <section className="docs-feed">
-        <div className="feed-toolbar"><span><strong>{results.length}</strong>件の記事</span><label>並び替え<select value={sort} onChange={e=>setSort(e.target.value)}><option value="relevance">関連度順</option><option value="newest">新着順</option><option value="shortest">短い順</option></select></label></div>
+        <div className="feed-toolbar"><span><strong>{results.length}</strong>件の記事</span><div className="feed-toolbar-controls"><button type="button" className="feed-filter-button" onClick={()=>setFiltersOpen(true)}><SlidersHorizontal size={14}/>絞り込み{selected.length>0&&<em>{selected.length}</em>}</button><label>並び替え<select value={sort} onChange={e=>setSort(e.target.value)}><option value="relevance">関連度順</option><option value="newest">新着順</option><option value="shortest">短い順</option></select></label></div></div>
         {results.length===0?<div className="docs-empty"><BookOpen size={31}/><h2>条件に合う記事がありません</h2><p>別のキーワードまたは条件を試してください。</p><button onClick={reset}>条件をリセット</button></div>:
         <div className="docs-feed-list">{results.slice(0,20).map(article=><ArticleFeedRow article={article} onTagClick={toggle} key={article.slug}/>)}</div>}
       </section>

@@ -166,8 +166,7 @@ body{min-height:100vh}
    reserve that space for a second time. */
 @media(min-width:1001px){
   .docs-v3{height:calc(100dvh - 64px);min-height:0;overflow:hidden}
-  .docs-v3 .docs-command{position:relative!important;inset:auto!important;top:auto!important;height:78px}
-  .docs-v3 .docs-v3-layout{height:calc(100dvh - 142px)!important;margin-top:0!important;padding-top:0}
+  .docs-v3 .docs-v3-layout{height:calc(100dvh - 64px)!important;margin-top:0!important;padding-top:0}
 }
 
 /* Article index and detail pages predate the modern layouts. Give them the same
@@ -281,6 +280,11 @@ body{min-height:100vh}
 .bookmark-docs-feed .docs-feed-row:last-child{border-bottom:0}
 .bookmarks-page .library-note{margin-top:22px;padding-top:18px;border-top:1px solid #dce5ef}
 .dark-mode .bookmarks-page .library-note{border-color:#29394b}
+.feed-toolbar-controls{display:flex;align-items:center;gap:18px}
+.feed-filter-button{display:flex;align-items:center;gap:6px;border:0;background:transparent;color:#526982;font-size:12px;cursor:pointer}
+.feed-filter-button:hover{color:#1769e8}
+.feed-filter-button em{display:grid;place-items:center;min-width:17px;height:17px;padding:0 4px;border-radius:999px;background:#1769e8;color:#fff;font-size:9px;font-style:normal}
+.dark-mode .feed-filter-button{color:#b9c9da}.dark-mode .feed-filter-button:hover{color:#8cb8ff}
 .library-intro{margin-bottom:28px}
 .library-intro h1{font-size:34px;letter-spacing:-1.2px}
 .profile-dashboard{padding-top:38px}
