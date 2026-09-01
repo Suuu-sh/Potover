@@ -1,40 +1,33 @@
-# Design QA — simplified page headings
+# Design QA — bookmarks article feed
 
-- Source visual truth: `/var/folders/pw/rpvs3tk500z7b_c5gjyrcyt80000gn/T/TemporaryItems/NSIRD_screencaptureui_rwfqIT/スクリーンショット 2026-09-02 1.01.57.png`
-- Implementation screenshots: `/tmp/headings-home.png`, `/tmp/headings-articles.png`, `/tmp/headings-bookmarks.png`, `/tmp/headings-docs.png`, `/tmp/headings-profile.png`, `/tmp/headings-review.png`, `/tmp/headings-sources.png`, `/tmp/headings-detail.png`
-- Cross-route comparison: `/tmp/headings-montage.png`
-- Viewport: 1440 × 1000 CSS px, device scale 1
-- State: dark theme, default route states
+- Source visual truth: `/var/folders/pw/rpvs3tk500z7b_c5gjyrcyt80000gn/T/TemporaryItems/NSIRD_screencaptureui_vBlPWy/スクリーンショット 2026-09-02 1.02.32.png`
+- Implementation screenshots: `/tmp/potover-bookmarks.png`, `/tmp/potover-docs.png`
+- Viewport: 1600 × 900 CSS px, device scale 1
+- State: dark theme; two saved articles on `/bookmarks/`; default feed on `/docs/`
 
-## Full-view comparison evidence
+## Comparison evidence
 
-The supplied source showed the unwanted pattern: a decorative uppercase English eyebrow above a very large page title and description. The revised pages remove that repeated eyebrow treatment and use compact Japanese page titles only where route identity is necessary.
-
-## Focused and cross-route evidence
-
-The eight-route contact sheet confirms the hierarchy change across home, article index, bookmarks, search, profile, review, sources, and source detail. Decorative labels such as `CURATED SOURCES`, `YOUR LIBRARY`, `POKER LEARNING`, `CURATED FOR YOU`, `LEARNING MAP`, `AI HAND REVIEW`, `Library`, and `Source profile` no longer occupy page-level heading space. Functional labels such as article sources and review step numbers remain.
+The supplied screenshot identified two changes: remove the oversized `YOUR LIBRARY / ブックマーク` intro and make saved items identical to the article blocks on `/docs`. The implementation screenshot confirms that saved content begins with the compact count toolbar and uses the same cover, source, title, summary, tags, metadata, bookmark action, and external-link action as `/docs`.
 
 ## Required fidelity surfaces
 
-- Fonts and typography: page titles use a consistent 32–36px desktop scale and 28px mobile scale; decorative uppercase eyebrows are removed.
-- Spacing and layout rhythm: top padding and intro margins are reduced so primary content begins earlier.
-- Colors and visual tokens: existing verified light/dark tokens are preserved.
-- Image quality and assets: no imagery was changed or replaced.
-- Copy and content: route labels are localized where touched (`記事一覧`, `最新の記事`, article counts).
+- Hierarchy: the decorative bookmark heading and description are removed.
+- Component parity: `/bookmarks/` and `/docs/` render the shared `ArticleFeedRow` component.
+- Spacing: bookmarks retain the library page width while the shared rows keep the docs feed rhythm.
+- Theme: row borders, copy, tags, controls, and the local-storage note all use the established dark tokens.
+- Responsive behavior: the existing docs feed breakpoints now apply to saved rows as well.
 
-## Findings and comparison history
+## Findings and history
 
-- Earlier P1: repeated marketing-style eyebrow/title blocks made utility pages feel oversized and redundant. Fixed by removing decorative labels and compacting page intros.
-- Earlier P2: English utility headings were inconsistent with the Japanese product. Fixed by localizing the remaining route-level labels.
-- Post-fix evidence: `/tmp/headings-montage.png`; no actionable P0/P1/P2 differences remain.
+- P1: bookmarks used a separate text-only row that visually diverged from `/docs`. Fixed by extracting and reusing one article-feed component.
+- P2: the large bookmark intro delayed access to saved content. Fixed by removing it and tightening the page top spacing.
+- P2: desktop docs scrolling constraints could clip a reused feed outside `/docs`. Fixed with bookmark-scoped height and overflow overrides.
+- Post-fix visual comparison found no actionable P0/P1/P2 differences.
 
 ## Primary interaction checks
 
-- Navigation, header search, filters, bookmarks, profile actions, review upload, sources, and detail links remain in place.
-- All eight routes rendered in the same dark browser state after the change.
-
-## Follow-up polish
-
-- P3: the home value proposition remains intentionally larger than utility-page titles because it is the landing page’s primary message.
+- Saved bookmark state renders correctly.
+- Bookmark removal control and original-article link remain present.
+- The `記事を探す` route back to `/docs` remains visible.
 
 final result: passed

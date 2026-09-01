@@ -275,6 +275,12 @@ body{min-height:100vh}
 .pageintro{padding-top:42px;padding-bottom:26px}
 .pageintro h1{font-size:34px;margin-top:0}
 .library-wrap{padding-top:42px}
+.bookmarks-page .library-wrap{padding-top:28px}
+.bookmarks-page .library-toolbar{margin:0}
+.bookmark-docs-feed{height:auto!important;overflow:visible!important;margin:0!important;padding:0!important}
+.bookmark-docs-feed .docs-feed-row:last-child{border-bottom:0}
+.bookmarks-page .library-note{margin-top:22px;padding-top:18px;border-top:1px solid #dce5ef}
+.dark-mode .bookmarks-page .library-note{border-color:#29394b}
 .library-intro{margin-bottom:28px}
 .library-intro h1{font-size:34px;letter-spacing:-1.2px}
 .profile-dashboard{padding-top:38px}

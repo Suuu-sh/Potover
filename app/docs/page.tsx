@@ -1,11 +1,9 @@
 'use client';
 
 import {useEffect,useMemo,useState} from 'react';
-import Image from 'next/image';
-import {Bookmark,BookOpen,CalendarDays,Clock3,ExternalLink,Globe2,RotateCcw,Search,SlidersHorizontal,X} from 'lucide-react';
+import {BookOpen,RotateCcw,Search,SlidersHorizontal,X} from 'lucide-react';
 
-import {BookmarkButton} from '@/components/BookmarkButton';
-import {LearningLink} from '@/components/LearningLink';
+import {ArticleFeedRow} from '@/components/ArticleFeedRow';
 import {articles as initialArticles,Article,sources} from '@/lib/data';
 
 const sourceNames=sources.map(source=>source.name);
@@ -16,8 +14,6 @@ const groups=[
   {title:'言語',items:['Japanese','English']},
   {title:'ソース',items:sourceNames},
 ];
-const sourceImages:Record<string,string>={'gto-wizard':'/sources/gto-wizard.png','upswing-poker':'/sources/upswing.png','pokernews':'/sources/pokernews.png','pokercoaching':'/sources/pokercoaching.png'};
-const sourceGlyphs:Record<string,string>={'gto-wizard':'W','upswing-poker':'U','pokernews':'P','pokercoaching':'P'};
 
 export default function Docs(){
   const articles:Article[]=initialArticles;
@@ -47,15 +43,7 @@ export default function Docs(){
       <section className="docs-feed">
         <div className="feed-toolbar"><span><strong>{results.length}</strong>件の記事</span><label>並び替え<select value={sort} onChange={e=>setSort(e.target.value)}><option value="relevance">関連度順</option><option value="newest">新着順</option><option value="shortest">短い順</option></select></label></div>
         {results.length===0?<div className="docs-empty"><BookOpen size={31}/><h2>条件に合う記事がありません</h2><p>別のキーワードまたは条件を試してください。</p><button onClick={reset}>条件をリセット</button></div>:
-        <div className="docs-feed-list">{results.slice(0,20).map(article=><article className="docs-feed-row" key={article.slug}>
-          <a href={`/articles/${article.slug}`} className="article-cover"><Image src={article.imageUrl||sourceImages[article.sourceSlug]||'/icon.png'} alt="" fill sizes="(max-width: 720px) 34vw, 280px"/></a>
-          <div className="feed-copy"><div className="feed-source"><span className="source-glyph">{sourceGlyphs[article.sourceSlug]||article.source.slice(0,1)}</span><strong>{article.source}</strong><span className="content-kind">{article.contentType==='video'?'動画':'記事'}</span></div>
-            <a href={`/articles/${article.slug}`}><h2>{article.title}</h2></a><p>{article.summary}</p>
-            <div className="feed-tags">{article.tags.slice(0,3).map(tag=><button key={tag} onClick={()=>toggle(tag)}>{tag}</button>)}</div>
-            <div className="feed-meta"><span>{article.difficulty}</span><span><Globe2 size={13}/>{article.language}</span><span><CalendarDays size={13}/>{article.publishedAt}</span><span><Clock3 size={13}/>{article.contentType==='video'?`${article.minutes}分`:`${article.minutes}分で読了`}</span></div>
-          </div>
-          <div className="feed-actions"><BookmarkButton slug={article.slug}/><LearningLink slug={article.slug} href={article.url} aria-label="元記事を開く"><ExternalLink size={20}/></LearningLink></div>
-        </article>)}</div>}
+        <div className="docs-feed-list">{results.slice(0,20).map(article=><ArticleFeedRow article={article} onTagClick={toggle} key={article.slug}/>)}</div>}
       </section>
     </div>
 
