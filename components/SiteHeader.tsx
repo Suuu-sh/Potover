@@ -4,7 +4,7 @@ import Link from 'next/link';
 import {Bookmark,Moon,Search,Sun,UserCircle} from 'lucide-react';
 import {usePathname} from 'next/navigation';
 import {useEffect,useState} from 'react';
-const navigation=[{href:'/docs',label:'記事を探す'},{href:'/review',label:'レビュー'},{href:'/sources',label:'情報源'}];
+const navigation=[{href:'/docs',label:'記事を探す'},{href:'/sources',label:'情報源'}];
 export function SiteHeader(){
   const pathname=usePathname();const [dark,setDark]=useState(false);
   useEffect(()=>{const saved=localStorage.getItem('potover-theme')==='dark';setDark(saved);document.documentElement.classList.toggle('dark-mode',saved)},[]);
