@@ -299,3 +299,13 @@ body{min-height:100vh}
   .pageintro,.detail{padding-top:30px}
   .library-wrap,.profile-dashboard,.review-wrap{padding-top:30px}
 }
+
+/* Compact utility pages: content first, without promotional page descriptions. */
+.sources-clean{padding-top:32px}
+.sources-clean>section{margin-top:0}
+.articles-clean{padding-top:28px!important}
+.articles-clean-toolbar{width:min(100%,1180px);margin:0 auto 18px;padding-bottom:14px;border-bottom:1px solid #dce5ef;color:#718198;font-size:12px}
+.articles-clean-toolbar strong{margin-right:2px;color:#10213d;font-size:15px}
+.articles-clean>.grid{width:min(100%,1180px);margin:0 auto}
+.dark-mode .articles-clean-toolbar{border-color:#29394b;color:#9eacbd}.dark-mode .articles-clean-toolbar strong{color:#edf3fb}
+@media(max-width:560px){.sources-clean{padding-top:20px}.articles-clean{padding-top:20px!important}}
