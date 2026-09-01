@@ -235,3 +235,30 @@ body{min-height:100vh}
   .site-header-search{grid-column:2}
 }
 @media(max-width:900px){.site-header-search{display:none}}
+
+/* Complete dark-theme surface pass. Keep every route on the same navy canvas and
+   remove light-mode cards, chips and artwork glare. */
+.dark-mode .modern-home,.dark-mode .modern-sources,.dark-mode .shared-header-page,.dark-mode .library-page,.dark-mode .review-page,.dark-mode .docs-v3{background:#080f18;color:#edf3fb}
+.dark-mode .modern-hero-art{background:#0d1722}
+.dark-mode .modern-hero-art:after{content:'';position:absolute;inset:0;z-index:1;background:rgba(4,14,27,.52);pointer-events:none}
+.dark-mode .modern-hero-art img{filter:brightness(.72) saturate(.82) contrast(1.05)}
+.dark-mode .modern-hero-copy h1,.dark-mode .modern-section-head h2,.dark-mode .modern-pick-row h3,.dark-mode .modern-topics strong,.dark-mode .modern-sources h1,.dark-mode .modern-sources h2,.dark-mode .modern-source-copy h2{color:#edf3fb}
+.dark-mode .modern-hero-copy form{box-shadow:0 8px 25px rgba(0,0,0,.22)}
+.dark-mode .modern-hero-copy form>svg,.dark-mode .modern-topics>a>svg{color:#8fa1b6}
+.dark-mode .modern-popular small,.dark-mode .modern-pick-row>div>small,.dark-mode .modern-source-copy small,.dark-mode .modern-sources-head p{color:#91a2b7}
+.dark-mode .modern-popular a,.dark-mode .modern-pick-row em,.dark-mode .modern-topics>a>span,.dark-mode .modern-source-logo{background:#172738;color:#b8c9dd}
+.dark-mode .modern-pick-image{background:#111d29}
+.dark-mode .modern-sources>section,.dark-mode .modern-sources header>div:last-child{background:#0d1722;border-color:#29394b}
+
+.dark-mode .tag,.dark-mode .pill,.dark-mode .interest-list span,.dark-mode .feed-tags button,.dark-mode .content-kind,.dark-mode .profile-learning-row em{background:#172f52;color:#9fc3ff;border-color:#315b92}
+.dark-mode .pill.gray{background:#1a2735;color:#c0ccda}
+.dark-mode .bookmark-empty,.dark-mode .profile-sidebar-card,.dark-mode .weekly-learning-card,.dark-mode .profile-topic-card,.dark-mode .profile-recent-card,.dark-mode .review-upload-card,.dark-mode .review-results,.dark-mode .review-recommendations article{background:#0d1722;border-color:#29394b}
+.dark-mode .bookmark-empty p,.dark-mode .review-upload-note,.dark-mode .review-dropzone span,.dark-mode .review-how-card p,.dark-mode .review-results-head p:last-child,.dark-mode .review-recommendations p{color:#9eacbd}
+.dark-mode .review-how-card{background:#111f35;border-color:#304560}
+.dark-mode .review-insight{background:#2a2114;border-color:#5a4524}.dark-mode .review-insight strong{color:#f2bd68}.dark-mode .review-insight span{color:#dac8aa}
+.dark-mode .review-dropzone.has-file{background:#10271f}.dark-mode .review-dropzone.has-file strong{color:#77d5ad}
+.dark-mode .review-analyze-button:disabled{background:#243447;color:#8798ac}
+.dark-mode .weekly-goal-meter>div,.dark-mode .level-bar,.dark-mode .profile-progress{background:#243244}
+.dark-mode .week-days i{border-color:#486079;color:#b5c4d5}
+.dark-mode .profile-settings,.dark-mode .edit-profile,.dark-mode .profile-section-title>a,.dark-mode .profile-section-title>button{background:#111d29;color:#b9c9da;border-color:#34475b}
+.dark-mode .source-card-new,.dark-mode .shell.page .card,.dark-mode .filters,.dark-mode .detailbox{box-shadow:none}
