@@ -124,3 +124,9 @@ html.dark-mode{color-scheme:dark}html.dark-mode body{background:#080f18;color:#e
 /* Stable non-overlapping header: keep it in document flow to avoid compositor clipping. */
 .site-header,.docs-v3 .site-header{position:sticky!important;top:0!important;left:auto!important;right:auto!important;inset:auto!important;width:100%!important}
 .app-shell{padding-top:0!important}
+/* Keep the editorial canvas aligned on ultrawide and zoomed displays. */
+.modern-hero-copy{padding-left:clamp(32px,5.2vw,76px);padding-right:clamp(24px,3vw,48px)}
+.modern-sources{padding-left:clamp(24px,5vw,76px);padding-right:clamp(24px,5vw,76px)}
+.modern-home,.modern-sources,.modern-hero,.modern-content{max-width:100%;overflow-x:clip}
+.site-header-inner{max-width:100%;overflow:hidden}
+@media(max-width:900px){.modern-hero-copy{padding-left:24px;padding-right:24px}}
