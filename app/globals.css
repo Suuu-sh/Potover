@@ -148,15 +148,16 @@ body{min-height:100vh}
   .site-header nav,.docs-v3 .site-header nav{display:none!important}
 }
 @media(max-width:900px){
-  .site-header-inner,.docs-v3 .site-header-inner{grid-template-columns:minmax(116px,126px) minmax(0,1fr) auto}
+  .site-header-inner,.docs-v3 .site-header-inner{display:flex!important;justify-content:space-between;gap:12px!important}
   .site-header .atlas-actions{display:flex!important}
   .site-header .atlas-actions>a:first-child{display:none!important}
   .site-header .atlas-actions .profile-action{display:flex!important}
   .site-header .theme-toggle{display:grid!important;place-items:center}
   .site-header .theme-toggle svg,.site-header .atlas-actions .profile-action svg{display:block!important}
+  .site-header .atlas-actions{position:absolute;top:14px;right:12px}
 }
 @media(max-width:390px){
-  .site-header-inner,.docs-v3 .site-header-inner{grid-template-columns:108px minmax(0,1fr) auto;padding:0 10px!important;gap:6px!important}
+  .site-header-inner,.docs-v3 .site-header-inner{padding:0 10px!important;gap:6px!important}
   .brand-lockup,.docs-v3 .brand-lockup{width:108px!important}
   .brand-lockup img,.docs-v3 .brand-lockup img{width:108px!important}
 }
@@ -202,4 +203,17 @@ body{min-height:100vh}
   .modern-hero-copy form button{padding:0 14px}
   .modern-popular{flex-wrap:nowrap;max-width:100%;overflow-x:auto;padding-bottom:4px}
   .modern-popular>*{flex:none}
+  .modern-sources{padding-left:16px;padding-right:16px}
+  .modern-sources>header,.modern-sources>section{width:calc(100vw - 32px);min-width:0;max-width:calc(100vw - 32px);margin-left:0;margin-right:0}
+  .modern-sources>header{overflow:hidden}
+  .modern-sources header h1{max-width:100%;font-size:30px;line-height:1.35;letter-spacing:-1px;overflow-wrap:anywhere}
+  .modern-sources header>div:first-child{min-width:0}
+  .modern-sources header>div:first-child>span{display:none}
+  .modern-sources>section{overflow:hidden}
+  .modern-sources-head{height:auto;min-height:76px;gap:10px}
+  .modern-sources-head>div{min-width:0}
+  .modern-sources-head>a{flex:none;white-space:nowrap;font-size:0}
+  .modern-sources-head>a svg{width:18px;height:18px}
+  .modern-source-list,.modern-source-row,.modern-source-copy{width:100%;min-width:0}
+  .modern-source-copy>p:nth-of-type(2){display:none}
 }
