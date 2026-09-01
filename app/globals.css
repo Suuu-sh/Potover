@@ -130,3 +130,76 @@ html.dark-mode{color-scheme:dark}html.dark-mode body{background:#080f18;color:#e
 .modern-home,.modern-sources,.modern-hero,.modern-content{max-width:100%;overflow-x:clip}
 .site-header-inner{max-width:100%;overflow:hidden}
 @media(max-width:900px){.modern-hero-copy{padding-left:24px;padding-right:24px}}
+
+/* Layout guardrails — one coordinate system for every route. */
+html,body{width:100%;min-width:320px;overflow-x:clip}
+body{min-height:100vh}
+.app-shell{width:100%;min-width:0}
+.app-shell>main{width:100%;min-width:0}
+.modern-hero-copy{min-width:0;width:100%}
+.modern-hero-copy form{min-width:0;width:auto;max-width:100%}
+.modern-hero-copy form button{flex:none}
+
+/* The shared header remains in normal document flow. Do not crop its contents. */
+.site-header-inner,.docs-v3 .site-header-inner{overflow:visible;min-width:0}
+.site-header nav,.site-header .atlas-actions{min-width:0}
+@media(max-width:1180px) and (min-width:901px){
+  .site-header-inner,.docs-v3 .site-header-inner{grid-template-columns:150px minmax(0,1fr) auto;gap:20px!important;padding:0 24px!important}
+  .site-header nav,.docs-v3 .site-header nav{display:none!important}
+}
+@media(max-width:900px){
+  .site-header-inner,.docs-v3 .site-header-inner{grid-template-columns:minmax(116px,126px) minmax(0,1fr) auto}
+  .site-header .atlas-actions{display:flex!important}
+  .site-header .atlas-actions>a:first-child{display:none!important}
+  .site-header .atlas-actions .profile-action{display:flex!important}
+  .site-header .theme-toggle{display:grid!important;place-items:center}
+  .site-header .theme-toggle svg,.site-header .atlas-actions .profile-action svg{display:block!important}
+}
+@media(max-width:390px){
+  .site-header-inner,.docs-v3 .site-header-inner{grid-template-columns:108px minmax(0,1fr) auto;padding:0 10px!important;gap:6px!important}
+  .brand-lockup,.docs-v3 .brand-lockup{width:108px!important}
+  .brand-lockup img,.docs-v3 .brand-lockup img{width:108px!important}
+}
+
+/* Search page: the header already occupies 64px, so its local viewport must not
+   reserve that space for a second time. */
+@media(min-width:1001px){
+  .docs-v3{height:calc(100dvh - 64px);min-height:0;overflow:hidden}
+  .docs-v3 .docs-command{position:relative!important;inset:auto!important;top:auto!important;height:78px}
+  .docs-v3 .docs-v3-layout{height:calc(100dvh - 142px)!important;margin-top:0!important;padding-top:0}
+}
+
+/* Article index and detail pages predate the modern layouts. Give them the same
+   centered, responsive canvas instead of leaving their generic class names bare. */
+.shared-header-page{min-height:calc(100vh - 64px);background:#f8fbff;color:#10213d}
+.shell.page{max-width:none;margin:0;padding:0 clamp(20px,5vw,72px) 80px!important}
+.shell.page>.pageintro,.shell.page>.detail{width:min(100%,1180px);margin:0 auto}
+.pageintro{padding:58px 0 34px}
+.pageintro .eyebrow,.detail>.eyebrow{color:#1769e8;font-size:10px;font-weight:700;letter-spacing:1.8px;text-transform:uppercase}
+.pageintro h1,.detail>h1{color:#10213d;letter-spacing:-1.6px}
+.pageintro h1{font-size:42px;margin:10px 0 8px}
+.pageintro>p,.detail>.summary{color:#68788d;line-height:1.75}
+.explore{width:min(100%,1180px);margin:0 auto;display:grid;grid-template-columns:220px minmax(0,1fr);gap:32px;align-items:start}
+.filters{position:sticky;top:88px;padding:20px;border:1px solid #dce5ef;border-radius:10px;background:#fff}
+.filters h3{margin:0 0 10px;font-size:14px}.filters .summary{margin:0;color:#718198;font-size:12px;line-height:1.7}.filters a{color:#1769e8}
+.shell.page .grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}
+.shell.page .card{display:block;min-width:0;padding:22px;border:1px solid #dce5ef;border-radius:10px;background:#fff;transition:border-color .16s,box-shadow .16s}
+.shell.page .card:hover{border-color:#9ebde5;box-shadow:0 8px 24px rgba(40,82,139,.07)}
+.shell.page .card .source,.detail>.source{color:#b27636;font-size:10px;font-weight:700;letter-spacing:.6px}
+.shell.page .card h3{margin:8px 0;font-size:17px;line-height:1.5;color:#10213d}
+.shell.page .card .summary{margin:0;color:#68788d;font-size:12px;line-height:1.7;display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden}
+.shell.page .card .meta{display:flex;align-items:center;gap:7px;flex-wrap:wrap;margin-top:16px;color:#718198;font-size:10px}
+.tag,.pill{display:inline-flex;align-items:center;border-radius:999px;padding:5px 9px;background:#eef5ff;color:#1769e8;font-size:10px}.pill.gray{background:#eef1f4;color:#526279}
+.detail{padding:58px 0 80px}.detail>h1{max-width:900px;font-size:40px;line-height:1.35;margin:12px 0 18px}.detail>.meta{display:flex;align-items:center;gap:8px;flex-wrap:wrap;color:#718198;font-size:11px}
+.detailbox{max-width:860px;margin-top:34px;padding:28px;border:1px solid #dce5ef;border-radius:12px;background:#fff}.detailbox h2{font-size:18px;margin:0 0 10px}.detailbox h2:not(:first-child){margin-top:28px}.detailbox p{color:#526982;line-height:1.9}.detailbox .cta{display:inline-flex;margin-top:8px;padding:11px 17px;border-radius:7px;background:#1769e8;color:#fff;font-weight:700}
+.detail>h2{margin-top:42px}.detail>.grid{margin-top:16px}
+.dark-mode .shared-header-page{background:#080f18;color:#edf3fb}.dark-mode .pageintro h1,.dark-mode .detail>h1,.dark-mode .shell.page .card h3{color:#edf3fb}.dark-mode .filters,.dark-mode .shell.page .card,.dark-mode .detailbox{background:#0d1722;border-color:#29394b}.dark-mode .pageintro>p,.dark-mode .detail>.summary,.dark-mode .shell.page .card .summary,.dark-mode .detailbox p{color:#9eacbd}
+@media(max-width:820px){.explore{grid-template-columns:1fr}.filters{position:static}.shell.page .grid{grid-template-columns:1fr}}
+@media(max-width:560px){.shell.page{padding-left:16px!important;padding-right:16px!important}.pageintro,.detail{padding-top:38px}.pageintro h1{font-size:34px}.detail>h1{font-size:30px}.detailbox{padding:20px}}
+@media(max-width:560px){
+  .modern-hero-copy form>svg{margin-left:12px;margin-right:8px}
+  .modern-hero-copy input{font-size:12px}
+  .modern-hero-copy form button{padding:0 14px}
+  .modern-popular{flex-wrap:nowrap;max-width:100%;overflow-x:auto;padding-bottom:4px}
+  .modern-popular>*{flex:none}
+}
