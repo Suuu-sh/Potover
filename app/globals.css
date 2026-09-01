@@ -285,6 +285,12 @@ body{min-height:100vh}
 .feed-filter-button:hover{color:#1769e8}
 .feed-filter-button em{display:grid;place-items:center;min-width:17px;height:17px;padding:0 4px;border-radius:999px;background:#1769e8;color:#fff;font-size:9px;font-style:normal}
 .dark-mode .feed-filter-button{color:#b9c9da}.dark-mode .feed-filter-button:hover{color:#8cb8ff}
+.docs-pagination{display:flex;align-items:center;justify-content:center;gap:18px;padding:24px 0 30px}
+.docs-pagination button{height:36px;display:flex;align-items:center;gap:5px;padding:0 13px;border:1px solid #d5e0eb;border-radius:8px;background:#fff;color:#405570;font-size:12px;font-weight:600;cursor:pointer}
+.docs-pagination button:hover:not(:disabled){border-color:#8bb2ec;color:#1769e8;background:#f7faff}
+.docs-pagination button:disabled{opacity:.38;cursor:default}
+.docs-pagination span{min-width:66px;text-align:center;color:#718198;font-size:12px}.docs-pagination span strong{color:#10213d;font-size:14px}
+.dark-mode .docs-pagination button{background:#111d29;border-color:#34475b;color:#c4d0de}.dark-mode .docs-pagination button:hover:not(:disabled){background:#172738;border-color:#467fcf;color:#8cb8ff}.dark-mode .docs-pagination span{color:#9eacbd}.dark-mode .docs-pagination span strong{color:#edf3fb}
 .library-intro{margin-bottom:28px}
 .library-intro h1{font-size:34px;letter-spacing:-1.2px}
 .profile-dashboard{padding-top:38px}

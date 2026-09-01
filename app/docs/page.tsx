@@ -1,12 +1,13 @@
 'use client';
 
 import {useEffect,useMemo,useState} from 'react';
-import {BookOpen,RotateCcw,SlidersHorizontal,X} from 'lucide-react';
+import {BookOpen,ChevronLeft,ChevronRight,RotateCcw,SlidersHorizontal,X} from 'lucide-react';
 
 import {ArticleFeedRow} from '@/components/ArticleFeedRow';
 import {articles as initialArticles,Article,sources} from '@/lib/data';
 
 const sourceNames=sources.map(source=>source.name);
+const PAGE_SIZE=20;
 const groups=[
   {title:'ストリート',items:['Preflop','Flop','Turn','River']},
   {title:'戦略・テーマ',items:['GTO','Bluff','ICM','Exploit','Cash Game','MTT']},
@@ -21,6 +22,7 @@ export default function Docs(){
   const [selected,setSelected]=useState<string[]>([]);
   const [filtersOpen,setFiltersOpen]=useState(false);
   const [sort,setSort]=useState('relevance');
+  const [page,setPage]=useState(1);
   useEffect(()=>{setQuery(new URLSearchParams(location.search).get('q')||'')},[]);
   const toggle=(value:string)=>setSelected(old=>old.includes(value)?old.filter(x=>x!==value):[...old,value]);
   const reset=()=>{setSelected([]);setQuery('')};
@@ -35,11 +37,15 @@ export default function Docs(){
     });
     return [...filtered].sort((a,b)=>sort==='newest'?b.publishedAt.localeCompare(a.publishedAt):sort==='shortest'?a.minutes-b.minutes:0);
   },[query,selected,sort]);
+  const pageCount=Math.max(1,Math.ceil(results.length/PAGE_SIZE));
+  const visibleResults=results.slice((page-1)*PAGE_SIZE,page*PAGE_SIZE);
+  useEffect(()=>{setPage(1)},[query,selected,sort]);
+  const movePage=(next:number)=>{setPage(Math.min(pageCount,Math.max(1,next)));document.querySelector('.docs-feed')?.scrollTo({top:0,behavior:'smooth'})};
   return <main className="docs-v3"><div className="docs-v3-layout">
       <section className="docs-feed">
         <div className="feed-toolbar"><span><strong>{results.length}</strong>件の記事</span><div className="feed-toolbar-controls"><button type="button" className="feed-filter-button" onClick={()=>setFiltersOpen(true)}><SlidersHorizontal size={14}/>絞り込み{selected.length>0&&<em>{selected.length}</em>}</button><label>並び替え<select value={sort} onChange={e=>setSort(e.target.value)}><option value="relevance">関連度順</option><option value="newest">新着順</option><option value="shortest">短い順</option></select></label></div></div>
         {results.length===0?<div className="docs-empty"><BookOpen size={31}/><h2>条件に合う記事がありません</h2><p>別のキーワードまたは条件を試してください。</p><button onClick={reset}>条件をリセット</button></div>:
-        <div className="docs-feed-list">{results.slice(0,20).map(article=><ArticleFeedRow article={article} onTagClick={toggle} key={article.slug}/>)}</div>}
+        <><div className="docs-feed-list">{visibleResults.map(article=><ArticleFeedRow article={article} onTagClick={toggle} key={article.slug}/>)}</div><nav className="docs-pagination" aria-label="記事一覧のページ"><button type="button" onClick={()=>movePage(page-1)} disabled={page===1}><ChevronLeft size={16}/>前へ</button><span><strong>{page}</strong> / {pageCount}</span><button type="button" onClick={()=>movePage(page+1)} disabled={page===pageCount}>次へ<ChevronRight size={16}/></button></nav></>}
       </section>
     </div>
 
