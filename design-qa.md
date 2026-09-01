@@ -19,3 +19,27 @@
 - P3: Real source thumbnails vary in visual brightness because they come from different original articles.
 
 final result: passed
+
+---
+
+# Product Design QA — Potover `/profile`
+
+- Source target: `/Users/yota/.codex/generated_images/01a058e1-2563-7ba3-9c14-df6120da40ae/exec-e0d9b0ec-d683-43d6-9712-ac11aae93c52.png`
+- Implementation capture: `/Users/yota/Projects/Products/PokerStack/profile-implemented.png`
+- Viewport: desktop web app
+
+## Comparison
+
+- The selected two-column profile dashboard, weekly learning overview, interests, and recent activity hierarchy are reproduced.
+- Existing Potover header, palette, typography, borders, and icons are preserved.
+- External article links record one learning event per article per day in browser storage.
+- Weekly count, total learned articles, consecutive-day streak, recent activity, and goal progress update from the same learning-history array.
+- Empty and populated states were verified; clicking an external article changed weekly progress from `0 / 5` to `1 / 5`.
+- Responsive tablet and mobile states are included.
+- Browser console reported no errors.
+
+## Remaining polish
+
+- P3: Profile editing and weekly-goal editing controls remain visual-only.
+
+final result: passed
