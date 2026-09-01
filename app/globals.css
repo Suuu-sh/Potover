@@ -262,3 +262,30 @@ body{min-height:100vh}
 .dark-mode .week-days i{border-color:#486079;color:#b5c4d5}
 .dark-mode .profile-settings,.dark-mode .edit-profile,.dark-mode .profile-section-title>a,.dark-mode .profile-section-title>button{background:#111d29;color:#b9c9da;border-color:#34475b}
 .dark-mode .source-card-new,.dark-mode .shell.page .card,.dark-mode .filters,.dark-mode .detailbox{box-shadow:none}
+
+/* Remove decorative English eyebrow headings and keep page identity compact. */
+.page-kicker,.pageintro .eyebrow,.detail>.eyebrow{display:none}
+.modern-hero-copy h1{margin-top:0}
+.modern-section-head{align-items:center}
+.modern-section-head h2{margin:0 0 13px}
+.modern-section-head>a{margin-top:0}
+.modern-sources{padding-top:44px}
+.modern-sources>header{margin-bottom:28px}
+.modern-sources header h1{font-size:36px;margin-top:0}
+.pageintro{padding-top:42px;padding-bottom:26px}
+.pageintro h1{font-size:34px;margin-top:0}
+.library-wrap{padding-top:42px}
+.library-intro{margin-bottom:28px}
+.library-intro h1{font-size:34px;letter-spacing:-1.2px}
+.profile-dashboard{padding-top:38px}
+.profile-head-compact h1{font-size:32px}
+.review-wrap{padding-top:40px}
+.review-heading h1{font-size:34px;margin-top:0}
+.detail{padding-top:44px}
+.detail>h1{font-size:36px;margin-top:0}
+@media(max-width:560px){
+  .modern-sources{padding-top:32px}
+  .modern-sources header h1,.pageintro h1,.library-intro h1,.profile-head-compact h1,.review-heading h1,.detail>h1{font-size:28px}
+  .pageintro,.detail{padding-top:30px}
+  .library-wrap,.profile-dashboard,.review-wrap{padding-top:30px}
+}
