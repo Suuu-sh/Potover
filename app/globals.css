@@ -121,9 +121,9 @@ html.dark-mode{color-scheme:dark}html.dark-mode body{background:#080f18;color:#e
 @media(max-width:900px){.modern-hero{grid-template-columns:1fr;min-height:auto}.modern-hero-copy{padding:48px 24px}.modern-hero-copy h1{font-size:39px}.modern-hero-art{height:300px}.modern-content{grid-template-columns:1fr;padding:26px 20px}.modern-topics{border-left:0;padding-left:0}.modern-sources>header{display:block}.modern-sources header>div:last-child{margin-top:25px}.modern-source-list{grid-template-columns:1fr}.modern-source-row:nth-child(odd){padding-right:0;border-right:0}.modern-source-row:nth-last-child(2){border-bottom:1px solid #e3eaf2}}@media(max-width:560px){.modern-hero-copy h1{font-size:34px}.modern-hero-copy form button{padding:0 17px}.modern-hero-art{height:220px}.modern-pick-row{grid-template-columns:110px 1fr;gap:14px}.modern-pick-image{height:78px}.modern-pick-row>div>span{display:none}.modern-sources{padding:42px 16px}.modern-sources header h1{font-size:34px}.modern-sources>section{padding:0 16px}.modern-source-link{position:static;margin-top:13px;grid-column:2}.modern-source-row:nth-child(odd) .modern-source-link{right:auto}}
 .modern-hero-copy input{background:#fff!important;color:#10213d!important;color-scheme:light}
 .dark-mode .modern-hero-copy input{background:#111d29!important;color:#edf3fb!important;color-scheme:dark}
-/* Stable non-overlapping header: keep it in document flow to avoid compositor clipping. */
-.site-header,.docs-v3 .site-header{position:sticky!important;top:0!important;left:auto!important;right:auto!important;inset:auto!important;width:100%!important}
-.app-shell{padding-top:0!important}
+/* Keep the shared header pinned above every route while the page scrolls. */
+.site-header,.docs-v3 .site-header{position:fixed!important;inset:0 0 auto!important;width:100%!important}
+.app-shell{padding-top:64px!important}
 /* Keep the editorial canvas aligned on ultrawide and zoomed displays. */
 .modern-hero-copy{padding-left:clamp(32px,5.2vw,76px);padding-right:clamp(24px,3vw,48px)}
 .modern-sources{padding-left:clamp(24px,5vw,76px);padding-right:clamp(24px,5vw,76px)}
