@@ -353,6 +353,9 @@ body{min-height:100vh}
 @media(prefers-reduced-motion:reduce){.feed-toolbar{transition:none}}
 .docs-v3 .docs-feed{scrollbar-width:none}
 .docs-v3 .docs-feed::-webkit-scrollbar{display:none}
+.read-badge{display:inline-flex;align-items:center;gap:4px;margin-left:auto;padding:4px 7px;border-radius:999px;background:#e7f7f0;color:#13795b;font-size:10px;font-weight:700}
+.docs-feed-row.is-read .article-cover{opacity:.76}.docs-feed-row.is-read .feed-copy h2{color:#607188}
+.dark-mode .read-badge{background:#12382e;color:#79d7b5}.dark-mode .docs-feed-row.is-read .feed-copy h2{color:#9eacbd}
 
 .language-select{height:36px;padding:0 24px 0 10px;border:1px solid #d5e0eb;border-radius:8px;background:#fff;color:#405570;font-size:11px;font-weight:600;cursor:pointer}
 .language-select:focus{outline:2px solid #1769e833;outline-offset:1px}
