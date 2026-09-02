@@ -5,9 +5,11 @@ import {BookOpen,ChevronLeft,ChevronRight,RotateCcw,SlidersHorizontal,X} from 'l
 
 import {ArticleFeedRow} from '@/components/ArticleFeedRow';
 import {articles as initialArticles,Article,sources} from '@/lib/data';
+import {getLearningHistory} from '@/lib/learning-history';
 import {usePreferredLanguage} from '@/lib/use-preferred-language';
 
 const sourceNames=sources.map(source=>source.name);
+const READ_FILTER='読了済み';
 const PAGE_SIZE=20;
 const SEARCH_ALIASES:Record<string,string[]>={
   'プリフロップ':['プリフロップ','preflop','pre-flop','pre flop'],
@@ -23,6 +25,7 @@ const groups=[
   {title:'難易度',items:['Beginner','Intermediate','Advanced']},
   {title:'言語',items:['Japanese','English']},
   {title:'ソース',items:sourceNames},
+  {title:'学習状況',items:[READ_FILTER]},
 ];
 
 export default function Docs(){
@@ -33,9 +36,11 @@ export default function Docs(){
   const [sort,setSort]=useState('relevance');
   const [page,setPage]=useState(1);
   const [toolbarVisible,setToolbarVisible]=useState(true);
+  const [readSlugs,setReadSlugs]=useState<Set<string>>(new Set());
   const [preferredLanguage]=usePreferredLanguage();
   const toolbarTimer=useRef<ReturnType<typeof setTimeout>|null>(null);
   useEffect(()=>{setQuery(new URLSearchParams(location.search).get('q')||'')},[]);
+  useEffect(()=>{const sync=()=>setReadSlugs(new Set(getLearningHistory().map(event=>event.slug)));sync();window.addEventListener('potover-learning-changed',sync);return()=>window.removeEventListener('potover-learning-changed',sync)},[]);
   const toggle=(value:string)=>setSelected(old=>old.includes(value)?old.filter(x=>x!==value):[...old,value]);
   const reset=()=>{setSelected([]);setQuery('')};
   const results=useMemo(()=>{
@@ -46,11 +51,12 @@ export default function Docs(){
       const difficulty=selected.filter(x=>['Beginner','Intermediate','Advanced'].includes(x));
       const language=selected.filter(x=>['Japanese','English'].includes(x));
       const sourceFilters=selected.filter(x=>sourceNames.includes(x));
-      const topics=selected.filter(x=>!difficulty.includes(x)&&!language.includes(x)&&!sourceFilters.includes(x));
-      return (!normalizedQuery||queryTerms.some(term=>text.includes(term)))&&(!difficulty.length||difficulty.includes(article.difficulty))&&(!language.length||language.includes(article.language))&&(!sourceFilters.length||sourceFilters.includes(article.source))&&(!topics.length||topics.some(x=>text.includes(x.toLowerCase())));
+      const readOnly=selected.includes(READ_FILTER);
+      const topics=selected.filter(x=>x!==READ_FILTER&&!difficulty.includes(x)&&!language.includes(x)&&!sourceFilters.includes(x));
+      return (!normalizedQuery||queryTerms.some(term=>text.includes(term)))&&(!difficulty.length||difficulty.includes(article.difficulty))&&(!language.length||language.includes(article.language))&&(!sourceFilters.length||sourceFilters.includes(article.source))&&(!readOnly||readSlugs.has(article.slug))&&(!topics.length||topics.some(x=>text.includes(x.toLowerCase())));
     });
     return [...filtered].sort((a,b)=>sort==='newest'?b.publishedAt.localeCompare(a.publishedAt):sort==='shortest'?a.minutes-b.minutes:(Number(b.language===preferredLanguage)-Number(a.language===preferredLanguage))||(preferredLanguage==='Japanese'?Number(b.sourceSlug==='gto-wizard-japan')-Number(a.sourceSlug==='gto-wizard-japan'):0));
-  },[query,selected,sort,preferredLanguage]);
+  },[query,selected,sort,preferredLanguage,readSlugs]);
   const pageCount=Math.max(1,Math.ceil(results.length/PAGE_SIZE));
   const visibleResults=results.slice((page-1)*PAGE_SIZE,page*PAGE_SIZE);
   useEffect(()=>{setPage(1)},[query,selected,sort,preferredLanguage]);
