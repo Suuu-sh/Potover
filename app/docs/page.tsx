@@ -5,6 +5,7 @@ import {BookOpen,ChevronLeft,ChevronRight,RotateCcw,SlidersHorizontal,X} from 'l
 
 import {ArticleFeedRow} from '@/components/ArticleFeedRow';
 import {articles as initialArticles,Article,sources} from '@/lib/data';
+import {usePreferredLanguage} from '@/lib/use-preferred-language';
 
 const sourceNames=sources.map(source=>source.name);
 const PAGE_SIZE=20;
@@ -32,6 +33,7 @@ export default function Docs(){
   const [sort,setSort]=useState('relevance');
   const [page,setPage]=useState(1);
   const [toolbarVisible,setToolbarVisible]=useState(true);
+  const [preferredLanguage]=usePreferredLanguage();
   const toolbarTimer=useRef<ReturnType<typeof setTimeout>|null>(null);
   useEffect(()=>{setQuery(new URLSearchParams(location.search).get('q')||'')},[]);
   const toggle=(value:string)=>setSelected(old=>old.includes(value)?old.filter(x=>x!==value):[...old,value]);
@@ -47,11 +49,11 @@ export default function Docs(){
       const topics=selected.filter(x=>!difficulty.includes(x)&&!language.includes(x)&&!sourceFilters.includes(x));
       return (!normalizedQuery||queryTerms.some(term=>text.includes(term)))&&(!difficulty.length||difficulty.includes(article.difficulty))&&(!language.length||language.includes(article.language))&&(!sourceFilters.length||sourceFilters.includes(article.source))&&(!topics.length||topics.some(x=>text.includes(x.toLowerCase())));
     });
-    return [...filtered].sort((a,b)=>sort==='newest'?b.publishedAt.localeCompare(a.publishedAt):sort==='shortest'?a.minutes-b.minutes:Number(b.sourceSlug==='gto-wizard-japan')-Number(a.sourceSlug==='gto-wizard-japan'));
-  },[query,selected,sort]);
+    return [...filtered].sort((a,b)=>sort==='newest'?b.publishedAt.localeCompare(a.publishedAt):sort==='shortest'?a.minutes-b.minutes:(Number(b.language===preferredLanguage)-Number(a.language===preferredLanguage))||(preferredLanguage==='Japanese'?Number(b.sourceSlug==='gto-wizard-japan')-Number(a.sourceSlug==='gto-wizard-japan'):0));
+  },[query,selected,sort,preferredLanguage]);
   const pageCount=Math.max(1,Math.ceil(results.length/PAGE_SIZE));
   const visibleResults=results.slice((page-1)*PAGE_SIZE,page*PAGE_SIZE);
-  useEffect(()=>{setPage(1)},[query,selected,sort]);
+  useEffect(()=>{setPage(1)},[query,selected,sort,preferredLanguage]);
   useEffect(()=>()=>{if(toolbarTimer.current)clearTimeout(toolbarTimer.current)},[]);
   const onFeedScroll=()=>{setToolbarVisible(false);if(toolbarTimer.current)clearTimeout(toolbarTimer.current);toolbarTimer.current=setTimeout(()=>setToolbarVisible(true),180)};
   const movePage=(next:number)=>{setPage(Math.min(pageCount,Math.max(1,next)));document.querySelector('.docs-feed')?.scrollTo({top:0,behavior:'smooth'})};
