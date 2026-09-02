@@ -25,5 +25,6 @@ export const roadmaps:Roadmap[]=[
 ];
 
 export function moduleArticles(module:RoadmapModule,language:string,limit=3):Article[]{
-  return articles.map(article=>({article,score:module.tags.reduce((sum,tag)=>sum+(article.tags.includes(tag)?2:0),0)+(article.language===language?2:0)+(module.difficulty===article.difficulty?1:0)})).filter(item=>item.score>=4).sort((a,b)=>b.score-a.score||b.article.publishedAt.localeCompare(a.article.publishedAt)).slice(0,limit).map(item=>item.article);
+  const preferredSource=language==='Japanese'?'gto-wizard-japan':'gto-wizard';
+  return articles.map(article=>({article,score:module.tags.reduce((sum,tag)=>sum+(article.tags.includes(tag)?2:0),0)+(article.language===language?2:0)+(module.difficulty===article.difficulty?1:0)+(article.sourceSlug===preferredSource?2:0)+(article.imageUrl?1:0)})).filter(item=>item.score>=4).sort((a,b)=>b.score-a.score||b.article.publishedAt.localeCompare(a.article.publishedAt)).slice(0,limit).map(item=>item.article);
 }
