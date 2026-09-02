@@ -12,7 +12,8 @@ export function HomeSpotlightCarousel(){
   const rail=useRef<HTMLDivElement>(null);
   const [paused,setPaused]=useState(false);
   const [preferredLanguage]=usePreferredLanguage();
-  const recommendations=articles.filter(article=>article.language===preferredLanguage);
+  const preferredSource=preferredLanguage==='Japanese'?'gto-wizard-japan':'gto-wizard';
+  const recommendations=articles.filter(article=>article.sourceSlug===preferredSource);
   const promos=[{href:'/docs',image:'/banners/potover-strategy-hero.png',label:'Potover Picks',title:'今週読むべきポーカー戦略'},...(recommendations.length?recommendations:articles).slice(0,6).map(article=>({href:`/articles/${article.slug}`,image:article.imageUrl||'/banners/range-map.png',label:article.source,title:article.title}))];
   const slide=(direction:number)=>rail.current?.scrollBy({left:direction*460,behavior:'smooth'});
   useEffect(()=>{
