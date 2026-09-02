@@ -8,6 +8,14 @@ import {articles as initialArticles,Article,sources} from '@/lib/data';
 
 const sourceNames=sources.map(source=>source.name);
 const PAGE_SIZE=20;
+const SEARCH_ALIASES:Record<string,string[]>={
+  'プリフロップ':['プリフロップ','preflop','pre-flop','pre flop'],
+  'ポストフロップ':['ポストフロップ','postflop','post-flop','post flop','flop','turn','river'],
+  'gto・ソルバー':['gto','ソルバー','solver'],
+  'トーナメント':['トーナメント','tournament','mtt','icm'],
+  'メンタル・思考':['メンタル','思考','mental','mindset','psychology','decision'],
+  'バンクロール':['バンクロール','bankroll','bank roll'],
+};
 const groups=[
   {title:'ストリート',items:['Preflop','Flop','Turn','River']},
   {title:'戦略・テーマ',items:['GTO','Bluff','ICM','Exploit','Cash Game','MTT']},
@@ -31,11 +39,13 @@ export default function Docs(){
   const results=useMemo(()=>{
     const filtered=articles.filter(article=>{
       const text=[article.title,article.summary,article.source,...article.tags,article.category].join(' ').toLowerCase();
+      const normalizedQuery=query.trim().toLowerCase();
+      const queryTerms=SEARCH_ALIASES[normalizedQuery]||[normalizedQuery];
       const difficulty=selected.filter(x=>['Beginner','Intermediate','Advanced'].includes(x));
       const language=selected.filter(x=>['Japanese','English'].includes(x));
       const sourceFilters=selected.filter(x=>sourceNames.includes(x));
       const topics=selected.filter(x=>!difficulty.includes(x)&&!language.includes(x)&&!sourceFilters.includes(x));
-      return (!query||text.includes(query.toLowerCase()))&&(!difficulty.length||difficulty.includes(article.difficulty))&&(!language.length||language.includes(article.language))&&(!sourceFilters.length||sourceFilters.includes(article.source))&&(!topics.length||topics.some(x=>text.includes(x.toLowerCase())));
+      return (!normalizedQuery||queryTerms.some(term=>text.includes(term)))&&(!difficulty.length||difficulty.includes(article.difficulty))&&(!language.length||language.includes(article.language))&&(!sourceFilters.length||sourceFilters.includes(article.source))&&(!topics.length||topics.some(x=>text.includes(x.toLowerCase())));
     });
     return [...filtered].sort((a,b)=>sort==='newest'?b.publishedAt.localeCompare(a.publishedAt):sort==='shortest'?a.minutes-b.minutes:0);
   },[query,selected,sort]);
