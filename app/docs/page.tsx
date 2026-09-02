@@ -1,7 +1,7 @@
 'use client';
 
 import {useEffect,useMemo,useRef,useState} from 'react';
-import {BookOpen,ChevronLeft,ChevronRight,RotateCcw,SlidersHorizontal,X} from 'lucide-react';
+import {BookOpen,Check,ChevronLeft,ChevronRight,Circle,RotateCcw,SlidersHorizontal,X} from 'lucide-react';
 
 import {ArticleFeedRow} from '@/components/ArticleFeedRow';
 import {articles as initialArticles,Article,sources} from '@/lib/data';
@@ -10,6 +10,7 @@ import {usePreferredLanguage} from '@/lib/use-preferred-language';
 
 const sourceNames=sources.map(source=>source.name);
 const READ_FILTER='読了済み';
+const QUICK_FILTERS=[['Preflop','プリフロップ'],['Flop','フロップ'],['GTO','GTO'],['cash-game','キャッシュ'],['MTT','MTT']] as const;
 const PAGE_SIZE=20;
 const SEARCH_ALIASES:Record<string,string[]>={
   'プリフロップ':['プリフロップ','preflop','pre-flop','pre flop'],
@@ -63,7 +64,7 @@ export default function Docs(){
   useEffect(()=>()=>{if(toolbarTimer.current)clearTimeout(toolbarTimer.current)},[]);
   const onFeedScroll=()=>{setToolbarVisible(false);if(toolbarTimer.current)clearTimeout(toolbarTimer.current);toolbarTimer.current=setTimeout(()=>setToolbarVisible(true),180)};
   const movePage=(next:number)=>{setPage(Math.min(pageCount,Math.max(1,next)));document.querySelector('.docs-feed')?.scrollTo({top:0,behavior:'smooth'})};
-  return <main className="docs-v3"><div className="docs-v3-layout">
+  return <main className="docs-v3"><div className="docs-v3-layout"><aside className="docs-editorial-index"><header><small>ARTICLE INDEX</small><h2>記事を探す</h2></header><button className={selected.length===0?'is-active':''} onClick={()=>setSelected([])}><span>{selected.length===0?<Check/>:<Circle/>}</span><div><strong>すべての記事</strong><small>{articles.length}件</small></div></button>{QUICK_FILTERS.map(([value,label])=><button key={value} className={selected.includes(value)?'is-active':''} onClick={()=>toggle(value)}><span>{selected.includes(value)?<Check/>:<Circle/>}</span><div><strong>{label}</strong><small>{articles.filter(article=>[...article.tags,article.category].some(item=>item.toLowerCase().includes(value.toLowerCase()))).length}件</small></div></button>)}<div className="docs-index-status"><span>表示言語</span><strong>{preferredLanguage==='Japanese'?'日本語':'English'}</strong><button onClick={()=>setFiltersOpen(true)}><SlidersHorizontal/>詳細な絞り込み</button></div></aside>
       <section className="docs-feed" onScroll={onFeedScroll}>
         <div className={`feed-toolbar${toolbarVisible?'':' is-scrolling-hidden'}`}><span><strong>{results.length}</strong>件の記事</span><div className="feed-toolbar-controls"><button type="button" className="feed-filter-button" onClick={()=>setFiltersOpen(true)}><SlidersHorizontal size={14}/>絞り込み{selected.length>0&&<em>{selected.length}</em>}</button><label>並び替え<select value={sort} onChange={e=>setSort(e.target.value)}><option value="relevance">関連度順</option><option value="newest">新着順</option><option value="shortest">短い順</option></select></label></div></div>
         {results.length===0?<div className="docs-empty"><BookOpen size={31}/><h2>条件に合う記事がありません</h2><p>別のキーワードまたは条件を試してください。</p><button onClick={reset}>条件をリセット</button></div>:

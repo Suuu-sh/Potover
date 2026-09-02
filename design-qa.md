@@ -1,20 +1,20 @@
-# Design QA — Potover learning roadmap
+# Design QA — Potover article search
 
-- Source visual truth: `/Users/yota/.codex/generated_images/01a05d15-95f6-7d13-aec6-df621d47f844/exec-a133bbcc-e100-4f4d-8e09-053e7f3579e6.png`
-- Implementation: `http://localhost:3000/roadmap/`
-- Implementation screenshot: `.playwright-mcp/page-2026-09-02T09-58-13-063Z.png`
+- Design-language source: `/Users/yota/.codex/generated_images/01a05d15-95f6-7d13-aec6-df621d47f844/exec-a133bbcc-e100-4f4d-8e09-053e7f3579e6.png`
+- Existing product source capture: `.playwright-mcp/page-2026-09-02T10-42-26-334Z.png`
+- Implementation screenshot: `.playwright-mcp/page-2026-09-02T10-43-41-908Z.png`
+- Implementation URL: `http://localhost:3000/docs/`
 - Viewport: 1440 × 1024 CSS px, device scale factor 1
-- Source pixels: 1488 × 1059; implementation pixels: 1440 × 1024
-- Normalization: full desktop frames compared at equivalent 1.45:1 viewport ratio; app-owned content only, no browser chrome
-- State: light theme, Japanese, beginner course, first chapter active, 0% progress
+- Source design pixels: 1488 × 1059; implementation pixels: 1440 × 1024
+- State: light theme, Japanese, no active filters
 
 ## Full-view comparison evidence
 
-The supplied source and browser-rendered implementation were inspected together. Both use the same three-part course selector, compact course progress header, left chapter index, featured next lesson, line-based lesson syllabus, and restrained Potover blue/navy visual system. Main columns, whitespace, thin separators, and content density align closely with the target.
+The source roadmap design and rendered search page were inspected together as a design-system comparison. The implementation now carries across its left index, white base surface, navy typography, bright-blue selected state, thin dividers, restrained radii, and dense but readable editorial rows while preserving the search page's image-led content.
 
 ## Focused-region comparison evidence
 
-The course switcher, chapter index, next-lesson feature, and lesson list were checked at readable scale. Typography hierarchy, active blue state, circular step markers, image crop, row spacing, and arrow affordances are consistent. The implementation uses real collected article imagery and Lucide icons rather than placeholders or handmade assets.
+The left article index, sticky result toolbar, first three article rows, filter entry point, and mobile list were checked at readable scale. Controls, labels, thumbnails, metadata, truncation, and active states are aligned and free of clipping.
 
 ## Findings
 
@@ -22,39 +22,37 @@ No actionable P0, P1, or P2 mismatches remain.
 
 ### Required fidelity surfaces
 
-- Fonts and typography: hierarchy, weights, Japanese wrapping, truncation, and small-label optical weight are consistent with the source. Existing project font stack is intentionally preserved.
-- Spacing and layout rhythm: desktop grid, gutters, chapter rhythm, dividers, and radii match the source closely. Mobile reflows to a horizontal chapter selector and single-column lesson view without overflow.
-- Colors and visual tokens: white, navy, muted blue-gray, bright-blue active states, and green completed states remain semantically consistent.
-- Image quality and asset fidelity: the featured lesson uses a sharp, real GTO Wizard Japan article image with correct cover cropping. The source mock's exact thumbnail is illustrative, so real content imagery is an intentional product-data substitution.
-- Copy and content: all visible lessons use real Potover article data; course, chapter, progress, duration, and source labels are meaningful.
+- Fonts and typography: existing Potover font stack is retained; hierarchy, weights, wrapping, truncation, and small labels match the adopted roadmap language.
+- Spacing and layout rhythm: desktop uses the same narrow left index and flexible content column; row and divider rhythm is consistent. Mobile collapses the index without losing filtering access.
+- Colors and visual tokens: white/navy/blue and muted blue-gray tokens match the roadmap, including dark-mode equivalents.
+- Image quality and asset fidelity: real source thumbnails remain sharp with consistent cover crops; no placeholders or artificial graphics were introduced.
+- Copy and content: counts, filters, language, source, reading time, read state, and real article titles remain accurate.
 
 ## Interaction verification
 
-- Course switching tested: beginner → cash course.
-- Chapter switching tested inside the active course.
-- Article rows and featured lesson are real links.
-- Desktop viewport tested at 1440 × 1024.
-- Mobile viewport tested at 390 × 844.
-- Browser console: 0 errors, 0 warnings after interaction.
+- Quick filter tested: プリフロップ updates the result count to 118.
+- Detailed filter panel opens successfully.
+- Existing sorting, pagination, bookmarks, read-state links, and tag filters remain wired.
+- Desktop tested at 1440 × 1024; mobile tested at 390 × 844.
+- Browser console checked: 0 runtime errors. Existing Autoprefixer compatibility warnings are unrelated to this screen and do not affect rendering.
 
 ## Comparison history
 
-1. Initial implementation had a non-GTO featured image and mixed-source lesson ordering (P2 visual/content mismatch).
-2. Fixed roadmap article scoring to prioritize the language-matched GTO Wizard source and available imagery.
-3. Post-fix capture shows GTO Wizard Japan as the featured article and throughout the active syllabus; no P0/P1/P2 issues remain.
+1. Before: full-width list lacked the selected roadmap's navigational/index structure.
+2. Fixed: added a persistent editorial topic index, unified active states, reduced row density, and matched divider/spacing tokens.
+3. Post-fix capture: layout and interaction hierarchy match the adopted design system with no P0/P1/P2 findings.
 
 ## Follow-up polish
 
-- P3: The real GTO Wizard Japan thumbnail is more colorful than the dark mock thumbnail, but keeps the requested article imagery and improves content authenticity.
+- P3: existing global CSS emits Autoprefixer warnings for legacy `end` alignment values; rendered alignment is correct in tested browsers.
 
 ## Implementation checklist
 
-- [x] Faithful responsive layout
-- [x] Functional course and chapter switching
-- [x] Read-history progress integration
-- [x] Real article links and imagery
-- [x] Dark mode styles
+- [x] Roadmap-aligned visual system
+- [x] Functional quick and detailed filters
+- [x] Existing search behavior preserved
+- [x] Dark mode styling
 - [x] Desktop and mobile verification
-- [x] Console verification
+- [x] Console error check
 
 final result: passed
