@@ -322,3 +322,23 @@ body{min-height:100vh}
   .profile-page .profile-dashboard{height:100%;padding:20px 32px}
   .profile-page .profile-dashboard-grid{height:100%;align-content:start}
 }
+
+/* Horizontal editorial spotlight replaces the oversized marketing hero. */
+.home-spotlight{padding:26px 0 28px;border-bottom:1px solid #e3eaf2;background:#f8fbff;overflow:hidden}
+.home-spotlight-head{display:flex;align-items:center;justify-content:space-between;padding:0 clamp(24px,5vw,76px) 15px}
+.home-spotlight-head h1{margin:0;font-size:20px;letter-spacing:-.5px}
+.home-spotlight-head>div{display:flex;gap:8px}
+.home-spotlight-head button{width:36px;height:36px;display:grid;place-items:center;border:1px solid #d5e0eb;border-radius:50%;background:#fff;color:#405570;cursor:pointer}
+.home-spotlight-head button:hover{border-color:#8bb2ec;color:#1769e8}
+.home-spotlight-rail{display:flex;gap:16px;padding:0 clamp(24px,5vw,76px) 5px;overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:none;overscroll-behavior-x:contain}
+.home-spotlight-rail::-webkit-scrollbar{display:none}
+.home-spotlight-card{position:relative;flex:0 0 clamp(330px,31vw,460px);height:230px;border-radius:14px;overflow:hidden;scroll-snap-align:start;background:#10213d;box-shadow:0 8px 24px rgba(16,33,61,.09)}
+.home-spotlight-card>img{object-fit:cover;transition:transform .35s}
+.home-spotlight-card>span{position:absolute;inset:0;background:linear-gradient(180deg,rgba(5,16,31,.04) 20%,rgba(5,16,31,.88) 100%)}
+.home-spotlight-card>div{position:absolute;z-index:1;inset:auto 22px 19px;color:#fff}
+.home-spotlight-card small{font-size:10px;font-weight:700;letter-spacing:.8px;color:#a9ccff}
+.home-spotlight-card h2{max-width:390px;margin:7px 0 12px;font-size:20px;line-height:1.35;letter-spacing:-.35px}
+.home-spotlight-card b{display:flex;align-items:center;gap:5px;font-size:11px}
+.home-spotlight-card:hover>img{transform:scale(1.035)}
+.dark-mode .home-spotlight{background:#0b141f;border-color:#29394b}.dark-mode .home-spotlight-head h1{color:#edf3fb}.dark-mode .home-spotlight-head button{background:#111d29;border-color:#34475b;color:#c4d0de}
+@media(max-width:700px){.home-spotlight{padding-top:20px}.home-spotlight-head{padding-left:16px;padding-right:16px}.home-spotlight-rail{padding-left:16px;padding-right:16px}.home-spotlight-card{flex-basis:82vw;height:210px}.home-spotlight-card h2{font-size:18px}}

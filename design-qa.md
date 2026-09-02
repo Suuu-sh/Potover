@@ -1,33 +1,27 @@
-# Design QA — bookmarks article feed
+# Design QA — horizontal home recommendations
 
-- Source visual truth: `/var/folders/pw/rpvs3tk500z7b_c5gjyrcyt80000gn/T/TemporaryItems/NSIRD_screencaptureui_vBlPWy/スクリーンショット 2026-09-02 1.02.32.png`
-- Implementation screenshots: `/tmp/potover-bookmarks.png`, `/tmp/potover-docs.png`
+- Source visual truth: `/var/folders/pw/rpvs3tk500z7b_c5gjyrcyt80000gn/T/TemporaryItems/NSIRD_screencaptureui_M56prb/スクリーンショット 2026-09-02 10.26.47.png`
+- Implementation screenshot: `/tmp/potover-home-carousel.png`
 - Viewport: 1600 × 900 CSS px, device scale 1
-- State: dark theme; two saved articles on `/bookmarks/`; default feed on `/docs/`
+- State: light theme, initial home carousel position
 
 ## Comparison evidence
 
-The supplied screenshot identified two changes: remove the oversized `YOUR LIBRARY / ブックマーク` intro and make saved items identical to the article blocks on `/docs`. The implementation screenshot confirms that saved content begins with the compact count toolbar and uses the same cover, source, title, summary, tags, metadata, bookmark action, and external-link action as `/docs`.
+The source identified the oversized static marketing hero to remove. The implementation replaces that entire region with a compact, horizontally scrollable editorial rail containing a Potover promotion and recommended articles.
 
-## Required fidelity surfaces
+## Required surfaces
 
-- Hierarchy: the decorative bookmark heading and description are removed.
-- Component parity: `/bookmarks/` and `/docs/` render the shared `ArticleFeedRow` component.
-- Spacing: bookmarks retain the library page width while the shared rows keep the docs feed rhythm.
-- Theme: row borders, copy, tags, controls, and the local-storage note all use the established dark tokens.
-- Responsive behavior: the existing docs feed breakpoints now apply to saved rows as well.
+- The former headline, hero search, popular keywords, and split illustration are removed.
+- The rail exposes multiple recommendations at once and previews the next card.
+- Arrow controls and native horizontal swipe/trackpad scrolling both work.
+- Cards use real article imagery, source labels, titles, and working links.
+- Mobile uses an 82vw snap card so the following recommendation remains discoverable.
+- Light and dark theme tokens are covered.
 
-## Findings and history
+## Findings
 
-- P1: bookmarks used a separate text-only row that visually diverged from `/docs`. Fixed by extracting and reusing one article-feed component.
-- P2: the large bookmark intro delayed access to saved content. Fixed by removing it and tightening the page top spacing.
-- P2: desktop docs scrolling constraints could clip a reused feed outside `/docs`. Fixed with bookmark-scoped height and overflow overrides.
-- Post-fix visual comparison found no actionable P0/P1/P2 differences.
-
-## Primary interaction checks
-
-- Saved bookmark state renders correctly.
-- Bookmark removal control and original-article link remain present.
-- The `記事を探す` route back to `/docs` remains visible.
+- P1: static hero consumed most of the first viewport without surfacing content. Fixed.
+- P2: recommendations were previously below the fold and not browsable horizontally. Fixed.
+- Post-fix capture found no actionable P0/P1/P2 issue.
 
 final result: passed
