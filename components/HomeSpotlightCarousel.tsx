@@ -7,9 +7,10 @@ import {useEffect,useRef,useState} from 'react';
 
 import {articles} from '@/lib/data';
 
+const recommendations=articles.filter(article=>article.sourceSlug==='gto-wizard-japan');
 const promos=[
   {href:'/docs',image:'/banners/potover-strategy-hero.png',label:'Potover Picks',title:'今週読むべきポーカー戦略'},
-  ...articles.slice(0,6).map(article=>({href:`/articles/${article.slug}`,image:article.imageUrl||'/banners/range-map.png',label:article.source,title:article.title})),
+  ...(recommendations.length?recommendations:articles).slice(0,6).map(article=>({href:`/articles/${article.slug}`,image:article.imageUrl||'/banners/range-map.png',label:article.source,title:article.title})),
 ];
 
 export function HomeSpotlightCarousel(){
