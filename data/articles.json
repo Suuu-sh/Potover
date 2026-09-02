@@ -1,5 +1,5 @@
 {
-  "collectedAt": "2026-08-31T17:47:57.788Z",
+  "collectedAt": "2026-09-02T03:20:46.238Z",
   "sources": [
     {
       "slug": "gto-wizard",
@@ -59,6 +59,12 @@
       "slug": "lasvegas-jp",
       "name": "LasVegas.co.jp",
       "url": "https://www.lasvegas.co.jp/games/poker/",
+      "language": "Japanese"
+    },
+    {
+      "slug": "gto-wizard-japan",
+      "name": "GTO Wizard Japan",
+      "url": "https://japan.gtowizard.com/articles/",
       "language": "Japanese"
     }
   ],
@@ -22026,6 +22032,3115 @@
         ]
       },
       "sourceModifiedAt": null
+    },
+    {
+      "source": "GTO Wizard Japan",
+      "sourceSlug": "gto-wizard-japan",
+      "sourceUrl": "https://japan.gtowizard.com/articles/",
+      "title": "IPでドローをベットする本当の基準",
+      "originalUrl": "https://japan.gtowizard.com/blog/betting-draws-in-position-the-real-rules/",
+      "author": "Sibbeh",
+      "publishedAt": "2026-08-30T14:28:48",
+      "summary": "[vc_row][vc_column][vc_column_text] IPでドローをベットする本当の基準 [/vc_column_text][/vc_column][/vc_row][vc_row][vc_column&hellip;",
+      "language": "Japanese",
+      "imageUrl": "https://japan.gtowizard.com/wp-content/uploads/2026/08/01-thumbnail.png",
+      "contentType": "article",
+      "classification": {
+        "difficulty": "intermediate",
+        "tags": []
+      },
+      "sourceModifiedAt": "2026-08-30T06:28:48"
+    },
+    {
+      "source": "GTO Wizard Japan",
+      "sourceSlug": "gto-wizard-japan",
+      "sourceUrl": "https://japan.gtowizard.com/articles/",
+      "title": "リンプポットをどうプレイするか",
+      "originalUrl": "https://japan.gtowizard.com/blog/is-limping-pimping/",
+      "author": "JonnyLaw",
+      "publishedAt": "2026-08-22T18:37:44",
+      "summary": "[vc_row][vc_column][vc_column_text] リンプポットをどうプレイするか [/vc_column_text][/vc_column][/vc_row] [vc_row][vc_column &hellip;",
+      "language": "Japanese",
+      "imageUrl": "https://japan.gtowizard.com/wp-content/uploads/2026/08/01-hero-1.png",
+      "contentType": "article",
+      "classification": {
+        "difficulty": "intermediate",
+        "tags": []
+      },
+      "sourceModifiedAt": "2026-08-22T10:37:44"
+    },
+    {
+      "source": "GTO Wizard Japan",
+      "sourceSlug": "gto-wizard-japan",
+      "sourceUrl": "https://japan.gtowizard.com/articles/",
+      "title": "バブルとFTバブルの違い",
+      "originalUrl": "https://japan.gtowizard.com/blog/money-bubble-vs-final-table-bubble/",
+      "author": "Andrew Brokos",
+      "publishedAt": "2026-08-09T19:36:32",
+      "summary": "[vc_row][vc_column][vc_column_text] バブルとFTバブルの違い [/vc_column_text][/vc_column][/vc_row] [vc_row][vc_column wid&hellip;",
+      "language": "Japanese",
+      "imageUrl": "https://japan.gtowizard.com/wp-content/uploads/2026/08/01-hero-body.png",
+      "contentType": "article",
+      "classification": {
+        "difficulty": "intermediate",
+        "tags": []
+      },
+      "sourceModifiedAt": "2026-08-09T11:36:44"
+    },
+    {
+      "source": "GTO Wizard Japan",
+      "sourceSlug": "gto-wizard-japan",
+      "sourceUrl": "https://japan.gtowizard.com/articles/",
+      "title": "なぜ自分のソリューションはGTO Wizardと違うのか？",
+      "originalUrl": "https://japan.gtowizard.com/blog/why-doesnt-my-solution-match-gto-wizard/",
+      "author": "Tombos21",
+      "publishedAt": "2026-08-09T01:08:43",
+      "summary": "[vc_row][vc_column][vc_column_text] なぜ自分のソリューションはGTO Wizardと一致しないのか？ [/vc_column_text][/vc_column][/vc_row] [v&hellip;",
+      "language": "Japanese",
+      "imageUrl": "https://japan.gtowizard.com/wp-content/uploads/2024/09/1920x1080-Blogpost-29-1.png",
+      "contentType": "article",
+      "classification": {
+        "difficulty": "intermediate",
+        "tags": [
+          "gto"
+        ]
+      },
+      "sourceModifiedAt": "2026-08-09T05:05:14"
+    },
+    {
+      "source": "GTO Wizard Japan",
+      "sourceSlug": "gto-wizard-japan",
+      "sourceUrl": "https://japan.gtowizard.com/articles/",
+      "title": "ペアボードでBBのチェックレイズにどう対応するか",
+      "originalUrl": "https://japan.gtowizard.com/blog/defending-vs-bb-check-raise-on-paired-flops/",
+      "author": "Andrew Brokos",
+      "publishedAt": "2026-08-04T13:03:12",
+      "summary": "[vc_row][vc_column][vc_column_text] ペアボードでBBのチェックレイズにどう対応するか [/vc_column_text][/vc_column][/vc_row] [vc_row][v&hellip;",
+      "language": "Japanese",
+      "imageUrl": "https://japan.gtowizard.com/wp-content/uploads/2026/08/01-hero.png",
+      "contentType": "article",
+      "classification": {
+        "difficulty": "intermediate",
+        "tags": []
+      },
+      "sourceModifiedAt": "2026-08-09T05:05:45"
+    },
+    {
+      "source": "GTO Wizard Japan",
+      "sourceSlug": "gto-wizard-japan",
+      "sourceUrl": "https://japan.gtowizard.com/articles/",
+      "title": "ターンのドンクベットへの対応",
+      "originalUrl": "https://japan.gtowizard.com/blog/how-to-defend-against-turn-donk-bets/",
+      "author": "Andrew Brokos",
+      "publishedAt": "2026-07-31T12:19:26",
+      "summary": "[vc_row][vc_column][vc_column_text] ターンのドンクベットへの対応 [/vc_column_text][/vc_column][/vc_row][vc_row][vc_column wi&hellip;",
+      "language": "Japanese",
+      "imageUrl": "https://japan.gtowizard.com/wp-content/uploads/2026/07/gto-wizard-how-to-defend-against-turn-donk-bets-blogpost-thumbnail.png",
+      "contentType": "article",
+      "classification": {
+        "difficulty": "intermediate",
+        "tags": [
+          "turn"
+        ]
+      },
+      "sourceModifiedAt": "2026-08-09T04:39:23"
+    },
+    {
+      "source": "GTO Wizard Japan",
+      "sourceSlug": "gto-wizard-japan",
+      "sourceUrl": "https://japan.gtowizard.com/articles/",
+      "title": "強さが変わるリバーでも迷わないOOPの戦い方",
+      "originalUrl": "https://japan.gtowizard.com/blog/navigating-nasty-rivers-out-of-position/",
+      "author": "Andrew Brokos",
+      "publishedAt": "2026-07-29T14:37:23",
+      "summary": "[vc_row][vc_column][vc_column_text] 強さが変わるリバーでも迷わないOOPの戦い方 [/vc_column_text][/vc_column][/vc_row][vc_row][vc_c&hellip;",
+      "language": "Japanese",
+      "imageUrl": "https://japan.gtowizard.com/wp-content/uploads/2026/07/gto-wizard-navigating-nasty-rivers-as-oop-blogpost-thumbnail.png",
+      "contentType": "article",
+      "classification": {
+        "difficulty": "intermediate",
+        "tags": [
+          "river"
+        ]
+      },
+      "sourceModifiedAt": "2026-07-29T06:37:23"
+    },
+    {
+      "source": "GTO Wizard Japan",
+      "sourceSlug": "gto-wizard-japan",
+      "sourceUrl": "https://japan.gtowizard.com/articles/",
+      "title": "MTTでのショートスタック戦略",
+      "originalUrl": "https://japan.gtowizard.com/blog/short-stacked-play-in-mtts/",
+      "author": "Andrew Brokos",
+      "publishedAt": "2026-07-26T20:29:48",
+      "summary": "[vc_row][vc_column][vc_column_text] MTTでのショートスタック戦略 [/vc_column_text][/vc_column][/vc_row][vc_row][vc_column w&hellip;",
+      "language": "Japanese",
+      "imageUrl": "https://japan.gtowizard.com/wp-content/uploads/2026/07/gto-wizard-short-stacked-play-in-mtts-blogpost-thumbnail.png",
+      "contentType": "article",
+      "classification": {
+        "difficulty": "intermediate",
+        "tags": [
+          "mtt"
+        ]
+      },
+      "sourceModifiedAt": "2026-07-26T12:29:48"
+    },
+    {
+      "source": "GTO Wizard Japan",
+      "sourceSlug": "gto-wizard-japan",
+      "sourceUrl": "https://japan.gtowizard.com/articles/",
+      "title": "プロファイル別エクスプロイト 第2回｜ニット",
+      "originalUrl": "https://japan.gtowizard.com/blog/exploiting-profiles-episode-ii-the-nit/",
+      "author": "Andrew Brokos",
+      "publishedAt": "2026-07-18T13:46:54",
+      "summary": "[vc_row][vc_column][vc_column_text] プロファイル別エクスプロイト 第2回｜ニット [/vc_column_text][/vc_column][/vc_row][vc_row][vc_c&hellip;",
+      "language": "Japanese",
+      "imageUrl": "https://japan.gtowizard.com/wp-content/uploads/2026/07/Thumbnail.png",
+      "contentType": "article",
+      "classification": {
+        "difficulty": "intermediate",
+        "tags": [
+          "exploit"
+        ]
+      },
+      "sourceModifiedAt": "2026-07-23T05:47:13"
+    },
+    {
+      "source": "GTO Wizard Japan",
+      "sourceSlug": "gto-wizard-japan",
+      "sourceUrl": "https://japan.gtowizard.com/articles/",
+      "title": "プロファイル別エクスプロイト 第1回｜コーリングステーション",
+      "originalUrl": "https://japan.gtowizard.com/blog/exploiting-profiles-episode-i-the-calling-station/",
+      "author": "Andrew Brokos",
+      "publishedAt": "2026-07-10T20:00:05",
+      "summary": "[vc_row][vc_column][vc_column_text] プロファイル別エクスプロイト 第1回｜コーリングステーション [/vc_column_text][/vc_column][/vc_row][vc_r&hellip;",
+      "language": "Japanese",
+      "imageUrl": "https://japan.gtowizard.com/wp-content/uploads/2026/07/header-4-1.png",
+      "contentType": "article",
+      "classification": {
+        "difficulty": "intermediate",
+        "tags": [
+          "exploit"
+        ]
+      },
+      "sourceModifiedAt": "2026-07-10T12:00:05"
+    },
+    {
+      "source": "GTO Wizard Japan",
+      "sourceSlug": "gto-wizard-japan",
+      "sourceUrl": "https://japan.gtowizard.com/articles/",
+      "title": "3wayポットでコーリングステーションをエクスプロイトする",
+      "originalUrl": "https://japan.gtowizard.com/blog/3-way-how-to-exploit-a-calling-station/",
+      "author": "Andrew Brokos",
+      "publishedAt": "2026-07-09T14:00:43",
+      "summary": "[vc_row][vc_column][vc_column_text] 3wayポットでコーリングステーションをエクスプロイトする [/vc_column_text][/vc_column][/vc_row][vc_ro&hellip;",
+      "language": "Japanese",
+      "imageUrl": "https://japan.gtowizard.com/wp-content/uploads/2026/07/Header-7-.png",
+      "contentType": "article",
+      "classification": {
+        "difficulty": "intermediate",
+        "tags": [
+          "exploit"
+        ]
+      },
+      "sourceModifiedAt": "2026-07-09T06:00:43"
+    },
+    {
+      "source": "GTO Wizard Japan",
+      "sourceSlug": "gto-wizard-japan",
+      "sourceUrl": "https://japan.gtowizard.com/articles/",
+      "title": "相手のタイプで変わるオールイン戦略",
+      "originalUrl": "https://japan.gtowizard.com/blog/when-to-open-shove-vs-different-player-profiles/",
+      "author": "Barry Carter",
+      "publishedAt": "2026-06-28T23:17:02",
+      "summary": "[vc_row][vc_column][vc_column_text] 相手のタイプで変わるオールイン戦略 [/vc_column_text][/vc_column][/vc_row][vc_row][vc_column&hellip;",
+      "language": "Japanese",
+      "imageUrl": "https://japan.gtowizard.com/wp-content/uploads/2026/07/header-7.png",
+      "contentType": "article",
+      "classification": {
+        "difficulty": "intermediate",
+        "tags": []
+      },
+      "sourceModifiedAt": "2026-07-05T15:18:07"
+    },
+    {
+      "source": "GTO Wizard Japan",
+      "sourceSlug": "gto-wizard-japan",
+      "sourceUrl": "https://japan.gtowizard.com/articles/",
+      "title": "プリフロップレンジの4つの形",
+      "originalUrl": "https://japan.gtowizard.com/blog/preflop-range-morphology/",
+      "author": "Barry Carter",
+      "publishedAt": "2026-06-14T18:38:29",
+      "summary": "[vc_row][vc_column][vc_column_text] プリフロップレンジの4つの形 [/vc_column_text][/vc_column][/vc_row][vc_row][vc_column wi&hellip;",
+      "language": "Japanese",
+      "imageUrl": "https://japan.gtowizard.com/wp-content/uploads/2026/06/Header-2.png",
+      "contentType": "article",
+      "classification": {
+        "difficulty": "intermediate",
+        "tags": [
+          "preflop",
+          "flop"
+        ]
+      },
+      "sourceModifiedAt": "2026-06-17T01:27:37"
+    },
+    {
+      "source": "GTO Wizard Japan",
+      "sourceSlug": "gto-wizard-japan",
+      "sourceUrl": "https://japan.gtowizard.com/articles/",
+      "title": "BvBのOOP戦略｜フロップでチェックコールした後どう戦うか",
+      "originalUrl": "https://japan.gtowizard.com/blog/navigating-bvb-oop-after-check-calling-the-flop/",
+      "author": "Josh Lessner",
+      "publishedAt": "2026-06-07T16:34:49",
+      "summary": "[vc_row][vc_column][vc_column_text] BvBのOOP戦略｜フロップでチェックコールした後どう戦うか [/vc_column_text][vc_column_text](本記事では、アクシ&hellip;",
+      "language": "Japanese",
+      "imageUrl": "https://japan.gtowizard.com/wp-content/uploads/2026/06/header-5.png",
+      "contentType": "article",
+      "classification": {
+        "difficulty": "intermediate",
+        "tags": [
+          "flop"
+        ]
+      },
+      "sourceModifiedAt": "2026-06-07T08:45:26"
+    },
+    {
+      "source": "GTO Wizard Japan",
+      "sourceSlug": "gto-wizard-japan",
+      "sourceUrl": "https://japan.gtowizard.com/articles/",
+      "title": "ポーカーのステーキングの基本",
+      "originalUrl": "https://japan.gtowizard.com/blog/poker-staking-essentials/",
+      "author": "Barry Carter",
+      "publishedAt": "2026-06-01T21:33:25",
+      "summary": "[vc_row][vc_column][vc_column_text] ポーカーのステーキングの基本 [/vc_column_text][/vc_column][/vc_row][vc_row][vc_column wi&hellip;",
+      "language": "Japanese",
+      "imageUrl": "https://japan.gtowizard.com/wp-content/uploads/2026/06/Header-1.png",
+      "contentType": "article",
+      "classification": {
+        "difficulty": "beginner",
+        "tags": []
+      },
+      "sourceModifiedAt": "2026-06-06T13:45:18"
+    },
+    {
+      "source": "GTO Wizard Japan",
+      "sourceSlug": "gto-wizard-japan",
+      "sourceUrl": "https://japan.gtowizard.com/articles/",
+      "title": "ポーカーのサテライトでの勝ち方",
+      "originalUrl": "https://japan.gtowizard.com/blog/satellite-guide/",
+      "author": "Barry Carter",
+      "publishedAt": "2026-05-30T17:21:53",
+      "summary": "[vc_row][vc_column][vc_column_text] ポーカーのサテライトでの勝ち方 [/vc_column_text][/vc_column][/vc_row][vc_row][vc_column w&hellip;",
+      "language": "Japanese",
+      "imageUrl": "https://japan.gtowizard.com/wp-content/uploads/2026/06/Header.png",
+      "contentType": "article",
+      "classification": {
+        "difficulty": "intermediate",
+        "tags": []
+      },
+      "sourceModifiedAt": "2026-06-04T09:23:38"
+    },
+    {
+      "source": "GTO Wizard Japan",
+      "sourceSlug": "gto-wizard-japan",
+      "sourceUrl": "https://japan.gtowizard.com/articles/",
+      "title": "3ウェイポットでのプローブベット戦略",
+      "originalUrl": "https://japan.gtowizard.com/blog/probing-out-of-position-in-3-way-pots/",
+      "author": "Andrew Brokos",
+      "publishedAt": "2026-04-30T21:42:03",
+      "summary": "[vc_row][vc_column][vc_column_text] 3ウェイポットでのプローブベット戦略 [/vc_column_text][/vc_column][/vc_row][vc_row][vc_colum&hellip;",
+      "language": "Japanese",
+      "imageUrl": "https://japan.gtowizard.com/wp-content/uploads/2026/05/header-1.png",
+      "contentType": "article",
+      "classification": {
+        "difficulty": "intermediate",
+        "tags": []
+      },
+      "sourceModifiedAt": "2026-05-22T12:41:38"
+    },
+    {
+      "source": "GTO Wizard Japan",
+      "sourceSlug": "gto-wizard-japan",
+      "sourceUrl": "https://japan.gtowizard.com/articles/",
+      "title": "インプライドオッズによって見落としているもの",
+      "originalUrl": "https://japan.gtowizard.com/blog/the-trouble-with-implied-odds/",
+      "author": "Andrew Brokos",
+      "publishedAt": "2026-04-12T17:58:00",
+      "summary": "[vc_row][vc_column][vc_column_text] インプライドオッズによって見落とされているもの [/vc_column_text][/vc_column][/vc_row][vc_row][vc_&hellip;",
+      "language": "Japanese",
+      "imageUrl": "https://japan.gtowizard.com/wp-content/uploads/2026/03/header-2-2.png",
+      "contentType": "article",
+      "classification": {
+        "difficulty": "intermediate",
+        "tags": []
+      },
+      "sourceModifiedAt": "2026-04-27T01:36:54"
+    },
+    {
+      "source": "GTO Wizard Japan",
+      "sourceSlug": "gto-wizard-japan",
+      "sourceUrl": "https://japan.gtowizard.com/articles/",
+      "title": "ディフェンスでレイズが果たす役割",
+      "originalUrl": "https://japan.gtowizard.com/blog/round_out_your_defense_the_power_of_raising/",
+      "author": "Andrew Brokos",
+      "publishedAt": "2026-04-11T18:36:40",
+      "summary": "[vc_row][vc_column][vc_column_text] ディフェンスでレイズが果たす役割 [/vc_column_text][/vc_column][/vc_row][vc_row][vc_column &hellip;",
+      "language": "Japanese",
+      "imageUrl": "https://japan.gtowizard.com/wp-content/uploads/2026/03/header-5-2.png",
+      "contentType": "article",
+      "classification": {
+        "difficulty": "intermediate",
+        "tags": []
+      },
+      "sourceModifiedAt": "2026-05-09T10:36:55"
+    },
+    {
+      "source": "GTO Wizard Japan",
+      "sourceSlug": "gto-wizard-japan",
+      "sourceUrl": "https://japan.gtowizard.com/articles/",
+      "title": "3ウェイポットで挟まれたときの戦い方",
+      "originalUrl": "https://japan.gtowizard.com/blog/monkey-in-the-middle-3-way-pot-heuristics/",
+      "author": "Andrew Brokos",
+      "publishedAt": "2026-03-21T14:52:58",
+      "summary": "[vc_row][vc_column][vc_column_text] 3ウェイポットで挟まれたときの戦い方 [/vc_column_text][/vc_column][/vc_row][vc_row][vc_colum&hellip;",
+      "language": "Japanese",
+      "imageUrl": "https://japan.gtowizard.com/wp-content/uploads/2026/03/header-1223-scaled-1.png",
+      "contentType": "article",
+      "classification": {
+        "difficulty": "intermediate",
+        "tags": []
+      },
+      "sourceModifiedAt": "2026-03-21T07:17:08"
+    },
+    {
+      "source": "GTO Wizard Japan",
+      "sourceSlug": "gto-wizard-japan",
+      "sourceUrl": "https://japan.gtowizard.com/articles/",
+      "title": "ショーダウンから読み取るエクスプロイト戦略",
+      "originalUrl": "https://japan.gtowizard.com/blog/building-exploits-from-showdown/",
+      "author": "Darren Wee",
+      "publishedAt": "2026-03-14T13:15:34",
+      "summary": "[vc_row][vc_column][vc_column_text] ショーダウンから読み取るエクスプロイト戦略 [/vc_column_text][/vc_column][/vc_row][vc_row][vc_co&hellip;",
+      "language": "Japanese",
+      "imageUrl": "https://japan.gtowizard.com/wp-content/uploads/2026/03/gto-wizard-building-exploits-from-showdown-image-header.png",
+      "contentType": "article",
+      "classification": {
+        "difficulty": "intermediate",
+        "tags": [
+          "exploit"
+        ]
+      },
+      "sourceModifiedAt": "2026-03-17T05:15:40"
+    },
+    {
+      "source": "GTO Wizard Japan",
+      "sourceSlug": "gto-wizard-japan",
+      "sourceUrl": "https://japan.gtowizard.com/articles/",
+      "title": "ボタンストラドル時のオープン戦略",
+      "originalUrl": "https://japan.gtowizard.com/blog/opening-strategy-when-the-button-straddles/",
+      "author": "Andrew Brokos",
+      "publishedAt": "2026-03-10T12:43:42",
+      "summary": "[vc_row][vc_column][vc_column_text] ボタンストラドル時のオープン戦略 [/vc_column_text][/vc_column][/vc_row][vc_row][vc_column &hellip;",
+      "language": "Japanese",
+      "imageUrl": "https://japan.gtowizard.com/wp-content/uploads/2026/03/header-1-scaled-1.png",
+      "contentType": "article",
+      "classification": {
+        "difficulty": "intermediate",
+        "tags": []
+      },
+      "sourceModifiedAt": "2026-03-15T04:55:39"
+    },
+    {
+      "source": "GTO Wizard Japan",
+      "sourceSlug": "gto-wizard-japan",
+      "sourceUrl": "https://japan.gtowizard.com/articles/",
+      "title": "ミシシッピストラドル：レイズへの対応",
+      "originalUrl": "https://japan.gtowizard.com/blog/mississippi-straddles-how-to-defend-vs-raises/",
+      "author": "Andrew Brokos",
+      "publishedAt": "2026-03-04T17:52:52",
+      "summary": "[vc_row][vc_column][vc_column_text] ミシシッピストラドル：レイズへの対応 [/vc_column_text][/vc_column][/vc_row][vc_row][vc_colum&hellip;",
+      "language": "Japanese",
+      "imageUrl": "https://japan.gtowizard.com/wp-content/uploads/2026/03/header-5-1.png",
+      "contentType": "article",
+      "classification": {
+        "difficulty": "intermediate",
+        "tags": []
+      },
+      "sourceModifiedAt": "2026-03-15T04:56:12"
+    },
+    {
+      "source": "GTO Wizard Japan",
+      "sourceSlug": "gto-wizard-japan",
+      "sourceUrl": "https://japan.gtowizard.com/articles/",
+      "title": "簡単にフォールドしていませんか？低レートでブラフ過多になるスポット",
+      "originalUrl": "https://japan.gtowizard.com/blog/calling-down-the-over-bluffed-lines-in-lower-limits/",
+      "author": "Sotirios Sotos Liakos",
+      "publishedAt": "2026-02-24T20:04:48",
+      "summary": "[vc_row][vc_column][vc_column_text] 簡単にフォールドしていませんか？低レートでブラフ過多になるスポット [/vc_column_text][/vc_column][/vc_row][v&hellip;",
+      "language": "Japanese",
+      "imageUrl": "https://japan.gtowizard.com/wp-content/uploads/2026/03/gto-wizard-calling-down-over-bluffed-lines-in-lower-limits-image-header-1.png",
+      "contentType": "article",
+      "classification": {
+        "difficulty": "intermediate",
+        "tags": [
+          "bluff"
+        ]
+      },
+      "sourceModifiedAt": "2026-03-07T12:05:00"
+    },
+    {
+      "source": "GTO Wizard Japan",
+      "sourceSlug": "gto-wizard-japan",
+      "sourceUrl": "https://japan.gtowizard.com/articles/",
+      "title": "プールリークをプロはソルバーを使ってどのように狙うのか",
+      "originalUrl": "https://japan.gtowizard.com/blog/how_pros_use_solvers_to_crush_pool_leaks/",
+      "author": "Josh Lessner",
+      "publishedAt": "2026-02-14T22:07:39",
+      "summary": "[vc_row][vc_column][vc_column_text] プールリークをプロはソルバーを使ってどのように狙うのか [/vc_column_text][/vc_column][/vc_row][vc_row]&hellip;",
+      "language": "Japanese",
+      "imageUrl": "https://japan.gtowizard.com/wp-content/uploads/2026/03/header-3-scaled-1.png",
+      "contentType": "article",
+      "classification": {
+        "difficulty": "intermediate",
+        "tags": []
+      },
+      "sourceModifiedAt": "2026-03-08T14:21:37"
+    },
+    {
+      "source": "GTO Wizard Japan",
+      "sourceSlug": "gto-wizard-japan",
+      "sourceUrl": "https://japan.gtowizard.com/articles/",
+      "title": "戦略を学ばない相手の弱点を突く：キャップされたレンジとバランスの取れていないブラフ",
+      "originalUrl": "https://japan.gtowizard.com/blog/punish_the_unstudied_capped_ranges_and_bluffing_imbalances/",
+      "author": "Vanja",
+      "publishedAt": "2026-02-07T14:13:18",
+      "summary": "[vc_row][vc_column][vc_column_text] 戦略を学ばない相手の弱点を突く：キャップされたレンジとバランスの取れていないブラフ [/vc_column_text][/vc_column][/v&hellip;",
+      "language": "Japanese",
+      "imageUrl": "https://japan.gtowizard.com/wp-content/uploads/2026/02/header-4.png",
+      "contentType": "article",
+      "classification": {
+        "difficulty": "intermediate",
+        "tags": [
+          "bluff"
+        ]
+      },
+      "sourceModifiedAt": "2026-02-15T06:30:11"
+    },
+    {
+      "source": "GTO Wizard Japan",
+      "sourceSlug": "gto-wizard-japan",
+      "sourceUrl": "https://japan.gtowizard.com/articles/",
+      "title": "リバーで勝てそうにない場面の判断基準：ブラフかチェックか",
+      "originalUrl": "https://japan.gtowizard.com/blog/were-at-the-river-our-hand-cant-win-now-what/",
+      "author": "Matt Hunt",
+      "publishedAt": "2026-01-30T20:19:53",
+      "summary": "[vc_row][vc_column][vc_column_text] リバーで勝てそうにない場面の判断基準：ブラフかチェックか [/vc_column_text][/vc_column][/vc_row][vc_row&hellip;",
+      "language": "Japanese",
+      "imageUrl": "https://japan.gtowizard.com/wp-content/uploads/2026/01/gto-wizard-were-at-the-river-our-hand-cant-win-now-what-header.png",
+      "contentType": "article",
+      "classification": {
+        "difficulty": "intermediate",
+        "tags": [
+          "river",
+          "bluff"
+        ]
+      },
+      "sourceModifiedAt": "2026-02-08T12:20:07"
+    },
+    {
+      "source": "GTO Wizard Japan",
+      "sourceSlug": "gto-wizard-japan",
+      "sourceUrl": "https://japan.gtowizard.com/articles/",
+      "title": "スクイーズに適したハンドの選び方",
+      "originalUrl": "https://japan.gtowizard.com/blog/how-to-construct-a-squeezing-range/",
+      "author": "Barry Carter",
+      "publishedAt": "2026-01-23T10:47:09",
+      "summary": "[vc_row][vc_column][vc_column_text] スクイーズに適したハンドの選び方 [/vc_column_text][/vc_column][/vc_row][vc_row][vc_column &hellip;",
+      "language": "Japanese",
+      "imageUrl": "https://japan.gtowizard.com/wp-content/uploads/2026/01/how-to-construct-a-squeezing-range.png",
+      "contentType": "article",
+      "classification": {
+        "difficulty": "intermediate",
+        "tags": []
+      },
+      "sourceModifiedAt": "2026-02-02T02:32:53"
+    },
+    {
+      "source": "GTO Wizard Japan",
+      "sourceSlug": "gto-wizard-japan",
+      "sourceUrl": "https://japan.gtowizard.com/articles/",
+      "title": "ヘッズアップの上達方法",
+      "originalUrl": "https://japan.gtowizard.com/blog/how-to-improve-your-heads-up-game/",
+      "author": "Ashley Brown",
+      "publishedAt": "2026-01-15T15:32:40",
+      "summary": "[vc_row][vc_column][vc_column_text] ヘッズアップの上達方法 [/vc_column_text][vc_column_text] 30bb以下 (レーキなし) [/vc_column_t&hellip;",
+      "language": "Japanese",
+      "imageUrl": "https://japan.gtowizard.com/wp-content/uploads/2026/01/header-2-1.png",
+      "contentType": "article",
+      "classification": {
+        "difficulty": "intermediate",
+        "tags": []
+      },
+      "sourceModifiedAt": "2026-01-24T07:32:48"
+    },
+    {
+      "source": "GTO Wizard Japan",
+      "sourceSlug": "gto-wizard-japan",
+      "sourceUrl": "https://japan.gtowizard.com/articles/",
+      "title": "ナッツは必ずベットするべきなのか？",
+      "originalUrl": "https://japan.gtowizard.com/blog/when-checking-the-nuts-beats-betting-them/",
+      "author": "Vanja",
+      "publishedAt": "2025-12-30T16:48:16",
+      "summary": "[vc_row][vc_column][vc_column_text] ナッツは必ずベットするべきなのか？ [/vc_column_text][/vc_column][/vc_row][vc_row][vc_column&hellip;",
+      "language": "Japanese",
+      "imageUrl": "https://japan.gtowizard.com/wp-content/uploads/2026/01/header-4.png",
+      "contentType": "article",
+      "classification": {
+        "difficulty": "intermediate",
+        "tags": []
+      },
+      "sourceModifiedAt": "2026-01-10T06:22:47"
+    },
+    {
+      "source": "GTO Wizard Japan",
+      "sourceSlug": "gto-wizard-japan",
+      "sourceUrl": "https://japan.gtowizard.com/articles/",
+      "title": "最悪のターンカード",
+      "originalUrl": "https://japan.gtowizard.com/blog/the-worst-turn-card/",
+      "author": "Darren Wee",
+      "publishedAt": "2025-12-26T11:42:21",
+      "summary": "[vc_row][vc_column][vc_column_text] 最悪のターンカード [/vc_column_text][/vc_column][/vc_row][vc_row][vc_column width=&&hellip;",
+      "language": "Japanese",
+      "imageUrl": "https://japan.gtowizard.com/wp-content/uploads/2026/01/gto-wizard-the-worst-turn-card-blogpost-thumbnail.png",
+      "contentType": "article",
+      "classification": {
+        "difficulty": "intermediate",
+        "tags": [
+          "turn"
+        ]
+      },
+      "sourceModifiedAt": "2026-01-14T03:43:32"
+    },
+    {
+      "source": "GTO Wizard Japan",
+      "sourceSlug": "gto-wizard-japan",
+      "sourceUrl": "https://japan.gtowizard.com/articles/",
+      "title": "ポーカーでの80:20の法則",
+      "originalUrl": "https://japan.gtowizard.com/blog/using-80-20-rule-in-poker/",
+      "author": "Barry Carter",
+      "publishedAt": "2025-12-15T15:34:34",
+      "summary": "[vc_row][vc_column][vc_column_text] ポーカーでの80:20の法則 [/vc_column_text][/vc_column][/vc_row][vc_row][vc_column wi&hellip;",
+      "language": "Japanese",
+      "imageUrl": "https://japan.gtowizard.com/wp-content/uploads/2025/12/gto-wizard-using-the-80-20-rule-in-poker-blogpost-thumbnail.png",
+      "contentType": "article",
+      "classification": {
+        "difficulty": "intermediate",
+        "tags": []
+      },
+      "sourceModifiedAt": "2025-12-20T07:34:43"
+    },
+    {
+      "source": "GTO Wizard Japan",
+      "sourceSlug": "gto-wizard-japan",
+      "sourceUrl": "https://japan.gtowizard.com/articles/",
+      "title": "3ベッターが不利なフロップでの立ち回り方",
+      "originalUrl": "https://japan.gtowizard.com/blog/navigating-range-disadvantage-as-the-3-bettor/",
+      "author": "Darren Wee",
+      "publishedAt": "2025-11-30T15:15:09",
+      "summary": "[vc_row][vc_column][vc_column_text] 3ベッターが不利なフロップでの立ち回り方 [/vc_column_text][/vc_column][/vc_row][vc_row][vc_col&hellip;",
+      "language": "Japanese",
+      "imageUrl": "https://japan.gtowizard.com/wp-content/uploads/2025/12/gto-wizard-navigating-range-disadvantage-as-the-3-bettor-blogpost-thumbnail.png",
+      "contentType": "article",
+      "classification": {
+        "difficulty": "intermediate",
+        "tags": [
+          "flop"
+        ]
+      },
+      "sourceModifiedAt": "2025-12-06T09:47:30"
+    },
+    {
+      "source": "GTO Wizard Japan",
+      "sourceSlug": "gto-wizard-japan",
+      "sourceUrl": "https://japan.gtowizard.com/articles/",
+      "title": "Range Builderを使った学習方法",
+      "originalUrl": "https://japan.gtowizard.com/blog/how-to-use-range-builder-in-gto-wizard-to-improve-your-game/",
+      "author": "JonnyLaw",
+      "publishedAt": "2025-11-26T18:53:01",
+      "summary": "[vc_row][vc_column][vc_column_text] Range Builderを使った学習方法 [/vc_column_text][/vc_column][/vc_row][vc_row][vc_co&hellip;",
+      "language": "Japanese",
+      "imageUrl": "https://japan.gtowizard.com/wp-content/uploads/2025/11/header-3-scaled-1.png",
+      "contentType": "article",
+      "classification": {
+        "difficulty": "intermediate",
+        "tags": []
+      },
+      "sourceModifiedAt": "2025-11-30T10:53:41"
+    },
+    {
+      "source": "GTO Wizard Japan",
+      "sourceSlug": "gto-wizard-japan",
+      "sourceUrl": "https://japan.gtowizard.com/articles/",
+      "title": "滑ったフラッシュドローはブラフして良いのか？",
+      "originalUrl": "https://japan.gtowizard.com/blog/why_youre_bluffing_the_river_wrong_with_bricked_flush_draws_in_cash_games/",
+      "author": "Aidan Heberle",
+      "publishedAt": "2025-11-19T16:00:57",
+      "summary": "[vc_row][vc_column][vc_column_text] 滑ったフラッシュドローはブラフして良いのか？ [/vc_column_text][/vc_column][/vc_row][vc_row][vc_c&hellip;",
+      "language": "Japanese",
+      "imageUrl": "https://japan.gtowizard.com/wp-content/uploads/2025/11/header-3.png",
+      "contentType": "article",
+      "classification": {
+        "difficulty": "intermediate",
+        "tags": [
+          "bluff"
+        ]
+      },
+      "sourceModifiedAt": "2025-11-29T08:17:41"
+    },
+    {
+      "source": "GTO Wizard Japan",
+      "sourceSlug": "gto-wizard-japan",
+      "sourceUrl": "https://japan.gtowizard.com/articles/",
+      "title": "ペアでブラフをするべきか",
+      "originalUrl": "https://japan.gtowizard.com/blog/should-you-ever-bluff-with-a-pair/",
+      "author": "Vanja",
+      "publishedAt": "2025-11-12T17:57:03",
+      "summary": "[vc_row][vc_column][vc_column_text] ペアでブラフをするべきか [/vc_column_text][/vc_column][/vc_row][vc_row][vc_column widt&hellip;",
+      "language": "Japanese",
+      "imageUrl": "https://japan.gtowizard.com/wp-content/uploads/2025/11/gto-wizard-bluffing-pairs-in-cash-games-image-thumbnail.png",
+      "contentType": "article",
+      "classification": {
+        "difficulty": "intermediate",
+        "tags": [
+          "bluff"
+        ]
+      },
+      "sourceModifiedAt": "2025-11-16T04:04:08"
+    },
+    {
+      "source": "GTO Wizard Japan",
+      "sourceSlug": "gto-wizard-japan",
+      "sourceUrl": "https://japan.gtowizard.com/articles/",
+      "title": "戦略を学ばない相手の弱点を突け：プリフロップのミスとベットサイズテル",
+      "originalUrl": "https://japan.gtowizard.com/blog/punish_the_unstudied_preflop_mistakes_and_sizing_tells/",
+      "author": "Vanja",
+      "publishedAt": "2025-10-28T20:17:09",
+      "summary": "[vc_row][vc_column][vc_column_text] 戦略を学ばない相手の弱点を突け：プリフロップのミスとベットサイズテル [/vc_column_text][/vc_column][/vc_row][&hellip;",
+      "language": "Japanese",
+      "imageUrl": "https://japan.gtowizard.com/wp-content/uploads/2025/11/thumbnail-55.png",
+      "contentType": "article",
+      "classification": {
+        "difficulty": "intermediate",
+        "tags": [
+          "preflop",
+          "flop"
+        ]
+      },
+      "sourceModifiedAt": "2025-11-03T03:27:08"
+    },
+    {
+      "source": "GTO Wizard Japan",
+      "sourceSlug": "gto-wizard-japan",
+      "sourceUrl": "https://japan.gtowizard.com/articles/",
+      "title": "ドミネイトから読み解くベットの理由",
+      "originalUrl": "https://japan.gtowizard.com/blog/understanding_domination_the_hidden_logic_behind_every_bet/",
+      "author": "Andrew Brokos",
+      "publishedAt": "2025-10-25T13:44:19",
+      "summary": "[vc_row][vc_column][vc_column_text] ドミネイトから読み解くベットの理由 [/vc_column_text][/vc_column][/vc_row][vc_row][vc_column&hellip;",
+      "language": "Japanese",
+      "imageUrl": "https://japan.gtowizard.com/wp-content/uploads/2025/10/header-1-1.png",
+      "contentType": "article",
+      "classification": {
+        "difficulty": "intermediate",
+        "tags": []
+      },
+      "sourceModifiedAt": "2025-10-29T05:46:38"
+    },
+    {
+      "source": "GTO Wizard Japan",
+      "sourceSlug": "gto-wizard-japan",
+      "sourceUrl": "https://japan.gtowizard.com/articles/",
+      "title": "ウィンレートを下げる決まり文句",
+      "originalUrl": "https://japan.gtowizard.com/blog/common_poker_sayings_that_ruin_your_winrate/",
+      "author": "Aidan Heberle",
+      "publishedAt": "2025-10-16T12:45:45",
+      "summary": "[vc_row][vc_column][vc_column_text] ウィンレートを下げる決まり文句 [/vc_column_text][/vc_column][/vc_row][vc_row][vc_column w&hellip;",
+      "language": "Japanese",
+      "imageUrl": "https://japan.gtowizard.com/wp-content/uploads/2025/10/header-1-1-1.png",
+      "contentType": "article",
+      "classification": {
+        "difficulty": "intermediate",
+        "tags": []
+      },
+      "sourceModifiedAt": "2025-10-30T04:47:44"
+    },
+    {
+      "source": "GTO Wizard Japan",
+      "sourceSlug": "gto-wizard-japan",
+      "sourceUrl": "https://japan.gtowizard.com/articles/",
+      "title": "ICMの理論的革新",
+      "originalUrl": "https://japan.gtowizard.com/blog/theoretical-breakthroughs-in-icm/",
+      "author": "Tombos21",
+      "publishedAt": "2025-10-05T22:43:55",
+      "summary": "[vc_row][vc_column][vc_column_text] ICMの理論的革新 [/vc_column_text][/vc_column][/vc_row][vc_row][vc_column width=&&hellip;",
+      "language": "Japanese",
+      "imageUrl": "https://japan.gtowizard.com/wp-content/uploads/2025/10/Header-2.png",
+      "contentType": "article",
+      "classification": {
+        "difficulty": "intermediate",
+        "tags": [
+          "icm"
+        ]
+      },
+      "sourceModifiedAt": "2025-11-03T03:26:00"
+    },
+    {
+      "source": "GTO Wizard Japan",
+      "sourceSlug": "gto-wizard-japan",
+      "sourceUrl": "https://japan.gtowizard.com/articles/",
+      "title": "リバーでバリューを取り逃していませんか？",
+      "originalUrl": "https://japan.gtowizard.com/blog/are_you_leaving_value_on_the_river/",
+      "author": "Barry Carter",
+      "publishedAt": "2025-10-02T22:38:33",
+      "summary": "[vc_row][vc_column][vc_column_text] リバーでバリューを取り逃していませんか？ [/vc_column_text][/vc_column][/vc_row][vc_row][vc_col&hellip;",
+      "language": "Japanese",
+      "imageUrl": "https://japan.gtowizard.com/wp-content/uploads/2025/10/thumbnail.png",
+      "contentType": "article",
+      "classification": {
+        "difficulty": "intermediate",
+        "tags": [
+          "river"
+        ]
+      },
+      "sourceModifiedAt": "2025-11-03T03:26:35"
+    },
+    {
+      "source": "GTO Wizard Japan",
+      "sourceSlug": "gto-wizard-japan",
+      "sourceUrl": "https://japan.gtowizard.com/articles/",
+      "title": "エクスプロイト戦略における5つの偏り",
+      "originalUrl": "https://japan.gtowizard.com/blog/the-five-imbalances-of-exploitative-poker/",
+      "author": "Barry Carter",
+      "publishedAt": "2025-10-01T18:09:16",
+      "summary": "現代ポーカー界では「GTOかエクスプロイト戦略か？」という論争がよく取り沙汰されます。お互い強い意見を持っており、議論はしばしば真っ二つに分かれがちです。 しかし、GTOとエクスプロイトは実際にはコインの裏表のような関係&hellip;",
+      "language": "Japanese",
+      "imageUrl": "https://japan.gtowizard.com/wp-content/uploads/2025/03/gto-wizard-the-five-imbalances-of-exploitative-poker-blogpost-thumbnail.png",
+      "contentType": "article",
+      "classification": {
+        "difficulty": "intermediate",
+        "tags": [
+          "gto",
+          "exploit"
+        ]
+      },
+      "sourceModifiedAt": "2025-11-02T14:51:59"
+    },
+    {
+      "source": "GTO Wizard Japan",
+      "sourceSlug": "gto-wizard-japan",
+      "sourceUrl": "https://japan.gtowizard.com/articles/",
+      "title": "PKOファイナルテーブルをマスターする",
+      "originalUrl": "https://japan.gtowizard.com/blog/mastering-pko-final-tables/",
+      "author": "JonnyLaw",
+      "publishedAt": "2025-09-30T18:37:41",
+      "summary": "ファイナルテーブルはトーナメントで最も刺激的でリターンの多い局面であり、ファイナルテーブルでの勝利は、ポーカープレイヤーとしての総合的な成績を左右します。PKOのファイナルテーブルでは特に顕著で、ビッグペイジャンプとビッ&hellip;",
+      "language": "Japanese",
+      "imageUrl": "https://japan.gtowizard.com/wp-content/uploads/2024/10/1280x720-Blogpost-21-1.png",
+      "contentType": "article",
+      "classification": {
+        "difficulty": "intermediate",
+        "tags": [
+          "turn",
+          "mtt"
+        ]
+      },
+      "sourceModifiedAt": "2025-11-03T03:25:40"
+    },
+    {
+      "source": "GTO Wizard Japan",
+      "sourceSlug": "gto-wizard-japan",
+      "sourceUrl": "https://japan.gtowizard.com/articles/",
+      "title": "フロップ戦略：MTTにおけるIPのCベット",
+      "originalUrl": "https://japan.gtowizard.com/blog/flop-heuristics-ip-c-betting-in-mtts/",
+      "author": "Andrew Brokos",
+      "publishedAt": "2025-09-25T22:44:40",
+      "summary": "ポーカーにおいてフロップは、その後の流れを決める重要な局面です。アグレッサーのCベットは、利益的なスポットの一つであり、強くなるのに必須のスキルです。この記事では、フロップ戦略を掘り下げ、フロップの集合レポートから戦略的&hellip;",
+      "language": "Japanese",
+      "imageUrl": "https://japan.gtowizard.com/wp-content/uploads/2024/10/1280x720-Blogpost-24-1.jpg",
+      "contentType": "article",
+      "classification": {
+        "difficulty": "intermediate",
+        "tags": [
+          "flop",
+          "mtt"
+        ]
+      },
+      "sourceModifiedAt": "2025-11-03T03:24:41"
+    },
+    {
+      "source": "GTO Wizard Japan",
+      "sourceSlug": "gto-wizard-japan",
+      "sourceUrl": "https://japan.gtowizard.com/articles/",
+      "title": "小さいベットでエクイティをプッシュする",
+      "originalUrl": "https://japan.gtowizard.com/blog/pushing-equity-with-small-bets/",
+      "author": "Andrew Brokos",
+      "publishedAt": "2025-09-18T18:47:20",
+      "summary": "[vc_row][vc_column][vc_column_text] 小さいベットでエクイティをプッシュする [/vc_column_text][/vc_column][/vc_row][vc_row][vc_colu&hellip;",
+      "language": "Japanese",
+      "imageUrl": "https://japan.gtowizard.com/wp-content/uploads/2025/05/gto-wizard-pushing-equity-with-small-bets-image-blogpost-thumbnail.png",
+      "contentType": "article",
+      "classification": {
+        "difficulty": "intermediate",
+        "tags": []
+      },
+      "sourceModifiedAt": "2025-11-02T16:21:51"
+    },
+    {
+      "source": "GTO Wizard Japan",
+      "sourceSlug": "gto-wizard-japan",
+      "sourceUrl": "https://japan.gtowizard.com/articles/",
+      "title": "ボードカバレッジの重要性",
+      "originalUrl": "https://japan.gtowizard.com/blog/the-importance-of-board-coverage/",
+      "author": "Barry Carter",
+      "publishedAt": "2025-09-11T12:51:37",
+      "summary": "[vc_row][vc_column][vc_column_text] ボードカバレッジの重要性 [/vc_column_text][/vc_column][/vc_row][vc_row][vc_column widt&hellip;",
+      "language": "Japanese",
+      "imageUrl": "https://japan.gtowizard.com/wp-content/uploads/2025/03/gto-wizard-the-importance-of-board-coverage-blogpost-thumbnail.png",
+      "contentType": "article",
+      "classification": {
+        "difficulty": "intermediate",
+        "tags": []
+      },
+      "sourceModifiedAt": "2025-11-02T16:22:44"
+    },
+    {
+      "source": "GTO Wizard Japan",
+      "sourceSlug": "gto-wizard-japan",
+      "sourceUrl": "https://japan.gtowizard.com/articles/",
+      "title": "ポーカーにおけるバランスとは",
+      "originalUrl": "https://japan.gtowizard.com/blog/the-many-faces-of-balance-in-poker/",
+      "author": "Andrew Brokos",
+      "publishedAt": "2025-09-05T09:27:13",
+      "summary": "[vc_row][vc_column][vc_column_text] ポーカーにおけるバランスとは [/vc_column_text][/vc_column][/vc_row][vc_row][vc_column wi&hellip;",
+      "language": "Japanese",
+      "imageUrl": "https://japan.gtowizard.com/wp-content/uploads/2025/09/gto-wizard-the-many-faces-of-balance-in-poker-app-blogpost-thumbnail.png",
+      "contentType": "article",
+      "classification": {
+        "difficulty": "intermediate",
+        "tags": []
+      },
+      "sourceModifiedAt": "2025-09-08T01:43:12"
+    },
+    {
+      "source": "GTO Wizard Japan",
+      "sourceSlug": "gto-wizard-japan",
+      "sourceUrl": "https://japan.gtowizard.com/articles/",
+      "title": "GTO WizardのEV比較ツールの活用方法",
+      "originalUrl": "https://japan.gtowizard.com/blog/how-to-leverage-gto-wizards-ev-comparison-too/",
+      "author": "Andrew Brokos",
+      "publishedAt": "2025-08-22T18:06:19",
+      "summary": "[vc_row][vc_column][vc_column_text] GTO WizardのEV比較ツールの活用方法 [/vc_column_text][vc_row_inner][vc_column_inner wi&hellip;",
+      "language": "Japanese",
+      "imageUrl": "https://japan.gtowizard.com/wp-content/uploads/2025/08/gto-wizard-working-in-the-gray-area-how-to-leverage-gto-wizards-ev-comparison-tool-blogpost-thumbnail.png",
+      "contentType": "article",
+      "classification": {
+        "difficulty": "intermediate",
+        "tags": [
+          "gto"
+        ]
+      },
+      "sourceModifiedAt": "2025-08-30T10:15:08"
+    },
+    {
+      "source": "GTO Wizard Japan",
+      "sourceSlug": "gto-wizard-japan",
+      "sourceUrl": "https://japan.gtowizard.com/articles/",
+      "title": "アンティがあるキャッシュゲームの攻略方法",
+      "originalUrl": "https://japan.gtowizard.com/blog/how_to_crush_ante_cash_games/",
+      "author": "Aidan Heberle",
+      "publishedAt": "2025-08-17T14:32:32",
+      "summary": "[vc_row][vc_column][vc_column_text] アンティがあるキャッシュゲームの攻略方法 [/vc_column_text][/vc_column][/vc_row][vc_row][vc_col&hellip;",
+      "language": "Japanese",
+      "imageUrl": "https://japan.gtowizard.com/wp-content/uploads/2025/09/header-3-1.png",
+      "contentType": "article",
+      "classification": {
+        "difficulty": "intermediate",
+        "tags": [
+          "cash-game"
+        ]
+      },
+      "sourceModifiedAt": "2025-09-01T06:33:17"
+    },
+    {
+      "source": "GTO Wizard Japan",
+      "sourceSlug": "gto-wizard-japan",
+      "sourceUrl": "https://japan.gtowizard.com/articles/",
+      "title": "ナッツドロー戦略を解明する",
+      "originalUrl": "https://japan.gtowizard.com/blog/crack-the-shell-of-nut-draw-strategy/",
+      "author": "Andrew Brokos",
+      "publishedAt": "2025-08-12T17:20:40",
+      "summary": "[vc_row][vc_column][vc_column_text] ナッツドロー戦略を解明する [/vc_column_text][/vc_column][/vc_row][vc_row][vc_column wid&hellip;",
+      "language": "Japanese",
+      "imageUrl": "https://japan.gtowizard.com/wp-content/uploads/2025/08/gto-wizard-nut-draw-strategy-crack-the-shell-blogpost-thumbnail.png",
+      "contentType": "article",
+      "classification": {
+        "difficulty": "intermediate",
+        "tags": []
+      },
+      "sourceModifiedAt": "2025-08-18T02:42:58"
+    },
+    {
+      "source": "GTO Wizard Japan",
+      "sourceSlug": "gto-wizard-japan",
+      "sourceUrl": "https://japan.gtowizard.com/articles/",
+      "title": "GTO Wizardの練習モードで実戦力を磨く方法",
+      "originalUrl": "https://japan.gtowizard.com/blog/how-to-use-practice-mode-in-gto-wizard-to-improve-your-game/",
+      "author": "JonnyLaw",
+      "publishedAt": "2025-08-05T14:37:48",
+      "summary": "[vc_row][vc_column][vc_column_text] GTO Wizardの練習モードで実戦力を磨く方法 [/vc_column_text][vc_row_inner][vc_column_inner &hellip;",
+      "language": "Japanese",
+      "imageUrl": "https://japan.gtowizard.com/wp-content/uploads/2025/09/gto-wizard-how-to-use-practice-mode-in-gto-wizard-to-improve-your-game-app-thumbnail.png",
+      "contentType": "article",
+      "classification": {
+        "difficulty": "intermediate",
+        "tags": [
+          "gto"
+        ]
+      },
+      "sourceModifiedAt": "2025-09-02T06:39:25"
+    },
+    {
+      "source": "GTO Wizard Japan",
+      "sourceSlug": "gto-wizard-japan",
+      "sourceUrl": "https://japan.gtowizard.com/articles/",
+      "title": "トッププレイヤーとその他を分ける学び方",
+      "originalUrl": "https://japan.gtowizard.com/blog/the-learning-system-that-separates-the-best-from-the-rest/",
+      "author": "Aidan Heberle",
+      "publishedAt": "2025-07-26T16:49:54",
+      "summary": "[vc_row][vc_column][vc_column_text] トッププレイヤーとその他を分ける学び方 [/vc_column_text][/vc_column][/vc_row][vc_row][vc_colu&hellip;",
+      "language": "Japanese",
+      "imageUrl": "https://japan.gtowizard.com/wp-content/uploads/2025/07/gto-wizard-the-learning-system-that-separates-the-best-from-the-rest-blogpost-thumbnail.png",
+      "contentType": "article",
+      "classification": {
+        "difficulty": "intermediate",
+        "tags": []
+      },
+      "sourceModifiedAt": "2025-07-26T08:49:54"
+    },
+    {
+      "source": "GTO Wizard Japan",
+      "sourceSlug": "gto-wizard-japan",
+      "sourceUrl": "https://japan.gtowizard.com/articles/",
+      "title": "ターンプローブのアート：フロップチェック後をエクスプロイトする",
+      "originalUrl": "https://japan.gtowizard.com/blog/the-art-of-turn-probing-exploiting-checked-flops/",
+      "author": "Andrew Brokos",
+      "publishedAt": "2025-07-18T20:35:55",
+      "summary": "[vc_row][vc_column][vc_column_text] ターンプローブのアート：フロップチェック後をエクスプロイトする [/vc_column_text][/vc_column][/vc_row][vc_&hellip;",
+      "language": "Japanese",
+      "imageUrl": "https://japan.gtowizard.com/wp-content/uploads/2025/07/gto-wizard-the-art-of-turn-probing-exploiting-checked-flops-app-thumbnail.png",
+      "contentType": "article",
+      "classification": {
+        "difficulty": "intermediate",
+        "tags": [
+          "flop",
+          "turn",
+          "exploit"
+        ]
+      },
+      "sourceModifiedAt": "2025-08-03T13:59:08"
+    },
+    {
+      "source": "GTO Wizard Japan",
+      "sourceSlug": "gto-wizard-japan",
+      "sourceUrl": "https://japan.gtowizard.com/articles/",
+      "title": "ストラドル＋アンティーゲームにおけるコールドコール",
+      "originalUrl": "https://japan.gtowizard.com/blog/cold-calling-in-straddle-ante-games/",
+      "author": "Andrew Brokos",
+      "publishedAt": "2025-07-10T09:44:58",
+      "summary": "[vc_row][vc_column][vc_column_text] ストラドル＋アンティーゲームにおけるコールドコール [/vc_column_text][/vc_column][/vc_row][vc_row][v&hellip;",
+      "language": "Japanese",
+      "imageUrl": "https://japan.gtowizard.com/wp-content/uploads/2025/07/cold-calling-in-straddle-ante-games.png",
+      "contentType": "article",
+      "classification": {
+        "difficulty": "intermediate",
+        "tags": []
+      },
+      "sourceModifiedAt": "2025-07-10T02:52:12"
+    },
+    {
+      "source": "GTO Wizard Japan",
+      "sourceSlug": "gto-wizard-japan",
+      "sourceUrl": "https://japan.gtowizard.com/articles/",
+      "title": "なぜオールインをしないのか？",
+      "originalUrl": "https://japan.gtowizard.com/blog/why-not-shove/",
+      "author": "Andrew Brokos",
+      "publishedAt": "2025-06-25T18:18:24",
+      "summary": "[vc_row][vc_column][vc_column_text] なぜオールインをしないのか？ [/vc_column_text][/vc_column][/vc_row][vc_row][vc_column wi&hellip;",
+      "language": "Japanese",
+      "imageUrl": "https://japan.gtowizard.com/wp-content/uploads/2025/06/gto-wizard-why-not-shove-blogpost-thumbnail.png",
+      "contentType": "article",
+      "classification": {
+        "difficulty": "intermediate",
+        "tags": []
+      },
+      "sourceModifiedAt": "2025-07-05T10:18:38"
+    },
+    {
+      "source": "GTO Wizard Japan",
+      "sourceSlug": "gto-wizard-japan",
+      "sourceUrl": "https://japan.gtowizard.com/articles/",
+      "title": "キャッシュゲームでOOPの3ベットポットをクラッシュする",
+      "originalUrl": "https://japan.gtowizard.com/blog/crush-3-bet-pots-oop-in-cash-games/",
+      "author": "Vanja",
+      "publishedAt": "2025-06-10T11:42:34",
+      "summary": "[vc_row][vc_column][vc_column_text] キャッシュゲームでOOPの3ベットポットをクラッシュする [/vc_column_text][/vc_column][/vc_row][vc_row&hellip;",
+      "language": "Japanese",
+      "imageUrl": "https://japan.gtowizard.com/wp-content/uploads/2025/06/gto-wizard-crush-3-bet-pots-oop-in-cash-games-blogpost-thumbnail.png",
+      "contentType": "article",
+      "classification": {
+        "difficulty": "intermediate",
+        "tags": [
+          "cash-game"
+        ]
+      },
+      "sourceModifiedAt": "2025-06-10T03:42:34"
+    },
+    {
+      "source": "GTO Wizard Japan",
+      "sourceSlug": "gto-wizard-japan",
+      "sourceUrl": "https://japan.gtowizard.com/articles/",
+      "title": "アグレッシブな相手のフロップのチェックバックを攻める",
+      "originalUrl": "https://japan.gtowizard.com/blog/attacking-aggressive-opponents-when-they-check-back-flop/",
+      "author": "Aidan Heberle",
+      "publishedAt": "2025-05-28T21:20:30",
+      "summary": "[vc_row][vc_column][vc_column_text] アグレッシブな相手のフロップのチェックバックを攻める [/vc_column_text][/vc_column][/vc_row][vc_row][&hellip;",
+      "language": "Japanese",
+      "imageUrl": "https://japan.gtowizard.com/wp-content/uploads/2025/05/Attacking-Aggressive-Opponents-When-They-Check.png",
+      "contentType": "article",
+      "classification": {
+        "difficulty": "intermediate",
+        "tags": [
+          "flop"
+        ]
+      },
+      "sourceModifiedAt": "2025-05-28T13:22:17"
+    },
+    {
+      "source": "GTO Wizard Japan",
+      "sourceSlug": "gto-wizard-japan",
+      "sourceUrl": "https://japan.gtowizard.com/articles/",
+      "title": "プリフロップレイズサイズ:2つの重要な要素を検証する",
+      "originalUrl": "https://japan.gtowizard.com/blog/preflop-raise-sizing-examining-2-key-factors/",
+      "author": "Andrew Brokos",
+      "publishedAt": "2025-05-12T15:01:21",
+      "summary": "[vc_row][vc_column][vc_column_text] プリフロップレイズサイズ:2つの重要な要素を検証する [/vc_column_text][/vc_column][/vc_row][vc_row][&hellip;",
+      "language": "Japanese",
+      "imageUrl": "https://japan.gtowizard.com/wp-content/uploads/2025/05/gto-wizard-preflop-raise-sizing-examining-2-key-factors-blogpost-thumbnail.png",
+      "contentType": "article",
+      "classification": {
+        "difficulty": "intermediate",
+        "tags": [
+          "preflop",
+          "flop"
+        ]
+      },
+      "sourceModifiedAt": "2025-05-12T07:01:21"
+    },
+    {
+      "source": "GTO Wizard Japan",
+      "sourceSlug": "gto-wizard-japan",
+      "sourceUrl": "https://japan.gtowizard.com/articles/",
+      "title": "キャッシュゲームにおけるBTNからのコール戦略",
+      "originalUrl": "https://japan.gtowizard.com/blog/playing-calls-from-the-button-in-cash-games/",
+      "author": "Aidan Heberle",
+      "publishedAt": "2025-05-07T12:38:21",
+      "summary": "[vc_row][vc_column][vc_column_text] キャッシュゲームにおけるBTNからのコール戦略 [/vc_column_text][/vc_column][/vc_row][vc_row][vc_&hellip;",
+      "language": "Japanese",
+      "imageUrl": "https://japan.gtowizard.com/wp-content/uploads/2025/04/gto-wizard-playing-calls-from-the-button-in-cash-games-image-blogpost-thumbnail.png",
+      "contentType": "article",
+      "classification": {
+        "difficulty": "intermediate",
+        "tags": [
+          "cash-game"
+        ]
+      },
+      "sourceModifiedAt": "2025-05-07T04:57:32"
+    },
+    {
+      "source": "GTO Wizard Japan",
+      "sourceSlug": "gto-wizard-japan",
+      "sourceUrl": "https://japan.gtowizard.com/articles/",
+      "title": "GTOの次なる進化：QRE（質的応答均衡）",
+      "originalUrl": "https://japan.gtowizard.com/blog/introducing-quantal-response-equilibrium-the-next-evolution-of-gto/",
+      "author": "GTO Wizard",
+      "publishedAt": "2025-05-02T11:43:55",
+      "summary": "[vc_row][vc_column][vc_column_text] GTOの次なる進化：QRE（質的応答均衡） [/vc_column_text][/vc_column][/vc_row][vc_row][vc_co&hellip;",
+      "language": "Japanese",
+      "imageUrl": "https://japan.gtowizard.com/wp-content/uploads/2025/04/Thumbnail-Article.png",
+      "contentType": "article",
+      "classification": {
+        "difficulty": "intermediate",
+        "tags": [
+          "gto"
+        ]
+      },
+      "sourceModifiedAt": "2025-05-02T03:56:24"
+    },
+    {
+      "source": "GTO Wizard Japan",
+      "sourceSlug": "gto-wizard-japan",
+      "sourceUrl": "https://japan.gtowizard.com/articles/",
+      "title": "SB vs BTNの4ベットポット(OOPの分析)",
+      "originalUrl": "https://japan.gtowizard.com/blog/4-bet-pots-oop-as-the-preflop-caller/",
+      "author": "Aidan Heberle",
+      "publishedAt": "2025-04-26T19:35:27",
+      "summary": "[vc_row][vc_column][vc_column_text] SB vs BTNの4ベットポット(OOPの分析) [/vc_column_text][/vc_column][/vc_row][vc_row][v&hellip;",
+      "language": "Japanese",
+      "imageUrl": "https://japan.gtowizard.com/wp-content/uploads/2025/04/gto-wizard-4-bet-pots-oop-as-the-preflop-caller-blogpost-thumbnail.png",
+      "contentType": "article",
+      "classification": {
+        "difficulty": "intermediate",
+        "tags": []
+      },
+      "sourceModifiedAt": "2025-04-27T10:40:28"
+    },
+    {
+      "source": "GTO Wizard Japan",
+      "sourceSlug": "gto-wizard-japan",
+      "sourceUrl": "https://japan.gtowizard.com/articles/",
+      "title": "ワンペアでのチェックレイズ",
+      "originalUrl": "https://japan.gtowizard.com/blog/check-raising-a-single-pair/",
+      "author": "Andrew Brokos",
+      "publishedAt": "2025-04-22T13:40:13",
+      "summary": "[vc_row][vc_column][vc_column_text] ワンペアでのチェックレイズ [/vc_column_text][/vc_column][/vc_row][vc_row][vc_column wid&hellip;",
+      "language": "Japanese",
+      "imageUrl": "https://japan.gtowizard.com/wp-content/uploads/2025/04/gto-wizard-check-raising-a-single-pair-image-blogpost-thumbnail.png",
+      "contentType": "article",
+      "classification": {
+        "difficulty": "intermediate",
+        "tags": []
+      },
+      "sourceModifiedAt": "2025-04-22T05:40:13"
+    },
+    {
+      "source": "GTO Wizard Japan",
+      "sourceSlug": "gto-wizard-japan",
+      "sourceUrl": "https://japan.gtowizard.com/articles/",
+      "title": "ソルバーにターゲットはあるのか？",
+      "originalUrl": "https://japan.gtowizard.com/blog/do-solvers-have-targets/",
+      "author": "Andrew Brokos",
+      "publishedAt": "2025-04-20T16:33:10",
+      "summary": "[vc_row][vc_column][vc_column_text] ソルバーにターゲットはあるのか？ [/vc_column_text][/vc_column][/vc_row][vc_row][vc_column &hellip;",
+      "language": "Japanese",
+      "imageUrl": "https://japan.gtowizard.com/wp-content/uploads/2025/04/gto-wizard-do-solvers-have-targets-blogpost-thumbnail.png",
+      "contentType": "article",
+      "classification": {
+        "difficulty": "intermediate",
+        "tags": []
+      },
+      "sourceModifiedAt": "2025-04-20T08:33:10"
+    },
+    {
+      "source": "GTO Wizard Japan",
+      "sourceSlug": "gto-wizard-japan",
+      "sourceUrl": "https://japan.gtowizard.com/articles/",
+      "title": "エクイティを守り、利益を得る",
+      "originalUrl": "https://japan.gtowizard.com/blog/protect-equity-and-prosper/",
+      "author": "Andrew Brokos",
+      "publishedAt": "2025-04-16T14:31:21",
+      "summary": "[vc_row][vc_column][vc_column_text] エクイティを守り、利益を得る [/vc_column_text][/vc_column][/vc_row][vc_row][vc_column wi&hellip;",
+      "language": "Japanese",
+      "imageUrl": "https://japan.gtowizard.com/wp-content/uploads/2025/04/gto-wizard-protecting-equity-blogpost-thumbnail.png",
+      "contentType": "article",
+      "classification": {
+        "difficulty": "intermediate",
+        "tags": []
+      },
+      "sourceModifiedAt": "2025-04-16T06:31:21"
+    },
+    {
+      "source": "GTO Wizard Japan",
+      "sourceSlug": "gto-wizard-japan",
+      "sourceUrl": "https://japan.gtowizard.com/articles/",
+      "title": "複数のベットサイズを理解する",
+      "originalUrl": "https://japan.gtowizard.com/blog/overchoice-making-sense-of-multiple-sizings/",
+      "author": "Andrew Brokos",
+      "publishedAt": "2025-04-13T12:09:01",
+      "summary": "[vc_row][vc_column][vc_column_text] 複数のベットサイズを理解する [/vc_column_text][/vc_column][/vc_row][vc_row][vc_column wi&hellip;",
+      "language": "Japanese",
+      "imageUrl": "https://japan.gtowizard.com/wp-content/uploads/2025/04/gto-overchoice-making-sense-of-multiple-sizings-blogpost-thumbnail.png",
+      "contentType": "article",
+      "classification": {
+        "difficulty": "intermediate",
+        "tags": []
+      },
+      "sourceModifiedAt": "2025-04-13T04:09:01"
+    },
+    {
+      "source": "GTO Wizard Japan",
+      "sourceSlug": "gto-wizard-japan",
+      "sourceUrl": "https://japan.gtowizard.com/articles/",
+      "title": "プロテクションの正しい考え方",
+      "originalUrl": "https://japan.gtowizard.com/blog/the-right-way-to-think-about-protection/",
+      "author": "David Chen",
+      "publishedAt": "2025-04-04T09:13:54",
+      "summary": "[vc_row][vc_column][vc_column_text] プロテクションの正しい考え方 [/vc_column_text][/vc_column][/vc_row][vc_row][vc_column wi&hellip;",
+      "language": "Japanese",
+      "imageUrl": "https://japan.gtowizard.com/wp-content/uploads/2025/03/gto-wizard-the-right-way-to-think-about-protection-blogpost-thumbnail-image.png",
+      "contentType": "article",
+      "classification": {
+        "difficulty": "intermediate",
+        "tags": []
+      },
+      "sourceModifiedAt": "2025-04-04T01:13:54"
+    },
+    {
+      "source": "GTO Wizard Japan",
+      "sourceSlug": "gto-wizard-japan",
+      "sourceUrl": "https://japan.gtowizard.com/articles/",
+      "title": "相手にブラフがない時のエクスプロイト",
+      "originalUrl": "https://japan.gtowizard.com/blog/how-to-adjust-when-villain-has-no-bluffs/",
+      "author": "Barry Carter",
+      "publishedAt": "2025-04-02T17:25:07",
+      "summary": "[vc_row][vc_column][vc_column_text] 相手にブラフがない時のエクスプロイト [/vc_column_text][/vc_column][/vc_row][vc_row][vc_colum&hellip;",
+      "language": "Japanese",
+      "imageUrl": "https://japan.gtowizard.com/wp-content/uploads/2025/03/gto-wizard-how-to-adjust-when-villain-has-no-bluffs-blogpost-thumbnail.png",
+      "contentType": "article",
+      "classification": {
+        "difficulty": "intermediate",
+        "tags": [
+          "exploit",
+          "bluff"
+        ]
+      },
+      "sourceModifiedAt": "2025-04-02T09:25:07"
+    },
+    {
+      "source": "GTO Wizard Japan",
+      "sourceSlug": "gto-wizard-japan",
+      "sourceUrl": "https://japan.gtowizard.com/articles/",
+      "title": "PKOと通常のトーナメント : プリフロップオープンレンジの比較",
+      "originalUrl": "https://japan.gtowizard.com/blog/pko-versus-classic-preflop-rfi-range-comparisons/",
+      "author": "Barry Carter",
+      "publishedAt": "2025-03-29T14:45:17",
+      "summary": "新しいゲーム形式、例えばプログレッシブノックアウト (PKO) トーナメントに適応するための鍵の一つは、通常のトーナメント戦略との違いを理解し、調整するタイミングを知ることです。PKOトーナメントにおいて、それはトーナメ&hellip;",
+      "language": "Japanese",
+      "imageUrl": "https://japan.gtowizard.com/wp-content/uploads/2025/03/gto-wizard-pko-versus-classic-preflop-rfi-range-comparisons-blogpost-thumbnail.png",
+      "contentType": "article",
+      "classification": {
+        "difficulty": "intermediate",
+        "tags": [
+          "preflop",
+          "flop",
+          "mtt"
+        ]
+      },
+      "sourceModifiedAt": "2025-03-29T06:45:19"
+    },
+    {
+      "source": "GTO Wizard Japan",
+      "sourceSlug": "gto-wizard-japan",
+      "sourceUrl": "https://japan.gtowizard.com/articles/",
+      "title": "ストラドルポットのプリフロップ戦略",
+      "originalUrl": "https://japan.gtowizard.com/blog/preflop-strategy-in-straddled-pots/",
+      "author": "Andrew Brokos",
+      "publishedAt": "2025-03-25T09:43:06",
+      "summary": "“ストラドル” は多くのゲームで取り入れられており、ブラインドではないプレイヤーが自発的にブラインドベットをポストする事を指します。これはブラインドと同じように機能し、もし他のプレイヤーがレイズしなかった場合、ストラドル&hellip;",
+      "language": "Japanese",
+      "imageUrl": "https://japan.gtowizard.com/wp-content/uploads/2025/03/twitter-1.png",
+      "contentType": "article",
+      "classification": {
+        "difficulty": "intermediate",
+        "tags": [
+          "preflop",
+          "flop"
+        ]
+      },
+      "sourceModifiedAt": "2025-03-25T01:43:08"
+    },
+    {
+      "source": "GTO Wizard Japan",
+      "sourceSlug": "gto-wizard-japan",
+      "sourceUrl": "https://japan.gtowizard.com/articles/",
+      "title": "ポーカープレイヤーの為の、認知バイアス克服ガイド – パート 2",
+      "originalUrl": "https://japan.gtowizard.com/blog/a-poker-players-guide-to-conquering-cognitive-biases-part-2/",
+      "author": "Barry Carter",
+      "publishedAt": "2025-03-19T15:57:54",
+      "summary": "以前、ギャンブルのバイアスがプレイに与える影響と確証バイアスがGTO Wizardを使って行うポーカーの勉強に悪影響を及ぼす可能性について書きました。今回のメンタルゲームシリーズの締めくくりに、確証バイアス以外のポーカー&hellip;",
+      "language": "Japanese",
+      "imageUrl": "https://japan.gtowizard.com/wp-content/uploads/2025/03/gto-wizard-more-cognitive-biases-holding-you-back-that-harm-your-poker-study-blogpost-thumbnail.png",
+      "contentType": "article",
+      "classification": {
+        "difficulty": "intermediate",
+        "tags": [
+          "gto"
+        ]
+      },
+      "sourceModifiedAt": "2025-03-19T08:03:59"
+    },
+    {
+      "source": "GTO Wizard Japan",
+      "sourceSlug": "gto-wizard-japan",
+      "sourceUrl": "https://japan.gtowizard.com/articles/",
+      "title": "ポーカープレイヤーの為の、認知バイアス克服ガイド – パート 1",
+      "originalUrl": "https://japan.gtowizard.com/blog/a-poker-players-guide-to-conquering-cognitive-biases-part-1/",
+      "author": "Barry Carter",
+      "publishedAt": "2025-03-19T15:57:43",
+      "summary": "確認バイアスに関する記事(英語) では、ギャンブル、特にポーカーにおいての決定に影響を与える多くの認知バイアスや誤解があることを述べました。これは、人間の脳がこのゲームで直面する分散(分散は、一連の数字が平均からどれだけ&hellip;",
+      "language": "Japanese",
+      "imageUrl": "https://japan.gtowizard.com/wp-content/uploads/2025/03/gto-wizard-the-gamblers-fallacy-and-other-poker-myths-debunked-blogpost-thumbnail.png",
+      "contentType": "article",
+      "classification": {
+        "difficulty": "intermediate",
+        "tags": []
+      },
+      "sourceModifiedAt": "2025-03-19T08:00:06"
+    },
+    {
+      "source": "GTO Wizard Japan",
+      "sourceSlug": "gto-wizard-japan",
+      "sourceUrl": "https://japan.gtowizard.com/articles/",
+      "title": "ターンでのプローブベット",
+      "originalUrl": "https://japan.gtowizard.com/blog/the-turn-probe-bet/",
+      "author": "Darren Wee",
+      "publishedAt": "2025-03-16T15:14:11",
+      "summary": "Cベットしない？ 100BBのキャッシュゲームで、BTN vs BB（自分）のSRPでフロップがT72rだとします。このボードはどちらのプレイヤーにとっても特別有利とも不利ともいえません。BB（自分）はまずチェックし相手&hellip;",
+      "language": "Japanese",
+      "imageUrl": "https://japan.gtowizard.com/wp-content/uploads/2025/03/gto-wizard-the-turn-probe-bet-blogpost-thumbnail.png",
+      "contentType": "article",
+      "classification": {
+        "difficulty": "intermediate",
+        "tags": [
+          "flop",
+          "turn",
+          "cash-game"
+        ]
+      },
+      "sourceModifiedAt": "2025-03-16T07:14:14"
+    },
+    {
+      "source": "GTO Wizard Japan",
+      "sourceSlug": "gto-wizard-japan",
+      "sourceUrl": "https://japan.gtowizard.com/articles/",
+      "title": "ショーダウンを買う",
+      "originalUrl": "https://japan.gtowizard.com/blog/buying-the-showdown/",
+      "author": "Andrew Brokos",
+      "publishedAt": "2025-03-08T17:47:27",
+      "summary": "この記事は、私のポッドキャスでMarkが「ショーダウンを買う」という考えについて議論したとこから生まれました。この考えは彼の説明によると、フロップでCベットをし、ターンでレンジの中間に位置するハンドでポジションを活かして&hellip;",
+      "language": "Japanese",
+      "imageUrl": "https://japan.gtowizard.com/wp-content/uploads/2025/03/gto-wizard-buying-the-showdown-blogpost-thumbnail.png",
+      "contentType": "article",
+      "classification": {
+        "difficulty": "intermediate",
+        "tags": [
+          "flop",
+          "turn"
+        ]
+      },
+      "sourceModifiedAt": "2025-03-08T09:47:31"
+    },
+    {
+      "source": "GTO Wizard Japan",
+      "sourceSlug": "gto-wizard-japan",
+      "sourceUrl": "https://japan.gtowizard.com/articles/",
+      "title": "セミブラフを正しく選ぶ",
+      "originalUrl": "https://japan.gtowizard.com/blog/picking-the-right-semi-bluffs/",
+      "author": "Barry Carter",
+      "publishedAt": "2025-02-28T12:30:31",
+      "summary": "読者の皆さんにはいつもお伝えしていることですが、私はプロポーカープレイヤーではありません。ソルバーに詳しいただのライターです。GTO Wizardで執筆している私の記事では、自身のリークを修正しようと勉強している「一人の&hellip;",
+      "language": "Japanese",
+      "imageUrl": "https://japan.gtowizard.com/wp-content/uploads/2025/02/gto-wizard-picking-the-right-semi-bluffs-blogpost-thumbnail.png",
+      "contentType": "article",
+      "classification": {
+        "difficulty": "intermediate",
+        "tags": [
+          "gto",
+          "bluff"
+        ]
+      },
+      "sourceModifiedAt": "2025-03-02T07:07:37"
+    },
+    {
+      "source": "GTO Wizard Japan",
+      "sourceSlug": "gto-wizard-japan",
+      "sourceUrl": "https://japan.gtowizard.com/articles/",
+      "title": "ハイパージオメトリック・ベット（Hypergeometric Bet）の威力",
+      "originalUrl": "https://japan.gtowizard.com/blog/the-power-of-the-hypergeometric-bet/",
+      "author": "David Chen",
+      "publishedAt": "2025-02-21T19:58:41",
+      "summary": "レンジが完全にポラライズ（バリューはエクイティ100%）されている場合、最適なベットサイズがジオメトリックサイズ（geometric size）だという事はよく知られているでしょう。ジオメトリックサイズとは、残りのストリ&hellip;",
+      "language": "Japanese",
+      "imageUrl": "https://japan.gtowizard.com/wp-content/uploads/2025/02/gto-wizard-the-power-of-the-hypergeometric-bet-image-blogpost-thumbnail.png",
+      "contentType": "article",
+      "classification": {
+        "difficulty": "intermediate",
+        "tags": []
+      },
+      "sourceModifiedAt": "2025-02-21T12:00:56"
+    },
+    {
+      "source": "GTO Wizard Japan",
+      "sourceSlug": "gto-wizard-japan",
+      "sourceUrl": "https://japan.gtowizard.com/articles/",
+      "title": "Cベットサイズのメカニズム",
+      "originalUrl": "https://japan.gtowizard.com/blog/the-mechanics-of-c-bet-sizing/",
+      "author": "Barry Carter",
+      "publishedAt": "2025-01-27T13:41:06",
+      "summary": "フロップでのCベットのサイズを決める要因はなんでしょうか？フォールドエクイティ、SPR、ドローのエクイティ、ポラライズ度合い、プロテクション、ナッツアドバンテージ、レンジアドバンテージでしょうか？ 一般的に、レンジアドバ&hellip;",
+      "language": "Japanese",
+      "imageUrl": "https://japan.gtowizard.com/wp-content/uploads/2025/01/gto-wizard-the-mechanics-of-c-bet-sizing-blogpost-thumbnail.png",
+      "contentType": "article",
+      "classification": {
+        "difficulty": "intermediate",
+        "tags": [
+          "flop"
+        ]
+      },
+      "sourceModifiedAt": "2025-01-27T05:41:09"
+    },
+    {
+      "source": "GTO Wizard Japan",
+      "sourceSlug": "gto-wizard-japan",
+      "sourceUrl": "https://japan.gtowizard.com/articles/",
+      "title": "マルチストリート・ブラフの数学",
+      "originalUrl": "https://japan.gtowizard.com/blog/the-math-of-multistreet-bluffs/",
+      "author": "Tombos21",
+      "publishedAt": "2025-01-13T13:10:12",
+      "summary": "[vc_row][vc_column][vc_column_text] マルチストリートブラフの数学 [/vc_column_text][/vc_column][/vc_row] [vc_row][vc_column w&hellip;",
+      "language": "Japanese",
+      "imageUrl": "https://japan.gtowizard.com/wp-content/uploads/2025/01/gto-wizard-the-math-of-multistreet-bluffs-blogpost-thumbnail.png",
+      "contentType": "article",
+      "classification": {
+        "difficulty": "intermediate",
+        "tags": [
+          "bluff"
+        ]
+      },
+      "sourceModifiedAt": "2026-08-08T06:16:51"
+    },
+    {
+      "source": "GTO Wizard Japan",
+      "sourceSlug": "gto-wizard-japan",
+      "sourceUrl": "https://japan.gtowizard.com/articles/",
+      "title": "ペイアウトストラクチャーがICMに与える影響",
+      "originalUrl": "https://japan.gtowizard.com/blog/how-payout-structures-impact-icm/",
+      "author": "Barry Carter",
+      "publishedAt": "2024-12-23T19:37:28",
+      "summary": "前回、ICMを考慮した際、参加人数によってどの程度タイトにプレイすべきか、あるいはルースにプレイすべきか、分散はどれくらいあるのか、賞金の期待値がどの程度変わるのかに注目しました。今回はICMを考慮&hellip;",
+      "language": "Japanese",
+      "imageUrl": "https://japan.gtowizard.com/wp-content/uploads/2024/12/1280x720-Blogpost-11-1.png",
+      "contentType": "article",
+      "classification": {
+        "difficulty": "intermediate",
+        "tags": [
+          "icm"
+        ]
+      },
+      "sourceModifiedAt": "2024-12-23T11:37:28"
+    },
+    {
+      "source": "GTO Wizard Japan",
+      "sourceSlug": "gto-wizard-japan",
+      "sourceUrl": "https://japan.gtowizard.com/articles/",
+      "title": "新しく習得したスキルの実戦での使い方",
+      "originalUrl": "https://japan.gtowizard.com/blog/using-new-skills-at-the-poker-table/",
+      "author": "Andrew Brokos",
+      "publishedAt": "2024-12-18T16:01:53",
+      "summary": "アクションをした直後に「ミスをしてしまった。本当はわかっていたはずなのに」と思ったことはありませんか？また、実際のプレイにこれまで学んできた知識をうまく実践で使いこなせていないなと感じたことはありませんか？ プレイしてい&hellip;",
+      "language": "Japanese",
+      "imageUrl": "https://japan.gtowizard.com/wp-content/uploads/2024/12/1280x720-Blogpost-10-1.png",
+      "contentType": "article",
+      "classification": {
+        "difficulty": "intermediate",
+        "tags": []
+      },
+      "sourceModifiedAt": "2025-02-06T02:50:05"
+    },
+    {
+      "source": "GTO Wizard Japan",
+      "sourceSlug": "gto-wizard-japan",
+      "sourceUrl": "https://japan.gtowizard.com/articles/",
+      "title": "ポーカーにおける最も強力なプレイ",
+      "originalUrl": "https://japan.gtowizard.com/blog/the-most-powerful-play-in-poker/",
+      "author": "Andrew Brokos",
+      "publishedAt": "2024-12-05T03:40:48",
+      "summary": "スタックサイズが影響する最も重要な概念は、プレイヤーが自分のスタック全てを賭けて利益を得るには、どれだけのエクイティが必要かということです。これはキャッシュゲームやトーナメントのチップの量、BBに対するスタックの大きさと&hellip;",
+      "language": "Japanese",
+      "imageUrl": "https://japan.gtowizard.com/wp-content/uploads/2024/12/1280x720-Blogpost.jpg",
+      "contentType": "article",
+      "classification": {
+        "difficulty": "intermediate",
+        "tags": [
+          "cash-game",
+          "mtt"
+        ]
+      },
+      "sourceModifiedAt": "2024-12-05T19:44:14"
+    },
+    {
+      "source": "GTO Wizard Japan",
+      "sourceSlug": "gto-wizard-japan",
+      "sourceUrl": "https://japan.gtowizard.com/articles/",
+      "title": "ポーカーのパフォーマンスの科学",
+      "originalUrl": "https://japan.gtowizard.com/blog/the-science-of-poker-performance/",
+      "author": "Tombos21",
+      "publishedAt": "2024-12-02T15:10:24",
+      "summary": "感情とポーカー ポーカーは分散の波に耐えながら少ないエッジを積み重ねて勝っていくゲームです。しかし想像しているよりも分散は大きく、プロでも苦しめられることがあります。この記事では、ティルトの根本的な原因、感情、メンタルゲ&hellip;",
+      "language": "Japanese",
+      "imageUrl": "https://japan.gtowizard.com/wp-content/uploads/2024/11/1920x1080-Blogpost-1.png",
+      "contentType": "article",
+      "classification": {
+        "difficulty": "intermediate",
+        "tags": []
+      },
+      "sourceModifiedAt": "2024-12-06T07:10:38"
+    },
+    {
+      "source": "GTO Wizard Japan",
+      "sourceSlug": "gto-wizard-japan",
+      "sourceUrl": "https://japan.gtowizard.com/articles/",
+      "title": "3ベットポット：OOPのCベット戦略",
+      "originalUrl": "https://japan.gtowizard.com/blog/c-betting-oop-in-3-bet-pots/",
+      "author": "Andrew Brokos",
+      "publishedAt": "2024-11-28T19:11:00",
+      "summary": "OOPからのCベットは時としてSRPでは危険な局面になります。フロップでコールドコールのレンジはプリフロップレイザーと同程度のエクイティを持っていることが多く、平均的なフロップではポジションによってコーラーの方が有利にな&hellip;",
+      "language": "Japanese",
+      "imageUrl": "https://japan.gtowizard.com/wp-content/uploads/2024/12/1280x720-Blogpost-9.png",
+      "contentType": "article",
+      "classification": {
+        "difficulty": "intermediate",
+        "tags": [
+          "preflop",
+          "flop"
+        ]
+      },
+      "sourceModifiedAt": "2025-09-17T10:31:12"
+    },
+    {
+      "source": "GTO Wizard Japan",
+      "sourceSlug": "gto-wizard-japan",
+      "sourceUrl": "https://japan.gtowizard.com/articles/",
+      "title": "3ベットポット：IPのCベット戦略",
+      "originalUrl": "https://japan.gtowizard.com/blog/c-betting-ip-in-3-bet-pots/",
+      "author": "Andrew Brokos",
+      "publishedAt": "2024-11-25T16:03:04",
+      "summary": "3ベットしたIPのプレイヤーはエクイティアドバンテージとポジションアドバンテージの両方を持っています。そのため、ほとんどのフロップでアグレッシブにプレイすることができ、エクイティを多く実現することができます。 プリフロッ&hellip;",
+      "language": "Japanese",
+      "imageUrl": "https://japan.gtowizard.com/wp-content/uploads/2024/11/1280x720-Blogpost-8-1.png",
+      "contentType": "article",
+      "classification": {
+        "difficulty": "intermediate",
+        "tags": [
+          "flop"
+        ]
+      },
+      "sourceModifiedAt": "2024-12-02T08:03:20"
+    },
+    {
+      "source": "GTO Wizard Japan",
+      "sourceSlug": "gto-wizard-japan",
+      "sourceUrl": "https://japan.gtowizard.com/articles/",
+      "title": "BBからのオーバーコール",
+      "originalUrl": "https://japan.gtowizard.com/blog/overcalling-from-the-bb/",
+      "author": "Andrew Brokos",
+      "publishedAt": "2024-11-18T15:59:50",
+      "summary": "[vc_row][vc_column][vc_column_text] BBからのオーバーコール [/vc_column_text][/vc_column][/vc_row][vc_row][vc_column widt&hellip;",
+      "language": "Japanese",
+      "imageUrl": "https://japan.gtowizard.com/wp-content/uploads/2024/11/1280x720-Blogpost-6-1.png",
+      "contentType": "article",
+      "classification": {
+        "difficulty": "intermediate",
+        "tags": []
+      },
+      "sourceModifiedAt": "2025-12-02T06:38:32"
+    },
+    {
+      "source": "GTO Wizard Japan",
+      "sourceSlug": "gto-wizard-japan",
+      "sourceUrl": "https://japan.gtowizard.com/articles/",
+      "title": "BBのスクイーズへの対応",
+      "originalUrl": "https://japan.gtowizard.com/blog/responding-to-bb-squeezes/",
+      "author": "Andrew Brokos",
+      "publishedAt": "2024-11-17T21:58:57",
+      "summary": "オープンし、誰かがコール、BBがスクイーズします。これに対してどのような戦略を構築するべきでしょうか? レイズとコールがあった場合、BBにとってリレイズは良い選択肢となります。すぐにポットを全て取れる可能性は低いですが、&hellip;",
+      "language": "Japanese",
+      "imageUrl": "https://japan.gtowizard.com/wp-content/uploads/2024/11/1280x720-Blogpost-5-1.png",
+      "contentType": "article",
+      "classification": {
+        "difficulty": "intermediate",
+        "tags": []
+      },
+      "sourceModifiedAt": "2024-11-17T13:58:59"
+    },
+    {
+      "source": "GTO Wizard Japan",
+      "sourceSlug": "gto-wizard-japan",
+      "sourceUrl": "https://japan.gtowizard.com/articles/",
+      "title": "キャッシュゲームにおけるフロップのオーバーベット",
+      "originalUrl": "https://japan.gtowizard.com/blog/overbetting-the-flop-in-cash-games/",
+      "author": "Madmanslime",
+      "publishedAt": "2024-11-11T09:34:00",
+      "summary": "オーバーベットはターンとリバーの分析がメインですが、フロップも均衡時にEVを大きく生み出す武器になる可能性があり、非常に利益的なエクスプロイトに繋がります。 この記事では、ポラライズしたフロップの戦略を構築するためのツー&hellip;",
+      "language": "Japanese",
+      "imageUrl": "https://japan.gtowizard.com/wp-content/uploads/2025/01/1280x720-Blogpost-4.png",
+      "contentType": "article",
+      "classification": {
+        "difficulty": "intermediate",
+        "tags": [
+          "flop",
+          "turn",
+          "river",
+          "exploit",
+          "cash-game"
+        ]
+      },
+      "sourceModifiedAt": "2025-10-19T14:03:57"
+    },
+    {
+      "source": "GTO Wizard Japan",
+      "sourceSlug": "gto-wizard-japan",
+      "sourceUrl": "https://japan.gtowizard.com/articles/",
+      "title": "BBからペアボードを攻略する",
+      "originalUrl": "https://japan.gtowizard.com/blog/attacking-paired-flops-from-the-bb/",
+      "author": "Andrew Brokos",
+      "publishedAt": "2024-11-07T07:42:15",
+      "summary": "ペアボードは、プリフロップレイザーとBBコーラーの双方とも独特な対応が必要になります。ペアやドローにはなりにくいので、両プレイヤーはボードに絡んでいないハンドでベットやレイズ、コールをする必要があり、他のボードのCベット&hellip;",
+      "language": "Japanese",
+      "imageUrl": "https://japan.gtowizard.com/wp-content/uploads/2025/02/1280x720-Blogpost-3.png",
+      "contentType": "article",
+      "classification": {
+        "difficulty": "intermediate",
+        "tags": [
+          "preflop",
+          "flop"
+        ]
+      },
+      "sourceModifiedAt": "2025-02-02T23:44:24"
+    },
+    {
+      "source": "GTO Wizard Japan",
+      "sourceSlug": "gto-wizard-japan",
+      "sourceUrl": "https://japan.gtowizard.com/articles/",
+      "title": "MTTのリンプポットでのBBの戦い方",
+      "originalUrl": "https://japan.gtowizard.com/blog/playing-limped-pots-as-the-bb-in-mtts/",
+      "author": "Andrew Brokos",
+      "publishedAt": "2024-11-04T07:55:43",
+      "summary": "プリフロップを考える リンプポットでのBBの戦略はプリフロップから始まります。BBの均衡戦略はどのスタックにおいても、非常に弱いオフスートを多く含むポラライズレイズレンジを使っています。このようなレイズをしないと、フロッ&hellip;",
+      "language": "Japanese",
+      "imageUrl": "https://japan.gtowizard.com/wp-content/uploads/2025/02/1280x720-Blogpost-2.png",
+      "contentType": "article",
+      "classification": {
+        "difficulty": "intermediate",
+        "tags": [
+          "preflop",
+          "flop",
+          "mtt"
+        ]
+      },
+      "sourceModifiedAt": "2025-02-02T23:57:51"
+    },
+    {
+      "source": "GTO Wizard Japan",
+      "sourceSlug": "gto-wizard-japan",
+      "sourceUrl": "https://japan.gtowizard.com/articles/",
+      "title": "ショートスタックでのAxのコール",
+      "originalUrl": "https://japan.gtowizard.com/blog/flatting-ace-x-hands-shortstacked/",
+      "author": "Andrew Brokos",
+      "publishedAt": "2024-10-31T10:19:27",
+      "summary": "OOPからプレイするのは難しいですが、特にトーナメントではそのような場面に多く遭遇します。アンティがあるため、プロフロップでの小さなレイズに対して簡単にブラインドを手放すわけにはいきません。スタックが少ない時、ソルバーは&hellip;",
+      "language": "Japanese",
+      "imageUrl": "https://japan.gtowizard.com/wp-content/uploads/2024/10/1280x720-Blogpost-1.png",
+      "contentType": "article",
+      "classification": {
+        "difficulty": "intermediate",
+        "tags": [
+          "flop",
+          "mtt"
+        ]
+      },
+      "sourceModifiedAt": "2024-11-18T03:25:35"
+    },
+    {
+      "source": "GTO Wizard Japan",
+      "sourceSlug": "gto-wizard-japan",
+      "sourceUrl": "https://japan.gtowizard.com/articles/",
+      "title": "MTTのリンプポットでのSBの戦い方",
+      "originalUrl": "https://japan.gtowizard.com/blog/playing-limped-pots-as-sb-in-mtts/",
+      "author": "Andrew Brokos",
+      "publishedAt": "2024-10-28T13:14:00",
+      "summary": "MTTのSB対BBは、ノーリミットプレイヤーを居心地の悪い状況に追い込み、SPRが高い状況で極端に弱いハンドをプレイさせます。この不慣れなスポットでは、ハンドを評価したり、どのプレイヤーがなぜアクションを起こすべきかを考&hellip;",
+      "language": "Japanese",
+      "imageUrl": "https://japan.gtowizard.com/wp-content/uploads/2024/11/1280x720-Blogpost.png",
+      "contentType": "article",
+      "classification": {
+        "difficulty": "intermediate",
+        "tags": [
+          "mtt"
+        ]
+      },
+      "sourceModifiedAt": "2025-01-27T05:47:31"
+    },
+    {
+      "source": "GTO Wizard Japan",
+      "sourceSlug": "gto-wizard-japan",
+      "sourceUrl": "https://japan.gtowizard.com/articles/",
+      "title": "ICMのブラインド対決【BB編】",
+      "originalUrl": "https://japan.gtowizard.com/blog/icm-and-blind-battles-the-big-blind/",
+      "author": "Andrew Brokos",
+      "publishedAt": "2024-10-24T04:40:30",
+      "summary": "この記事はICMのブラインド対決【SB編】の続編です。前回は、ICMによって両プレイヤーは大きいポットを避けるようになるが、BBの方が早いストリートでポットを大きくしやすいと述べました。ポジションがあることでブラフを打ち&hellip;",
+      "language": "Japanese",
+      "imageUrl": "https://japan.gtowizard.com/wp-content/uploads/2024/10/1280x720-Blogpost-29.jpg",
+      "contentType": "article",
+      "classification": {
+        "difficulty": "intermediate",
+        "tags": [
+          "icm",
+          "bluff"
+        ]
+      },
+      "sourceModifiedAt": "2024-10-27T20:56:41"
+    },
+    {
+      "source": "GTO Wizard Japan",
+      "sourceSlug": "gto-wizard-japan",
+      "sourceUrl": "https://japan.gtowizard.com/articles/",
+      "title": "ICMのブラインド対決【SB編】",
+      "originalUrl": "https://japan.gtowizard.com/blog/icm-and-blind-battles-the-small-blind/",
+      "author": "Andrew Brokos",
+      "publishedAt": "2024-10-21T04:30:00",
+      "summary": "トーナメントではICMによってアクションが保守的になるので、リスクプレミアムが高くなる局面では、ブラインドまで皆フォールドすることが多々あります。そのため、ICMプレッシャーが強いSB対BBの戦略を学ぶことは非常に重要で&hellip;",
+      "language": "Japanese",
+      "imageUrl": "https://japan.gtowizard.com/wp-content/uploads/2024/10/1280x720-Blogpost-28.jpg",
+      "contentType": "article",
+      "classification": {
+        "difficulty": "intermediate",
+        "tags": [
+          "icm",
+          "mtt"
+        ]
+      },
+      "sourceModifiedAt": "2024-10-27T20:38:14"
+    },
+    {
+      "source": "GTO Wizard Japan",
+      "sourceSlug": "gto-wizard-japan",
+      "sourceUrl": "https://japan.gtowizard.com/articles/",
+      "title": "フロップ戦略：キャッシュゲームでのIPのCベット",
+      "originalUrl": "https://japan.gtowizard.com/blog/flop-heuristics-ip-c-betting-in-cash-games/",
+      "author": "Madmanslime",
+      "publishedAt": "2024-10-17T20:11:00",
+      "summary": "BTNがオープンし、BBがコール。ディーラーが3枚のコミュニティカードを配ります。KT3rのフロップでBBが20秒間考えチェック、BTNはどうするべきか。 この記事では、BBに対する様々なIPからのCベット戦略を見ていき&hellip;",
+      "language": "Japanese",
+      "imageUrl": "https://japan.gtowizard.com/wp-content/uploads/2024/10/1280x720-Blogpost-27-1.jpg",
+      "contentType": "article",
+      "classification": {
+        "difficulty": "intermediate",
+        "tags": [
+          "flop",
+          "cash-game"
+        ]
+      },
+      "sourceModifiedAt": "2024-10-27T19:01:47"
+    },
+    {
+      "source": "GTO Wizard Japan",
+      "sourceSlug": "gto-wizard-japan",
+      "sourceUrl": "https://japan.gtowizard.com/articles/",
+      "title": "フロップ戦略：MTTでのOOPからのCベット",
+      "originalUrl": "https://japan.gtowizard.com/blog/flop-heuristics-oop-c-betting-in-mtts/",
+      "author": "Andrew Brokos",
+      "publishedAt": "2024-10-14T16:51:24",
+      "summary": "IPのコールドコーラーに対するプレイは、ブラインドからのコーラーに対するプレイとは異なり、かなり難しくなります。ブラインドのコーラーに対するようなレンジアドバンテージはなく、自分のポジションとコーラーのポジションによって&hellip;",
+      "language": "Japanese",
+      "imageUrl": "https://japan.gtowizard.com/wp-content/uploads/2024/10/1280x720-Blogpost-26-1.jpg",
+      "contentType": "article",
+      "classification": {
+        "difficulty": "intermediate",
+        "tags": [
+          "flop",
+          "mtt"
+        ]
+      },
+      "sourceModifiedAt": "2024-10-20T11:32:20"
+    },
+    {
+      "source": "GTO Wizard Japan",
+      "sourceSlug": "gto-wizard-japan",
+      "sourceUrl": "https://japan.gtowizard.com/articles/",
+      "title": "ソルバーの仕組み",
+      "originalUrl": "https://japan.gtowizard.com/blog/how-solvers-work/",
+      "author": "Tombos21",
+      "publishedAt": "2024-10-11T12:05:31",
+      "summary": "GTOソルバーは、可能な限り最も優れたポーカー戦略を計算するアルゴリズムです。しかし、ソルバーは一体どのように動いているのでしょうか。どのように最も優れた戦略を計算しているのでしょうか。 この記事では、ソルバーがどのよう&hellip;",
+      "language": "Japanese",
+      "imageUrl": "https://japan.gtowizard.com/wp-content/uploads/2024/08/1440x810-Blogpost-3-2.jpg",
+      "contentType": "article",
+      "classification": {
+        "difficulty": "intermediate",
+        "tags": [
+          "gto"
+        ]
+      },
+      "sourceModifiedAt": "2024-10-13T06:27:03"
+    },
+    {
+      "source": "GTO Wizard Japan",
+      "sourceSlug": "gto-wizard-japan",
+      "sourceUrl": "https://japan.gtowizard.com/articles/",
+      "title": "フロップ戦略：MTTにおけるブラインドディフェンス",
+      "originalUrl": "https://japan.gtowizard.com/blog/flop-heuristics-for-defending-the-blinds-in-mtts/",
+      "author": "Andrew Brokos",
+      "publishedAt": "2024-10-10T18:22:56",
+      "summary": "GTOポーカーは非常に膨大なため、戦略を簡略化するために、私たちはよく法則のようなものや経験則に頼ります。この記事では、GTO Wizardの集合レポートを利用して、トーナメントにおけるブラインドディフェンスに役立つ法則&hellip;",
+      "language": "Japanese",
+      "imageUrl": "https://japan.gtowizard.com/wp-content/uploads/2024/10/1280x720-Blogpost-25-1.jpg",
+      "contentType": "article",
+      "classification": {
+        "difficulty": "intermediate",
+        "tags": [
+          "flop",
+          "gto",
+          "mtt"
+        ]
+      },
+      "sourceModifiedAt": "2024-10-20T10:40:44"
+    },
+    {
+      "source": "GTO Wizard Japan",
+      "sourceSlug": "gto-wizard-japan",
+      "sourceUrl": "https://japan.gtowizard.com/articles/",
+      "title": "フロップ戦略：MTTにおけるIPのコールドコール",
+      "originalUrl": "https://japan.gtowizard.com/blog/flop-heuristics-ip-cold-caller-in-mtts/",
+      "author": "Andrew Brokos",
+      "publishedAt": "2024-10-03T22:09:00",
+      "summary": "コールドコールとは、プリフロップのレイズに対して、後ろにまだプレイヤーが残っていて、ポットに自分がベットしていない時にコールする行為を指します。この記事では、MTTで40BB持っているBTNがEPのオープンに対してコール&hellip;",
+      "language": "Japanese",
+      "imageUrl": "https://japan.gtowizard.com/wp-content/uploads/2024/10/1280x720-Blogpost-23.jpg",
+      "contentType": "article",
+      "classification": {
+        "difficulty": "intermediate",
+        "tags": [
+          "preflop",
+          "flop",
+          "mtt"
+        ]
+      },
+      "sourceModifiedAt": "2024-10-20T20:18:44"
+    },
+    {
+      "source": "GTO Wizard Japan",
+      "sourceSlug": "gto-wizard-japan",
+      "sourceUrl": "https://japan.gtowizard.com/articles/",
+      "title": "GTOの進化：ダイナミックサイジング",
+      "originalUrl": "https://japan.gtowizard.com/blog/dynamic-sizing-a-gto-breakthrough/",
+      "author": "Tombos21",
+      "publishedAt": "2024-09-26T19:03:00",
+      "summary": "ダイナミックサイジングとは、それぞれの局面で最もEVの高いベットサイズで自動的に戦略を簡単にする、画期的で新しいポーカーアルゴリズムのことです！ シンプルな戦略をうまくプレイすれば、複雑な戦略を下手にプレイする場合より成&hellip;",
+      "language": "Japanese",
+      "imageUrl": "https://japan.gtowizard.com/wp-content/uploads/2024/10/1280x720-Blogpost-27-1.png",
+      "contentType": "article",
+      "classification": {
+        "difficulty": "intermediate",
+        "tags": [
+          "gto"
+        ]
+      },
+      "sourceModifiedAt": "2024-10-20T11:04:13"
+    },
+    {
+      "source": "GTO Wizard Japan",
+      "sourceSlug": "gto-wizard-japan",
+      "sourceUrl": "https://japan.gtowizard.com/articles/",
+      "title": "ダイナミックサイジングのベンチマーク",
+      "originalUrl": "https://japan.gtowizard.com/blog/dynamic-sizing-benchmarks/",
+      "author": "Tombos21",
+      "publishedAt": "2024-09-23T15:44:00",
+      "summary": "ダイナミックサイジングとは、それぞれの局面で最もEVの高いベットサイズで自動的に戦略を簡単にする画期的で新しいポーカーアルゴリズムのことです！ダイナミックサイジングは、機械学習アルゴリズム（詳しくはこちらの記事）を使って&hellip;",
+      "language": "Japanese",
+      "imageUrl": "https://japan.gtowizard.com/wp-content/uploads/2024/10/dynamic.png",
+      "contentType": "article",
+      "classification": {
+        "difficulty": "intermediate",
+        "tags": []
+      },
+      "sourceModifiedAt": "2024-10-20T08:05:10"
+    },
+    {
+      "source": "GTO Wizard Japan",
+      "sourceSlug": "gto-wizard-japan",
+      "sourceUrl": "https://japan.gtowizard.com/articles/",
+      "title": "サブセットと抽象化",
+      "originalUrl": "https://japan.gtowizard.com/blog/poker-subsets-and-abstractions/",
+      "author": "Tombos21",
+      "publishedAt": "2024-09-16T22:19:22",
+      "summary": "ノーリミットホールデムは非常に複雑なゲームです。このゲームを本当の意味で正しく表すには、宇宙に存在する原子よりも多くのノードが必要です。そのため、世界中のプレイヤーは、ポーカーを解析するのに必要な計算量を最小限にするため&hellip;",
+      "language": "Japanese",
+      "imageUrl": "https://japan.gtowizard.com/wp-content/uploads/2024/10/1920x1080-Blogpost-28-1.png",
+      "contentType": "article",
+      "classification": {
+        "difficulty": "intermediate",
+        "tags": []
+      },
+      "sourceModifiedAt": "2024-10-20T14:20:33"
+    },
+    {
+      "source": "GTO Wizard Japan",
+      "sourceSlug": "gto-wizard-japan",
+      "sourceUrl": "https://japan.gtowizard.com/articles/",
+      "title": "GTO Wizard AIと他のツールとの比較",
+      "originalUrl": "https://japan.gtowizard.com/blog/gto-wizard-ai-benchmarks/",
+      "author": "GTO Wizard",
+      "publishedAt": "2024-09-16T16:04:01",
+      "summary": "GTO Wizardは人工知能と従来の解法を組み合わせることで、これまでにない高品質のGTOソリューションを驚異的な速さで提供しています。何時間もかかっていた計算が、ブラウザから数秒でできるようになっています。 これを聞&hellip;",
+      "language": "Japanese",
+      "imageUrl": "https://japan.gtowizard.com/wp-content/uploads/2024/09/1280x720-Blogpost-28.png",
+      "contentType": "article",
+      "classification": {
+        "difficulty": "intermediate",
+        "tags": [
+          "gto"
+        ]
+      },
+      "sourceModifiedAt": "2024-10-20T06:51:57"
+    },
+    {
+      "source": "GTO Wizard Japan",
+      "sourceSlug": "gto-wizard-japan",
+      "sourceUrl": "https://japan.gtowizard.com/articles/",
+      "title": "【チップリーダーを極める】メスと大きなハンマー",
+      "originalUrl": "https://japan.gtowizard.com/blog/mastering-the-chiplead-the-scalpel-and-the-sledgehammer/",
+      "author": "Andrew Brokos",
+      "publishedAt": "2024-09-12T22:28:00",
+      "summary": "ファイナルテーブルやバブルファクターの強い場面で多くのチップを持っている場合、非常に良い状況と言えます。それはチップをたくさん持っているからシンプルに有利というだけでなく、他のプレイヤーをカバーすることで、自分に対してオ&hellip;",
+      "language": "Japanese",
+      "imageUrl": "https://japan.gtowizard.com/wp-content/uploads/2024/10/1280x720-Blogpost-22.jpg",
+      "contentType": "article",
+      "classification": {
+        "difficulty": "intermediate",
+        "tags": []
+      },
+      "sourceModifiedAt": "2024-10-20T14:32:39"
+    },
+    {
+      "source": "GTO Wizard Japan",
+      "sourceSlug": "gto-wizard-japan",
+      "sourceUrl": "https://japan.gtowizard.com/articles/",
+      "title": "ICMによってPKOの戦略はどう変わるのか",
+      "originalUrl": "https://japan.gtowizard.com/blog/how-does-icm-impact-pko-strategy/",
+      "author": "Barry Carter",
+      "publishedAt": "2024-09-10T20:49:38",
+      "summary": "PKOトーナメント戦略を読んだ方は、なぜPKOでは通常のMTTよりも広いレンジでプレイできるのかすでに知っていると思います。特にこの効果は、バブルファクターが1を下回るPKOの開始時に最も顕著に現れます（通常のMTTでは&hellip;",
+      "language": "Japanese",
+      "imageUrl": "https://japan.gtowizard.com/wp-content/uploads/2024/09/1280x720-Blogpost-21.jpg",
+      "contentType": "article",
+      "classification": {
+        "difficulty": "intermediate",
+        "tags": [
+          "icm",
+          "mtt"
+        ]
+      },
+      "sourceModifiedAt": "2024-10-11T12:29:05"
+    },
+    {
+      "source": "GTO Wizard Japan",
+      "sourceSlug": "gto-wizard-japan",
+      "sourceUrl": "https://japan.gtowizard.com/articles/",
+      "title": "ICMにおけるレイトレジストのメリット",
+      "originalUrl": "https://japan.gtowizard.com/blog/the-icm-benefits-of-late-registration-in-poker-tournaments/",
+      "author": "Barry Carter",
+      "publishedAt": "2024-09-06T16:02:24",
+      "summary": "多くのプロポーカープレイヤーは、スタックが大きいほど有利になるにも関わらず、なぜトーナメントに遅れて参加するのでしょうか。実は遅れて参加することで、ICMエクイティを多く獲得することができます。この記事では、トーナメント&hellip;",
+      "language": "Japanese",
+      "imageUrl": "https://japan.gtowizard.com/wp-content/uploads/2024/09/1280x720-Blogpost-18.jpg",
+      "contentType": "article",
+      "classification": {
+        "difficulty": "intermediate",
+        "tags": [
+          "icm",
+          "mtt"
+        ]
+      },
+      "sourceModifiedAt": "2024-10-03T08:03:22"
+    },
+    {
+      "source": "GTO Wizard Japan",
+      "sourceSlug": "gto-wizard-japan",
+      "sourceUrl": "https://japan.gtowizard.com/articles/",
+      "title": "ICMがブラインド戦略にどのような影響を与えるか",
+      "originalUrl": "https://japan.gtowizard.com/blog/how-icm-impacts-restealing-from-the-blinds/",
+      "author": "Andrew Brokos",
+      "publishedAt": "2024-09-02T18:22:12",
+      "summary": "私がプリフロップのソルバー分析を始めたころに、最も印象的だった特徴の一つに、比較的小さいポットへの大きなプリフロップオールインがあります。ソルバーが登場する前は珍しくはありませんでしたが、このような巨大なオールインは、ポ&hellip;",
+      "language": "Japanese",
+      "imageUrl": "https://japan.gtowizard.com/wp-content/uploads/2024/10/1280x720-Blogpost-20-1.jpg",
+      "contentType": "article",
+      "classification": {
+        "difficulty": "intermediate",
+        "tags": [
+          "preflop",
+          "flop",
+          "icm"
+        ]
+      },
+      "sourceModifiedAt": "2025-09-19T10:55:26"
+    },
+    {
+      "source": "GTO Wizard Japan",
+      "sourceSlug": "gto-wizard-japan",
+      "sourceUrl": "https://japan.gtowizard.com/articles/",
+      "title": "ファイナルテーブルでの交渉術",
+      "originalUrl": "https://japan.gtowizard.com/blog/how-to-negotiate-final-table-deals/",
+      "author": "Barry Carter",
+      "publishedAt": "2024-08-26T00:05:35",
+      "summary": "インディペンデント・チップ・モデル（ICM)という言葉を耳にするのは、バブル付近のプレイや終盤のレンジを研究する時ではなく、大きなトーナメントのファイナルテーブルで初めて進出した時です。この時初めてディールができるように&hellip;",
+      "language": "Japanese",
+      "imageUrl": "https://japan.gtowizard.com/wp-content/uploads/2024/08/1280x720-Blogpost-14-1.jpg",
+      "contentType": "article",
+      "classification": {
+        "difficulty": "intermediate",
+        "tags": [
+          "icm",
+          "mtt"
+        ]
+      },
+      "sourceModifiedAt": "2024-12-17T11:28:09"
+    },
+    {
+      "source": "GTO Wizard Japan",
+      "sourceSlug": "gto-wizard-japan",
+      "sourceUrl": "https://japan.gtowizard.com/articles/",
+      "title": "トーナメントでICMはどこから重要になるのか",
+      "originalUrl": "https://japan.gtowizard.com/blog/when-does-icm-become-significant-in-mtts/",
+      "author": "Tombos21",
+      "publishedAt": "2024-08-24T05:10:00",
+      "summary": "ICMはポーカーにおけるトーナメント戦略を理解する上で最も重要な公式の一つです。この概念は1987年にM.Malmuthによって考案されましたが、その概念を正確に使えるようになるまで35年近くかかりました… &hellip;",
+      "language": "Japanese",
+      "imageUrl": "https://japan.gtowizard.com/wp-content/uploads/2024/10/1280x720-Blogpost-23.png",
+      "contentType": "article",
+      "classification": {
+        "difficulty": "intermediate",
+        "tags": [
+          "icm",
+          "mtt"
+        ]
+      },
+      "sourceModifiedAt": "2024-10-20T21:18:58"
+    },
+    {
+      "source": "GTO Wizard Japan",
+      "sourceSlug": "gto-wizard-japan",
+      "sourceUrl": "https://japan.gtowizard.com/articles/",
+      "title": "PKOでのテーブルマネジメント",
+      "originalUrl": "https://japan.gtowizard.com/blog/table-management-in-pkos/",
+      "author": "Barry Carter",
+      "publishedAt": "2024-08-22T04:23:00",
+      "summary": "おそらく、PKOで最も戦略的に重要なのは相手を確実にカバーすることです。相手をカバーしなければバウンティを獲得することはできません。つまり、相手をカバーできるようになるには大きなリスクを冒さなければならない場合もあり、チ&hellip;",
+      "language": "Japanese",
+      "imageUrl": "https://japan.gtowizard.com/wp-content/uploads/2024/10/1280x720-Blogpost-22.png",
+      "contentType": "article",
+      "classification": {
+        "difficulty": "intermediate",
+        "tags": []
+      },
+      "sourceModifiedAt": "2024-10-20T20:29:27"
+    },
+    {
+      "source": "GTO Wizard Japan",
+      "sourceSlug": "gto-wizard-japan",
+      "sourceUrl": "https://japan.gtowizard.com/articles/",
+      "title": "エクスプロイト",
+      "originalUrl": "https://japan.gtowizard.com/blog/exploitative-dynamics/",
+      "author": "Andrew Brokos",
+      "publishedAt": "2024-08-19T10:53:57",
+      "summary": "GTOソリューションは、相手がどのようなプレイをしようとも、それなりに上手くプレイすることができ、エクスプロイトされないように設計されています。これは、最善のアクションがある場合、相手がそのプレイをすると仮定することで達&hellip;",
+      "language": "Japanese",
+      "imageUrl": "https://japan.gtowizard.com/wp-content/uploads/2024/07/1280x720-Blogpost-8.jpg",
+      "contentType": "article",
+      "classification": {
+        "difficulty": "intermediate",
+        "tags": [
+          "gto",
+          "exploit"
+        ]
+      },
+      "sourceModifiedAt": "2024-08-26T02:54:44"
+    },
+    {
+      "source": "GTO Wizard Japan",
+      "sourceSlug": "gto-wizard-japan",
+      "sourceUrl": "https://japan.gtowizard.com/articles/",
+      "title": "GTOの原則",
+      "originalUrl": "https://japan.gtowizard.com/blog/principles-of-gto/",
+      "author": "Andrew Brokos",
+      "publishedAt": "2024-08-12T16:29:05",
+      "summary": "エクスプロイトとGTOの枠組み ゲーム理論、またはGTO（Game Theoretically Optimalの略）は、従うか従わないかの厳格なルールとしてではなく、ポーカーについて考え、相手の行動を予測し、自分の意思決&hellip;",
+      "language": "Japanese",
+      "imageUrl": "https://japan.gtowizard.com/wp-content/uploads/2024/08/1440x810-Blogpost-2-1.jpg",
+      "contentType": "article",
+      "classification": {
+        "difficulty": "intermediate",
+        "tags": [
+          "gto",
+          "exploit"
+        ]
+      },
+      "sourceModifiedAt": "2024-08-14T09:15:26"
+    },
+    {
+      "source": "GTO Wizard Japan",
+      "sourceSlug": "gto-wizard-japan",
+      "sourceUrl": "https://japan.gtowizard.com/articles/",
+      "title": "ICMにおける参加人数の影響を理解する",
+      "originalUrl": "https://japan.gtowizard.com/blog/understanding-the-impact-of-field-size-on-icm-in-poker/",
+      "author": "Barry Carter",
+      "publishedAt": "2024-08-08T21:06:12",
+      "summary": "MTTを選ぶ際、多くのプレイヤーはレクリエーションプレイヤーの数やギャランティ賞金を気にしますが、参加人数はあまり考慮されません。参加人数はトーナメントを選ぶ上で最も重要な指標であり、終盤のICM戦略で非常に重要になって&hellip;",
+      "language": "Japanese",
+      "imageUrl": "https://japan.gtowizard.com/wp-content/uploads/2024/08/1280x720-Blogpost-20-1.png",
+      "contentType": "article",
+      "classification": {
+        "difficulty": "intermediate",
+        "tags": [
+          "icm",
+          "mtt"
+        ]
+      },
+      "sourceModifiedAt": "2024-09-16T11:16:02"
+    },
+    {
+      "source": "GTO Wizard Japan",
+      "sourceSlug": "gto-wizard-japan",
+      "sourceUrl": "https://japan.gtowizard.com/articles/",
+      "title": "直感に反するコール",
+      "originalUrl": "https://japan.gtowizard.com/blog/counterintuitive-calls/",
+      "author": "Andrew Brokos",
+      "publishedAt": "2024-08-05T16:06:57",
+      "summary": "GTO Wizardが提供するソルバーの出力は、ノーリミットホールデムのモデルであり、実際のポーカーの状況での完璧な戦略ではありません。ポーカーを研究し、その根本的な戦略原理をよりよく理解するための道具として考えるのが一&hellip;",
+      "language": "Japanese",
+      "imageUrl": "https://japan.gtowizard.com/wp-content/uploads/2024/08/1280x720-Blogpost-19-1.png",
+      "contentType": "article",
+      "classification": {
+        "difficulty": "intermediate",
+        "tags": [
+          "gto"
+        ]
+      },
+      "sourceModifiedAt": "2024-08-25T17:00:10"
+    },
+    {
+      "source": "GTO Wizard Japan",
+      "sourceSlug": "gto-wizard-japan",
+      "sourceUrl": "https://japan.gtowizard.com/articles/",
+      "title": "トーナメントにおけるバブルファクターとは",
+      "originalUrl": "https://japan.gtowizard.com/blog/what-is-the-bubble-factor-in-poker-tournaments/",
+      "author": "Barry Carter",
+      "publishedAt": "2024-08-01T22:04:35",
+      "summary": "ICM(インディペンデント・チップ・モデル)を使えば、トーナメントでの決断が金銭的に与える影響を明確に理解することができます。ICMは戦略を構築する上で重要で、タイトにプレイすべきかアグレッシブにプレイすべきかを知ること&hellip;",
+      "language": "Japanese",
+      "imageUrl": "https://japan.gtowizard.com/wp-content/uploads/2024/08/1280x720-Blogpost-13-1.jpg",
+      "contentType": "article",
+      "classification": {
+        "difficulty": "intermediate",
+        "tags": [
+          "icm",
+          "mtt"
+        ]
+      },
+      "sourceModifiedAt": "2025-09-18T08:57:54"
+    },
+    {
+      "source": "GTO Wizard Japan",
+      "sourceSlug": "gto-wizard-japan",
+      "sourceUrl": "https://japan.gtowizard.com/articles/",
+      "title": "ブロッカーを使いこなす",
+      "originalUrl": "https://japan.gtowizard.com/blog/understanding-blockers-in-poker/",
+      "author": "Madmanslime",
+      "publishedAt": "2024-07-29T17:10:00",
+      "summary": "ソルバーが出したレンジをみると、以下のようなことを思ったことはないでしょうか。 どれも素晴らしい疑問です！これらの答えはブロッカーが関係していることが多いです。 この記事では、ブロッカーとは何か、ブロッカーが戦略にどのよ&hellip;",
+      "language": "Japanese",
+      "imageUrl": "https://japan.gtowizard.com/wp-content/uploads/2024/07/1280x720-Blogpost-12-1.jpg",
+      "contentType": "article",
+      "classification": {
+        "difficulty": "intermediate",
+        "tags": []
+      },
+      "sourceModifiedAt": "2024-08-18T14:44:12"
+    },
+    {
+      "source": "GTO Wizard Japan",
+      "sourceSlug": "gto-wizard-japan",
+      "sourceUrl": "https://japan.gtowizard.com/articles/",
+      "title": "PKOトーナメントにおけるマルチウェイ戦略",
+      "originalUrl": "https://japan.gtowizard.com/blog/multiway-strategy-in-progressive-knockout-tournaments/",
+      "author": "Barry Carter",
+      "publishedAt": "2024-07-25T21:45:26",
+      "summary": "プログレッシブノックアウト(PKO)トーナメントは、従来のMTTよりもはるかに複雑です。プレイヤーはバウンティを獲得するために分散が大きいプレイをするため、トーナメントが複雑でわからないことが多いです。特にプレイヤーが苦&hellip;",
+      "language": "Japanese",
+      "imageUrl": "https://japan.gtowizard.com/wp-content/uploads/2024/08/1280x720-Blogpost-11-1.jpg",
+      "contentType": "article",
+      "classification": {
+        "difficulty": "intermediate",
+        "tags": [
+          "mtt"
+        ]
+      },
+      "sourceModifiedAt": "2024-08-07T13:45:46"
+    },
+    {
+      "source": "GTO Wizard Japan",
+      "sourceSlug": "gto-wizard-japan",
+      "sourceUrl": "https://japan.gtowizard.com/articles/",
+      "title": "マルチウェイポットでの10のヒント",
+      "originalUrl": "https://japan.gtowizard.com/blog/10-tips-multiway-pots-in-poker/",
+      "author": "Tombos21",
+      "publishedAt": "2024-07-19T01:47:30",
+      "summary": "ヘッズアップの戦略については多くの研究がされていますが、マルチウェイポットについてはまだあまり研究がされていません。マット・ハントは、彼のマルチウェイコース「Three’s A Crowd」の中で次のように述&hellip;",
+      "language": "Japanese",
+      "imageUrl": "https://japan.gtowizard.com/wp-content/uploads/2024/07/1280x720-Blogpost-7.jpg",
+      "contentType": "article",
+      "classification": {
+        "difficulty": "intermediate",
+        "tags": []
+      },
+      "sourceModifiedAt": "2024-10-20T06:48:58"
+    },
+    {
+      "source": "GTO Wizard Japan",
+      "sourceSlug": "gto-wizard-japan",
+      "sourceUrl": "https://japan.gtowizard.com/articles/",
+      "title": "トーナメントとキャッシュゲームの戦略の違い",
+      "originalUrl": "https://japan.gtowizard.com/blog/poker-strategies-tournaments-vs-cash-games/",
+      "author": "Andrew Brokos",
+      "publishedAt": "2024-07-15T18:49:00",
+      "summary": "トーナメントとキャッシュゲームの戦略のほとんどは同じです。ハンドリーディング、バリューベット、ハンドクラスといった重要な考え方はどちらにも当てはまります。ICMを除けば、基本的なポーカーの理論を理解していれば、どちらでも&hellip;",
+      "language": "Japanese",
+      "imageUrl": "https://japan.gtowizard.com/wp-content/uploads/2024/08/1280x720-Blogpost-10-1.jpg",
+      "contentType": "article",
+      "classification": {
+        "difficulty": "beginner",
+        "tags": [
+          "icm",
+          "cash-game",
+          "mtt"
+        ]
+      },
+      "sourceModifiedAt": "2024-08-07T12:53:03"
+    },
+    {
+      "source": "GTO Wizard Japan",
+      "sourceSlug": "gto-wizard-japan",
+      "sourceUrl": "https://japan.gtowizard.com/articles/",
+      "title": "PKOトーナメント戦略",
+      "originalUrl": "https://japan.gtowizard.com/blog/the-theory-of-progressive-knockout-tournaments/",
+      "author": "Tombos21",
+      "publishedAt": "2024-07-11T18:05:02",
+      "summary": "ポーカーにおける、PKO（プログレッシブノックアウト）トーナメントとは、バイインの一部が各プレイヤーのバウンティに充てられるトーナメントの一種です。 PKOトーナメントでは、プレイヤーが他のプレイヤーを飛ばした場合、飛ば&hellip;",
+      "language": "Japanese",
+      "imageUrl": "https://japan.gtowizard.com/wp-content/uploads/2024/08/1280x720-Blogpost-9-1.jpg",
+      "contentType": "article",
+      "classification": {
+        "difficulty": "intermediate",
+        "tags": [
+          "mtt"
+        ]
+      },
+      "sourceModifiedAt": "2024-10-30T15:09:19"
+    },
+    {
+      "source": "GTO Wizard Japan",
+      "sourceSlug": "gto-wizard-japan",
+      "sourceUrl": "https://japan.gtowizard.com/articles/",
+      "title": "レバレッジとは何か",
+      "originalUrl": "https://japan.gtowizard.com/blog/what-is-leverage-in-poker/",
+      "author": "Andrew Brokos",
+      "publishedAt": "2024-07-04T19:24:51",
+      "summary": "レバレッジとは、後のストリートでベットされるリスクのことを言います。フロップやターンでコールしても必ずショーダウンまでいけるとは限りません。オッズがよくても後のストリートで失うEVを考慮してフォールドした方が良い場面でレ&hellip;",
+      "language": "Japanese",
+      "imageUrl": "https://japan.gtowizard.com/wp-content/uploads/2024/06/1920x1080-Blogpost-25-1.png",
+      "contentType": "article",
+      "classification": {
+        "difficulty": "intermediate",
+        "tags": [
+          "flop",
+          "turn"
+        ]
+      },
+      "sourceModifiedAt": "2024-07-09T07:59:39"
+    },
+    {
+      "source": "GTO Wizard Japan",
+      "sourceSlug": "gto-wizard-japan",
+      "sourceUrl": "https://japan.gtowizard.com/articles/",
+      "title": "バロー（valor）とは",
+      "originalUrl": "https://japan.gtowizard.com/blog/what-is-valor-in-poker/",
+      "author": "Elijah",
+      "publishedAt": "2024-07-02T01:22:27",
+      "summary": "バローとは バロー（valor）とは元々戦場での騎士の勇敢さを表す言葉として使われていましたが、ゼニスポーカーがこのバローという言葉をポーカーに取り入れました🎖 バローとは、後のストリートでバリューでベットやレイズができ&hellip;",
+      "language": "Japanese",
+      "imageUrl": "https://japan.gtowizard.com/wp-content/uploads/2024/06/1920x1080-Blogpost-24.png",
+      "contentType": "article",
+      "classification": {
+        "difficulty": "intermediate",
+        "tags": []
+      },
+      "sourceModifiedAt": "2024-07-01T17:22:32"
+    },
+    {
+      "source": "GTO Wizard Japan",
+      "sourceSlug": "gto-wizard-japan",
+      "sourceUrl": "https://japan.gtowizard.com/articles/",
+      "title": "どのミスが一番お金を失うか",
+      "originalUrl": "https://japan.gtowizard.com/blog/understanding-which-mistakes-cost-you-the-most-money/",
+      "author": "Barry Carter",
+      "publishedAt": "2024-06-28T17:31:00",
+      "summary": "幸運なことに、私はTheMentalGameofPokerの共著者であるJaredTendlerと長年仕事をすることができました。彼が私にくれたすべてのアドバイスの中で、何を勉強すればよいか分からなかった時期にもらったア&hellip;",
+      "language": "Japanese",
+      "imageUrl": "https://japan.gtowizard.com/wp-content/uploads/2024/08/1280x720-Blogpost-18-1.png",
+      "contentType": "article",
+      "classification": {
+        "difficulty": "intermediate",
+        "tags": []
+      },
+      "sourceModifiedAt": "2024-08-07T12:15:49"
+    },
+    {
+      "source": "GTO Wizard Japan",
+      "sourceSlug": "gto-wizard-japan",
+      "sourceUrl": "https://japan.gtowizard.com/articles/",
+      "title": "ドンクベットをすることはバカなのか",
+      "originalUrl": "https://japan.gtowizard.com/blog/is-donk-betting-for-donkeys/",
+      "author": "Andrew Brokos",
+      "publishedAt": "2024-06-27T18:54:51",
+      "summary": "「ドンクベット」とは、前のストリートでのアグレッサーに対してOOPから先にベットすることであり、このようなベットは下手なプレイヤーの特徴、つまり「バカ」（ロバの略）であると考えられていたことに由来する蔑称です。実際にドン&hellip;",
+      "language": "Japanese",
+      "imageUrl": "https://japan.gtowizard.com/wp-content/uploads/2024/06/donkbet.png",
+      "contentType": "article",
+      "classification": {
+        "difficulty": "intermediate",
+        "tags": []
+      },
+      "sourceModifiedAt": "2024-06-27T10:54:54"
+    },
+    {
+      "source": "GTO Wizard Japan",
+      "sourceSlug": "gto-wizard-japan",
+      "sourceUrl": "https://japan.gtowizard.com/articles/",
+      "title": "ICMによってポストフロップの戦略がどう変わるのか",
+      "originalUrl": "https://japan.gtowizard.com/blog/how-icm-impacts-postflop-strategy/",
+      "author": "Barry Carter",
+      "publishedAt": "2024-06-25T19:49:00",
+      "summary": "トーナメント終盤のスタックが浅い局面で、ICMを踏まえた（ICMについて詳しくはこちら）プリフロップ戦略を理解しているプレイヤーは多いです。しかし、ポストフロップのICM戦略は理解できているでしょうか。GTOは、ファイナ&hellip;",
+      "language": "Japanese",
+      "imageUrl": "https://japan.gtowizard.com/wp-content/uploads/2024/06/1280x720-Blogpost-5-1.jpg",
+      "contentType": "article",
+      "classification": {
+        "difficulty": "intermediate",
+        "tags": [
+          "preflop",
+          "flop",
+          "gto",
+          "icm",
+          "mtt"
+        ]
+      },
+      "sourceModifiedAt": "2024-08-07T12:12:15"
+    },
+    {
+      "source": "GTO Wizard Japan",
+      "sourceSlug": "gto-wizard-japan",
+      "sourceUrl": "https://japan.gtowizard.com/articles/",
+      "title": "分散とバンクロール管理",
+      "originalUrl": "https://japan.gtowizard.com/blog/variance-and-bankroll-management/",
+      "author": "Tombos21",
+      "publishedAt": "2024-06-22T14:08:06",
+      "summary": "全てのポーカープレイヤーに必要なソフトスキル ポーカーテーブルでより多くの利益を出すために私たちは努力しますが、ポーカーの本質はギャンブルです。ポーカーは勝てるゲームですが、他のカジノゲームと同じように気が狂いそうになる&hellip;",
+      "language": "Japanese",
+      "imageUrl": "https://japan.gtowizard.com/wp-content/uploads/2024/06/variance_bankroll-1.png",
+      "contentType": "article",
+      "classification": {
+        "difficulty": "intermediate",
+        "tags": []
+      },
+      "sourceModifiedAt": "2024-08-07T12:10:19"
+    },
+    {
+      "source": "GTO Wizard Japan",
+      "sourceSlug": "gto-wizard-japan",
+      "sourceUrl": "https://japan.gtowizard.com/articles/",
+      "title": "チョップボードの一見おかしなゲーム理論",
+      "originalUrl": "https://japan.gtowizard.com/blog/the-absurd-game-theory-of-chopped-boards/",
+      "author": "Tombos21",
+      "publishedAt": "2024-06-19T21:11:13",
+      "summary": "「チョップボード」とは、両プレイヤーのハンドに関係なく5枚のコミュニティカードだけで役が構成されていることです。「ボードをプレイする」と呼ばれることもあります。チョップボードでは直感とは違う戦略になることが多くあります。&hellip;",
+      "language": "Japanese",
+      "imageUrl": "https://japan.gtowizard.com/wp-content/uploads/2024/06/blog_thumnail_chopped_board.png",
+      "contentType": "article",
+      "classification": {
+        "difficulty": "intermediate",
+        "tags": []
+      },
+      "sourceModifiedAt": "2024-06-19T13:11:15"
+    },
+    {
+      "source": "GTO Wizard Japan",
+      "sourceSlug": "gto-wizard-japan",
+      "sourceUrl": "https://japan.gtowizard.com/articles/",
+      "title": "GTO Wizard AIについて",
+      "originalUrl": "https://japan.gtowizard.com/blog/gto-wizard-ai-explained/",
+      "author": "GTO Wizard",
+      "publishedAt": "2024-05-30T21:51:18",
+      "summary": "世界最速の人工知能ソルバーであるGTO Wizard AI（旧称Ruse）を使うことで、これまで考えられなかったポーカーの勉強方法を確立することができます。 人間を超越する ここ10年の間に新しいAI技術が登場し、HUN&hellip;",
+      "language": "Japanese",
+      "imageUrl": "https://japan.gtowizard.com/wp-content/uploads/2024/06/1280x720-Blogpost-4.png",
+      "contentType": "article",
+      "classification": {
+        "difficulty": "intermediate",
+        "tags": [
+          "gto"
+        ]
+      },
+      "sourceModifiedAt": "2024-06-02T13:58:42"
+    },
+    {
+      "source": "GTO Wizard Japan",
+      "sourceSlug": "gto-wizard-japan",
+      "sourceUrl": "https://japan.gtowizard.com/articles/",
+      "title": "インディファレントの３つの法則",
+      "originalUrl": "https://japan.gtowizard.com/blog/the-three-laws-of-indifference/",
+      "author": "Tombos21",
+      "publishedAt": "2024-05-28T04:45:20",
+      "summary": "[vc_row][vc_column][vc_column_text] インディファレントの３つの法則 [/vc_column_text][/vc_column][/vc_row][vc_row][vc_column w&hellip;",
+      "language": "Japanese",
+      "imageUrl": "https://japan.gtowizard.com/wp-content/uploads/2024/05/1920x1080-Blogpost-2.png",
+      "contentType": "article",
+      "classification": {
+        "difficulty": "intermediate",
+        "tags": []
+      },
+      "sourceModifiedAt": "2026-01-11T10:25:54"
+    },
+    {
+      "source": "GTO Wizard Japan",
+      "sourceSlug": "gto-wizard-japan",
+      "sourceUrl": "https://japan.gtowizard.com/articles/",
+      "title": "エクイティ分布を考える",
+      "originalUrl": "https://japan.gtowizard.com/blog/interpreting-equity-distributions/",
+      "author": "Andrew Brokos",
+      "publishedAt": "2024-05-23T22:36:27",
+      "summary": "GTO Wizardのレンジ対レンジのエクイティ分布グラフは、どのプレイヤーがより強いレンジを持っているのか、あるいはナッツアドバンテージを持っているのかといった各プレイヤーのエクイティ分布を視覚化するのに優れたツールで&hellip;",
+      "language": "Japanese",
+      "imageUrl": "https://japan.gtowizard.com/wp-content/uploads/2024/05/equity_distribution.png",
+      "contentType": "article",
+      "classification": {
+        "difficulty": "intermediate",
+        "tags": [
+          "gto"
+        ]
+      },
+      "sourceModifiedAt": "2024-05-23T15:24:36"
+    },
+    {
+      "source": "GTO Wizard Japan",
+      "sourceSlug": "gto-wizard-japan",
+      "sourceUrl": "https://japan.gtowizard.com/articles/",
+      "title": "ポーカーボットのトップを倒す",
+      "originalUrl": "https://japan.gtowizard.com/blog/crushing-a-top-hunl-poker-bot/",
+      "author": "GTO Wizard",
+      "publishedAt": "2024-05-20T23:04:50",
+      "summary": "2022年ケベック出身のカナダ人プログラマーチーム、Philippe BeardselとMarc-Antoine Provostは、最先端のポーカーソルバー、Ruse AIを開発しました。Ruse AIはAIがもつスピー&hellip;",
+      "language": "Japanese",
+      "imageUrl": "https://japan.gtowizard.com/wp-content/uploads/2024/05/1280x720-Blogpost-3.png",
+      "contentType": "article",
+      "classification": {
+        "difficulty": "intermediate",
+        "tags": []
+      },
+      "sourceModifiedAt": "2024-05-22T06:31:25"
+    },
+    {
+      "source": "GTO Wizard Japan",
+      "sourceSlug": "gto-wizard-japan",
+      "sourceUrl": "https://japan.gtowizard.com/articles/",
+      "title": "ターンのテクスチャーを分析する方法",
+      "originalUrl": "https://japan.gtowizard.com/blog/how-to-analyze-turn-textures-in-poker/",
+      "author": "Andrew Brokos",
+      "publishedAt": "2024-05-17T23:42:51",
+      "summary": "ホールデムのようなコミュニティカードゲームでは、ボード上のカードがショーダウンで見られる可能性の高いハンドに関する重要な情報源となります。ボードのテクスチャーによって、どのペアがありそうか、ストレート、フラッシュ、フルハ&hellip;",
+      "language": "Japanese",
+      "imageUrl": "https://japan.gtowizard.com/wp-content/uploads/2024/05/turn_texture.jpg",
+      "contentType": "article",
+      "classification": {
+        "difficulty": "intermediate",
+        "tags": [
+          "turn"
+        ]
+      },
+      "sourceModifiedAt": "2024-05-23T05:12:16"
+    },
+    {
+      "source": "GTO Wizard Japan",
+      "sourceSlug": "gto-wizard-japan",
+      "sourceUrl": "https://japan.gtowizard.com/articles/",
+      "title": "リバーの原則",
+      "originalUrl": "https://japan.gtowizard.com/blog/principles-of-river-play/",
+      "author": "Andrew Brokos",
+      "publishedAt": "2024-05-13T22:20:16",
+      "summary": "リバーの戦略は他のストリートに比べ最もシンプルなものとなります。新しいカードが出ることはなく、ハンドの価値は固定され、後のストリートでのボードカバレッジを気にする必要はありません。ベットは相手の弱いハンドからのコールを狙&hellip;",
+      "language": "Japanese",
+      "imageUrl": "https://japan.gtowizard.com/wp-content/uploads/2024/05/Princeple_river.jpg",
+      "contentType": "article",
+      "classification": {
+        "difficulty": "intermediate",
+        "tags": [
+          "river"
+        ]
+      },
+      "sourceModifiedAt": "2024-05-23T04:50:23"
+    },
+    {
+      "source": "GTO Wizard Japan",
+      "sourceSlug": "gto-wizard-japan",
+      "sourceUrl": "https://japan.gtowizard.com/articles/",
+      "title": "ポットジオメトリー",
+      "originalUrl": "https://japan.gtowizard.com/blog/pot-geometry/",
+      "author": "Tombos21",
+      "publishedAt": "2024-05-09T22:39:02",
+      "summary": "ポットジオメトリーとは 「ポットジオメトリー」とは、それぞれのストリートでポットに対して同じ割合のサイズでベットをし、リバーまでにオールインすることを指します。この戦略はジオメトリックベットサイズやGGOPとも呼ばれます&hellip;",
+      "language": "Japanese",
+      "imageUrl": "https://japan.gtowizard.com/wp-content/uploads/2024/05/pot_geometry.png",
+      "contentType": "article",
+      "classification": {
+        "difficulty": "intermediate",
+        "tags": [
+          "river"
+        ]
+      },
+      "sourceModifiedAt": "2024-05-09T14:52:47"
+    },
+    {
+      "source": "GTO Wizard Japan",
+      "sourceSlug": "gto-wizard-japan",
+      "sourceUrl": "https://japan.gtowizard.com/articles/",
+      "title": "ターン戦略の原則",
+      "originalUrl": "https://japan.gtowizard.com/blog/principles-of-turn-strategy/",
+      "author": "Andrew Brokos",
+      "publishedAt": "2024-05-06T22:14:33",
+      "summary": "ターンの特徴とは ターンは他のストリートと異なる点がいくつかあります。 ポットが大きくなり、ベットする機会が少なくなると、プレイヤーは自分のハンドの強さに従ってプレイするようになります。 ターンではフロップよりも「正直に&hellip;",
+      "language": "Japanese",
+      "imageUrl": "https://japan.gtowizard.com/wp-content/uploads/2024/05/Princeple_turn.jpg",
+      "contentType": "article",
+      "classification": {
+        "difficulty": "intermediate",
+        "tags": [
+          "flop",
+          "turn"
+        ]
+      },
+      "sourceModifiedAt": "2024-05-06T14:22:55"
+    },
+    {
+      "source": "GTO Wizard Japan",
+      "sourceSlug": "gto-wizard-japan",
+      "sourceUrl": "https://japan.gtowizard.com/articles/",
+      "title": "ディレイCベット",
+      "originalUrl": "https://japan.gtowizard.com/blog/delayed-c-betting/",
+      "author": "Andrew Brokos",
+      "publishedAt": "2024-05-02T21:30:27",
+      "summary": "この記事は単体でも読むことはできますが、「プローブベット」の記事と合わせて読むことでより理解が深まります。 ディレイCベットとはプリフロップでのアグレッサーがフロップでチェックし、ターンでベットすることです。 多くのプレ&hellip;",
+      "language": "Japanese",
+      "imageUrl": "https://japan.gtowizard.com/wp-content/uploads/2024/05/delay-c.png",
+      "contentType": "article",
+      "classification": {
+        "difficulty": "intermediate",
+        "tags": [
+          "preflop",
+          "flop",
+          "turn"
+        ]
+      },
+      "sourceModifiedAt": "2024-05-06T14:34:07"
+    },
+    {
+      "source": "GTO Wizard Japan",
+      "sourceSlug": "gto-wizard-japan",
+      "sourceUrl": "https://japan.gtowizard.com/articles/",
+      "title": "プローブベット",
+      "originalUrl": "https://japan.gtowizard.com/blog/probe-betting/",
+      "author": "Andrew Brokos",
+      "publishedAt": "2024-04-29T22:26:03",
+      "summary": "「前のストリートでレイズしたプレイヤーにアクションが回るまでチェックする」というのは良い法則です。前のストリートでのアグレッサーはポラライズしたレンジになっていることが多く、ベットする動機があります。それに対し、前のスト&hellip;",
+      "language": "Japanese",
+      "imageUrl": "https://japan.gtowizard.com/wp-content/uploads/2024/04/prove_bet.png",
+      "contentType": "article",
+      "classification": {
+        "difficulty": "intermediate",
+        "tags": []
+      },
+      "sourceModifiedAt": "2024-04-29T14:26:06"
+    },
+    {
+      "source": "GTO Wizard Japan",
+      "sourceSlug": "gto-wizard-japan",
+      "sourceUrl": "https://japan.gtowizard.com/articles/",
+      "title": "Nash Distanceを理解しよう",
+      "originalUrl": "https://japan.gtowizard.com/blog/understanding-nash-distance/",
+      "author": "Tombos21",
+      "publishedAt": "2024-04-25T21:58:07",
+      "summary": "ソルバーで勉強する際によくある質問の1つは、「あるアクションの方がEVが高いのに、なぜソルバーはこのアクションを取るのか」というものです。例えば、以下のシナリオでは、チェックの方がベットよりもEVが高いことがわかります。&hellip;",
+      "language": "Japanese",
+      "imageUrl": "https://japan.gtowizard.com/wp-content/uploads/2024/04/1280x720-Blogpost-2.png",
+      "contentType": "article",
+      "classification": {
+        "difficulty": "intermediate",
+        "tags": []
+      },
+      "sourceModifiedAt": "2024-04-25T13:58:11"
+    },
+    {
+      "source": "GTO Wizard Japan",
+      "sourceSlug": "gto-wizard-japan",
+      "sourceUrl": "https://japan.gtowizard.com/articles/",
+      "title": "ポーカーでバリューベットをする理由",
+      "originalUrl": "https://japan.gtowizard.com/blog/reasons-for-value-betting-in-poker/",
+      "author": "Andrew Brokos",
+      "publishedAt": "2024-04-22T22:36:26",
+      "summary": "バリューとは 多くの人は、ベットをバリューかブラフのどちらかに分けて考えています。バリューベットとは相手のより弱いハンドにコールしてもらうことで、ブラフベットとは相手の強いハンドをフォールドさせることです。他にもセミブラ&hellip;",
+      "language": "Japanese",
+      "imageUrl": "https://japan.gtowizard.com/wp-content/uploads/2024/04/1920x1080-Blogpost-1.png",
+      "contentType": "article",
+      "classification": {
+        "difficulty": "intermediate",
+        "tags": [
+          "bluff"
+        ]
+      },
+      "sourceModifiedAt": "2024-04-22T14:57:31"
+    },
+    {
+      "source": "GTO Wizard Japan",
+      "sourceSlug": "gto-wizard-japan",
+      "sourceUrl": "https://japan.gtowizard.com/articles/",
+      "title": "ポーカーAI研究の先駆者",
+      "originalUrl": "https://japan.gtowizard.com/blog/pioneering-poker-ai-research/",
+      "author": "GTO Wizard",
+      "publishedAt": "2024-04-02T19:32:42",
+      "summary": "ポーカーは交渉、オークション、サイバーセキュリティなど、実世界のさまざまな分野と密接に関連しており、過去数十年間、ゲーム理論や人工知能（AI）の分野において重要なテーマとなってきました。実際、ポーカーほど情報が秘匿されて&hellip;",
+      "language": "Japanese",
+      "imageUrl": "https://japan.gtowizard.com/wp-content/uploads/2024/03/1280x720-Blogpost-1.png",
+      "contentType": "article",
+      "classification": {
+        "difficulty": "intermediate",
+        "tags": []
+      },
+      "sourceModifiedAt": "2024-06-02T14:50:39"
+    },
+    {
+      "source": "GTO Wizard Japan",
+      "sourceSlug": "gto-wizard-japan",
+      "sourceUrl": "https://japan.gtowizard.com/articles/",
+      "title": "レンジの形態学",
+      "originalUrl": "https://japan.gtowizard.com/blog/range-morphology/",
+      "author": "Tombos21",
+      "publishedAt": "2024-01-17T12:36:23",
+      "summary": "上級者になるには、レンジで考える能力が必要となります。これは1326通りのハンドの組み合わせを全て頭の中でイメージするのではなく、レンジを構造として考えることです。 「形態学」とは、形や構造を研究する学問です。ポーカーで&hellip;",
+      "language": "Japanese",
+      "imageUrl": "https://japan.gtowizard.com/wp-content/uploads/2023/12/1920x1080-Blogpost-3.png",
+      "contentType": "article",
+      "classification": {
+        "difficulty": "intermediate",
+        "tags": []
+      },
+      "sourceModifiedAt": "2025-10-02T14:13:18"
+    },
+    {
+      "source": "GTO Wizard Japan",
+      "sourceSlug": "gto-wizard-japan",
+      "sourceUrl": "https://japan.gtowizard.com/articles/",
+      "title": "【初心者向け】コンボ数の数え方",
+      "originalUrl": "https://japan.gtowizard.com/blog/a-beginners-guide-to-poker-combinatorics/",
+      "author": "Tombos21",
+      "publishedAt": "2024-01-09T13:13:35",
+      "summary": "[vc_row][vc_column][vc_column_text] 【初心者向け】コンボ数の数え方 [/vc_column_text][/vc_column][/vc_row][vc_row][vc_column][&hellip;",
+      "language": "Japanese",
+      "imageUrl": "https://japan.gtowizard.com/wp-content/uploads/2023/12/1920x1080-Blogpost-6.png",
+      "contentType": "article",
+      "classification": {
+        "difficulty": "beginner",
+        "tags": []
+      },
+      "sourceModifiedAt": "2026-01-11T13:39:31"
+    },
+    {
+      "source": "GTO Wizard Japan",
+      "sourceSlug": "gto-wizard-japan",
+      "sourceUrl": "https://japan.gtowizard.com/articles/",
+      "title": "レイズの計算方法",
+      "originalUrl": "https://japan.gtowizard.com/blog/how-to-calculate-raises-in-poker/",
+      "author": "Tombos21",
+      "publishedAt": "2024-01-09T09:48:23",
+      "summary": "レイズの大きさをポットのパーセンテージで計算する方法をご存知でしょうか。実は公式を使うと、簡単に計算することができます。 レイズの大きさをポットのパーセンテージで計算するには、以下の手順で行います。 例えば、SBが6BB&hellip;",
+      "language": "Japanese",
+      "imageUrl": "https://japan.gtowizard.com/wp-content/uploads/2023/12/1280x720-Blogpost.jpg",
+      "contentType": "article",
+      "classification": {
+        "difficulty": "intermediate",
+        "tags": []
+      },
+      "sourceModifiedAt": "2025-10-02T14:13:57"
+    },
+    {
+      "source": "GTO Wizard Japan",
+      "sourceSlug": "gto-wizard-japan",
+      "sourceUrl": "https://japan.gtowizard.com/articles/",
+      "title": "ポーカー初心者が学ぶべき10のこと",
+      "originalUrl": "https://japan.gtowizard.com/blog/the-10-most-important-concepts-for-new-poker-players/",
+      "author": "Tombos21",
+      "publishedAt": "2023-12-18T03:01:53",
+      "summary": "[vc_row][vc_column][vc_column_text] ポーカー初心者が学ぶべき10のこと [/vc_column_text][/vc_column][/vc_row][vc_row][vc_column&hellip;",
+      "language": "Japanese",
+      "imageUrl": "https://japan.gtowizard.com/wp-content/uploads/2023/12/1280x720-Blogpost-2.png",
+      "contentType": "article",
+      "classification": {
+        "difficulty": "beginner",
+        "tags": []
+      },
+      "sourceModifiedAt": "2026-08-09T11:54:13"
+    },
+    {
+      "source": "GTO Wizard Japan",
+      "sourceSlug": "gto-wizard-japan",
+      "sourceUrl": "https://japan.gtowizard.com/articles/",
+      "title": "GTOはどこを目指しているのか？",
+      "originalUrl": "https://japan.gtowizard.com/blog/what-does-gto-aim-to-achieve/",
+      "author": "Tombos21",
+      "publishedAt": "2023-12-13T11:59:02",
+      "summary": "[vc_row][vc_column][vc_column_text] GTOはどこを目指しているのか？ [/vc_column_text][/vc_column][/vc_row] [vc_row][vc_column&hellip;",
+      "language": "Japanese",
+      "imageUrl": "https://japan.gtowizard.com/wp-content/uploads/2023/12/1280x720-Blogpost.png",
+      "contentType": "article",
+      "classification": {
+        "difficulty": "intermediate",
+        "tags": [
+          "gto"
+        ]
+      },
+      "sourceModifiedAt": "2026-08-08T17:18:22"
+    },
+    {
+      "source": "GTO Wizard Japan",
+      "sourceSlug": "gto-wizard-japan",
+      "sourceUrl": "https://japan.gtowizard.com/articles/",
+      "title": "GTOソリューションの勉強方法",
+      "originalUrl": "https://japan.gtowizard.com/blog/how-to-study-gto-solutions/",
+      "author": "Andrew Brokos",
+      "publishedAt": "2023-12-05T13:52:28",
+      "summary": "GTO Wizardやソルバーのようなツールは、特定の戦略を暗記するために使うべきではありません。暗記するシナリオがあまりにも多すぎるからです。そのように使うのではなく、スタックの深さ、レンジアドバンテージ、ナッツアドバ&hellip;",
+      "language": "Japanese",
+      "imageUrl": "https://japan.gtowizard.com/wp-content/uploads/2024/01/1440x810-Blogpost.jpg",
+      "contentType": "article",
+      "classification": {
+        "difficulty": "intermediate",
+        "tags": [
+          "gto"
+        ]
+      },
+      "sourceModifiedAt": "2024-01-09T09:14:43"
+    },
+    {
+      "source": "GTO Wizard Japan",
+      "sourceSlug": "gto-wizard-japan",
+      "sourceUrl": "https://japan.gtowizard.com/articles/",
+      "title": "GTO Wizardになる方法",
+      "originalUrl": "https://japan.gtowizard.com/blog/how-to-become-a-gto-wizard/",
+      "author": "GTO Wizard",
+      "publishedAt": "2023-12-05T13:49:03",
+      "summary": "GTOポーカーの素晴らしい世界へようこそ！この記事はGTO Wizardへのロードマップとなるでしょう。 ポーカーをマスターするには、勉強と練習と努力が必要です。言語や楽器と同じく、一夜で習得することはできません。幸運な&hellip;",
+      "language": "Japanese",
+      "imageUrl": "https://japan.gtowizard.com/wp-content/uploads/2024/01/1920x1080-Blogpost-13.png",
+      "contentType": "article",
+      "classification": {
+        "difficulty": "intermediate",
+        "tags": [
+          "gto"
+        ]
+      },
+      "sourceModifiedAt": "2024-09-12T10:13:03"
+    },
+    {
+      "source": "GTO Wizard Japan",
+      "sourceSlug": "gto-wizard-japan",
+      "sourceUrl": "https://japan.gtowizard.com/articles/",
+      "title": "ポーカーの組み合わせ論",
+      "originalUrl": "https://japan.gtowizard.com/blog/combinatorics-poker-puzzle/",
+      "author": "Tombos21",
+      "publishedAt": "2023-12-05T13:46:36",
+      "summary": "[vc_row][vc_column][vc_column_text] ポーカーの組み合わせ論 [/vc_column_text][/vc_column][/vc_row][vc_row][vc_column][vc_c&hellip;",
+      "language": "Japanese",
+      "imageUrl": "https://japan.gtowizard.com/wp-content/uploads/2023/12/1920x1080-Blogpost-9.png",
+      "contentType": "article",
+      "classification": {
+        "difficulty": "intermediate",
+        "tags": []
+      },
+      "sourceModifiedAt": "2026-08-08T12:20:49"
+    },
+    {
+      "source": "GTO Wizard Japan",
+      "sourceSlug": "gto-wizard-japan",
+      "sourceUrl": "https://japan.gtowizard.com/articles/",
+      "title": "ポーカーの勉強の道",
+      "originalUrl": "https://japan.gtowizard.com/blog/the-art-of-learning-poker/",
+      "author": "Andrew Brokos",
+      "publishedAt": "2023-12-05T13:43:02",
+      "summary": "チェスと推手のチャンピオンであるJosh Waitzkinは、その著書「The Art of Learning」の中で、「小さな円を描く」というトレーニング方法について述べています。武術では、特定の動きの核をまずは大きな&hellip;",
+      "language": "Japanese",
+      "imageUrl": "https://japan.gtowizard.com/wp-content/uploads/2024/01/1280x720-Blogpost-4.png",
+      "contentType": "article",
+      "classification": {
+        "difficulty": "intermediate",
+        "tags": []
+      },
+      "sourceModifiedAt": "2024-01-09T09:13:41"
+    },
+    {
+      "source": "GTO Wizard Japan",
+      "sourceSlug": "gto-wizard-japan",
+      "sourceUrl": "https://japan.gtowizard.com/articles/",
+      "title": "レンジによって戦略は変わるのか",
+      "originalUrl": "https://japan.gtowizard.com/blog/does-your-range-affect-your-strategy/",
+      "author": "Tombos21",
+      "publishedAt": "2023-12-05T13:38:20",
+      "summary": "[vc_row][vc_column][vc_column_text] レンジによって戦略は変わるのか [/vc_column_text][/vc_column][/vc_row][vc_row][vc_column][&hellip;",
+      "language": "Japanese",
+      "imageUrl": "https://japan.gtowizard.com/wp-content/uploads/2023/12/1920x1080-Blogpost-8.png",
+      "contentType": "article",
+      "classification": {
+        "difficulty": "intermediate",
+        "tags": []
+      },
+      "sourceModifiedAt": "2026-01-22T03:21:07"
+    },
+    {
+      "source": "GTO Wizard Japan",
+      "sourceSlug": "gto-wizard-japan",
+      "sourceUrl": "https://japan.gtowizard.com/articles/",
+      "title": "トイゲームの解き方",
+      "originalUrl": "https://japan.gtowizard.com/blog/how-to-solve-toy-games/",
+      "author": "Tombos21",
+      "publishedAt": "2023-12-05T13:35:36",
+      "summary": "[vc_row][vc_column][vc_column_text] トイゲームの解き方 [/vc_column_text][/vc_column][/vc_row][vc_row][vc_column][vc_col&hellip;",
+      "language": "Japanese",
+      "imageUrl": "https://japan.gtowizard.com/wp-content/uploads/2023/12/1920x1080-Blogpost-7.png",
+      "contentType": "article",
+      "classification": {
+        "difficulty": "intermediate",
+        "tags": []
+      },
+      "sourceModifiedAt": "2026-01-11T12:34:56"
+    },
+    {
+      "source": "GTO Wizard Japan",
+      "sourceSlug": "gto-wizard-japan",
+      "sourceUrl": "https://japan.gtowizard.com/articles/",
+      "title": "ポーカーにおけるGTOとは？",
+      "originalUrl": "https://japan.gtowizard.com/blog/what-is-gto-in-poker/",
+      "author": "Tombos21",
+      "publishedAt": "2023-12-05T13:34:01",
+      "summary": "[vc_row][vc_column][vc_column_text] ポーカーにおけるGTOとは？ [/vc_column_text][/vc_column][/vc_row][vc_row][vc_column][v&hellip;",
+      "language": "Japanese",
+      "imageUrl": "https://japan.gtowizard.com/wp-content/uploads/2024/01/1280x720-Blogpost-3.png",
+      "contentType": "article",
+      "classification": {
+        "difficulty": "intermediate",
+        "tags": [
+          "gto"
+        ]
+      },
+      "sourceModifiedAt": "2025-09-30T13:38:01"
+    },
+    {
+      "source": "GTO Wizard Japan",
+      "sourceSlug": "gto-wizard-japan",
+      "sourceUrl": "https://japan.gtowizard.com/articles/",
+      "title": "SPR",
+      "originalUrl": "https://japan.gtowizard.com/blog/stack-to-pot-ratio/",
+      "author": "Andrew Brokos",
+      "publishedAt": "2023-12-05T13:11:39",
+      "summary": "[vc_row][vc_column][vc_column_text] SPR [/vc_column_text][/vc_column][/vc_row][vc_row][vc_column width=”&hellip;",
+      "language": "Japanese",
+      "imageUrl": "https://japan.gtowizard.com/wp-content/uploads/2024/01/1920x1080-Blogpost-2.jpg",
+      "contentType": "article",
+      "classification": {
+        "difficulty": "intermediate",
+        "tags": []
+      },
+      "sourceModifiedAt": "2025-12-02T06:32:42"
+    },
+    {
+      "source": "GTO Wizard Japan",
+      "sourceSlug": "gto-wizard-japan",
+      "sourceUrl": "https://japan.gtowizard.com/articles/",
+      "title": "EQR",
+      "originalUrl": "https://japan.gtowizard.com/blog/equity-realization/",
+      "author": "Tombos21",
+      "publishedAt": "2023-12-05T13:08:50",
+      "summary": "[vc_row][vc_column][vc_column_text] EQR [/vc_column_text][/vc_column][/vc_row][vc_row][vc_column width=”&hellip;",
+      "language": "Japanese",
+      "imageUrl": "https://japan.gtowizard.com/wp-content/uploads/2024/01/1920x1080-Blogpost-15.png",
+      "contentType": "article",
+      "classification": {
+        "difficulty": "intermediate",
+        "tags": []
+      },
+      "sourceModifiedAt": "2025-12-02T06:39:24"
+    },
+    {
+      "source": "GTO Wizard Japan",
+      "sourceSlug": "gto-wizard-japan",
+      "sourceUrl": "https://japan.gtowizard.com/articles/",
+      "title": "MDFとAlpha",
+      "originalUrl": "https://japan.gtowizard.com/blog/mdf-alpha/",
+      "author": "Tombos21",
+      "publishedAt": "2023-12-05T13:05:41",
+      "summary": "[vc_row][vc_column][vc_column_text] MDFとAlpha [/vc_column_text][/vc_column][/vc_row] [vc_row][vc_column width=&hellip;",
+      "language": "Japanese",
+      "imageUrl": "https://japan.gtowizard.com/wp-content/uploads/2024/01/1920x1080-Blogpost-12.png",
+      "contentType": "article",
+      "classification": {
+        "difficulty": "intermediate",
+        "tags": []
+      },
+      "sourceModifiedAt": "2026-08-08T17:28:51"
+    },
+    {
+      "source": "GTO Wizard Japan",
+      "sourceSlug": "gto-wizard-japan",
+      "sourceUrl": "https://japan.gtowizard.com/articles/",
+      "title": "ポットオッズとは",
+      "originalUrl": "https://japan.gtowizard.com/blog/what-are-pot-odds-in-poker/",
+      "author": "Tombos21",
+      "publishedAt": "2023-12-05T12:59:21",
+      "summary": "[vc_row][vc_column][vc_column_text] ポーカーにおけるポットオッズとは？ [/vc_column_text][/vc_column][/vc_row] [vc_row][vc_colum&hellip;",
+      "language": "Japanese",
+      "imageUrl": "https://japan.gtowizard.com/wp-content/uploads/2023/12/1920x1080-Blogpost-5.png",
+      "contentType": "article",
+      "classification": {
+        "difficulty": "intermediate",
+        "tags": []
+      },
+      "sourceModifiedAt": "2026-08-08T16:25:24"
+    },
+    {
+      "source": "GTO Wizard Japan",
+      "sourceSlug": "gto-wizard-japan",
+      "sourceUrl": "https://japan.gtowizard.com/articles/",
+      "title": "フォールドエクイティの価値とは",
+      "originalUrl": "https://japan.gtowizard.com/blog/the-value-of-fold-equity-experiment/",
+      "author": "Tombos21",
+      "publishedAt": "2023-12-05T12:54:28",
+      "summary": "[vc_row][vc_column][vc_column_text] フォールドエクイティの価値とは [/vc_column_text][/vc_column][/vc_row][vc_row][vc_column][&hellip;",
+      "language": "Japanese",
+      "imageUrl": "https://japan.gtowizard.com/wp-content/uploads/2024/01/1920x1080-Blogpost-11.png",
+      "contentType": "article",
+      "classification": {
+        "difficulty": "intermediate",
+        "tags": []
+      },
+      "sourceModifiedAt": "2025-09-30T12:35:22"
+    },
+    {
+      "source": "GTO Wizard Japan",
+      "sourceSlug": "gto-wizard-japan",
+      "sourceUrl": "https://japan.gtowizard.com/articles/",
+      "title": "インプライドオッズ",
+      "originalUrl": "https://japan.gtowizard.com/blog/visualizing-implied-odds/",
+      "author": "Tombos21",
+      "publishedAt": "2023-12-05T12:50:41",
+      "summary": "[vc_row][vc_column][vc_column_text] インプライドオッズを可視化する [/vc_column_text][/vc_column][/vc_row] [vc_row][vc_column &hellip;",
+      "language": "Japanese",
+      "imageUrl": "https://japan.gtowizard.com/wp-content/uploads/2023/12/1920x1080-Blogpost-16.png",
+      "contentType": "article",
+      "classification": {
+        "difficulty": "intermediate",
+        "tags": []
+      },
+      "sourceModifiedAt": "2026-08-08T08:26:46"
+    },
+    {
+      "source": "GTO Wizard Japan",
+      "sourceSlug": "gto-wizard-japan",
+      "sourceUrl": "https://japan.gtowizard.com/articles/",
+      "title": "ポーカーでの数学的な誤解",
+      "originalUrl": "https://japan.gtowizard.com/blog/mathematical-misconceptions-in-poker/",
+      "author": "Tombos21",
+      "publishedAt": "2023-12-05T12:47:10",
+      "summary": "[vc_row][vc_column][vc_column_text] ポーカーにおける数学的誤解 [/vc_column_text][/vc_column][/vc_row][vc_row][vc_column][vc&hellip;",
+      "language": "Japanese",
+      "imageUrl": "https://japan.gtowizard.com/wp-content/uploads/2023/12/1920x1080-Blogpost-4.png",
+      "contentType": "article",
+      "classification": {
+        "difficulty": "intermediate",
+        "tags": []
+      },
+      "sourceModifiedAt": "2025-10-02T15:52:15"
+    },
+    {
+      "source": "GTO Wizard Japan",
+      "sourceSlug": "gto-wizard-japan",
+      "sourceUrl": "https://japan.gtowizard.com/articles/",
+      "title": "ポーカーにおける期待値とは？",
+      "originalUrl": "https://japan.gtowizard.com/blog/what-is-expected-value-in-poker/",
+      "author": "Tombos21",
+      "publishedAt": "2023-12-05T12:30:04",
+      "summary": "[vc_row][vc_column][vc_column_text] ポーカーにおける期待値とは？ [/vc_column_text][vc_row_inner][vc_column_inner][/vc_column&hellip;",
+      "language": "Japanese",
+      "imageUrl": "https://japan.gtowizard.com/wp-content/uploads/2023/12/1920x1080-Blogpost-2.png",
+      "contentType": "article",
+      "classification": {
+        "difficulty": "intermediate",
+        "tags": []
+      },
+      "sourceModifiedAt": "2025-10-02T14:15:38"
+    },
+    {
+      "source": "GTO Wizard Japan",
+      "sourceSlug": "gto-wizard-japan",
+      "sourceUrl": "https://japan.gtowizard.com/articles/",
+      "title": "ポーカーにおけるエクイティとは？",
+      "originalUrl": "https://japan.gtowizard.com/blog/what-is-equity-in-poker/",
+      "author": "Tombos21",
+      "publishedAt": "2023-12-05T12:20:20",
+      "summary": "[vc_row][vc_column][vc_column_text] ポーカーにおけるエクイティとは？ [/vc_column_text][/vc_column][/vc_row] [vc_row][vc_column&hellip;",
+      "language": "Japanese",
+      "imageUrl": "https://japan.gtowizard.com/wp-content/uploads/2024/01/1920x1080-Blogpost-14.png",
+      "contentType": "article",
+      "classification": {
+        "difficulty": "intermediate",
+        "tags": []
+      },
+      "sourceModifiedAt": "2026-08-08T07:14:15"
+    },
+    {
+      "source": "GTO Wizard Japan",
+      "sourceSlug": "gto-wizard-japan",
+      "sourceUrl": "https://japan.gtowizard.com/articles/",
+      "title": "ICMの基本",
+      "originalUrl": "https://japan.gtowizard.com/blog/icm-basics/",
+      "author": "Tombos21",
+      "publishedAt": "2023-12-05T11:43:19",
+      "summary": "[vc_row][vc_column][vc_column_text] ICMの基礎 [/vc_column_text][/vc_column][/vc_row] [vc_row][vc_column width=&#8&hellip;",
+      "language": "Japanese",
+      "imageUrl": "https://japan.gtowizard.com/wp-content/uploads/2023/12/1920x1080-Blogpost-10.png",
+      "contentType": "article",
+      "classification": {
+        "difficulty": "beginner",
+        "tags": [
+          "icm"
+        ]
+      },
+      "sourceModifiedAt": "2026-08-08T11:52:37"
     }
   ]
 }

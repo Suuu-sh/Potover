@@ -7,6 +7,7 @@ MVPでは本文を保存せず、公開されているタイトル・URL・著�
 | Upswing Poker | 要確認 | RSSまたは公開一覧のメタデータのみ。実装前にTerms/robotsを確認 |
 | PokerNews | 要確認 | 公開フィード優先。本文取得なし |
 | GTO Wizard | 要確認 | Blogの公開メタデータのみ |
+| GTO Wizard Japan | WordPress Sitemap | 日本語版の公開記事メタデータとOG画像を収集 |
 | Poker Lab | RSS / Sitemap | 日本語記事のタイトル・概要・公開日・OG画像を収集 |
 | ポーカーアカデミー | RSS / Sitemap | 日本語記事のタイトル・概要・公開日・OG画像を収集 |
 | ポーカー道 | RSS / Sitemap | 日本語記事のタイトル・概要・公開日・OG画像を収集 |

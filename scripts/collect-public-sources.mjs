@@ -28,6 +28,7 @@ for (const url of pokerNewsUrls) { try { const html = await get(url); const titl
 
 // Japanese editorial sites. Note is intentionally excluded.
 const japaneseSources = [
+  { source: 'GTO Wizard Japan', sourceSlug: 'gto-wizard-japan', sourceUrl: 'https://japan.gtowizard.com/articles/', sitemap: 'https://japan.gtowizard.com/blog/wp-sitemap-posts-post-1.xml' },
   { source: 'Poker Lab', sourceSlug: 'poker-lab', sourceUrl: 'https://poker-labs.com/', sitemap: 'https://poker-labs.com/post-sitemap.xml' },
   { source: 'ポーカーアカデミー', sourceSlug: 'poker-academy-jp', sourceUrl: 'https://pokeracademy.jp/', sitemap: 'https://pokeracademy.jp/wp-sitemap-posts-post-1.xml' },
   { source: 'ポーカー道', sourceSlug: 'poker-dou', sourceUrl: 'https://www.pokerdou.com/', sitemap: 'https://www.pokerdou.com/post-sitemap.xml' },

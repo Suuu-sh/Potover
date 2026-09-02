@@ -5,7 +5,7 @@ import {Article} from '@/lib/data';
 import {BookmarkButton} from '@/components/BookmarkButton';
 import {LearningLink} from '@/components/LearningLink';
 
-const sourceImages:Record<string,string>={'gto-wizard':'/sources/gto-wizard.png','upswing-poker':'/sources/upswing.png','pokernews':'/sources/pokernews.png','pokercoaching':'/sources/pokercoaching.png'};
+const sourceImages:Record<string,string>={'gto-wizard':'/sources/gto-wizard.png','gto-wizard-japan':'/sources/gto-wizard.png','upswing-poker':'/sources/upswing.png','pokernews':'/sources/pokernews.png','pokercoaching':'/sources/pokercoaching.png'};
 const sourceGlyphs:Record<string,string>={'gto-wizard':'W','upswing-poker':'U','pokernews':'P','pokercoaching':'P'};
 
 export function ArticleFeedRow({article,onTagClick}:{article:Article;onTagClick?:(tag:string)=>void}){
