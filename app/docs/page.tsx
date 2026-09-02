@@ -47,7 +47,7 @@ export default function Docs(){
       const topics=selected.filter(x=>!difficulty.includes(x)&&!language.includes(x)&&!sourceFilters.includes(x));
       return (!normalizedQuery||queryTerms.some(term=>text.includes(term)))&&(!difficulty.length||difficulty.includes(article.difficulty))&&(!language.length||language.includes(article.language))&&(!sourceFilters.length||sourceFilters.includes(article.source))&&(!topics.length||topics.some(x=>text.includes(x.toLowerCase())));
     });
-    return [...filtered].sort((a,b)=>sort==='newest'?b.publishedAt.localeCompare(a.publishedAt):sort==='shortest'?a.minutes-b.minutes:0);
+    return [...filtered].sort((a,b)=>sort==='newest'?b.publishedAt.localeCompare(a.publishedAt):sort==='shortest'?a.minutes-b.minutes:Number(b.sourceSlug==='gto-wizard-japan')-Number(a.sourceSlug==='gto-wizard-japan'));
   },[query,selected,sort]);
   const pageCount=Math.max(1,Math.ceil(results.length/PAGE_SIZE));
   const visibleResults=results.slice((page-1)*PAGE_SIZE,page*PAGE_SIZE);
