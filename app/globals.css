@@ -348,3 +348,6 @@ body{min-height:100vh}
 @media(max-width:700px){.home-spotlight{padding-top:20px}.home-spotlight-card{flex-basis:82vw;height:210px}.home-spotlight-card h2{font-size:18px}}
 
 .dark-mode .feed-toolbar{background:#080f18f2}
+.feed-toolbar{transition:opacity .18s ease,transform .18s ease}
+.feed-toolbar.is-scrolling-hidden{opacity:0;transform:translateY(-10px);pointer-events:none}
+@media(prefers-reduced-motion:reduce){.feed-toolbar{transition:none}}
