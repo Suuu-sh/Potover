@@ -9,7 +9,8 @@ import {getLearningHistory} from '@/lib/learning-history';
 import {usePreferredLanguage} from '@/lib/use-preferred-language';
 
 const sourceNames=sources.map(source=>source.name);
-const READ_FILTER='読了済み';
+const READ_FILTER='学習済み';
+const CONTENT_FILTERS=['記事','動画'] as const;
 const QUICK_FILTERS=[['Preflop','プリフロップ'],['Flop','フロップ'],['GTO','GTO'],['cash-game','キャッシュ'],['MTT','MTT']] as const;
 const PAGE_SIZE=20;
 const SEARCH_ALIASES:Record<string,string[]>={
@@ -25,6 +26,7 @@ const groups=[
   {title:'戦略・テーマ',items:['GTO','Bluff','ICM','Exploit','Cash Game','MTT']},
   {title:'難易度',items:['Beginner','Intermediate','Advanced']},
   {title:'言語',items:['Japanese','English']},
+  {title:'種類',items:[...CONTENT_FILTERS]},
   {title:'ソース',items:sourceNames},
   {title:'学習状況',items:[READ_FILTER]},
 ];
@@ -46,15 +48,16 @@ export default function Docs(){
   const reset=()=>{setSelected([]);setQuery('')};
   const results=useMemo(()=>{
     const filtered=articles.filter(article=>{
-      const text=[article.title,article.summary,article.source,...article.tags,article.category].join(' ').toLowerCase();
+      const text=[article.title,article.summary,article.source,...article.tags,article.category,article.contentType==='video'?'動画 youtube video':'記事 article'].join(' ').toLowerCase();
       const normalizedQuery=query.trim().toLowerCase();
       const queryTerms=SEARCH_ALIASES[normalizedQuery]||[normalizedQuery];
       const difficulty=selected.filter(x=>['Beginner','Intermediate','Advanced'].includes(x));
       const language=selected.filter(x=>['Japanese','English'].includes(x));
       const sourceFilters=selected.filter(x=>sourceNames.includes(x));
+      const contentFilters=selected.filter(x=>CONTENT_FILTERS.includes(x as typeof CONTENT_FILTERS[number]));
       const readOnly=selected.includes(READ_FILTER);
-      const topics=selected.filter(x=>x!==READ_FILTER&&!difficulty.includes(x)&&!language.includes(x)&&!sourceFilters.includes(x));
-      return (!normalizedQuery||queryTerms.some(term=>text.includes(term)))&&(!difficulty.length||difficulty.includes(article.difficulty))&&(!language.length||language.includes(article.language))&&(!sourceFilters.length||sourceFilters.includes(article.source))&&(!readOnly||readSlugs.has(article.slug))&&(!topics.length||topics.some(x=>text.includes(x.toLowerCase())));
+      const topics=selected.filter(x=>x!==READ_FILTER&&!difficulty.includes(x)&&!language.includes(x)&&!sourceFilters.includes(x)&&!contentFilters.includes(x as typeof CONTENT_FILTERS[number]));
+      return (!normalizedQuery||queryTerms.some(term=>text.includes(term)))&&(!difficulty.length||difficulty.includes(article.difficulty))&&(!language.length||language.includes(article.language))&&(!sourceFilters.length||sourceFilters.includes(article.source))&&(!contentFilters.length||contentFilters.includes(article.contentType==='video'?'動画':'記事'))&&(!readOnly||readSlugs.has(article.slug))&&(!topics.length||topics.some(x=>text.includes(x.toLowerCase())));
     });
     return [...filtered].sort((a,b)=>sort==='newest'?b.publishedAt.localeCompare(a.publishedAt):sort==='shortest'?a.minutes-b.minutes:(Number(b.language===preferredLanguage)-Number(a.language===preferredLanguage))||(preferredLanguage==='Japanese'?Number(b.sourceSlug==='gto-wizard-japan')-Number(a.sourceSlug==='gto-wizard-japan'):0));
   },[query,selected,sort,preferredLanguage,readSlugs]);
@@ -64,10 +67,10 @@ export default function Docs(){
   useEffect(()=>()=>{if(toolbarTimer.current)clearTimeout(toolbarTimer.current)},[]);
   const onFeedScroll=()=>{setToolbarVisible(false);if(toolbarTimer.current)clearTimeout(toolbarTimer.current);toolbarTimer.current=setTimeout(()=>setToolbarVisible(true),180)};
   const movePage=(next:number)=>{setPage(Math.min(pageCount,Math.max(1,next)));document.querySelector('.docs-feed')?.scrollTo({top:0,behavior:'smooth'})};
-  return <main className="docs-v3"><div className="docs-v3-layout"><aside className="docs-editorial-index"><header><small>ARTICLE INDEX</small><h2>記事を探す</h2></header><button className={selected.length===0?'is-active':''} onClick={()=>setSelected([])}><span>{selected.length===0?<Check/>:<Circle/>}</span><div><strong>すべての記事</strong><small>{articles.length}件</small></div></button>{QUICK_FILTERS.map(([value,label])=><button key={value} className={selected.includes(value)?'is-active':''} onClick={()=>toggle(value)}><span>{selected.includes(value)?<Check/>:<Circle/>}</span><div><strong>{label}</strong><small>{articles.filter(article=>[...article.tags,article.category].some(item=>item.toLowerCase().includes(value.toLowerCase()))).length}件</small></div></button>)}<div className="docs-index-status"><span>表示言語</span><strong>{preferredLanguage==='Japanese'?'日本語':'English'}</strong><button onClick={()=>setFiltersOpen(true)}><SlidersHorizontal/>詳細な絞り込み</button></div></aside>
+  return <main className="docs-v3"><div className="docs-v3-layout"><aside className="docs-editorial-index"><header><small>CONTENT LIBRARY</small><h2>探す</h2></header><button className={selected.length===0?'is-active':''} onClick={()=>setSelected([])}><span>{selected.length===0?<Check/>:<Circle/>}</span><div><strong>すべて</strong><small>{articles.length}件</small></div></button>{CONTENT_FILTERS.map(label=><button key={label} className={selected.includes(label)?'is-active':''} onClick={()=>toggle(label)}><span>{selected.includes(label)?<Check/>:<Circle/>}</span><div><strong>{label}</strong><small>{articles.filter(article=>(article.contentType==='video'?'動画':'記事')===label).length}件</small></div></button>)}{QUICK_FILTERS.map(([value,label])=><button key={value} className={selected.includes(value)?'is-active':''} onClick={()=>toggle(value)}><span>{selected.includes(value)?<Check/>:<Circle/>}</span><div><strong>{label}</strong><small>{articles.filter(article=>[...article.tags,article.category].some(item=>item.toLowerCase().includes(value.toLowerCase()))).length}件</small></div></button>)}<div className="docs-index-status"><span>表示言語</span><strong>{preferredLanguage==='Japanese'?'日本語':'English'}</strong><button onClick={()=>setFiltersOpen(true)}><SlidersHorizontal/>詳細な絞り込み</button></div></aside>
       <section className="docs-feed" onScroll={onFeedScroll}>
-        <div className={`feed-toolbar${toolbarVisible?'':' is-scrolling-hidden'}`}><span><strong>{results.length}</strong>件の記事</span><div className="feed-toolbar-controls"><button type="button" className="feed-filter-button" onClick={()=>setFiltersOpen(true)}><SlidersHorizontal size={14}/>絞り込み{selected.length>0&&<em>{selected.length}</em>}</button><label>並び替え<select value={sort} onChange={e=>setSort(e.target.value)}><option value="relevance">関連度順</option><option value="newest">新着順</option><option value="shortest">短い順</option></select></label></div></div>
-        {results.length===0?<div className="docs-empty"><BookOpen size={31}/><h2>条件に合う記事がありません</h2><p>別のキーワードまたは条件を試してください。</p><button onClick={reset}>条件をリセット</button></div>:
+        <div className={`feed-toolbar${toolbarVisible?'':' is-scrolling-hidden'}`}><span><strong>{results.length}</strong>件のコンテンツ</span><div className="feed-toolbar-controls"><button type="button" className="feed-filter-button" onClick={()=>setFiltersOpen(true)}><SlidersHorizontal size={14}/>絞り込み{selected.length>0&&<em>{selected.length}</em>}</button><label>並び替え<select value={sort} onChange={e=>setSort(e.target.value)}><option value="relevance">関連度順</option><option value="newest">新着順</option><option value="shortest">短い順</option></select></label></div></div>
+        {results.length===0?<div className="docs-empty"><BookOpen size={31}/><h2>条件に合うコンテンツがありません</h2><p>別のキーワードまたは条件を試してください。</p><button onClick={reset}>条件をリセット</button></div>:
         <><div className="docs-feed-list">{visibleResults.map(article=><ArticleFeedRow article={article} onTagClick={toggle} key={article.slug}/>)}</div><nav className="docs-pagination" aria-label="記事一覧のページ"><button type="button" onClick={()=>movePage(page-1)} disabled={page===1}><ChevronLeft size={16}/>前へ</button><span><strong>{page}</strong> / {pageCount}</span><button type="button" onClick={()=>movePage(page+1)} disabled={page===pageCount}>次へ<ChevronRight size={16}/></button></nav></>}
       </section>
     </div>

@@ -1,5 +1,5 @@
 {
-  "collectedAt": "2026-09-02T03:20:46.238Z",
+  "collectedAt": "2026-09-04T12:25:30.626Z",
   "sources": [
     {
       "slug": "gto-wizard",
@@ -55453,6 +55453,604 @@
           "text": "まとめ"
         }
       ]
+    },
+    {
+      "source": "GTO Wizard",
+      "sourceSlug": "gto-wizard",
+      "sourceUrl": "https://www.youtube.com/@GTOWizard",
+      "title": "A new way to explore PLO",
+      "originalUrl": "https://www.youtube.com/watch?v=j8kQpNG6ZEo",
+      "author": "GTO Wizard",
+      "publishedAt": "2026-09-04T07:29:04+00:00",
+      "summary": "Your entire PLO preflop range in one matrix. Every rank group, suitedness filter, every action, visualized clearly for the first time. Compare ranges side by side across rake, stack depth and position. The PLO Matrix is live in GTO Wizard:",
+      "language": "English",
+      "imageUrl": "https://i.ytimg.com/vi/j8kQpNG6ZEo/hqdefault.jpg",
+      "contentType": "video",
+      "durationSeconds": 40,
+      "classification": {
+        "difficulty": "intermediate",
+        "tags": [
+          "preflop",
+          "flop",
+          "gto"
+        ]
+      }
+    },
+    {
+      "source": "GTO Wizard",
+      "sourceSlug": "gto-wizard",
+      "sourceUrl": "https://www.youtube.com/@GTOWizard",
+      "title": "This Betting Mistake Ruins Your Win Rate",
+      "originalUrl": "https://www.youtube.com/watch?v=WtodbhpsCgo",
+      "author": "GTO Wizard",
+      "publishedAt": "2026-09-03T16:30:27+00:00",
+      "summary": "Understanding the logic behind betting is a fundamental step towards mastering postflop play. Without understanding the logic of betting, your strategy quickly falls apart. In this video, Andrew Brokos breaks down the true purpose behind putting chips in the middle. He explains the vital difference between growing a po",
+      "language": "English",
+      "imageUrl": "https://i.ytimg.com/vi/WtodbhpsCgo/hqdefault.jpg",
+      "contentType": "video",
+      "durationSeconds": 965,
+      "classification": {
+        "difficulty": "beginner",
+        "tags": [
+          "flop"
+        ]
+      }
+    },
+    {
+      "source": "GTO Wizard",
+      "sourceSlug": "gto-wizard",
+      "sourceUrl": "https://www.youtube.com/@GTOWizard",
+      "title": "WSOP 2026 Main Event Final Table Review with Espen Jorstad",
+      "originalUrl": "https://www.youtube.com/watch?v=uEza3SdANQs",
+      "author": "GTO Wizard",
+      "publishedAt": "2026-09-03T05:19:35+00:00",
+      "summary": "Wire-to-wire. Chip leader from the final table to the last hand. $10,000,000. Espen Jorstad breaks down how Lucas Jumalon pulled off one of the most dominant Main Event runs in recent memory.",
+      "language": "English",
+      "imageUrl": "https://i.ytimg.com/vi/uEza3SdANQs/hqdefault.jpg",
+      "contentType": "video",
+      "durationSeconds": 4085,
+      "classification": {
+        "difficulty": "intermediate",
+        "tags": []
+      }
+    },
+    {
+      "source": "GTO Wizard",
+      "sourceSlug": "gto-wizard",
+      "sourceUrl": "https://www.youtube.com/@GTOWizard",
+      "title": "Loose = Variance, Win = Skill?",
+      "originalUrl": "https://www.youtube.com/watch?v=PQqC1cfTD7g",
+      "author": "GTO Wizard",
+      "publishedAt": "2026-09-02T14:17:53+00:00",
+      "summary": "showed exactly why he belongs at the top of the poker world in this series of HU matches. After hitting some rough patches early on, he adapted to Monarch's playstyle over multiple HU battles and then ruthlessly exploited it. Watch the full video and pick up a trick or two from one of the all-time greats of high-stakes",
+      "language": "English",
+      "imageUrl": "https://i.ytimg.com/vi/PQqC1cfTD7g/hqdefault.jpg",
+      "contentType": "video",
+      "durationSeconds": 17,
+      "classification": {
+        "difficulty": "intermediate",
+        "tags": [
+          "exploit"
+        ]
+      }
+    },
+    {
+      "source": "GTO Wizard",
+      "sourceSlug": "gto-wizard",
+      "sourceUrl": "https://www.youtube.com/@GTOWizard",
+      "title": "I Got Texted \"Wanna Play $500K Heads Up?\"",
+      "originalUrl": "https://www.youtube.com/watch?v=J-f0LVIxs_w",
+      "author": "GTO Wizard",
+      "publishedAt": "2026-08-25T14:16:39+00:00",
+      "summary": "How Jungleman Turned 500k Into 15 Million \"It started when I was in Tallinn, Estonia, and I was not in a great mood. Then I get a text on my phone: 'Someone wants to play 500k Heads Up on a stream.'” What began as a text message blossomed into the largest heads-up match in poker history. In this exclusive breakdown, Ju",
+      "language": "English",
+      "imageUrl": "https://i.ytimg.com/vi/J-f0LVIxs_w/hqdefault.jpg",
+      "contentType": "video",
+      "durationSeconds": 1193,
+      "classification": {
+        "difficulty": "intermediate",
+        "tags": [
+          "turn"
+        ]
+      }
+    },
+    {
+      "source": "GTO Wizard",
+      "sourceSlug": "gto-wizard",
+      "sourceUrl": "https://www.youtube.com/@GTOWizard",
+      "title": "The Truth About Late Registration",
+      "originalUrl": "https://www.youtube.com/watch?v=swBBxNXzrqM",
+      "author": "GTO Wizard",
+      "publishedAt": "2026-08-12T15:37:16+00:00",
+      "summary": "Is Late Registration Actually Profitable? The ICM Math and Real Data You've Never Seen Most players decide whether to register early or late based on what time they arrive at the event, whether they still need dinner first or plain gut feel. Tombos21 digs into an underrated, understudied question: whether that habit is",
+      "language": "English",
+      "imageUrl": "https://i.ytimg.com/vi/swBBxNXzrqM/hqdefault.jpg",
+      "contentType": "video",
+      "durationSeconds": 1302,
+      "classification": {
+        "difficulty": "intermediate",
+        "tags": [
+          "icm"
+        ]
+      }
+    },
+    {
+      "source": "GTO Wizard",
+      "sourceSlug": "gto-wizard",
+      "sourceUrl": "https://www.youtube.com/@GTOWizard",
+      "title": "When Pros Deviate from The Optimal Play",
+      "originalUrl": "https://www.youtube.com/watch?v=pfVJcOhXvcc",
+      "author": "GTO Wizard",
+      "publishedAt": "2026-07-30T13:19:23+00:00",
+      "summary": "An intense WSOP hand between Bryn Kenney and Adrian Mateos had the broadcast buzzing about the optimal play. Kevin Rabichow breaks down how \"The Optimal Play\" actually works: the bet sizes it considers, the accuracy behind it, then dives into the solver analysis on the hand itself. Two star players. Two perspectives. W",
+      "language": "English",
+      "imageUrl": "https://i.ytimg.com/vi/pfVJcOhXvcc/hqdefault.jpg",
+      "contentType": "video",
+      "durationSeconds": 20,
+      "classification": {
+        "difficulty": "intermediate",
+        "tags": [
+          "gto"
+        ]
+      }
+    },
+    {
+      "source": "GTO Wizard",
+      "sourceSlug": "gto-wizard",
+      "sourceUrl": "https://www.youtube.com/@GTOWizard",
+      "title": "Joey Ingram on Big Blind Defense (PLO)",
+      "originalUrl": "https://www.youtube.com/watch?v=9_BjQ-xMFrk",
+      "author": "GTO Wizard",
+      "publishedAt": "2026-07-20T12:38:18+00:00",
+      "summary": "Most players defend BB vs UTG in PLO completely wrong. Tombos21 asks @joeingram1 to break down the actual logic. This one will change the hands you defend! Would you have guessed how tight this range really is?",
+      "language": "English",
+      "imageUrl": "https://i.ytimg.com/vi/9_BjQ-xMFrk/hqdefault.jpg",
+      "contentType": "video",
+      "durationSeconds": 23,
+      "classification": {
+        "difficulty": "intermediate",
+        "tags": []
+      }
+    },
+    {
+      "source": "GTO Wizard",
+      "sourceSlug": "gto-wizard",
+      "sourceUrl": "https://www.youtube.com/@GTOWizard",
+      "title": "When Pros Deviate from GTO",
+      "originalUrl": "https://www.youtube.com/watch?v=ViZj96jEbZY",
+      "author": "GTO Wizard",
+      "publishedAt": "2026-07-16T14:45:40+00:00",
+      "summary": "How the Pros Apply GTO: Bryn Kenney vs. Adrian Mateos, Inside \"The Optimal Play\" The WSOP livestream now shows viewers the optimal solver play live, but how does it actually work? In this breakdown, Kevin Rabichow explains the mechanics behind GTO Wizard's \"The Optimal Play\" feature, covering how the solves run during ",
+      "language": "English",
+      "imageUrl": "https://i.ytimg.com/vi/ViZj96jEbZY/hqdefault.jpg",
+      "contentType": "video",
+      "durationSeconds": 1155,
+      "classification": {
+        "difficulty": "intermediate",
+        "tags": [
+          "gto"
+        ]
+      }
+    },
+    {
+      "source": "GTO Wizard",
+      "sourceSlug": "gto-wizard",
+      "sourceUrl": "https://www.youtube.com/@GTOWizard",
+      "title": "Why Broad Skills Make More Money",
+      "originalUrl": "https://www.youtube.com/watch?v=fMZ-dgTg2GY",
+      "author": "GTO Wizard",
+      "publishedAt": "2026-07-13T11:59:55+00:00",
+      "summary": "Why aren't the best players all specialists? 🧐 Tombos21 & Joey Ingram break down the ONE skill that actually prints in poker — no matter what format you play, this one's for you.",
+      "language": "English",
+      "imageUrl": "https://i.ytimg.com/vi/fMZ-dgTg2GY/hqdefault.jpg",
+      "contentType": "video",
+      "durationSeconds": 30,
+      "classification": {
+        "difficulty": "intermediate",
+        "tags": []
+      }
+    },
+    {
+      "source": "GTO Wizard",
+      "sourceSlug": "gto-wizard",
+      "sourceUrl": "https://www.youtube.com/@GTOWizard",
+      "title": "The Complexity of PLO",
+      "originalUrl": "https://www.youtube.com/watch?v=t9QeAlU6wcw",
+      "author": "GTO Wizard",
+      "publishedAt": "2026-07-08T15:13:45+00:00",
+      "summary": "The fastest improvers in poker aren't the ones who study the most. There's a specific way of thinking about the game that changes everything and once it clicks, you are in the fast lane. @FiveCardGuy shares his insights and his personal journey from losing to winning player.",
+      "language": "English",
+      "imageUrl": "https://i.ytimg.com/vi/t9QeAlU6wcw/hqdefault.jpg",
+      "contentType": "video",
+      "durationSeconds": 27,
+      "classification": {
+        "difficulty": "intermediate",
+        "tags": []
+      }
+    },
+    {
+      "source": "GTO Wizard",
+      "sourceSlug": "gto-wizard",
+      "sourceUrl": "https://www.youtube.com/@GTOWizard",
+      "title": "How Pros Actually Study PLO",
+      "originalUrl": "https://www.youtube.com/watch?v=G5k4cXNbiB0",
+      "author": "GTO Wizard",
+      "publishedAt": "2026-06-25T14:22:15+00:00",
+      "summary": "@FiveCardGuy spent months putting in the work. Studying charts, reviewing sessions, grinding countless hours, and still struggling to become a winning player. Then he figured out why. In this video he walks you through the study framework that turned it around: how to pull reproducible heuristics from solver data, find",
+      "language": "English",
+      "imageUrl": "https://i.ytimg.com/vi/G5k4cXNbiB0/hqdefault.jpg",
+      "contentType": "video",
+      "durationSeconds": 1140,
+      "classification": {
+        "difficulty": "intermediate",
+        "tags": [
+          "turn",
+          "gto"
+        ]
+      }
+    },
+    {
+      "source": "GTO Wizard",
+      "sourceSlug": "gto-wizard",
+      "sourceUrl": "https://www.youtube.com/@GTOWizard",
+      "title": "Maximizing EV with Polarized Betting",
+      "originalUrl": "https://www.youtube.com/watch?v=5YlqghSlKZE",
+      "author": "GTO Wizard",
+      "publishedAt": "2026-06-23T13:24:37+00:00",
+      "summary": "Most players see this board and bet small. The solver goes polar. 🧠 Kevin Rabichow breaks down why and what the sizing is actually optimizing for. If you don't know the answer, you need to understand this! 🔁 Save this for your next study session.",
+      "language": "English",
+      "imageUrl": "https://i.ytimg.com/vi/5YlqghSlKZE/hqdefault.jpg",
+      "contentType": "video",
+      "durationSeconds": 43,
+      "classification": {
+        "difficulty": "intermediate",
+        "tags": [
+          "gto"
+        ]
+      }
+    },
+    {
+      "source": "GTO Wizard",
+      "sourceSlug": "gto-wizard",
+      "sourceUrl": "https://www.youtube.com/@GTOWizard",
+      "title": "The Math Behind Every Profitable Poker Decision",
+      "originalUrl": "https://www.youtube.com/watch?v=C-QUUH-s8aE",
+      "author": "GTO Wizard",
+      "publishedAt": "2026-06-11T14:00:37+00:00",
+      "summary": "In poker, your intuition is important, but relying on it will only take you so far. To beat tough games, you need to understand the underlying mathematical logic that drives your strategy. In this masterclass, Tombos21 and Joey Ingram walk you through fundamental poker math, providing a clear blueprint for how to calcu",
+      "language": "English",
+      "imageUrl": "https://i.ytimg.com/vi/C-QUUH-s8aE/hqdefault.jpg",
+      "contentType": "video",
+      "durationSeconds": 1803,
+      "classification": {
+        "difficulty": "beginner",
+        "tags": []
+      }
+    },
+    {
+      "source": "GTO Wizard",
+      "sourceSlug": "gto-wizard",
+      "sourceUrl": "https://www.youtube.com/@GTOWizard",
+      "title": "PLO in GTO Wizard ft. Tombos21 & Joey Ingram",
+      "originalUrl": "https://www.youtube.com/watch?v=mFxVLlp6cIs",
+      "author": "GTO Wizard",
+      "publishedAt": "2026-05-20T22:57:54+00:00",
+      "summary": "Tombos21 and Joey Ingram are taking over live to break down PLO inside GTO Wizard. Expect a solver walkthrough, PLO drills, pro tips, giveaways and your questions answered in real time. Drop your most pressing PLO questions in the chat.",
+      "language": "English",
+      "imageUrl": "https://i.ytimg.com/vi/mFxVLlp6cIs/hqdefault.jpg",
+      "contentType": "video",
+      "durationSeconds": 6625,
+      "classification": {
+        "difficulty": "intermediate",
+        "tags": [
+          "gto"
+        ]
+      }
+    },
+    {
+      "source": "GTO Wizard Japan",
+      "sourceSlug": "gto-wizard-japan",
+      "sourceUrl": "https://www.youtube.com/@GTOWizardJapan",
+      "title": "ペアボードでの正しいプレイ",
+      "originalUrl": "https://www.youtube.com/watch?v=Iw3mYv3WbMY",
+      "author": "GTO Wizard Japan",
+      "publishedAt": "2026-08-14T11:00:49+00:00",
+      "summary": "頻出するペアボードにおける戦略を集合分析を使用しながら説明しています。 SRPvsBBではBB側は多くのxrを行いoriginalの広いcardに抵抗していきます。 基本的な戦略がかなり広く知られているシチュエーションになるため均衡理解で大きな差が現れやすいspotになっていますが、 PFのpositionやアクションによりかなり戦略が変わる為本動画を通じて様々なシチュエーションにおけるペアボードの違いを学んでください。",
+      "language": "Japanese",
+      "imageUrl": "https://i.ytimg.com/vi/Iw3mYv3WbMY/hqdefault.jpg",
+      "contentType": "video",
+      "durationSeconds": 727,
+      "classification": {
+        "difficulty": "beginner",
+        "tags": []
+      }
+    },
+    {
+      "source": "GTO Wizard Japan",
+      "sourceSlug": "gto-wizard-japan",
+      "sourceUrl": "https://www.youtube.com/@GTOWizardJapan",
+      "title": "モノトーンボードでの正しいプレイ",
+      "originalUrl": "https://www.youtube.com/watch?v=KvBrjZOXL5M",
+      "author": "GTO Wizard Japan",
+      "publishedAt": "2026-07-13T09:40:09+00:00",
+      "summary": "かつてはlarge sizeのbetが推奨されていたモノトーンボードについて、GTO戦略の基本を説明します。 EPや3bpでの考え方や一般的なリークについても説明をしていますので、この動画を通じてモノトーンボードへの誤解を解消し理解を深めましょう。",
+      "language": "Japanese",
+      "imageUrl": "https://i.ytimg.com/vi/KvBrjZOXL5M/hqdefault.jpg",
+      "contentType": "video",
+      "durationSeconds": 664,
+      "classification": {
+        "difficulty": "beginner",
+        "tags": [
+          "gto"
+        ]
+      }
+    },
+    {
+      "source": "GTO Wizard Japan",
+      "sourceSlug": "gto-wizard-japan",
+      "sourceUrl": "https://www.youtube.com/@GTOWizardJapan",
+      "title": "Axoの正しいプレイ",
+      "originalUrl": "https://www.youtube.com/watch?v=PkIcmLym2w8",
+      "author": "GTO Wizard Japan",
+      "publishedAt": "2026-06-14T07:16:54+00:00",
+      "summary": "GTO Wizardを使ってAXoの扱い方を解説しています。 もう一枚のランクによって使い方が繊細に変わるAXについて、PFのさまざまなスポットに加えて、CBを打つかどうかの判断についても説明しています。",
+      "language": "Japanese",
+      "imageUrl": "https://i.ytimg.com/vi/PkIcmLym2w8/hqdefault.jpg",
+      "contentType": "video",
+      "durationSeconds": 742,
+      "classification": {
+        "difficulty": "intermediate",
+        "tags": [
+          "gto"
+        ]
+      }
+    },
+    {
+      "source": "GTO Wizard Japan",
+      "sourceSlug": "gto-wizard-japan",
+      "sourceUrl": "https://www.youtube.com/@GTOWizardJapan",
+      "title": "KQoの正しいプレイ",
+      "originalUrl": "https://www.youtube.com/watch?v=nBeXrQrWrMc",
+      "author": "GTO Wizard Japan",
+      "publishedAt": "2026-06-07T08:03:11+00:00",
+      "summary": "GTO Wizardを使用してKQoの扱い方について解説をしています。 PFでの扱い方に加えて、ポストフロップで2オーバーになってしまった場合の対処についても説明しています。",
+      "language": "Japanese",
+      "imageUrl": "https://i.ytimg.com/vi/nBeXrQrWrMc/hqdefault.jpg",
+      "contentType": "video",
+      "durationSeconds": 614,
+      "classification": {
+        "difficulty": "intermediate",
+        "tags": [
+          "flop",
+          "gto"
+        ]
+      }
+    },
+    {
+      "source": "GTO Wizard Japan",
+      "sourceSlug": "gto-wizard-japan",
+      "sourceUrl": "https://www.youtube.com/@GTOWizardJapan",
+      "title": "BWsの正しいプレイ",
+      "originalUrl": "https://www.youtube.com/watch?v=yGbNj9BJg_g",
+      "author": "GTO Wizard Japan",
+      "publishedAt": "2026-05-23T01:48:50+00:00",
+      "summary": "様々なアクションが候補に現れるBWsの扱い方について解説をしています。 PFにおける使い方を主題として3betやCCの他4betなどにも使用することで適切なレンジを構築する手法を説明しています。 BWsそれぞれの特性を理解し、悩まされずにプレーできるようにGTOWizardで学習することが可能です。",
+      "language": "Japanese",
+      "imageUrl": "https://i.ytimg.com/vi/yGbNj9BJg_g/hqdefault.jpg",
+      "contentType": "video",
+      "durationSeconds": 545,
+      "classification": {
+        "difficulty": "intermediate",
+        "tags": [
+          "gto"
+        ]
+      }
+    },
+    {
+      "source": "GTO Wizard Japan",
+      "sourceSlug": "gto-wizard-japan",
+      "sourceUrl": "https://www.youtube.com/@GTOWizardJapan",
+      "title": "【新機能】GTO WizardでPLOを学ぼう",
+      "originalUrl": "https://www.youtube.com/watch?v=JrC06hfDUz4",
+      "author": "GTO Wizard Japan",
+      "publishedAt": "2026-05-16T17:18:12+00:00",
+      "summary": "🧙‍♂️GTO Wizard ・どんなスポットでも学習できる ・GTOと対戦 ・1クリックでハンドを分析 ・デスクトップ/スマホ/タブレットで使える ・下記のリンクから無料で始めよう！ ▽公式Blog ▽PokerArena (対戦アプリ) ▽X (旧Twitter) ▽公式LINE 📚『日刊GTO』でポーカーの理解度を深めましょう。下記のリンクから無料の電子書籍をダウンロードし、1日5分でGTOを習得できます！",
+      "language": "Japanese",
+      "imageUrl": "https://i.ytimg.com/vi/JrC06hfDUz4/hqdefault.jpg",
+      "contentType": "video",
+      "durationSeconds": 3865,
+      "classification": {
+        "difficulty": "intermediate",
+        "tags": [
+          "gto"
+        ]
+      }
+    },
+    {
+      "source": "GTO Wizard Japan",
+      "sourceSlug": "gto-wizard-japan",
+      "sourceUrl": "https://www.youtube.com/@GTOWizardJapan",
+      "title": "A5sの正しいプレイ",
+      "originalUrl": "https://www.youtube.com/watch?v=teWt-CmzJjI",
+      "author": "GTO Wizard Japan",
+      "publishedAt": "2026-05-07T05:10:22+00:00",
+      "summary": "AXsの中でも特に扱い方の難しいA5sについて解説しています。PF時点でのアグレッシブなアクションに加え、Post Flopでの取り扱い方もGTO Wizardで学習可能です。 この悩ましいハンドで無駄にチップを減らさないよう、学習を進めましょう。",
+      "language": "Japanese",
+      "imageUrl": "https://i.ytimg.com/vi/teWt-CmzJjI/hqdefault.jpg",
+      "contentType": "video",
+      "durationSeconds": 608,
+      "classification": {
+        "difficulty": "intermediate",
+        "tags": [
+          "flop",
+          "gto"
+        ]
+      }
+    },
+    {
+      "source": "GTO Wizard Japan",
+      "sourceSlug": "gto-wizard-japan",
+      "sourceUrl": "https://www.youtube.com/@GTOWizardJapan",
+      "title": "プリフロップでのスーテッドコネクターの扱い方",
+      "originalUrl": "https://www.youtube.com/watch?v=ZBpyHkj0NFY",
+      "author": "GTO Wizard Japan",
+      "publishedAt": "2026-04-12T06:41:20+00:00",
+      "summary": "投機的なハンドの代表として扱われるスーテッドコネクターがGTOではどのように使用されているのかを解説しています。 多くのplayerが取り扱いを間違えチップを失っています。 この動画を通じて適切な扱い方をマスターしましょう。",
+      "language": "Japanese",
+      "imageUrl": "https://i.ytimg.com/vi/ZBpyHkj0NFY/hqdefault.jpg",
+      "contentType": "video",
+      "durationSeconds": 592,
+      "classification": {
+        "difficulty": "intermediate",
+        "tags": [
+          "preflop",
+          "flop",
+          "gto"
+        ]
+      }
+    },
+    {
+      "source": "GTO Wizard Japan",
+      "sourceSlug": "gto-wizard-japan",
+      "sourceUrl": "https://www.youtube.com/@GTOWizardJapan",
+      "title": "Poker Forum 2026 開催決定🎉",
+      "originalUrl": "https://www.youtube.com/watch?v=vdqYAzDAc_0",
+      "author": "GTO Wizard Japan",
+      "publishedAt": "2026-04-09T04:30:01+00:00",
+      "summary": "POKER FORUM 2026が東京大学本郷キャンパスにて5/24 (日)に開催することが決定しました🎉 POKER FORUM ではポーカーの最前線を、まとめて体感できる1日となっております。戦略のアップデート、Wizard AI開発の裏側、トッププレイヤーが実際にどう学び、どう判断しているのか。普段は語られない思考と経験に触れられます！ チケットはこちら👇",
+      "language": "Japanese",
+      "imageUrl": "https://i.ytimg.com/vi/vdqYAzDAc_0/hqdefault.jpg",
+      "contentType": "video",
+      "durationSeconds": 37,
+      "classification": {
+        "difficulty": "intermediate",
+        "tags": []
+      }
+    },
+    {
+      "source": "GTO Wizard Japan",
+      "sourceSlug": "gto-wizard-japan",
+      "sourceUrl": "https://www.youtube.com/@GTOWizardJapan",
+      "title": "JJの危険性",
+      "originalUrl": "https://www.youtube.com/watch?v=SZGhAM7Ixn4",
+      "author": "GTO Wizard Japan",
+      "publishedAt": "2026-03-30T11:13:27+00:00",
+      "summary": "JJの使い方に関して説明をしています。 JJはPFの扱いから多岐に渡り、Flop以降もover cardが落ちるかどうかで戦略の変わる繊細なハンドです。 本動画を通じてJJに悩まされることを無くしましょう！",
+      "language": "Japanese",
+      "imageUrl": "https://i.ytimg.com/vi/SZGhAM7Ixn4/hqdefault.jpg",
+      "contentType": "video",
+      "durationSeconds": 521,
+      "classification": {
+        "difficulty": "intermediate",
+        "tags": [
+          "flop"
+        ]
+      }
+    },
+    {
+      "source": "GTO Wizard Japan",
+      "sourceSlug": "gto-wizard-japan",
+      "sourceUrl": "https://www.youtube.com/@GTOWizardJapan",
+      "title": "弱いポケットペアの正しいプレイ",
+      "originalUrl": "https://www.youtube.com/watch?v=m0lHfzz3Q2I",
+      "author": "GTO Wizard Japan",
+      "publishedAt": "2026-03-22T02:30:59+00:00",
+      "summary": "SRP: K83r SRP: QJ3tt SRP: KJ3r SRP (ディフェンス): K84r SRP (ディフェンス): 883r 3BP: KJ3tt 3BP: 953r",
+      "language": "Japanese",
+      "imageUrl": "https://i.ytimg.com/vi/m0lHfzz3Q2I/hqdefault.jpg",
+      "contentType": "video",
+      "durationSeconds": 881,
+      "classification": {
+        "difficulty": "intermediate",
+        "tags": []
+      }
+    },
+    {
+      "source": "GTO Wizard Japan",
+      "sourceSlug": "gto-wizard-japan",
+      "sourceUrl": "https://www.youtube.com/@GTOWizardJapan",
+      "title": "AKが滑った時の正しいプレイ",
+      "originalUrl": "https://www.youtube.com/watch?v=HrtZcVIHYLU",
+      "author": "GTO Wizard Japan",
+      "publishedAt": "2026-02-01T01:09:26+00:00",
+      "summary": "AKというハンドの使い方を、preflopやflop以降のアクションについて分類することで説明を行なっています。 本動画を通じてAKというハンドをもってplayする際にriverまでの見通しを改善し、Exploitへの手助けとすることが可能となります。 1つ目のスポット 2つ目のスポット",
+      "language": "Japanese",
+      "imageUrl": "https://i.ytimg.com/vi/HrtZcVIHYLU/hqdefault.jpg",
+      "contentType": "video",
+      "durationSeconds": 787,
+      "classification": {
+        "difficulty": "intermediate",
+        "tags": [
+          "preflop",
+          "flop",
+          "river",
+          "exploit"
+        ]
+      }
+    },
+    {
+      "source": "GTO Wizard Japan",
+      "sourceSlug": "gto-wizard-japan",
+      "sourceUrl": "https://www.youtube.com/@GTOWizardJapan",
+      "title": "【New】ノードロック機能2.0の使い方",
+      "originalUrl": "https://www.youtube.com/watch?v=A6iNJPqWrgs",
+      "author": "GTO Wizard Japan",
+      "publishedAt": "2025-11-30T10:01:19+00:00",
+      "summary": "updateによりさらに便利になったnodelock機能について説明しています。 実践のplayerの想定戦略をより直感的にinputしExploit戦略を立てることが可能となる機能です。 また前後のnodeへのlock等直感的に難しい機能も学習可能な動画です。 是非Wizard AIを使用して学習を進めてみて下さい。",
+      "language": "Japanese",
+      "imageUrl": "https://i.ytimg.com/vi/A6iNJPqWrgs/hqdefault.jpg",
+      "contentType": "video",
+      "durationSeconds": 581,
+      "classification": {
+        "difficulty": "intermediate",
+        "tags": [
+          "exploit"
+        ]
+      }
+    },
+    {
+      "source": "GTO Wizard Japan",
+      "sourceSlug": "gto-wizard-japan",
+      "sourceUrl": "https://www.youtube.com/@GTOWizardJapan",
+      "title": "【Events】MTTソリューションの使い方",
+      "originalUrl": "https://www.youtube.com/watch?v=EHDtuke1ug8",
+      "author": "GTO Wizard Japan",
+      "publishedAt": "2025-11-16T09:09:53+00:00",
+      "summary": "GTO Wizard MTT solutionに追加されたEventsに関する説明動画です。 トッププロのプレーなどを動画視聴しながらwizard 上で確認することができます。頻繁にプレーが行えない人や実践的な学習をしたい人などにおすすめの機能ですのでぜひご確認ください。 ICMソリューションの使い方",
+      "language": "Japanese",
+      "imageUrl": "https://i.ytimg.com/vi/EHDtuke1ug8/hqdefault.jpg",
+      "contentType": "video",
+      "durationSeconds": 371,
+      "classification": {
+        "difficulty": "intermediate",
+        "tags": [
+          "gto",
+          "icm",
+          "mtt"
+        ]
+      }
+    },
+    {
+      "source": "GTO Wizard Japan",
+      "sourceSlug": "gto-wizard-japan",
+      "sourceUrl": "https://www.youtube.com/@GTOWizardJapan",
+      "title": "ドンクベットが有効なシチュエーション",
+      "originalUrl": "https://www.youtube.com/watch?v=0lVeTPbulAw",
+      "author": "GTO Wizard Japan",
+      "publishedAt": "2025-11-09T07:58:11+00:00",
+      "summary": "一般的に悪手といわれるdonk betについて有効な場面を説明しています。 FlopやTurnのdonk等よく知られたspotに加え、solutionの設定に基づく特殊なdonkなどを説明しており、本動画を通してsolverの振舞いをより深く理解することができます。 Wizard AIによる発展的な検証方法をご覧ください。",
+      "language": "Japanese",
+      "imageUrl": "https://i.ytimg.com/vi/0lVeTPbulAw/hqdefault.jpg",
+      "contentType": "video",
+      "durationSeconds": 647,
+      "classification": {
+        "difficulty": "intermediate",
+        "tags": [
+          "flop",
+          "turn",
+          "gto"
+        ]
+      }
     }
   ]
 }

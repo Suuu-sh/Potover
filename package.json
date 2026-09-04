@@ -10,6 +10,7 @@
     "test": "vitest run",
     "collect:gtowizard": "node scripts/collect-gtowizard.mjs",
     "collect:public-sources": "node scripts/collect-public-sources.mjs",
+    "collect:youtube": "node scripts/collect-youtube.mjs",
     "enrich:headings": "node scripts/enrich-article-headings.mjs",
     "build:pages": "next build",
     "deploy:worker": "wrangler deploy --config worker/wrangler.jsonc",
