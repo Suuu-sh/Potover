@@ -15,10 +15,15 @@ export function HomeSpotlightCarousel(){
   const preferredSource=preferredLanguage==='Japanese'?'gto-wizard-japan':'gto-wizard';
   const recommendations=articles.filter(article=>article.sourceSlug===preferredSource);
   const promos=[{href:'/docs',image:'/banners/potover-strategy-hero.png',label:'Potover Picks',title:'今週読むべきポーカー戦略'},...(recommendations.length?recommendations:articles).slice(0,6).map(article=>({href:`/articles/${article.slug}`,image:article.imageUrl||'/banners/range-map.png',label:article.source,title:article.title}))];
-  const slide=(direction:number)=>rail.current?.scrollBy({left:direction*460,behavior:'smooth'});
+  const slide=(direction:number)=>{
+    const node=rail.current;if(!node)return;
+    const cards=Array.from(node.querySelectorAll<HTMLElement>('.home-spotlight-card'));
+    const step=cards[1]?cards[1].offsetLeft-cards[0].offsetLeft:460;
+    node.scrollBy({left:direction*step,behavior:'smooth'});
+  };
   useEffect(()=>{
     if(paused||window.matchMedia('(prefers-reduced-motion: reduce)').matches)return;
-    const timer=window.setInterval(()=>{const node=rail.current;if(!node)return;const atEnd=node.scrollLeft+node.clientWidth>=node.scrollWidth-24;node.scrollTo({left:atEnd?0:node.scrollLeft+460,behavior:'smooth'})},4000);
+    const timer=window.setInterval(()=>{const node=rail.current;if(!node)return;const cards=Array.from(node.querySelectorAll<HTMLElement>('.home-spotlight-card'));const step=cards[1]?cards[1].offsetLeft-cards[0].offsetLeft:460;const atEnd=node.scrollLeft+node.clientWidth>=node.scrollWidth-24;node.scrollTo({left:atEnd?0:node.scrollLeft+step,behavior:'smooth'})},4000);
     return()=>window.clearInterval(timer);
   },[paused]);
   return <section className="home-spotlight" aria-label="おすすめ">
