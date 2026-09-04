@@ -73,9 +73,8 @@ html.dark-mode{color-scheme:dark}html.dark-mode body{background:#080f18;color:#e
 @media(min-width:1001px){.docs-v3-layout{grid-template-columns:minmax(0,1fr);max-width:1480px;padding-left:64px;padding-right:64px}.docs-v3 .docs-feed{margin-right:0;padding-right:18px}.docs-feed-row{grid-template-columns:320px minmax(0,1fr) 58px;gap:30px;min-height:236px}.article-cover{height:188px}.feed-copy h2{font-size:22px}.feed-copy>p{max-width:920px;font-size:13px;line-height:1.75}}
 .dark-mode .brand-lockup img{filter:brightness(0) invert(1)}.dark-mode .header-docs-search{background:#111d29;border-color:#467fcf}.dark-mode .header-docs-search input{background:#111d29;color:#edf3fb}.dark-mode .header-docs-search input::placeholder{color:#8d9caf}.dark-mode .header-docs-search kbd{background:#172738;border-color:#34475b;color:#b9c9da}.dark-mode .header-docs-search .search-filter-button{background:#111d29;border-color:#34475b;color:#d2dce8}
 @media(max-width:1180px) and (min-width:901px){.docs-v3 .site-header nav{display:none}.docs-v3 .site-header-search{max-width:none}.docs-v3 .site-header .atlas-actions a[href="/bookmarks"]{font-size:0;gap:0}}
-/* Compact docs header and preserve the original colored brand icon in dark mode */
-.brand-lockup{position:relative}.brand-logo-icon{display:none!important}.docs-v3 .brand-lockup{width:122px;height:38px}.docs-v3 .brand-lockup img{width:122px}.docs-v3 .site-header-search{max-width:520px}.header-docs-search{height:36px}.header-docs-search>svg{width:15px;height:15px;margin:0 10px}.header-docs-search input{font-size:12px}.header-docs-search kbd{padding:3px 6px;margin-right:6px}.header-docs-search .search-filter-button{width:82px;font-size:11px}.header-docs-search .search-filter-button+button{width:62px;font-size:12px}
-.dark-mode .brand-logo-base{filter:brightness(0) invert(1)}.dark-mode .brand-logo-icon{display:block!important;position:absolute;inset:0 auto 0 0;clip-path:inset(0 77% 0 0);filter:none!important}
+/* Compact docs header details. */
+.docs-v3 .site-header-search{max-width:520px}.header-docs-search{height:36px}.header-docs-search>svg{width:15px;height:15px;margin:0 10px}.header-docs-search input{font-size:12px}.header-docs-search kbd{padding:3px 6px;margin-right:6px}.header-docs-search .search-filter-button{width:82px;font-size:11px}.header-docs-search .search-filter-button+button{width:62px;font-size:12px}
 .bookmark-action{display:grid;place-items:center;width:34px;height:34px;border:0;background:transparent;color:#536982;cursor:pointer;border-radius:7px}.bookmark-action:hover,.bookmark-action.is-saved{background:#eaf2ff;color:#1769e8}.bookmark-action.is-saved{box-shadow:inset 0 0 0 1px #b9d2f7}.bookmark-empty{text-align:center;padding:100px 20px;color:#718198}.bookmark-empty svg{color:#1769e8}.bookmark-empty h2{color:#10213d;margin:15px 0 8px}.bookmark-empty p{margin:0 0 18px}.bookmark-empty a{display:inline-block;border-radius:7px;background:#1769e8;color:#fff;padding:10px 16px;font-weight:600}
 .dark-mode .bookmark-action:hover,.dark-mode .bookmark-action.is-saved{background:#172f52;color:#8cb8ff}.dark-mode .bookmark-action.is-saved{box-shadow:inset 0 0 0 1px #3c72b5}.dark-mode .bookmark-empty h2{color:#edf3fb}
 .pick-logo{width:160px;height:96px;border-radius:8px;background:#eef3f8}.pick-logo .pick-article-image{object-fit:cover!important;transform:none!important;width:100%!important;height:100%!important}.pick-logo:not(:has(.pick-article-image)) img{object-fit:cover}.pick-row{grid-template-columns:160px minmax(260px,1fr) 140px 92px 78px 75px 24px;gap:18px;padding:18px 0}.pick-copy h3{font-size:16px;line-height:1.4}.pick-copy p{font-size:12px;line-height:1.6}.dark-mode .pick-logo{background:#111d29}.dark-mode .pick-row{border-color:#29394b}
@@ -452,9 +451,6 @@ html:not(.dark-mode){color-scheme:light}body{background:var(--refero-paper);colo
   .feed-toolbar select{max-width:84px!important;font-size:11px!important}
 }
 @media(max-width:360px){
-  .brand-lockup,.docs-v3 .brand-lockup{flex-basis:40px;width:40px!important}
-  .brand-lockup .brand-logo-base,.docs-v3 .brand-lockup .brand-logo-base{display:none!important}
-  .brand-lockup .brand-logo-icon,.docs-v3 .brand-lockup .brand-logo-icon{display:block!important;position:absolute!important;inset:0 auto 0 0!important;width:126px!important;height:38px!important;max-width:none!important;object-fit:contain!important;object-position:left center!important;clip-path:inset(0 77% 0 0)!important;filter:none!important}
   .site-header-inner,.docs-v3 .site-header-inner{padding:0 10px!important;gap:8px!important}
   .site-header .atlas-actions,.docs-v3 .site-header .atlas-actions{gap:5px!important}
   .docs-v3 .docs-v3-layout{padding-left:10px!important;padding-right:10px!important}
@@ -479,6 +475,19 @@ html:not(.dark-mode){color-scheme:light}body{background:var(--refero-paper);colo
    sides instead of appearing only along the top. */
 .home-spotlight-card{height:auto!important;aspect-ratio:16/9!important}
 .home-spotlight-card>img,.article-cover>img{display:block!important;object-fit:cover!important;object-position:center!important}
+
+/* New Potover identity: a compact mark and a warmer, editorial sans stack. */
+:root{--potover-font-sans:"Avenir Next","Hiragino Sans","Yu Gothic",Inter,"Noto Sans JP",system-ui,sans-serif;--potover-font-display:"Avenir Next Demi Bold","Avenir Next","Hiragino Sans","Yu Gothic",Inter,"Noto Sans JP",system-ui,sans-serif}
+html,body,button,input,select,textarea{font-family:var(--potover-font-sans)!important}
+h1,h2,h3,h4,h5,h6,.brand-wordmark{font-family:var(--potover-font-display)!important}
+.brand-lockup,.docs-v3 .brand-lockup{width:154px!important;height:38px!important;display:flex!important;align-items:center!important;gap:8px!important;overflow:visible!important}
+.brand-mark{width:32px;height:32px;display:grid;place-items:center;flex:none}
+.brand-mark img{width:32px!important;height:32px!important;display:block!important;object-fit:contain!important}
+.dark-mode .brand-mark img{filter:none!important}
+.brand-wordmark{color:#101828;font-size:23px;font-weight:700;letter-spacing:-1.15px;line-height:1}
+.dark-mode .brand-wordmark{color:#f8fafc}
+@media(max-width:900px){.brand-lockup,.docs-v3 .brand-lockup{width:126px!important}.brand-mark{width:30px;height:30px}.brand-mark img{width:30px!important;height:30px!important}.brand-wordmark{font-size:21px;letter-spacing:-1px}}
+@media(max-width:360px){.brand-lockup,.docs-v3 .brand-lockup{width:40px!important;flex-basis:40px!important}.brand-mark{width:32px;height:32px}.brand-mark img{width:32px!important;height:32px!important}.brand-wordmark{display:none!important}}
 
 /* Docs controls stay legible while the feed scrolls beneath them. Keep the
    toolbar compact, opaque, and visually separated from the article cards. */
