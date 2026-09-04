@@ -637,7 +637,7 @@ h1,h2,h3,h4,h5,h6,.brand-wordmark{font-family:var(--potover-font-display)!import
 
 /* Keep the desktop command search wide and use one continuous dark surface. */
 @media(min-width:1181px){
-  .site-header-inner,.docs-v3 .site-header-inner{max-width:1320px!important;grid-template-columns:154px auto minmax(340px,460px) auto!important}
+  .site-header-inner,.docs-v3 .site-header-inner{max-width:1420px!important;grid-template-columns:154px auto minmax(460px,560px) auto!important}
 }
 .dark-mode .site-header-search{background:#171717!important;border-color:#343434!important}
 .dark-mode .site-header-search input{background:transparent!important;color:#f4f4f4!important}
@@ -652,6 +652,7 @@ h1,h2,h3,h4,h5,h6,.brand-wordmark{font-family:var(--potover-font-display)!import
   .site-header nav a:hover,.docs-v3 .site-header nav a:hover{background:#f0f2f5!important}
   .site-header nav a.is-active,.docs-v3 .site-header nav a.is-active{background:#101010!important;color:#fff!important;box-shadow:0 1px 5px rgba(16,16,16,.12)!important}
   .site-header-search{max-width:none!important}
+  .site-header .bookmarks-action,.docs-v3 .site-header .bookmarks-action{width:36px!important;padding:0!important;gap:0!important;font-size:0!important}
   .dark-mode .site-header-inner,.dark-mode .docs-v3 .site-header-inner{background:rgba(16,16,16,.96)!important;border-color:#242424!important;box-shadow:0 8px 24px rgba(0,0,0,.24)!important}
   .dark-mode .site-header nav,.dark-mode .docs-v3 .site-header nav{background:transparent!important;border:0!important}
   .dark-mode .site-header nav a:hover,.dark-mode .docs-v3 .site-header nav a:hover{background:rgba(255,255,255,.08)!important}
