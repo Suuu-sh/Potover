@@ -645,7 +645,7 @@ h1,h2,h3,h4,h5,h6,.brand-wordmark{font-family:var(--potover-font-display)!import
 
 /* Keep both article actions visible and compact on narrow screens. */
 @media(max-width:900px){
-  .docs-v3 .feed-actions{display:flex!important;right:12px!important;bottom:12px!important;gap:7px!important}
+  .docs-v3 .feed-actions{display:flex!important;flex-direction:column!important;right:12px!important;bottom:12px!important;gap:7px!important}
   .docs-v3 .feed-actions button,.docs-v3 .feed-actions a{display:grid!important;place-items:center!important;width:32px!important;height:32px!important;padding:0!important;border:1px solid var(--refero-silver)!important;border-radius:50%!important;background:var(--refero-white)!important;color:var(--refero-graphite)!important}
   .dark-mode .docs-v3 .feed-actions button,.dark-mode .docs-v3 .feed-actions a{background:#171717!important;border-color:#303030!important;color:#f4f4f4!important}
 }
