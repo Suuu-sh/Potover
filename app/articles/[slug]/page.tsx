@@ -17,10 +17,10 @@ export default function Article({params}:{params:{slug:string}}){
         <h2 id="article-summary-heading">要約</h2>
         <p>{a.summary}</p>
       </section>
-      <section className="detail-takeaways" aria-labelledby="article-takeaways-heading">
-        <p className="detail-kicker">KEY TAKEAWAYS</p>
-        <h2 id="article-takeaways-heading">大事なポイント</h2>
-        <ul className="detail-points">{a.keyPoints.map((point,index)=><li key={`${a.slug}-point-${index}`}><span>{String(index+1).padStart(2,'0')}</span><p>{point}</p></li>)}</ul>
+      <section className="detail-takeaways" aria-labelledby="article-outline-heading">
+        <p className="detail-kicker">IN THIS ARTICLE</p>
+        <h2 id="article-outline-heading">見出し</h2>
+        <ol className="detail-points detail-outline">{a.headings.map((heading,index)=><li data-level={heading.level} key={`${a.slug}-heading-${index}`}><span>{String(index+1).padStart(2,'0')}</span><p>{heading.text}</p></li>)}</ol>
       </section>
       <div className="detail-tags">{a.tags.map(t=><span className="tag" key={t}>{t}</span>)}</div>
       <LearningLink className="cta" slug={a.slug} href={a.url}>元記事を読む ↗</LearningLink>

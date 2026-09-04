@@ -4,6 +4,8 @@ type ArticleInsightInput = {
   tags: string[];
 };
 
+export type ArticleHeading = {level: 2|3; text: string};
+
 const cleanText = (value: string) => value.replace(/\s+/g, ' ').trim();
 
 const withoutAttribution = (value: string) =>
@@ -20,11 +22,11 @@ const shorten = (value: string, maxLength = 180) => {
 };
 
 /**
- * Builds display-ready takeaways from the source summary.
- * The source feed only stores an excerpt, so the points intentionally stay
- * grounded in that excerpt instead of inventing details that are not present.
+ * Builds a concise outline fallback from the source summary.
+ * The source feed only stores an excerpt, so it stays grounded in that
+ * excerpt instead of inventing headings that are not present.
  */
-export function buildArticleKeyPoints({title, summary, tags}: ArticleInsightInput) {
+function buildArticleOutline({title, summary, tags}: ArticleInsightInput) {
   const sourceText = withoutAttribution(cleanText(summary));
   const sentences = splitSentences(sourceText);
   const points = sentences
@@ -41,4 +43,8 @@ export function buildArticleKeyPoints({title, summary, tags}: ArticleInsightInpu
 
 export function cleanArticleSummary(summary: string) {
   return withoutAttribution(cleanText(summary));
+}
+
+export function buildFallbackHeadings(input: ArticleInsightInput): ArticleHeading[] {
+  return buildArticleOutline(input).map(text => ({level: 2, text}));
 }
