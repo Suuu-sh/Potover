@@ -406,3 +406,64 @@ html:not(.dark-mode){color-scheme:light}body{background:var(--refero-paper);colo
 
 /* Align article thumbnails vertically inside their card so top and bottom gaps match. */
 .docs-v3 .docs-feed-row,.modern-pick-row{align-items:center!important}
+
+/* Responsive guardrails: keep the compact header and article rows usable at every
+   phone width without letting controls or metadata collide. */
+@media(max-width:900px){
+  .site-header,.docs-v3 .site-header{height:64px!important}
+  .site-header-inner,.docs-v3 .site-header-inner{height:64px!important;display:flex!important;align-items:center!important;justify-content:space-between!important;gap:12px!important;padding:0 16px!important;max-width:none!important;grid-template-columns:none!important}
+  .site-header nav,.docs-v3 .site-header nav,.site-header-search{display:none!important}
+  .brand-lockup,.docs-v3 .brand-lockup{flex:0 0 126px;width:126px!important;height:38px!important}
+  .brand-lockup img,.docs-v3 .brand-lockup img{width:126px!important}
+  .site-header .atlas-actions,.docs-v3 .site-header .atlas-actions{position:static!important;display:flex!important;align-items:center!important;flex:0 0 auto!important;gap:8px!important;margin-left:auto!important}
+  .site-header .atlas-actions>a,.site-header .atlas-actions .theme-toggle,.site-header .atlas-actions .profile-action{flex:none!important}
+  .site-header .bookmarks-action{display:flex!important}
+  .docs-v3 .docs-v3-layout{padding:22px 15px 45px!important}
+  .docs-v3 .docs-feed-row{grid-template-columns:minmax(112px,38%) minmax(0,1fr)!important;gap:14px!important;min-height:0!important;padding:16px!important;align-items:center!important}
+  .docs-v3 .article-cover{width:100%!important;height:auto!important;min-height:0!important;aspect-ratio:16/9!important;align-self:center!important}
+  .docs-v3 .feed-copy{min-width:0!important;padding-right:34px!important}
+  .docs-v3 .feed-source{gap:6px!important;line-height:1.35!important}
+  .docs-v3 .feed-source strong{min-width:0!important;overflow-wrap:anywhere!important}
+  .docs-v3 .feed-copy h2{font-size:clamp(15px,3.5vw,19px)!important;line-height:1.35!important;margin:7px 0 6px!important;overflow-wrap:anywhere!important}
+  .docs-v3 .feed-meta{gap:7px!important;line-height:1.35!important;margin-top:8px!important}
+  .docs-v3 .feed-actions{right:14px!important;bottom:14px!important;padding:0!important;gap:0!important}
+  .docs-v3 .feed-actions a{width:32px!important;height:32px!important;background:var(--refero-white)!important;border:1px solid var(--refero-silver)!important;border-radius:50%!important}
+  .feed-toolbar{height:48px!important;min-width:0!important;gap:8px!important}
+  .feed-toolbar>span,.feed-toolbar label,.feed-filter-button{white-space:nowrap!important}
+  .feed-toolbar>span{flex:0 0 auto!important}
+  .feed-toolbar-controls{min-width:0!important;flex:0 0 auto!important;gap:9px!important}
+  .feed-toolbar label{display:flex!important;align-items:center!important;gap:4px!important}
+  .feed-toolbar select{max-width:92px!important}
+}
+@media(max-width:480px){
+  .site-header-inner,.docs-v3 .site-header-inner{padding:0 12px!important;gap:10px!important}
+  .site-header .bookmarks-action{width:36px!important;padding:0!important;font-size:0!important;justify-content:center!important;gap:0!important}
+  .language-select{width:64px!important;padding-left:7px!important;padding-right:16px!important;font-size:10px!important}
+  .site-header .atlas-actions,.docs-v3 .site-header .atlas-actions{gap:6px!important}
+  .docs-v3 .docs-v3-layout{padding-left:12px!important;padding-right:12px!important}
+  .docs-v3 .docs-feed-row{padding:14px!important;gap:12px!important}
+  .docs-v3 .feed-copy{padding-right:32px!important}
+  .docs-v3 .feed-source{font-size:11px!important;gap:5px!important}
+  .docs-v3 .feed-source .source-glyph{font-size:17px!important}
+  .docs-v3 .content-kind{padding:3px 6px!important;font-size:9px!important}
+  .docs-v3 .feed-meta{font-size:10px!important;gap:6px!important}
+  .feed-toolbar{font-size:11px!important}
+  .feed-toolbar-controls{gap:7px!important}
+  .feed-toolbar select{max-width:84px!important;font-size:11px!important}
+}
+@media(max-width:360px){
+  .brand-lockup,.docs-v3 .brand-lockup{flex-basis:40px;width:40px!important}
+  .brand-lockup .brand-logo-base,.docs-v3 .brand-lockup .brand-logo-base{display:none!important}
+  .brand-lockup .brand-logo-icon,.docs-v3 .brand-lockup .brand-logo-icon{display:block!important;position:absolute!important;inset:0 auto 0 0!important;width:126px!important;height:38px!important;max-width:none!important;object-fit:contain!important;object-position:left center!important;clip-path:inset(0 77% 0 0)!important;filter:none!important}
+  .site-header-inner,.docs-v3 .site-header-inner{padding:0 10px!important;gap:8px!important}
+  .site-header .atlas-actions,.docs-v3 .site-header .atlas-actions{gap:5px!important}
+  .docs-v3 .docs-v3-layout{padding-left:10px!important;padding-right:10px!important}
+}
+
+/* The bookmark icon is intentionally kept in the compact mobile action bar. */
+@media(max-width:900px){.site-header .bookmarks-action svg{display:block!important}}
+@media(max-width:900px) and (prefers-color-scheme:dark){.dark-mode .site-header .bookmarks-action svg{display:block!important}}
+@media(max-width:900px){.dark-mode .docs-v3 .feed-actions a{background:#171717!important;border-color:#303030!important;color:#f4f4f4!important}}
+.dark-mode .feed-toolbar>span,.dark-mode .feed-toolbar label,.dark-mode .feed-filter-button{color:#c7c7c7!important}
+.dark-mode .feed-toolbar select{color:#f4f4f4!important}
+.dark-mode .source-glyph{color:#f4f4f4!important}
