@@ -474,6 +474,12 @@ html:not(.dark-mode){color-scheme:light}body{background:var(--refero-paper);colo
 .curriculum-course-tabs{margin-bottom:18px!important}
 @media(max-width:800px){.curriculum-page{padding-top:16px!important}.curriculum-course-tabs{margin-bottom:16px!important}}
 
+/* Use the same 16:9 thumbnail frame as the article index. This keeps the
+   source artwork fully fitted so decorative edge lines are balanced on all
+   sides instead of appearing only along the top. */
+.home-spotlight-card{height:auto!important;aspect-ratio:16/9!important}
+.home-spotlight-card>img,.article-cover>img{display:block!important;object-fit:cover!important;object-position:center!important}
+
 /* Docs controls stay legible while the feed scrolls beneath them. Keep the
    toolbar compact, opaque, and visually separated from the article cards. */
 @media(min-width:901px){
