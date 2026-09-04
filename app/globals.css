@@ -581,8 +581,9 @@ h1,h2,h3,h4,h5,h6,.brand-wordmark{font-family:var(--potover-font-display)!import
 .home-spotlight-head{border-bottom:1px solid var(--refero-silver)!important}
 .home-spotlight-head{padding-bottom:9px!important}
 .home-spotlight-rail{margin-top:16px!important}
-.home-spotlight-card{border:1px solid rgba(16,16,16,.08)!important;box-shadow:0 2px 6px rgba(16,16,16,.08),0 10px 24px rgba(16,16,16,.08)!important;transition:transform .2s ease,box-shadow .2s ease}
-.home-spotlight-card:hover{transform:translateY(-2px);box-shadow:0 3px 8px rgba(16,16,16,.1),0 16px 32px rgba(16,16,16,.12)!important}
+.roadmap-preview-card,.home-spotlight-card{box-shadow:var(--refero-shadow)!important;transition:transform .2s,border-color .2s,box-shadow .2s}
+.home-spotlight-card{border:0!important}
+.home-spotlight-card:hover{transform:translateY(-2px);box-shadow:var(--refero-shadow-hover)!important}
 .modern-section-head{padding-bottom:9px!important}
 .modern-section-head>a{margin:0!important}
 .modern-picks>div>.modern-pick-row:first-child,.modern-topics-list{margin-top:16px}
