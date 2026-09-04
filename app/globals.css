@@ -467,3 +467,45 @@ html:not(.dark-mode){color-scheme:light}body{background:var(--refero-paper);colo
 .dark-mode .feed-toolbar>span,.dark-mode .feed-toolbar label,.dark-mode .feed-filter-button{color:#c7c7c7!important}
 .dark-mode .feed-toolbar select{color:#f4f4f4!important}
 .dark-mode .source-glyph{color:#f4f4f4!important}
+.dark-mode .feed-toolbar>span strong{color:#fff!important}
+
+/* Docs controls stay legible while the feed scrolls beneath them. Keep the
+   toolbar compact, opaque, and visually separated from the article cards. */
+@media(min-width:901px){
+  .docs-v3 .docs-feed{scroll-padding-top:62px!important}
+  .docs-v3 .feed-toolbar{
+    min-height:56px!important;
+    height:56px!important;
+    margin:0 0 12px!important;
+    padding:0 16px!important;
+    border:1px solid var(--refero-silver)!important;
+    border-radius:10px!important;
+    background:var(--refero-paper)!important;
+    box-shadow:0 5px 16px rgba(16,16,16,.08)!important;
+    z-index:30!important;
+  }
+  .docs-v3 .feed-toolbar>span{display:flex;align-items:baseline;gap:2px;font-size:12px;font-weight:500}
+  .docs-v3 .feed-toolbar>span strong{font-size:16px;letter-spacing:-.02em}
+  .docs-v3 .feed-toolbar-controls{display:flex;align-items:center;gap:8px}
+  .docs-v3 .feed-filter-button,
+  .docs-v3 .feed-toolbar label{
+    min-height:32px;
+    display:flex;
+    align-items:center;
+    gap:6px;
+    padding:0 10px;
+    border:1px solid var(--refero-silver)!important;
+    border-radius:9999px;
+    background:var(--refero-white)!important;
+    color:var(--refero-graphite)!important;
+  }
+  .docs-v3 .feed-filter-button{cursor:pointer}
+  .docs-v3 .feed-filter-button:hover{border-color:#b9c8da!important;background:#fff!important}
+  .docs-v3 .feed-toolbar select{border:0;background:transparent;font-size:12px;font-weight:600;cursor:pointer}
+  .dark-mode .docs-v3 .feed-toolbar{background:#171717!important;border-color:#303030!important;box-shadow:0 5px 16px rgba(0,0,0,.24)!important}
+  .dark-mode .docs-v3 .feed-toolbar>span strong{color:#fff!important}
+  .dark-mode .docs-v3 .feed-filter-button,
+  .dark-mode .docs-v3 .feed-toolbar label{background:#242424!important;border-color:#3a3a3a!important;color:#f4f4f4!important}
+  .dark-mode .docs-v3 .feed-filter-button:hover{background:#2c2c2c!important;border-color:#555!important}
+  .dark-mode .docs-v3 .feed-toolbar select{color:#f4f4f4!important}
+}
