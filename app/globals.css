@@ -649,12 +649,12 @@ h1,h2,h3,h4,h5,h6,.brand-wordmark{font-family:var(--potover-font-display)!import
   .site-header nav,.docs-v3 .site-header nav{height:100%!important;padding:0!important;gap:2px!important;border:0!important;border-radius:0!important;background:transparent!important}
   .site-header nav a,.docs-v3 .site-header nav a{height:44px!important;padding:0 15px!important;border-radius:10px!important;font-size:13px!important}
   .site-header nav a:hover,.docs-v3 .site-header nav a:hover{background:#f0f2f5!important}
-  .site-header nav a.is-active,.docs-v3 .site-header nav a.is-active{background:linear-gradient(180deg,#eceef1,#dfe2e6)!important;color:#111!important;box-shadow:inset 0 1px 0 #fff,0 3px 10px rgba(15,23,42,.12)!important}
+  .site-header nav a.is-active,.docs-v3 .site-header nav a.is-active{background:#101010!important;color:#fff!important;box-shadow:0 1px 5px rgba(16,16,16,.12)!important}
   .site-header-search{max-width:none!important}
-  .dark-mode .site-header-inner,.dark-mode .docs-v3 .site-header-inner{background:linear-gradient(105deg,#11161d 0%,#18212b 58%,#243544 100%)!important;border-color:#28323c!important;box-shadow:0 10px 30px rgba(0,0,0,.34)!important}
+  .dark-mode .site-header-inner,.dark-mode .docs-v3 .site-header-inner{background:rgba(16,16,16,.96)!important;border-color:#242424!important;box-shadow:0 8px 24px rgba(0,0,0,.24)!important}
   .dark-mode .site-header nav,.dark-mode .docs-v3 .site-header nav{background:transparent!important;border:0!important}
   .dark-mode .site-header nav a:hover,.dark-mode .docs-v3 .site-header nav a:hover{background:rgba(255,255,255,.08)!important}
-  .dark-mode .site-header nav a.is-active,.dark-mode .docs-v3 .site-header nav a.is-active{background:linear-gradient(180deg,#545a63,#3f454e)!important;color:#fff!important;box-shadow:inset 0 1px 0 rgba(255,255,255,.25),0 5px 14px rgba(0,0,0,.28)!important}
+  .dark-mode .site-header nav a.is-active,.dark-mode .docs-v3 .site-header nav a.is-active{background:#fff!important;color:#101010!important;box-shadow:0 1px 5px rgba(0,0,0,.2)!important}
   .dark-mode .site-header-search{background:#11161d!important;border-color:#3b424b!important}
   .dark-mode .site-header-search input{background:transparent!important}
 }
