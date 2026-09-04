@@ -557,3 +557,21 @@ h1,h2,h3,h4,h5,h6,.brand-wordmark{font-family:var(--potover-font-display)!import
   .home-spotlight-head .home-section-heading h1{font-size:20px!important}
   .modern-section-head{min-height:68px!important}
 }
+
+/* Keep the topics heading in the same open canvas as the featured heading. */
+.modern-topics{padding:0!important;border:0!important;background:transparent!important;box-shadow:none!important}
+.modern-topics-list{padding:0 16px;background:var(--refero-white);border-radius:12px;box-shadow:var(--refero-shadow)}
+.modern-topics-list>a{min-height:67px;display:grid;grid-template-columns:46px minmax(0,1fr) 18px;align-items:center;gap:12px;border-bottom:1px solid var(--refero-silver);color:inherit}
+.modern-topics-list>a:last-child{border-bottom:0}
+.modern-topics-list>a>span{width:42px;height:42px;display:grid;place-items:center;border-radius:8px;background:var(--refero-paper);color:var(--refero-ink)}
+.modern-topics-list strong,.modern-topics-list small{display:block}
+.modern-topics-list strong{font-size:13px;margin-bottom:4px}
+.modern-topics-list small{color:var(--refero-slate);font-size:9px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.modern-topics-list>a>svg{color:var(--refero-slate)}
+.modern-topics-list>a:hover strong,.modern-topics-list>a:hover>svg{color:var(--refero-blue)}
+.dark-mode .modern-topics{background:transparent!important;box-shadow:none!important}
+.dark-mode .modern-topics-list{background:#171717}
+.dark-mode .modern-topics-list>a{border-color:#303030}
+.dark-mode .modern-topics-list>a>span{background:#242424;color:#e8e8e8}
+.dark-mode .modern-topics-list small,.dark-mode .modern-topics-list>a>svg{color:#b7b7b7}
+@media(max-width:700px){.modern-topics-list{padding:0 14px}}
