@@ -643,6 +643,19 @@ h1,h2,h3,h4,h5,h6,.brand-wordmark{font-family:var(--potover-font-display)!import
 .dark-mode .site-header-search input{background:transparent!important;color:#f4f4f4!important}
 .dark-mode .site-header-search input::placeholder,.dark-mode .site-header-search>svg{color:#9ca3af!important}
 
+/* Keep both article actions visible and compact on narrow screens. */
+@media(max-width:900px){
+  .docs-v3 .feed-actions{display:flex!important;right:12px!important;bottom:12px!important;gap:7px!important}
+  .docs-v3 .feed-actions button,.docs-v3 .feed-actions a{display:grid!important;place-items:center!important;width:32px!important;height:32px!important;padding:0!important;border:1px solid var(--refero-silver)!important;border-radius:50%!important;background:var(--refero-white)!important;color:var(--refero-graphite)!important}
+  .dark-mode .docs-v3 .feed-actions button,.dark-mode .docs-v3 .feed-actions a{background:#171717!important;border-color:#303030!important;color:#f4f4f4!important}
+}
+@media(max-width:360px){
+  .docs-v3 .docs-feed-row{grid-template-columns:minmax(78px,34%) minmax(0,1fr)!important;gap:8px!important;padding:12px!important}
+  .docs-v3 .feed-copy{padding-right:0!important}
+  .docs-v3 .article-cover{aspect-ratio:4/3!important}
+  .docs-v3 .feed-actions{right:10px!important;bottom:10px!important}
+}
+
 /* Prime Video-inspired header: one floating surface with flat navigation. */
 @media(min-width:901px){
   .site-header,.docs-v3 .site-header{height:62px!important;padding:0 20px!important;background:transparent!important;border:0!important;box-shadow:none!important;backdrop-filter:none!important}
