@@ -579,6 +579,7 @@ h1,h2,h3,h4,h5,h6,.brand-wordmark{font-family:var(--potover-font-display)!import
 
 /* Give every home section heading the same breathing room before its rule and cards. */
 .home-spotlight-head{border-bottom:1px solid var(--refero-silver)!important}
+.home-spotlight-head{padding-bottom:9px!important}
 .modern-section-head{padding-bottom:16px!important}
 .modern-section-head>a{margin:0!important}
 .modern-picks>div>.modern-pick-row:first-child,.modern-topics-list{margin-top:16px}
