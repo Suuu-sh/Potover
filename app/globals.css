@@ -751,3 +751,9 @@ h1,h2,h3,h4,h5,h6,.brand-wordmark{font-family:var(--potover-font-display)!import
   .profile-history-empty{grid-template-columns:28px minmax(0,1fr);padding:22px 18px}
   .profile-history-empty>a{grid-column:2;width:max-content}
 }
+
+/* Dark command bar: black interior and a wider query field. */
+@media(min-width:901px){
+  .site-header-search{flex:0 1 350px!important;width:350px!important;min-width:350px!important;max-width:350px!important;margin-left:auto!important}
+}
+.dark-mode .site-header-search,.dark-mode .site-header-search input{background:#101010!important}
