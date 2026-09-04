@@ -575,6 +575,7 @@ h1,h2,h3,h4,h5,h6,.brand-wordmark{font-family:var(--potover-font-display)!import
 .dark-mode .modern-topics-list>a{border-color:#303030}
 .dark-mode .modern-topics-list>a>span{background:#242424;color:#e8e8e8}
 .dark-mode .modern-topics-list small,.dark-mode .modern-topics-list>a>svg{color:#b7b7b7}
+.dark-mode .home-spotlight-head{border-bottom-color:#303030!important}
 @media(max-width:700px){.modern-topics-list{padding:0 14px}}
 
 /* Give every home section heading the same breathing room before its rule and cards. */
