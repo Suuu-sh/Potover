@@ -7,6 +7,7 @@ import {useEffect,useRef,useState} from 'react';
 
 import {articles} from '@/lib/data';
 import {usePreferredLanguage} from '@/lib/use-preferred-language';
+import {HomeSectionHeading} from '@/components/HomeSectionHeading';
 
 export function HomeSpotlightCarousel(){
   const rail=useRef<HTMLDivElement>(null);
@@ -27,7 +28,7 @@ export function HomeSpotlightCarousel(){
     return()=>window.clearInterval(timer);
   },[paused]);
   return <section className="home-spotlight" aria-label="おすすめ">
-    <div className="home-spotlight-head"><h1>おすすめ</h1><div><button type="button" onClick={()=>slide(-1)} aria-label="前のおすすめ"><ArrowLeft size={17}/></button><button type="button" onClick={()=>slide(1)} aria-label="次のおすすめ"><ArrowRight size={17}/></button></div></div>
+    <div className="home-spotlight-head"><HomeSectionHeading eyebrow="RECOMMENDED" title="おすすめ" level="h1"/><div><button type="button" onClick={()=>slide(-1)} aria-label="前のおすすめ"><ArrowLeft size={17}/></button><button type="button" onClick={()=>slide(1)} aria-label="次のおすすめ"><ArrowRight size={17}/></button></div></div>
     <div className="home-spotlight-rail" ref={rail} onMouseEnter={()=>setPaused(true)} onMouseLeave={()=>setPaused(false)} onFocusCapture={()=>setPaused(true)} onBlurCapture={()=>setPaused(false)}>{promos.map((item,index)=><Link className="home-spotlight-card" href={item.href} key={`${item.href}-${index}`}><Image src={item.image} alt="" fill priority={index<3} sizes="(max-width: 700px) 82vw, 430px"/><span/><div><small>{item.label}</small><h2>{item.title}</h2><b>見る <ArrowRight size={14}/></b></div></Link>)}</div>
   </section>;
 }
