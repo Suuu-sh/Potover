@@ -581,9 +581,12 @@ h1,h2,h3,h4,h5,h6,.brand-wordmark{font-family:var(--potover-font-display)!import
 .home-spotlight-head{border-bottom:1px solid var(--refero-silver)!important}
 .home-spotlight-head{padding-bottom:9px!important}
 .home-spotlight-rail{margin-top:16px!important}
-.roadmap-preview-card,.home-spotlight-card{box-shadow:var(--refero-shadow)!important;transition:transform .2s,border-color .2s,box-shadow .2s}
-.home-spotlight-card{border:0!important}
-.home-spotlight-card:hover{transform:translateY(-2px);box-shadow:var(--refero-shadow-hover)!important}
+.home-elevated-card{box-shadow:var(--refero-shadow)!important;transition:transform .2s,border-color .2s,box-shadow .2s}
+.home-elevated-card:hover{transform:translateY(-2px);box-shadow:var(--refero-shadow-hover)!important}
+.home-spotlight-card-shell{position:relative;flex:0 0 clamp(330px,31vw,460px);height:230px;padding:4px;border:0;border-radius:14px;background:var(--refero-white);box-sizing:border-box;scroll-snap-align:start}
+.home-spotlight-card{display:block;width:100%;height:100%!important;flex:none!important;margin:0!important;border:0!important;border-radius:10px!important;box-shadow:none!important}
+.dark-mode .home-spotlight-card-shell{background:#171717}
+@media(max-width:700px){.home-spotlight-card-shell{flex-basis:82vw;height:210px}}
 .modern-section-head{padding-bottom:9px!important}
 .modern-section-head>a{margin:0!important}
 .modern-picks>div>.modern-pick-row:first-child,.modern-topics-list{margin-top:16px}
