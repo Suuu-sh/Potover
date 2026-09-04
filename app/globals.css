@@ -559,6 +559,36 @@ h1,h2,h3,h4,h5,h6,.brand-wordmark{font-family:var(--potover-font-display)!import
   .modern-section-head{min-height:68px!important}
 }
 
+/* Profile navigation keeps account and display preferences in a dedicated left rail. */
+@media(min-width:981px){
+  .profile-dashboard-grid{grid-template-columns:210px 340px minmax(0,1fr)!important;gap:18px!important}
+  .profile-settings-sidebar{position:sticky;top:82px;align-self:start;display:flex;flex-direction:column;gap:3px;padding:14px;border:1px solid var(--refero-silver);border-radius:12px;background:var(--refero-white);box-shadow:var(--refero-shadow);color:var(--refero-graphite)}
+}
+.profile-settings-label{padding:8px 9px 5px;color:var(--refero-stone);font-size:9px;font-weight:800;letter-spacing:1.4px;text-transform:uppercase}
+.profile-settings-link{display:flex;align-items:center;gap:9px;width:100%;min-height:38px;padding:0 10px;border:0;border-radius:8px;background:transparent;color:var(--refero-slate);font-size:11px;text-align:left;text-decoration:none;cursor:pointer}
+.profile-settings-link svg{flex:none;color:var(--refero-stone)}
+.profile-settings-link:hover{background:var(--refero-paper);color:var(--refero-ink)}
+.profile-settings-link.is-active{background:var(--refero-paper);color:var(--refero-ink);font-weight:700}
+.profile-settings-link.is-active svg{color:var(--refero-ink)}
+.profile-language-setting{display:flex;align-items:center;justify-content:space-between;gap:8px;min-height:38px;padding:0 10px;border-radius:8px;color:var(--refero-slate);font-size:11px}
+.profile-language-setting>span{display:flex;align-items:center;gap:9px}
+.profile-language-setting svg{color:var(--refero-stone)}
+.profile-language-setting select{max-width:82px;padding:5px 20px 5px 7px;border:1px solid var(--refero-silver);border-radius:6px;background:var(--refero-paper);color:var(--refero-graphite);font-size:10px;cursor:pointer}
+.dark-mode .profile-settings-sidebar{background:#171717;border-color:#303030;color:#f4f4f4;box-shadow:none}
+.dark-mode .profile-settings-label{color:#898989}
+.dark-mode .profile-settings-link,.dark-mode .profile-language-setting{color:#b7b7b7}
+.dark-mode .profile-settings-link svg,.dark-mode .profile-language-setting svg{color:#898989}
+.dark-mode .profile-settings-link:hover,.dark-mode .profile-settings-link.is-active{background:#242424;color:#fff}
+.dark-mode .profile-settings-link.is-active svg{color:#fff}
+.dark-mode .profile-language-setting select{border-color:#3a3a3a;background:#242424;color:#f4f4f4}
+@media(max-width:980px){
+  .profile-settings-sidebar{display:flex;flex-direction:row;align-items:center;flex-wrap:wrap;gap:4px;padding:10px;border:1px solid var(--refero-silver);border-radius:12px;background:var(--refero-white);box-shadow:var(--refero-shadow)}
+  .profile-settings-label{width:100%;padding:3px 7px 1px}
+  .profile-settings-link{width:auto;flex:1 1 145px}
+  .profile-language-setting{flex:1 1 210px}
+  .dark-mode .profile-settings-sidebar{background:#171717;border-color:#303030;box-shadow:none}
+}
+
 /* Keep the topics heading in the same open canvas as the featured heading. */
 .modern-topics{padding:0!important;border:0!important;background:transparent!important;box-shadow:none!important}
 .modern-topics-list{padding:0 16px;background:var(--refero-white);border-radius:12px;box-shadow:var(--refero-shadow)}
