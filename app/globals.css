@@ -469,6 +469,11 @@ html:not(.dark-mode){color-scheme:light}body{background:var(--refero-paper);colo
 .dark-mode .source-glyph{color:#f4f4f4!important}
 .dark-mode .feed-toolbar>span strong{color:#fff!important}
 
+/* Keep the roadmap focused on course tabs and lessons; the duplicate course
+   title/progress banner is intentionally omitted from the page. */
+.curriculum-course-tabs{margin-bottom:18px!important}
+@media(max-width:800px){.curriculum-page{padding-top:16px!important}.curriculum-course-tabs{margin-bottom:16px!important}}
+
 /* Docs controls stay legible while the feed scrolls beneath them. Keep the
    toolbar compact, opaque, and visually separated from the article cards. */
 @media(min-width:901px){
