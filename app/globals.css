@@ -581,6 +581,8 @@ h1,h2,h3,h4,h5,h6,.brand-wordmark{font-family:var(--potover-font-display)!import
 .home-spotlight-head{border-bottom:1px solid var(--refero-silver)!important}
 .home-spotlight-head{padding-bottom:9px!important}
 .home-spotlight-rail{margin-top:16px!important}
+.home-spotlight-card{box-shadow:var(--refero-shadow)!important}
+.home-spotlight-card:hover{box-shadow:var(--refero-shadow-hover)!important}
 .modern-section-head{padding-bottom:9px!important}
 .modern-section-head>a{margin:0!important}
 .modern-picks>div>.modern-pick-row:first-child,.modern-topics-list{margin-top:16px}
