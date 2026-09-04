@@ -1,21 +1,35 @@
 'use client';
+
 import Link from 'next/link';
-import {ArrowRight,BookOpen,Bookmark,CalendarDays,Check,Clock3,ExternalLink,Flame,Languages,Medal,PenLine,Route,Settings2,Target,TrendingUp,UserCircle} from 'lucide-react';
+import {ArrowRight,BookOpen,Bookmark,Check,Clock3,ExternalLink,Languages,PenLine,Route,Settings2,UserCircle} from 'lucide-react';
 import {useEffect,useMemo,useState} from 'react';
+
 import {articles} from '@/lib/data';
 import {getLearningHistory,LearningEvent} from '@/lib/learning-history';
 import {usePreferredLanguage} from '@/lib/use-preferred-language';
 
 const interests=['GTO','プリフロップ','トーナメント','ブラフキャッチ'];
-const dayKey=(date:Date)=>date.toISOString().slice(0,10);
+
 export function ProfileDashboard(){
-  const [history,setHistory]=useState<LearningEvent[]>([]);const [language,setLanguage]=usePreferredLanguage();
+  const [history,setHistory]=useState<LearningEvent[]>([]);
+  const [language,setLanguage]=usePreferredLanguage();
   useEffect(()=>{const refresh=()=>setHistory(getLearningHistory());refresh();window.addEventListener('potover-learning-changed',refresh);return()=>window.removeEventListener('potover-learning-changed',refresh)},[]);
-  const stats=useMemo(()=>{const now=new Date();const monday=new Date(now);monday.setHours(0,0,0,0);monday.setDate(now.getDate()-((now.getDay()+6)%7));const weekly=history.filter(event=>new Date(event.openedAt)>=monday);const uniqueWeekly=new Set(weekly.map(event=>event.slug)).size;const uniqueTotal=new Set(history.map(event=>event.slug)).size;const activeDays=new Set(history.map(event=>event.openedAt.slice(0,10)));let streak=0;const cursor=new Date(now);cursor.setHours(0,0,0,0);if(!activeDays.has(dayKey(cursor)))cursor.setDate(cursor.getDate()-1);while(activeDays.has(dayKey(cursor))){streak++;cursor.setDate(cursor.getDate()-1)}const weekDays=Array.from({length:7},(_,index)=>{const date=new Date(monday);date.setDate(monday.getDate()+index);return{label:['月','火','水','木','金','土','日'][index],active:activeDays.has(dayKey(date))}});return{uniqueWeekly,uniqueTotal,streak,weekDays}},[history]);
-  const recent=history.map(event=>({event,article:articles.find(article=>article.slug===event.slug)})).filter(item=>item.article).slice(0,3);const fallback=articles.slice(0,3).map(article=>({article,event:null}));const recentItems=recent.length?recent:fallback;const weeklyGoal=5;const progress=Math.min(100,Math.round(stats.uniqueWeekly/weeklyGoal*100));
-  return <div className="profile-dashboard"><div className="profile-dashboard-grid">
+  const stats=useMemo(()=>{
+    const now=new Date();const monday=new Date(now);monday.setHours(0,0,0,0);monday.setDate(now.getDate()-((now.getDay()+6)%7));
+    const uniqueSlugs=Array.from(new Set(history.map(event=>event.slug)));
+    const weekly=new Set(history.filter(event=>new Date(event.openedAt)>=monday).map(event=>event.slug)).size;
+    const minutes=uniqueSlugs.reduce((sum,slug)=>sum+(articles.find(article=>article.slug===slug)?.minutes||0),0);
+    return{total:uniqueSlugs.length,weekly,minutes};
+  },[history]);
+  const recentItems=history.map(event=>({event,article:articles.find(article=>article.slug===event.slug)})).filter(item=>item.article).slice(0,8);
+
+  return <div className="profile-dashboard profile-simple-dashboard"><div className="profile-dashboard-grid">
     <aside className="profile-settings-sidebar" aria-label="プロフィール設定"><div className="profile-settings-label">アカウント</div><Link className="profile-settings-link is-active" href="/profile"><UserCircle size={17}/>プロフィール</Link><div className="profile-settings-label">設定</div><label className="profile-language-setting"><span><Languages size={17}/>表示言語</span><select aria-label="コンテンツの表示言語" value={language} onChange={event=>setLanguage(event.target.value as 'Japanese'|'English')}><option value="Japanese">日本語</option><option value="English">English</option></select></label><Link className="profile-settings-link" href="/bookmarks"><Bookmark size={17}/>ブックマーク</Link><Link className="profile-settings-link" href="/roadmap"><Route size={17}/>学習ロードマップ</Link><div className="profile-settings-label">その他</div><button className="profile-settings-link" type="button"><Settings2 size={17}/>設定</button></aside>
-    <aside className="profile-sidebar-card"><div className="profile-person"><UserCircle size={70} strokeWidth={1.5}/><div><h2>ポーカープレイヤー</h2><p>学習を始めたばかりのメンバー</p><button className="edit-profile"><PenLine size={14}/>プロフィールを編集</button></div></div><div className="profile-level-box"><span>現在のレベル</span><div><h3>中級</h3><Medal size={35}/></div><div className="level-bar"><span/></div><small>次のレベルまで 320 XP <b>680 / 1,000 XP</b></small></div><div className="profile-summary-grid"><div><BookOpen/><span>合計記事数</span><strong>{stats.uniqueTotal}</strong><small>読了した記事</small></div><div><CalendarDays/><span>学習ストリーク</span><strong>{stats.streak}日</strong><small>現在の連続日数</small></div><div><Clock3/><span>総学習時間</span><strong>{stats.uniqueTotal*4}分</strong><small>推定読了時間</small></div><div><TrendingUp/><span>今週の学習</span><strong>{stats.uniqueWeekly}記事</strong><small>目標まであと{Math.max(0,weeklyGoal-stats.uniqueWeekly)}記事</small></div></div></aside>
-    <div className="profile-main-column"><section className="weekly-learning-card"><div className="profile-section-title"><h2>今週の学習</h2><Link href="/docs"><Target size={15}/>探す</Link></div><div className="weekly-learning-body"><div className="weekly-goal-meter"><strong>{stats.uniqueWeekly} / {weeklyGoal}</strong><span>件</span><div><i style={{width:`${progress}%`}}/></div><small>今週の目標：{weeklyGoal}件</small></div><div className="streak-panel"><p>学習ストリーク</p><h3><Flame size={28}/>{stats.streak}日</h3><div className="week-days">{stats.weekDays.map(day=><span key={day.label}><small>{day.label}</small><i className={day.active?'active':''}>{day.active?<Check size={13}/>:null}</i></span>)}</div><div className="weekly-mini-stats"><div><BookOpen/><span>今週の学習完了</span><strong>{stats.uniqueWeekly}</strong></div><div><Target/><span>目標達成率</span><strong>{progress}%</strong></div></div></div></div></section><section className="profile-topic-card"><div className="profile-section-title"><h2>関心のあるテーマ</h2><button>編集</button></div><div className="interest-list">{interests.map(item=><span key={item}><Check size={15}/>{item}</span>)}</div></section><section className="profile-recent-card"><div className="profile-section-title"><h2>最近の学習</h2><Link href="/docs">すべて見る <ArrowRight size={14}/></Link></div><div>{recentItems.map(({article})=><Link href={`/articles/${article!.slug}`} className="profile-learning-row" key={article!.slug}><BookOpen size={17}/><div><strong>{article!.title}</strong><span>{article!.source}</span></div><em>{article!.tags[0]||'Poker'}</em><span><Clock3 size={13}/>{article!.minutes}分</span><ExternalLink size={15}/></Link>)}</div></section></div>
-  </div></div>
+    <div className="profile-simple-main">
+      <section className="profile-identity-simple"><div className="profile-identity-copy"><UserCircle size={52} strokeWidth={1.5}/><div><h1>ポーカープレイヤー</h1><p>学んだ記事と動画を、ここで振り返れます。</p></div></div><button className="edit-profile"><PenLine size={14}/>編集</button></section>
+      <section className="profile-learning-summary" aria-label="学習状況"><div><strong>{stats.total}</strong><span>学習済み</span></div><div><strong>{stats.weekly}</strong><span>今週</span></div><div><strong>{stats.minutes}<small>分</small></strong><span>学習時間</span></div></section>
+      <section className="profile-topic-card"><div className="profile-section-title"><h2>関心のあるテーマ</h2><button>編集</button></div><div className="interest-list">{interests.map(item=><span key={item}><Check size={15}/>{item}</span>)}</div></section>
+      <section className="profile-recent-card profile-history-card"><div className="profile-section-title"><h2>学習履歴</h2><Link href="/docs">探す <ArrowRight size={14}/></Link></div>{recentItems.length?<div>{recentItems.map(({article,event})=><Link href={`/articles/${article!.slug}`} className="profile-learning-row" key={`${article!.slug}-${event.openedAt}`}><BookOpen size={17}/><div><strong>{article!.title}</strong><span>{article!.source}</span></div><em>{article!.tags[0]||'Poker'}</em><span><Clock3 size={13}/>{article!.minutes}分</span><time>{new Date(event.openedAt).toLocaleDateString('ja-JP',{month:'numeric',day:'numeric'})}</time><ExternalLink size={15}/></Link>)}</div>:<div className="profile-history-empty"><BookOpen size={22}/><div><strong>まだ学習履歴はありません</strong><p>記事や動画を開くと、ここに履歴が残ります。</p></div><Link href="/docs">コンテンツを探す</Link></div>}</section>
+    </div>
+  </div></div>;
 }
