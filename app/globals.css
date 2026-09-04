@@ -589,6 +589,50 @@ h1,h2,h3,h4,h5,h6,.brand-wordmark{font-family:var(--potover-font-display)!import
 .home-spotlight-card>span{background:linear-gradient(0deg,rgba(5,16,31,.72) 0%,rgba(5,16,31,.36) 38%,rgba(5,16,31,0) 70%)!important}
 .dark-mode .home-spotlight-card-shell{background:#171717}
 @media(max-width:700px){.home-spotlight-card-shell{flex-basis:82vw;height:210px}}
+
+/* Keep article details within one viewport and prioritize the source outline. */
+.article-detail-page{height:calc(100dvh - 64px);min-height:0!important;overflow:hidden}
+.article-detail-page.shell.page{padding:0 clamp(20px,5vw,72px)!important}
+.article-detail-page .detail{height:100%;padding:22px 0 18px!important;display:flex;flex-direction:column;overflow:hidden}
+.article-detail-page .detail>.source{flex:none}
+.article-detail-page .detail>h1{max-width:1000px;margin:7px 0 10px!important;font-size:clamp(25px,2.6vw,36px)!important;line-height:1.24!important;text-wrap:balance}
+.article-detail-page .detail>.meta{flex:none}
+.article-detail-page .detailbox{width:100%;max-width:none;margin-top:16px!important;padding:18px!important;display:flex;flex:0 1 auto;min-height:0;flex-direction:column;overflow:hidden}
+.article-detail-page .detailbox h2{margin:0 0 10px!important;font-size:17px}
+.article-detail-page .detail-takeaways{display:flex;flex:1;min-height:0;flex-direction:column}
+.article-detail-page .detail-outline{grid-template-columns:repeat(2,minmax(0,1fr));gap:8px 12px;align-content:start}
+.article-detail-page .detail-outline li,.article-detail-page .detail-outline li:first-child{min-height:48px;padding:8px 10px!important;border:1px solid var(--refero-silver)!important;border-radius:9px;background:var(--refero-paper)}
+.article-detail-page .detail-outline li[data-level="3"]{padding-left:20px!important}
+.article-detail-page .detail-outline li>span{align-self:start;width:25px;height:25px}
+.article-detail-page .detail-outline li>p{margin:2px 0 0;font-size:12px;line-height:1.45}
+.article-detail-page .detail-footer{display:flex;align-items:center;justify-content:space-between;gap:14px;margin-top:14px;padding-top:13px;border-top:1px solid var(--refero-silver)}
+.article-detail-page .detail-tags{min-width:0;margin:0;gap:6px}
+.article-detail-page .detailbox .cta{flex:none;margin:0;padding:9px 15px}
+.dark-mode .article-detail-page .detail-outline li{border-color:#303030!important;background:#242424}
+.dark-mode .article-detail-page .detail-footer{border-color:#303030}
+@media(max-width:600px){
+  .article-detail-page.shell.page{padding:0 14px!important}
+  .article-detail-page .detail{padding:14px 0 12px!important}
+  .article-detail-page .detail>h1{margin:5px 0 8px!important;font-size:clamp(21px,7vw,28px)!important;line-height:1.2!important}
+  .article-detail-page .detailbox{margin-top:11px!important;padding:12px!important}
+  .article-detail-page .detail-kicker{margin-bottom:4px!important}
+  .article-detail-page .detailbox h2{margin-bottom:7px!important;font-size:15px}
+  .article-detail-page .detail-outline{gap:6px}
+  .article-detail-page .detail-outline li,.article-detail-page .detail-outline li:first-child{grid-template-columns:22px minmax(0,1fr);gap:7px;min-height:42px;padding:6px!important}
+  .article-detail-page .detail-outline li[data-level="3"]{padding-left:10px!important}
+  .article-detail-page .detail-outline li>span{width:21px;height:21px;font-size:8px}
+  .article-detail-page .detail-outline li>p{font-size:10px;line-height:1.35}
+  .article-detail-page .detail-footer{gap:8px;margin-top:9px;padding-top:9px}
+  .article-detail-page .tag{padding:4px 7px;font-size:8px}
+  .article-detail-page .detailbox .cta{padding:8px 11px;font-size:10px;white-space:nowrap}
+}
+@media(max-height:700px){
+  .article-detail-page .detail{padding-top:10px!important}
+  .article-detail-page .detail>h1{font-size:24px!important;line-height:1.16!important}
+  .article-detail-page .detailbox{margin-top:8px!important;padding:10px!important}
+  .article-detail-page .detail-outline li,.article-detail-page .detail-outline li:first-child{min-height:36px;padding:5px 7px!important}
+  .article-detail-page .detail-footer{margin-top:7px;padding-top:7px}
+}
 .modern-section-head{padding-bottom:9px!important}
 .modern-section-head>a{margin:0!important}
 .modern-picks>div>.modern-pick-row:first-child,.modern-topics-list{margin-top:16px}
