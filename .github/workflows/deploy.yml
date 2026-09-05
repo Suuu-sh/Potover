@@ -43,3 +43,5 @@ jobs:
           workingDirectory: worker
           wranglerVersion: "4"
           command: deploy --config wrangler.jsonc
+        env:
+          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
