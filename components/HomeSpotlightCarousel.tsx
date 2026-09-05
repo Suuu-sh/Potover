@@ -4,9 +4,15 @@ import Image from 'next/image';
 import Link from 'next/link';
 import {ArrowRight} from 'lucide-react';
 import {useEffect,useRef} from 'react';
+import ArticleLink from '@/components/ArticleLink';
 
 import {articles} from '@/lib/data';
 import {usePreferredLanguage} from '@/lib/use-preferred-language';
+
+function SpotlightCard({item,index}:{item:{href:string;image:string;label:string;title:string};index:number}){
+  const content=<><Image src={item.image} alt="" fill priority={index<3} sizes="(max-width: 700px) 82vw, 430px"/><span/><div><small>{item.label}</small><h2>{item.title}</h2><b>見る <ArrowRight size={14}/></b></div></>;
+  return item.href.startsWith('/articles/')?<ArticleLink slug={item.href.slice('/articles/'.length)} className="home-spotlight-card">{content}</ArticleLink>:<Link className="home-spotlight-card" href={item.href}>{content}</Link>;
+}
 
 export function HomeSpotlightCarousel(){
   const rail=useRef<HTMLDivElement>(null);
@@ -29,6 +35,6 @@ export function HomeSpotlightCarousel(){
     return()=>window.clearInterval(timer);
   },[preferredLanguage]);
   return <section className="home-spotlight" aria-label="おすすめ">
-    <div className="home-spotlight-rail" ref={rail}>{promos.map((item,index)=><div className="home-spotlight-card-shell home-elevated-card" key={`${item.href}-${index}`}><Link className="home-spotlight-card" href={item.href}><Image src={item.image} alt="" fill priority={index<3} sizes="(max-width: 700px) 82vw, 430px"/><span/><div><small>{item.label}</small><h2>{item.title}</h2><b>見る <ArrowRight size={14}/></b></div></Link></div>)}</div>
+    <div className="home-spotlight-rail" ref={rail}>{promos.map((item,index)=><div className="home-spotlight-card-shell home-elevated-card" key={`${item.href}-${index}`}><SpotlightCard item={item} index={index}/></div>)}</div>
   </section>;
 }
