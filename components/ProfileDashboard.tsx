@@ -6,6 +6,7 @@ import {useEffect,useMemo,useState} from 'react';
 import {useRouter} from 'next/navigation';
 
 import {articles} from '@/lib/data';
+import {SelectMenu} from '@/components/SelectMenu';
 import {getLearningHistory,LearningEvent} from '@/lib/learning-history';
 import {usePreferredLanguage} from '@/lib/use-preferred-language';
 import {useAuth} from '@/lib/auth-client';
@@ -29,7 +30,7 @@ export function ProfileDashboard(){
 
   if(loading||!user)return <main className="profile-auth-loading">読み込み中…</main>;
   return <div className="profile-dashboard profile-simple-dashboard"><div className="profile-dashboard-grid">
-    <aside className="profile-settings-sidebar" aria-label="プロフィール設定"><div className="profile-settings-label">アカウント</div><Link className="profile-settings-link is-active" href="/profile"><UserCircle size={17}/>プロフィール</Link><div className="profile-settings-label">設定</div><label className="profile-language-setting"><span><Languages size={17}/>表示言語</span><select aria-label="コンテンツの表示言語" value={language} onChange={event=>setLanguage(event.target.value as 'Japanese'|'English')}><option value="Japanese">日本語</option><option value="English">English</option></select></label><Link className="profile-settings-link" href="/bookmarks"><Bookmark size={17}/>ブックマーク</Link><Link className="profile-settings-link" href="/roadmap"><Route size={17}/>学習ロードマップ</Link><div className="profile-settings-label">その他</div><button className="profile-settings-link" type="button"><Settings2 size={17}/>設定</button><button className="profile-settings-link" onClick={async()=>{await logout();router.replace('/login')}} type="button"><LogOut size={17}/>ログアウト</button></aside>
+    <aside className="profile-settings-sidebar" aria-label="プロフィール設定"><div className="profile-settings-label">アカウント</div><Link className="profile-settings-link is-active" href="/profile"><UserCircle size={17}/>プロフィール</Link><div className="profile-settings-label">設定</div><div className="profile-language-setting"><span><Languages size={17}/>表示言語</span><SelectMenu className="profile-language-select" ariaLabel="コンテンツの表示言語" value={language} onChange={value=>setLanguage(value as 'Japanese'|'English')} options={[{value:'Japanese',label:'日本語'},{value:'English',label:'English'}]}/></div><Link className="profile-settings-link" href="/bookmarks"><Bookmark size={17}/>ブックマーク</Link><Link className="profile-settings-link" href="/roadmap"><Route size={17}/>学習ロードマップ</Link><div className="profile-settings-label">その他</div><button className="profile-settings-link" type="button"><Settings2 size={17}/>設定</button><button className="profile-settings-link" onClick={async()=>{await logout();router.replace('/login')}} type="button"><LogOut size={17}/>ログアウト</button></aside>
     <div className="profile-simple-main">
       <section className="profile-identity-simple"><div className="profile-identity-copy"><UserCircle size={52} strokeWidth={1.5}/><div><h1>ポーカープレイヤー</h1><p>{user.email}</p></div></div><button className="edit-profile"><PenLine size={14}/>編集</button></section>
       <section className="profile-learning-summary" aria-label="学習状況"><div><strong>{stats.total}</strong><span>学習済み</span></div><div><strong>{stats.weekly}</strong><span>今週</span></div><div><strong>{stats.minutes}<small>分</small></strong><span>学習時間</span></div></section>
