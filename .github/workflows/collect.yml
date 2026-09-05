@@ -3,9 +3,15 @@ on:
   workflow_dispatch:
   # 12:00 JST every day. GitHub Actions cron is UTC.
   schedule: [{cron: '0 3 * * *'}]
+
+concurrency:
+  group: collect-content
+  cancel-in-progress: false
+
 jobs:
   collect:
     runs-on: ubuntu-latest
+    timeout-minutes: 20
     permissions:
       contents: write
     steps:
@@ -14,9 +20,13 @@ jobs:
         with: {node-version: 20, cache: npm}
       - run: npm ci
       - run: npm run collect:public-sources
+      - run: npm run collect:gtowizard
       - run: npm run collect:youtube
       - run: git config user.name 'github-actions[bot]'
       - run: git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
       - run: git add data/articles.json
-      - run: git diff --cached --quiet || git commit -m 'chore: update collected content metadata'
+      - run: |
+          if ! git diff --cached --quiet; then
+            git commit -m "chore: update collected content metadata"
+          fi
       - run: git push
