@@ -2,13 +2,11 @@
 
 import Image from 'next/image';
 import Link from 'next/link';
-import {ArrowRight,BookOpen,Check,CheckCircle2,Circle,Clock3,Coins,LockKeyhole,Target,Trophy} from 'lucide-react';
+import {ArrowRight,BookOpen,Check,CheckCircle2,Circle,Clock3,LockKeyhole} from 'lucide-react';
 import {useEffect,useMemo,useState} from 'react';
 import {getLearningHistory} from '@/lib/learning-history';
 import {moduleArticles,roadmaps} from '@/lib/roadmaps';
 import {usePreferredLanguage} from '@/lib/use-preferred-language';
-
-const courseIcons=[Target,Coins,Trophy];
 
 export default function RoadmapPage(){
   const [language]=usePreferredLanguage();
@@ -16,13 +14,12 @@ export default function RoadmapPage(){
   const [activeCourse,setActiveCourse]=useState(0);
   const [activeModule,setActiveModule]=useState(0);
   useEffect(()=>{const sync=()=>setRead(new Set(getLearningHistory().map(item=>item.slug)));sync();window.addEventListener('potover-learning-changed',sync);return()=>window.removeEventListener('potover-learning-changed',sync)},[]);
+  useEffect(()=>{const syncCourse=()=>{const courseId=window.location.hash.replace(/^#/,'');const index=roadmaps.findIndex(item=>item.id===courseId);if(index>=0){setActiveCourse(index);setActiveModule(0)}};syncCourse();window.addEventListener('hashchange',syncCourse);return()=>window.removeEventListener('hashchange',syncCourse)},[]);
   const courses=useMemo(()=>roadmaps.map(course=>{const modules=course.modules.map(module=>({...module,articles:moduleArticles(module,language,5)}));const slugs=Array.from(new Set(modules.flatMap(module=>module.articles.map(article=>article.slug))));const completed=slugs.filter(slug=>read.has(slug)).length;return {...course,modules,total:slugs.length,completed,progress:slugs.length?Math.round(completed/slugs.length*100):0}}),[language,read]);
   const course=courses[activeCourse];
   const module=course.modules[activeModule];
   const nextArticle=module.articles.find(article=>!read.has(article.slug))||module.articles[0];
-  const chooseCourse=(index:number)=>{setActiveCourse(index);setActiveModule(0)};
   return <main className="curriculum-page">
-    <div className="curriculum-course-tabs" role="tablist" aria-label="コースを選択">{courses.map((item,index)=>{const Icon=courseIcons[index];return <button key={item.id} role="tab" aria-selected={index===activeCourse} className={index===activeCourse?'is-active':''} onClick={()=>chooseCourse(index)}><Icon/><span><strong>{item.title}</strong><small>{index===0?'基礎から体系的に学ぶ':index===1?'リングゲームで勝つ':'トーナメントで勝つ'}</small></span></button>})}</div>
     <section className="curriculum-shell">
       <div className="curriculum-layout">
         <nav className="curriculum-index" aria-label={`${course.title}の章`}>{course.modules.map((item,index)=>{const complete=item.articles.length>0&&item.articles.every(article=>read.has(article.slug));const started=item.articles.some(article=>read.has(article.slug));return <button key={item.title} className={index===activeModule?'is-active':''} onClick={()=>setActiveModule(index)}><span>{complete?<Check/>:index+1}</span><div><small>第{index+1}章</small><strong>{item.title}</strong>{item.articles.slice(0,5).map((article,articleIndex)=><i key={article.slug} className={read.has(article.slug)?'is-read':''}>{read.has(article.slug)?<CheckCircle2/>:started||index===activeModule?<Circle/>:<LockKeyhole/>}<em>{index+1}.{articleIndex+1}</em>{article.title}</i>)}</div></button>})}</nav>
