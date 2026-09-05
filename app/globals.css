@@ -964,7 +964,7 @@ h1,h2,h3,h4,h5,h6,.brand-wordmark{font-family:var(--potover-font-display)!import
 @media(max-width:600px){.curriculum-page{padding:20px 16px 40px!important}.next-lesson-feature{grid-template-columns:1fr 36px!important;gap:14px!important;padding:14px!important}.next-lesson-image{grid-column:1/-1;height:auto!important;aspect-ratio:16/9}.lesson-list>a{grid-template-columns:25px 30px minmax(0,1fr) 16px!important}.lesson-list>a>em{display:none!important}.chapter-rest button{grid-template-columns:22px 1fr 16px!important}.chapter-rest button span{display:none}}
 
 /* Keep the roadmap navigation pinned while the lesson content scrolls. */
-@media(min-width:841px){.curriculum-index{position:sticky!important;top:80px!important;align-self:start!important;max-height:calc(100dvh - 104px);overflow-y:auto;scrollbar-width:thin}}
+@media(min-width:841px){.curriculum-index{position:fixed!important;left:max(24px,calc((100vw - 1200px)/2));top:80px!important;bottom:24px;width:300px;align-self:initial!important;max-height:none;overflow-y:auto;scrollbar-width:thin}}
 
 /* Give the dark header its own elevated surface instead of merging into the page. */
 .dark-mode .site-header-inner,.dark-mode .docs-v3 .site-header-inner{background:#191919!important;border-color:#333!important;box-shadow:0 8px 24px rgba(0,0,0,.32)!important}
