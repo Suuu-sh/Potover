@@ -840,3 +840,25 @@ h1,h2,h3,h4,h5,h6,.brand-wordmark{font-family:var(--potover-font-display)!import
 .dark-mode .filter-dialog section label{background:#171717!important;border-color:#303030!important;color:#f4f4f4!important}
 .dark-mode .filter-dialog section label:has(input:checked){background:#fff!important;color:#101010!important}
 .dark-mode .filter-dialog section label:has(input:checked) small{color:#6f6f6f}
+
+/* Desktop library rail: a structural sidebar rather than a floating card. */
+@media(min-width:1001px){
+  .docs-v3 .docs-v3-layout{grid-template-columns:244px minmax(0,1fr)!important;max-width:1320px!important;gap:0!important;padding-left:0!important;padding-right:24px!important}
+  .docs-v3 .docs-editorial-index{position:relative;height:100%!important;padding:24px 18px 18px!important;border:0!important;border-right:1px solid var(--refero-silver)!important;border-radius:0!important;background:color-mix(in srgb,var(--refero-paper) 72%,var(--refero-white))!important;box-shadow:none!important;scrollbar-width:thin;scrollbar-color:var(--refero-stone) transparent}
+  .docs-v3 .docs-editorial-index::-webkit-scrollbar{display:block;width:4px}
+  .docs-v3 .docs-editorial-index::-webkit-scrollbar-thumb{border-radius:99px;background:var(--refero-stone)}
+  .docs-v3 .docs-feed{margin-left:28px}
+  .docs-v3 .docs-editorial-index header{margin-left:10px!important;margin-right:10px!important}
+  .docs-v3 .docs-editorial-index .docs-index-group button{position:relative;border-radius:8px!important}
+  .docs-v3 .docs-editorial-index .docs-index-group button.is-active{background:#e5e5e5!important;color:var(--refero-ink)!important}
+  .docs-v3 .docs-editorial-index .docs-index-group button.is-active:before{content:'';position:absolute;left:0;top:9px;bottom:9px;width:3px;border-radius:0 3px 3px 0;background:var(--refero-ink)}
+  .docs-v3 .docs-editorial-index .docs-index-group button.is-active>span{border-color:var(--refero-ink);background:var(--refero-ink);color:var(--refero-white)}
+  .docs-v3 .docs-editorial-index .docs-index-group button.is-active small{color:var(--refero-slate)}
+  .docs-v3 .docs-index-status{border-top:1px solid var(--refero-silver);background:color-mix(in srgb,var(--refero-paper) 72%,var(--refero-white))}
+  .dark-mode .docs-v3 .docs-editorial-index{border-right-color:#303030!important;background:#121212!important}
+  .dark-mode .docs-v3 .docs-editorial-index .docs-index-group button.is-active{background:#292929!important;color:#fff!important}
+  .dark-mode .docs-v3 .docs-editorial-index .docs-index-group button.is-active:before{background:#fff}
+  .dark-mode .docs-v3 .docs-editorial-index .docs-index-group button.is-active>span{border-color:#fff;background:#fff;color:#101010}
+  .dark-mode .docs-v3 .docs-editorial-index .docs-index-group button.is-active small{color:#aaa}
+  .dark-mode .docs-v3 .docs-index-status{border-top-color:#303030;background:#121212}
+}
