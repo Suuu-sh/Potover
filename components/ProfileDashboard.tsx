@@ -10,6 +10,7 @@ import {SelectMenu} from '@/components/SelectMenu';
 import {getLearningHistory,LearningEvent} from '@/lib/learning-history';
 import {usePreferredLanguage} from '@/lib/use-preferred-language';
 import {useAuth} from '@/lib/auth-client';
+import ArticleLink from '@/components/ArticleLink';
 
 const interests=['GTO','プリフロップ','トーナメント','ブラフキャッチ'];
 
@@ -35,7 +36,7 @@ export function ProfileDashboard(){
       <section className="profile-identity-simple"><div className="profile-identity-copy"><UserCircle size={52} strokeWidth={1.5}/><div><h1>ポーカープレイヤー</h1><p>{user.email}</p></div></div><button className="edit-profile"><PenLine size={14}/>編集</button></section>
       <section className="profile-learning-summary" aria-label="学習状況"><div><strong>{stats.total}</strong><span>学習済み</span></div><div><strong>{stats.weekly}</strong><span>今週</span></div><div><strong>{stats.minutes}<small>分</small></strong><span>学習時間</span></div></section>
       <section className="profile-topic-card"><div className="profile-section-title"><h2>関心のあるテーマ</h2><button>編集</button></div><div className="interest-list">{interests.map(item=><span key={item}><Check size={15}/>{item}</span>)}</div></section>
-      <section className="profile-recent-card profile-history-card"><div className="profile-section-title"><h2>学習履歴</h2><Link href="/docs">探す <ArrowRight size={14}/></Link></div>{recentItems.length?<div>{recentItems.map(({article,event})=><Link href={`/articles/${article!.slug}`} className="profile-learning-row" key={`${article!.slug}-${event.openedAt}`}><BookOpen size={17}/><div><strong>{article!.title}</strong><span>{article!.source}</span></div><em>{article!.tags[0]||'Poker'}</em><span><Clock3 size={13}/>{article!.minutes}分</span><time>{new Date(event.openedAt).toLocaleDateString('ja-JP',{month:'numeric',day:'numeric'})}</time><ExternalLink size={15}/></Link>)}</div>:<div className="profile-history-empty"><BookOpen size={22}/><div><strong>まだ学習履歴はありません</strong><p>記事や動画を開くと、ここに履歴が残ります。</p></div><Link href="/docs">コンテンツを探す</Link></div>}</section>
+      <section className="profile-recent-card profile-history-card"><div className="profile-section-title"><h2>学習履歴</h2><Link href="/docs">探す <ArrowRight size={14}/></Link></div>{recentItems.length?<div>{recentItems.map(({article,event})=><ArticleLink slug={article!.slug} className="profile-learning-row" key={`${article!.slug}-${event.openedAt}`}><BookOpen size={17}/><div><strong>{article!.title}</strong><span>{article!.source}</span></div><em>{article!.tags[0]||'Poker'}</em><span><Clock3 size={13}/>{article!.minutes}分</span><time>{new Date(event.openedAt).toLocaleDateString('ja-JP',{month:'numeric',day:'numeric'})}</time><ExternalLink size={15}/></ArticleLink>)}</div>:<div className="profile-history-empty"><BookOpen size={22}/><div><strong>まだ学習履歴はありません</strong><p>記事や動画を開くと、ここに履歴が残ります。</p></div><Link href="/docs">コンテンツを探す</Link></div>}</section>
     </div>
   </div></div>;
 }
