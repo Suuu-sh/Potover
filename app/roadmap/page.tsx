@@ -2,7 +2,7 @@
 
 import Image from 'next/image';
 import Link from 'next/link';
-import {ArrowRight,BookOpen,Check,CheckCircle2,Circle,Clock3,LockKeyhole} from 'lucide-react';
+import {ArrowRight,BookOpen,Check,CheckCircle2,Clock3,LockKeyhole} from 'lucide-react';
 import {useEffect,useMemo,useState} from 'react';
 import {getLearningHistory} from '@/lib/learning-history';
 import {moduleArticles,roadmaps} from '@/lib/roadmaps';
@@ -21,10 +21,25 @@ export default function RoadmapPage(){
   const nextArticle=module.articles.find(article=>!read.has(article.slug))||module.articles[0];
   return <main className="curriculum-page">
     <section className="curriculum-shell">
+      <header className="curriculum-heading">
+        <div>
+          <small>LEARNING PATH</small>
+          <h1>{course.title}</h1>
+          <p>{course.description}</p>
+        </div>
+        <div className="curriculum-course-progress" aria-label={`${course.progress}% 完了`}>
+          <span><strong>{course.progress}</strong>%</span>
+          <div><i style={{width:`${course.progress}%`}}/></div>
+          <small>{course.completed} / {course.total} レッスン完了</small>
+        </div>
+      </header>
       <div className="curriculum-layout">
-        <nav className="curriculum-index" aria-label={`${course.title}の章`}>{course.modules.map((item,index)=>{const complete=item.articles.length>0&&item.articles.every(article=>read.has(article.slug));const started=item.articles.some(article=>read.has(article.slug));return <button key={item.title} className={index===activeModule?'is-active':''} onClick={()=>setActiveModule(index)}><span>{complete?<Check/>:index+1}</span><div><small>第{index+1}章</small><strong>{item.title}</strong>{item.articles.slice(0,5).map((article,articleIndex)=><i key={article.slug} className={read.has(article.slug)?'is-read':''}>{read.has(article.slug)?<CheckCircle2/>:started||index===activeModule?<Circle/>:<LockKeyhole/>}<em>{index+1}.{articleIndex+1}</em>{article.title}</i>)}</div></button>})}</nav>
+        <nav className="curriculum-index" aria-label={`${course.title}の章`}>
+          <div className="curriculum-index-label"><span>COURSE CONTENT</span><strong>{course.modules.length}章</strong></div>
+          {course.modules.map((item,index)=>{const completedCount=item.articles.filter(article=>read.has(article.slug)).length;const complete=item.articles.length>0&&completedCount===item.articles.length;return <button key={item.title} className={index===activeModule?'is-active':''} aria-current={index===activeModule?'step':undefined} onClick={()=>setActiveModule(index)}><span>{complete?<Check/>:index+1}</span><div><small>第{index+1}章 · {completedCount}/{item.articles.length}</small><strong>{item.title}</strong><p>{item.description}</p><span className="chapter-progress"><i style={{width:`${item.articles.length?completedCount/item.articles.length*100:0}%`}}/></span></div></button>})}
+        </nav>
         <div className="curriculum-main">
-          {nextArticle&&<section className="next-lesson"><p>次に読む記事</p><Link href={`/articles/${nextArticle.slug}`} className="next-lesson-feature"><div className="next-lesson-image"><Image src={nextArticle.imageUrl||'/brand/potover-mark-light.png'} alt="" fill sizes="340px"/></div><div><small>第{activeModule+1}章&nbsp; {activeModule+1}.{Math.max(1,module.articles.findIndex(article=>article.slug===nextArticle.slug)+1)}</small><h2>{nextArticle.title}</h2><p>{nextArticle.summary}</p><span><Clock3/> {nextArticle.minutes}分 <i><BookOpen/>おすすめ</i></span></div><b><ArrowRight/></b></Link></section>}
+          {nextArticle&&<section className="next-lesson"><div className="next-lesson-label"><span>次に読む記事</span><small>第{activeModule+1}章</small></div><Link href={`/articles/${nextArticle.slug}`} className="next-lesson-feature"><div className="next-lesson-image"><Image src={nextArticle.imageUrl||'/brand/potover-mark-light.png'} alt="" fill sizes="340px"/></div><div><small>{activeModule+1}.{Math.max(1,module.articles.findIndex(article=>article.slug===nextArticle.slug)+1)}</small><h2>{nextArticle.title}</h2><p>{nextArticle.summary}</p><span><Clock3/> {nextArticle.minutes}分 <i><BookOpen/>おすすめ</i></span></div><b><ArrowRight/></b></Link></section>}
           <section className="lesson-list"><header><h2>この章のレッスン</h2><span>{module.articles.filter(article=>read.has(article.slug)).length} / {module.articles.length} 完了</span></header>{module.articles.map((article,index)=><Link href={`/articles/${article.slug}`} key={article.slug} className={read.has(article.slug)?'is-read':article.slug===nextArticle?.slug?'is-current':''}><span>{read.has(article.slug)?<Check/>:index+1}</span><strong>{activeModule+1}.{index+1}</strong><div><b>{article.title}</b><small>{article.source}</small></div><em><Clock3/>{article.minutes}分</em><ArrowRight/></Link>)}</section>
           <div className="chapter-rest">{course.modules.filter((_,index)=>index!==activeModule).map((item,index)=><button key={item.title} onClick={()=>setActiveModule(course.modules.indexOf(item))}>{index+2>activeModule?<LockKeyhole/>:<CheckCircle2/>}<strong>第{course.modules.indexOf(item)+1}章　{item.title}</strong><span>{item.articles.length}レッスン</span><ArrowRight/></button>)}</div>
         </div>
