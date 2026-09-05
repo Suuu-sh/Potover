@@ -870,6 +870,10 @@ h1,h2,h3,h4,h5,h6,.brand-wordmark{font-family:var(--potover-font-display)!import
 .roadmap-preview-card>span{color:var(--course-color)!important}
 .dark-mode .roadmap-preview-card>span{color:var(--course-color)!important}
 
+/* Tighten the handoff from the spotlight carousel to the learning paths. */
+.home-spotlight{padding-bottom:10px!important}
+.roadmap-preview{padding-top:18px!important}
+
 /* Roadmap navigation opens the course selector beneath the header. */
 .site-header nav .home-nav-action{width:30px!important;min-width:30px!important;height:30px!important;display:grid!important;place-items:center!important;padding:0!important}
 .site-header nav .home-nav-action svg{display:block}
