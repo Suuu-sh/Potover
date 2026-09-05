@@ -875,8 +875,6 @@ h1,h2,h3,h4,h5,h6,.brand-wordmark{font-family:var(--potover-font-display)!import
 .roadmap-preview{padding-top:18px!important}
 
 /* Roadmap navigation opens the course selector beneath the header. */
-.site-header nav .home-nav-action{width:30px!important;min-width:30px!important;height:30px!important;display:grid!important;place-items:center!important;padding:0!important}
-.site-header nav .home-nav-action svg{display:block}
 .roadmap-nav{position:relative;display:flex;align-items:center;height:38px}
 .site-header nav .roadmap-nav>button{height:30px!important;display:flex;align-items:center;gap:5px;padding:0 13px;border:0;border-radius:9999px;background:transparent;color:#242424;font-size:12px;font-weight:600;letter-spacing:-.12px;line-height:1;cursor:pointer;transition:background .16s,color .16s}
 .site-header nav .roadmap-nav>button:hover,.site-header nav .roadmap-nav>button:focus-visible{background:#fff!important;color:#101010!important;outline:none}
