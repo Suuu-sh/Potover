@@ -484,7 +484,7 @@ h1,h2,h3,h4,h5,h6,.brand-wordmark{font-family:var(--potover-font-display)!import
 .brand-lockup,.docs-v3 .brand-lockup{width:154px!important;height:38px!important;display:flex!important;align-items:center!important;gap:8px!important;overflow:visible!important}
 .brand-mark{width:32px;height:32px;display:grid;place-items:center;flex:none}
 .brand-mark img{width:32px!important;height:32px!important;display:block!important;object-fit:contain!important;mix-blend-mode:multiply}
-.dark-mode .brand-mark img{filter:none!important;mix-blend-mode:screen}
+.dark-mode .brand-mark img{filter:none!important;mix-blend-mode:normal}
 .brand-wordmark{color:#101828;font-size:23px;font-weight:700;letter-spacing:-1.15px;line-height:1}
 .dark-mode .brand-wordmark{color:#f8fafc}
 @media(max-width:900px){.brand-lockup,.docs-v3 .brand-lockup{width:126px!important}.brand-mark{width:30px;height:30px}.brand-mark img{width:30px!important;height:30px!important}.brand-wordmark{font-size:21px;letter-spacing:-1px}}
