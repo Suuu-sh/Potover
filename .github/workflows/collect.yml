@@ -1,6 +1,7 @@
-name: Collect articles
+name: Collect content
 on:
   workflow_dispatch:
+  # 12:00 JST every day. GitHub Actions cron is UTC.
   schedule: [{cron: '0 3 * * *'}]
 jobs:
   collect:
@@ -13,8 +14,9 @@ jobs:
         with: {node-version: 20, cache: npm}
       - run: npm ci
       - run: npm run collect:public-sources
+      - run: npm run collect:youtube
       - run: git config user.name 'github-actions[bot]'
       - run: git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
       - run: git add data/articles.json
-      - run: git diff --cached --quiet || git commit -m 'chore: update collected article metadata'
+      - run: git diff --cached --quiet || git commit -m 'chore: update collected content metadata'
       - run: git push

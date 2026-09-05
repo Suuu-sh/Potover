@@ -1,6 +1,13 @@
 import collected from '@/data/articles.json';
-export type Article={slug:string;title:string;source:string;sourceSlug:string;summary:string;difficulty:string;language:string;publishedAt:string;minutes:number;tags:string[];category:string;url:string;imageUrl?:string|null;contentType:'article'|'video'};
+import {buildFallbackHeadings,cleanArticleSummary} from '@/lib/article-insights';
+import type {ArticleHeading} from '@/lib/article-insights';
+export type Article={slug:string;title:string;source:string;sourceSlug:string;summary:string;headings:ArticleHeading[];difficulty:string;language:string;publishedAt:string;minutes:number;tags:string[];category:string;url:string;imageUrl?:string|null;contentType:'article'|'video'};
 const slugify=(v:string)=>v.toLowerCase().replace(/[^a-z0-9]+/g,'-').replace(/^-|-$/g,'').slice(0,80);
-export const articles:Article[]=collected.articles.map((item,index)=>({slug:`${slugify(item.title)||'gtowizard-article'}-${index+1}`,title:item.title,source:item.source,sourceSlug:item.sourceSlug||'gto-wizard',summary:item.summary,difficulty:item.classification.difficulty[0].toUpperCase()+item.classification.difficulty.slice(1),language:item.language,publishedAt:item.publishedAt?.slice(0,10)??'公開日不明',minutes:Math.max(3,Math.ceil(item.summary.length/90)),tags:item.classification.tags,category:item.classification.tags.includes('mtt')?'Tournament':'GTO',url:item.originalUrl,imageUrl:item.imageUrl,contentType:item.contentType==='video'?'video':'article'}));
-export const sources=collected.sources.map(source=>({...source,description:`${source.name}から収集したポーカー戦略の記事です。`,language:source.language}));
+export const articles:Article[]=collected.articles.map((item,index)=>{
+  const insight={title:item.title,summary:item.summary,tags:item.classification.tags};
+  const durationSeconds='durationSeconds' in item&&typeof item.durationSeconds==='number'?item.durationSeconds:null;
+  const contentType=item.contentType==='video'?'video':'article';
+  return {slug:`${slugify(item.title)||'gtowizard-content'}-${index+1}`,title:item.title,source:item.source,sourceSlug:item.sourceSlug||'gto-wizard',summary:cleanArticleSummary(item.summary),headings:Array.isArray(item.headings)&&item.headings.length?item.headings:buildFallbackHeadings(insight),difficulty:item.classification.difficulty[0].toUpperCase()+item.classification.difficulty.slice(1),language:item.language,publishedAt:item.publishedAt?.slice(0,10)??'公開日不明',minutes:contentType==='video'&&durationSeconds?Math.max(1,Math.ceil(durationSeconds/60)):Math.max(3,Math.ceil(item.summary.length/90)),tags:item.classification.tags,category:item.classification.tags.includes('mtt')?'Tournament':'GTO',url:item.originalUrl,imageUrl:item.imageUrl,contentType};
+});
+export const sources=collected.sources.map(source=>({...source,description:`${source.name}から収集したポーカー戦略コンテンツです。`,language:source.language}));
 export const collectedAt=collected.collectedAt;

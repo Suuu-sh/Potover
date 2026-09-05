@@ -7,8 +7,19 @@ MVPでは本文を保存せず、公開されているタイトル・URL・著�
 | Upswing Poker | 要確認 | RSSまたは公開一覧のメタデータのみ。実装前にTerms/robotsを確認 |
 | PokerNews | 要確認 | 公開フィード優先。本文取得なし |
 | GTO Wizard | 要確認 | Blogの公開メタデータのみ |
+| GTO Wizard Japan | WordPress Sitemap | 日本語版の公開記事メタデータとOG画像を収集 |
+| GTO Wizard YouTube | YouTube公式RSS | 英語チャンネルの最新動画メタデータとサムネイルを収集 |
+| GTO Wizard Japan YouTube | YouTube公式RSS | 日本語チャンネルの最新動画メタデータとサムネイルを収集 |
+| Poker Lab | RSS / Sitemap | 日本語記事のタイトル・概要・公開日・OG画像を収集 |
+| ポーカーアカデミー | RSS / Sitemap | 日本語記事のタイトル・概要・公開日・OG画像を収集 |
+| ポーカー道 | RSS / Sitemap | 日本語記事のタイトル・概要・公開日・OG画像を収集 |
+| m Portal | Sitemap | `forbeginners` 配下の解説記事メタデータとOG画像を収集 |
+| AJPC | RSS / Sitemap | 公式記事のメタデータとOG画像を収集 |
+| LasVegas.co.jp | Sitemap | 日本語ポーカー解説のメタデータとOG画像を収集 |
 
-現在のUIはCollector接続前のFixtureデータで動作する。実サイトへの接続は規約確認後にAdapter単位で追加する。
+noteは現段階では収集対象にしない。GitHub Actionsの定期実行では毎日12:00（日本時間）にSitemapを確認し、新規・更新記事と各記事の代表画像を更新する。本文は保存しない。
+
+YouTubeは公式RSSからタイトル・URL・公開日・説明・サムネイルを取得し、動画ページから再生時間のみ補完する。動画本体は保存しない。対象は `GTO Wizard`（`UCXSg1srGpJ67HuPTMm4w72g`）と `GTO Wizard Japan`（`UCe9X7pQ5R0LduvBkhmOnj7Q`）。
 
 
 ## GTO Wizard 実測結果（2026-08-31）
