@@ -757,3 +757,86 @@ h1,h2,h3,h4,h5,h6,.brand-wordmark{font-family:var(--potover-font-display)!import
   .site-header-search{flex:0 1 350px!important;width:350px!important;min-width:350px!important;max-width:350px!important;margin-left:auto!important}
 }
 .dark-mode .site-header-search,.dark-mode .site-header-search input{background:#101010!important}
+
+/* Content library redesign: compact command-style filter navigation. */
+@media(min-width:1001px){
+  .docs-v3 .docs-editorial-index{height:100%!important;padding:22px 14px 14px!important;border:1px solid var(--refero-silver)!important;border-radius:14px!important;background:var(--refero-white)!important;box-shadow:var(--refero-shadow)!important;overflow-y:auto!important}
+  .docs-v3 .docs-editorial-index header{margin:0 8px 16px!important}
+  .docs-v3 .docs-editorial-index header small{color:var(--refero-stone)!important;font-size:9px!important;letter-spacing:1.6px!important}
+  .docs-v3 .docs-editorial-index header h2{margin:5px 0 4px!important;color:var(--refero-ink)!important;font-size:25px!important;letter-spacing:-.6px!important}
+  .docs-v3 .docs-editorial-index header p{margin:0!important;color:var(--refero-slate)!important;font-size:10px!important;line-height:1.5!important}
+  .docs-index-search{height:34px;display:flex;align-items:center;gap:7px;margin:0 2px;padding:0 10px;border:1px solid var(--refero-silver);border-radius:8px;background:var(--refero-paper);color:var(--refero-slate)}
+  .docs-index-search svg{flex:none}
+  .docs-index-search input{width:100%;min-width:0;border:0;outline:0;background:transparent;color:var(--refero-graphite);font-size:10px}
+  .docs-index-search input::placeholder{color:var(--refero-stone)}
+  .docs-index-group{margin-top:18px}
+  .docs-index-group-title{display:block;margin:0 8px 6px;color:var(--refero-stone);font-size:9px;font-weight:600;letter-spacing:.03em}
+  .docs-v3 .docs-editorial-index .docs-index-group button{width:100%;min-height:42px;display:grid;grid-template-columns:22px minmax(0,1fr);align-items:center;gap:9px;margin:2px 0;padding:7px 9px;border:0!important;border-radius:9px;background:transparent;color:var(--refero-graphite);text-align:left;cursor:pointer}
+  .docs-v3 .docs-editorial-index .docs-index-group button:hover{background:var(--refero-paper)!important;color:var(--refero-ink)!important}
+  .docs-v3 .docs-editorial-index .docs-index-group button>span{width:20px;height:20px;display:grid;place-items:center;border:1px solid #b8bec7;border-radius:50%}
+  .docs-v3 .docs-editorial-index .docs-index-group button>span svg{width:11px;height:11px}
+  .docs-v3 .docs-editorial-index .docs-index-group button>div{display:grid;grid-template-columns:minmax(0,1fr) auto;align-items:center;gap:8px}
+  .docs-v3 .docs-editorial-index .docs-index-group button strong{font-size:11px;font-weight:600}
+  .docs-v3 .docs-editorial-index .docs-index-group button small{color:var(--refero-stone);font-size:9px;text-align:right;white-space:nowrap}
+  .docs-v3 .docs-editorial-index .docs-index-group button.is-active{background:var(--refero-ink)!important;color:var(--refero-white)!important}
+  .docs-v3 .docs-editorial-index .docs-index-group button.is-active>span{border-color:var(--refero-ink);background:var(--refero-white);color:var(--refero-ink)}
+  .docs-v3 .docs-editorial-index .docs-index-group button.is-active small{color:#c7c7c7}
+  .docs-v3 .docs-index-status{margin:20px 0 0;padding:15px 8px 0;position:sticky;bottom:-1px;background:var(--refero-white);z-index:2}
+  .docs-v3 .docs-index-status button{height:36px;border-radius:999px!important;background:var(--refero-ink)!important;color:var(--refero-white)!important;border-color:var(--refero-ink)!important;font-size:10px}
+  .docs-v3 .docs-index-status button:hover{background:#303030!important;color:#fff!important}
+}
+
+/* The same monochrome language and action treatment applies to the mobile filter sheet. */
+@media(max-width:1000px){
+  .docs-v3 .filter-dialog{width:min(520px,100vw)!important;padding:22px 20px 0!important;background:var(--refero-paper)!important;color:var(--refero-graphite)!important;box-shadow:-16px 0 45px rgba(16,16,16,.14)!important}
+  .docs-v3 .filter-dialog-head{padding-bottom:16px!important;border-color:var(--refero-silver)!important}
+  .docs-v3 .filter-dialog-head p{color:var(--refero-stone)!important}
+  .docs-v3 .filter-dialog-head h2{color:var(--refero-ink)!important;font-size:24px!important}
+  .docs-v3 .filter-dialog-head button{width:32px;height:32px;display:grid;place-items:center;border:1px solid var(--refero-silver);border-radius:50%;background:var(--refero-white)}
+  .docs-v3 .filter-dialog section{padding:17px 0!important;border-color:var(--refero-silver)!important}
+  .docs-v3 .filter-dialog section h3{margin-bottom:10px!important;color:var(--refero-ink)!important;font-size:12px!important}
+  .docs-v3 .filter-dialog section>div{grid-template-columns:1fr 1fr;gap:7px!important}
+  .docs-v3 .filter-dialog label{min-height:36px;padding:7px 9px;border:1px solid var(--refero-silver);border-radius:8px;background:var(--refero-white);color:var(--refero-graphite)!important;font-size:10px}
+  .docs-v3 .filter-dialog label:has(input:checked){border-color:var(--refero-ink);background:var(--refero-ink);color:var(--refero-white)!important}
+  .docs-v3 .filter-dialog input{accent-color:var(--refero-ink)}
+  .docs-v3 .filter-dialog-actions{bottom:0!important;margin:0 -20px!important;padding:14px 20px 20px!important;background:var(--refero-paper)!important;border-top:1px solid var(--refero-silver)}
+  .docs-v3 .filter-dialog-actions button{height:42px;border-radius:999px!important;border-color:var(--refero-silver)!important;background:var(--refero-white)!important;color:var(--refero-graphite)!important}
+  .docs-v3 .filter-dialog-actions button:last-child{border-color:var(--refero-ink)!important;background:var(--refero-ink)!important;color:var(--refero-white)!important}
+}
+.dark-mode .docs-v3 .docs-editorial-index{background:#171717!important;border-color:#303030!important;box-shadow:none!important}
+.dark-mode .docs-v3 .docs-editorial-index header h2,.dark-mode .docs-v3 .docs-editorial-index .docs-index-group button.is-active{color:#fff!important}
+.dark-mode .docs-v3 .docs-editorial-index header p,.dark-mode .docs-index-group-title{color:#9b9b9b!important}
+.dark-mode .docs-index-search{background:#242424;border-color:#303030;color:#b7b7b7}
+.dark-mode .docs-index-search input{color:#f4f4f4}
+.dark-mode .docs-v3 .docs-editorial-index .docs-index-group button{color:#d6d6d6}
+.dark-mode .docs-v3 .docs-editorial-index .docs-index-group button:hover{background:#242424!important;color:#fff!important}
+.dark-mode .docs-v3 .docs-editorial-index .docs-index-group button.is-active{background:#fff!important;color:#101010!important}
+.dark-mode .docs-v3 .docs-editorial-index .docs-index-group button.is-active>span{background:#101010;color:#fff;border-color:#fff}
+.dark-mode .docs-v3 .docs-editorial-index .docs-index-group button.is-active small{color:#6f6f6f}
+.dark-mode .docs-v3 .docs-index-status{background:#171717}
+.dark-mode .docs-v3 .docs-index-status button{background:#fff!important;border-color:#fff!important;color:#101010!important}
+.dark-mode .docs-v3 .filter-dialog{background:#171717!important;color:#f4f4f4!important}
+.dark-mode .docs-v3 .filter-dialog-head,.dark-mode .docs-v3 .filter-dialog section{border-color:#303030!important}
+.dark-mode .docs-v3 .filter-dialog-head h2,.dark-mode .docs-v3 .filter-dialog section h3{color:#fff!important}
+.dark-mode .docs-v3 .filter-dialog-head button,.dark-mode .docs-v3 .filter-dialog label,.dark-mode .docs-v3 .filter-dialog-actions{background:#242424!important;border-color:#303030!important;color:#f4f4f4!important}
+.dark-mode .docs-v3 .filter-dialog label:has(input:checked),.dark-mode .docs-v3 .filter-dialog-actions button:last-child{background:#fff!important;border-color:#fff!important;color:#101010!important}
+.dark-mode .docs-v3 .filter-dialog-actions button{background:#242424!important;border-color:#303030!important;color:#f4f4f4!important}
+
+/* Filter sheet details: searchable, grouped rows with counts and a single clear active state. */
+.filter-dialog-search{height:42px;display:flex;align-items:center;gap:9px;margin:18px 0 4px;padding:0 12px;border:1px solid var(--refero-silver);border-radius:9px;background:var(--refero-white);color:var(--refero-slate)}
+.filter-dialog-search input{width:100%;min-width:0;border:0;outline:0;background:transparent;color:var(--refero-graphite);font-size:12px}
+.filter-dialog-search input::placeholder{color:var(--refero-stone)}
+.filter-dialog section>div{display:grid;grid-template-columns:1fr!important;gap:0!important;border:1px solid var(--refero-silver);border-radius:10px;overflow:hidden}
+.filter-dialog section label{display:grid!important;grid-template-columns:18px minmax(0,1fr) auto;align-items:center;gap:9px;min-height:44px!important;padding:8px 11px!important;border:0!important;border-bottom:1px solid var(--refero-silver)!important;border-radius:0!important;background:var(--refero-white)!important;color:var(--refero-graphite)!important;font-size:11px}
+.filter-dialog section label:last-child{border-bottom:0!important}
+.filter-dialog section label input{width:15px;height:15px;margin:0;accent-color:var(--refero-ink)}
+.filter-dialog section label small{color:var(--refero-stone);font-size:9px;white-space:nowrap}
+.filter-dialog section label:has(input:checked){background:var(--refero-ink)!important;color:var(--refero-white)!important}
+.filter-dialog section label:has(input:checked) small{color:#c7c7c7}
+.filter-dialog-empty{padding:28px 0;color:var(--refero-slate);font-size:11px;text-align:center}
+.dark-mode .filter-dialog-search{background:#242424;border-color:#303030;color:#b7b7b7}
+.dark-mode .filter-dialog-search input{color:#f4f4f4}
+.dark-mode .filter-dialog section>div{border-color:#303030}
+.dark-mode .filter-dialog section label{background:#171717!important;border-color:#303030!important;color:#f4f4f4!important}
+.dark-mode .filter-dialog section label:has(input:checked){background:#fff!important;color:#101010!important}
+.dark-mode .filter-dialog section label:has(input:checked) small{color:#6f6f6f}

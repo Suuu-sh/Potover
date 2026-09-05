@@ -1,7 +1,7 @@
 'use client';
 
 import {useEffect,useMemo,useRef,useState} from 'react';
-import {BookOpen,Check,ChevronLeft,ChevronRight,Circle,RotateCcw,SlidersHorizontal,X} from 'lucide-react';
+import {BookOpen,Check,ChevronLeft,ChevronRight,Circle,RotateCcw,Search,SlidersHorizontal,X} from 'lucide-react';
 
 import {ArticleFeedRow} from '@/components/ArticleFeedRow';
 import {articles as initialArticles,Article,sources} from '@/lib/data';
@@ -40,6 +40,8 @@ export default function Docs(){
   const [page,setPage]=useState(1);
   const [toolbarVisible,setToolbarVisible]=useState(true);
   const [readSlugs,setReadSlugs]=useState<Set<string>>(new Set());
+  const [indexQuery,setIndexQuery]=useState('');
+  const [filterDialogQuery,setFilterDialogQuery]=useState('');
   const [preferredLanguage]=usePreferredLanguage();
   const toolbarTimer=useRef<ReturnType<typeof setTimeout>|null>(null);
   useEffect(()=>{setQuery(new URLSearchParams(location.search).get('q')||'')},[]);
@@ -63,11 +65,17 @@ export default function Docs(){
   },[query,selected,sort,preferredLanguage,readSlugs]);
   const pageCount=Math.max(1,Math.ceil(results.length/PAGE_SIZE));
   const visibleResults=results.slice((page-1)*PAGE_SIZE,page*PAGE_SIZE);
+  const normalizedIndexQuery=indexQuery.trim().toLowerCase();
+  const visibleContentFilters=CONTENT_FILTERS.filter(label=>!normalizedIndexQuery||label.toLowerCase().includes(normalizedIndexQuery));
+  const visibleQuickFilters=QUICK_FILTERS.filter(([value,label])=>!normalizedIndexQuery||`${value} ${label}`.toLowerCase().includes(normalizedIndexQuery));
+  const normalizedFilterDialogQuery=filterDialogQuery.trim().toLowerCase();
+  const visibleFilterGroups=groups.map(group=>({...group,items:group.items.filter(item=>!normalizedFilterDialogQuery||item.toLowerCase().includes(normalizedFilterDialogQuery))})).filter(group=>group.items.length>0);
+  const filterCount=(item:string)=>articles.filter(article=>item==='記事'?article.contentType!=='video':item==='動画'?article.contentType==='video':item==='学習済み'?readSlugs.has(article.slug):['Beginner','Intermediate','Advanced'].includes(item)?article.difficulty===item:['Japanese','English'].includes(item)?article.language===item:sourceNames.includes(item)?article.source===item:[...article.tags,article.category].some(value=>value.toLowerCase().includes(item.toLowerCase()))).length;
   useEffect(()=>{setPage(1)},[query,selected,sort,preferredLanguage]);
   useEffect(()=>()=>{if(toolbarTimer.current)clearTimeout(toolbarTimer.current)},[]);
   const onFeedScroll=()=>{setToolbarVisible(false);if(toolbarTimer.current)clearTimeout(toolbarTimer.current);toolbarTimer.current=setTimeout(()=>setToolbarVisible(true),180)};
   const movePage=(next:number)=>{setPage(Math.min(pageCount,Math.max(1,next)));document.querySelector('.docs-feed')?.scrollTo({top:0,behavior:'smooth'})};
-  return <main className="docs-v3"><div className="docs-v3-layout"><aside className="docs-editorial-index"><header><small>CONTENT LIBRARY</small><h2>探す</h2></header><button className={selected.length===0?'is-active':''} onClick={()=>setSelected([])}><span>{selected.length===0?<Check/>:<Circle/>}</span><div><strong>すべて</strong><small>{articles.length}件</small></div></button>{CONTENT_FILTERS.map(label=><button key={label} className={selected.includes(label)?'is-active':''} onClick={()=>toggle(label)}><span>{selected.includes(label)?<Check/>:<Circle/>}</span><div><strong>{label}</strong><small>{articles.filter(article=>(article.contentType==='video'?'動画':'記事')===label).length}件</small></div></button>)}{QUICK_FILTERS.map(([value,label])=><button key={value} className={selected.includes(value)?'is-active':''} onClick={()=>toggle(value)}><span>{selected.includes(value)?<Check/>:<Circle/>}</span><div><strong>{label}</strong><small>{articles.filter(article=>[...article.tags,article.category].some(item=>item.toLowerCase().includes(value.toLowerCase()))).length}件</small></div></button>)}<div className="docs-index-status"><span>表示言語</span><strong>{preferredLanguage==='Japanese'?'日本語':'English'}</strong><button onClick={()=>setFiltersOpen(true)}><SlidersHorizontal/>詳細な絞り込み</button></div></aside>
+  return <main className="docs-v3"><div className="docs-v3-layout"><aside className="docs-editorial-index"><header><small>CONTENT LIBRARY</small><h2>探す</h2><p>条件を選んでコンテンツを絞り込む</p></header><label className="docs-index-search"><Search size={15}/><input value={indexQuery} onChange={event=>setIndexQuery(event.target.value)} placeholder="フィルターを検索" aria-label="フィルターを検索"/></label><div className="docs-index-group"><span className="docs-index-group-title">ライブラリ</span><button className={selected.length===0?'is-active':''} onClick={()=>setSelected([])}><span>{selected.length===0?<Check/>:<Circle/>}</span><div><strong>すべて</strong><small>{articles.length}件</small></div></button></div><div className="docs-index-group"><span className="docs-index-group-title">コンテンツの種類</span>{visibleContentFilters.map(label=><button key={label} className={selected.includes(label)?'is-active':''} onClick={()=>toggle(label)}><span>{selected.includes(label)?<Check/>:<Circle/>}</span><div><strong>{label}</strong><small>{articles.filter(article=>(article.contentType==='video'?'動画':'記事')===label).length}件</small></div></button>)}</div><div className="docs-index-group"><span className="docs-index-group-title">テーマ</span>{visibleQuickFilters.map(([value,label])=><button key={value} className={selected.includes(value)?'is-active':''} onClick={()=>toggle(value)}><span>{selected.includes(value)?<Check/>:<Circle/>}</span><div><strong>{label}</strong><small>{articles.filter(article=>[...article.tags,article.category].some(item=>item.toLowerCase().includes(value.toLowerCase()))).length}件</small></div></button>)}</div><div className="docs-index-status"><span>表示言語</span><strong>{preferredLanguage==='Japanese'?'日本語':'English'}</strong><button onClick={()=>setFiltersOpen(true)}><SlidersHorizontal/>詳細な絞り込み</button></div></aside>
       <section className="docs-feed" onScroll={onFeedScroll}>
         <div className={`feed-toolbar${toolbarVisible?'':' is-scrolling-hidden'}`}><span><strong>{results.length}</strong>件のコンテンツ</span><div className="feed-toolbar-controls"><button type="button" className="feed-filter-button" onClick={()=>setFiltersOpen(true)}><SlidersHorizontal size={14}/>絞り込み{selected.length>0&&<em>{selected.length}</em>}</button><label>並び替え<select value={sort} onChange={e=>setSort(e.target.value)}><option value="relevance">関連度順</option><option value="newest">新着順</option><option value="shortest">短い順</option></select></label></div></div>
         {results.length===0?<div className="docs-empty"><BookOpen size={31}/><h2>条件に合うコンテンツがありません</h2><p>別のキーワードまたは条件を試してください。</p><button onClick={reset}>条件をリセット</button></div>:
@@ -75,6 +83,6 @@ export default function Docs(){
       </section>
     </div>
 
-    {filtersOpen&&<div className="filter-dialog-backdrop" onMouseDown={()=>setFiltersOpen(false)}><aside className="filter-dialog" onMouseDown={e=>e.stopPropagation()}><div className="filter-dialog-head"><div><p>FILTERS</p><h2>絞り込み</h2></div><button onClick={()=>setFiltersOpen(false)}><X/></button></div>{groups.map(group=><section key={group.title}><h3>{group.title}</h3><div>{group.items.map(item=><label key={item}><input type="checkbox" checked={selected.includes(item)} onChange={()=>toggle(item)}/><span>{item}</span></label>)}</div></section>)}<div className="filter-dialog-actions"><button onClick={reset}><RotateCcw size={15}/>リセット</button><button onClick={()=>setFiltersOpen(false)}>{results.length}件を表示</button></div></aside></div>}
+    {filtersOpen&&<div className="filter-dialog-backdrop" onMouseDown={()=>setFiltersOpen(false)}><aside className="filter-dialog" onMouseDown={e=>e.stopPropagation()}><div className="filter-dialog-head"><div><p>FILTERS</p><h2>絞り込み</h2></div><button onClick={()=>setFiltersOpen(false)} aria-label="絞り込みを閉じる"><X/></button></div><label className="filter-dialog-search"><Search size={17}/><input value={filterDialogQuery} onChange={event=>setFilterDialogQuery(event.target.value)} placeholder="フィルターを検索" aria-label="フィルターを検索"/></label>{visibleFilterGroups.map(group=><section key={group.title}><h3>{group.title}</h3><div>{group.items.map(item=><label key={item}><input type="checkbox" checked={selected.includes(item)} onChange={()=>toggle(item)}/><span>{item}</span><small>{filterCount(item)}件</small></label>)}</div></section>)}{visibleFilterGroups.length===0&&<p className="filter-dialog-empty">一致するフィルターがありません</p>}<div className="filter-dialog-actions"><button onClick={reset}><RotateCcw size={15}/>リセット</button><button onClick={()=>setFiltersOpen(false)}>{results.length}件を表示</button></div></aside></div>}
   </main>
 }
