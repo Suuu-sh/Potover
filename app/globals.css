@@ -862,3 +862,13 @@ h1,h2,h3,h4,h5,h6,.brand-wordmark{font-family:var(--potover-font-display)!import
   .dark-mode .docs-v3 .docs-editorial-index .docs-index-group button.is-active small{color:#aaa}
   .dark-mode .docs-v3 .docs-index-status{border-top-color:#303030;background:#121212}
 }
+
+/* Keep card actions on one shared square control size. */
+.docs-v3 .feed-actions{display:flex!important;flex-direction:column!important;align-items:center!important;justify-content:center!important;gap:8px!important;padding:0!important}
+.docs-v3 .feed-actions button,.docs-v3 .feed-actions a{display:grid!important;place-items:center!important;flex:0 0 38px!important;width:38px!important;height:38px!important;min-width:38px!important;min-height:38px!important;padding:0!important;border:1px solid var(--refero-silver)!important;border-radius:50%!important;background:var(--refero-white)!important;color:var(--refero-graphite)!important;box-sizing:border-box!important}
+.docs-v3 .feed-actions button:hover,.docs-v3 .feed-actions a:hover{background:var(--refero-paper)!important;color:var(--refero-ink)!important}
+.dark-mode .docs-v3 .feed-actions button,.dark-mode .docs-v3 .feed-actions a{background:#171717!important;border-color:#383838!important;color:#f4f4f4!important}
+.dark-mode .docs-v3 .feed-actions button:hover,.dark-mode .docs-v3 .feed-actions a:hover{background:#292929!important;color:#fff!important}
+@media(max-width:700px){
+  .docs-v3 .feed-actions button,.docs-v3 .feed-actions a{flex-basis:34px!important;width:34px!important;height:34px!important;min-width:34px!important;min-height:34px!important}
+}
