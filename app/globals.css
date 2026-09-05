@@ -906,17 +906,6 @@ h1,h2,h3,h4,h5,h6,.brand-wordmark{font-family:var(--potover-font-display)!import
 /* Roadmap workspace — Cal.com / Refero's monochrome, compact card language. */
 .curriculum-page{min-height:calc(100dvh - 64px);padding:40px max(24px,calc((100vw - 1200px)/2)) 64px!important;background:var(--refero-paper)!important;color:var(--refero-graphite)!important}
 .curriculum-shell{width:100%;max-width:1200px;margin:0 auto}
-.curriculum-heading{max-width:none!important;display:flex!important;align-items:center!important;justify-content:space-between!important;gap:32px;margin:0 0 24px!important;padding:28px 30px;border:0;border-radius:12px;background:var(--refero-white);box-shadow:var(--refero-shadow)}
-.curriculum-heading>div:first-child{min-width:0}
-.curriculum-heading>div:first-child>small{display:block;margin:0 0 8px;color:var(--refero-blue);font-size:10px;font-weight:600;letter-spacing:.13em}
-.curriculum-heading h1{margin:0 0 8px!important;color:var(--refero-ink)!important;font-size:32px!important;font-weight:600!important;line-height:1.2;letter-spacing:.01em!important}
-.curriculum-heading p{margin:0!important;color:var(--refero-slate)!important;font-size:14px!important;font-weight:400;line-height:1.6}
-.curriculum-course-progress{flex:0 0 220px;display:grid;grid-template-columns:1fr auto;align-items:end;gap:8px 12px}
-.curriculum-course-progress>span{color:var(--refero-slate);font-size:12px;line-height:1}
-.curriculum-course-progress>span strong{color:var(--refero-ink);font-size:28px;font-weight:600}
-.curriculum-course-progress>small{margin:0!important;color:var(--refero-slate)!important;font-size:10px!important;white-space:nowrap}
-.curriculum-course-progress>div{grid-column:1/-1;height:6px;border-radius:9999px;background:var(--refero-silver);overflow:hidden}
-.curriculum-course-progress>div i{display:block;height:100%;border-radius:inherit;background:var(--refero-ink)}
 .curriculum-layout{display:grid!important;grid-template-columns:300px minmax(0,1fr)!important;align-items:start;gap:24px!important}
 .curriculum-index{position:sticky;top:86px;display:block!important;padding:12px!important;border:0!important;border-radius:12px;background:var(--refero-white);box-shadow:var(--refero-shadow)}
 .curriculum-index-label{display:flex;align-items:center;justify-content:space-between;padding:7px 8px 13px;color:var(--refero-stone);font-size:9px;font-weight:600;letter-spacing:.11em}
@@ -960,10 +949,10 @@ h1,h2,h3,h4,h5,h6,.brand-wordmark{font-family:var(--potover-font-display)!import
 .chapter-rest button{height:58px!important;padding:0 17px!important;border-bottom:1px solid var(--refero-silver)!important;background:var(--refero-white)!important;color:var(--refero-slate)!important}
 .chapter-rest button:last-child{border-bottom:0!important}.chapter-rest button:hover{background:var(--refero-paper)!important;color:var(--refero-ink)!important}.chapter-rest button strong{font-size:11px!important;font-weight:600!important}
 .dark-mode .curriculum-page{background:var(--refero-ink)!important;color:#f4f4f4!important}
-.dark-mode .curriculum-heading,.dark-mode .curriculum-index,.dark-mode .next-lesson,.dark-mode .lesson-list,.dark-mode .chapter-rest{background:#171717!important;box-shadow:none!important}
-.dark-mode .curriculum-heading h1,.dark-mode .curriculum-course-progress>span strong,.dark-mode .curriculum-index>button strong,.dark-mode .next-lesson-label,.dark-mode .next-lesson-feature,.dark-mode .next-lesson-feature h2,.dark-mode .lesson-list>header h2{color:#f4f4f4!important}
-.dark-mode .curriculum-heading p,.dark-mode .curriculum-course-progress>span,.dark-mode .curriculum-course-progress>small,.dark-mode .curriculum-index>button p,.dark-mode .lesson-list>a,.dark-mode .chapter-rest button{color:#b7b7b7!important}
-.dark-mode .curriculum-course-progress>div,.dark-mode .chapter-progress{background:#303030}.dark-mode .curriculum-course-progress>div i,.dark-mode .chapter-progress i{background:#fff!important}
+.dark-mode .curriculum-index,.dark-mode .next-lesson,.dark-mode .lesson-list,.dark-mode .chapter-rest{background:#171717!important;box-shadow:none!important}
+.dark-mode .curriculum-index>button strong,.dark-mode .next-lesson-label,.dark-mode .next-lesson-feature,.dark-mode .next-lesson-feature h2,.dark-mode .lesson-list>header h2{color:#f4f4f4!important}
+.dark-mode .curriculum-index>button p,.dark-mode .lesson-list>a,.dark-mode .chapter-rest button{color:#b7b7b7!important}
+.dark-mode .chapter-progress{background:#303030}.dark-mode .chapter-progress i{background:#fff!important}
 .dark-mode .curriculum-index>button:hover,.dark-mode .curriculum-index>button.is-active,.dark-mode .lesson-list>a:hover,.dark-mode .lesson-list>a.is-current,.dark-mode .chapter-rest button:hover{background:#242424!important;color:#fff!important}
 .dark-mode .curriculum-index>button>span{border-color:#3a3a3a!important;background:#242424!important;color:#b7b7b7!important}
 .dark-mode .curriculum-index>button.is-active>span{border-color:#fff!important;background:#fff!important;color:#101010!important}
@@ -971,8 +960,8 @@ h1,h2,h3,h4,h5,h6,.brand-wordmark{font-family:var(--potover-font-display)!import
 .dark-mode .next-lesson-label small,.dark-mode .lesson-list>header span{background:#242424;color:#b7b7b7!important}
 .dark-mode .next-lesson-image{background:#242424!important}.dark-mode .next-lesson-feature>b{background:#fff!important;color:#101010!important}
 .dark-mode .lesson-list>a>span{border-color:#3a3a3a!important;background:#242424!important;color:#b7b7b7!important}.dark-mode .lesson-list>a.is-read>span{border-color:#fff!important;background:#fff!important;color:#101010!important}
-@media(max-width:840px){.curriculum-page{padding:24px 20px 48px!important}.curriculum-heading{align-items:flex-start!important;padding:24px!important}.curriculum-course-progress{flex-basis:180px}.curriculum-layout{grid-template-columns:1fr!important}.curriculum-index{position:static;display:flex!important;gap:8px;overflow-x:auto;padding:10px!important}.curriculum-index-label{display:none}.curriculum-index>button{flex:0 0 210px;margin:0!important}.next-lesson-feature{grid-template-columns:180px minmax(0,1fr) 38px!important}}
-@media(max-width:600px){.curriculum-page{padding:20px 16px 40px!important}.curriculum-heading{display:grid!important;gap:22px;padding:22px 20px!important}.curriculum-heading h1{font-size:27px!important}.curriculum-course-progress{width:100%;display:grid;grid-template-columns:1fr auto;flex-basis:auto}.next-lesson-feature{grid-template-columns:1fr 36px!important;gap:14px!important;padding:14px!important}.next-lesson-image{grid-column:1/-1;height:auto!important;aspect-ratio:16/9}.lesson-list>a{grid-template-columns:25px 30px minmax(0,1fr) 16px!important}.lesson-list>a>em{display:none!important}.chapter-rest button{grid-template-columns:22px 1fr 16px!important}.chapter-rest button span{display:none}}
+@media(max-width:840px){.curriculum-page{padding:24px 20px 48px!important}.curriculum-layout{grid-template-columns:1fr!important}.curriculum-index{position:static;display:flex!important;gap:8px;overflow-x:auto;padding:10px!important}.curriculum-index-label{display:none}.curriculum-index>button{flex:0 0 210px;margin:0!important}.next-lesson-feature{grid-template-columns:180px minmax(0,1fr) 38px!important}}
+@media(max-width:600px){.curriculum-page{padding:20px 16px 40px!important}.next-lesson-feature{grid-template-columns:1fr 36px!important;gap:14px!important;padding:14px!important}.next-lesson-image{grid-column:1/-1;height:auto!important;aspect-ratio:16/9}.lesson-list>a{grid-template-columns:25px 30px minmax(0,1fr) 16px!important}.lesson-list>a>em{display:none!important}.chapter-rest button{grid-template-columns:22px 1fr 16px!important}.chapter-rest button span{display:none}}
 
 /* Give the dark header its own elevated surface instead of merging into the page. */
 .dark-mode .site-header-inner,.dark-mode .docs-v3 .site-header-inner{background:#191919!important;border-color:#333!important;box-shadow:0 8px 24px rgba(0,0,0,.32)!important}

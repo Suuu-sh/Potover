@@ -21,18 +21,6 @@ export default function RoadmapPage(){
   const nextArticle=module.articles.find(article=>!read.has(article.slug))||module.articles[0];
   return <main className="curriculum-page">
     <section className="curriculum-shell">
-      <header className="curriculum-heading">
-        <div>
-          <small>LEARNING PATH</small>
-          <h1>{course.title}</h1>
-          <p>{course.description}</p>
-        </div>
-        <div className="curriculum-course-progress" aria-label={`${course.progress}% 完了`}>
-          <span><strong>{course.progress}</strong>%</span>
-          <div><i style={{width:`${course.progress}%`}}/></div>
-          <small>{course.completed} / {course.total} レッスン完了</small>
-        </div>
-      </header>
       <div className="curriculum-layout">
         <nav className="curriculum-index" aria-label={`${course.title}の章`}>
           <div className="curriculum-index-label"><span>COURSE CONTENT</span><strong>{course.modules.length}章</strong></div>
