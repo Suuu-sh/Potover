@@ -954,6 +954,7 @@ h1,h2,h3,h4,h5,h6,.brand-wordmark{font-family:var(--potover-font-display)!import
 .dark-mode .curriculum-index>button p,.dark-mode .lesson-list>a,.dark-mode .chapter-rest button{color:#b7b7b7!important}
 .dark-mode .chapter-progress{background:#303030}.dark-mode .chapter-progress i{background:#fff!important}
 .dark-mode .curriculum-index>button:hover,.dark-mode .curriculum-index>button.is-active,.dark-mode .lesson-list>a:hover,.dark-mode .lesson-list>a.is-current,.dark-mode .chapter-rest button:hover{background:#242424!important;color:#fff!important}
+.dark-mode .curriculum-index>button.is-active strong{color:#fff!important}
 .dark-mode .curriculum-index>button>span{border-color:#3a3a3a!important;background:#242424!important;color:#b7b7b7!important}
 .dark-mode .curriculum-index>button.is-active>span{border-color:#fff!important;background:#fff!important;color:#101010!important}
 .dark-mode .next-lesson-label,.dark-mode .lesson-list>header,.dark-mode .lesson-list>a,.dark-mode .chapter-rest button{border-color:#303030!important}
