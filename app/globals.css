@@ -1106,3 +1106,29 @@ h1,h2,h3,h4,h5,h6,.brand-wordmark{font-family:var(--potover-font-display)!import
   .docs-v3 .site-header nav a.is-active::after,
   .site-header nav .roadmap-nav>button.is-active::after{animation:none!important}
 }
+
+/* Keep the empty bookmark state compact and editorial at every breakpoint. */
+.bookmarks-page .bookmark-empty{
+  min-height:118px;
+  margin-top:36px;
+  padding:22px 28px;
+  gap:24px;
+  border-radius:10px;
+}
+.bookmarks-page .bookmark-empty-icon{width:32px;height:32px}
+.bookmarks-page .bookmark-empty h2{margin-bottom:5px;font-size:17px;line-height:1.35}
+.bookmarks-page .bookmark-empty p{font-size:12px;line-height:1.55}
+.bookmarks-page .bookmark-empty a{min-height:40px;padding:0 16px;gap:7px;border-radius:999px;font-size:11px}
+.bookmarks-page .bookmark-empty a svg{width:15px;height:15px}
+.bookmarks-page .library-note{gap:7px;margin-top:16px;font-size:11px;line-height:1.5}
+@media(max-width:700px){
+  .bookmarks-page .bookmark-empty{flex-direction:row;align-items:center;gap:18px;min-height:108px;margin-top:24px;padding:20px 22px}
+  .bookmarks-page .bookmark-empty h2{font-size:16px}
+  .bookmarks-page .bookmark-empty p{font-size:12px}
+  .bookmarks-page .bookmark-empty a{align-self:auto;min-height:38px;padding:0 14px;font-size:11px}
+}
+@media(max-width:520px){
+  .bookmarks-page .bookmark-empty{flex-direction:column;align-items:flex-start;gap:14px;min-height:0;padding:22px 20px}
+  .bookmarks-page .bookmark-empty-icon{width:30px;height:30px}
+  .bookmarks-page .bookmark-empty a{align-self:flex-start}
+}
