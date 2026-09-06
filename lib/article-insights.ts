@@ -8,6 +8,14 @@ export type ArticleHeading = {level: 2|3; text: string};
 
 const cleanText = (value: string) => value.replace(/\s+/g, ' ').trim();
 
+const stripEmbeddedSourceArtifacts = (value: string) => {
+  const marker = value.search(/(?:^|\s)(?:\.shortcode-[\w-]+|enable-bg-rollover\b|\.rollover\b)/i);
+  return marker >= 0 ? value.slice(0, marker).trim() : value;
+};
+
+const isSourceArtifact = (value: string) =>
+  /(?:enable-bg-rollover|shortcode-single-image|-webkit-|background\s*:|\{\s*$)/i.test(value);
+
 const withoutAttribution = (value: string) =>
   value
     .replace(/\s*(?:GTOWizard|GTO Wizard)(?:\s*,\s*(?:GTOWizard|GTO Wizard))*\s*$/i, '')
@@ -41,8 +49,10 @@ function buildArticleOutline({title, summary, tags}: ArticleInsightInput) {
   return [shorten(`${fallback}${tagHint}`)];
 }
 
-export function cleanArticleSummary(summary: string) {
-  return withoutAttribution(cleanText(summary));
+export function cleanArticleSummary(summary: string, fallback = '') {
+  const cleaned = withoutAttribution(stripEmbeddedSourceArtifacts(cleanText(summary)));
+  if (cleaned && !isSourceArtifact(cleaned)) return cleaned;
+  return withoutAttribution(stripEmbeddedSourceArtifacts(cleanText(fallback)));
 }
 
 export function buildFallbackHeadings(input: ArticleInsightInput): ArticleHeading[] {
