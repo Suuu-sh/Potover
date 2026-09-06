@@ -1,4 +1,4 @@
-# Potover service landing design QA — 2026-09-06
+# Potover service landing design QA — 2026-09-07
 
 ## Source and scope
 - Selected visual: /Users/yota/.codex/generated_images/01a075b8-a593-77e1-a435-93a730b40b52/exec-d324d1a0-a371-494b-a951-fd3afe3f3b2c.png (option 1).
@@ -14,9 +14,11 @@
 - FAQ anchor lands below the fixed header; heading is unobscured.
 - Mobile 390 × 844 inspected; no horizontal overflow. Evidence: /tmp/potover-service-mobile-fixed.png. Mobile retains a stacked composition and responsive photo crop rather than shrinking the full desktop composition.
 - Dark/mint palette, Japanese typography, hierarchy, CTA, photographic asset, spacing and navigation reviewed. No remaining actionable P0/P1/P2 visual issues in scope.
+- Added visual touchpoints across the page: strategy imagery in all three feature links, a roadmap banner, and a source-logo grid before the FAQ. Existing `public/banners` and `public/sources` assets were reused rather than introducing placeholders.
 
 ## Functional and automated checks
 - Primary CTA opens /docs with the original application header and content list.
+- Feature image links, roadmap banner, and source-logo grid render at desktop and mobile widths. Evidence: /tmp/potover-service-images-mobile.png; mobile 390px view has no horizontal overflow and all images report a non-zero natural width.
 - FAQ navigation and native disclosure expansion work.
 - Mobile menu open, Escape close and focus return verified during implementation.
 - Roadmap links match actual existing course anchors.

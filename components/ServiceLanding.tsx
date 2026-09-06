@@ -7,9 +7,18 @@ import {ScrollReveal} from './ScrollReveal';
 import styles from './ServiceLanding.module.css';
 
 const features = [
-  {title: '横断検索', body: '記事も動画も、キーワードでまとめて検索。', href: '/docs'},
-  {title: '学習ロードマップ', body: '目的やレベルに合わせて、学ぶ順番が見つかる。', href: '/roadmap'},
-  {title: 'あとで読む', body: '気になるコンテンツを保存して、自分のペースで。', href: '/bookmarks'},
+  {title: '横断検索', body: '記事も動画も、キーワードでまとめて検索。', href: '/docs', image: '/banners/range-map.png', alt: '複数の戦略テーマをつなぐポーカーの検索イメージ'},
+  {title: '学習ロードマップ', body: '目的やレベルに合わせて、学ぶ順番が見つかる。', href: '/roadmap', image: '/banners/learning-path.png', alt: 'ステップをたどる学習ロードマップのイメージ'},
+  {title: 'あとで読む', body: '気になるコンテンツを保存して、自分のペースで。', href: '/bookmarks', image: '/banners/decision-tree.png', alt: '判断の分岐を可視化したポーカー戦略のイメージ'},
+];
+
+const sources = [
+  {name: 'GTO Wizard', image: '/sources/gto-wizard.png'},
+  {name: 'PokerNews', image: '/sources/pokernews.png'},
+  {name: 'Upswing Poker', image: '/sources/upswing.png'},
+  {name: 'PokerCoaching', image: '/sources/pokercoaching.png'},
+  {name: 'Run It Once', image: '/sources/run-it-once.png'},
+  {name: 'Poker Hack', image: '/sources/poker-hack.png'},
 ];
 
 const steps = [
@@ -48,6 +57,7 @@ export function ServiceLanding() {
           <h2 data-reveal id="features-title">探す。学ぶ。残す。</h2>
           <div className={styles.featureGrid}>
             {features.map((feature, index) => <Link data-reveal data-reveal-delay={index * 90} className={styles.feature} href={feature.href} key={feature.title}>
+              <div className={styles.featureMedia}><Image src={feature.image} alt={feature.alt} width={2172} height={724} sizes="(max-width: 760px) 100vw, 33vw"/></div>
               <h3>{feature.title}<ArrowUpRight size={18} aria-hidden="true"/></h3>
               <p>{feature.body}</p>
             </Link>)}
@@ -70,9 +80,15 @@ export function ServiceLanding() {
 
         <section className={styles.roadmaps} aria-labelledby="roadmaps-title">
           <div data-reveal className={styles.roadmapHeading}><p className={styles.eyebrow}>FIND YOUR PATH</p><h2 id="roadmaps-title">あなたの現在地から。</h2><p>基礎を知りたい人も、戦略を深めたい人も。</p></div>
+          <div data-reveal className={styles.roadmapVisual}><Image src="/banners/learning-path.png" alt="Potoverの学習ロードマップを表す青いステップのイメージ" width={2172} height={724} sizes="(max-width: 760px) 100vw, 1296px"/><span>学びの道筋を、ひと目で。</span></div>
           <div className={styles.roadmapGrid}>{roadmapSummaries.map((course, index) => <Link data-reveal data-reveal-delay={index * 90} className={styles.course} href={`/roadmap#${course.id}`} key={course.id}>
             <span className={styles.courseNumber}>0{index + 1}</span><h3>{course.title}</h3><p>{course.description}</p><span className={styles.courseAction}>コースを見る<ArrowUpRight size={22} aria-hidden="true"/></span>
           </Link>)}</div>
+        </section>
+
+        <section className={styles.sources} aria-labelledby="sources-title">
+          <div data-reveal className={styles.sourcesHeading}><p className={styles.eyebrow}>FROM THE COMMUNITY</p><h2 id="sources-title">学びの入口を、ひとつに。</h2><p>ポーカーを支えるさまざまな情報源から、次に読むコンテンツを見つけられます。</p></div>
+          <div className={styles.sourceGrid}>{sources.map((source, index) => <div data-reveal data-reveal-delay={index * 70} className={styles.sourceCard} key={source.name}><div className={styles.sourceLogo}><Image src={source.image} alt="" width={96} height={52} /></div><span>{source.name}</span></div>)}</div>
         </section>
 
         <section id="faq" className={styles.faq} aria-labelledby="faq-title">
