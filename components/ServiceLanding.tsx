@@ -7,9 +7,9 @@ import {ScrollReveal} from './ScrollReveal';
 import styles from './ServiceLanding.module.css';
 
 const features = [
-  {title: '横断検索', body: '記事も動画も、キーワードでまとめて検索。', href: '/docs', image: '/banners/range-map.png', alt: '複数の戦略テーマをつなぐポーカーの検索イメージ'},
-  {title: '学習ロードマップ', body: '目的やレベルに合わせて、学ぶ順番が見つかる。', href: '/roadmap', image: '/banners/learning-path.png', alt: 'ステップをたどる学習ロードマップのイメージ'},
-  {title: 'あとで読む', body: '気になるコンテンツを保存して、自分のペースで。', href: '/bookmarks', image: '/banners/decision-tree.png', alt: '判断の分岐を可視化したポーカー戦略のイメージ'},
+  {title: '横断検索', body: '記事も動画も、キーワードでまとめて検索。', href: '/docs', image: '/banners/service/search.jpg', width: 1100, height: 688, alt: '学習シートとスペードのカードを照らすルーペ'},
+  {title: '学習ロードマップ', body: '目的やレベルに合わせて、学ぶ順番が見つかる。', href: '/roadmap', image: '/banners/service/progress.jpg', width: 1100, height: 703, alt: '学びの積み重ねを表す、高さの異なる深緑のチップ'},
+  {title: 'あとで読む', body: '気になるコンテンツを保存して、自分のペースで。', href: '/bookmarks', image: '/banners/service/bookmarks.jpg', width: 1100, height: 688, alt: 'ミント色のしおりを挟んだ学習ノートとカード'},
 ];
 
 const sources = [
@@ -56,7 +56,7 @@ export function ServiceLanding() {
           <h2 data-reveal id="features-title">探す。学ぶ。残す。</h2>
           <div className={styles.featureGrid}>
             {features.map((feature, index) => <Link data-reveal data-reveal-delay={index * 90} className={styles.feature} href={feature.href} key={feature.title}>
-              <div className={styles.featureMedia}><Image src={feature.image} alt={feature.alt} width={2172} height={724} sizes="(max-width: 760px) 100vw, 33vw"/></div>
+              <div className={styles.featureMedia}><Image src={feature.image} alt={feature.alt} width={feature.width} height={feature.height} sizes="(max-width: 760px) calc(100vw - 48px), (max-width: 1439px) 30vw, 400px"/></div>
               <h3>{feature.title}<ArrowUpRight size={18} aria-hidden="true"/></h3>
               <p>{feature.body}</p>
             </Link>)}
@@ -79,7 +79,7 @@ export function ServiceLanding() {
 
         <section className={styles.roadmaps} aria-labelledby="roadmaps-title">
           <div data-reveal className={styles.roadmapHeading}><p className={styles.eyebrow}>FIND YOUR PATH</p><h2 id="roadmaps-title">あなたの現在地から。</h2><p>基礎を知りたい人も、戦略を深めたい人も。</p></div>
-          <div data-reveal className={styles.roadmapVisual}><Image src="/banners/learning-path.png" alt="Potoverの学習ロードマップを表す青いステップのイメージ" width={2172} height={724} sizes="(max-width: 760px) 100vw, 1296px"/><span>学びの道筋を、ひと目で。</span></div>
+          <div data-reveal className={styles.roadmapVisual}><Image src="/banners/service/study-table.jpg" alt="カード、学習ノート、チップが並ぶ深緑のポーカーテーブル" width={1600} height={900} sizes="(max-width: 760px) 100vw, 1296px"/><span>学びの道筋を、ひと目で。</span></div>
           <div className={styles.roadmapGrid}>{roadmapSummaries.map((course, index) => <Link data-reveal data-reveal-delay={index * 90} className={styles.course} href={`/roadmap#${course.id}`} key={course.id}>
             <span className={styles.courseNumber}>0{index + 1}</span><h3>{course.title}</h3><p>{course.description}</p><span className={styles.courseAction}>コースを見る<ArrowUpRight size={22} aria-hidden="true"/></span>
           </Link>)}</div>

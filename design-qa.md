@@ -1,33 +1,35 @@
-# Potover service landing design QA — 2026-09-07
+# Service supporting-image refresh QA — 2026-09-07
 
 ## Source and scope
-- Selected visual: /Users/yota/.codex/generated_images/01a075b8-a593-77e1-a435-93a730b40b52/exec-d324d1a0-a371-494b-a951-fd3afe3f3b2c.png (option 1).
-- Implemented root service page; existing application routes and global styles retained through route-specific SiteChrome.
-- Latest user adjustment: fit the whole desktop hero image within the first viewport and fix the header during scrolling.
-- Hero copy: the supporting search sentence is intentionally omitted; the h1 now flows directly into the primary CTA.
-- Hero source: /Users/yota/.codex/generated_images/01a075d7-bf92-7d42-a46e-841e6a0a2ac2/exec-190c5e0e-ecd1-4063-8641-1b58a1f73cb4.png. JPEG derivative: public/banners/potover-midnight-hero.jpg (1654 × 951).
+- User authorized direct installation of new supporting images while keeping the main hero unchanged.
+- Style source: `/Users/yota/Projects/Products/Potover/public/banners/potover-midnight-hero.jpg`, 1654 × 951. Main hero SHA-256 before/after: `f64a7fa44e1c4150a199d3a47c5fdbf14b7c0fd0904d67c1a7fdc737e9ec4f1d`.
+- Asset originals, prompts, dimensions and optimized paths: `docs/design/service-imagery.md`.
+- Four replacements only: three feature photographs and one roadmap table photograph. Hero markup/CSS/asset, official logos, copy, links, header and scroll behavior are unchanged.
 
-## Visual comparison and iterations
-- Selected reference and desktop implementation were inspected together. Initial photographic crop clipped the laptop/cards; changed the image sizing to contain.
-- Latest user screenshot (2560 × 1360) and /tmp/potover-service-fit.png (1280 × 680) were inspected together, normalized at 0.5 source scale.
-- Final desktop hero bounds: top 0, bottom 680. Image bounds: top 100, bottom 680, height 580; object-fit contain preserves the whole image without stretching.
-- Header is fixed, with opaque dark backing and subtle border. After scrolling to scrollY 1568 its top remained 0.
-- FAQ anchor lands below the fixed header; heading is unobscured.
-- Mobile 390 × 844 inspected; no horizontal overflow. Evidence: /tmp/potover-service-mobile-fixed.png. Mobile retains a stacked composition and responsive photo crop rather than shrinking the full desktop composition.
-- Dark/mint palette, Japanese typography, hierarchy, CTA, photographic asset, spacing and navigation reviewed. No remaining actionable P0/P1/P2 visual issues in scope.
-- Added visual touchpoints across the page: strategy imagery in all three feature links, a roadmap banner, and a source-logo grid before the FAQ. Existing `public/banners` and `public/sources` assets were reused rather than introducing placeholders.
+## Evidence and comparison
+- Desktop: 1280 × 800 CSS px. `/tmp/potover-imagery-features-desktop.png` and `/tmp/potover-imagery-roadmap-desktop.png`.
+- Mobile: 390 × 844 CSS px. `/tmp/potover-imagery-features-mobile.png` and `/tmp/potover-imagery-roadmap-mobile.png`.
+- The hero style reference and desktop feature screenshot were opened in the same comparison input. The banner source and its desktop screenshot were opened together in that input too. This compares material/palette and framing, not a pixel-identical new page mockup.
+- Screenshot dimensions match the listed CSS viewport dimensions (1:1). Image originals scale into the measured slots; no page-wide density normalization was applied. Desktop feature images render approximately 347 × 216 and banner 1150 × 382. Natural dimensions were read from loaded DOM images.
+- Full-section review confirms consistent photographic materials and green/black palette. Focused banner review confirms all study objects remain inside desktop crop. Mobile images were visually inspected after rendering; no horizontal overflow.
 
-## Functional and automated checks
-- Primary CTA opens /docs with the original application header and content list.
-- Feature image links, roadmap banner, and source-logo grid render at desktop and mobile widths. Evidence: /tmp/potover-service-images-mobile.png; mobile 390px view has no horizontal overflow and all images report a non-zero natural width.
-- FAQ navigation and native disclosure expansion work.
-- Mobile menu open, Escape close and focus return verified during implementation.
-- Roadmap links match actual existing course anchors.
-- Product copy describes search, external content, roadmap and browser-local bookmarks; it does not claim a solver or cross-device bookmark sync.
-- TypeScript check passed.
-- Vitest: 5 tests across 3 files passed with cache disabled.
-- Production build passed, generating all 1376 static pages in an isolated build directory to avoid disrupting localhost.
-- Saved-item persistence not re-exercised; existing bookmark implementation remains unchanged.
-- Local preview remains running at http://localhost:3000/.
+## Findings and adjustments
+- Initial incompatibility: old 3:1 feature slots would clip the new 16:10 still lifes. Updated feature slots and intrinsic dimensions before the first rendered comparison; removed blue media backgrounds and saturation filters.
+- Typography: unchanged Manrope/Noto Sans JP system, hierarchy and copy. Text sits below feature photos, not on top of busy subjects.
+- Layout: existing three-column desktop / single-column mobile grid preserved. Taller feature photographs are intentional so objects remain legible. No stretched or distorted imagery.
+- Palette/tokens: near-black, forest green and ivory photographs now match the hero. Media fallback backgrounds changed from blue to forest. Official source brand graphics remain originals.
+- Image quality: JPEG derivatives retain readable material detail, have no placeholder UI, and load with explicit dimensions. Banner framing preserves all primary objects on desktop and mobile. Generated details are illustrative, not instructional charts.
+- No actionable P0/P1/P2 findings remain in the scoped image replacement.
+
+## Verification
+- TypeScript passed.
+- Vitest: 5 tests across 3 files passed.
+- Production static export passed (1376 pages) in `/tmp/potover-imagery-qa.bfJyo2`, not in the live development directory. Existing globals.css autoprefixer warning is unchanged.
+- All four new images loaded successfully; total installed size 840335 bytes. No horizontal overflow at 1280 or 390 widths.
+- Image-bearing search link navigated to `/docs/` and rendered the real 1362-item content listing.
+- Browser captured error log query returned an empty list after mobile review.
+- Hero checksum and code diff confirm main hero unchanged. Its existing mobile text overlay is retained.
+- Existing bookmark persistence and login were not re-tested; no related code changed.
+- Local application remains running on http://localhost:3000/.
 
 final result: passed
