@@ -1035,31 +1035,32 @@ h1,h2,h3,h4,h5,h6,.brand-wordmark{font-family:var(--potover-font-display)!import
 .site-header nav .roadmap-nav>button.is-active::after{content:"";position:absolute;left:13px;right:13px;bottom:3px;height:2px;border-radius:99px;background:currentColor}
 .dark-mode .site-header nav .roadmap-nav>button.is-active{background:transparent!important;color:#fff!important}
 
-/* Give the empty bookmark state a calm, monochrome library welcome. */
-.bookmarks-page .library-toolbar a{color:var(--refero-ink)}
-.bookmarks-page .library-toolbar a:hover{color:var(--refero-slate)}
-.bookmarks-page .bookmark-empty{position:relative;display:grid;justify-items:center;min-height:340px;margin-top:20px;padding:58px 24px 54px;border:1px solid var(--refero-silver);border-radius:20px;background:linear-gradient(145deg,#fff 0%,#fafafa 58%,#f1f1f1 100%);box-shadow:0 10px 26px rgba(16,16,16,.06);isolation:isolate;overflow:hidden}
-.bookmarks-page .bookmark-empty::before{content:"";position:absolute;z-index:-1;width:260px;height:260px;top:-138px;right:-66px;border-radius:50%;background:#ededed}
-.bookmarks-page .bookmark-empty::after{content:"";position:absolute;z-index:-1;width:170px;height:170px;bottom:-112px;left:-48px;border:1px solid #dedede;border-radius:50%}
-.bookmarks-page .bookmark-empty svg{width:54px;height:54px;padding:15px;border-radius:16px;background:var(--refero-ink);color:#fff;box-shadow:0 8px 18px rgba(16,16,16,.14)}
-.bookmarks-page .bookmark-empty h2{margin:20px 0 8px;color:var(--refero-ink);font-size:24px;letter-spacing:-.7px}
-.bookmarks-page .bookmark-empty p{margin:0;color:var(--refero-slate);font-size:13px;line-height:1.7}
-.bookmarks-page .bookmark-empty a{display:inline-flex;align-items:center;gap:9px;margin-top:22px;padding:11px 20px;border-radius:999px;background:var(--refero-ink);color:#fff;font-size:12px;font-weight:700;transition:background .16s ease,transform .16s ease}
-.bookmarks-page .bookmark-empty a::after{content:"→";font-size:15px;line-height:1}
-.bookmarks-page .bookmark-empty a:hover{background:#333;transform:translateY(-1px)}
-.dark-mode .bookmarks-page .library-toolbar a{color:#fff!important}
-.dark-mode .bookmarks-page .bookmark-empty{border-color:#303030!important;background:linear-gradient(145deg,#171717 0%,#151515 58%,#101010 100%)!important;box-shadow:none!important}
-.dark-mode .bookmarks-page .bookmark-empty::before{background:#242424}
-.dark-mode .bookmarks-page .bookmark-empty::after{border-color:#303030}
-.dark-mode .bookmarks-page .bookmark-empty svg{background:#fff;color:#101010}
-.dark-mode .bookmarks-page .bookmark-empty h2{color:#fff!important}
-.dark-mode .bookmarks-page .bookmark-empty p{color:#b7b7b7}
+/* Compact bookmark empty state, using the shared monochrome tokens. */
+.bookmarks-page .library-toolbar{padding-bottom:22px;border-color:var(--refero-silver);color:var(--refero-slate);font-size:14px}
+.bookmarks-page .library-toolbar h1{margin:0;color:var(--refero-ink);font-size:22px;font-weight:600;line-height:1.5}
+.bookmarks-page .bookmark-empty{display:flex;align-items:center;gap:44px;min-height:150px;margin-top:72px;padding:32px 38px;text-align:left;border:1px solid var(--refero-silver)!important;border-radius:12px;background:var(--refero-white);box-shadow:0 2px 5px rgba(16,16,16,.04)!important}
+.bookmarks-page .bookmark-empty-icon{flex:none;color:var(--refero-ink);stroke-width:1.8}
+.bookmarks-page .bookmark-empty-copy{flex:1;min-width:0}
+.bookmarks-page .bookmark-empty h2{margin:0 0 8px;color:var(--refero-ink);font-size:24px;font-weight:600;line-height:1.5;letter-spacing:0}
+.bookmarks-page .bookmark-empty p{margin:0;color:var(--refero-slate);font-size:18px;line-height:1.7}
+.bookmarks-page .bookmark-empty a{display:inline-flex;flex:none;align-items:center;justify-content:center;gap:12px;min-height:56px;padding:14px 26px;border-radius:12px;background:var(--refero-ink);color:#fff;font-size:16px;font-weight:600;white-space:nowrap;transition:background .16s ease}
+.bookmarks-page .bookmark-empty a svg{color:currentColor}
+.bookmarks-page .bookmark-empty a:hover{background:#333}
+.bookmarks-page .bookmark-empty a:focus-visible{outline:2px solid var(--refero-ink);outline-offset:4px}
+.bookmarks-page .library-note{gap:10px;margin-top:26px;padding-top:0;border-top:0;color:var(--refero-slate);font-size:16px;line-height:1.6}
+.bookmarks-page .library-note svg{flex:none}
+.dark-mode .bookmarks-page .library-toolbar{border-color:#303030;color:#b7b7b7}
+.dark-mode .bookmarks-page .library-toolbar h1,.dark-mode .bookmarks-page .bookmark-empty h2,.dark-mode .bookmarks-page .bookmark-empty-icon{color:#fff}
+.dark-mode .bookmarks-page .bookmark-empty{border-color:#303030!important;box-shadow:none!important}
+.dark-mode .bookmarks-page .bookmark-empty p,.dark-mode .bookmarks-page .library-note{color:#b7b7b7}
 .dark-mode .bookmarks-page .bookmark-empty a{background:#fff;color:#101010}
 .dark-mode .bookmarks-page .bookmark-empty a:hover{background:#e5e5e5}
+.dark-mode .bookmarks-page .bookmark-empty a:focus-visible{outline-color:#fff}
 @media(max-width:700px){
-  .bookmarks-page .bookmark-empty{min-height:310px;margin-top:16px;padding:46px 20px 42px;border-radius:16px}
-  .bookmarks-page .bookmark-empty h2{font-size:20px;text-align:center}
-  .bookmarks-page .bookmark-empty p{font-size:12px;text-align:center}
+  .bookmarks-page .bookmark-empty{flex-direction:column;align-items:flex-start;gap:20px;min-height:0;margin-top:32px;padding:28px 24px}
+  .bookmarks-page .bookmark-empty h2{font-size:18px}
+  .bookmarks-page .bookmark-empty p{font-size:14px}
+  .bookmarks-page .bookmark-empty a{align-self:stretch}
 }
 
 /* Use an underline for every active header navigation item instead of a filled tile. */
