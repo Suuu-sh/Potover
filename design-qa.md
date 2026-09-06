@@ -1,26 +1,30 @@
-# Bookmarks empty-state design QA — 2026-09-06
+# Potover service landing design QA — 2026-09-06
 
-- Source visual truth: /Users/yota/.codex/generated_images/01a075b8-a593-77e1-a435-93a730b40b52/exec-4f1940b1-5c27-4a6b-b2fb-73ba06eded65.png (selected third image).
-- Implementation screenshot: /tmp/potover-bookmarks-desktop.png.
-- Viewport: 1210 × 950 CSS px, implementation 1210 × 950 pixels.
-- Source: 1415 × 1112 pixels, normalized to approximately 1210 × 950 (0.855 scale).
-- State: no saved articles, light theme; responsive 390 × 844 and dark theme also inspected.
-- Full-view evidence: reference and rendered screenshot reviewed together. Horizontal icon / copy / CTA hierarchy, single shallow container and note placement preserved.
-- Scope adaptation: retained existing application header and paper background rather than changing the global shell to white.
-- Focused comparison: text hierarchy, bookmark icon, action and local-storage note inspected in the full-view capture; no raster assets needed, existing Lucide library icons used.
+## Source and scope
+- Selected visual: /Users/yota/.codex/generated_images/01a075b8-a593-77e1-a435-93a730b40b52/exec-d324d1a0-a371-494b-a951-fd3afe3f3b2c.png (option 1).
+- Implemented root service page; existing application routes and global styles retained through route-specific SiteChrome.
+- Latest user adjustment: fit the whole desktop hero image within the first viewport and fix the header during scrolling.
+- Hero source: /Users/yota/.codex/generated_images/01a075d7-bf92-7d42-a46e-841e6a0a2ac2/exec-190c5e0e-ecd1-4063-8641-1b58a1f73cb4.png. JPEG derivative: public/banners/potover-midnight-hero.jpg (1654 × 951).
 
-## Findings and comparison history
-- Initial P2: copy and action undersized relative to normalized reference.
-- Fixed desktop heading to 24px, body to 18px, action to 16px / 56px high, note to 16px; recaptured and inspected.
-- Final: no actionable P0/P1/P2 findings in the scoped empty state.
-- Typography: existing Japanese sans-serif retained; weight 600, readable wrapping and mobile 18px heading / 14px description.
-- Layout: 150px shallow row, 12px corners, restrained shadow, no circles or gradient; mobile stacks without horizontal clipping.
-- Tokens: existing monochrome theme with white-on-dark and dark-on-white CTA.
-- Copy: matches selected mock.
-- Assets: sharp library bookmark, arrow and lock icons; no generated raster assets required.
-- Interactions: primary action navigates to /docs/ and renders content; bookmark navigation returns to the empty state; theme toggle works.
-- Console: no captured error logs.
-- Automated checks: TypeScript passed; all 5 existing tests passed.
-- Residual test gap: saved-item persistence flow not exercised; its filtering, event listener and ArticleFeedRow rendering are unchanged.
+## Visual comparison and iterations
+- Selected reference and desktop implementation were inspected together. Initial photographic crop clipped the laptop/cards; changed the image sizing to contain.
+- Latest user screenshot (2560 × 1360) and /tmp/potover-service-fit.png (1280 × 680) were inspected together, normalized at 0.5 source scale.
+- Final desktop hero bounds: top 0, bottom 680. Image bounds: top 100, bottom 680, height 580; object-fit contain preserves the whole image without stretching.
+- Header is fixed, with opaque dark backing and subtle border. After scrolling to scrollY 1568 its top remained 0.
+- FAQ anchor lands below the fixed header; heading is unobscured.
+- Mobile 390 × 844 inspected; no horizontal overflow. Evidence: /tmp/potover-service-mobile-fixed.png. Mobile retains a stacked composition and responsive photo crop rather than shrinking the full desktop composition.
+- Dark/mint palette, Japanese typography, hierarchy, CTA, photographic asset, spacing and navigation reviewed. No remaining actionable P0/P1/P2 visual issues in scope.
+
+## Functional and automated checks
+- Primary CTA opens /docs with the original application header and content list.
+- FAQ navigation and native disclosure expansion work.
+- Mobile menu open, Escape close and focus return verified during implementation.
+- Roadmap links match actual existing course anchors.
+- Product copy describes search, external content, roadmap and browser-local bookmarks; it does not claim a solver or cross-device bookmark sync.
+- TypeScript check passed.
+- Vitest: 5 tests across 3 files passed with cache disabled.
+- Production build passed, generating all 1376 static pages in an isolated build directory to avoid disrupting localhost.
+- Saved-item persistence not re-exercised; existing bookmark implementation remains unchanged.
+- Local preview remains running at http://localhost:3000/.
 
 final result: passed
