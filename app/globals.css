@@ -1030,6 +1030,11 @@ h1,h2,h3,h4,h5,h6,.brand-wordmark{font-family:var(--potover-font-display)!import
 /* Show article artwork at its natural framing in both library views. */
 .bookmark-docs-feed .article-cover>img,.docs-v3 .article-cover>img{object-fit:contain!important;object-position:center!important}
 
+/* Mark the active roadmap tab with a simple underline instead of a filled tile. */
+.site-header nav .roadmap-nav>button.is-active{position:relative;background:transparent!important;color:var(--refero-ink)!important;box-shadow:none!important}
+.site-header nav .roadmap-nav>button.is-active::after{content:"";position:absolute;left:13px;right:13px;bottom:3px;height:2px;border-radius:99px;background:currentColor}
+.dark-mode .site-header nav .roadmap-nav>button.is-active{background:transparent!important;color:#fff!important}
+
 /* Give the empty bookmark state a calm, monochrome library welcome. */
 .bookmarks-page .library-toolbar a{color:var(--refero-ink)}
 .bookmarks-page .library-toolbar a:hover{color:var(--refero-slate)}
