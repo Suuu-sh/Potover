@@ -279,7 +279,8 @@ body{min-height:100vh}
 .bookmark-docs-feed{height:auto!important;overflow:visible!important;margin:0!important;padding:0!important}
 .bookmark-docs-feed .docs-feed-list{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px;padding-top:20px}
 .bookmark-docs-feed .docs-feed-row{display:flex;flex-direction:column;gap:12px;min-width:0;min-height:0;padding:16px;border:1px solid var(--refero-silver);border-radius:14px;background:var(--refero-white)}
-.bookmark-docs-feed .article-cover{display:block;width:100%;height:auto;aspect-ratio:2.15/1;flex-shrink:0}
+.bookmark-docs-feed .article-cover{display:block;width:100%;height:auto;aspect-ratio:16/9;flex-shrink:0;background:#f2f5f8}
+.bookmark-docs-feed .article-cover img{object-fit:contain;object-position:center;transform:none}
 .bookmark-docs-feed .feed-copy{display:flex;flex:1;flex-direction:column}
 .bookmark-docs-feed .feed-copy h2{margin:8px 0 4px;line-height:1.45}
 .bookmark-docs-feed .feed-copy>p{display:-webkit-box;-webkit-box-orient:vertical;-webkit-line-clamp:2;overflow:hidden}
@@ -291,6 +292,7 @@ body{min-height:100vh}
 .bookmark-docs-feed .feed-source-actions svg,.docs-v3 .feed-source-actions svg{width:15px;height:15px}
 .bookmark-docs-feed .feed-meta{gap:8px 12px;padding-top:10px;margin-top:auto}
 .dark-mode .bookmark-docs-feed .docs-feed-row{background:#171717;border-color:#303030}
+.dark-mode .bookmark-docs-feed .article-cover{background:#111d29}
 .dark-mode .bookmark-docs-feed .feed-source-actions button,.dark-mode .bookmark-docs-feed .feed-source-actions a,.dark-mode .docs-v3 .feed-source-actions button,.dark-mode .docs-v3 .feed-source-actions a{background:#242424;border-color:#3a3a3a;color:#f4f4f4}
 .dark-mode .bookmark-docs-feed .feed-source-actions button:hover,.dark-mode .bookmark-docs-feed .feed-source-actions a:hover,.dark-mode .docs-v3 .feed-source-actions button:hover,.dark-mode .docs-v3 .feed-source-actions a:hover{background:#fff;border-color:#fff;color:#101010}
 .dark-mode .bookmark-docs-feed .feed-source-actions .bookmark-action.is-saved,.dark-mode .docs-v3 .feed-source-actions .bookmark-action.is-saved{box-shadow:none}
@@ -300,7 +302,6 @@ body{min-height:100vh}
 @media(max-width:700px){
   .bookmark-docs-feed .docs-feed-list{gap:12px;padding-top:16px}
   .bookmark-docs-feed .docs-feed-row{padding:12px;gap:10px;border-radius:12px}
-  .bookmark-docs-feed .article-cover{aspect-ratio:2.15/1}
   .bookmark-docs-feed .feed-copy h2{font-size:15px!important}
   .bookmark-docs-feed .feed-source{gap:5px;font-size:10px}
   .bookmark-docs-feed .feed-copy>p{font-size:11px}
@@ -1025,3 +1026,6 @@ h1,h2,h3,h4,h5,h6,.brand-wordmark{font-family:var(--potover-font-display)!import
 /* Card actions stay in the feed only on full desktop; smaller screens use the modal footer. */
 @media(max-width:1199px){.docs-v3 .feed-actions{display:none!important}}
 @media(min-width:1200px){.docs-v3 .feed-actions{display:flex!important}}
+
+/* Show article artwork at its natural framing in both library views. */
+.bookmark-docs-feed .article-cover>img,.docs-v3 .article-cover>img{object-fit:contain!important;object-position:center!important}
