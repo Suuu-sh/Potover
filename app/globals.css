@@ -277,7 +277,29 @@ body{min-height:100vh}
 .bookmarks-page .library-wrap{padding-top:28px}
 .bookmarks-page .library-toolbar{margin:0}
 .bookmark-docs-feed{height:auto!important;overflow:visible!important;margin:0!important;padding:0!important}
-.bookmark-docs-feed .docs-feed-row:last-child{border-bottom:0}
+.bookmark-docs-feed .docs-feed-list{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:20px;padding-top:20px}
+.bookmark-docs-feed .docs-feed-row{display:flex;flex-direction:column;gap:16px;min-width:0;min-height:0;padding:18px;border:1px solid var(--refero-silver);border-radius:14px;background:var(--refero-white)}
+.bookmark-docs-feed .article-cover{display:block;width:100%;height:auto;aspect-ratio:16/9;flex-shrink:0}
+.bookmark-docs-feed .feed-copy{display:flex;flex:1;flex-direction:column}
+.bookmark-docs-feed .feed-copy h2{margin:10px 0;line-height:1.5}
+.bookmark-docs-feed .feed-copy>p{display:-webkit-box}
+.bookmark-docs-feed .feed-source,.bookmark-docs-feed .feed-tags{flex-wrap:wrap}
+.bookmark-docs-feed .feed-meta{gap:8px 12px;padding-top:14px;margin-top:auto}
+.bookmark-docs-feed .feed-actions{position:static;padding:12px 0 0;border-top:1px solid var(--refero-silver);gap:8px}
+.bookmark-docs-feed .feed-actions button,.bookmark-docs-feed .feed-actions a{display:grid;width:40px;height:40px}
+.dark-mode .bookmark-docs-feed .docs-feed-row{background:#171717;border-color:#303030}
+.dark-mode .bookmark-docs-feed .feed-actions{border-color:#303030}
+@media(max-width:700px){
+  .bookmark-docs-feed .docs-feed-list{gap:12px;padding-top:16px}
+  .bookmark-docs-feed .docs-feed-row{padding:12px;gap:12px;border-radius:12px}
+  .bookmark-docs-feed .feed-copy h2{font-size:15px!important}
+  .bookmark-docs-feed .feed-source{gap:5px;font-size:10px}
+  .bookmark-docs-feed .feed-copy>p{font-size:11px}
+  .bookmark-docs-feed .feed-tags{gap:4px}
+  .bookmark-docs-feed .feed-tags button{padding:4px 6px}
+  .bookmark-docs-feed .feed-meta{gap:6px;font-size:10px}
+  .bookmark-docs-feed .feed-actions button,.bookmark-docs-feed .feed-actions a{width:44px;height:44px}
+}
 .bookmarks-page .library-note{margin-top:22px;padding-top:18px;border-top:1px solid #dce5ef}
 .dark-mode .bookmarks-page .library-note{border-color:#29394b}
 .feed-toolbar-controls{display:flex;align-items:center;gap:18px}
