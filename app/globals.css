@@ -1132,3 +1132,54 @@ h1,h2,h3,h4,h5,h6,.brand-wordmark{font-family:var(--potover-font-display)!import
   .bookmarks-page .bookmark-empty-icon{width:30px;height:30px}
   .bookmarks-page .bookmark-empty a{align-self:flex-start}
 }
+
+/* Keep hover states light and underline-based, matching the active navigation. */
+.site-header nav> a:not(.is-active),
+.docs-v3 .site-header nav> a:not(.is-active),
+.site-header nav .roadmap-nav>button:not(.is-active){
+  position:relative;
+}
+.site-header nav> a:not(.is-active)::after,
+.docs-v3 .site-header nav> a:not(.is-active)::after,
+.site-header nav .roadmap-nav>button:not(.is-active)::after{
+  content:"";
+  display:block;
+  position:absolute;
+  left:15px;
+  right:15px;
+  bottom:3px;
+  height:2px;
+  border-radius:99px;
+  background:currentColor;
+  opacity:0;
+  transform:scaleX(0);
+  transform-origin:left center;
+  transition:opacity .16s ease,transform .2s cubic-bezier(.22,.61,.36,1);
+}
+.site-header nav> a:not(.is-active):hover,
+.site-header nav> a:not(.is-active):focus-visible,
+.docs-v3 .site-header nav> a:not(.is-active):hover,
+.docs-v3 .site-header nav> a:not(.is-active):focus-visible,
+.site-header nav .roadmap-nav>button:not(.is-active):hover,
+.site-header nav .roadmap-nav>button:not(.is-active):focus-visible{
+  background:transparent!important;
+  color:var(--refero-ink)!important;
+}
+.site-header nav> a:not(.is-active):hover::after,
+.site-header nav> a:not(.is-active):focus-visible::after,
+.docs-v3 .site-header nav> a:not(.is-active):hover::after,
+.docs-v3 .site-header nav> a:not(.is-active):focus-visible::after,
+.site-header nav .roadmap-nav>button:not(.is-active):hover::after,
+.site-header nav .roadmap-nav>button:not(.is-active):focus-visible::after{
+  opacity:1;
+  transform:scaleX(1);
+}
+.dark-mode .site-header nav> a:not(.is-active):hover,
+.dark-mode .site-header nav> a:not(.is-active):focus-visible,
+.dark-mode .docs-v3 .site-header nav> a:not(.is-active):hover,
+.dark-mode .docs-v3 .site-header nav> a:not(.is-active):focus-visible,
+.dark-mode .site-header nav .roadmap-nav>button:not(.is-active):hover,
+.dark-mode .site-header nav .roadmap-nav>button:not(.is-active):focus-visible{
+  background:transparent!important;
+  color:#fff!important;
+}
