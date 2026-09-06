@@ -1029,3 +1029,30 @@ h1,h2,h3,h4,h5,h6,.brand-wordmark{font-family:var(--potover-font-display)!import
 
 /* Show article artwork at its natural framing in both library views. */
 .bookmark-docs-feed .article-cover>img,.docs-v3 .article-cover>img{object-fit:contain!important;object-position:center!important}
+
+/* Give the empty bookmark state a calm, monochrome library welcome. */
+.bookmarks-page .library-toolbar a{color:var(--refero-ink)}
+.bookmarks-page .library-toolbar a:hover{color:var(--refero-slate)}
+.bookmarks-page .bookmark-empty{position:relative;display:grid;justify-items:center;min-height:340px;margin-top:20px;padding:58px 24px 54px;border:1px solid var(--refero-silver);border-radius:20px;background:linear-gradient(145deg,#fff 0%,#fafafa 58%,#f1f1f1 100%);box-shadow:0 10px 26px rgba(16,16,16,.06);isolation:isolate;overflow:hidden}
+.bookmarks-page .bookmark-empty::before{content:"";position:absolute;z-index:-1;width:260px;height:260px;top:-138px;right:-66px;border-radius:50%;background:#ededed}
+.bookmarks-page .bookmark-empty::after{content:"";position:absolute;z-index:-1;width:170px;height:170px;bottom:-112px;left:-48px;border:1px solid #dedede;border-radius:50%}
+.bookmarks-page .bookmark-empty svg{width:54px;height:54px;padding:15px;border-radius:16px;background:var(--refero-ink);color:#fff;box-shadow:0 8px 18px rgba(16,16,16,.14)}
+.bookmarks-page .bookmark-empty h2{margin:20px 0 8px;color:var(--refero-ink);font-size:24px;letter-spacing:-.7px}
+.bookmarks-page .bookmark-empty p{margin:0;color:var(--refero-slate);font-size:13px;line-height:1.7}
+.bookmarks-page .bookmark-empty a{display:inline-flex;align-items:center;gap:9px;margin-top:22px;padding:11px 20px;border-radius:999px;background:var(--refero-ink);color:#fff;font-size:12px;font-weight:700;transition:background .16s ease,transform .16s ease}
+.bookmarks-page .bookmark-empty a::after{content:"→";font-size:15px;line-height:1}
+.bookmarks-page .bookmark-empty a:hover{background:#333;transform:translateY(-1px)}
+.dark-mode .bookmarks-page .library-toolbar a{color:#fff!important}
+.dark-mode .bookmarks-page .bookmark-empty{border-color:#303030!important;background:linear-gradient(145deg,#171717 0%,#151515 58%,#101010 100%)!important;box-shadow:none!important}
+.dark-mode .bookmarks-page .bookmark-empty::before{background:#242424}
+.dark-mode .bookmarks-page .bookmark-empty::after{border-color:#303030}
+.dark-mode .bookmarks-page .bookmark-empty svg{background:#fff;color:#101010}
+.dark-mode .bookmarks-page .bookmark-empty h2{color:#fff!important}
+.dark-mode .bookmarks-page .bookmark-empty p{color:#b7b7b7}
+.dark-mode .bookmarks-page .bookmark-empty a{background:#fff;color:#101010}
+.dark-mode .bookmarks-page .bookmark-empty a:hover{background:#e5e5e5}
+@media(max-width:700px){
+  .bookmarks-page .bookmark-empty{min-height:310px;margin-top:16px;padding:46px 20px 42px;border-radius:16px}
+  .bookmarks-page .bookmark-empty h2{font-size:20px;text-align:center}
+  .bookmarks-page .bookmark-empty p{font-size:12px;text-align:center}
+}
