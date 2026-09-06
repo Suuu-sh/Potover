@@ -1061,3 +1061,29 @@ h1,h2,h3,h4,h5,h6,.brand-wordmark{font-family:var(--potover-font-display)!import
   .bookmarks-page .bookmark-empty h2{font-size:20px;text-align:center}
   .bookmarks-page .bookmark-empty p{font-size:12px;text-align:center}
 }
+
+/* Use an underline for every active header navigation item instead of a filled tile. */
+.site-header nav a.is-active,
+.docs-v3 .site-header nav a.is-active{
+  position:relative;
+  background:transparent!important;
+  color:var(--refero-ink)!important;
+  box-shadow:none!important;
+}
+.site-header nav a.is-active::after,
+.docs-v3 .site-header nav a.is-active::after{
+  content:""!important;
+  display:block!important;
+  position:absolute;
+  left:15px;
+  right:15px;
+  bottom:3px;
+  height:2px;
+  border-radius:99px;
+  background:currentColor;
+}
+.dark-mode .site-header nav a.is-active,
+.dark-mode .docs-v3 .site-header nav a.is-active{
+  background:transparent!important;
+  color:#fff!important;
+}
