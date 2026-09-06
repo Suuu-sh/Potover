@@ -871,7 +871,7 @@ h1,h2,h3,h4,h5,h6,.brand-wordmark{font-family:var(--potover-font-display)!import
 .dark-mode .roadmap-preview-card>span{color:var(--course-color)!important}
 
 /* Tighten the handoff from the spotlight carousel to the learning paths. */
-.home-spotlight{padding-bottom:10px!important}
+.home-spotlight{padding-bottom:10px!important;border-bottom:0!important}
 .roadmap-preview{padding-top:18px!important}
 /* Keep a compact, consistent handoff from learning paths to featured content. */
 @media(min-width:701px){.modern-content{padding-top:40px!important}}
