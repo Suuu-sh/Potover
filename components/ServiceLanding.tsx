@@ -3,6 +3,7 @@ import Link from 'next/link';
 import {ArrowRight, ArrowUpRight, Bookmark, BookOpen, ChevronDown, Search} from 'lucide-react';
 import {roadmapSummaries} from '@/lib/roadmap-summary';
 import {ServiceHeader} from './ServiceHeader';
+import {ScrollReveal} from './ScrollReveal';
 import styles from './ServiceLanding.module.css';
 
 const features = [
@@ -29,6 +30,7 @@ export function ServiceLanding() {
   return (
     <div className={styles.page}>
       <ServiceHeader/>
+      <ScrollReveal>
       <main id="main-content" tabIndex={-1}>
         <section className={styles.hero} aria-labelledby="service-title">
           <Image className={styles.heroImage} src="/banners/potover-midnight-hero.jpg" alt="Potoverの記事ライブラリを表示したノートパソコンと、ポーカーテーブルのチップとカード" width={1654} height={951} sizes="100vw" priority/>
@@ -43,9 +45,9 @@ export function ServiceLanding() {
         </section>
 
         <section id="features" className={styles.features} aria-labelledby="features-title">
-          <h2 id="features-title">探す。学ぶ。残す。</h2>
+          <h2 data-reveal id="features-title">探す。学ぶ。残す。</h2>
           <div className={styles.featureGrid}>
-            {features.map(feature => <Link className={styles.feature} href={feature.href} key={feature.title}>
+            {features.map((feature, index) => <Link data-reveal data-reveal-delay={index * 90} className={styles.feature} href={feature.href} key={feature.title}>
               <h3>{feature.title}<ArrowUpRight size={18} aria-hidden="true"/></h3>
               <p>{feature.body}</p>
             </Link>)}
@@ -53,13 +55,13 @@ export function ServiceLanding() {
         </section>
 
         <section id="how-it-works" className={styles.learning} aria-labelledby="learning-title">
-          <div className={styles.sectionHeading}>
+          <div data-reveal className={styles.sectionHeading}>
             <p className={styles.eyebrow}>LESS SEARCHING. MORE LEARNING.</p>
             <h2 id="learning-title">探し回る時間を、<br/>学ぶ時間へ。</h2>
             <p>情報が多いからこそ、学びへの道筋をシンプルに。</p>
           </div>
           <div className={styles.steps}>
-            {steps.map(({number, icon: Icon, title, body, href, action}) => <article className={styles.step} key={number}>
+            {steps.map(({number, icon: Icon, title, body, href, action}) => <article data-reveal className={styles.step} key={number}>
               <span className={styles.stepNumber}>{number}</span>
               <div><Icon size={25} strokeWidth={1.5} aria-hidden="true"/><h3>{title}</h3><p>{body}</p><Link href={href}>{action}<ArrowRight size={17} aria-hidden="true"/></Link></div>
             </article>)}
@@ -67,24 +69,25 @@ export function ServiceLanding() {
         </section>
 
         <section className={styles.roadmaps} aria-labelledby="roadmaps-title">
-          <div className={styles.roadmapHeading}><p className={styles.eyebrow}>FIND YOUR PATH</p><h2 id="roadmaps-title">あなたの現在地から。</h2><p>基礎を知りたい人も、戦略を深めたい人も。</p></div>
-          <div className={styles.roadmapGrid}>{roadmapSummaries.map((course, index) => <Link className={styles.course} href={`/roadmap#${course.id}`} key={course.id}>
+          <div data-reveal className={styles.roadmapHeading}><p className={styles.eyebrow}>FIND YOUR PATH</p><h2 id="roadmaps-title">あなたの現在地から。</h2><p>基礎を知りたい人も、戦略を深めたい人も。</p></div>
+          <div className={styles.roadmapGrid}>{roadmapSummaries.map((course, index) => <Link data-reveal data-reveal-delay={index * 90} className={styles.course} href={`/roadmap#${course.id}`} key={course.id}>
             <span className={styles.courseNumber}>0{index + 1}</span><h3>{course.title}</h3><p>{course.description}</p><span className={styles.courseAction}>コースを見る<ArrowUpRight size={22} aria-hidden="true"/></span>
           </Link>)}</div>
         </section>
 
         <section id="faq" className={styles.faq} aria-labelledby="faq-title">
-          <div><p className={styles.eyebrow}>QUESTIONS & ANSWERS</p><h2 id="faq-title">よくある質問</h2></div>
-          <div className={styles.questions}>{questions.map(({question, answer}) => <details className={styles.question} key={question}>
+          <div data-reveal><p className={styles.eyebrow}>QUESTIONS & ANSWERS</p><h2 id="faq-title">よくある質問</h2></div>
+          <div className={styles.questions}>{questions.map(({question, answer}) => <details data-reveal className={styles.question} key={question}>
             <summary>{question}<ChevronDown size={20} aria-hidden="true"/></summary><p>{answer}</p>
           </details>)}</div>
         </section>
 
-        <section className={styles.closing} aria-labelledby="closing-title">
+        <section data-reveal className={styles.closing} aria-labelledby="closing-title">
           <p className={styles.eyebrow}>YOUR NEXT CHAPTER</p><h2 id="closing-title">次の学びを、ここから。</h2><p>まずは、気になるテーマをひとつ。登録なしで探せます。</p>
           <Link className={styles.primaryAction} href="/docs">記事・動画を探す<ArrowRight size={24} aria-hidden="true"/></Link>
         </section>
       </main>
+      </ScrollReveal>
 
       <footer className={styles.footer}>
         <div><Link className={styles.brand} href="/" aria-label="Potover サービスサイト"><Image src="/brand/potover-mark-dark.png" alt="" width={34} height={34}/><span>Potover</span></Link><p>ポーカーの学びを、ひとつの場所に。</p></div>
