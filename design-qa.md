@@ -4,6 +4,7 @@
 - Selected visual: /Users/yota/.codex/generated_images/01a075b8-a593-77e1-a435-93a730b40b52/exec-d324d1a0-a371-494b-a951-fd3afe3f3b2c.png (option 1).
 - Implemented root service page; existing application routes and global styles retained through route-specific SiteChrome.
 - Latest user adjustment: fit the whole desktop hero image within the first viewport and fix the header during scrolling.
+- Hero copy: the supporting search sentence is intentionally omitted; the h1 now flows directly into the primary CTA.
 - Hero source: /Users/yota/.codex/generated_images/01a075d7-bf92-7d42-a46e-841e6a0a2ac2/exec-190c5e0e-ecd1-4063-8641-1b58a1f73cb4.png. JPEG derivative: public/banners/potover-midnight-hero.jpg (1654 × 951).
 
 ## Visual comparison and iterations

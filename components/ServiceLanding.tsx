@@ -46,7 +46,6 @@ export function ServiceLanding() {
           <div className={styles.heroInner}>
             <div className={styles.heroCopy}>
               <h1 id="service-title">ポーカーの学びを、<br/>ひとつの場所に。</h1>
-              <p className={styles.lead}>記事と動画を横断検索。<wbr/>次に学ぶことが、見つかる。</p>
               <Link className={styles.primaryAction} href="/docs">記事・動画を探す <ArrowRight size={26} aria-hidden="true"/></Link>
               <Link className={styles.textAction} href="/roadmap">ロードマップを見る <ArrowRight size={20} aria-hidden="true"/></Link>
             </div>
