@@ -284,16 +284,16 @@ body{min-height:100vh}
 .bookmark-docs-feed .feed-copy h2{margin:8px 0 4px;line-height:1.45}
 .bookmark-docs-feed .feed-copy>p{display:-webkit-box;-webkit-box-orient:vertical;-webkit-line-clamp:2;overflow:hidden}
 .bookmark-docs-feed .feed-source,.bookmark-docs-feed .feed-tags{flex-wrap:wrap}
-.bookmark-docs-feed .feed-source-actions{display:flex;align-items:center;gap:6px;margin-left:auto;flex-shrink:0}
-.bookmark-docs-feed .feed-source-actions button,.bookmark-docs-feed .feed-source-actions a{display:grid;place-items:center;width:30px;height:30px;padding:0;border:1px solid var(--refero-silver);border-radius:50%;background:var(--refero-paper);color:var(--refero-graphite);cursor:pointer}
-.bookmark-docs-feed .feed-source-actions button:hover,.bookmark-docs-feed .feed-source-actions a:hover{background:var(--refero-ink);border-color:var(--refero-ink);color:#fff}
-.bookmark-docs-feed .feed-source-actions .bookmark-action.is-saved{box-shadow:none}
-.bookmark-docs-feed .feed-source-actions svg{width:15px;height:15px}
+.bookmark-docs-feed .feed-source-actions,.docs-v3 .feed-source-actions{display:flex;align-items:center;gap:6px;margin-left:auto;flex-shrink:0}
+.bookmark-docs-feed .feed-source-actions button,.bookmark-docs-feed .feed-source-actions a,.docs-v3 .feed-source-actions button,.docs-v3 .feed-source-actions a{display:grid;place-items:center;width:30px;height:30px;padding:0;border:1px solid var(--refero-silver);border-radius:50%;background:var(--refero-paper);color:var(--refero-graphite);cursor:pointer}
+.bookmark-docs-feed .feed-source-actions button:hover,.bookmark-docs-feed .feed-source-actions a:hover,.docs-v3 .feed-source-actions button:hover,.docs-v3 .feed-source-actions a:hover{background:var(--refero-ink);border-color:var(--refero-ink);color:#fff}
+.bookmark-docs-feed .feed-source-actions .bookmark-action.is-saved,.docs-v3 .feed-source-actions .bookmark-action.is-saved{box-shadow:none}
+.bookmark-docs-feed .feed-source-actions svg,.docs-v3 .feed-source-actions svg{width:15px;height:15px}
 .bookmark-docs-feed .feed-meta{gap:8px 12px;padding-top:10px;margin-top:auto}
 .dark-mode .bookmark-docs-feed .docs-feed-row{background:#171717;border-color:#303030}
-.dark-mode .bookmark-docs-feed .feed-source-actions button,.dark-mode .bookmark-docs-feed .feed-source-actions a{background:#242424;border-color:#3a3a3a;color:#f4f4f4}
-.dark-mode .bookmark-docs-feed .feed-source-actions button:hover,.dark-mode .bookmark-docs-feed .feed-source-actions a:hover{background:#fff;border-color:#fff;color:#101010}
-.dark-mode .bookmark-docs-feed .feed-source-actions .bookmark-action.is-saved{box-shadow:none}
+.dark-mode .bookmark-docs-feed .feed-source-actions button,.dark-mode .bookmark-docs-feed .feed-source-actions a,.dark-mode .docs-v3 .feed-source-actions button,.dark-mode .docs-v3 .feed-source-actions a{background:#242424;border-color:#3a3a3a;color:#f4f4f4}
+.dark-mode .bookmark-docs-feed .feed-source-actions button:hover,.dark-mode .bookmark-docs-feed .feed-source-actions a:hover,.dark-mode .docs-v3 .feed-source-actions button:hover,.dark-mode .docs-v3 .feed-source-actions a:hover{background:#fff;border-color:#fff;color:#101010}
+.dark-mode .bookmark-docs-feed .feed-source-actions .bookmark-action.is-saved,.dark-mode .docs-v3 .feed-source-actions .bookmark-action.is-saved{box-shadow:none}
 @media(max-width:900px){
   .bookmark-docs-feed .docs-feed-list{grid-template-columns:repeat(2,minmax(0,1fr))}
 }
@@ -307,7 +307,7 @@ body{min-height:100vh}
   .bookmark-docs-feed .feed-tags{gap:4px}
   .bookmark-docs-feed .feed-tags button{padding:4px 6px}
   .bookmark-docs-feed .feed-meta{gap:6px;font-size:10px}
-  .bookmark-docs-feed .feed-source-actions button,.bookmark-docs-feed .feed-source-actions a{width:28px;height:28px}
+  .bookmark-docs-feed .feed-source-actions button,.bookmark-docs-feed .feed-source-actions a,.docs-v3 .feed-source-actions button,.docs-v3 .feed-source-actions a{width:28px;height:28px}
 }
 .bookmarks-page .library-note{margin-top:22px;padding-top:18px;border-top:1px solid #dce5ef}
 .dark-mode .bookmarks-page .library-note{border-color:#29394b}
