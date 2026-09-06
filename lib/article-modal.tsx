@@ -14,7 +14,7 @@ export function ArticleModalProvider({children}:{children:React.ReactNode}){
   const article=slug?articles.find(item=>item.slug===slug)||null:null;
   const closeArticle=useCallback(()=>setSlug(null),[]);
   const openArticle=useCallback((nextSlug:string)=>setSlug(nextSlug),[]);
-  useEffect(()=>{if(!article)return;const onKey=(event:KeyboardEvent)=>{if(event.key==='Escape')closeArticle()};const previous=document.body.style.overflow;document.body.style.overflow='hidden';window.addEventListener('keydown',onKey);return()=>{document.body.style.overflow=previous;window.removeEventListener('keydown',onKey)}},[article,closeArticle]);
+  useEffect(()=>{if(!article)return;const onKey=(event:KeyboardEvent)=>{if(event.key==='Escape')closeArticle()};const root=document.documentElement;const previousBodyOverflow=document.body.style.overflow;const previousRootOverflowY=root.style.overflowY;const previousBodyOverscroll=document.body.style.overscrollBehavior;const previousRootOverscroll=root.style.overscrollBehavior;document.body.style.overflow='hidden';root.style.overflowY='hidden';document.body.style.overscrollBehavior='none';root.style.overscrollBehavior='none';window.addEventListener('keydown',onKey);return()=>{document.body.style.overflow=previousBodyOverflow;root.style.overflowY=previousRootOverflowY;document.body.style.overscrollBehavior=previousBodyOverscroll;root.style.overscrollBehavior=previousRootOverscroll;window.removeEventListener('keydown',onKey)}},[article,closeArticle]);
   const value=useMemo(()=>({openArticle,closeArticle}),[openArticle,closeArticle]);
   return <ArticleModalContext.Provider value={value}>{children}{article&&<ArticleModal article={article} onClose={closeArticle}/>}</ArticleModalContext.Provider>;
 }
