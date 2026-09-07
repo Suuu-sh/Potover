@@ -16,14 +16,6 @@ TypeScript passed; Vitest 5/5 passed; production build passed with existing auto
 
 final result: passed
 
-# Unread emphasis and header surface — 2026-09-08
-
-Scope: make the pale violet treatment the unread state, return read items to a neutral surface with a violet edge/check indicator, and carry the pale violet treatment into the app header by default (with a darker equivalent in dark mode).
-
-Visual QA: light and dark search views checked in the running local app. Unread/read contrast, full-color article artwork and the tinted header are all distinguishable.
-
-final result: passed
-
 # Read-state contrast — 2026-09-08
 
 Scope: replace the black read-state treatment with a soft violet surface, violet edge indicator and check badge while preserving full-color article artwork.
