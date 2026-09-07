@@ -1,0 +1,17 @@
+.window { width:100%; background:#15151d; border:1px solid #33313f; border-radius:12px; color:#eeedf5; overflow:hidden; text-align:left; box-shadow:0 24px 60px #0006; }
+.toolbar { display:flex; align-items:center; gap:10px; border-bottom:1px solid #2b2937; padding:16px 20px; font-size:13px; color:#c3baff; }
+.toolbar span { margin-left:auto; color:#79758c; font-size:9px; letter-spacing:.16em; }
+.search { display:flex; align-items:center; gap:10px; margin:22px 20px 14px; padding:13px; border:1px solid #514968; border-radius:7px; color:#c6c0db; font-size:12px; }
+.tabs { display:flex; gap:7px; padding:0 20px 16px; font-size:10px; color:#9993aa; }
+.tabs span,.tabs b { padding:7px 10px; border-radius:5px; background:#20202a; white-space:nowrap; }
+.tabs b,.tabs .selected { color:#ddd5ff; background:#39304f; font-weight:500; }
+.row { display:flex; align-items:center; gap:12px; min-height:73px; padding:13px 20px; border-top:1px solid #262531; }
+.row > div { flex:1; min-width:0; }
+.row strong { display:block; font-size:12px; font-weight:500; line-height:1.6; }
+.row small { display:block; font-size:9px; color:#918ba4; margin:3px 0; }
+.row > svg { color:#aaa0d0; flex-shrink:0; }
+.type { display:grid; place-items:center; width:42px; height:42px; border:1px solid #514568; border-radius:7px; color:#bdb0ed; background:#272233; }
+.number { color:#b7a2ff; font-size:19px; width:30px; font-weight:500; }
+.heading { padding:23px 20px 16px; font-size:18px; }
+.heading small { display:block; font-size:10px; color:#928b9f; margin-top:9px; }
+.foot { display:flex; align-items:center; gap:7px; padding:14px 20px; font-size:9px; color:#8f829f; border-top:1px solid #282532; }
