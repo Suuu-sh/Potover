@@ -169,9 +169,9 @@
   .mobileNav { position: absolute; top: calc(var(--header-height) - 2px); left: 20px; right: 20px; display: grid; padding: 10px 20px; background: #141224; border: 1px solid #4f486e; border-radius: 12px; }
   .mobileNav a { display: flex; align-items: center; justify-content: space-between; padding: 16px 0; border-bottom: 1px solid var(--rule); color: #efebff; }
   .mobileNav a:last-child { border: 0; }
-  .hero { height: auto; min-height: min(780px, 100svh); padding-top: var(--header-height); isolation: isolate; }
+  .hero { height: auto; min-height: clamp(480px, 72svh, 560px); padding-top: var(--header-height); isolation: isolate; }
   .hero::after { content: ""; position: absolute; z-index: -1; inset: var(--header-height) 0 0; background: linear-gradient(180deg, rgba(8, 8, 16, .76) 0%, rgba(8, 8, 16, .54) 45%, rgba(8, 8, 16, .08) 100%); pointer-events: none; }
-  .heroInner { height: auto; min-height: calc(min(780px, 100svh) - var(--header-height)); align-items: flex-start; padding: 44px 24px 150px; }
+  .heroInner { height: auto; min-height: calc(clamp(480px, 72svh, 560px) - var(--header-height)); align-items: flex-start; padding: 32px 24px 80px; }
   .heroCopy { max-width: 100%; padding: 0; }
   .heroCopy h1 { margin-bottom: 20px; font-size: clamp(29px, 6.9vw, 48px); line-height: 1.6; letter-spacing: -.055em; }
   .hero .primaryAction { font-size: 17px; min-height: 58px; }
