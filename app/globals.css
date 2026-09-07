@@ -1183,3 +1183,422 @@ h1,h2,h3,h4,h5,h6,.brand-wordmark{font-family:var(--potover-font-display)!import
   background:transparent!important;
   color:#fff!important;
 }
+
+
+/* Indigo monochrome application theme — 2026-09-08.
+   Keep app surfaces neutral and reserve color for one violet accent. */
+:root{
+  --bg:#0b0a12;
+  --surface:#14121c;
+  --surface-2:#1c1827;
+  --line:#342e47;
+  --line-soft:#29243a;
+  --text:#f5f1ff;
+  --muted:#a9a1b8;
+  --blue:#8b5cf6;
+  --blue-light:#c4b5fd;
+  --chip:#211b30;
+  --refero-ink:#21182f;
+  --refero-graphite:#2d2638;
+  --refero-slate:#756d83;
+  --refero-stone:#958ca2;
+  --refero-silver:#e2dced;
+  --refero-paper:#f8f6fb;
+  --refero-white:#fff;
+  --refero-blue:#8b5cf6;
+  --refero-shadow:0 1px 5px -4px rgba(45,38,56,.55),0 8px 22px rgba(45,38,56,.08);
+  --refero-shadow-hover:0 12px 30px rgba(92,60,148,.16);
+}
+html:not(.dark-mode){color-scheme:light}
+html.dark-mode{color-scheme:dark}
+.docs-light{
+  --bg:#f8f6fb;
+  --surface:#fff;
+  --surface-2:#f0ecf5;
+  --line:#e2dced;
+  --line-soft:#ebe7f1;
+  --text:#2d2638;
+  --muted:#756d83;
+  --blue:#8b5cf6;
+  --blue-light:#7c3aed;
+  --chip:#f0ecf5;
+}
+
+/* Shared app canvases and controls. */
+.modern-home,.docs-v3,.curriculum-page,.modern-sources,.shared-header-page,.library-page,.profile-page,.review-page,.auth-page{
+  background:var(--refero-paper)!important;
+  color:var(--refero-graphite)!important;
+}
+.site-header,.docs-v3 .site-header{
+  color:var(--refero-graphite)!important;
+}
+.site-header-inner,.docs-v3 .site-header-inner{
+  background:rgba(255,255,255,.96)!important;
+  border-color:var(--refero-silver)!important;
+}
+.site-header nav a,.docs-v3 .site-header nav a{
+  color:var(--refero-graphite)!important;
+}
+.site-header nav a:hover,.docs-v3 .site-header nav a:hover,
+.site-header nav a.is-active,.docs-v3 .site-header nav a.is-active,
+.site-header nav .roadmap-nav>button.is-active{
+  color:var(--refero-blue)!important;
+}
+.site-header nav a.is-active::after,
+.docs-v3 .site-header nav a.is-active::after,
+.site-header nav .roadmap-nav>button.is-active::after{
+  background:var(--refero-blue)!important;
+}
+.site-header-search{
+  border-color:#d8ccef!important;
+  background:var(--refero-white)!important;
+}
+.site-header-search>svg{color:var(--refero-blue)!important}
+.site-header-search input{color:var(--refero-graphite)!important}
+.site-header-search button{
+  background:var(--refero-blue)!important;
+  color:#fff!important;
+}
+.language-select,.theme-toggle,.profile-action,.site-header .atlas-actions>a{
+  border-color:var(--refero-silver)!important;
+  background:var(--refero-white)!important;
+  color:var(--refero-graphite)!important;
+}
+.home-spotlight,.modern-content,.roadmap-preview,.modern-footer{
+  background:var(--refero-paper)!important;
+}
+.home-spotlight-card-shell{
+  background:var(--refero-white)!important;
+  border-color:var(--refero-silver)!important;
+}
+.modern-pick-row,.modern-topics-list,.roadmap-preview-card,.roadmap-guide,
+.next-lesson,.lesson-list,.chapter-rest,.docs-v3 .docs-editorial-index,
+.docs-v3 .docs-feed-row,.filters,.shell.page .card,.detailbox,.bookmark-empty,
+.bookmark-docs-feed .docs-feed-row,.profile-sidebar-card,.weekly-learning-card,
+.profile-topic-card,.profile-recent-card,.profile-identity-simple,
+.profile-learning-summary,.profile-history-card,.source-card-new{
+  background:var(--refero-white)!important;
+  border-color:var(--refero-silver)!important;
+  color:var(--refero-graphite)!important;
+}
+.modern-topics{background:transparent!important}
+.modern-topics-list>a,.docs-v3 .docs-editorial-index>button,
+.lesson-list>a,.chapter-rest button,.profile-learning-summary>div{
+  border-color:var(--refero-silver)!important;
+}
+.modern-pick-image,.modern-topics-list>a>span,.roadmap-preview-card>span,
+.roadmap-guide-icon,.article-cover,.docs-index-search,.lesson-list>header span,
+.module-title em,.modern-pick-row em,.modern-popular a,.tag,.pill,
+.feed-tags button,.content-kind,.profile-settings-link.is-active,
+.profile-language-setting select{
+  background:#f1edf7!important;
+  border-color:#dfd6ed!important;
+  color:var(--refero-graphite)!important;
+}
+.modern-section-head,.docs-index-status,.feed-toolbar,.profile-section-head{
+  border-color:var(--refero-silver)!important;
+}
+.feed-toolbar{
+  background:rgba(248,246,251,.94)!important;
+  color:var(--refero-slate)!important;
+}
+.feed-toolbar strong,.feed-toolbar select,.docs-index-status strong{color:var(--refero-ink)!important}
+.home-section-heading small,.home-section-kicker,.roadmap-guide-copy small,
+.roadmap-preview .modern-section-head small,.docs-editorial-index header small,
+.filter-dialog-head p,.next-lesson-feature>div:nth-child(2)>small,
+.page-kicker,.card-label,.article-modal-header p{
+  color:var(--refero-blue)!important;
+}
+.modern-section-head h2,.roadmap-preview-card h3,.modern-pick-row h3,
+.modern-topics strong,.roadmap-guide-copy h2,.curriculum-heading h1,
+.next-lesson-feature h2,.lesson-list>header h2,.pageintro h1,.detail>h1,
+.feed-copy h2,.profile-identity-copy h1,.profile-learning-summary strong{
+  color:var(--refero-ink)!important;
+}
+.modern-pick-row>div>span,.modern-topics small,.roadmap-preview-card p,
+.roadmap-preview-card small,.roadmap-guide-copy p,.roadmap-guide-meta>span,
+.curriculum-heading p,.curriculum-heading>div>small,
+.next-lesson-feature>div:nth-child(2)>p,.lesson-list>a>em,
+.feed-copy>p,.feed-meta,.feed-source,.docs-pagination span,
+.profile-identity-copy p,.profile-learning-summary span,.card-muted{
+  color:var(--refero-slate)!important;
+}
+
+/* Violet is the only interactive accent in the app. */
+.modern-section-head>a,.picks-head a,.modern-topics-list>a:hover strong,
+.modern-topics-list>a:hover>svg,.feed-copy>a:hover h2,
+.feed-filter-button:hover,.docs-pagination button:hover:not(:disabled),
+.docs-editorial-index>button:hover,.docs-editorial-index>button.is-active,
+.curriculum-index>button:hover,.curriculum-index>button.is-active,
+.lesson-list>a:hover,.lesson-list>a.is-current,.chapter-rest button:hover,
+.profile-settings-link:hover,.profile-settings-link.is-active,
+.source-card-meta a,.library-toolbar a,.bookmark-copy a:hover h2{
+  color:var(--refero-blue)!important;
+}
+.next-lesson-feature>b,
+.roadmap-guide-meta>a,.detailbox .cta,.docs-empty button,
+.docs-pagination button.is-current,.auth-submit,.login-action,
+.profile-history-empty>a,.article-modal-cta{
+  background:var(--refero-blue)!important;
+  border-color:var(--refero-blue)!important;
+  color:#fff!important;
+}
+.roadmap-progress i,.curriculum-progress i,.course-progress-line i,
+.chapter-progress i,.level-bar span,.profile-progress span,
+.weekly-goal-meter>div,.profile-identity-copy>svg,
+.profile-reading-row>svg:first-child,.profile-history-empty>svg,
+.roadmap-guide-icon,.next-lesson-feature svg,.topic-icon,.source-badge,
+.bookmark-icon,.feed-filter-button svg,.docs-index-search svg{
+  color:var(--refero-blue)!important;
+}
+.roadmap-progress i,.curriculum-progress i,.course-progress-line i,
+.chapter-progress i,.level-bar span,.profile-progress span,
+.weekly-goal-meter>div{
+  background:var(--refero-blue)!important;
+}
+.course-progress-ring{
+  background:conic-gradient(var(--refero-blue) var(--progress),var(--surface-2) 0)!important;
+}
+.docs-v3 .docs-editorial-index>button.is-active>span,
+.curriculum-index>button.is-active>span,.lesson-list>a.is-read>span,
+.feed-filter-button em,.open-filters em{
+  border-color:var(--refero-blue)!important;
+  background:var(--refero-blue)!important;
+  color:#fff!important;
+}
+.filter-dialog,.article-modal{
+  border-color:var(--refero-silver)!important;
+  background:var(--refero-white)!important;
+  color:var(--refero-graphite)!important;
+}
+.filter-dialog-head,.filter-dialog section,.filter-dialog-actions,
+.article-modal-header,.article-modal-outline,.article-modal-footer{
+  border-color:var(--refero-silver)!important;
+}
+.filter-dialog-actions{background:var(--refero-white)!important}
+
+/* Reframe product artwork as one cool violet monochrome family. */
+.modern-home .home-spotlight-card>img,
+.modern-home .modern-pick-image img,
+.modern-home .modern-pick-row img,
+.modern-home .modern-hero-art img,
+.modern-sources img,.docs-v3 .article-cover img,
+.bookmark-docs-feed .article-cover img,.next-lesson-image img,
+.source-card-new img{
+  filter:grayscale(1) sepia(.14) hue-rotate(225deg) saturate(1.16) contrast(1.04)!important;
+}
+.modern-home .home-spotlight-card>span{
+  background:linear-gradient(0deg,rgba(23,14,38,.78),rgba(23,14,38,.18) 58%,transparent)!important;
+}
+
+/* Dark mode: near-black surfaces, soft gray text, one luminous violet. */
+.dark-mode body,html.dark-mode body{background:#0b0a12!important;color:#f5f1ff!important}
+.dark-mode .site-header,.dark-mode .docs-v3 .site-header{
+  background:transparent!important;
+  border-color:transparent!important;
+}
+.dark-mode .site-header-inner,.dark-mode .docs-v3 .site-header-inner{
+  background:rgba(20,18,28,.96)!important;
+  border-color:#342e47!important;
+  box-shadow:0 8px 24px rgba(0,0,0,.30)!important;
+}
+.dark-mode .site-header nav a,.dark-mode .docs-v3 .site-header nav a{
+  color:#d9d1e9!important;
+}
+.dark-mode .site-header nav a:hover,.dark-mode .docs-v3 .site-header nav a:hover,
+.dark-mode .site-header nav a.is-active,.dark-mode .docs-v3 .site-header nav a.is-active,
+.dark-mode .site-header nav .roadmap-nav>button.is-active{
+  color:#c4b5fd!important;
+}
+.dark-mode .site-header nav a.is-active::after,
+.dark-mode .docs-v3 .site-header nav a.is-active::after,
+.dark-mode .site-header nav .roadmap-nav>button.is-active::after{
+  background:#a78bfa!important;
+}
+.dark-mode .site-header-search,.dark-mode .site-header-search input{
+  background:#1c1827!important;
+  border-color:#453b5d!important;
+  color:#f5f1ff!important;
+}
+.dark-mode .site-header-search>svg{color:#c4b5fd!important}
+.dark-mode .site-header-search button{
+  background:#8b5cf6!important;
+  color:#fff!important;
+}
+.dark-mode .language-select,.dark-mode .theme-toggle,.dark-mode .profile-action,
+.dark-mode .site-header .atlas-actions>a{
+  background:#1c1827!important;
+  border-color:#453b5d!important;
+  color:#f5f1ff!important;
+}
+.dark-mode .modern-home,.dark-mode .docs-v3,.dark-mode .curriculum-page,
+.dark-mode .modern-sources,.dark-mode .shared-header-page,
+.dark-mode .library-page,.dark-mode .profile-page,.dark-mode .review-page,
+.dark-mode .auth-page,.dark-mode .home-spotlight,.dark-mode .modern-content,
+.dark-mode .roadmap-preview,.dark-mode .modern-footer{
+  background:#0b0a12!important;
+  color:#f5f1ff!important;
+}
+.dark-mode .home-spotlight-card-shell{
+  background:#14121c!important;
+  border-color:#342e47!important;
+}
+.dark-mode .modern-pick-row,.dark-mode .modern-topics-list,
+.dark-mode .roadmap-preview-card,.dark-mode .roadmap-guide,.dark-mode .next-lesson,
+.dark-mode .lesson-list,.dark-mode .chapter-rest,.dark-mode .docs-v3 .docs-editorial-index,
+.dark-mode .docs-v3 .docs-feed-row,.dark-mode .filters,.dark-mode .shell.page .card,
+.dark-mode .detailbox,.dark-mode .bookmark-empty,.dark-mode .bookmark-docs-feed .docs-feed-row,
+.dark-mode .profile-sidebar-card,.dark-mode .weekly-learning-card,
+.dark-mode .profile-topic-card,.dark-mode .profile-recent-card,
+.dark-mode .profile-identity-simple,.dark-mode .profile-learning-summary,
+.dark-mode .profile-history-card,.dark-mode .source-card-new{
+  background:#14121c!important;
+  border-color:#342e47!important;
+  color:#f5f1ff!important;
+  box-shadow:none!important;
+}
+.dark-mode .modern-topics-list>a,.dark-mode .docs-v3 .docs-editorial-index>button,
+.dark-mode .lesson-list>a,.dark-mode .chapter-rest button,
+.dark-mode .profile-learning-summary>div,.dark-mode .modern-section-head,
+.dark-mode .docs-index-status,.dark-mode .feed-toolbar,
+.dark-mode .profile-section-head{
+  border-color:#342e47!important;
+}
+.dark-mode .modern-pick-image,.dark-mode .modern-topics-list>a>span,
+.dark-mode .roadmap-preview-card>span,.dark-mode .roadmap-guide-icon,
+.dark-mode .article-cover,.dark-mode .docs-index-search,
+.dark-mode .lesson-list>header span,.dark-mode .module-title em,
+.dark-mode .modern-pick-row em,.dark-mode .modern-popular a,
+.dark-mode .tag,.dark-mode .pill,.dark-mode .feed-tags button,
+.dark-mode .content-kind,.dark-mode .profile-settings-link.is-active{
+  background:#211b30!important;
+  border-color:#453b5d!important;
+  color:#e8ddff!important;
+}
+.dark-mode .feed-toolbar{background:#100e17!important;color:#a9a1b8!important}
+.dark-mode .modern-section-head h2,.dark-mode .roadmap-preview-card h3,
+.dark-mode .modern-pick-row h3,.dark-mode .modern-topics strong,
+.dark-mode .roadmap-guide-copy h2,.dark-mode .curriculum-heading h1,
+.dark-mode .next-lesson-feature h2,.dark-mode .lesson-list>header h2,
+.dark-mode .feed-copy h2,.dark-mode .pageintro h1,.dark-mode .detail>h1,
+.dark-mode .profile-identity-copy h1,.dark-mode .profile-learning-summary strong{
+  color:#f5f1ff!important;
+}
+.dark-mode .modern-pick-row>div>span,.dark-mode .modern-topics-list small,
+.dark-mode .roadmap-preview-card p,.dark-mode .roadmap-preview-card small,
+.dark-mode .roadmap-guide-copy p,.dark-mode .roadmap-guide-meta>span,
+.dark-mode .curriculum-heading p,.dark-mode .curriculum-heading>div>small,
+.dark-mode .next-lesson-feature>div:nth-child(2)>p,
+.dark-mode .lesson-list>a>em,.dark-mode .feed-copy>p,.dark-mode .feed-meta,
+.dark-mode .feed-source,.dark-mode .docs-pagination span,
+.dark-mode .profile-identity-copy p,.dark-mode .profile-learning-summary span,
+.dark-mode .card-muted{
+  color:#a9a1b8!important;
+}
+.dark-mode .roadmap-guide-meta>a,.dark-mode .detailbox .cta,
+.dark-mode .docs-empty button,.dark-mode .auth-submit,
+.dark-mode .login-action,.dark-mode .profile-history-empty>a,
+.dark-mode .article-modal-cta{
+  background:#8b5cf6!important;
+  border-color:#8b5cf6!important;
+  color:#fff!important;
+}
+.dark-mode .filter-dialog,.dark-mode .article-modal{
+  border-color:#342e47!important;
+  background:#14121c!important;
+  color:#f5f1ff!important;
+}
+.dark-mode .filter-dialog-head,.dark-mode .filter-dialog section,
+.dark-mode .filter-dialog-actions,.dark-mode .article-modal-header,
+.dark-mode .article-modal-outline,.dark-mode .article-modal-footer{
+  border-color:#342e47!important;
+}
+.dark-mode .filter-dialog-actions,.dark-mode .article-modal-footer{background:#100e17!important}
+.dark-mode .article-modal-header button{
+  border-color:#453b5d!important;
+  background:#211b30!important;
+  color:#e8ddff!important;
+}
+.dark-mode .docs-v3 .feed-actions button,.dark-mode .docs-v3 .feed-actions a{
+  background:#211b30!important;
+  border-color:#453b5d!important;
+  color:#e8ddff!important;
+}
+.dark-mode .potover-select-trigger{
+  background:#211b30!important;
+  border-color:#453b5d!important;
+  color:#f5f1ff!important;
+}
+.dark-mode .potover-select-menu{
+  background:#14121c!important;
+  border-color:#453b5d!important;
+}
+.dark-mode .potover-select-menu>button{color:#d9d1e9!important}
+.dark-mode .potover-select-menu>button:hover,
+.dark-mode .potover-select-menu>button:focus-visible{
+  background:#211b30!important;
+  color:#fff!important;
+}
+.dark-mode .potover-select-menu>button.is-selected{
+  background:#8b5cf6!important;
+  color:#fff!important;
+}
+.dark-mode .roadmap-progress i,.dark-mode .curriculum-progress i,
+.dark-mode .course-progress-line i,.dark-mode .chapter-progress i,
+.dark-mode .level-bar span,.dark-mode .profile-progress span,
+.dark-mode .weekly-goal-meter>div{
+  background:#a78bfa!important;
+}
+.dark-mode .roadmap-guide-icon,.dark-mode .next-lesson-feature svg,
+.dark-mode .profile-identity-copy>svg,.dark-mode .profile-reading-row>svg:first-child,
+.dark-mode .profile-history-empty>svg,.dark-mode .topic-icon,.dark-mode .source-badge,
+.dark-mode .bookmark-icon,.dark-mode .feed-filter-button svg,
+.dark-mode .docs-index-search svg{
+  color:#c4b5fd!important;
+}
+
+/* Review and empty states keep the same restrained violet language. */
+.review-insight,.review-dropzone.has-file{
+  background:#f1edf7!important;
+  border-color:#d9cbed!important;
+}
+.review-insight strong,.review-dropzone.has-file strong{color:var(--refero-blue)!important}
+.dark-mode .review-insight,.dark-mode .review-dropzone.has-file{
+  background:#211b30!important;
+  border-color:#5b467a!important;
+}
+.dark-mode .review-insight strong,.dark-mode .review-dropzone.has-file strong{color:#c4b5fd!important}
+
+/* Auth and review tools use the same neutral canvas instead of introducing a second accent. */
+.auth-card,.review-upload-card,.review-how-card,.review-results,.review-recommendations article{
+  background:var(--refero-white)!important;
+  border-color:var(--refero-silver)!important;
+  color:var(--refero-graphite)!important;
+}
+.auth-tabs{background:#f1edf7!important}
+.auth-tabs button.is-active{background:var(--refero-white)!important;color:var(--refero-blue)!important}
+.auth-card label>div{border-color:var(--refero-silver)!important;background:var(--refero-white)!important}
+.auth-card label>div:focus-within{border-color:var(--refero-blue)!important;box-shadow:0 0 0 3px rgba(139,92,246,.14)!important}
+.review-how-card{background:#211b30!important;color:#f5f1ff!important;border-color:#453b5d!important}
+.review-how-card .review-step,.review-how-card li>span{color:#c4b5fd!important}
+.review-how-card p{color:#b9afc8!important}
+.review-analyze-button{background:var(--refero-blue)!important}
+.review-recommendations article>span,.review-recommendations a,.review-recommendations em{color:var(--refero-blue)!important}
+.review-recommendations em{background:#f1edf7!important}
+.roadmap-preview-card>span,.roadmap-preview-card>span svg{color:var(--refero-blue)!important}
+.roadmap-preview-card>svg{color:var(--refero-slate)!important}
+.dark-mode .auth-card,.dark-mode .review-upload-card,.dark-mode .review-results,
+.dark-mode .review-recommendations article{
+  background:#14121c!important;
+  border-color:#342e47!important;
+  color:#f5f1ff!important;
+}
+.dark-mode .auth-tabs{background:#211b30!important}
+.dark-mode .auth-tabs button{color:#a9a1b8!important}
+.dark-mode .auth-tabs button.is-active{background:#8b5cf6!important;color:#fff!important}
+.dark-mode .auth-card label>div{background:#1c1827!important;border-color:#453b5d!important}
+.dark-mode .auth-card label>div:focus-within{border-color:#a78bfa!important;box-shadow:0 0 0 3px rgba(167,139,250,.16)!important}
+.dark-mode .auth-card label svg{color:#c4b5fd!important}
+.dark-mode .review-how-card{background:#211b30!important;border-color:#453b5d!important}
+.dark-mode .review-analyze-button{background:#8b5cf6!important}
+.dark-mode .review-recommendations em{background:#211b30!important;color:#c4b5fd!important}
