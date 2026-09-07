@@ -1,5 +1,6 @@
 .page {
   --canvas: #080810;
+  --header-height: 68px;
   --accent: #b5adff;
   --muted: #aaa9bb;
   --rule: #303044;
@@ -18,20 +19,20 @@
   outline: 2px solid var(--accent);
   outline-offset: 6px;
 }
-.page section[id], .page main[id] { scroll-margin-top: 120px; }
+.page section[id], .page main[id] { scroll-margin-top: calc(var(--header-height) + 20px); }
 .page h2 { font-size: clamp(28px, 3vw, 40px); font-weight: 600; line-height: 1.5; letter-spacing: -.035em; }
 .page p { line-height: 1.9; }
 .page svg { flex-shrink: 0; }
 
 .header { position: fixed; z-index: 40; top: 0; left: 0; right: 0; background: rgba(8, 8, 16, .94); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); border-bottom: 1px solid rgba(181, 173, 255, .12); }
-.headerInner { max-width: 1440px; height: 100px; margin: 0 auto; padding: 0 40px; display: flex; align-items: center; gap: 70px; }
+.headerInner { max-width: 1440px; height: var(--header-height); margin: 0 auto; padding: 0 40px; display: flex; align-items: center; gap: 70px; }
 .brand { display: inline-flex; align-items: center; gap: 9px; flex-shrink: 0; color: #fff; }
 .brand img { object-fit: contain; filter: contrast(1.2); mix-blend-mode: screen; }
 .brand span { font-size: 30px; font-weight: 800; letter-spacing: -1.5px; line-height: 1; }
 .desktopNav { display: flex; align-items: center; gap: 40px; }
 .desktopNav a { padding: 12px 0; color: #c6c5d5; font-size: 16px; transition: color .15s ease; }
 .desktopNav a:hover { color: var(--accent); }
-.openApp { display: inline-flex; align-items: center; justify-content: center; gap: 13px; min-height: 52px; padding: 0 20px; margin-left: auto; border: 1px solid #777298; border-radius: 10px; color: #d5d0ff; font-size: 16px; transition: background .15s ease, border-color .15s ease; }
+.openApp { display: inline-flex; align-items: center; justify-content: center; gap: 13px; min-height: 40px; padding: 0 16px; margin-left: auto; border: 1px solid #777298; border-radius: 10px; color: #d5d0ff; font-size: 16px; transition: background .15s ease, border-color .15s ease; }
 .openApp:hover { background: #1c1a34; border-color: var(--accent); }
 .menuButton { display: none; }
 .mobileNav { display: none; }
@@ -39,7 +40,7 @@
 .skipLink:focus { transform: none; }
 
 .hero { position: relative; max-width: 1600px; height: min(900px, 100svh); min-height: 620px; margin: 0 auto; }
-.heroImage { position: absolute; inset: 100px 0 0; width: 100%; height: calc(100% - 100px); object-fit: contain; object-position: right bottom; }
+.heroImage { position: absolute; inset: var(--header-height) 0 0; width: 100%; height: calc(100% - var(--header-height)); object-fit: contain; object-position: right bottom; }
 /* Preserve the original hero composition; supporting assets are native indigo photography. */
 .heroImage { filter: var(--image-tone); }
 .heroInner { position: relative; max-width: 1440px; height: 100%; margin: 0 auto; padding: 0 72px; display: flex; align-items: center; }
@@ -156,25 +157,26 @@
   .course h3 { font-size: 20px; }
 }
 @media (max-width: 760px) {
-  .page section[id], .page main[id] { scroll-margin-top: 102px; }
-  .headerInner { height: 82px; padding: 0 22px; gap: 18px; }
+  .page section[id], .page main[id] { scroll-margin-top: calc(var(--header-height) + 16px); }
+  .page { --header-height: 60px; }
+  .headerInner { height: var(--header-height); padding: 0 22px; gap: 18px; }
   .header .brand img { width: 32px; height: 32px; }
   .brand span { font-size: 26px; }
   .desktopNav { display: none; }
   .openApp { min-height: 42px; padding: 0 13px; gap: 8px; font-size: 12px; }
   .openApp svg { width: 16px; height: 16px; }
   .menuButton { width: 42px; height: 42px; padding: 0; display: grid; place-items: center; background: transparent; border: 1px solid #777298; border-radius: 8px; color: #efebff; cursor: pointer; }
-  .mobileNav { position: absolute; top: 76px; left: 20px; right: 20px; display: grid; padding: 10px 20px; background: #141224; border: 1px solid #4f486e; border-radius: 12px; }
+  .mobileNav { position: absolute; top: calc(var(--header-height) - 2px); left: 20px; right: 20px; display: grid; padding: 10px 20px; background: #141224; border: 1px solid #4f486e; border-radius: 12px; }
   .mobileNav a { display: flex; align-items: center; justify-content: space-between; padding: 16px 0; border-bottom: 1px solid var(--rule); color: #efebff; }
   .mobileNav a:last-child { border: 0; }
-  .hero { height: auto; min-height: min(780px, 100svh); padding-top: 82px; isolation: isolate; }
-  .hero::after { content: ""; position: absolute; z-index: -1; inset: 82px 0 0; background: linear-gradient(180deg, rgba(8, 8, 16, .76) 0%, rgba(8, 8, 16, .54) 45%, rgba(8, 8, 16, .08) 100%); pointer-events: none; }
-  .heroInner { height: auto; min-height: calc(min(780px, 100svh) - 82px); align-items: flex-start; padding: 44px 24px 150px; }
+  .hero { height: auto; min-height: min(780px, 100svh); padding-top: var(--header-height); isolation: isolate; }
+  .hero::after { content: ""; position: absolute; z-index: -1; inset: var(--header-height) 0 0; background: linear-gradient(180deg, rgba(8, 8, 16, .76) 0%, rgba(8, 8, 16, .54) 45%, rgba(8, 8, 16, .08) 100%); pointer-events: none; }
+  .heroInner { height: auto; min-height: calc(min(780px, 100svh) - var(--header-height)); align-items: flex-start; padding: 44px 24px 150px; }
   .heroCopy { max-width: 100%; padding: 0; }
   .heroCopy h1 { margin-bottom: 20px; font-size: clamp(29px, 6.9vw, 48px); line-height: 1.6; letter-spacing: -.055em; }
   .hero .primaryAction { font-size: 17px; min-height: 58px; }
   .textAction { margin-top: 14px; font-size: 14px; }
-  .heroImage { position: absolute; z-index: -2; inset: 82px 0 0; display: block; width: 100%; height: calc(100% - 82px); margin: 0; object-fit: cover; object-position: 82% center; }
+  .heroImage { position: absolute; z-index: -2; inset: var(--header-height) 0 0; display: block; width: 100%; height: calc(100% - var(--header-height)); margin: 0; object-fit: cover; object-position: 82% center; }
   .features { margin: 0 24px; padding: 36px 0 44px; }
   .features h2 { margin-bottom: 28px; font-size: 30px; }
   .featureGrid { grid-template-columns: 1fr; gap: 24px; }
