@@ -16,6 +16,14 @@ TypeScript passed; Vitest 5/5 passed; production build passed with existing auto
 
 final result: passed
 
+# Purple surface depth — 2026-09-08
+
+Scope: remove near-black app surfaces from dark mode and replace them with layered plum/violet tones for the canvas, header, cards, controls, dialogs and footer while preserving readable contrast.
+
+Visual QA: dark search and roadmap views checked in the running local app; no pure-black product surface remains in the themed app chrome.
+
+final result: passed
+
 # Read-state contrast — 2026-09-08
 
 Scope: replace the black read-state treatment with a soft violet surface, violet edge indicator and check badge while preserving full-color article artwork.

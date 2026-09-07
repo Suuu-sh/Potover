@@ -1659,6 +1659,91 @@ html.dark-mode{color-scheme:dark}
 }
 .dark-mode .module-articles>a.is-read>svg:first-child{color:#c4b5fd!important}
 
+/* Purple-black avoidance: dark mode keeps depth without using near-black surfaces. */
+.dark-mode body,html.dark-mode body{
+  background:#100d18!important;
+}
+.dark-mode .site-header-inner,.dark-mode .docs-v3 .site-header-inner{
+  background:rgba(29,22,45,.97)!important;
+  border-color:#43335c!important;
+}
+.dark-mode .site-header nav a:hover,.dark-mode .docs-v3 .site-header nav a:hover,
+.dark-mode .site-header nav .roadmap-nav>button:hover,
+.dark-mode .site-header nav .roadmap-nav>button:focus-visible{
+  background:#2a2040!important;
+}
+.dark-mode .site-header-search,.dark-mode .site-header-search input,
+.dark-mode .language-select,.dark-mode .theme-toggle,
+.dark-mode .profile-action,.dark-mode .site-header .atlas-actions>a{
+  background:#241b37!important;
+  border-color:#4b3966!important;
+}
+.dark-mode .modern-home,.dark-mode .docs-v3,.dark-mode .curriculum-page,
+.dark-mode .modern-sources,.dark-mode .shared-header-page,
+.dark-mode .library-page,.dark-mode .profile-page,.dark-mode .review-page,
+.dark-mode .auth-page,.dark-mode .home-spotlight,.dark-mode .modern-content,
+.dark-mode .roadmap-preview,.dark-mode .modern-footer{
+  background:#100d18!important;
+}
+.dark-mode .home-spotlight-card-shell,.dark-mode .modern-pick-row,
+.dark-mode .modern-topics-list,.dark-mode .roadmap-preview-card,
+.dark-mode .roadmap-guide,.dark-mode .next-lesson,.dark-mode .lesson-list,
+.dark-mode .chapter-rest,.dark-mode .docs-v3 .docs-editorial-index,
+.dark-mode .docs-v3 .docs-feed-row,.dark-mode .filters,
+.dark-mode .shell.page .card,.dark-mode .detailbox,.dark-mode .bookmark-empty,
+.dark-mode .bookmark-docs-feed .docs-feed-row,
+.dark-mode .profile-sidebar-card,.dark-mode .weekly-learning-card,
+.dark-mode .profile-topic-card,.dark-mode .profile-recent-card,
+.dark-mode .profile-identity-simple,.dark-mode .profile-learning-summary,
+.dark-mode .profile-history-card,.dark-mode .source-card-new,
+.dark-mode .review-upload-card,.dark-mode .review-results,
+.dark-mode .review-recommendations article,.dark-mode .auth-card,
+.dark-mode .filter-dialog,.dark-mode .article-modal{
+  background:#1a1526!important;
+  border-color:#43335c!important;
+}
+.dark-mode .modern-topics-list>a>span,.dark-mode .roadmap-preview-card>span,
+.dark-mode .roadmap-guide-icon,.dark-mode .article-cover,
+.dark-mode .docs-index-search,.dark-mode .lesson-list>header span,
+.dark-mode .module-title em,.dark-mode .modern-pick-row em,
+.dark-mode .modern-popular a,.dark-mode .tag,.dark-mode .pill,
+.dark-mode .feed-tags button,.dark-mode .content-kind,
+.dark-mode .profile-settings-link.is-active,
+.dark-mode .next-lesson-image,.dark-mode .docs-v3 .feed-actions button,
+.dark-mode .docs-v3 .feed-actions a{
+  background:#2a2040!important;
+  border-color:#4b3966!important;
+}
+.dark-mode .feed-toolbar,.dark-mode .filter-dialog-actions,
+.dark-mode .article-modal-footer,.dark-mode .docs-index-status{
+  background:#161021!important;
+  border-color:#43335c!important;
+}
+.dark-mode .roadmap-nav-menu,.dark-mode .potover-select-menu{
+  background:#1a1526!important;
+  border-color:#4b3966!important;
+}
+.dark-mode .roadmap-nav-menu a:hover,
+.dark-mode .potover-select-menu>button:hover,
+.dark-mode .potover-select-menu>button:focus-visible{
+  background:#2a2040!important;
+}
+.dark-mode .curriculum-index,.dark-mode .profile-settings-sidebar{
+  background:#1a1526!important;
+  border-color:#43335c!important;
+}
+.dark-mode .curriculum-index>button:hover,
+.dark-mode .curriculum-index>button.is-active,
+.dark-mode .lesson-list>a:hover,.dark-mode .lesson-list>a.is-current,
+.dark-mode .chapter-rest button:hover{
+  background:#2a2040!important;
+}
+.dark-mode .article-modal-header,.dark-mode .article-modal-outline,
+.dark-mode .article-modal-footer,.dark-mode .article-modal-outline li,
+.dark-mode .filter-dialog-head,.dark-mode .filter-dialog section{
+  border-color:#43335c!important;
+}
+
 /* Read articles stay recognizable without turning into a flat black tile. */
 .docs-feed-row.is-read .article-cover{
   opacity:1!important;
