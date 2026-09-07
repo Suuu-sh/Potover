@@ -15,3 +15,11 @@ Visual QA: dark and light home states, search, roadmap and bookmarks checked in 
 TypeScript passed; Vitest 5/5 passed; production build passed with existing autoprefixer compatibility warnings; diff whitespace check passed.
 
 final result: passed
+
+# Read-state contrast — 2026-09-08
+
+Scope: replace the black read-state treatment with a soft violet surface, violet edge indicator and check badge while preserving full-color article artwork.
+
+Visual QA: read rows checked in dark and light search views and in roadmap lesson lists. The state is distinguishable without reducing image opacity or introducing a second accent.
+
+final result: passed

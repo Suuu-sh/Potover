@@ -1603,6 +1603,68 @@ html.dark-mode{color-scheme:dark}
 .dark-mode .review-analyze-button{background:#8b5cf6!important}
 .dark-mode .review-recommendations em{background:#211b30!important;color:#c4b5fd!important}
 
+/* Read states use a soft violet wash and check treatment instead of black. */
+.docs-v3 .docs-feed-row.is-read,
+.bookmark-docs-feed .docs-feed-row.is-read{
+  background:#f1edf7!important;
+  box-shadow:inset 0 0 0 1px #d8c9eb!important;
+}
+.docs-v3 .docs-feed-row.is-read .article-cover,
+.bookmark-docs-feed .docs-feed-row.is-read .article-cover{
+  opacity:1!important;
+  filter:none!important;
+  border-color:#cbb9e4!important;
+}
+.docs-v3 .docs-feed-row.is-read .feed-copy h2,
+.bookmark-docs-feed .docs-feed-row.is-read .feed-copy h2{
+  color:#6f5a82!important;
+}
+.lesson-list>a.is-read,.module-articles>a.is-read{
+  background:#f1edf7!important;
+  border-color:#d8c9eb!important;
+  color:#6f5a82!important;
+  box-shadow:inset 3px 0 0 #8b5cf6;
+}
+.lesson-list>a.is-read>span{
+  border-color:#a78bfa!important;
+  background:#8b5cf6!important;
+  color:#fff!important;
+  box-shadow:0 0 0 3px rgba(139,92,246,.13);
+}
+.module-articles>a.is-read>svg:first-child{color:#8b5cf6!important}
+.dark-mode .docs-v3 .docs-feed-row.is-read,
+.dark-mode .bookmark-docs-feed .docs-feed-row.is-read{
+  background:#211b30!important;
+  box-shadow:inset 0 0 0 1px #5b467a!important;
+}
+.dark-mode .docs-v3 .docs-feed-row.is-read .article-cover,
+.dark-mode .bookmark-docs-feed .docs-feed-row.is-read .article-cover{
+  border-color:#6d5291!important;
+}
+.dark-mode .docs-v3 .docs-feed-row.is-read .feed-copy h2,
+.dark-mode .bookmark-docs-feed .docs-feed-row.is-read .feed-copy h2{
+  color:#d8c9ed!important;
+}
+.dark-mode .lesson-list>a.is-read,.dark-mode .module-articles>a.is-read{
+  background:#211b30!important;
+  border-color:#5b467a!important;
+  color:#d8c9ed!important;
+  box-shadow:inset 3px 0 0 #a78bfa;
+}
+.dark-mode .lesson-list>a.is-read>span{
+  border-color:#c4b5fd!important;
+  background:#8b5cf6!important;
+  color:#fff!important;
+  box-shadow:0 0 0 3px rgba(167,139,250,.16);
+}
+.dark-mode .module-articles>a.is-read>svg:first-child{color:#c4b5fd!important}
+
+/* Read articles stay recognizable without turning into a flat black tile. */
+.docs-feed-row.is-read .article-cover{
+  opacity:1!important;
+  filter:none!important;
+}
+
 /* Article and video artwork keeps its original color; the UI chrome carries the violet accent. */
 .modern-home .home-spotlight-card>img,
 .modern-home .modern-pick-image img,
