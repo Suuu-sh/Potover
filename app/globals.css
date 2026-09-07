@@ -1744,6 +1744,40 @@ html.dark-mode{color-scheme:dark}
   border-color:#43335c!important;
 }
 
+/* Filter rail accents follow the violet theme instead of using a black selected tile. */
+.docs-v3 .docs-editorial-index .docs-index-group button:hover,
+.docs-v3 .docs-editorial-index .docs-index-group button.is-active{
+  background:#f1edf7!important;
+  color:#6d3fc0!important;
+}
+.docs-v3 .docs-editorial-index .docs-index-group button.is-active>span{
+  background:#8b5cf6!important;
+  border-color:#8b5cf6!important;
+  color:#fff!important;
+}
+.docs-v3 .docs-index-status button{
+  background:#8b5cf6!important;
+  border-color:#8b5cf6!important;
+  color:#fff!important;
+}
+.docs-v3 .docs-index-status button:hover{background:#7c3aed!important}
+.dark-mode .docs-v3 .docs-editorial-index .docs-index-group button:hover,
+.dark-mode .docs-v3 .docs-editorial-index .docs-index-group button.is-active{
+  background:#2a2040!important;
+  color:#e8ddff!important;
+}
+.dark-mode .docs-v3 .docs-editorial-index .docs-index-group button.is-active>span{
+  background:#8b5cf6!important;
+  border-color:#c4b5fd!important;
+  color:#fff!important;
+}
+.dark-mode .docs-v3 .docs-index-status button{
+  background:#8b5cf6!important;
+  border-color:#8b5cf6!important;
+  color:#fff!important;
+}
+.dark-mode .docs-v3 .docs-index-status button:hover{background:#a78bfa!important}
+
 /* Read articles stay recognizable without turning into a flat black tile. */
 .docs-feed-row.is-read .article-cover{
   opacity:1!important;

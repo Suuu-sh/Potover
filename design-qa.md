@@ -31,3 +31,11 @@ Scope: replace the black read-state treatment with a soft violet surface, violet
 Visual QA: read rows checked in dark and light search views and in roadmap lesson lists. The state is distinguishable without reducing image opacity or introducing a second accent.
 
 final result: passed
+
+# Filter rail violet accents — 2026-09-08
+
+Scope: replace black selected-filter treatments in the search sidebar with the app's violet palette in both light and dark modes.
+
+Visual QA: light and dark search views checked in the running local app. The active 「すべて」 tile, check badge and 「詳細な絞り込み」 action now use violet surfaces with readable contrast.
+
+final result: passed
