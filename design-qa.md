@@ -1,7 +1,7 @@
-# Product UI showcase QA — 2026-09-07
+# Compact learning section — 2026-09-07
 
-Reference: user-provided GTO Wizard screenshot. Adaptation: dark rounded panels with cropped UI previews and lower titles, translated to Potover search, roadmap and saved-list capabilities. Purple palette retained; no solver or analytics claims introduced.
+Scope: replace two-column heading / vertically stacked steps with a full-width heading followed by three equal desktop columns. Reduce section padding from 100px to 64px, and mobile padding to 40px. Mobile retains one column with 20px gaps.
 
-Desktop 1280×800: /tmp/potover-ui-desktop.png. Mobile 390×844: /tmp/potover-ui-mobile.png. Cards readable, no horizontal clipping; compact fixed mobile header preserved. Existing navigable feature cards retained. TypeScript passed; Vitest 5/5 passed. Main hero unchanged.
+TypeScript passed; Vitest 5/5 passed; diff whitespace check passed. Mobile 359px rendering inspected successfully. Desktop screenshot verification is blocked: browser viewport override continued reporting 359px after requesting 1280px. Desktop grid rule verified in source, not visually verified. No functionality or copy changes.
 
-final result: passed
+final result: blocked (desktop visual verification only)

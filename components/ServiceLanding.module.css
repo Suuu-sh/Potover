@@ -63,17 +63,19 @@
 .feature p { margin: 0; color: var(--muted); font-size: 16px; }
 
 .learning, .roadmaps, .sources, .faq, .closing, .footer { max-width: 1296px; margin: 0 auto; }
-.learning { padding: 100px 0; border-top: 1px solid var(--rule); display: grid; grid-template-columns: 1fr 1fr; gap: 110px; }
+.learning { padding: 64px 0; border-top: 1px solid var(--rule); display: grid; grid-template-columns: 1fr; gap: 36px; }
 .eyebrow { margin: 0 0 18px; color: var(--accent); font-size: 11px; font-weight: 600; letter-spacing: .15em; }
-.sectionHeading h2 { margin: 0 0 24px; font-size: 48px; line-height: 1.55; }
+.sectionHeading h2 { margin: 0 0 14px; font-size: 38px; line-height: 1.5; }
+.sectionHeading h2 br { display: none; }
 .sectionHeading > p:last-child { margin: 0; color: var(--muted); font-size: 16px; }
-.steps { display: grid; gap: 32px; }
-.step { display: grid; grid-template-columns: 30px 1fr; gap: 28px; padding-bottom: 32px; border-bottom: 1px solid var(--rule); }
-.step:last-child { padding-bottom: 0; border: 0; }
+.steps { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 28px; }
+.step { position: relative; display: grid; grid-template-columns: 1fr; gap: 14px; padding: 24px 0 0; border-top: 1px solid var(--rule); }
+.step > div { display: flex; flex-direction: column; align-items: flex-start; }
+.step a { margin-top: auto; }
 .stepNumber { padding-top: 2px; font-size: 12px; color: #9893b5; }
 .step svg { color: var(--accent); }
-.step h3 { margin: 15px 0 11px; font-size: 22px; font-weight: 500; }
-.step p { margin: 0; color: var(--muted); font-size: 15px; }
+.step h3 { margin: 15px 0 11px; font-size: 20px; font-weight: 500; }
+.step p { margin: 0 0 14px; color: var(--muted); font-size: 15px; }
 .step a { display: inline-flex; align-items: center; gap: 12px; padding: 8px 0; margin-top: 12px; color: #e3dff5; font-size: 14px; }
 .step a:hover { color: var(--accent); }
 
@@ -135,7 +137,7 @@
   .heroCopy h1 { font-size: 4.6vw; }
   .primaryAction { font-size: 21px; min-height: 72px; }
   .features { margin: 0 24px; padding-right: 3.5%; padding-left: 3.5%; }
-  .learning, .faq { gap: 64px; }
+  .faq { gap: 64px; }
 }
 @media (max-width: 1000px) {
   .headerInner { gap: 32px; padding: 0 28px; }
@@ -149,7 +151,7 @@
   .feature h3 { font-size: 18px; }
   .feature p { font-size: 14px; }
   .sectionHeading h2 { font-size: 36px; }
-  .learning, .faq { gap: 44px; }
+  .faq { gap: 44px; }
   .course { padding: 28px 22px; }
   .course h3 { font-size: 20px; }
 }
@@ -181,7 +183,9 @@
   .feature h3 svg { opacity: 1; }
   .feature p { font-size: 14px; }
   .learning, .roadmaps, .sources, .faq, .closing, .footer { margin-right: 24px; margin-left: 24px; }
-  .learning { grid-template-columns: 1fr; gap: 38px; padding: 54px 0; }
+  .learning { gap: 24px; padding: 40px 0; }
+  .steps { grid-template-columns: 1fr; gap: 20px; }
+  .sectionHeading h2 br { display: initial; }
   .sectionHeading h2 { font-size: 34px; }
   .sectionHeading > p:last-child { font-size: 14px; }
   .step { grid-template-columns: 24px 1fr; gap: 16px; }
