@@ -1674,3 +1674,75 @@ html.dark-mode{color-scheme:dark}
 .next-lesson-image img{
   filter:none!important;
 }
+
+/* The pale violet surface is the default/unread state; read items return to the neutral surface. */
+html:not(.dark-mode) .docs-v3 .docs-feed-row:not(.is-read),
+html:not(.dark-mode) .bookmark-docs-feed .docs-feed-row:not(.is-read),
+html:not(.dark-mode) .lesson-list>a:not(.is-read),
+html:not(.dark-mode) .module-articles>a:not(.is-read){
+  background:#f1edf7!important;
+  border-color:#dfd2ee!important;
+  box-shadow:inset 3px 0 0 #c4b5fd!important;
+}
+html:not(.dark-mode) .docs-v3 .docs-feed-row.is-read,
+html:not(.dark-mode) .bookmark-docs-feed .docs-feed-row.is-read,
+html:not(.dark-mode) .lesson-list>a.is-read,
+html:not(.dark-mode) .module-articles>a.is-read{
+  background:var(--refero-white)!important;
+  border-color:var(--refero-silver)!important;
+  box-shadow:inset 3px 0 0 #8b5cf6!important;
+}
+html:not(.dark-mode) .docs-v3 .docs-feed-row.is-read .feed-copy h2,
+html:not(.dark-mode) .bookmark-docs-feed .docs-feed-row.is-read .feed-copy h2,
+html:not(.dark-mode) .lesson-list>a.is-read,
+html:not(.dark-mode) .module-articles>a.is-read{
+  color:var(--refero-graphite)!important;
+}
+
+/* Make the pale violet canvas the default app header surface as well. */
+html:not(.dark-mode) .site-header-inner,
+html:not(.dark-mode) .docs-v3 .site-header-inner{
+  background:rgba(241,237,247,.97)!important;
+  border-color:#d8c9eb!important;
+}
+html:not(.dark-mode) .site-header nav,
+html:not(.dark-mode) .docs-v3 .site-header nav{
+  background:rgba(255,255,255,.56)!important;
+  border-color:#dfd2ee!important;
+}
+html:not(.dark-mode) .site-header nav a.is-active,
+html:not(.dark-mode) .docs-v3 .site-header nav a.is-active{
+  color:#6d3fc0!important;
+}
+html:not(.dark-mode) .site-header-search{
+  background:rgba(255,255,255,.82)!important;
+  border-color:#d8c9eb!important;
+}
+
+/* Dark mode keeps the same state hierarchy with a darker violet wash. */
+.dark-mode .docs-v3 .docs-feed-row:not(.is-read),
+.dark-mode .bookmark-docs-feed .docs-feed-row:not(.is-read),
+.dark-mode .lesson-list>a:not(.is-read),
+.dark-mode .module-articles>a:not(.is-read){
+  background:#211b30!important;
+  border-color:#5b467a!important;
+  box-shadow:inset 3px 0 0 #c4b5fd!important;
+}
+.dark-mode .docs-v3 .docs-feed-row.is-read,
+.dark-mode .bookmark-docs-feed .docs-feed-row.is-read,
+.dark-mode .lesson-list>a.is-read,
+.dark-mode .module-articles>a.is-read{
+  background:#14121c!important;
+  border-color:#342e47!important;
+  box-shadow:inset 3px 0 0 #8b5cf6!important;
+}
+.dark-mode .docs-v3 .docs-feed-row.is-read .feed-copy h2,
+.dark-mode .bookmark-docs-feed .docs-feed-row.is-read .feed-copy h2,
+.dark-mode .lesson-list>a.is-read,
+.dark-mode .module-articles>a.is-read{
+  color:#d8c9ed!important;
+}
+.dark-mode .site-header-inner,.dark-mode .docs-v3 .site-header-inner{
+  background:rgba(33,27,48,.96)!important;
+  border-color:#5b467a!important;
+}
