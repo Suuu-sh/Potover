@@ -43,7 +43,7 @@ export function ServiceLanding() {
       <ScrollReveal>
       <main id="main-content" tabIndex={-1}>
         <section className={styles.hero} aria-labelledby="service-title">
-          <Image className={styles.heroImage} src="/banners/potover-midnight-hero.jpg" alt="Potoverの記事ライブラリを表示したノートパソコンと、ポーカーテーブルのチップとカード" width={1654} height={951} sizes="100vw" priority/>
+          <picture><source media="(max-width: 760px)" srcSet="/banners/potover-violet-hero-mobile.jpg"/><img className={styles.heroImage} src="/banners/potover-violet-hero.jpg" alt="青紫の光に浮かぶガラスのカードとポーカーチップ" width={1672} height={941} fetchPriority="high"/></picture>
           <div className={styles.heroInner}>
             <div className={styles.heroCopy}>
               <h1 id="service-title">ポーカーの学びを、<br/>ひとつの場所に。</h1>
