@@ -1778,6 +1778,20 @@ html.dark-mode{color-scheme:dark}
 }
 .dark-mode .docs-v3 .docs-index-status button:hover{background:#a78bfa!important}
 
+/* Keep the result toolbar from falling back to a near-black strip in dark mode. */
+.dark-mode .docs-v3 .feed-toolbar,
+.dark-mode .docs-v3 .docs-index-status{
+  background:#211b30!important;
+  border-color:#4b3966!important;
+}
+.dark-mode .docs-v3 .feed-toolbar>span,
+.dark-mode .docs-v3 .feed-toolbar label,
+.dark-mode .docs-v3 .feed-filter-button,
+.dark-mode .docs-v3 .docs-index-status{
+  color:#e8ddff!important;
+}
+.dark-mode .docs-v3 .feed-toolbar select{color:#f5f1ff!important}
+
 /* Read articles stay recognizable without turning into a flat black tile. */
 .docs-feed-row.is-read .article-cover{
   opacity:1!important;

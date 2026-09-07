@@ -16,6 +16,14 @@ TypeScript passed; Vitest 5/5 passed; production build passed with existing auto
 
 final result: passed
 
+# Result toolbar surface — 2026-09-08
+
+Scope: lift the dark search result toolbar and sidebar status strip out of near-black and into the layered plum palette.
+
+Visual QA: dark search view checked in the running local app; the count/sort toolbar now uses a readable plum surface with violet borders while article cards and artwork remain unchanged.
+
+final result: passed
+
 # Purple surface depth — 2026-09-08
 
 Scope: remove near-black app surfaces from dark mode and replace them with layered plum/violet tones for the canvas, header, cards, controls, dialogs and footer while preserving readable contrast.
