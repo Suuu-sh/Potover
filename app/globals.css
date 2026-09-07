@@ -1602,3 +1602,13 @@ html.dark-mode{color-scheme:dark}
 .dark-mode .review-how-card{background:#211b30!important;border-color:#453b5d!important}
 .dark-mode .review-analyze-button{background:#8b5cf6!important}
 .dark-mode .review-recommendations em{background:#211b30!important;color:#c4b5fd!important}
+
+/* Article and video artwork keeps its original color; the UI chrome carries the violet accent. */
+.modern-home .home-spotlight-card>img,
+.modern-home .modern-pick-image img,
+.modern-home .modern-pick-row img,
+.docs-v3 .article-cover img,
+.bookmark-docs-feed .article-cover img,
+.next-lesson-image img{
+  filter:none!important;
+}

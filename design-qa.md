@@ -10,7 +10,7 @@ final result: blocked (desktop visual verification only)
 
 Scope: unify the product app (home, search, roadmap, bookmarks, profile, auth and review surfaces) around near-black / paper-white monochrome surfaces with violet as the single accent. Product artwork is desaturated and shifted toward cool violet; the marketing landing page remains scoped and unchanged.
 
-Visual QA: dark and light home states, search, roadmap and bookmarks checked in the running local app. Header, cards, progress indicators, controls, footer, empty state and article imagery all render with the intended monochrome + violet treatment.
+Visual QA: dark and light home states, search, roadmap and bookmarks checked in the running local app. Header, cards, progress indicators, controls, footer and empty state use the monochrome + violet treatment, while article/video artwork intentionally retains its source colors.
 
 TypeScript passed; Vitest 5/5 passed; production build passed with existing autoprefixer compatibility warnings; diff whitespace check passed.
 
