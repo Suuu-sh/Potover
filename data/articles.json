@@ -1,5 +1,5 @@
 {
-  "collectedAt": "2026-09-06T07:42:23.999Z",
+  "collectedAt": "2026-09-07T08:00:22.922Z",
   "sources": [
     {
       "slug": "gto-wizard",
@@ -56667,6 +56667,25 @@
         "difficulty": "intermediate",
         "tags": [
           "gto"
+        ]
+      }
+    },
+    {
+      "source": "PokerNews",
+      "sourceSlug": "pokernews",
+      "sourceUrl": "https://www.pokernews.com/strategy/",
+      "title": "Three Barrels. Second Pair. One Giant Pot. Do you Call?",
+      "originalUrl": "https://www.pokernews.com/strategy/three-barrels-second-pair-one-giant-pot-do-you-call-52222.htm",
+      "author": null,
+      "publishedAt": null,
+      "summary": "Should you call a river jam with second pair in a big-ante game? Brad Wilson and QuintAce break down the math and solver strategy in this WPT Global hand.",
+      "language": "English",
+      "imageUrl": "https://pnimg.net/w/articles/0/6a8/d5025595eb.jpg",
+      "contentType": "article",
+      "classification": {
+        "difficulty": "intermediate",
+        "tags": [
+          "river"
         ]
       }
     }
