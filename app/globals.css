@@ -919,8 +919,7 @@ h1,h2,h3,h4,h5,h6,.brand-wordmark{font-family:var(--potover-font-display)!import
 .site-header nav a.is-active::after,
 .docs-v3 .site-header nav a.is-active::after,
 .site-header nav .roadmap-nav>button.is-active::after{
-  transform-origin:left center;
-  animation:site-header-active-underline .24s cubic-bezier(.22,.61,.36,1) both;
+  background:var(--color-accent)!important;
 }
 @keyframes site-header-active-underline{
   from{opacity:0;transform:scaleX(0)}
@@ -1184,7 +1183,7 @@ h1,h2,h3,h4,h5,h6,.brand-wordmark{font-family:var(--potover-font-display)!import
 .dark-mode .site-header nav a.is-active::after,
 .dark-mode .docs-v3 .site-header nav a.is-active::after,
 .dark-mode .site-header nav .roadmap-nav>button.is-active::after{
-  background:var(--color-selected)!important;
+  background:var(--color-accent)!important;
 }
 .dark-mode .site-header-search,.dark-mode .site-header-search input{
   background:var(--color-input)!important;
