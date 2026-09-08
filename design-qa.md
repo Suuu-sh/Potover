@@ -1,34 +1,49 @@
-# Design QA
+# Compact learning section — 2026-09-07
 
-- source visual truth: `/Users/yota/.codex/generated_images/01a05d15-95f6-7d13-aec6-df621d47f844/exec-e7df4fa4-6eba-4441-8ffc-539e34d878b7.png`
-- implementation screenshot: browser-rendered IAB capture at `http://localhost:3000/docs/` (captured 2026-09-05; the CUA capture is ephemeral and not persisted as a local file)
-- viewport: implementation 376 × 717 CSS px; source 848 × 1855 px
-- density normalization: source artwork was reviewed at native pixels; implementation was reviewed at 1 CSS pixel per browser pixel. Comparison focused on the filter panel region rather than the differing page chrome.
-- state: content library / filter sheet open, light mode; selected filter states visible
+Scope: replace two-column heading / vertically stacked steps with a full-width heading followed by three equal desktop columns. Reduce section padding from 100px to 64px, and mobile padding to 40px. Mobile retains one column with 20px gaps.
 
-## Comparison evidence
+TypeScript passed; Vitest 5/5 passed; diff whitespace check passed. Mobile 359px rendering inspected successfully. Desktop screenshot verification is blocked: browser viewport override continued reporting 359px after requesting 1280px. Desktop grid rule verified in source, not visually verified. No functionality or copy changes.
 
-- Full-view: the implementation preserves the selected option 3 structure—compact `FILTERS / 絞り込み` header, close affordance, search field, grouped filter rows, count labels, and sticky actions—while fitting the narrow viewport.
-- Focused region: filter rows use one clear column with aligned counts and black active states. Desktop uses the same hierarchy in a persistent sidebar. The source's blue accent is intentionally replaced with neutral ink, graphite, stone, and paper tokens per the user's direction.
+final result: blocked (desktop visual verification only)
 
-## Findings
+# Application palette — 2026-09-08
 
-- No actionable P0, P1, or P2 differences found.
-- P3 follow-up: add optional group collapse if the filter taxonomy grows beyond the current set.
+Scope: unify the product app (home, search, roadmap, bookmarks, profile, auth and review surfaces) around near-black / paper-white monochrome surfaces with violet as the single accent. Product artwork is desaturated and shifted toward cool violet; the marketing landing page remains scoped and unchanged.
 
-## Comparison history
+Visual QA: dark and light home states, search, roadmap and bookmarks checked in the running local app. Header, cards, progress indicators, controls, footer and empty state use the monochrome + violet treatment, while article/video artwork intentionally retains its source colors.
 
-- Initial comparison: grouped rows and counts were present, but desktop button selectors targeted only direct children and the library eyebrow remained blue.
-- Fix: scoped desktop button selectors to `.docs-index-group button` and changed the library eyebrow to a neutral stone token.
-- Post-fix evidence: refreshed route and filter-sheet capture confirmed aligned grouped rows, counts, black selected state, and monochrome treatment.
+TypeScript passed; Vitest 5/5 passed; production build passed with existing autoprefixer compatibility warnings; diff whitespace check passed.
 
-## Implementation checklist
+final result: passed
 
-- [x] Searchable filter navigation
-- [x] Grouped filters with result counts
-- [x] Monochrome light/dark states
-- [x] Responsive desktop sidebar and mobile sheet
-- [x] Full-card featured article hit area
-- [x] Typecheck, tests, and production build
+# Result toolbar surface — 2026-09-08
+
+Scope: lift the dark search result toolbar and sidebar status strip out of near-black and into the layered plum palette.
+
+Visual QA: dark search view checked in the running local app; the count/sort toolbar now uses a readable plum surface with violet borders while article cards and artwork remain unchanged.
+
+final result: passed
+
+# Purple surface depth — 2026-09-08
+
+Scope: remove near-black app surfaces from dark mode and replace them with layered plum/violet tones for the canvas, header, cards, controls, dialogs and footer while preserving readable contrast.
+
+Visual QA: dark search and roadmap views checked in the running local app; no pure-black product surface remains in the themed app chrome.
+
+final result: passed
+
+# Read-state contrast — 2026-09-08
+
+Scope: replace the black read-state treatment with a soft violet surface, violet edge indicator and check badge while preserving full-color article artwork.
+
+Visual QA: read rows checked in dark and light search views and in roadmap lesson lists. The state is distinguishable without reducing image opacity or introducing a second accent.
+
+final result: passed
+
+# Filter rail violet accents — 2026-09-08
+
+Scope: replace black selected-filter treatments in the search sidebar with the app's violet palette in both light and dark modes.
+
+Visual QA: light and dark search views checked in the running local app. The active 「すべて」 tile, check badge and 「詳細な絞り込み」 action now use violet surfaces with readable contrast.
 
 final result: passed
