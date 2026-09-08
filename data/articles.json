@@ -1,5 +1,5 @@
 {
-  "collectedAt": "2026-09-07T08:00:22.922Z",
+  "collectedAt": "2026-09-08T07:53:18.530Z",
   "sources": [
     {
       "slug": "gto-wizard",
@@ -40647,7 +40647,7 @@
       "title": "ポーカー解説記事 | テキサスホールデム総合情報サイト 「m Portal」",
       "originalUrl": "https://mpj-portal.jp/forbeginners/",
       "author": null,
-      "publishedAt": "2026-08-25T15:36:20+09:00",
+      "publishedAt": "2026-09-08T16:49:59+09:00",
       "summary": "ポーカー初心者のためのルールや用語、戦略のまとめページです。mPotal(エムポータル)はテキサスホールデム・ポーカーのルールや用語、戦略解説を発信するテキサスホールデム・ポーカーの専門サイトです。",
       "language": "Japanese",
       "imageUrl": "https://mpj-portal.jp/ogp.png",
@@ -40656,7 +40656,7 @@
         "difficulty": "beginner",
         "tags": []
       },
-      "sourceModifiedAt": "2026-08-25T15:36:20+09:00",
+      "sourceModifiedAt": "2026-09-08T16:49:59+09:00",
       "headings": [
         {
           "level": 2,
@@ -40956,7 +40956,7 @@
       "title": "オマハポーカー完全ガイド｜オマハハイローのルールと戦略も初心者向けに徹底解説",
       "originalUrl": "https://mpj-portal.jp/forbeginners/technique-omaha-poker/",
       "author": null,
-      "publishedAt": "2026-08-20T10:02:40Z",
+      "publishedAt": "2026-08-25T10:02:43Z",
       "summary": "オマハポーカーとオマハハイローのルール・戦略・テキサスホールデムとの違いまで初心者にもわかりやすく解説。これから始めたい人に向けた完全ガイドです。",
       "language": "Japanese",
       "imageUrl": "https://mpj-portal.jp/ogp.png",
@@ -40965,7 +40965,7 @@
         "difficulty": "beginner",
         "tags": []
       },
-      "sourceModifiedAt": "2026-08-20T10:02:40Z",
+      "sourceModifiedAt": "2026-08-25T10:02:43Z",
       "headings": [
         {
           "level": 2,
@@ -56688,6 +56688,62 @@
           "river"
         ]
       }
+    },
+    {
+      "source": "PokerCoaching.com",
+      "sourceSlug": "pokercoaching",
+      "sourceUrl": "https://pokercoaching.com/blog/",
+      "title": "Finding Bluffs Against a Tight Range: K9s BB vs UTG Cash",
+      "originalUrl": "https://pokercoaching.com/blog/finding-bluffs-tight-range-k9s-bb-vs-utg-100bb-cash/",
+      "author": null,
+      "publishedAt": "2026-09-07T11:00:00",
+      "summary": "When a tight player raises from early position, most opponents play scared and only continue when they hit. That instinct leaves a fortune on the table. Finding bluffs against a tight range is one of […]",
+      "language": "English",
+      "imageUrl": "https://pokercoaching.com/blog/wp-content/uploads/2026/09/Finding-Bluffs-Against-a-Tight-Range-K9s-BB-vs-UTG-Cash.jpg",
+      "contentType": "article",
+      "classification": {
+        "difficulty": "intermediate",
+        "tags": [
+          "bluff",
+          "cash-game"
+        ]
+      }
+    },
+    {
+      "source": "m Portal",
+      "sourceSlug": "m-portal",
+      "sourceUrl": "https://mpj-portal.jp/forbeginners/",
+      "title": "ポーカーのハンドレンジとは？初心者向けに一覧表での覚え方と考え方を徹底解説",
+      "originalUrl": "https://mpj-portal.jp/forbeginners/technique-poker-handrange/",
+      "author": null,
+      "publishedAt": "2026-09-08T03:48:05Z",
+      "summary": "ポーカーのハンドレンジとは何か、なぜ重要なのかを初心者にも分かりやすく解説。ポジション別のハンドレンジ一覧表（チャート）の見方や、相手のレンジを読む基本的な考え方、勝率を上げるための応用戦略まで網羅。脱初心者を目指すプレイヤー必読です。",
+      "language": "Japanese",
+      "imageUrl": "https://mpj-portal.jp/ogp.png",
+      "contentType": "article",
+      "classification": {
+        "difficulty": "beginner",
+        "tags": []
+      },
+      "sourceModifiedAt": "2026-09-08T03:48:05Z"
+    },
+    {
+      "source": "m Portal",
+      "sourceSlug": "m-portal",
+      "sourceUrl": "https://mpj-portal.jp/forbeginners/",
+      "title": "【初心者必見】ポーカーのスターティングハンド表一覧｜勝率を上げる参加ハンドを解説",
+      "originalUrl": "https://mpj-portal.jp/forbeginners/technique-starting-hand-chart/",
+      "author": null,
+      "publishedAt": "2026-09-08T03:24:31Z",
+      "summary": "ポーカーで勝つための第一歩はスターティングハンドの選択です。本記事では、初心者向けにハンドの勝率を一覧表で解説。さらに、ポジション別にどのハンドで参加すべきかを示すスターティングハンドチャートも紹介します。この表を参考に、勝率アップを目指しましょう。",
+      "language": "Japanese",
+      "imageUrl": "https://mpj-portal.jp/ogp.png",
+      "contentType": "article",
+      "classification": {
+        "difficulty": "beginner",
+        "tags": []
+      },
+      "sourceModifiedAt": "2026-09-08T03:24:31Z"
     }
   ]
 }
