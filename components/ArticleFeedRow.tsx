@@ -20,7 +20,7 @@ export function ArticleFeedRow({article,onTagClick,compactActions=false}:Article
   useEffect(()=>{const sync=()=>setRead(getLearningHistory().some(event=>event.slug===article.slug));sync();window.addEventListener('potover-learning-changed',sync);return()=>window.removeEventListener('potover-learning-changed',sync)},[article.slug]);
   const actionButtons=<><BookmarkButton slug={article.slug}/><LearningLink slug={article.slug} href={article.url} aria-label={article.contentType==='video'?'YouTubeで見る':'元記事を開く'}><ExternalLink size={20}/></LearningLink></>;
   return <article className={`docs-feed-row${read?' is-read':''}`}>
-    <ArticleLink slug={article.slug} className="article-cover"><Image src={article.imageUrl||sourceImages[article.sourceSlug]||'/icon.png'} alt="" fill sizes="(max-width: 720px) 34vw, 280px"/></ArticleLink>
+    <ArticleLink slug={article.slug} className="article-cover"><Image src={article.imageUrl||sourceImages[article.sourceSlug]||'/icon.png'} alt="" fill sizes="(max-width: 640px) 100vw, (max-width: 720px) 34vw, 280px"/></ArticleLink>
     <div className="feed-copy"><div className="feed-source"><span className="source-glyph">{sourceGlyphs[article.sourceSlug]||article.source.slice(0,1)}</span><strong>{article.source}</strong><span className="content-kind">{article.contentType==='video'?'動画':'記事'}</span>{compactActions&&<div className="feed-source-actions">{actionButtons}</div>}</div>
       <ArticleLink slug={article.slug}><h2>{article.title}</h2></ArticleLink><p>{article.summary}</p>
       <div className="feed-tags">{article.tags.slice(0,3).map(tag=><button key={tag} type="button" onClick={()=>onTagClick?.(tag)}>{tag}</button>)}</div>
