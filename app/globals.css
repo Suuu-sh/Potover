@@ -124,14 +124,6 @@ body{min-height:100vh}
   .docs-v3 .docs-v3-layout{height:calc(100dvh - 64px)!important;margin-top:0!important;padding-top:0}
 }
 
-/* Keep the docs rail anchored to the viewport edge instead of leaving a
-   floating gutter above and to the left of the navigation. The article feed
-   keeps its existing header offset while the rail continues behind it. */
-@media(min-width:1001px){
-  .docs-v3{overflow:visible}
-  .docs-v3 .docs-v3-layout{width:100%;max-width:none;margin-left:0;margin-right:0}
-  .docs-v3 .docs-editorial-index{margin-top:-64px;height:100vh;padding-top:88px}
-}
 .shared-header-page{min-height:calc(100vh - 64px);background:var(--color-canvas);color:var(--color-accent)}
 .shell.page{max-width:none;margin:0;padding:0 clamp(20px,5vw,72px) 80px!important}
 .shell.page>.pageintro,.shell.page>.detail{width:min(100%,1180px);margin:0 auto}
@@ -1598,11 +1590,14 @@ html,body{background:var(--color-canvas);color:var(--color-text)}
 .dark-mode .brand-mark .brand-mark-dark{display:block!important}
 input:-webkit-autofill{-webkit-text-fill-color:var(--color-text);box-shadow:0 0 0 1000px var(--color-input) inset}
 
-/* Desktop docs rail: full-bleed background, with content kept below the
-   fixed header while the divider starts at the viewport's top edge. */
+/* Keep scrolling inside the docs panes; the shared home header is unchanged.
+   Only the rail background extends behind the header, never its controls. */
 @media(min-width:1001px){
-  .docs-v3 .docs-v3-layout{width:100%!important;max-width:none!important}
-  .docs-v3 .docs-editorial-index{height:100vh!important;padding-top:88px!important}
+  .docs-v3{position:fixed;inset:64px 0 0;height:auto!important;min-height:0;overflow:hidden}
+  .docs-v3 .docs-v3-layout{width:100%!important;max-width:none!important;height:100%!important;margin:0!important;overflow:clip}
+  .docs-v3 .docs-editorial-index{height:100%!important;min-height:0;margin:0!important;padding-top:24px!important;overflow-y:auto}
+  .docs-v3 .docs-editorial-index::before{content:"";position:fixed;top:0;left:0;width:244px;height:64px;background:var(--color-surface);pointer-events:none}
+  .docs-v3 .docs-feed{height:100%!important;min-height:0;overflow-y:auto}
 }
 
 /* Responsive header continuity: keep the same chrome, logo scale, and
@@ -1700,21 +1695,5 @@ input:-webkit-autofill{-webkit-text-fill-color:var(--color-text);box-shadow:0 0 
     flex:0 0 auto!important;
     margin-left:auto!important;
     gap:8px!important;
-  }
-}
-
-/* The docs rail owns the desktop left edge. Remove the global header gutter
-   on that route so the rail and header begin at the same viewport origin. */
-@media (min-width:1001px){
-  body:has(.docs-v3) .site-header{
-    padding-left:0!important;
-    padding-right:0!important;
-    background:var(--color-surface)!important;
-  }
-  body:has(.docs-v3) .site-header-inner{
-    width:100%!important;
-    max-width:none!important;
-    margin-left:0!important;
-    margin-right:0!important;
   }
 }
