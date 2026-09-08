@@ -1718,3 +1718,24 @@ input:-webkit-autofill{-webkit-text-fill-color:var(--color-text);box-shadow:0 0 
 .docs-v3 .docs-index-status button{display:inline-flex;align-items:center;gap:10px;min-height:40px;margin:0;padding:4px 0;border:0;border-radius:4px;background:transparent;color:var(--color-accent);font:inherit;font-size:12px;cursor:pointer}
 .docs-v3 .docs-index-status button:hover{background:transparent;color:var(--color-accent);text-decoration:underline;text-underline-offset:4px}
 .docs-v3 .docs-index-status button:focus-visible{outline:2px solid var(--color-accent);outline-offset:4px}
+
+/* Compact navigation preserves the shared header height and all destinations. */
+.mobile-navigation{display:none}
+@media(max-width:640px){
+  .site-header .mobile-navigation{display:block;position:relative}
+  .site-header .atlas-actions .bookmarks-action,.site-header .atlas-actions .login-action,.site-header .atlas-actions .profile-action{display:none!important}
+  .site-header .atlas-actions .mobile-navigation-toggle svg{display:block!important;width:20px!important;height:20px!important}
+  .site-header .mobile-navigation-toggle{display:grid;place-items:center;width:40px;height:40px;padding:0;border:1px solid var(--color-border);border-radius:50%;background:transparent;color:var(--color-text);cursor:pointer}
+  .site-header .mobile-navigation-links{position:absolute;right:0;top:calc(100% + 12px);width:min(260px,calc(100vw - 48px));padding:8px;border:1px solid var(--color-border);border-radius:12px;background:var(--color-chrome);box-shadow:0 12px 32px color-mix(in srgb,var(--color-text) 15%,transparent);z-index:100}
+  .site-header .atlas-actions .mobile-navigation-links a{display:flex!important;align-items:center;justify-content:flex-start;width:100%!important;height:auto!important;min-height:44px;padding:10px 14px!important;border:0!important;border-radius:8px!important;background:transparent!important;color:var(--color-text)!important;font-size:14px;text-decoration:none}
+  .site-header .atlas-actions .mobile-navigation-links a:hover,.site-header .atlas-actions .mobile-navigation-links a[aria-current="page"]{background:var(--color-selected)!important;color:var(--color-accent)!important}
+  .mobile-navigation-toggle:focus-visible,.mobile-navigation-links a:focus-visible{outline:2px solid var(--color-accent);outline-offset:2px}
+  .docs-v3 .feed-toolbar{display:flex!important;flex-direction:column;align-items:stretch!important;gap:12px!important;margin:0 0 16px!important;padding:16px 0!important;background:transparent!important;backdrop-filter:none!important}
+  .docs-v3 .feed-toolbar>span{font-size:13px!important;gap:4px}
+  .docs-v3 .feed-toolbar>span strong{font-size:20px!important}
+  .docs-v3 .feed-toolbar-controls{display:grid!important;grid-template-columns:1fr 1fr;gap:12px!important;width:100%;min-width:0}
+  .docs-v3 .feed-filter-button,.docs-v3 .feed-sort-control .potover-select-trigger{width:100%!important;min-height:44px!important;margin:0!important;padding:0 12px!important;border:1px solid var(--color-border)!important;border-radius:10px!important;background:var(--color-chrome)!important;color:var(--color-text)!important;font-size:13px!important}
+  .docs-v3 .feed-filter-button{justify-content:center}
+  .docs-v3 .feed-sort-control,.docs-v3 .feed-sort-control .potover-select{width:100%;min-width:0}
+  .docs-v3 .feed-sort-control>span{display:none}
+}
