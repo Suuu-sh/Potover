@@ -41,7 +41,7 @@ export function ServiceHeader() {
       <a className={styles.skipLink} href="#main-content">本文へ移動</a>
       <div className={styles.headerInner}>
         <Link href="/" className={styles.brand} aria-label="Potover サービスサイト">
-          <Image src="/brand/potover-mark-dark.png" alt="" width={40} height={40} priority/>
+          <Image className={styles.lightMark} src="/brand/potover-mark-light.png" alt="" width={40} height={40} priority/><Image className={styles.darkMark} src="/brand/potover-mark-dark.png" alt="" width={40} height={40} priority/>
           <span>Potover</span>
         </Link>
         <nav className={styles.desktopNav} aria-label="サービスナビゲーション">

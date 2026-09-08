@@ -106,7 +106,7 @@ export function ServiceLanding() {
       </ScrollReveal>
 
       <footer className={styles.footer}>
-        <div><Link className={styles.brand} href="/" aria-label="Potover サービスサイト"><Image src="/brand/potover-mark-dark.png" alt="" width={34} height={34}/><span>Potover</span></Link><p>ポーカーの学びを、ひとつの場所に。</p></div>
+        <div><Link className={styles.brand} href="/" aria-label="Potover サービスサイト"><Image className={styles.lightMark} src="/brand/potover-mark-light.png" alt="" width={34} height={34}/><Image className={styles.darkMark} src="/brand/potover-mark-dark.png" alt="" width={34} height={34}/><span>Potover</span></Link><p>ポーカーの学びを、ひとつの場所に。</p></div>
         <nav aria-label="フッターナビゲーション"><Link href="/home">ホーム</Link><Link href="/docs">探す</Link><Link href="/roadmap">ロードマップ</Link><Link href="/bookmarks">ブックマーク</Link></nav>
         <small>© {new Date().getFullYear()} Potover</small>
       </footer>

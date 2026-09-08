@@ -1,0 +1,192 @@
+{
+  "source": {
+    "product": "Kiro IDE",
+    "version": "1.0.437",
+    "url": "https://prod.download.desktop.kiro.dev/releases/stable/linux-x64/signed/1.0.437/tar/kiro-ide-1.0.437-stable-linux-x64.tar.gz",
+    "files": [
+      "resources/app/extensions/theme-defaults/themes/light_default.json",
+      "resources/app/extensions/theme-defaults/themes/dark_default.json"
+    ],
+    "retrieved": "2026-09-08"
+  },
+  "tokens": {
+    "canvas": {
+      "source": "editor.background",
+      "light": "#f2f1f4",
+      "dark": "#211d25"
+    },
+    "workspace": {
+      "source": "background",
+      "light": "#dcdadf",
+      "dark": "#19161d"
+    },
+    "surface": {
+      "source": "editorWidget.background",
+      "light": "#ffffff",
+      "dark": "#28242e"
+    },
+    "chrome": {
+      "source": "activityBar.background",
+      "light": "#eae8ed",
+      "dark": "#28242e"
+    },
+    "input": {
+      "source": "input.background",
+      "light": "#ffffff",
+      "dark": "#28242e"
+    },
+    "text": {
+      "source": "foreground",
+      "light": "#352f3d",
+      "dark": "#ffffff"
+    },
+    "muted": {
+      "source": "icon.foreground",
+      "light": "#5e5966",
+      "dark": "#c1bec6"
+    },
+    "disabled": {
+      "source": "disabledForeground",
+      "light": "#938f9b",
+      "dark": "#938f9b"
+    },
+    "border": {
+      "source": "input.border",
+      "light": "#c1bec6",
+      "dark": "#4a464f"
+    },
+    "border-soft": {
+      "source": "sideBarSectionHeader.border",
+      "light": "#dcdadf",
+      "dark": "#352f3d"
+    },
+    "accent": {
+      "source": "accent",
+      "light": "#7138cc",
+      "dark": "#b080ff"
+    },
+    "link": {
+      "source": "textLink.foreground",
+      "light": "#7138cc",
+      "dark": "#b080ff"
+    },
+    "link-active": {
+      "source": "textLink.activeForeground",
+      "light": "#2d6a9f",
+      "dark": "#8dc8fb"
+    },
+    "focus": {
+      "source": "focusBorder",
+      "light": "#9e61ff",
+      "dark": "#9e61ff"
+    },
+    "button": {
+      "source": "button.background",
+      "light": "#7138cc",
+      "dark": "#7138cc"
+    },
+    "button-hover": {
+      "source": "button.hoverBackground",
+      "light": "#6432b3",
+      "dark": "#8e47ff"
+    },
+    "on-button": {
+      "source": "button.foreground",
+      "light": "#f2f1f4",
+      "dark": "#f2f1f4"
+    },
+    "secondary": {
+      "source": "button.secondaryBackground",
+      "light": "#352f3d13",
+      "dark": "#ffffff13"
+    },
+    "secondary-hover": {
+      "source": "button.secondaryHoverBackground",
+      "light": "#8e47ff40",
+      "dark": "#8e47ff40"
+    },
+    "selected": {
+      "source": "list.activeSelectionBackground",
+      "light": "#eae8ed",
+      "dark": "#352f3d"
+    },
+    "hover": {
+      "source": "list.hoverBackground",
+      "light": "#352f3d0d",
+      "dark": "#ffffff0d"
+    },
+    "accent-soft": {
+      "source": "activityBar.activeBackground",
+      "light": "#8e47ff26",
+      "dark": "#8e47ff40"
+    },
+    "selection": {
+      "source": "editor.selectionBackground",
+      "light": "#7138cc20",
+      "dark": "#c099ff40"
+    },
+    "shadow": {
+      "source": "widget.shadow",
+      "light": "#352f3d40",
+      "dark": "#19161d"
+    },
+    "overlay": {
+      "source": "quickInput.overlayBackground",
+      "light": "#dcdadf80",
+      "dark": "#19161d80"
+    },
+    "progress": {
+      "source": "progressBar.background",
+      "light": "#7138cc",
+      "dark": "#7138cc"
+    },
+    "error": {
+      "source": "errorForeground",
+      "light": "#993333",
+      "dark": "#ff8080"
+    },
+    "error-soft": {
+      "source": "diffEditor.removedLineBackground",
+      "light": "#99333320",
+      "dark": "#ff808020"
+    },
+    "success": {
+      "source": "terminal.ansiGreen",
+      "light": "#367c53",
+      "dark": "#80ffb5"
+    },
+    "success-soft": {
+      "source": "diffEditor.insertedLineBackground",
+      "light": "#367c5320",
+      "dark": "#80ffb520"
+    },
+    "warning": {
+      "source": "editorWarning.foreground",
+      "light": "#d08025",
+      "dark": "#ffcf99"
+    },
+    "info": {
+      "source": "editorInfo.foreground",
+      "light": "#2d6a9f",
+      "dark": "#8dc8fb"
+    },
+    "on-artwork": {
+      "source": "foreground",
+      "sourceMode": "dark",
+      "light": "#ffffff",
+      "dark": "#ffffff"
+    },
+    "artwork-scrim": {
+      "source": "quickInput.overlayBackground",
+      "sourceMode": "dark",
+      "light": "#19161d80",
+      "dark": "#19161d80"
+    },
+    "artwork-base": {
+      "source": "background",
+      "sourceMode": "dark",
+      "light": "#19161d",
+      "dark": "#19161d"
+    }
+  }
+}
