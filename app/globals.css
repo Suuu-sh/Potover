@@ -1596,7 +1596,6 @@ input:-webkit-autofill{-webkit-text-fill-color:var(--color-text);box-shadow:0 0 
   .docs-v3{position:fixed;inset:64px 0 0;height:auto!important;min-height:0;overflow:hidden}
   .docs-v3 .docs-v3-layout{width:100%!important;max-width:none!important;height:100%!important;margin:0!important;overflow:clip}
   .docs-v3 .docs-editorial-index{height:100%!important;min-height:0;margin:0!important;padding-top:24px!important;overflow-y:auto}
-  .docs-v3 .docs-editorial-index::before{content:"";position:fixed;top:0;left:0;width:244px;height:64px;background:var(--color-surface);pointer-events:none}
   .docs-v3 .docs-feed{height:100%!important;min-height:0;overflow-y:auto}
 }
 
@@ -1717,4 +1716,24 @@ input:-webkit-autofill{-webkit-text-fill-color:var(--color-text);box-shadow:0 0 
   .docs-v3 .feed-copy h2{font-size:18px!important;line-height:1.55!important;margin:10px 0!important}
   .docs-v3 .feed-meta{display:flex!important;flex-wrap:wrap!important;gap:8px 12px!important;font-size:11px!important;line-height:1.6!important}
   .docs-v3 .feed-meta>span{white-space:nowrap}
+}
+
+/* Selected sidebar design: quiet filter list below the shared header. */
+@media(min-width:1001px){
+  .docs-v3 .docs-editorial-index{background:var(--color-canvas)!important;padding:28px 20px 24px!important}
+  .docs-v3 .docs-index-heading{display:flex;align-items:center;justify-content:space-between;margin:0 0 20px}
+  .docs-v3 .docs-index-heading h2{margin:0;font-size:17px;letter-spacing:0;color:var(--color-text)}
+  .docs-v3 .docs-index-heading button{border:0;background:transparent;color:var(--color-accent);padding:4px 0;font-size:12px;cursor:pointer}
+  .docs-v3 .docs-index-search{height:38px;margin:0 0 26px;background:transparent!important;border:1px solid var(--color-border)!important;border-radius:8px!important}
+  .docs-v3 .docs-index-group{margin:0 0 28px!important}
+  .docs-v3 .docs-index-group-title{display:block;margin:0 0 10px!important;font-size:12px!important;color:var(--color-text)!important}
+  .docs-v3 .docs-index-group button{height:40px!important;min-height:40px!important;margin:0 0 4px!important;padding:0 10px!important;gap:12px!important;border:0!important}
+  .docs-v3 .docs-index-group button>span{width:16px!important;height:16px!important;border:1px solid var(--color-muted)!important;border-radius:3px!important;background:transparent!important;box-shadow:none!important}
+  .docs-v3 .docs-index-group button>span svg{width:12px!important;height:12px!important}
+  .docs-v3 .docs-index-group button.is-active>span{background:var(--color-accent)!important;border-color:var(--color-accent)!important;color:var(--color-canvas)!important}
+  .docs-v3 .docs-index-group button strong{font-size:12px!important;font-weight:500!important}
+  .docs-v3 .docs-index-group button small{font-size:11px!important;font-variant-numeric:tabular-nums}
+  .docs-v3 .docs-index-status{display:block;margin-top:12px!important;padding-top:18px!important;background:transparent!important}
+  .docs-v3 .docs-index-status button{display:flex;justify-content:flex-start;gap:10px;width:auto;height:32px;margin:0;padding:0;border:0!important;border-radius:0!important;background:transparent!important;color:var(--color-accent)!important;font-size:12px}
+  .docs-v3 .docs-index-status button:hover{background:transparent!important;color:var(--color-accent)!important;text-decoration:underline}
 }
