@@ -1702,3 +1702,19 @@ input:-webkit-autofill{-webkit-text-fill-color:var(--color-text);box-shadow:0 0 
     gap:8px!important;
   }
 }
+
+/* The docs rail owns the desktop left edge. Remove the global header gutter
+   on that route so the rail and header begin at the same viewport origin. */
+@media (min-width:1001px){
+  body:has(.docs-v3) .site-header{
+    padding-left:0!important;
+    padding-right:0!important;
+    background:var(--color-surface)!important;
+  }
+  body:has(.docs-v3) .site-header-inner{
+    width:100%!important;
+    max-width:none!important;
+    margin-left:0!important;
+    margin-right:0!important;
+  }
+}
