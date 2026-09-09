@@ -23,7 +23,7 @@ export function ArticleFeedRow({article,onTagClick,compactActions=false}:Article
   return <article className="docs-feed-row">
     <ArticleLink slug={article.slug} className="article-cover"><Image src={article.imageUrl||sourceImages[article.sourceSlug]||'/icon.png'} alt="" fill sizes="(max-width: 640px) 100vw, (max-width: 720px) 34vw, 280px"/></ArticleLink>
     <div className="feed-copy"><div className="feed-source"><span className="source-glyph">{sourceGlyphs[article.sourceSlug]||article.source.slice(0,1)}</span><strong>{article.source}</strong><span className="content-kind">{article.contentType==='video'?'動画':'記事'}</span>{read&&<span className="read-status"><Check size={12} aria-hidden="true"/>{article.contentType==='video'?'視聴済み':'読了'}</span>}{compactActions&&<div className="feed-source-actions">{actionButtons}</div>}</div>
-      <ArticleLink slug={article.slug}><h2>{article.title}</h2></ArticleLink><p>{article.summary}</p>
+      <ArticleLink slug={article.slug} className="feed-card-link"><h2>{article.title}</h2></ArticleLink><p>{article.summary}</p>
       <div className="feed-tags">{article.tags.slice(0,3).map(tag=><button key={tag} type="button" onClick={()=>onTagClick?.(tag)}>{contentLabel(tag)}</button>)}</div>
       <div className="feed-meta"><span>{contentLabel(article.difficulty)}</span><span><Globe2 size={13}/>{contentLabel(article.language)}</span><span><CalendarDays size={13}/>{article.publishedAt}</span><span><Clock3 size={13}/>{article.contentType==='video'?`${article.minutes}分`:`${article.minutes}分で読了`}</span></div>
     </div>

@@ -1728,3 +1728,12 @@ input:-webkit-autofill{-webkit-text-fill-color:var(--color-text);box-shadow:0 0 
 
 /* Results controls share one contained panel across screen sizes. */
 .docs-v3 .feed-toolbar,.dark-mode .docs-v3 .feed-toolbar{height:auto!important;min-height:64px;padding:16px!important;border:1px solid var(--color-border)!important;border-radius:14px!important;background:var(--color-surface)!important;backdrop-filter:none!important;gap:12px}
+
+/* Stretch the semantic title link across the card; keep secondary actions above it. */
+.docs-feed-row{position:relative;isolation:isolate;transition:background-color .16s ease}
+.docs-feed-row .feed-copy,.docs-feed-row .feed-card-link{position:static!important}
+.docs-feed-row .feed-card-link::after{content:"";position:absolute;inset:0;z-index:1;border-radius:inherit;cursor:pointer}
+.docs-feed-row .feed-source-actions,.docs-feed-row .feed-actions,.docs-feed-row .feed-tags button{position:relative;z-index:2}
+.docs-feed-row:has(.feed-card-link:focus-visible){outline:2px solid var(--color-accent);outline-offset:3px}
+@media(hover:hover){.docs-v3 .docs-feed-row:hover,.dark-mode .docs-v3 .docs-feed-row:hover,.bookmark-docs-feed .docs-feed-row:hover,.dark-mode .bookmark-docs-feed .docs-feed-row:hover{background:var(--color-hover)!important}}
+@media(prefers-reduced-motion:reduce){.docs-feed-row{transition:none}}
