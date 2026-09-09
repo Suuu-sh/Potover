@@ -764,7 +764,7 @@ h1,h2,h3,h4,h5,h6,.brand-wordmark{font-family:var(--potover-font-display)!import
 .site-header nav .roadmap-nav>button.is-active{box-shadow:none}
 .site-header nav .roadmap-nav>button svg{transition:transform .16s ease}
 .roadmap-nav.is-open>button svg{transform:rotate(180deg)}
-.roadmap-nav-menu{position:absolute;top:calc(100% + 12px);left:-10px;z-index:140;width:min(620px,calc(100vw - 40px));display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:4px;padding:8px;border:1px solid var(--color-border);border-radius:14px;background:var(--color-surface);box-shadow:0 16px 36px var(--color-shadow);backdrop-filter:blur(18px) saturate(1.15)}
+.roadmap-nav-menu{position:absolute;top:calc(100% + 12px);left:auto;right:0;z-index:140;width:min(300px,calc(100vw - 40px));display:grid;grid-template-columns:minmax(0,1fr);gap:4px;padding:8px;border:1px solid var(--color-border);border-radius:14px;background:var(--color-surface);box-shadow:0 16px 36px var(--color-shadow);backdrop-filter:blur(18px) saturate(1.15)}
 .site-header nav .roadmap-nav-menu a{height:auto!important;min-height:78px;display:flex;align-items:center;gap:10px;padding:12px!important;border:0!important;border-radius:10px!important;background:transparent!important;color:var(--color-text)!important;white-space:normal}
 .site-header nav .roadmap-nav-menu a:hover,.site-header nav .roadmap-nav-menu a:focus-visible{background:var(--color-hover)!important;color:var(--color-accent)!important;outline:none}
 .roadmap-nav-menu a>svg{flex:none;color:var(--course-color,var(--color-text))}
@@ -780,7 +780,7 @@ h1,h2,h3,h4,h5,h6,.brand-wordmark{font-family:var(--potover-font-display)!import
 .dark-mode .site-header nav .roadmap-nav-menu a{color:var(--color-text)!important}
 .dark-mode .site-header nav .roadmap-nav-menu a:hover,.dark-mode .site-header nav .roadmap-nav-menu a:focus-visible{background:var(--color-hover)!important;color:var(--color-accent)!important}
 .dark-mode .roadmap-nav-menu a small{color:var(--color-muted)}
-@media(max-width:900px){.roadmap-nav-menu{left:auto;right:0;top:42px;width:min(620px,calc(100vw - 28px))}}
+@media(max-width:900px){.roadmap-nav-menu{top:calc(100% + 8px)}}
 @media(max-width:560px){.roadmap-nav-menu{grid-template-columns:1fr}.roadmap-nav-menu a{min-height:58px}}
 .curriculum-page{min-height:calc(100dvh - 64px);padding:40px max(24px,calc((100vw - 1200px)/2)) 64px!important;background:var(--color-canvas)!important;color:var(--color-text)!important}
 .curriculum-shell{width:100%;max-width:1200px;margin:0 auto}
