@@ -1634,9 +1634,9 @@ input:-webkit-autofill{-webkit-text-fill-color:var(--color-text);box-shadow:0 0 
   .site-header-search{display:flex!important;grid-column:auto!important;min-width:220px!important}
 }
 
-/* True mobile only: retain the same header shell and mark size, collapsing
+/* Compact widths: retain the same header shell and mark size, collapsing
    navigation/search without swapping to a second-looking header variant. */
-@media (max-width:640px){
+@media (max-width:760px){
   .site-header,.docs-v3 .site-header{
     height:62px!important;
     padding:0 12px!important;
@@ -1721,7 +1721,7 @@ input:-webkit-autofill{-webkit-text-fill-color:var(--color-text);box-shadow:0 0 
 
 /* Compact navigation preserves the shared header height and all destinations. */
 .mobile-navigation{display:none}
-@media(max-width:640px){
+@media(max-width:760px){
   .site-header .mobile-navigation{display:block;position:relative}
   .site-header .atlas-actions .bookmarks-action,.site-header .atlas-actions .login-action,.site-header .atlas-actions .profile-action{display:none!important}
   .site-header .atlas-actions .mobile-navigation-toggle svg{display:block!important;width:20px!important;height:20px!important}
@@ -1737,5 +1737,28 @@ input:-webkit-autofill{-webkit-text-fill-color:var(--color-text);box-shadow:0 0 
   .docs-v3 .feed-filter-button,.docs-v3 .feed-sort-control .potover-select-trigger{width:100%!important;min-height:44px!important;margin:0!important;padding:0 12px!important;border:1px solid var(--color-border)!important;border-radius:10px!important;background:var(--color-chrome)!important;color:var(--color-text)!important;font-size:13px!important}
   .docs-v3 .feed-filter-button{justify-content:center}
   .docs-v3 .feed-sort-control,.docs-v3 .feed-sort-control .potover-select{width:100%;min-width:0}
+  .docs-v3 .feed-sort-control>span{display:none}
+}
+
+/* Intermediate widths reuse desktop chrome and compact result controls. */
+@media(min-width:761px) and (max-width:1180px){
+  .site-header nav,.docs-v3 .site-header nav{background:transparent!important;border:0!important;border-radius:0!important;box-shadow:none!important;padding:0!important}
+}
+@media(min-width:641px) and (max-width:1000px){
+  .docs-v3 .docs-feed-row{grid-template-columns:minmax(180px,28%) minmax(0,1fr)!important;gap:20px!important;min-height:0!important;padding:20px!important;align-items:center}
+  .docs-v3 .article-cover{width:100%!important;height:auto!important;aspect-ratio:16/9!important}
+  .docs-v3 .feed-copy{min-width:0;padding-right:0!important}
+  .docs-v3 .feed-copy h2{font-size:18px!important;line-height:1.5!important;margin:10px 0!important}
+  .docs-v3 .feed-copy>p{font-size:13px!important;line-height:1.6!important;display:-webkit-box!important;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+  .docs-v3 .feed-source{flex-wrap:wrap!important;gap:8px!important}
+  .docs-v3 .source-glyph{display:none!important}
+  .docs-v3 .feed-source strong{font-size:12px!important;min-width:0}
+  .docs-v3 .content-kind{white-space:nowrap!important;flex:none;border-radius:6px!important;padding:3px 7px!important}
+  .docs-v3 .feed-source-actions{margin-left:auto!important;flex:none}
+  .docs-v3 .feed-meta{flex-wrap:wrap!important;gap:8px 12px!important;font-size:11px!important}
+}
+@media(min-width:761px) and (max-width:1000px){
+  .docs-v3 .feed-toolbar{margin-bottom:16px!important;padding:12px 0!important;background:transparent!important;backdrop-filter:none!important}
+  .docs-v3 .feed-filter-button,.docs-v3 .feed-sort-control .potover-select-trigger{min-height:44px!important;padding:0 12px!important;border:1px solid var(--color-border)!important;border-radius:10px!important;background:var(--color-chrome)!important;color:var(--color-text)!important;font-size:13px!important}
   .docs-v3 .feed-sort-control>span{display:none}
 }
