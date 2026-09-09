@@ -1,5 +1,5 @@
 {
-  "collectedAt": "2026-09-08T07:53:18.530Z",
+  "collectedAt": "2026-09-09T07:56:18.535Z",
   "sources": [
     {
       "slug": "gto-wizard",
@@ -40647,7 +40647,7 @@
       "title": "ポーカー解説記事 | テキサスホールデム総合情報サイト 「m Portal」",
       "originalUrl": "https://mpj-portal.jp/forbeginners/",
       "author": null,
-      "publishedAt": "2026-09-08T16:49:59+09:00",
+      "publishedAt": "2026-09-08T16:58:20+09:00",
       "summary": "ポーカー初心者のためのルールや用語、戦略のまとめページです。mPotal(エムポータル)はテキサスホールデム・ポーカーのルールや用語、戦略解説を発信するテキサスホールデム・ポーカーの専門サイトです。",
       "language": "Japanese",
       "imageUrl": "https://mpj-portal.jp/ogp.png",
@@ -40656,7 +40656,7 @@
         "difficulty": "beginner",
         "tags": []
       },
-      "sourceModifiedAt": "2026-09-08T16:49:59+09:00",
+      "sourceModifiedAt": "2026-09-08T16:58:20+09:00",
       "headings": [
         {
           "level": 2,
@@ -56744,6 +56744,26 @@
         "tags": []
       },
       "sourceModifiedAt": "2026-09-08T03:24:31Z"
+    },
+    {
+      "source": "PokerCoaching.com",
+      "sourceSlug": "pokercoaching",
+      "sourceUrl": "https://pokercoaching.com/blog/",
+      "title": "Why Bluffing in Multiway Pots Is Rarely Profitable",
+      "originalUrl": "https://pokercoaching.com/blog/why-bluffing-in-multiway-pots-is-rarely-profitable/",
+      "author": null,
+      "publishedAt": "2026-09-08T12:15:03",
+      "summary": "Bluffing heads-up is just part of the game, but doing the same in a pot where three or four players saw the flop is usually a donation. The logic is brutally simple. As more people […]",
+      "language": "English",
+      "imageUrl": "https://pokercoaching.com/blog/wp-content/uploads/2026/09/Why-Bluffing-in-Multiway-Pots-Is-Rarely-Profitable.jpg",
+      "contentType": "article",
+      "classification": {
+        "difficulty": "intermediate",
+        "tags": [
+          "flop",
+          "bluff"
+        ]
+      }
     }
   ]
 }
