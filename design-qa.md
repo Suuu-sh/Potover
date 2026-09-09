@@ -16,6 +16,14 @@ TypeScript passed; Vitest 5/5 passed; production build passed with existing auto
 
 final result: passed
 
+# Remove sort control — 2026-09-09
+
+Scope: simplify the search result toolbar by removing the unnecessary 「並び替え」 control while retaining the default relevance ordering.
+
+Visual QA: search view checked in the running local app; the toolbar now presents only the result count and filter action with balanced spacing.
+
+final result: passed
+
 # Result toolbar surface — 2026-09-08
 
 Scope: lift the dark search result toolbar and sidebar status strip out of near-black and into the layered plum palette.

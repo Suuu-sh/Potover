@@ -5,7 +5,6 @@ import {BookOpen,Check,ChevronLeft,ChevronRight,Circle,RotateCcw,Search,SlidersH
 
 import {ArticleFeedRow} from '@/components/ArticleFeedRow';
 import {contentLabel} from '@/lib/content-labels';
-import {SelectMenu} from '@/components/SelectMenu';
 import {articles as initialArticles,Article,sources} from '@/lib/data';
 import {getLearningHistory} from '@/lib/learning-history';
 import {usePreferredLanguage} from '@/lib/use-preferred-language';
@@ -38,7 +37,6 @@ export default function Docs(){
   const [query,setQuery]=useState('');
   const [selected,setSelected]=useState<string[]>([]);
   const [filtersOpen,setFiltersOpen]=useState(false);
-  const [sort,setSort]=useState('relevance');
   const [page,setPage]=useState(1);
   const [readSlugs,setReadSlugs]=useState<Set<string>>(new Set());
   const [indexQuery,setIndexQuery]=useState('');
@@ -61,8 +59,8 @@ export default function Docs(){
       const topics=selected.filter(x=>x!==READ_FILTER&&!difficulty.includes(x)&&!language.includes(x)&&!sourceFilters.includes(x)&&!contentFilters.includes(x as typeof CONTENT_FILTERS[number]));
       return (!normalizedQuery||queryTerms.some(term=>text.includes(term)))&&(!difficulty.length||difficulty.includes(article.difficulty))&&(!language.length||language.includes(article.language))&&(!sourceFilters.length||sourceFilters.includes(article.source))&&(!contentFilters.length||contentFilters.includes(article.contentType==='video'?'動画':'記事'))&&(!readOnly||readSlugs.has(article.slug))&&(!topics.length||topics.some(x=>text.includes(x.toLowerCase())));
     });
-    return [...filtered].sort((a,b)=>sort==='newest'?b.publishedAt.localeCompare(a.publishedAt):sort==='shortest'?a.minutes-b.minutes:(Number(b.language===preferredLanguage)-Number(a.language===preferredLanguage))||(preferredLanguage==='Japanese'?Number(b.sourceSlug==='gto-wizard-japan')-Number(a.sourceSlug==='gto-wizard-japan'):0));
-  },[query,selected,sort,preferredLanguage,readSlugs]);
+    return [...filtered].sort((a,b)=>(Number(b.language===preferredLanguage)-Number(a.language===preferredLanguage))||(preferredLanguage==='Japanese'?Number(b.sourceSlug==='gto-wizard-japan')-Number(a.sourceSlug==='gto-wizard-japan'):0));
+  },[query,selected,preferredLanguage,readSlugs]);
   const pageCount=Math.max(1,Math.ceil(results.length/PAGE_SIZE));
   const visibleResults=results.slice((page-1)*PAGE_SIZE,page*PAGE_SIZE);
   const normalizedIndexQuery=indexQuery.trim().toLowerCase();
@@ -73,11 +71,11 @@ export default function Docs(){
   const selectedContentTypes=selected.filter(value=>CONTENT_FILTERS.includes(value as typeof CONTENT_FILTERS[number]));
   const countArticles=articles.filter(article=>!selectedContentTypes.length||selectedContentTypes.includes(article.contentType==='video'?'動画':'記事'));
   const filterCount=(item:string)=>(CONTENT_FILTERS.includes(item as typeof CONTENT_FILTERS[number])?articles:countArticles).filter(article=>item==='記事'?article.contentType!=='video':item==='動画'?article.contentType==='video':item==='学習済み'?readSlugs.has(article.slug):['Beginner','Intermediate','Advanced'].includes(item)?article.difficulty===item:['Japanese','English'].includes(item)?article.language===item:sourceNames.includes(item)?article.source===item:[...article.tags,article.category].some(value=>value.toLowerCase().includes(item.toLowerCase()))).length;
-  useEffect(()=>{setPage(1)},[query,selected,sort,preferredLanguage]);
+  useEffect(()=>{setPage(1)},[query,selected,preferredLanguage]);
   const movePage=(next:number)=>{setPage(Math.min(pageCount,Math.max(1,next)));document.querySelector('.docs-feed')?.scrollTo({top:0,behavior:'smooth'})};
   return <main className="docs-v3"><div className="docs-v3-layout"><aside className="docs-editorial-index"><header className="docs-index-heading"><h2>絞り込み</h2><button type="button" onClick={()=>{setSelected([]);setIndexQuery('')}}>リセット</button></header><label className="docs-index-search"><Search size={15}/><input value={indexQuery} onChange={event=>setIndexQuery(event.target.value)} placeholder="フィルターを検索" aria-label="フィルターを検索"/></label><div className="docs-index-group"><span className="docs-index-group-title">コンテンツ</span><button className={selected.length===0?'is-active':''} onClick={()=>setSelected([])}><span>{selected.length===0&&<Check/>}</span><div><strong>すべて</strong><small>{articles.length}</small></div></button>{visibleContentFilters.map(label=><button key={label} className={selected.includes(label)?'is-active':''} onClick={()=>toggle(label)}><span>{selected.includes(label)&&<Check/>}</span><div><strong>{label}</strong><small>{articles.filter(article=>(article.contentType==='video'?'動画':'記事')===label).length}</small></div></button>)}</div><div className="docs-index-group"><span className="docs-index-group-title">テーマ</span>{visibleQuickFilters.map(([value,label])=><button key={value} className={selected.includes(value)?'is-active':''} onClick={()=>toggle(value)}><span>{selected.includes(value)&&<Check/>}</span><div><strong>{label}</strong><small>{filterCount(value)}</small></div></button>)}</div><div className="docs-index-status"><button onClick={()=>setFiltersOpen(true)}>詳細な絞り込み<span aria-hidden="true">→</span></button></div></aside>
       <section className="docs-feed">
-        <div className="feed-toolbar"><span><strong>{results.length}</strong>件のコンテンツ</span><div className="feed-toolbar-controls"><button type="button" className="feed-filter-button" onClick={()=>setFiltersOpen(true)}><SlidersHorizontal size={14}/>絞り込み{selected.length>0&&<em>{selected.length}</em>}</button><div className="feed-sort-control"><span>並び替え</span><SelectMenu ariaLabel="コンテンツの並び順" value={sort} onChange={setSort} options={[{value:'relevance',label:'関連度順'},{value:'newest',label:'新着順'},{value:'shortest',label:'短い順'}]}/></div></div></div>
+        <div className="feed-toolbar"><span><strong>{results.length}</strong>件のコンテンツ</span><div className="feed-toolbar-controls"><button type="button" className="feed-filter-button" onClick={()=>setFiltersOpen(true)}><SlidersHorizontal size={14}/>絞り込み{selected.length>0&&<em>{selected.length}</em>}</button></div></div>
         {(query||selected.length>0)&&<div className="active-filter-list" aria-label="選択中の絞り込み">{query&&<button type="button" onClick={()=>{setQuery('');const url=new URL(location.href);url.searchParams.delete('q');history.replaceState(null,'',url)}} aria-label={`検索「${query}」を解除`}>検索：{query}<X size={14}/></button>}{selected.map(value=><button type="button" key={value} onClick={()=>toggle(value)} aria-label={`${contentLabel(value)}を解除`}>{contentLabel(value)}<X size={14}/></button>)}<button type="button" className="clear-filters" onClick={reset}>すべて解除</button></div>}
         {results.length===0?<div className="docs-empty"><BookOpen size={31}/><h2>条件に合うコンテンツがありません</h2><p>別のキーワードまたは条件を試してください。</p><button onClick={reset}>条件をリセット</button></div>:
         <><div className="docs-feed-list">{visibleResults.map(article=><ArticleFeedRow article={article} compactActions onTagClick={toggle} key={article.slug}/>)}</div><nav className="docs-pagination" aria-label="記事一覧のページ"><button type="button" onClick={()=>movePage(page-1)} disabled={page===1}><ChevronLeft size={16}/>前へ</button><span><strong>{page}</strong> / {pageCount}</span><button type="button" onClick={()=>movePage(page+1)} disabled={page===pageCount}>次へ<ChevronRight size={16}/></button></nav></>}
