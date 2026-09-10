@@ -3,7 +3,7 @@ import {readFileSync} from 'node:fs';
 import {execFileSync} from 'node:child_process';
 import theme from './kiro-theme.json';
 
-const styles = ['app/globals.css', 'components/SiteFooter.module.css', 'components/ServiceLanding.module.css', 'components/ServicePreview.module.css'];
+const styles = ['app/login/Login.module.css', 'app/globals.css', 'components/SiteFooter.module.css', 'components/ServiceLanding.module.css', 'components/ServicePreview.module.css'];
 const read = (file: string) => readFileSync(file, 'utf8');
 
 describe('Kiro theme contract', () => {

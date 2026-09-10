@@ -733,7 +733,7 @@ h1,h2,h3,h4,h5,h6,.brand-wordmark{font-family:var(--potover-font-display)!import
   .docs-v3 .feed-actions button,.docs-v3 .feed-actions a{flex-basis:34px!important;width:34px!important;height:34px!important;min-width:34px!important;min-height:34px!important}
 }
 .profile-auth-loading{min-height:calc(100dvh - 64px);display:grid;place-items:center;background:var(--color-canvas);color:var(--color-muted)}.dark-mode .profile-auth-loading{background:var(--color-surface);color:var(--color-muted)}
-.login-action{height:36px;display:flex;align-items:center;gap:7px;padding:0 15px;border:1px solid var(--color-text);border-radius:999px;background:var(--color-button);color:var(--color-on-button)!important;font-size:11px;font-weight:700;white-space:nowrap}.login-action:hover{opacity:.86}.auth-page{min-height:calc(100dvh - 64px);display:grid;place-items:center;padding:36px 20px;background:var(--color-canvas);color:var(--color-text)}.auth-card{width:min(100%,430px);padding:32px;border:1px solid var(--color-border);border-radius:16px;background:var(--color-surface);box-shadow:none}.auth-brand{display:inline-block;margin-bottom:24px;font-size:20px;font-weight:800;letter-spacing:-.7px}.auth-tabs{display:grid;grid-template-columns:1fr 1fr;gap:4px;padding:4px;border-radius:10px;background:var(--color-canvas)}.auth-tabs button{height:38px;border:0;border-radius:7px;background:transparent;color:var(--color-muted);font-weight:700;cursor:pointer}.auth-tabs button.is-active{background:var(--color-surface);color:var(--color-text);box-shadow:none}.auth-card header{padding:27px 0 20px}.auth-card header h1{margin:0 0 7px;font-size:27px;letter-spacing:-.8px}.auth-card header p{margin:0;color:var(--color-muted);font-size:12px}.auth-card form{display:flex;flex-direction:column;gap:17px}.auth-card label>span{display:block;margin-bottom:7px;font-size:11px;font-weight:700}.auth-card label>div{height:48px;display:flex;align-items:center;gap:10px;padding:0 13px;border:1px solid var(--color-border);border-radius:9px;background:var(--color-surface)}.auth-card label>div:focus-within{border-color:var(--color-text);box-shadow:none}.auth-card label svg{flex:none;color:var(--color-disabled)}.auth-card input{flex:1;min-width:0;border:0;outline:0;background:transparent;color:var(--color-text);font-size:13px}.auth-card label button{display:grid;place-items:center;padding:5px;border:0;background:transparent;cursor:pointer}.auth-submit{height:46px;border:0;border-radius:999px;background:var(--color-button);color:var(--color-on-button);font-weight:700;cursor:pointer}.auth-submit:disabled{cursor:wait;opacity:.55}.auth-error{margin:0;padding:10px 12px;border-radius:8px;background:var(--color-error-soft);color:var(--color-error);font-size:11px}.auth-back{display:block;margin-top:21px;text-align:center;color:var(--color-muted);font-size:11px}.dark-mode .login-action{border-color:var(--color-button);background:var(--color-button);color:var(--color-on-button)!important}.dark-mode .auth-page{background:var(--color-canvas);color:var(--color-text)}.dark-mode .auth-card{border-color:var(--color-border);background:var(--color-surface);box-shadow:none}.dark-mode .auth-tabs{background:var(--color-surface)}.dark-mode .auth-tabs button{color:var(--color-muted)}.dark-mode .auth-tabs button.is-active{background:var(--color-button);color:var(--color-on-button)}.dark-mode .auth-card header p,.dark-mode .auth-back{color:var(--color-muted)}.dark-mode .auth-card label>div{border-color:var(--color-border);background:var(--color-input)}.dark-mode .auth-card label>div:focus-within{border-color:var(--color-focus);box-shadow:none}.dark-mode .auth-card input{color:var(--color-text)}.dark-mode .auth-submit{background:var(--color-button);color:var(--color-on-button)}@media(max-width:700px){.auth-card{padding:25px 20px}.login-action{width:36px;padding:0;justify-content:center}.login-action svg{display:none}.site-header .login-action{font-size:10px}}
+.login-action{height:36px;display:flex;align-items:center;gap:7px;padding:0 15px;border:1px solid var(--color-text);border-radius:999px;background:var(--color-button);color:var(--color-on-button)!important;font-size:11px;font-weight:700;white-space:nowrap}.login-action:hover{opacity:.86}.dark-mode .login-action{border-color:var(--color-button);background:var(--color-button);color:var(--color-on-button)!important}@media(max-width:700px){.login-action{width:36px;padding:0;justify-content:center}.login-action svg{display:none}.site-header .login-action{font-size:10px}}
 .site-header-search button{width:36px!important;min-width:36px!important;height:28px!important;display:grid!important;place-items:center!important;padding:0!important;font-size:0!important}
 .site-header-search button svg{display:block!important}
 .site-header .bookmarks-action,.site-header .login-action{width:36px!important;min-width:36px!important;padding:0!important;gap:0!important;display:grid!important;place-items:center!important;font-size:0!important}
@@ -977,7 +977,7 @@ h1,h2,h3,h4,h5,h6,.brand-wordmark{font-family:var(--potover-font-display)!import
   background:transparent!important;
   color:var(--color-accent)!important;
 }
-.modern-home,.docs-v3,.curriculum-page,.modern-sources,.shared-header-page,.library-page,.profile-page,.review-page,.auth-page{
+.modern-home,.docs-v3,.curriculum-page,.modern-sources,.shared-header-page,.library-page,.profile-page,.review-page{
   background:var(--color-canvas)!important;
   color:var(--color-text)!important;
 }
@@ -1086,7 +1086,7 @@ h1,h2,h3,h4,h5,h6,.brand-wordmark{font-family:var(--potover-font-display)!import
 }
 .next-lesson-feature>b,
 .roadmap-guide-meta>a,.detailbox .cta,.docs-empty button,
-.docs-pagination button.is-current,.auth-submit,.login-action,
+.docs-pagination button.is-current,.login-action,
 .profile-history-empty>a,.article-modal-cta{
   background:var(--color-button)!important;
   border-color:var(--color-accent)!important;
@@ -1176,8 +1176,7 @@ h1,h2,h3,h4,h5,h6,.brand-wordmark{font-family:var(--potover-font-display)!import
 }
 .dark-mode .modern-home,.dark-mode .docs-v3,.dark-mode .curriculum-page,
 .dark-mode .modern-sources,.dark-mode .shared-header-page,
-.dark-mode .library-page,.dark-mode .profile-page,.dark-mode .review-page,
-.dark-mode .auth-page,.dark-mode .home-spotlight,.dark-mode .modern-content,
+.dark-mode .library-page,.dark-mode .profile-page,.dark-mode .review-page,.dark-mode .home-spotlight,.dark-mode .modern-content,
 .dark-mode .roadmap-preview,.dark-mode .modern-footer{
   color:var(--color-text)!important;
 }
@@ -1237,7 +1236,7 @@ h1,h2,h3,h4,h5,h6,.brand-wordmark{font-family:var(--potover-font-display)!import
   color:var(--color-muted)!important;
 }
 .dark-mode .roadmap-guide-meta>a,.dark-mode .detailbox .cta,
-.dark-mode .docs-empty button,.dark-mode .auth-submit,
+.dark-mode .docs-empty button,
 .dark-mode .login-action,.dark-mode .profile-history-empty>a,
 .dark-mode .article-modal-cta{
   background:var(--color-button)!important;
@@ -1306,16 +1305,11 @@ h1,h2,h3,h4,h5,h6,.brand-wordmark{font-family:var(--potover-font-display)!import
   background:var(--color-surface)!important;
   border-color:var(--color-border)!important;
 }
-.dark-mode .review-insight strong,.dark-mode .review-dropzone.has-file strong{color:var(--color-accent)!important}
-.auth-card,.review-upload-card,.review-how-card,.review-results,.review-recommendations article{
+.dark-mode .review-insight strong,.dark-mode .review-dropzone.has-file strong{color:var(--color-accent)!important}.review-upload-card,.review-how-card,.review-results,.review-recommendations article{
   background:var(--color-surface)!important;
   border-color:var(--color-border)!important;
   color:var(--color-text)!important;
 }
-.auth-tabs{background:var(--color-surface)!important}
-.auth-tabs button.is-active{background:var(--color-surface)!important;color:var(--color-accent)!important}
-.auth-card label>div{border-color:var(--color-border)!important;background:var(--color-surface)!important}
-.auth-card label>div:focus-within{border-color:var(--color-accent)!important;box-shadow:none!important}
 .review-how-card{background:var(--color-surface)!important;color:var(--color-text)!important;border-color:var(--color-border)!important}
 .review-how-card .review-step,.review-how-card li>span{color:var(--color-accent)!important}
 .review-how-card p{color:var(--color-muted)!important}
@@ -1323,19 +1317,12 @@ h1,h2,h3,h4,h5,h6,.brand-wordmark{font-family:var(--potover-font-display)!import
 .review-recommendations article>span,.review-recommendations a,.review-recommendations em{color:var(--color-accent)!important}
 .review-recommendations em{background:var(--color-selected)!important}
 .roadmap-preview-card>span,.roadmap-preview-card>span svg{color:var(--color-accent)!important}
-.roadmap-preview-card>svg{color:var(--color-muted)!important}
-.dark-mode .auth-card,.dark-mode .review-upload-card,.dark-mode .review-results,
+.roadmap-preview-card>svg{color:var(--color-muted)!important}.dark-mode .review-upload-card,.dark-mode .review-results,
 .dark-mode .review-recommendations article{
   background:var(--color-surface)!important;
   border-color:var(--color-border)!important;
   color:var(--color-text)!important;
 }
-.dark-mode .auth-tabs{background:var(--color-surface)!important}
-.dark-mode .auth-tabs button{color:var(--color-muted)!important}
-.dark-mode .auth-tabs button.is-active{background:var(--color-button)!important;color:var(--color-on-button)!important}
-.dark-mode .auth-card label>div{background:var(--color-input)!important;border-color:var(--color-border)!important}
-.dark-mode .auth-card label>div:focus-within{border-color:var(--color-focus)!important;box-shadow:none!important}
-.dark-mode .auth-card label svg{color:var(--color-accent)!important}
 .dark-mode .review-how-card{background:var(--color-surface)!important;border-color:var(--color-border)!important}
 .dark-mode .review-analyze-button{background:var(--color-button)!important}
 .dark-mode .review-recommendations em{background:var(--color-selected)!important;color:var(--color-accent)!important}
@@ -1385,8 +1372,7 @@ h1,h2,h3,h4,h5,h6,.brand-wordmark{font-family:var(--potover-font-display)!import
 }
 .dark-mode .modern-home,.dark-mode .docs-v3,.dark-mode .curriculum-page,
 .dark-mode .modern-sources,.dark-mode .shared-header-page,
-.dark-mode .library-page,.dark-mode .profile-page,.dark-mode .review-page,
-.dark-mode .auth-page,.dark-mode .home-spotlight,.dark-mode .modern-content,
+.dark-mode .library-page,.dark-mode .profile-page,.dark-mode .review-page,.dark-mode .home-spotlight,.dark-mode .modern-content,
 .dark-mode .roadmap-preview,.dark-mode .modern-footer{
   background:var(--color-canvas)!important;
 }
@@ -1402,7 +1388,7 @@ h1,h2,h3,h4,h5,h6,.brand-wordmark{font-family:var(--potover-font-display)!import
 .dark-mode .profile-identity-simple,.dark-mode .profile-learning-summary,
 .dark-mode .profile-history-card,.dark-mode .source-card-new,
 .dark-mode .review-upload-card,.dark-mode .review-results,
-.dark-mode .review-recommendations article,.dark-mode .auth-card,
+.dark-mode .review-recommendations article,
 .dark-mode .filter-dialog,.dark-mode .article-modal{
   background:var(--color-surface)!important;
   border-color:var(--color-border)!important;
@@ -1491,8 +1477,7 @@ h1,h2,h3,h4,h5,h6,.brand-wordmark{font-family:var(--potover-font-display)!import
 html,body{background:var(--color-canvas);color:var(--color-text)}
 .modern-home .home-spotlight-card h2,.modern-home .home-spotlight-card small,.modern-home .home-spotlight-card b{color:var(--color-on-artwork)!important}
 .site-header-search button,.dark-mode .site-header-search button{background:var(--color-button)!important;color:var(--color-on-button)!important}
-.site-header-search button:hover,.dark-mode .site-header-search button:hover,
-.auth-submit:hover,.article-modal-cta:hover{background:var(--color-button-hover)!important;color:var(--color-on-button)!important}
+.site-header-search button:hover,.dark-mode .site-header-search button:hover,.article-modal-cta:hover{background:var(--color-button-hover)!important;color:var(--color-on-button)!important}
 
 /* Selection is a neutral Kiro list surface, not a primary action. */
 .curriculum-index>button.is-active,.dark-mode .curriculum-index>button.is-active,
