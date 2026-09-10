@@ -14,6 +14,7 @@ const READ_FILTER='学習済み';
 const CONTENT_FILTERS=['記事','動画'] as const;
 const QUICK_FILTERS=[['Preflop','プリフロップ'],['Flop','フロップ'],['GTO','GTO'],['cash-game','キャッシュ'],['MTT','MTT']] as const;
 const PAGE_SIZE=20;
+const FILTER_STORAGE_KEY='potover-docs-filters';
 const SEARCH_ALIASES:Record<string,string[]>={
   'プリフロップ':['プリフロップ','preflop','pre-flop','pre flop'],
   'ポストフロップ':['ポストフロップ','postflop','post-flop','post flop','flop','turn','river'],
@@ -41,11 +42,30 @@ export default function Docs(){
   const [readSlugs,setReadSlugs]=useState<Set<string>>(new Set());
   const [indexQuery,setIndexQuery]=useState('');
   const [filterDialogQuery,setFilterDialogQuery]=useState('');
+  const [filtersHydrated,setFiltersHydrated]=useState(false);
   const [preferredLanguage]=usePreferredLanguage();
-  useEffect(()=>{setQuery(new URLSearchParams(location.search).get('q')||'')},[]);
+  useEffect(()=>{
+    let saved:{query?:string;selected?:string[]}={};
+    try{const raw=localStorage.getItem(FILTER_STORAGE_KEY);if(raw)saved=JSON.parse(raw)}catch{}
+    const params=new URLSearchParams(location.search);
+    const urlQuery=params.get('q');
+    const urlFilters=params.get('filters');
+    if(urlQuery!==null)setQuery(urlQuery);else if(typeof saved.query==='string')setQuery(saved.query);
+    if(urlFilters!==null)setSelected(urlFilters?urlFilters.split(',').filter(Boolean):[]);
+    else if(Array.isArray(saved.selected))setSelected(saved.selected);
+    setFiltersHydrated(true);
+  },[]);
+  useEffect(()=>{
+    if(!filtersHydrated)return;
+    try{localStorage.setItem(FILTER_STORAGE_KEY,JSON.stringify({query,selected}))}catch{}
+    const url=new URL(location.href);
+    if(query)url.searchParams.set('q',query);else url.searchParams.delete('q');
+    if(selected.length)url.searchParams.set('filters',selected.join(','));else url.searchParams.delete('filters');
+    history.replaceState(null,'',url);
+  },[filtersHydrated,query,selected]);
   useEffect(()=>{const sync=()=>setReadSlugs(new Set(getLearningHistory().map(event=>event.slug)));sync();window.addEventListener('potover-learning-changed',sync);return()=>window.removeEventListener('potover-learning-changed',sync)},[]);
   const toggle=(value:string)=>setSelected(old=>old.includes(value)?old.filter(x=>x!==value):[...old,value]);
-  const reset=()=>{setSelected([]);setQuery('');setIndexQuery('');setFilterDialogQuery('');const url=new URL(location.href);url.searchParams.delete('q');history.replaceState(null,'',url)};
+  const reset=()=>{setSelected([]);setQuery('');setIndexQuery('');setFilterDialogQuery('');const url=new URL(location.href);url.searchParams.delete('q');url.searchParams.delete('filters');history.replaceState(null,'',url)};
   const results=useMemo(()=>{
     const filtered=articles.filter(article=>{
       const text=[article.title,article.summary,article.source,...article.tags,article.category,article.contentType==='video'?'動画 youtube video':'記事 article'].join(' ').toLowerCase();
@@ -76,7 +96,7 @@ export default function Docs(){
   return <main className="docs-v3"><div className="docs-v3-layout"><aside className="docs-editorial-index"><header className="docs-index-heading"><h2>絞り込み</h2><button type="button" onClick={()=>{setSelected([]);setIndexQuery('')}}>リセット</button></header><label className="docs-index-search"><Search size={15}/><input value={indexQuery} onChange={event=>setIndexQuery(event.target.value)} placeholder="フィルターを検索" aria-label="フィルターを検索"/></label><div className="docs-index-group"><span className="docs-index-group-title">コンテンツ</span><button className={selected.length===0?'is-active':''} onClick={()=>setSelected([])}><span>{selected.length===0&&<Check/>}</span><div><strong>すべて</strong><small>{articles.length}</small></div></button>{visibleContentFilters.map(label=><button key={label} className={selected.includes(label)?'is-active':''} onClick={()=>toggle(label)}><span>{selected.includes(label)&&<Check/>}</span><div><strong>{label}</strong><small>{articles.filter(article=>(article.contentType==='video'?'動画':'記事')===label).length}</small></div></button>)}</div><div className="docs-index-group"><span className="docs-index-group-title">テーマ</span>{visibleQuickFilters.map(([value,label])=><button key={value} className={selected.includes(value)?'is-active':''} onClick={()=>toggle(value)}><span>{selected.includes(value)&&<Check/>}</span><div><strong>{label}</strong><small>{filterCount(value)}</small></div></button>)}</div><div className="docs-index-status"><button onClick={()=>setFiltersOpen(true)}>詳細な絞り込み<span aria-hidden="true">→</span></button></div></aside>
       <section className="docs-feed">
         <div className="feed-toolbar"><span><strong>{results.length}</strong>件のコンテンツ</span><div className="feed-toolbar-controls"><button type="button" className="feed-filter-button" onClick={()=>setFiltersOpen(true)}><SlidersHorizontal size={14}/>絞り込み{selected.length>0&&<em>{selected.length}</em>}</button></div></div>
-        {(query||selected.length>0)&&<div className="active-filter-list" aria-label="選択中の絞り込み">{query&&<button type="button" onClick={()=>{setQuery('');const url=new URL(location.href);url.searchParams.delete('q');history.replaceState(null,'',url)}} aria-label={`検索「${query}」を解除`}>検索：{query}<X size={14}/></button>}{selected.map(value=><button type="button" key={value} onClick={()=>toggle(value)} aria-label={`${contentLabel(value)}を解除`}>{contentLabel(value)}<X size={14}/></button>)}<button type="button" className="clear-filters" onClick={reset}>すべて解除</button></div>}
+        {(query||selected.length>0)&&<div className="active-filter-list" aria-label="選択中の絞り込み">{query&&<button type="button" onClick={()=>{setQuery('');const url=new URL(location.href);url.searchParams.delete('q');url.searchParams.delete('filters');history.replaceState(null,'',url)}} aria-label={`検索「${query}」を解除`}>検索：{query}<X size={14}/></button>}{selected.map(value=><button type="button" key={value} onClick={()=>toggle(value)} aria-label={`${contentLabel(value)}を解除`}>{contentLabel(value)}<X size={14}/></button>)}<button type="button" className="clear-filters" onClick={reset}>すべて解除</button></div>}
         {results.length===0?<div className="docs-empty"><BookOpen size={31}/><h2>条件に合うコンテンツがありません</h2><p>別のキーワードまたは条件を試してください。</p><button onClick={reset}>条件をリセット</button></div>:
         <><div className="docs-feed-list">{visibleResults.map(article=><ArticleFeedRow article={article} compactActions onTagClick={toggle} key={article.slug}/>)}</div><nav className="docs-pagination" aria-label="記事一覧のページ"><button type="button" onClick={()=>movePage(page-1)} disabled={page===1}><ChevronLeft size={16}/>前へ</button><span><strong>{page}</strong> / {pageCount}</span><button type="button" onClick={()=>movePage(page+1)} disabled={page===pageCount}>次へ<ChevronRight size={16}/></button></nav></>}
       </section>
