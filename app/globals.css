@@ -852,7 +852,7 @@ h1,h2,h3,h4,h5,h6,.brand-wordmark{font-family:var(--potover-font-display)!import
 .bookmarks-page .bookmark-empty-copy{flex:1;min-width:0}
 .bookmarks-page .bookmark-empty h2{margin:0 0 8px;color:var(--color-text);font-weight:600;letter-spacing:0}
 .bookmarks-page .bookmark-empty p{margin:0;color:var(--color-muted)}
-.bookmarks-page .bookmark-empty a{display:inline-flex;flex:none;align-items:center;justify-content:center;background:var(--color-button);color:var(--color-text);font-weight:600;white-space:nowrap;transition:background .16s ease}
+.bookmarks-page .bookmark-empty a{display:inline-flex;flex:none;align-items:center;justify-content:center;border:1px solid var(--color-border);background:var(--color-surface);color:var(--color-text);font-weight:600;white-space:nowrap;transition:background .16s ease}
 .bookmarks-page .bookmark-empty a svg{color:currentColor}
 .bookmarks-page .bookmark-empty a:hover{background:var(--color-hover)}
 .bookmarks-page .bookmark-empty a:focus-visible{outline:2px solid var(--color-text);outline-offset:4px}
@@ -862,7 +862,7 @@ h1,h2,h3,h4,h5,h6,.brand-wordmark{font-family:var(--potover-font-display)!import
 .dark-mode .bookmarks-page .library-toolbar h1,.dark-mode .bookmarks-page .bookmark-empty h2,.dark-mode .bookmarks-page .bookmark-empty-icon{color:var(--color-text)}
 .dark-mode .bookmarks-page .bookmark-empty{border-color:var(--color-border)!important;box-shadow:none!important}
 .dark-mode .bookmarks-page .bookmark-empty p,.dark-mode .bookmarks-page .library-note{color:var(--color-muted)}
-.dark-mode .bookmarks-page .bookmark-empty a{background:var(--color-surface);color:var(--color-muted)}
+.dark-mode .bookmarks-page .bookmark-empty a{background:var(--color-surface);color:var(--color-text)}
 .dark-mode .bookmarks-page .bookmark-empty a:hover{background:var(--color-hover)}
 .dark-mode .bookmarks-page .bookmark-empty a:focus-visible{outline-color:var(--color-focus)}
 @media(max-width:700px){
