@@ -507,7 +507,7 @@ h1,h2,h3,h4,h5,h6,.brand-wordmark{font-family:var(--potover-font-display)!import
 .dark-mode .modern-topics{background:transparent!important;box-shadow:none!important}
 .dark-mode .modern-topics-list{background:var(--color-surface)}
 .dark-mode .modern-topics-list>a{border-color:var(--color-border)}
-.dark-mode .modern-topics-list>a>span{background:var(--color-selected);color:var(--color-text)}
+.dark-mode .modern-topics-list>a>span{background:var(--color-selected);color:var(--color-accent)}
 .dark-mode .modern-topics-list small,.dark-mode .modern-topics-list>a>svg{color:var(--color-muted)}
 .home-spotlight-rail{scroll-snap-type:none!important}
 @media(max-width:700px){.modern-topics-list{padding:0 14px}}
