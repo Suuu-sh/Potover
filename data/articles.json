@@ -1,5 +1,5 @@
 {
-  "collectedAt": "2026-09-09T07:56:18.535Z",
+  "collectedAt": "2026-09-10T07:56:52.044Z",
   "sources": [
     {
       "slug": "gto-wizard",
@@ -56764,6 +56764,66 @@
           "bluff"
         ]
       }
+    },
+    {
+      "source": "PokerCoaching.com",
+      "sourceSlug": "pokercoaching",
+      "sourceUrl": "https://pokercoaching.com/blog/",
+      "title": "Value Betting the Nuts: 55 BTN vs LJ at 60bb MTT",
+      "originalUrl": "https://pokercoaching.com/blog/value-betting-the-nuts-55-btn-vs-lj-60bb-mtt/",
+      "author": null,
+      "publishedAt": "2026-09-09T11:00:00",
+      "summary": "Flopping a monster is the easy part. Value betting the nuts for the maximum is what separates winning players from the rest, and it almost never means betting big on every street. The right line […]",
+      "language": "English",
+      "imageUrl": "https://pokercoaching.com/blog/wp-content/uploads/2026/09/Value-Betting-the-Nuts-55-BTN-vs-LJ-at-60bb-MTT.jpg",
+      "contentType": "article",
+      "classification": {
+        "difficulty": "intermediate",
+        "tags": [
+          "flop",
+          "mtt"
+        ]
+      }
+    },
+    {
+      "source": "GTO Wizard Japan",
+      "sourceSlug": "gto-wizard-japan",
+      "sourceUrl": "https://japan.gtowizard.com/articles/",
+      "title": "プロファイル別エクスプロイト 第4回｜TAG",
+      "originalUrl": "https://japan.gtowizard.com/blog/exploiting-profiles-episode-iv-the-tag/",
+      "author": "Andrew Brokos",
+      "publishedAt": "2026-09-03T17:24:46",
+      "summary": ".shortcode-single-image-wrap.shortcode-single-image-ee272204aa16adb30901f41f05f29d3b.enable-bg-rollover .rollover i, .shortcode-single-image-wrap.shortcode-single-image-ee272204aa16adb30901f41f05f29d3b.enable-bg-rollover .rollover-video i { background: -webkit-linear-gradient(); ",
+      "language": "Japanese",
+      "imageUrl": "https://japan.gtowizard.com/wp-content/uploads/2026/09/01-hero-1.png",
+      "contentType": "article",
+      "classification": {
+        "difficulty": "intermediate",
+        "tags": [
+          "exploit"
+        ]
+      },
+      "sourceModifiedAt": "2026-09-06T09:24:54"
+    },
+    {
+      "source": "GTO Wizard Japan",
+      "sourceSlug": "gto-wizard-japan",
+      "sourceUrl": "https://japan.gtowizard.com/articles/",
+      "title": "プロファイル別エクスプロイト 第3回｜マニアック",
+      "originalUrl": "https://japan.gtowizard.com/blog/exploiting-profiles-episode-iii-the-maniac/",
+      "author": "Andrew Brokos",
+      "publishedAt": "2026-08-30T16:05:17",
+      "summary": ".shortcode-single-image-wrap.shortcode-single-image-774f056bb4dac24f187818a3f6df6e95.enable-bg-rollover .rollover i, .shortcode-single-image-wrap.shortcode-single-image-774f056bb4dac24f187818a3f6df6e95.enable-bg-rollover .rollover-video i { background: -webkit-linear-gradient(); ",
+      "language": "Japanese",
+      "imageUrl": "https://japan.gtowizard.com/wp-content/uploads/2026/09/01-hero.png",
+      "contentType": "article",
+      "classification": {
+        "difficulty": "intermediate",
+        "tags": [
+          "exploit"
+        ]
+      },
+      "sourceModifiedAt": "2026-09-06T08:05:27"
     }
   ]
 }
