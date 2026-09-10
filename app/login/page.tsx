@@ -1,7 +1,6 @@
 'use client';
 
 import {FormEvent,useEffect,useState} from 'react';
-import Image from 'next/image';
 import Link from 'next/link';
 import {useRouter} from 'next/navigation';
 import {Eye,EyeOff,LockKeyhole,Mail} from 'lucide-react';
@@ -35,10 +34,6 @@ export default function LoginPage(){
   }
 
   return <main className={styles.page}>
-    <aside className={styles.visual} aria-label="あなたの学びを、次の一手へ。">
-      <Image src="/login/spade-gallery.png" alt="" fill priority sizes="(max-width: 700px) 100vw, 55vw" className={styles.art}/>
-      <div className={styles.visualCopy}><p>あなたの学びを、<br/>次の一手へ。</p><span>気になる記事を保存して、自分のペースで。</span></div>
-    </aside>
     <section className={styles.panel} aria-labelledby="auth-heading">
       <div className={styles.content}>
         <Link className={styles.brand} href="/">Potover</Link>
@@ -47,8 +42,8 @@ export default function LoginPage(){
           <button aria-pressed={mode==='register'} disabled={submitting} onClick={()=>{setMode('register');setError('')}} type="button">新規登録</button>
         </div>
         <header className={styles.heading}>
-          <h1 id="auth-heading">{mode==='login'?'学習の続きを、ここから。':'あなたの学びを、ここから。'}</h1>
-          <p>{bookmarkNotice?'ブックマークを使うにはログインが必要です。':mode==='login'?'知識を積み重ねて、もっと強くなろう。':'学習履歴やブックマークを保存できます。'}</p>
+          <h1 id="auth-heading">{mode==='login'?'おかえりなさい':'アカウントを作成'}</h1>
+          <p>{bookmarkNotice?'ブックマークを使うにはログインが必要です。':mode==='login'?'保存した記事や学習の続きを始めましょう。':'学習履歴やブックマークを保存できます。'}</p>
         </header>
         <form className={styles.form} onSubmit={submit} aria-busy={submitting}>
           <label><span>メールアドレス</span><div className={styles.input}><Mail size={20} aria-hidden="true"/><input autoComplete="email" inputMode="email" required type="email" value={email} onChange={event=>setEmail(event.target.value)} placeholder="you@example.com" disabled={submitting}/></div></label>
