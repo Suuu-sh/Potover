@@ -1,13 +1,13 @@
-# Login — single-screen reference adaptation
+# Service landing — shared character identity and real app previews
 
 final result: passed
 
-Target: user-supplied note login screenshot, adapted to Potover rather than copied verbatim.
-Central form, editorial line-art people on both sides, no login-page footer. Existing shared header and email authentication retained; no unsupported social login buttons added.
+Scope: remove violet glass-card hero; reuse user-approved login characters; replace fictitious app previews with captures from actual public app UI.
 
-Verification: in-app browser desktop 1366×768 (document height 768), smaller laptop 1280×650 (document height 650), mobile 390×844. Both desktop checks require no vertical scroll. Light and dark captured. Source and implementation viewed in the same comparison output; reference has extra outside framing and a taller social-auth form, intentionally not reproduced. Initial trailing-slash route incorrectly retained footer; fixed and rechecked document height.
-
-Typography and spacing: product fonts, compact labels, centered 400px panel and 48px minimum controls. Colors: Kiro semantic tokens. Image quality: custom black/white poker learners, center intentionally empty; no placeholder art. Dark uses inversion/screen blending. Mobile hides decorative artwork to prioritize form. Content/auth behavior retained. No remaining scoped P0/P1/P2 issues. Extreme zoom or unusually short windows may scroll intentionally to preserve accessibility.
-
-Asset: public/login/poker-learners.png, built-in imagegen. Prompt: wide black-and-white editorial line illustration on clean white background, adult poker learners on left/right studying strategy notebook and discussing cards/chips, central 40% blank, no words/UI/logos, 3:1 composition.
-TypeScript and 16 unit tests passed before final route-only correction; final TypeScript check repeated. No real authentication submission performed.
+- Hero uses the same poker learner artwork as login, with neutral theme-aware blending. Initial black backdrop in dark theme fixed by giving the isolated hero its canvas background; recaptured successfully.
+- Real UI captured from /docs, /roadmap and /bookmarks at 1280×820 in both themes. Logged-out state; bookmarks empty, no personal saved content. Static captures, not live embeds. Existing feature links open the corresponding live app routes.
+- Larger two-column feature cards make the real UI legible. Mobile stacks preview and description.
+- Desktop 1440×900 hero and feature section visually checked; mobile 390×844 has no horizontal overflow or overlapping copy. Mobile whitespace tightened after review.
+- Typography/content and Kiro colors retained. Unsupported sample titles and artificial toolbar removed. FAQ corrected to match actual login-required bookmark saving.
+- Old unreferenced hero assets removed; no personal screenshots or credentials included.
+- TypeScript and 16 unit tests passed. Reference is a directed revision of the existing landing page, not a pixel clone of the supplied before screenshots.

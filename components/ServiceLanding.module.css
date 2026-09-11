@@ -31,12 +31,6 @@
 .mobileNav { display: none; }
 .skipLink { position: absolute; left: 24px; top: 16px; z-index: 20; padding: 12px 20px; background: var(--color-accent); color: var(--color-on-button); transform: translateY(-200%); }
 .skipLink:focus { transform: none; }
-
-.hero { position: relative; max-width: 1600px; height: min(760px, 90svh); min-height: 620px; margin: 0 auto; }
-.heroImage { position: absolute; inset: var(--header-height) 0 0; width: 100%; height: calc(100% - var(--header-height)); object-fit: cover; object-position: center; }
-.heroInner { position: relative; max-width: 1440px; height: 100%; margin: 0 auto; padding: 0 72px; display: flex; align-items: center; }
-.heroCopy { padding-top: 80px; padding-bottom: 38px; max-width: 690px; }
-.heroCopy h1 { margin: 0 0 24px; font-size: clamp(46px, 4.6vw, 66px); font-weight: 600; line-height: 1.65; letter-spacing: -.045em; }
 .primaryAction { min-height: 78px; min-width: 340px; width: fit-content; display: inline-flex; align-items: center; justify-content: space-between; gap: 44px; padding: 17px 27px; border-radius: 9px; background: var(--color-button); color: var(--color-on-button); font-size: 24px; font-weight: 700; transition: background .16s ease, transform .16s ease; }
 .primaryAction:hover { background: var(--color-button-hover); transform: translateY(-2px); }
 .primaryAction:active { transform: translateY(0); }
@@ -119,13 +113,9 @@
 .footer small { grid-column: 1 / -1; color: var(--color-muted); font-size: 12px; }
 
 @media (min-width: 1601px) {
-  .heroImage { object-fit: contain; }
 }
 @media (max-width: 1439px) {
   .learning, .roadmaps, .sources, .faq, .closing, .footer { margin-right: 5%; margin-left: 5%; }
-  .heroInner { padding-right: 5%; padding-left: 5%; }
-  .heroCopy { max-width: 58%; }
-  .heroCopy h1 { font-size: 4.6vw; }
   .primaryAction { font-size: 21px; min-height: 72px; }
   .features { margin: 0 24px; padding-right: 3.5%; padding-left: 3.5%; }
   .faq { gap: 64px; }
@@ -135,7 +125,6 @@
   .desktopNav { gap: 25px; }
   .desktopNav a, .openApp { font-size: 14px; }
   .brand span { font-size: 26px; }
-  .heroCopy h1 { font-size: 4.5vw; }
   .primaryAction { min-width: 0; gap: 28px; font-size: 18px; min-height: 62px; padding: 15px 22px; }
   .textAction { font-size: 15px; }
   .featureGrid { gap: 24px; }
@@ -159,15 +148,7 @@
   .mobileNav { position: absolute; top: calc(var(--header-height) - 2px); left: 20px; right: 20px; display: grid; padding: 10px 20px; background: var(--color-surface); border: 1px solid var(--color-border); border-radius: 12px; }
   .mobileNav a { display: flex; align-items: center; justify-content: space-between; padding: 16px 0; border-bottom: 1px solid var(--color-border); color: var(--color-text); }
   .mobileNav a:last-child { border: 0; }
-  .hero { height: auto; min-height: clamp(510px, 73svh, 570px); padding-top: var(--header-height); isolation: isolate; }
-  .hero::after { content: ""; position: absolute; z-index: -1; inset: var(--header-height) 0 0; background: linear-gradient(180deg, var(--color-surface) 0%, transparent 100%); pointer-events: none; }
-  .heroInner { height: auto; min-height: calc(clamp(510px, 73svh, 570px) - var(--header-height)); align-items: flex-start; padding: 28px 24px 200px; }
-  .heroCopy { max-width: 100%; padding: 0; }
-  .heroCopy h1 { margin-bottom: 20px; font-size: clamp(27px, 6.9vw, 40px); line-height: 1.5; letter-spacing: -.055em; }
-  .hero .primaryAction { font-size: 15px; min-height: 48px; min-width: 0; padding: 12px 18px; gap: 28px; }
-  .hero .primaryAction svg { width: 20px; height: 20px; }
   .textAction { margin-top: 14px; font-size: 14px; }
-  .heroImage { position: absolute; z-index: -2; inset: var(--header-height) 0 0; display: block; width: 100%; height: calc(100% - var(--header-height)); margin: 0; object-fit: cover; object-position: center bottom; }
   .features { margin: 0 24px; padding: 36px 0 44px; }
   .features h2 { margin-bottom: 28px; font-size: 30px; }
   .featureGrid { grid-template-columns: 1fr; gap: 24px; }
@@ -239,10 +220,6 @@
  .roadmapVisual h3 { font-size:24px; }
 }
 @media(prefers-reduced-motion:reduce) { .featureMedia > div { transition:none; } .feature:hover .featureMedia > div { transform:none; } }
-
-/* Image-backed hero stays legible in either UI theme; artwork is not recolored. */
-.heroCopy{color:var(--color-on-artwork)}
-.heroCopy .textAction{color:var(--color-on-artwork)}
 .primaryAction{color:var(--color-on-button)}
 .page{background:var(--color-canvas);color:var(--color-text)}
 .header{background:transparent}
@@ -265,3 +242,21 @@
   .headerInner { gap: 8px; }
   .openApp { display: none; }
 }
+
+/* Shared editorial characters from the login screen. */
+.hero{position:relative;isolation:isolate;background:var(--color-canvas);min-height:720px;display:grid;place-items:center;padding:120px 24px 80px;max-width:1600px;margin:0 auto}
+.heroImage{z-index:-1;object-fit:contain;object-position:center 80%;mix-blend-mode:multiply;pointer-events:none}
+:global(.dark-mode) .heroImage{filter:invert(1);mix-blend-mode:screen}
+.heroInner{text-align:center;width:100%;position:relative}
+.heroCopy{width:fit-content;max-width:620px;margin:auto;padding:24px;background:transparent;color:var(--color-text)}
+.heroCopy h1{font-size:clamp(32px,3.8vw,54px);line-height:1.5;letter-spacing:-.05em;margin:0 0 30px;font-weight:600}
+.hero .primaryAction{min-height:58px;min-width:0;font-size:18px;padding:15px 24px}
+.hero .textAction{margin:18px auto 0;color:var(--color-muted);font-size:15px}
+.featureGrid{grid-template-columns:1fr;gap:28px}
+.feature{display:grid;grid-template-columns:minmax(0,1.8fr) minmax(220px,1fr);gap:36px;align-items:center;padding:24px}
+.featureMedia{height:auto;aspect-ratio:1280/820;margin:0;mask-image:none}
+.featureCopy{padding:16px}
+.previewLabel{display:block;margin-top:20px;font-size:12px;color:var(--color-muted)}
+.roadmapVisual{grid-template-columns:.8fr 1.5fr;max-height:none;min-height:0;padding:32px;align-items:center}
+.roadmapVisual>div:nth-child(3){display:none}
+@media(max-width:760px){.hero{min-height:540px;padding:110px 20px 170px;align-items:start}.heroImage{object-position:center bottom}.heroCopy{padding:0;background:transparent}.heroCopy h1{font-size:32px}.hero .primaryAction{font-size:16px}.feature{grid-template-columns:1fr;gap:16px;padding:16px}.featureCopy{padding:0 4px 8px}.featureMedia{height:auto;margin:0}.roadmapVisual{grid-template-columns:1fr;padding:20px}}
