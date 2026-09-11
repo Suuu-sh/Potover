@@ -2,6 +2,7 @@
 
 import {FormEvent,useEffect,useState} from 'react';
 import Link from 'next/link';
+import Image from 'next/image';
 import {useRouter} from 'next/navigation';
 import {Eye,EyeOff,LockKeyhole,Mail} from 'lucide-react';
 import {useAuth} from '@/lib/auth-client';
@@ -34,9 +35,10 @@ export default function LoginPage(){
   }
 
   return <main className={styles.page}>
+    <Image className={styles.illustration} src="/login/poker-learners.png" alt="" fill priority sizes="100vw"/>
     <section className={styles.panel} aria-labelledby="auth-heading">
       <div className={styles.content}>
-        <Link className={styles.brand} href="/">Potover</Link>
+
         <div className={styles.tabs} aria-label="アカウント操作">
           <button aria-pressed={mode==='login'} disabled={submitting} onClick={()=>{setMode('login');setError('')}} type="button">ログイン</button>
           <button aria-pressed={mode==='register'} disabled={submitting} onClick={()=>{setMode('register');setError('')}} type="button">新規登録</button>

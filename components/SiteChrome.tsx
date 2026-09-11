@@ -10,5 +10,5 @@ export function SiteChrome({children}: {children: React.ReactNode}) {
 
   if (pathname === '/') return <>{children}</>;
 
-  return <><SiteHeader/><div className="app-shell">{children}</div><SiteFooter/></>;
+  return <><SiteHeader/><div className="app-shell">{children}</div>{pathname.replace(/\/$/, '') !== '/login' && <SiteFooter/>}</>;
 }
