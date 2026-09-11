@@ -1,5 +1,5 @@
 {
-  "collectedAt": "2026-09-10T07:56:52.044Z",
+  "collectedAt": "2026-09-11T07:52:00.404Z",
   "sources": [
     {
       "slug": "gto-wizard",
@@ -56824,6 +56824,64 @@
         ]
       },
       "sourceModifiedAt": "2026-09-06T08:05:27"
+    },
+    {
+      "source": "Upswing Poker",
+      "sourceSlug": "upswing-poker",
+      "sourceUrl": "https://upswingpoker.com/",
+      "title": "Sneak Peek Inside Destroy Live Cash by Garrett Adelstein",
+      "originalUrl": "https://upswingpoker.com/sneak-peek-destroy-live-cash-course-by-garrett-adelstein/",
+      "author": null,
+      "publishedAt": "Thu, 10 Sep 2026 17:19:07 +0000",
+      "summary": "Most live pros wait for the fish to make a mistake. Garrett Adelstein attacks the whole table. Here’s how he does it. Garrett’s brand new Destroy Live Cash course hands you his entire decision-making process, from GTO baseline to exploits, across 50 of the most strategically significant hands of his career. You’ve probably watched Garrett… The post Sneak Peek Inside Destroy Live Cash by Garrett Adelstein appeared first on Upswing Poker .",
+      "language": "English",
+      "imageUrl": "https://upswingpoker.com/wp-content/uploads/2026/09/garrett-course-preview.jpg",
+      "contentType": "article",
+      "classification": {
+        "difficulty": "intermediate",
+        "tags": [
+          "gto",
+          "exploit",
+          "cash-game"
+        ]
+      }
+    },
+    {
+      "source": "PokerCoaching.com",
+      "sourceSlug": "pokercoaching",
+      "sourceUrl": "https://pokercoaching.com/blog/",
+      "title": "PeakGTO Now Tracks Your Progress and Every Hand Counts",
+      "originalUrl": "https://pokercoaching.com/blog/peakgto-now-tracks-your-progress-and-every-hand-counts/",
+      "author": null,
+      "publishedAt": "2026-09-10T11:48:28",
+      "summary": "Until today, a PeakGTO session ended the moment you closed the tab. You played the hands, you saw the EV loss, and tomorrow you started from a blank screen again. That is fixed. Progress Tracking […]",
+      "language": "English",
+      "imageUrl": "https://pokercoaching.com/blog/wp-content/uploads/2026/09/new-PeakGTO-release.jpg",
+      "contentType": "article",
+      "classification": {
+        "difficulty": "intermediate",
+        "tags": [
+          "gto"
+        ]
+      }
+    },
+    {
+      "source": "GTO Wizard Japan",
+      "sourceSlug": "gto-wizard-japan",
+      "sourceUrl": "https://www.youtube.com/@GTOWizardJapan",
+      "title": "AQoの正しいプレイ",
+      "originalUrl": "https://www.youtube.com/watch?v=bxLeXGPUZ10",
+      "author": "GTO Wizard Japan",
+      "publishedAt": "2026-09-10T13:04:03+00:00",
+      "summary": "AQoの使い方について解説した動画です。 PFで悩ましい3betを受けた時の対応やpostの戦略で意識するpointについて説明がされています。 AQoでover playをせず、慎重にchipを増やすことができるようになるために本動画で学習を進めてください。",
+      "language": "Japanese",
+      "imageUrl": "https://i.ytimg.com/vi/bxLeXGPUZ10/hqdefault.jpg",
+      "contentType": "video",
+      "durationSeconds": null,
+      "classification": {
+        "difficulty": "intermediate",
+        "tags": []
+      }
     }
   ]
 }
