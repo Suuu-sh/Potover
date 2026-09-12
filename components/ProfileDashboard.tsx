@@ -40,14 +40,6 @@ export function ProfileDashboard(){
 
   if(loading||!user)return <main className="profile-auth-loading">読み込み中…</main>;
   return <div className="profile-dashboard profile-simple-dashboard">
-    <header className="profile-dashboard-header">
-      <div>
-        <p className="profile-eyebrow">MY PROFILE</p>
-        <h1>学習のペースを整える</h1>
-        <p>読んだ記事と今週の進み具合を、ここでまとめて確認できます。</p>
-      </div>
-      <div className="profile-header-status"><span><Check size={14}/>学習を記録中</span><small>{stats.total?`これまでに${stats.total}記事を学習`:'最初の1記事からスタート'}</small></div>
-    </header>
     <div className="profile-dashboard-grid">
       <aside className="profile-settings-sidebar" aria-label="プロフィール設定">
         <div className="profile-settings-label">アカウント</div>
