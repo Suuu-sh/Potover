@@ -4,7 +4,7 @@ final result: passed
 
 User supersedes real screenshots with the established editorial characters.
 
-Latest spacing pass: desktop hero height and image alignment were tightened to remove excess space below the characters while preserving the header breathing room.
+Latest spacing pass: the hero uses a responsive `clamp(400px, calc(33.333vw + 40px), 620px)` height with tighter intermediate-width padding, removing excess space below the characters while preserving enough header breathing room. Mobile keeps a 540px editorial composition with the characters anchored to the lower edge.
 - Removed all app captures and preview component/styles.
 - Added three matching scenes for searching books, learning together and bookmarking a book. Used in feature stories and roadmap explanation.
 - Existing hero, navigation, functional routes and Kiro themes retained.
