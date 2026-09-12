@@ -1,5 +1,0 @@
-.window{width:100%;overflow:hidden;border:1px solid var(--color-border);border-radius:10px;background:var(--color-canvas)}
-.window img{display:block;width:100%;height:auto;object-fit:contain}
-.window .dark{display:none}
-:global(.dark-mode) .window .light{display:none}
-:global(.dark-mode) .window .dark{display:block}

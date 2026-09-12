@@ -1,5 +1,5 @@
 import Image from 'next/image';
-import {ServicePreview} from './ServicePreview';
+import {ServiceCharacter} from './ServiceCharacter';
 import Link from 'next/link';
 import {ArrowRight, ArrowUpRight, Bookmark, BookOpen, ChevronDown, Search} from 'lucide-react';
 import {roadmapSummaries} from '@/lib/roadmap-summary';
@@ -57,8 +57,8 @@ export function ServiceLanding() {
           <h2 data-reveal id="features-title">探す。学ぶ。残す。</h2>
           <div className={styles.featureGrid}>
             {features.map((feature, index) => <Link data-reveal data-reveal-delay={index * 90} className={styles.feature} href={feature.href} key={feature.title}>
-              <div className={styles.featureMedia}><ServicePreview kind={index === 0 ? 'search' : index === 1 ? 'roadmap' : 'saved'}/></div>
-              <div className={styles.featureCopy}><h3>{feature.title}<ArrowUpRight size={18} aria-hidden="true"/></h3><p>{feature.body}</p><span className={styles.previewLabel}>実際のアプリ画面</span></div>
+              <div className={styles.featureMedia}><ServiceCharacter scene={index === 0 ? 'search' : index === 1 ? 'roadmap' : 'saved'}/></div>
+              <div className={styles.featureCopy}><h3>{feature.title}<ArrowUpRight size={18} aria-hidden="true"/></h3><p>{feature.body}</p><span className={styles.featureAction}>もっと見る <ArrowRight size={16} aria-hidden="true"/></span></div>
             </Link>)}
           </div>
         </section>
@@ -79,7 +79,7 @@ export function ServiceLanding() {
 
         <section className={styles.roadmaps} aria-labelledby="roadmaps-title">
           <div data-reveal className={styles.roadmapHeading}><p className={styles.eyebrow}>FIND YOUR PATH</p><h2 id="roadmaps-title">あなたの現在地から。</h2><p>基礎を知りたい人も、戦略を深めたい人も。</p></div>
-          <div data-reveal className={styles.roadmapVisual}><div><p className={styles.eyebrow}>LEARNING LIBRARY</p><h3>学ぶ順番が、見えてくる。</h3><p>テーマを探して、自分に合ったコースへ。</p></div><ServicePreview kind="roadmap"/><ServicePreview kind="search"/></div>
+          <div data-reveal className={styles.roadmapVisual}><div><p className={styles.eyebrow}>LEARNING LIBRARY</p><h3>学ぶ順番が、見えてくる。</h3><p>テーマを探して、自分に合ったコースへ。</p></div><ServiceCharacter scene="roadmap"/></div>
           <div className={styles.roadmapGrid}>{roadmapSummaries.map((course, index) => <Link data-reveal data-reveal-delay={index * 90} className={styles.course} href={`/roadmap#${course.id}`} key={course.id}>
             <span className={styles.courseNumber}>0{index + 1}</span><h3>{course.title}</h3><p>{course.description}</p><span className={styles.courseAction}>コースを見る<ArrowUpRight size={22} aria-hidden="true"/></span>
           </Link>)}</div>

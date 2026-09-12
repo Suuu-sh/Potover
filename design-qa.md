@@ -1,15 +1,16 @@
-# Service landing — shared character identity and real app previews
+# Service landing — character-led revision
 
 final result: passed
 
-Scope: remove violet glass-card hero; reuse user-approved login characters; replace fictitious app previews with captures from actual public app UI.
+User supersedes real screenshots with the established editorial characters.
+- Removed all app captures and preview component/styles.
+- Added three matching scenes for searching books, learning together and bookmarking a book. Used in feature stories and roadmap explanation.
+- Existing hero, navigation, functional routes and Kiro themes retained.
+- Desktop dark 1440×900 and mobile light 390×844 checked in-app: readable text and links, full character scenes, no horizontal overflow. DOM has no screenshot assets and four character scene instances.
+- TypeScript and 16 tests passed. No remaining scoped P0/P1/P2 findings.
 
-- Hero uses the same poker learner artwork as login, with neutral theme-aware blending. The hero image vertical position was raised from 80% to 42% so the header is followed by a short, intentional breathing space rather than a large blank band. Rechecked at a 2048×1203 desktop viewport.
-- Real UI captured from /docs, /roadmap and /bookmarks at 1280×820 in both themes. Logged-out state; bookmarks empty, no personal saved content. Static captures, not live embeds. Existing feature links open the corresponding live app routes.
-- Larger two-column feature cards make the real UI legible. Mobile stacks preview and description.
-- Desktop 1440×900 and 2048×1203 hero checked; mobile 390×844 has no horizontal overflow or overlapping copy. Mobile whitespace is intentionally tighter and artwork remains anchored below the headline.
-- Typography/content and Kiro colors retained. Unsupported sample titles and artificial toolbar removed. FAQ corrected to match actual login-required bookmark saving.
-- Old unreferenced violet hero assets removed; no personal screenshots or credentials included.
-- TypeScript and 16 unit tests passed. Reference is a directed revision of the existing landing page, not a pixel clone of the supplied before screenshots.
-
-Asset: public/login/poker-learners.png. Built-in imagegen; black-and-white editorial poker learners with the center kept clear for the headline. App preview assets: public/service/potover-{search,roadmap,saved}-{light,dark}.png.
+Assets generated using built-in imagegen and existing public/login/poker-learners.png reference:
+- public/service/characters/search.png: bun-haired woman at poker bookshelf holding a book.
+- public/service/characters/roadmap.png: glasses male and long-haired female discussing strategy book.
+- public/service/characters/saved.png: seated short-haired male reading and inserting bookmark.
+Prompts require square, complete figures, white background, black editorial lines, no text/UI/color/gradient, same character identities.
