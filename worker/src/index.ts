@@ -1,6 +1,6 @@
 export interface Env { DB: { prepare: (query: string) => any }; BATCH_INGEST_TOKEN?: string; ENVIRONMENT?: string; }
 
-const allowedOrigins=new Set(['https://potover.com','https://www.potover.com','https://potover.pages.dev','http://localhost:3000']);
+const allowedOrigins=new Set(['https://potover.com','https://www.potover.com','https://potover.pages.dev','http://localhost:3000','http://localhost:3001']);
 const corsHeaders=(request:Request)=>{const origin=request.headers.get('origin')||'';return {'Access-Control-Allow-Origin':allowedOrigins.has(origin)?origin:'https://potover.com','Access-Control-Allow-Methods':'GET,POST,OPTIONS','Access-Control-Allow-Headers':'Content-Type,Authorization','Access-Control-Max-Age':'86400','Vary':'Origin'}};
 const json=(request:Request,body:unknown,init:ResponseInit={})=>new Response(JSON.stringify(body),{...init,headers:{'Content-Type':'application/json; charset=utf-8',...corsHeaders(request),...(init.headers||{})}});
 const bytesToHex=(bytes:Uint8Array)=>Array.from(bytes,value=>value.toString(16).padStart(2,'0')).join('');
