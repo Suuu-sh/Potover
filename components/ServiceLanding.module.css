@@ -208,8 +208,8 @@
 }
 
 /* Shared editorial characters from the login screen. */
-.hero{position:relative;isolation:isolate;background:var(--color-canvas);min-height:720px;display:grid;place-items:center;padding:120px 24px 80px;max-width:1600px;margin:0 auto}
-.heroImage{z-index:-1;object-fit:contain;object-position:center 42%;mix-blend-mode:multiply;pointer-events:none}
+.hero{position:relative;isolation:isolate;background:var(--color-canvas);min-height:640px;display:grid;place-items:center;padding:96px 24px 56px;max-width:1600px;margin:0 auto}
+.heroImage{z-index:-1;object-fit:contain;object-position:center 50%;mix-blend-mode:multiply;pointer-events:none}
 :global(.dark-mode) .heroImage{filter:invert(1);mix-blend-mode:screen}
 .heroInner{text-align:center;width:100%;position:relative}
 .heroCopy{width:fit-content;max-width:620px;margin:auto;padding:24px;background:transparent;color:var(--color-text)}

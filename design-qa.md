@@ -3,6 +3,8 @@
 final result: passed
 
 User supersedes real screenshots with the established editorial characters.
+
+Latest spacing pass: desktop hero height and image alignment were tightened to remove excess space below the characters while preserving the header breathing room.
 - Removed all app captures and preview component/styles.
 - Added three matching scenes for searching books, learning together and bookmarking a book. Used in feature stories and roadmap explanation.
 - Existing hero, navigation, functional routes and Kiro themes retained.
