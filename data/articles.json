@@ -1,5 +1,5 @@
 {
-  "collectedAt": "2026-09-11T07:52:00.404Z",
+  "collectedAt": "2026-09-12T07:45:01.435Z",
   "sources": [
     {
       "slug": "gto-wizard",
@@ -56881,6 +56881,42 @@
       "classification": {
         "difficulty": "intermediate",
         "tags": []
+      }
+    },
+    {
+      "source": "Upswing Poker",
+      "sourceSlug": "upswing-poker",
+      "sourceUrl": "https://upswingpoker.com/",
+      "title": "Garrett Adelstein’s 5 Live Poker Tips To Boost Your Win Rate",
+      "originalUrl": "https://upswingpoker.com/live-poker-tips-from-garrett-adelstein/",
+      "author": null,
+      "publishedAt": "Fri, 11 Sep 2026 17:55:38 +0000",
+      "summary": "Do you play live poker? Then this one’s for you. Garrett Adelstein is the most feared livestream player of all time. He started at the lowest stakes online and worked his way up to $1,000/$2,000 games in Los Angeles. Along the way, he became one of the biggest winners in live poker history. (He just… The post Garrett Adelstein’s 5 Live Poker Tips To Boost Your Win Rate appeared first on Upswing Poker .",
+      "language": "English",
+      "imageUrl": "https://upswingpoker.com/wp-content/uploads/2026/09/Garrett-LIVE-CASH-TIPS-1200x800-upswing-v2.jpg",
+      "contentType": "article",
+      "classification": {
+        "difficulty": "intermediate",
+        "tags": []
+      }
+    },
+    {
+      "source": "PokerCoaching.com",
+      "sourceSlug": "pokercoaching",
+      "sourceUrl": "https://pokercoaching.com/blog/",
+      "title": "Short Stacked Two Pair: Q4s BB vs BTN at 20bb MTT",
+      "originalUrl": "https://pokercoaching.com/blog/short-stacked-two-pair-q4s-bb-vs-btn-20bb-mtt/",
+      "author": null,
+      "publishedAt": "2026-09-11T11:00:00",
+      "summary": "There is a popular myth that short stack poker is just bingo: make a hand, get the money in, and hope. It is a tempting simplification at 20bb, but it leaves a lot of value […]",
+      "language": "English",
+      "imageUrl": "https://pokercoaching.com/blog/wp-content/uploads/2026/09/Short-Stacked-Two-Pair-Q4s-BB-vs-BTN-at-20bb-MTT.jpg",
+      "contentType": "article",
+      "classification": {
+        "difficulty": "intermediate",
+        "tags": [
+          "mtt"
+        ]
       }
     }
   ]
