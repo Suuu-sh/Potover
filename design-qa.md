@@ -4,7 +4,7 @@ final result: passed
 
 User supersedes real screenshots with the established editorial characters.
 
-Latest spacing pass: the hero uses a responsive `clamp(400px, calc(33.333vw + 40px), 620px)` height with tighter intermediate-width padding, removing excess space below the characters while preserving enough header breathing room. Mobile keeps a 540px editorial composition with the characters anchored to the lower edge.
+Latest spacing pass: the hero uses a responsive `clamp(400px, calc(33.333vw + 40px), 620px)` height with tighter intermediate-width padding and a lower image anchor, removing excess space below the characters and keeping them clear of the fixed header. Mobile keeps a 540px editorial composition with the characters anchored to the lower edge and the copy below the header.
 - Removed all app captures and preview component/styles.
 - Added three matching scenes for searching books, learning together and bookmarking a book. Used in feature stories and roadmap explanation.
 - Existing hero, navigation, functional routes and Kiro themes retained.
