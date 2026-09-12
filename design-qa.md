@@ -4,10 +4,12 @@ final result: passed
 
 Scope: remove violet glass-card hero; reuse user-approved login characters; replace fictitious app previews with captures from actual public app UI.
 
-- Hero uses the same poker learner artwork as login, with neutral theme-aware blending. Initial black backdrop in dark theme fixed by giving the isolated hero its canvas background; recaptured successfully.
+- Hero uses the same poker learner artwork as login, with neutral theme-aware blending. The hero image vertical position was raised from 80% to 42% so the header is followed by a short, intentional breathing space rather than a large blank band. Rechecked at a 2048×1203 desktop viewport.
 - Real UI captured from /docs, /roadmap and /bookmarks at 1280×820 in both themes. Logged-out state; bookmarks empty, no personal saved content. Static captures, not live embeds. Existing feature links open the corresponding live app routes.
 - Larger two-column feature cards make the real UI legible. Mobile stacks preview and description.
-- Desktop 1440×900 hero and feature section visually checked; mobile 390×844 has no horizontal overflow or overlapping copy. Mobile whitespace tightened after review.
+- Desktop 1440×900 and 2048×1203 hero checked; mobile 390×844 has no horizontal overflow or overlapping copy. Mobile whitespace is intentionally tighter and artwork remains anchored below the headline.
 - Typography/content and Kiro colors retained. Unsupported sample titles and artificial toolbar removed. FAQ corrected to match actual login-required bookmark saving.
-- Old unreferenced hero assets removed; no personal screenshots or credentials included.
+- Old unreferenced violet hero assets removed; no personal screenshots or credentials included.
 - TypeScript and 16 unit tests passed. Reference is a directed revision of the existing landing page, not a pixel clone of the supplied before screenshots.
+
+Asset: public/login/poker-learners.png. Built-in imagegen; black-and-white editorial poker learners with the center kept clear for the headline. App preview assets: public/service/potover-{search,roadmap,saved}-{light,dark}.png.
