@@ -1,5 +1,5 @@
 {
-  "collectedAt": "2026-09-12T07:45:01.435Z",
+  "collectedAt": "2026-09-13T08:04:08.127Z",
   "sources": [
     {
       "slug": "gto-wizard",
@@ -56032,7 +56032,7 @@
       "language": "English",
       "imageUrl": "https://i.ytimg.com/vi/9_BjQ-xMFrk/hqdefault.jpg",
       "contentType": "video",
-      "durationSeconds": 23,
+      "durationSeconds": null,
       "classification": {
         "difficulty": "intermediate",
         "tags": []
@@ -56223,7 +56223,7 @@
       "language": "Japanese",
       "imageUrl": "https://i.ytimg.com/vi/PkIcmLym2w8/hqdefault.jpg",
       "contentType": "video",
-      "durationSeconds": 742,
+      "durationSeconds": null,
       "classification": {
         "difficulty": "intermediate",
         "tags": [
