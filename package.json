@@ -16,7 +16,10 @@
     "deploy:worker": "wrangler deploy --config worker/wrangler.jsonc",
     "deploy:pages": "wrangler pages deploy out --project-name potover",
     "theme:generate": "node scripts/generate-theme.mjs",
-    "theme:check": "node scripts/generate-theme.mjs --check"
+    "theme:check": "node scripts/generate-theme.mjs --check",
+    "dev:local": "NEXT_PUBLIC_POTOVER_API_URL=http://127.0.0.1:8787 next dev --hostname 127.0.0.1 --port 3001",
+    "dev:api": "wrangler dev --local --config worker/wrangler.local.jsonc",
+    "db:local": "wrangler d1 migrations apply potover-local --local --config worker/wrangler.local.jsonc"
   },
   "dependencies": {
     "next": "14.2.15",

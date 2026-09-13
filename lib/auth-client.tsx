@@ -1,5 +1,7 @@
 'use client';
 
+import {authRequest} from './auth-request';
+
 import {createContext,useCallback,useContext,useEffect,useMemo,useState} from 'react';
 
 type User={id:string;email:string};
@@ -11,10 +13,7 @@ const AuthContext=createContext<AuthContextValue|null>(null);
 
 async function request<T>(path:string,options:RequestInit={}){
   const token=typeof window==='undefined'?null:localStorage.getItem(TOKEN_KEY);
-  const response=await fetch(`${API_URL}${path}`,{...options,headers:{'Content-Type':'application/json',...(token?{Authorization:`Bearer ${token}`}:{ }),...options.headers}});
-  const body=await response.json() as T&{error?:string};
-  if(!response.ok)throw new Error(body.error||'処理に失敗しました。');
-  return body;
+  return authRequest<T>(`${API_URL}${path}`,{...options,headers:{'Content-Type':'application/json',...(token?{Authorization:`Bearer ${token}`}:{ }),...options.headers}});
 }
 
 export function AuthProvider({children}:{children:React.ReactNode}){
