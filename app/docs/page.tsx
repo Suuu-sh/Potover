@@ -1,9 +1,10 @@
 'use client';
 
-import {useEffect,useMemo,useState} from 'react';
+import {Fragment,useEffect,useMemo,useState} from 'react';
 import {BookOpen,Check,ChevronLeft,ChevronRight,Circle,RotateCcw,Search,SlidersHorizontal,X} from 'lucide-react';
 
 import {ArticleFeedRow} from '@/components/ArticleFeedRow';
+import {NativeAdCard} from '@/components/NativeAdCard';
 import {contentLabel} from '@/lib/content-labels';
 import {articles as initialArticles,Article,sources} from '@/lib/data';
 import {getLearningHistory} from '@/lib/learning-history';
@@ -98,7 +99,7 @@ export default function Docs(){
         <div className="feed-toolbar"><span><strong>{results.length}</strong>件のコンテンツ</span><div className="feed-toolbar-controls"><button type="button" className="feed-filter-button" onClick={()=>setFiltersOpen(true)}><SlidersHorizontal size={14}/>絞り込み{selected.length>0&&<em>{selected.length}</em>}</button></div></div>
         {(query||selected.length>0)&&<div className="active-filter-list" aria-label="選択中の絞り込み">{query&&<button type="button" onClick={()=>{setQuery('');const url=new URL(location.href);url.searchParams.delete('q');url.searchParams.delete('filters');history.replaceState(null,'',url)}} aria-label={`検索「${query}」を解除`}>検索：{query}<X size={14}/></button>}{selected.map(value=><button type="button" key={value} onClick={()=>toggle(value)} aria-label={`${contentLabel(value)}を解除`}>{contentLabel(value)}<X size={14}/></button>)}<button type="button" className="clear-filters" onClick={reset}>すべて解除</button></div>}
         {results.length===0?<div className="docs-empty"><BookOpen size={31}/><h2>条件に合うコンテンツがありません</h2><p>別のキーワードまたは条件を試してください。</p><button onClick={reset}>条件をリセット</button></div>:
-        <><div className="docs-feed-list">{visibleResults.map(article=><ArticleFeedRow article={article} compactActions onTagClick={toggle} key={article.slug}/>)}</div><nav className="docs-pagination" aria-label="記事一覧のページ"><button type="button" onClick={()=>movePage(page-1)} disabled={page===1}><ChevronLeft size={16}/>前へ</button><span><strong>{page}</strong> / {pageCount}</span><button type="button" onClick={()=>movePage(page+1)} disabled={page===pageCount}>次へ<ChevronRight size={16}/></button></nav></>}
+        <><div className="docs-feed-list">{visibleResults.map((article,index)=><Fragment key={article.slug}>{index===6&&<NativeAdCard placement="feed"/>}<ArticleFeedRow article={article} compactActions onTagClick={toggle}/></Fragment>)}</div><nav className="docs-pagination" aria-label="記事一覧のページ"><button type="button" onClick={()=>movePage(page-1)} disabled={page===1}><ChevronLeft size={16}/>前へ</button><span><strong>{page}</strong> / {pageCount}</span><button type="button" onClick={()=>movePage(page+1)} disabled={page===pageCount}>次へ<ChevronRight size={16}/></button></nav></>}
       </section>
     </div>
 
