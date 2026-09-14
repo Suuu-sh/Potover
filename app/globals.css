@@ -501,6 +501,8 @@ h1,h2,h3,h4,h5,h6,.brand-wordmark{font-family:var(--potover-font-display)!import
 .article-detail-page .detail-footer{display:flex;align-items:center;justify-content:space-between;gap:14px;margin-top:14px;padding-top:13px;border-top:1px solid var(--color-border)}
 .article-detail-page .detail-tags{min-width:0;margin:0;gap:6px}
 .article-detail-page .detailbox .cta{flex:none;margin:0;padding:9px 15px}
+.article-detail-page .detail>.native-ad-card-feed{flex:none;margin-top:16px;margin-bottom:0}
+.article-modal-body>.native-ad-card-feed{margin-top:24px;margin-bottom:8px}
 .dark-mode .article-detail-page .detail-outline li{border-color:var(--color-border)!important;background:var(--color-surface)}
 .dark-mode .article-detail-page .detail-footer{border-color:var(--color-border)}
 @media(max-width:600px){

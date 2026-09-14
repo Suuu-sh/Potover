@@ -1,6 +1,7 @@
 import {articles} from '@/lib/data';
 import {notFound} from 'next/navigation';
 import {LearningLink} from '@/components/LearningLink';
+import {NativeAdCard} from '@/components/NativeAdCard';
 
 export function generateStaticParams(){return articles.map(({slug})=>({slug}));}
 export default function Article({params}:{params:{slug:string}}){
@@ -19,5 +20,6 @@ export default function Article({params}:{params:{slug:string}}){
       </section>
       <div className="detail-footer"><div className="detail-tags">{a.tags.map(t=><span className="tag" key={t}>{t}</span>)}</div><LearningLink className="cta" slug={a.slug} href={a.url}>{a.contentType==='video'?'YouTubeで見る':'元記事を読む'} ↗</LearningLink></div>
     </div>
+    <NativeAdCard placement="feed"/>
   </article></main>
 }
