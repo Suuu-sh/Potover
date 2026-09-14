@@ -5,9 +5,9 @@ import {Menu,X} from 'lucide-react';
 import {usePathname} from 'next/navigation';
 import {useEffect,useRef,useState} from 'react';
 
-type Props={accountHref:string;accountLabel:string;showRoadmap:boolean};
+type Props={accountHref:string;accountLabel:string;showRoadmap:boolean;roadmapHref?:string};
 
-export function MobileNavigation({accountHref,accountLabel,showRoadmap}:Props){
+export function MobileNavigation({accountHref,accountLabel,showRoadmap,roadmapHref='/roadmap'}:Props){
   const pathname=usePathname();
   const [open,setOpen]=useState(false);
   const root=useRef<HTMLDivElement>(null);
@@ -20,7 +20,7 @@ export function MobileNavigation({accountHref,accountLabel,showRoadmap}:Props){
     document.addEventListener('keydown',escape);
     return()=>{document.removeEventListener('pointerdown',outside);document.removeEventListener('keydown',escape)};
   },[open]);
-  const links=[['/','ホーム'],['/docs','探す'],...(showRoadmap?[['/roadmap','ロードマップ'] as const]:[]),['/bookmarks','ブックマーク'],[accountHref,accountLabel]];
+  const links=[['/','ホーム'],['/docs','探す'],...(showRoadmap?[[roadmapHref,'ロードマップ'] as const]:[]),['/bookmarks','ブックマーク'],[accountHref,accountLabel]];
   return <div className="mobile-navigation" ref={root}>
     <button className="mobile-navigation-toggle" ref={trigger} type="button" aria-label={open?'メニューを閉じる':'メニューを開く'} aria-expanded={open} aria-controls="mobile-navigation-links" onClick={()=>setOpen(value=>!value)}>{open?<X size={20}/>:<Menu size={20}/>}</button>
     {open&&<div id="mobile-navigation-links" className="mobile-navigation-links" role="navigation" aria-label="モバイルナビゲーション">{links.map(([href,label])=><Link key={href} href={href} aria-current={pathname===href||pathname.startsWith(`${href}/`)?'page':undefined} onClick={()=>setOpen(false)}>{label}</Link>)}</div>}
