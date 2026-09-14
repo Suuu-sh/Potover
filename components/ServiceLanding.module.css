@@ -209,14 +209,14 @@
 
 /* Shared editorial characters from the login screen. */
 .hero{position:relative;isolation:isolate;background:var(--color-canvas);min-height:clamp(400px,calc(33.333vw + 40px),620px);display:grid;place-items:center;padding:96px 24px 56px;max-width:1600px;margin:0 auto}
-.heroImage{z-index:-1;object-fit:contain;object-position:center 90%;mix-blend-mode:multiply;pointer-events:none}
+.heroImage{z-index:-1;object-fit:contain;object-position:center 90%;transform:scale(.96);mix-blend-mode:multiply;pointer-events:none}
 :global(.dark-mode) .heroImage{filter:invert(1);mix-blend-mode:screen}
 .heroInner{text-align:center;width:100%;position:relative}
 .heroCopy{width:fit-content;max-width:620px;margin:auto;padding:24px;background:transparent;color:var(--color-text)}
 .heroCopy h1{font-size:clamp(32px,3.8vw,54px);line-height:1.5;letter-spacing:-.05em;margin:0 0 30px;font-weight:600}
 .hero .primaryAction{min-height:58px;min-width:0;font-size:18px;padding:15px 24px}
 .hero .textAction{margin:18px auto 0;color:var(--color-muted);font-size:15px}
-@media(max-width:760px){.hero{min-height:540px;padding:110px 20px 170px;align-items:start}.heroImage{object-position:center bottom}.heroCopy{padding:0;background:transparent}.heroCopy h1{font-size:32px}.hero .primaryAction{font-size:16px}}
+@media(max-width:760px){.hero{min-height:540px;padding:110px 20px 170px;align-items:start}.heroImage{object-position:center bottom;transform:scale(.98)}.heroCopy{padding:0;background:transparent}.heroCopy h1{font-size:32px}.hero .primaryAction{font-size:16px}}
 
 /* Character-led feature stories, not interface previews. */
 .featureGrid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:40px}
