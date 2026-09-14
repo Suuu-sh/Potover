@@ -1572,7 +1572,7 @@ input:-webkit-autofill{-webkit-text-fill-color:var(--color-text);box-shadow:0 0 
 .account-loading{padding:48px;color:var(--color-muted)}
 @media(max-width:760px){
  .account-page{padding:16px}
- .account-layout{grid-template-columns:1fr;gap:16px;min-height:calc(100dvh - 96px)}
+ .account-layout{grid-template-columns:1fr;gap:16px;min-height:0;align-content:start}
  .account-nav{flex-direction:row;gap:6px;padding:8px;align-self:start}
  .account-nav button{flex:1;min-height:62px;gap:6px;font-size:10px}
  .account-nav button svg{width:20px;height:20px}
