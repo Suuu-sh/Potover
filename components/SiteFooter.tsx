@@ -17,7 +17,7 @@ export function SiteFooter(){
   const pathname=usePathname();
   const {user}=useAuth();
   if(pathname === '/login' || pathname.startsWith('/login/')) return null;
-  const visibleLearningNavigation=user?learningNavigation:[learningNavigation[1]];
+  const visibleLearningNavigation=[{...learningNavigation[0],href:user?learningNavigation[0].href:`/login?next=${encodeURIComponent('/roadmap')}`},learningNavigation[1]];
   return <footer className={styles.footer}>
     <div className={styles.inner}>
       <div className={styles.top}>
