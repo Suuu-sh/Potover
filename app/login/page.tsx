@@ -13,6 +13,7 @@ export default function LoginPage(){
   const router=useRouter();
   const [returnTo,setReturnTo]=useState('/profile');
   const [bookmarkNotice,setBookmarkNotice]=useState(false);
+  const [sourceNotice,setSourceNotice]=useState(false);
   const [mode,setMode]=useState<'login'|'register'>('login');
   const [email,setEmail]=useState('');
   const [password,setPassword]=useState('');
@@ -25,6 +26,7 @@ export default function LoginPage(){
     const next=params.get('next');
     if(next?.startsWith('/')&&!next.startsWith('//')&&!next.includes('\\'))setReturnTo(next);
     setBookmarkNotice(params.get('reason')==='bookmark');
+    setSourceNotice(params.get('reason')==='source');
   },[]);
 
   async function submit(event:FormEvent){
@@ -45,7 +47,7 @@ export default function LoginPage(){
         </div>
         <header className={styles.heading}>
           <h1 id="auth-heading">{mode==='login'?'おかえりなさい':'アカウントを作成'}</h1>
-          <p>{bookmarkNotice?'ブックマークを使うにはログインが必要です。':mode==='login'?'保存した記事や学習の続きを始めましょう。':'学習履歴やブックマークを保存できます。'}</p>
+          <p>{bookmarkNotice?'ブックマークを使うにはログインが必要です。':sourceNotice?'ソースをフォローするにはログインが必要です。':mode==='login'?'保存した記事や学習の続きを始めましょう。':'学習履歴やブックマークを保存できます。'}</p>
         </header>
         <form className={styles.form} onSubmit={submit} aria-busy={submitting}>
           <label><span>メールアドレス</span><div className={styles.input}><Mail size={20} aria-hidden="true"/><input autoComplete="email" inputMode="email" required type="email" value={email} onChange={event=>setEmail(event.target.value)} placeholder="you@example.com" disabled={submitting}/></div></label>
