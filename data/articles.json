@@ -1,5 +1,5 @@
 {
-  "collectedAt": "2026-09-13T08:04:08.127Z",
+  "collectedAt": "2026-09-14T08:37:35.825Z",
   "sources": [
     {
       "slug": "gto-wizard",
@@ -56032,7 +56032,7 @@
       "language": "English",
       "imageUrl": "https://i.ytimg.com/vi/9_BjQ-xMFrk/hqdefault.jpg",
       "contentType": "video",
-      "durationSeconds": null,
+      "durationSeconds": 23,
       "classification": {
         "difficulty": "intermediate",
         "tags": []
@@ -56223,7 +56223,7 @@
       "language": "Japanese",
       "imageUrl": "https://i.ytimg.com/vi/PkIcmLym2w8/hqdefault.jpg",
       "contentType": "video",
-      "durationSeconds": null,
+      "durationSeconds": 742,
       "classification": {
         "difficulty": "intermediate",
         "tags": [
@@ -56916,6 +56916,26 @@
         "difficulty": "intermediate",
         "tags": [
           "mtt"
+        ]
+      }
+    },
+    {
+      "source": "GTO Wizard Japan",
+      "sourceSlug": "gto-wizard-japan",
+      "sourceUrl": "https://www.youtube.com/@GTOWizardJapan",
+      "title": "Aハイボードでの正しいプレイ",
+      "originalUrl": "https://www.youtube.com/watch?v=wtLpEgol9_4",
+      "author": "GTO Wizard Japan",
+      "publishedAt": "2026-09-13T09:46:21+00:00",
+      "summary": "Ahiボードでの打ち方について解説をした動画です。 flop cbをメインにLPvsBB, EPvsBB,3bpなど様々な場面での戦略を説明しています。 Ahiボードと一括りに行っても状況によってbet sizeやbet頻度がかなり変わるので本動画を通じてAhiボードで悩むことをなくしましょう！",
+      "language": "Japanese",
+      "imageUrl": "https://i.ytimg.com/vi/wtLpEgol9_4/hqdefault.jpg",
+      "contentType": "video",
+      "durationSeconds": null,
+      "classification": {
+        "difficulty": "intermediate",
+        "tags": [
+          "flop"
         ]
       }
     }
