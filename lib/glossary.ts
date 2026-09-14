@@ -197,7 +197,7 @@ export const glossaryTerms: GlossaryTerm[] = [
     term: 'バックドアドロー',
     reading: 'ばっくどあどろー',
     category: 'ポストフロップ',
-    definition: 'ターンとリバーの両方で都合のよいカードが必要なドロー。フロップ時点では完成に3枚必要です。',
+    definition: 'ターンとリバーの両方で都合のよいカードが必要なドロー。フロップ後の2枚のカードで完成を目指します。',
     relatedTags: ['フロップ', 'ドロー'],
     searchQuery: 'backdoor',
   },
