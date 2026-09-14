@@ -31,7 +31,7 @@ All UI values are copied exactly, including Kiro's alpha values; no sampled or i
 
 ## Coverage and exceptions
 
-Learning routes, search, filters, menus, article modal, roadmap/read states, bookmarks, profile, authentication, service landing UI/previews, and footer share the palette. The existing `potover-theme` key and header toggle are retained, defaulting to Light. The landing page follows that saved selection without adding controls.
+Learning routes, search, filters, menus, article modal, roadmap/read states, bookmarks, profile, authentication, service landing UI/previews, and footer share the palette. The header toggle is available to signed-in users and the selected theme is stored in the account preferences on the server, defaulting to Light. The landing page follows that account selection without adding controls.
 
 Article images, vendor logos and existing hero artwork keep their original colors. Text directly over dark artwork uses Kiro Dark foreground and overlay values in both modes (`sourceMode: dark`), not the Light overlay. Semantic errors/success/warnings use Kiro's matching status tokens rather than painting every status purple. Do not recolor artwork with CSS filters.
 

@@ -1,6 +1,6 @@
 'use client';
 
-import {Fragment,useEffect,useMemo,useState} from 'react';
+import {Fragment,useEffect,useMemo,useRef,useState} from 'react';
 import {createPortal} from 'react-dom';
 import {BookOpen,Check,ChevronLeft,ChevronRight,Circle,RotateCcw,Search,SlidersHorizontal,X} from 'lucide-react';
 
@@ -8,7 +8,9 @@ import {ArticleFeedRow} from '@/components/ArticleFeedRow';
 import {AdSenseAd} from '@/components/AdSenseAd';
 import {contentLabel} from '@/lib/content-labels';
 import {articles as initialArticles,Article,sources} from '@/lib/data';
-import {getLearningHistory} from '@/lib/learning-history';
+import {useLearningHistory} from '@/lib/learning-history';
+import {useAuth} from '@/lib/auth-client';
+import {useUserPreferences} from '@/lib/user-preferences';
 import {usePreferredLanguage} from '@/lib/use-preferred-language';
 
 const sourceNames=sources.map(source=>source.name);
@@ -16,7 +18,6 @@ const READ_FILTER='学習済み';
 const CONTENT_FILTERS=['記事','動画'] as const;
 const QUICK_FILTERS=[['Preflop','プリフロップ'],['Flop','フロップ'],['GTO','GTO'],['cash-game','キャッシュ'],['MTT','MTT']] as const;
 const PAGE_SIZE=20;
-const FILTER_STORAGE_KEY='potover-docs-filters';
 const SEARCH_ALIASES:Record<string,string[]>={
   'プリフロップ':['プリフロップ','preflop','pre-flop','pre flop'],
   'ポストフロップ':['ポストフロップ','postflop','post-flop','post flop','flop','turn','river'],
@@ -40,32 +41,39 @@ export default function Docs(){
   const [selected,setSelected]=useState<string[]>([]);
   const [filtersOpen,setFiltersOpen]=useState(false);
   const [page,setPage]=useState(1);
-  const [readSlugs,setReadSlugs]=useState<Set<string>>(new Set());
   const [indexQuery,setIndexQuery]=useState('');
   const [filterDialogQuery,setFilterDialogQuery]=useState('');
   const [filtersHydrated,setFiltersHydrated]=useState(false);
   const [isScrolling,setIsScrolling]=useState(false);
+  const {user,loading:authLoading}=useAuth();
+  const {docsQuery,docsFilters,loading:preferencesLoading,setDocsFilters}=useUserPreferences();
+  const initializedForUser=useRef<string|null|undefined>(undefined);
+  const {events}=useLearningHistory();
+  const readSlugs=useMemo(()=>new Set(events.map(event=>event.slug)),[events]);
   const [preferredLanguage]=usePreferredLanguage();
   useEffect(()=>{
-    let saved:{query?:string;selected?:string[]}={};
-    try{const raw=localStorage.getItem(FILTER_STORAGE_KEY);if(raw)saved=JSON.parse(raw)}catch{}
+    if(authLoading||(user&&preferencesLoading))return;
+    const userKey=user?.id||null;
+    if(initializedForUser.current===userKey)return;
+    initializedForUser.current=userKey;
     const params=new URLSearchParams(location.search);
     const urlQuery=params.get('q');
     const urlFilters=params.get('filters');
-    if(urlQuery!==null)setQuery(urlQuery);else if(typeof saved.query==='string')setQuery(saved.query);
-    if(urlFilters!==null)setSelected(urlFilters?urlFilters.split(',').filter(Boolean):[]);
-    else if(Array.isArray(saved.selected))setSelected(saved.selected);
+    if(urlQuery!==null)setQuery(urlQuery);else setQuery(user?docsQuery:'');
+    if(urlFilters!==null)setSelected(urlFilters?urlFilters.split(',').filter(value=>value&&(![READ_FILTER].includes(value)||Boolean(user))):[]);
+    else setSelected(user?docsFilters:[]);
     setFiltersHydrated(true);
-  },[]);
+  },[authLoading,docsFilters,docsQuery,preferencesLoading,user]);
   useEffect(()=>{
     if(!filtersHydrated)return;
-    try{localStorage.setItem(FILTER_STORAGE_KEY,JSON.stringify({query,selected}))}catch{}
+    let saveTimer:number|undefined;
+    if(user&&!preferencesLoading)saveTimer=window.setTimeout(()=>{void setDocsFilters({query,selected})},300);
     const url=new URL(location.href);
     if(query)url.searchParams.set('q',query);else url.searchParams.delete('q');
     if(selected.length)url.searchParams.set('filters',selected.join(','));else url.searchParams.delete('filters');
     history.replaceState(null,'',url);
-  },[filtersHydrated,query,selected]);
-  useEffect(()=>{const sync=()=>setReadSlugs(new Set(getLearningHistory().map(event=>event.slug)));sync();window.addEventListener('potover-learning-changed',sync);return()=>window.removeEventListener('potover-learning-changed',sync)},[]);
+    return()=>{if(saveTimer!==undefined)window.clearTimeout(saveTimer)};
+  },[filtersHydrated,preferencesLoading,query,selected,setDocsFilters,user]);
   const toggle=(value:string)=>setSelected(old=>old.includes(value)?old.filter(x=>x!==value):[...old,value]);
   const reset=()=>{setSelected([]);setQuery('');setIndexQuery('');setFilterDialogQuery('');const url=new URL(location.href);url.searchParams.delete('q');url.searchParams.delete('filters');history.replaceState(null,'',url)};
   const results=useMemo(()=>{
@@ -88,7 +96,7 @@ export default function Docs(){
   const visibleContentFilters=CONTENT_FILTERS.filter(label=>!normalizedIndexQuery||label.toLowerCase().includes(normalizedIndexQuery));
   const visibleQuickFilters=QUICK_FILTERS.filter(([value,label])=>!normalizedIndexQuery||`${value} ${label}`.toLowerCase().includes(normalizedIndexQuery));
   const normalizedFilterDialogQuery=filterDialogQuery.trim().toLowerCase();
-  const visibleFilterGroups=groups.map(group=>({...group,items:group.items.filter(item=>!normalizedFilterDialogQuery||`${item} ${contentLabel(item)}`.toLowerCase().includes(normalizedFilterDialogQuery))})).filter(group=>group.items.length>0);
+  const visibleFilterGroups=groups.filter(group=>user||group.title!=='学習状況').map(group=>({...group,items:group.items.filter(item=>!normalizedFilterDialogQuery||`${item} ${contentLabel(item)}`.toLowerCase().includes(normalizedFilterDialogQuery))})).filter(group=>group.items.length>0);
   const selectedContentTypes=selected.filter(value=>CONTENT_FILTERS.includes(value as typeof CONTENT_FILTERS[number]));
   const countArticles=articles.filter(article=>!selectedContentTypes.length||selectedContentTypes.includes(article.contentType==='video'?'動画':'記事'));
   const filterCount=(item:string)=>(CONTENT_FILTERS.includes(item as typeof CONTENT_FILTERS[number])?articles:countArticles).filter(article=>item==='記事'?article.contentType!=='video':item==='動画'?article.contentType==='video':item==='学習済み'?readSlugs.has(article.slug):['Japanese','English'].includes(item)?article.language===item:sourceNames.includes(item)?article.source===item:[...article.tags,article.category].some(value=>value.toLowerCase().includes(item.toLowerCase()))).length;

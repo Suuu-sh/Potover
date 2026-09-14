@@ -33,8 +33,8 @@ export function AccountSettings(){
       <p className="account-description">{section==='account'?'アカウント情報を確認・管理できます。':section==='language'?'表示するコンテンツの言語を選択できます。':section==='appearance'?'Potoverの表示テーマを選択できます。':'フォローする情報源を管理できます。'}</p>
       {section==='sources'?<div className="account-source-directory"><SourceDirectory compact/></div>:<dl className="account-fields">
         {section==='account'&&<><div className="account-field"><dt>メールアドレス</dt><dd>{user.email}</dd></div><div className="account-field"><dt>セッション</dt><dd><button type="button" className="account-logout" onClick={signOut} disabled={signingOut}>{signingOut?'ログアウト中…':'ログアウト'}</button></dd></div></>}
-        {section==='language'&&<div className="account-field"><dt>コンテンツの表示言語</dt><dd><SelectMenu ariaLabel="コンテンツの表示言語" value={language} onChange={value=>setLanguage(value as PreferredLanguage)} options={[{value:'Japanese',label:'日本語'},{value:'English',label:'English'}]}/><p className="account-hint">変更はこのブラウザに自動保存されます。</p></dd></div>}
-        {section==='appearance'&&<div className="account-field"><dt>テーマ</dt><dd><SelectMenu ariaLabel="表示テーマ" value={dark?'dark':'light'} onChange={value=>setTheme(value as 'light'|'dark')} options={[{value:'light',label:'ライト'},{value:'dark',label:'ダーク'}]}/><p className="account-hint">変更はこのブラウザに自動保存されます。</p></dd></div>}
+        {section==='language'&&<div className="account-field"><dt>コンテンツの表示言語</dt><dd><SelectMenu ariaLabel="コンテンツの表示言語" value={language} onChange={value=>void setLanguage(value as PreferredLanguage)} options={[{value:'Japanese',label:'日本語'},{value:'English',label:'English'}]}/><p className="account-hint">アカウントに保存され、ログインした端末で同期されます。</p></dd></div>}
+        {section==='appearance'&&<div className="account-field"><dt>テーマ</dt><dd><SelectMenu ariaLabel="表示テーマ" value={dark?'dark':'light'} onChange={value=>void setTheme(value as 'light'|'dark')} options={[{value:'light',label:'ライト'},{value:'dark',label:'ダーク'}]}/><p className="account-hint">アカウントに保存され、ログインした端末で同期されます。</p></dd></div>}
       </dl>}
     </section>
   </div>;

@@ -3,13 +3,12 @@
 import Image from 'next/image';
 import {contentLabel} from '@/lib/content-labels';
 import {CalendarDays,Check,Clock3,ExternalLink,Globe2} from 'lucide-react';
-import {useEffect,useState} from 'react';
 
 import {Article} from '@/lib/data';
 import {BookmarkButton} from '@/components/BookmarkButton';
 import {SourceFollowButton} from '@/components/SourceFollowButton';
 import {LearningLink} from '@/components/LearningLink';
-import {getLearningHistory} from '@/lib/learning-history';
+import {useLearningHistory} from '@/lib/learning-history';
 import ArticleLink from '@/components/ArticleLink';
 
 const sourceImages:Record<string,string>={'gto-wizard':'/sources/gto-wizard.png','gto-wizard-japan':'/sources/gto-wizard.png','upswing-poker':'/sources/upswing.png','pokernews':'/sources/pokernews.png','pokercoaching':'/sources/pokercoaching.png'};
@@ -18,8 +17,8 @@ const sourceGlyphs:Record<string,string>={'gto-wizard':'W','upswing-poker':'U','
 type ArticleFeedRowProps={article:Article;onTagClick?:(tag:string)=>void;compactActions?:boolean};
 
 export function ArticleFeedRow({article,onTagClick,compactActions=false}:ArticleFeedRowProps){
-  const [read,setRead]=useState(false);
-  useEffect(()=>{const sync=()=>setRead(getLearningHistory().some(event=>event.slug===article.slug));sync();window.addEventListener('potover-learning-changed',sync);return()=>window.removeEventListener('potover-learning-changed',sync)},[article.slug]);
+  const {hasRead}=useLearningHistory();
+  const read=hasRead(article.slug);
   const actionButtons=<><BookmarkButton slug={article.slug}/><LearningLink slug={article.slug} href={article.url} aria-label={article.contentType==='video'?'YouTubeで見る':'元記事を開く'}><ExternalLink size={20}/></LearningLink></>;
   return <article className="docs-feed-row">
     <ArticleLink slug={article.slug} className="article-cover"><Image src={article.imageUrl||sourceImages[article.sourceSlug]||'/icon.png'} alt="" fill sizes="(max-width: 640px) 100vw, (max-width: 720px) 34vw, 280px"/></ArticleLink>

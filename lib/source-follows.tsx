@@ -3,9 +3,9 @@
 import {createContext,useCallback,useContext,useEffect,useMemo,useState} from 'react';
 import {authRequest} from './auth-request';
 import {useAuth} from './auth-client';
+import {SESSION_TOKEN_KEY} from './user-api';
 
 const API_URL=process.env.NEXT_PUBLIC_POTOVER_API_URL||'https://potover-api.suuu-sh.workers.dev';
-const TOKEN_KEY='potover-session';
 
 type SourceFollowContextValue={
   followedSources:ReadonlySet<string>;
@@ -17,7 +17,7 @@ type SourceFollowContextValue={
 const SourceFollowContext=createContext<SourceFollowContextValue|null>(null);
 
 async function request<T>(options:RequestInit={}){
-  const token=typeof window==='undefined'?null:localStorage.getItem(TOKEN_KEY);
+  const token=typeof window==='undefined'?null:localStorage.getItem(SESSION_TOKEN_KEY);
   return authRequest<T>(`${API_URL}/api/source-follows`,{...options,headers:{'Content-Type':'application/json',...(token?{Authorization:`Bearer ${token}`}:{ }),...options.headers}});
 }
 
