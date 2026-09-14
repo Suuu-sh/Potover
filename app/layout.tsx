@@ -5,7 +5,7 @@ import {adsenseClient} from '@/lib/adsense-config';
 import './theme.css';
 import './globals.css';
 
-export const metadata={title:'Potover — ポーカー記事を、横断検索。',description:'良質なポーカー記事を、テーマ・難易度・言語から横断検索。'};
+export const metadata={title:'Potover — ポーカー記事を、横断検索。',description:'良質なポーカー記事を、テーマ・言語から横断検索。'};
 
 const themeScript=`
   try {

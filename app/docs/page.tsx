@@ -28,7 +28,6 @@ const SEARCH_ALIASES:Record<string,string[]>={
 const groups=[
   {title:'ストリート',items:['Preflop','Flop','Turn','River']},
   {title:'戦略・テーマ',items:['GTO','Bluff','ICM','Exploit','Cash Game','MTT']},
-  {title:'難易度',items:['Beginner','Intermediate','Advanced']},
   {title:'言語',items:['Japanese','English']},
   {title:'種類',items:[...CONTENT_FILTERS]},
   {title:'ソース',items:sourceNames},
@@ -74,13 +73,12 @@ export default function Docs(){
       const text=[article.title,article.summary,article.source,...article.tags,article.category,article.contentType==='video'?'動画 youtube video':'記事 article'].join(' ').toLowerCase();
       const normalizedQuery=query.trim().toLowerCase();
       const queryTerms=SEARCH_ALIASES[normalizedQuery]||[normalizedQuery];
-      const difficulty=selected.filter(x=>['Beginner','Intermediate','Advanced'].includes(x));
       const language=selected.filter(x=>['Japanese','English'].includes(x));
       const sourceFilters=selected.filter(x=>sourceNames.includes(x));
       const contentFilters=selected.filter(x=>CONTENT_FILTERS.includes(x as typeof CONTENT_FILTERS[number]));
       const readOnly=selected.includes(READ_FILTER);
-      const topics=selected.filter(x=>x!==READ_FILTER&&!difficulty.includes(x)&&!language.includes(x)&&!sourceFilters.includes(x)&&!contentFilters.includes(x as typeof CONTENT_FILTERS[number]));
-      return (!normalizedQuery||queryTerms.some(term=>text.includes(term)))&&(!difficulty.length||difficulty.includes(article.difficulty))&&(!language.length||language.includes(article.language))&&(!sourceFilters.length||sourceFilters.includes(article.source))&&(!contentFilters.length||contentFilters.includes(article.contentType==='video'?'動画':'記事'))&&(!readOnly||readSlugs.has(article.slug))&&(!topics.length||topics.some(x=>text.includes(x.toLowerCase())));
+      const topics=selected.filter(x=>x!==READ_FILTER&&!language.includes(x)&&!sourceFilters.includes(x)&&!contentFilters.includes(x as typeof CONTENT_FILTERS[number]));
+      return (!normalizedQuery||queryTerms.some(term=>text.includes(term)))&&(!language.length||language.includes(article.language))&&(!sourceFilters.length||sourceFilters.includes(article.source))&&(!contentFilters.length||contentFilters.includes(article.contentType==='video'?'動画':'記事'))&&(!readOnly||readSlugs.has(article.slug))&&(!topics.length||topics.some(x=>text.includes(x.toLowerCase())));
     });
     return [...filtered].sort((a,b)=>(Number(b.language===preferredLanguage)-Number(a.language===preferredLanguage))||(preferredLanguage==='Japanese'?Number(b.sourceSlug==='gto-wizard-japan')-Number(a.sourceSlug==='gto-wizard-japan'):0));
   },[query,selected,preferredLanguage,readSlugs]);
@@ -93,7 +91,7 @@ export default function Docs(){
   const visibleFilterGroups=groups.map(group=>({...group,items:group.items.filter(item=>!normalizedFilterDialogQuery||`${item} ${contentLabel(item)}`.toLowerCase().includes(normalizedFilterDialogQuery))})).filter(group=>group.items.length>0);
   const selectedContentTypes=selected.filter(value=>CONTENT_FILTERS.includes(value as typeof CONTENT_FILTERS[number]));
   const countArticles=articles.filter(article=>!selectedContentTypes.length||selectedContentTypes.includes(article.contentType==='video'?'動画':'記事'));
-  const filterCount=(item:string)=>(CONTENT_FILTERS.includes(item as typeof CONTENT_FILTERS[number])?articles:countArticles).filter(article=>item==='記事'?article.contentType!=='video':item==='動画'?article.contentType==='video':item==='学習済み'?readSlugs.has(article.slug):['Beginner','Intermediate','Advanced'].includes(item)?article.difficulty===item:['Japanese','English'].includes(item)?article.language===item:sourceNames.includes(item)?article.source===item:[...article.tags,article.category].some(value=>value.toLowerCase().includes(item.toLowerCase()))).length;
+  const filterCount=(item:string)=>(CONTENT_FILTERS.includes(item as typeof CONTENT_FILTERS[number])?articles:countArticles).filter(article=>item==='記事'?article.contentType!=='video':item==='動画'?article.contentType==='video':item==='学習済み'?readSlugs.has(article.slug):['Japanese','English'].includes(item)?article.language===item:sourceNames.includes(item)?article.source===item:[...article.tags,article.category].some(value=>value.toLowerCase().includes(item.toLowerCase()))).length;
   useEffect(()=>{setPage(1)},[query,selected,preferredLanguage]);
   useEffect(()=>{
     const feed=document.querySelector<HTMLElement>('.docs-feed');

@@ -11,7 +11,7 @@ export default function Article({params}:{params:{slug:string}}){
   return <main className="shell page shared-header-page article-detail-page"><article className="detail">
     <div className="source">{a.source}</div>
     <h1>{a.title}</h1>
-    <div className="meta"><span className="pill">{a.difficulty}</span><span className="pill gray">{a.language}</span><span>{a.publishedAt} · {a.contentType==='video'?`${a.minutes}分の動画`:`${a.minutes} min read`}</span></div>
+    <div className="meta"><span className="pill gray">{a.language}</span><span>{a.publishedAt} · {a.contentType==='video'?`${a.minutes}分の動画`:`${a.minutes} min read`}</span></div>
     <div className="detailbox">
       <section className="detail-takeaways" aria-labelledby="article-outline-heading">
         <p className="detail-kicker">{a.contentType==='video'?'IN THIS VIDEO':'IN THIS ARTICLE'}</p>
