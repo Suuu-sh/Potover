@@ -5,11 +5,13 @@ import Link from 'next/link';
 import {ArrowRight, ArrowUpRight} from 'lucide-react';
 import {usePathname} from 'next/navigation';
 import {useAuth} from '@/lib/auth-client';
+import {sources as sourceCatalog} from '@/lib/data';
 import styles from './SiteFooter.module.css';
 
 const siteNavigation=[{href:'/',label:'ホーム'},{href:'/docs',label:'記事・動画を探す'}];
 const learningNavigation=[{href:'/roadmap',label:'学習ロードマップ'},{href:'/bookmarks',label:'ブックマーク'}];
-const sources=[{href:'/docs?q=GTO%20Wizard',label:'GTO Wizard'},{href:'/docs?q=GTO%20Wizard%20Japan',label:'GTO Wizard Japan'}];
+const featuredSourceSlugs=['gto-wizard-japan','gto-wizard','upswing-poker'];
+const featuredSources=featuredSourceSlugs.map(slug=>sourceCatalog.find(source=>source.slug===slug)).filter((source):source is (typeof sourceCatalog)[number]=>Boolean(source));
 
 export function SiteFooter(){
   const pathname=usePathname();
@@ -39,7 +41,8 @@ export function SiteFooter(){
           </nav>
           <nav className={styles.linkGroup} aria-label="情報源ナビゲーション">
             <h2>SOURCES</h2>
-            {sources.map(item=><Link href={item.href} key={item.href}>{item.label}<ArrowUpRight size={13} aria-hidden="true"/></Link>)}
+            {featuredSources.map(source=><Link href={`/docs?q=${encodeURIComponent(source.name)}`} key={source.slug}>{source.name}<ArrowUpRight size={13} aria-hidden="true"/></Link>)}
+            <Link href="/sources">すべての情報源 <ArrowRight size={13} aria-hidden="true"/></Link>
           </nav>
         </div>
       </div>
