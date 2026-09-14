@@ -13,11 +13,13 @@ const themeScript=`
     }
   } catch (_) {}
 `;
+const adsenseClient=process.env.NEXT_PUBLIC_ADSENSE_CLIENT;
 
 export default function Layout({children}:{children:React.ReactNode}){
   return <html lang="ja" suppressHydrationWarning>
     <head>
       <script dangerouslySetInnerHTML={{__html:themeScript}}/>
+      {adsenseClient&&<script async src={`https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=${adsenseClient}`} crossOrigin="anonymous"/>}
     </head>
     <body><AuthProvider><ArticleModalProvider><SiteChrome>{children}</SiteChrome></ArticleModalProvider></AuthProvider></body>
   </html>;

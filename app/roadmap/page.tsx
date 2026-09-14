@@ -10,7 +10,7 @@ import {moduleArticles,roadmaps} from '@/lib/roadmaps';
 import {usePreferredLanguage} from '@/lib/use-preferred-language';
 import {useAuth} from '@/lib/auth-client';
 import ArticleLink from '@/components/ArticleLink';
-import {NativeAdCard} from '@/components/NativeAdCard';
+import {AdSenseAd} from '@/components/AdSenseAd';
 
 export default function RoadmapPage(){
   const {user,loading}=useAuth();
@@ -40,7 +40,7 @@ export default function RoadmapPage(){
           <div className="chapter-rest">{course.modules.filter((_,index)=>index!==activeModule).map((item,index)=><button key={item.title} onClick={()=>setActiveModule(course.modules.indexOf(item))}>{index+2>activeModule?<LockKeyhole/>:<CheckCircle2/>}<strong>第{course.modules.indexOf(item)+1}章　{item.title}</strong><span>{item.articles.length}レッスン</span><ArrowRight/></button>)}</div>
         </div>
       </div>
-      <NativeAdCard placement="feed"/>
+      <AdSenseAd placement="feed"/>
     </section>
   </main>
 }

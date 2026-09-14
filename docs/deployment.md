@@ -19,3 +19,12 @@ Cloudflare Dashboardの Workers & Pages から `potover` を開き、Settings > 
 - `CLOUDFLARE_ACCOUNT_ID`: `648687d1fdb3e6b3e539ebca5c4415a7`
 
 `CLOUDFLARE_API_TOKEN` はファイルやソースコードには保存しません。
+
+## Google AdSense
+
+AdSenseを有効にする場合は、Cloudflare Pagesのビルド環境変数とローカルの`.env.local`に以下を設定します。
+
+- `NEXT_PUBLIC_ADSENSE_CLIENT`: AdSenseのPublisher ID（`ca-pub-...`）
+- `NEXT_PUBLIC_ADSENSE_SLOT`: 表示用広告ユニットのスロットID
+
+サイトをAdSenseに登録して審査を申請し、ステータスが`Ready`になってから配信が始まります。ビルド時にPublisher IDが設定されている場合は、`/ads.txt`も自動生成されます。
