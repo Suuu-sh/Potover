@@ -53,7 +53,7 @@ export default function LoginPage(){
           {error&&<p className={styles.error} role="alert">{error}</p>}
           <button className={styles.submit} disabled={submitting} type="submit">{submitting?'処理中…':mode==='login'?'ログイン':'登録して始める'}</button>
         </form>
-        <Link className={styles.back} href="/home">ホームへ戻る</Link>
+        <Link className={styles.back} href="/">ホームへ戻る</Link>
       </div>
     </section>
   </main>;
