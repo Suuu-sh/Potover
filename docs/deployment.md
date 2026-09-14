@@ -25,6 +25,6 @@ Cloudflare Dashboardの Workers & Pages から `potover` を開き、Settings > 
 AdSenseを有効にする場合は、Cloudflare Pagesのビルド環境変数とローカルの`.env.local`に以下を設定します。
 
 - `NEXT_PUBLIC_ADSENSE_CLIENT`: AdSenseのPublisher ID（`ca-pub-...`）
-- `NEXT_PUBLIC_ADSENSE_SLOT`: 表示用広告ユニットのスロットID
+- `NEXT_PUBLIC_ADSENSE_SLOT`: 表示用広告ユニットのスロットID（任意。空欄の場合はAdSenseのAuto adsを使用）
 
 サイトをAdSenseに登録して審査を申請し、ステータスが`Ready`になってから配信が始まります。ビルド時にPublisher IDが設定されている場合は、`/ads.txt`も自動生成されます。

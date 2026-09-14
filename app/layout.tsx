@@ -1,6 +1,7 @@
 import {SiteChrome} from '@/components/SiteChrome';
 import {AuthProvider} from '@/lib/auth-client';
 import {ArticleModalProvider} from '@/lib/article-modal';
+import {adsenseClient} from '@/lib/adsense-config';
 import './theme.css';
 import './globals.css';
 
@@ -13,8 +14,6 @@ const themeScript=`
     }
   } catch (_) {}
 `;
-const adsenseClient=process.env.NEXT_PUBLIC_ADSENSE_CLIENT;
-
 export default function Layout({children}:{children:React.ReactNode}){
   return <html lang="ja" suppressHydrationWarning>
     <head>
