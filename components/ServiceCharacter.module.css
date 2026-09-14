@@ -1,0 +1,3 @@
+.scene{width:100%;aspect-ratio:1;isolation:isolate;background:var(--color-canvas)}
+.scene img{display:block;width:100%;height:100%;object-fit:contain;mix-blend-mode:multiply}
+:global(.dark-mode) .scene img{filter:invert(1);mix-blend-mode:screen}

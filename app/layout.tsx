@@ -1,6 +1,7 @@
 import {SiteChrome} from '@/components/SiteChrome';
 import {AuthProvider} from '@/lib/auth-client';
 import {ArticleModalProvider} from '@/lib/article-modal';
+import {adsenseClient} from '@/lib/adsense-config';
 import './theme.css';
 import './globals.css';
 
@@ -13,11 +14,11 @@ const themeScript=`
     }
   } catch (_) {}
 `;
-
 export default function Layout({children}:{children:React.ReactNode}){
   return <html lang="ja" suppressHydrationWarning>
     <head>
       <script dangerouslySetInnerHTML={{__html:themeScript}}/>
+      {adsenseClient&&<script async src={`https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=${adsenseClient}`} crossOrigin="anonymous"/>}
     </head>
     <body><AuthProvider><ArticleModalProvider><SiteChrome>{children}</SiteChrome></ArticleModalProvider></AuthProvider></body>
   </html>;

@@ -1,0 +1,8 @@
+{
+  "$schema": "https://developers.cloudflare.com/workers/wrangler/config-schema.json",
+  "name": "potover-api-local",
+  "main": "src/local.ts",
+  "compatibility_date": "2026-08-31",
+  "dev": { "ip": "127.0.0.1", "port": 8787 },
+  "d1_databases": [{ "binding": "DB", "database_name": "potover-local", "database_id": "00000000-0000-0000-0000-000000000001", "migrations_dir": "./migrations" }]
+}

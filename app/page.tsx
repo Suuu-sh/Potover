@@ -1,5 +1,5 @@
-import {ServiceLanding} from '@/components/ServiceLanding';
+import {ModernHome} from '@/components/ModernHome';
 
-export default function ServicePage(){
-  return <ServiceLanding/>;
+export default function HomePage(){
+  return <ModernHome/>;
 }

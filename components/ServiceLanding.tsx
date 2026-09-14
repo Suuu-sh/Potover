@@ -1,5 +1,5 @@
 import Image from 'next/image';
-import {ServicePreview} from './ServicePreview';
+import {ServiceCharacter} from './ServiceCharacter';
 import Link from 'next/link';
 import {ArrowRight, ArrowUpRight, Bookmark, BookOpen, ChevronDown, Search} from 'lucide-react';
 import {roadmapSummaries} from '@/lib/roadmap-summary';
@@ -25,12 +25,12 @@ const sources = [
 const steps = [
   {number: '01', icon: Search, title: '気になるテーマを探す。', body: 'プリフロップ、GTO、MTT。知りたいキーワードから、記事や動画を横断検索。言語や難易度でも絞り込めます。', href: '/docs', action: 'コンテンツを探す'},
   {number: '02', icon: BookOpen, title: '自分に合った順番で学ぶ。', body: '何から始めるか迷ったら、学習ロードマップへ。基礎から実戦的なテーマまで、次の一歩を見つけられます。', href: '/roadmap', action: 'ロードマップを見る'},
-  {number: '03', icon: Bookmark, title: '読みたい記事を、手元に。', body: 'ブックマークを押して、あとで読むリストへ。このブラウザに保存されるので、気になる記事にすぐ戻れます。', href: '/bookmarks', action: '保存した記事を見る'},
+  {number: '03', icon: Bookmark, title: '読みたい記事を、手元に。', body: 'ログインしてブックマークを押すと、あとで読むリストへ。このブラウザに保存されるので、気になる記事にすぐ戻れます。', href: '/bookmarks', action: '保存した記事を見る'},
 ];
 
 const questions = [
   {question: 'Potoverでは何ができますか？', answer: 'ポーカーに関する記事や動画を複数の情報源から横断検索できます。テーマ・難易度・言語などで絞り込み、学習ロードマップから学ぶ順番を見つけたり、気になるコンテンツをブックマークしたりできます。'},
-  {question: 'アカウント登録は必要ですか？', answer: '記事・動画の検索、学習ロードマップの閲覧、ブックマークは登録なしで利用できます。プロフィール画面の利用にはログインが必要です。'},
+  {question: 'アカウント登録は必要ですか？', answer: '記事・動画の検索と学習ロードマップの閲覧は登録なしで利用できます。ブックマークの保存とアカウント画面の利用にはログインが必要です。'},
   {question: '記事や動画はどこで見られますか？', answer: 'Potoverで見出しや概要を確認したあと、情報源の元記事やYouTubeへ移動して閲覧できます。外部サイトの利用条件や料金は、それぞれの提供元に準じます。'},
   {question: '保存した記事は他の端末でも見られますか？', answer: 'ブックマークは利用中のブラウザに保存されます。アカウントや他の端末とは同期されません。ブラウザのデータを削除すると、保存内容も削除されます。'},
   {question: 'GTOソルバーやハンド解析は使えますか？', answer: 'Potoverは、学習コンテンツを探し、学ぶ順番を見つけるためのサービスです。GTOソルバー、ハンド解析、実戦トレーニング機能は提供していません。'},
@@ -43,7 +43,7 @@ export function ServiceLanding() {
       <ScrollReveal>
       <main id="main-content" tabIndex={-1}>
         <section className={styles.hero} aria-labelledby="service-title">
-          <picture><source media="(max-width: 760px)" srcSet="/banners/potover-violet-hero-mobile.jpg"/><img className={styles.heroImage} src="/banners/potover-violet-hero.jpg" alt="青紫の光に浮かぶガラスのカードとポーカーチップ" width={1672} height={941} fetchPriority="high"/></picture>
+          <Image className={styles.heroImage} src="/login/poker-learners.png" alt="" fill priority sizes="100vw"/>
           <div className={styles.heroInner}>
             <div className={styles.heroCopy}>
               <h1 id="service-title">ポーカーの学びを、<br/>ひとつの場所に。</h1>
@@ -57,9 +57,8 @@ export function ServiceLanding() {
           <h2 data-reveal id="features-title">探す。学ぶ。残す。</h2>
           <div className={styles.featureGrid}>
             {features.map((feature, index) => <Link data-reveal data-reveal-delay={index * 90} className={styles.feature} href={feature.href} key={feature.title}>
-              <div className={styles.featureMedia}><ServicePreview kind={index === 0 ? 'search' : index === 1 ? 'roadmap' : 'saved'}/></div>
-              <h3>{feature.title}<ArrowUpRight size={18} aria-hidden="true"/></h3>
-              <p>{feature.body}</p>
+              <div className={styles.featureMedia}><ServiceCharacter scene={index === 0 ? 'search' : index === 1 ? 'roadmap' : 'saved'}/></div>
+              <div className={styles.featureCopy}><h3>{feature.title}<ArrowUpRight size={18} aria-hidden="true"/></h3><p>{feature.body}</p><span className={styles.featureAction}>もっと見る <ArrowRight size={16} aria-hidden="true"/></span></div>
             </Link>)}
           </div>
         </section>
@@ -80,7 +79,7 @@ export function ServiceLanding() {
 
         <section className={styles.roadmaps} aria-labelledby="roadmaps-title">
           <div data-reveal className={styles.roadmapHeading}><p className={styles.eyebrow}>FIND YOUR PATH</p><h2 id="roadmaps-title">あなたの現在地から。</h2><p>基礎を知りたい人も、戦略を深めたい人も。</p></div>
-          <div data-reveal className={styles.roadmapVisual}><div><p className={styles.eyebrow}>LEARNING LIBRARY</p><h3>学ぶ順番が、見えてくる。</h3><p>テーマを探して、自分に合ったコースへ。</p></div><ServicePreview kind="roadmap"/><ServicePreview kind="search"/></div>
+          <div data-reveal className={styles.roadmapVisual}><div><p className={styles.eyebrow}>LEARNING LIBRARY</p><h3>学ぶ順番が、見えてくる。</h3><p>テーマを探して、自分に合ったコースへ。</p></div><ServiceCharacter scene="roadmap"/></div>
           <div className={styles.roadmapGrid}>{roadmapSummaries.map((course, index) => <Link data-reveal data-reveal-delay={index * 90} className={styles.course} href={`/roadmap#${course.id}`} key={course.id}>
             <span className={styles.courseNumber}>0{index + 1}</span><h3>{course.title}</h3><p>{course.description}</p><span className={styles.courseAction}>コースを見る<ArrowUpRight size={22} aria-hidden="true"/></span>
           </Link>)}</div>

@@ -4,19 +4,26 @@ import Image from 'next/image';
 import Link from 'next/link';
 import {ArrowRight,BookOpen,Check,CheckCircle2,Clock3,LockKeyhole} from 'lucide-react';
 import {useEffect,useMemo,useState} from 'react';
+import {useRouter} from 'next/navigation';
 import {getLearningHistory} from '@/lib/learning-history';
 import {moduleArticles,roadmaps} from '@/lib/roadmaps';
 import {usePreferredLanguage} from '@/lib/use-preferred-language';
+import {useAuth} from '@/lib/auth-client';
 import ArticleLink from '@/components/ArticleLink';
+import {AdSenseAd} from '@/components/AdSenseAd';
 
 export default function RoadmapPage(){
+  const {user,loading}=useAuth();
+  const router=useRouter();
   const [language]=usePreferredLanguage();
   const [read,setRead]=useState<Set<string>>(new Set());
   const [activeCourse,setActiveCourse]=useState(0);
   const [activeModule,setActiveModule]=useState(0);
+  useEffect(()=>{if(!loading&&!user)router.replace(`/login?next=${encodeURIComponent('/roadmap')}`)},[loading,user,router]);
   useEffect(()=>{const sync=()=>setRead(new Set(getLearningHistory().map(item=>item.slug)));sync();window.addEventListener('potover-learning-changed',sync);return()=>window.removeEventListener('potover-learning-changed',sync)},[]);
   useEffect(()=>{const syncCourse=()=>{const courseId=window.location.hash.replace(/^#/,'');const index=roadmaps.findIndex(item=>item.id===courseId);if(index>=0){setActiveCourse(index);setActiveModule(0)}};syncCourse();window.addEventListener('hashchange',syncCourse);return()=>window.removeEventListener('hashchange',syncCourse)},[]);
   const courses=useMemo(()=>roadmaps.map(course=>{const modules=course.modules.map(module=>({...module,articles:moduleArticles(module,language,5)}));const slugs=Array.from(new Set(modules.flatMap(module=>module.articles.map(article=>article.slug))));const completed=slugs.filter(slug=>read.has(slug)).length;return {...course,modules,total:slugs.length,completed,progress:slugs.length?Math.round(completed/slugs.length*100):0}}),[language,read]);
+  if(loading||!user)return <main className="curriculum-page"><p role="status">ログインを確認しています…</p></main>;
   const course=courses[activeCourse];
   const module=course.modules[activeModule];
   const nextArticle=module.articles.find(article=>!read.has(article.slug))||module.articles[0];
@@ -33,6 +40,7 @@ export default function RoadmapPage(){
           <div className="chapter-rest">{course.modules.filter((_,index)=>index!==activeModule).map((item,index)=><button key={item.title} onClick={()=>setActiveModule(course.modules.indexOf(item))}>{index+2>activeModule?<LockKeyhole/>:<CheckCircle2/>}<strong>第{course.modules.indexOf(item)+1}章　{item.title}</strong><span>{item.articles.length}レッスン</span><ArrowRight/></button>)}</div>
         </div>
       </div>
+      <AdSenseAd placement="feed"/>
     </section>
   </main>
 }

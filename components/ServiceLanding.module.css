@@ -1,6 +1,6 @@
 /* Layout and component styles. All UI colors resolve through app/theme.css. */
 .page {
-  --header-height: 68px;
+  --header-height: 62px;
   min-height: 100vh;
   background: var(--color-canvas);
   color: var(--color-text);
@@ -17,26 +17,20 @@
 .page p { line-height: 1.9; }
 .page svg { flex-shrink: 0; }
 
-.header { position: fixed; z-index: 40; top: 0; left: 0; right: 0; background: var(--color-surface); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); border-bottom: 1px solid var(--color-border); }
-.headerInner { max-width: 1440px; height: var(--header-height); margin: 0 auto; padding: 0 40px; display: flex; align-items: center; gap: 70px; }
-.brand { display: inline-flex; align-items: center; gap: 9px; flex-shrink: 0; color: var(--color-text); }
-.brand img { object-fit: contain; }
-.brand span { font-size: 30px; font-weight: 800; letter-spacing: -1.5px; line-height: 1; }
-.desktopNav { display: flex; align-items: center; gap: 40px; }
-.desktopNav a { padding: 12px 0; color: var(--color-muted); font-size: 16px; transition: color .15s ease; }
-.desktopNav a:hover { color: var(--color-accent); }
-.openApp { display: inline-flex; align-items: center; justify-content: center; gap: 13px; min-height: 40px; padding: 0 16px; margin-left: auto; border: 1px solid var(--color-border); border-radius: 10px; color: var(--color-text); font-size: 16px; transition: background .15s ease, border-color .15s ease; }
+.header { position: fixed; z-index: 40; top: 0; left: 0; right: 0; height: 62px; padding: 0 20px; box-sizing: border-box; background: transparent; border: 0; backdrop-filter: none; -webkit-backdrop-filter: none; }
+.headerInner { max-width: 1420px; height: 62px; margin: 0 auto; padding: 0 24px; display: flex; align-items: center; gap: 20px; box-sizing: border-box; background: var(--color-chrome); border: 1px solid var(--color-border); border-top: 0; border-radius: 0 0 18px 18px; }
+.brand { display: inline-flex; align-items: center; gap: 8px; flex: 0 0 154px; color: var(--color-text); }
+.brand img { width: 32px; height: 32px; object-fit: contain; }
+.brand span { font-size: 22px; font-weight: 700; letter-spacing: -1.35px; line-height: 1; }
+.desktopNav { display: flex; align-items: center; gap: 2px; }
+.desktopNav a { height: 44px; display: inline-flex; align-items: center; padding: 0 15px; border-radius: 10px; color: var(--color-text); font-size: 13px; transition: color .15s ease, background .15s ease; }
+.desktopNav a:hover { color: var(--color-accent); background: var(--color-hover); }
+.openApp { display: inline-flex; align-items: center; justify-content: center; gap: 8px; min-height: 44px; padding: 0 15px; margin-left: auto; border: 1px solid var(--color-border); border-radius: 10px; color: var(--color-text); font-size: 13px; transition: background .15s ease, border-color .15s ease; }
 .openApp:hover { background: var(--color-hover); border-color: var(--color-accent); }
 .menuButton { display: none; }
 .mobileNav { display: none; }
 .skipLink { position: absolute; left: 24px; top: 16px; z-index: 20; padding: 12px 20px; background: var(--color-accent); color: var(--color-on-button); transform: translateY(-200%); }
 .skipLink:focus { transform: none; }
-
-.hero { position: relative; max-width: 1600px; height: min(760px, 90svh); min-height: 620px; margin: 0 auto; }
-.heroImage { position: absolute; inset: var(--header-height) 0 0; width: 100%; height: calc(100% - var(--header-height)); object-fit: cover; object-position: center; }
-.heroInner { position: relative; max-width: 1440px; height: 100%; margin: 0 auto; padding: 0 72px; display: flex; align-items: center; }
-.heroCopy { padding-top: 80px; padding-bottom: 38px; max-width: 690px; }
-.heroCopy h1 { margin: 0 0 24px; font-size: clamp(46px, 4.6vw, 66px); font-weight: 600; line-height: 1.65; letter-spacing: -.045em; }
 .primaryAction { min-height: 78px; min-width: 340px; width: fit-content; display: inline-flex; align-items: center; justify-content: space-between; gap: 44px; padding: 17px 27px; border-radius: 9px; background: var(--color-button); color: var(--color-on-button); font-size: 24px; font-weight: 700; transition: background .16s ease, transform .16s ease; }
 .primaryAction:hover { background: var(--color-button-hover); transform: translateY(-2px); }
 .primaryAction:active { transform: translateY(0); }
@@ -45,14 +39,6 @@
 
 .features { max-width: 1392px; margin: 0 auto; padding: 58px 48px 70px; border-top: 1px solid var(--color-border); }
 .features h2 { margin: 0 0 34px; }
-.featureGrid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); }
-.featureMedia { position: relative; margin-bottom: 22px; overflow: hidden; }
-.featureMedia img { display: block; width: 100%; height: 100%; object-fit: cover; transition: transform .5s cubic-bezier(.22,1,.36,1); }
-.feature:hover .featureMedia img { transform: scale(1.025); }
-.feature h3 { display: flex; align-items: center; gap: 14px; margin: 0 0 14px; font-weight: 500; }
-.feature h3 svg { opacity: 0; transition: opacity .15s ease, transform .15s ease; }
-.feature:hover h3 svg, .feature:focus-visible h3 svg { opacity: 1; transform: translate(2px, -2px); }
-.feature p { margin: 0; color: var(--color-muted); }
 
 .learning, .roadmaps, .sources, .faq, .closing, .footer { max-width: 1296px; margin: 0 auto; }
 .learning { padding: 64px 0; border-top: 1px solid var(--color-border); display: grid; grid-template-columns: 1fr; gap: 36px; }
@@ -73,8 +59,6 @@
 .roadmaps { padding: 70px 0 100px; border-top: 1px solid var(--color-border); }
 .roadmapHeading h2 { margin: 0 0 14px; }
 .roadmapHeading > p:last-child { margin: 0; color: var(--color-muted); font-size: 16px; }
-.roadmapVisual { position: relative; margin: 44px 0 0; overflow: hidden; border: 1px solid var(--color-border); }
-.roadmapVisual img { display: block; width: 100%; height: 100%; object-fit: cover; object-position: center; }
 
 .roadmapGrid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 0; margin-top: 44px; border-top: 1px solid var(--color-border); border-bottom: 1px solid var(--color-border); }
 .course { display: flex; flex-direction: column; padding: 32px 36px; border-right: 1px solid var(--color-border); transition: background .18s ease; }
@@ -119,13 +103,9 @@
 .footer small { grid-column: 1 / -1; color: var(--color-muted); font-size: 12px; }
 
 @media (min-width: 1601px) {
-  .heroImage { object-fit: contain; }
 }
 @media (max-width: 1439px) {
   .learning, .roadmaps, .sources, .faq, .closing, .footer { margin-right: 5%; margin-left: 5%; }
-  .heroInner { padding-right: 5%; padding-left: 5%; }
-  .heroCopy { max-width: 58%; }
-  .heroCopy h1 { font-size: 4.6vw; }
   .primaryAction { font-size: 21px; min-height: 72px; }
   .features { margin: 0 24px; padding-right: 3.5%; padding-left: 3.5%; }
   .faq { gap: 64px; }
@@ -135,12 +115,8 @@
   .desktopNav { gap: 25px; }
   .desktopNav a, .openApp { font-size: 14px; }
   .brand span { font-size: 26px; }
-  .heroCopy h1 { font-size: 4.5vw; }
   .primaryAction { min-width: 0; gap: 28px; font-size: 18px; min-height: 62px; padding: 15px 22px; }
   .textAction { font-size: 15px; }
-  .featureGrid { gap: 24px; }
-  .feature h3 { font-size: 18px; }
-  .feature p { font-size: 14px; }
   .sectionHeading h2 { font-size: 36px; }
   .faq { gap: 44px; }
   .course { padding: 28px 22px; }
@@ -159,22 +135,9 @@
   .mobileNav { position: absolute; top: calc(var(--header-height) - 2px); left: 20px; right: 20px; display: grid; padding: 10px 20px; background: var(--color-surface); border: 1px solid var(--color-border); border-radius: 12px; }
   .mobileNav a { display: flex; align-items: center; justify-content: space-between; padding: 16px 0; border-bottom: 1px solid var(--color-border); color: var(--color-text); }
   .mobileNav a:last-child { border: 0; }
-  .hero { height: auto; min-height: clamp(510px, 73svh, 570px); padding-top: var(--header-height); isolation: isolate; }
-  .hero::after { content: ""; position: absolute; z-index: -1; inset: var(--header-height) 0 0; background: linear-gradient(180deg, var(--color-surface) 0%, transparent 100%); pointer-events: none; }
-  .heroInner { height: auto; min-height: calc(clamp(510px, 73svh, 570px) - var(--header-height)); align-items: flex-start; padding: 28px 24px 200px; }
-  .heroCopy { max-width: 100%; padding: 0; }
-  .heroCopy h1 { margin-bottom: 20px; font-size: clamp(27px, 6.9vw, 40px); line-height: 1.5; letter-spacing: -.055em; }
-  .hero .primaryAction { font-size: 15px; min-height: 48px; min-width: 0; padding: 12px 18px; gap: 28px; }
-  .hero .primaryAction svg { width: 20px; height: 20px; }
   .textAction { margin-top: 14px; font-size: 14px; }
-  .heroImage { position: absolute; z-index: -2; inset: var(--header-height) 0 0; display: block; width: 100%; height: calc(100% - var(--header-height)); margin: 0; object-fit: cover; object-position: center bottom; }
   .features { margin: 0 24px; padding: 36px 0 44px; }
   .features h2 { margin-bottom: 28px; font-size: 30px; }
-  .featureGrid { grid-template-columns: 1fr; gap: 24px; }
-  .featureMedia { margin-bottom: 16px; }
-  .feature h3 { margin-bottom: 8px; font-size: 18px; justify-content: space-between; }
-  .feature h3 svg { opacity: 1; }
-  .feature p { font-size: 14px; }
   .learning, .roadmaps, .sources, .faq, .closing, .footer { margin-right: 24px; margin-left: 24px; }
   .learning { gap: 24px; padding: 40px 0; }
   .steps { grid-template-columns: 1fr; gap: 20px; }
@@ -187,7 +150,6 @@
   .roadmaps { padding: 52px 0; }
   .roadmapHeading h2 { font-size: 28px; }
   .roadmapHeading > p:last-child { font-size: 14px; }
-  .roadmapVisual { aspect-ratio: 16 / 8; margin-top: 28px; }
 
   .roadmapGrid { grid-template-columns: 1fr; margin-top: 28px; }
   .course, .course:first-child, .course:last-child { padding: 26px 0; border: 0; border-bottom: 1px solid var(--color-border); }
@@ -219,34 +181,57 @@
 @media (prefers-reduced-motion: reduce) {
   .page *, .page *::before, .page *::after { transition: none !important; animation: none !important; }
 }
-.featureGrid { gap:24px; }
-.feature { overflow:hidden; border:1px solid var(--color-border); border-radius:20px; background:var(--color-surface); padding:24px; }
-.featureMedia { aspect-ratio:auto; height:315px; margin:0 -4px 24px; border:0; background:transparent; mask-image:linear-gradient(var(--color-accent) 75%,transparent); }
-.featureMedia > div { transition:transform .5s ease; }
-.feature:hover .featureMedia > div { transform:translateY(-6px); }
-.feature h3 { color:var(--color-text); font-size:24px; }
-.feature p { font-size:14px; }
-.roadmapVisual { aspect-ratio:auto; min-height:380px; display:grid; grid-template-columns:.85fr 1fr 1fr; align-items:start; gap:24px; padding:40px 32px 0; border-radius:20px; background:var(--color-surface); max-height:430px; }
-.roadmapVisual > div:first-child { padding-top:18px; }
-.roadmapVisual h3 { font-size:28px; font-weight:500; line-height:1.6; margin:0 0 16px; }
-.roadmapVisual p { color:var(--color-muted); font-size:14px; }
-.roadmapVisual > div:nth-child(3) { margin-top:60px; }
 @media(max-width:760px) {
- .feature { padding:20px; }
- .featureMedia { height:290px; }
- .roadmapVisual { display:grid; grid-template-columns:1fr; padding:24px 20px 0; max-height:530px; gap:18px; }
- .roadmapVisual > div:nth-child(3) { display:none; }
- .roadmapVisual h3 { font-size:24px; }
 }
-@media(prefers-reduced-motion:reduce) { .featureMedia > div { transition:none; } .feature:hover .featureMedia > div { transform:none; } }
-
-/* Image-backed hero stays legible in either UI theme; artwork is not recolored. */
-.heroCopy{color:var(--color-on-artwork)}
-.heroCopy .textAction{color:var(--color-on-artwork)}
+@media(prefers-reduced-motion:reduce) { }
 .primaryAction{color:var(--color-on-button)}
 .page{background:var(--color-canvas);color:var(--color-text)}
-.header{background:var(--color-chrome)}
+.header{background:transparent}
 .brand{color:var(--color-text)}
 .brand .darkMark{display:none}
 :global(.dark-mode) .brand .lightMark{display:none}
 :global(.dark-mode) .brand .darkMark{display:block}
+
+/* Match the app shell header: inset rounded chrome on every viewport. */
+:global(.dark-mode) .headerInner { background: var(--color-chrome); border-color: var(--color-border); }
+@media (max-width: 760px) {
+  .header { height: 62px; padding: 0 12px; }
+  .headerInner { height: 62px; max-width: none; padding: 0 10px; gap: 12px; border-top: 0; border-radius: 0 0 18px 18px; }
+  .brand { flex: 0 1 auto; min-width: 0; }
+  .brand span { font-size: 22px; }
+  .openApp { min-height: 40px; padding: 0 12px; font-size: 12px; }
+  .menuButton { width: 40px; height: 40px; border-radius: 50%; }
+}
+@media (max-width: 420px) {
+  .headerInner { gap: 8px; }
+  .openApp { display: none; }
+}
+
+/* Shared editorial characters from the login screen. */
+.hero{position:relative;isolation:isolate;background:var(--color-canvas);min-height:clamp(400px,calc(33.333vw + 40px),620px);display:grid;place-items:center;padding:96px 24px 56px;max-width:1600px;margin:0 auto}
+.heroImage{z-index:-1;object-fit:contain;object-position:center 90%;transform:scale(.96);mix-blend-mode:multiply;pointer-events:none}
+:global(.dark-mode) .heroImage{filter:invert(1);mix-blend-mode:screen}
+.heroInner{text-align:center;width:100%;position:relative}
+.heroCopy{width:fit-content;max-width:620px;margin:auto;padding:24px;background:transparent;color:var(--color-text)}
+.heroCopy h1{font-size:clamp(32px,3.8vw,54px);line-height:1.5;letter-spacing:-.05em;margin:0 0 30px;font-weight:600}
+.hero .primaryAction{min-height:58px;min-width:0;font-size:18px;padding:15px 24px}
+.hero .textAction{margin:18px auto 0;color:var(--color-muted);font-size:15px}
+@media(max-width:760px){.hero{min-height:540px;padding:110px 20px 170px;align-items:start}.heroImage{object-position:center bottom;transform:scale(.98)}.heroCopy{padding:0;background:transparent}.heroCopy h1{font-size:32px}.hero .primaryAction{font-size:16px}}
+
+/* Character-led feature stories, not interface previews. */
+.featureGrid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:40px}
+.feature{display:block;min-width:0;background:var(--color-canvas);border-bottom:1px solid var(--color-border-soft);padding-bottom:28px}
+.featureMedia{max-width:340px;margin:0 auto 24px;transition:transform .2s ease}
+.feature:hover .featureMedia{transform:translateY(-5px)}
+.featureCopy{padding:0 8px}
+.feature h3{display:flex;align-items:center;justify-content:space-between;gap:12px;margin:0 0 12px;font-size:24px;font-weight:600}
+.feature p{margin:0;color:var(--color-muted);font-size:15px;line-height:1.9}
+.feature h3 svg{color:var(--color-accent)}
+.featureAction{display:flex;align-items:center;gap:10px;margin-top:22px;font-size:14px;color:var(--color-accent)}
+.roadmapVisual{display:grid;grid-template-columns:1fr 1fr;align-items:center;gap:56px;margin-top:36px;border-top:1px solid var(--color-border-soft);padding:24px 0;background:var(--color-canvas)}
+.roadmapVisual h3{font-size:32px;font-weight:600;line-height:1.6;margin:0 0 16px}
+.roadmapVisual p{color:var(--color-muted);font-size:16px}
+.roadmapVisual>div:last-child{max-width:420px;justify-self:center;width:100%}
+@media(max-width:1000px){.hero{padding:72px 24px 28px}.featureGrid{gap:24px}.feature h3{font-size:20px}.roadmapVisual{gap:28px}}
+@media(max-width:760px){.hero{padding:84px 20px 170px}.featureGrid{grid-template-columns:1fr;gap:36px}.featureMedia{max-width:290px;margin-bottom:14px}.featureCopy{padding:0}.feature h3{font-size:24px}.roadmapVisual{grid-template-columns:1fr;gap:12px}.roadmapVisual h3{font-size:27px}.roadmapVisual>div:last-child{max-width:300px}}
+@media(prefers-reduced-motion:reduce){.featureMedia{transition:none}.feature:hover .featureMedia{transform:none}}

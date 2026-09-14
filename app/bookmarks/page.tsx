@@ -3,13 +3,21 @@
 import Link from 'next/link';
 import {ArrowRight, Bookmark as BookmarkIcon, LockKeyhole} from 'lucide-react';
 import {useEffect, useState} from 'react';
+import {useRouter} from 'next/navigation';
 
 import {articles} from '@/lib/data';
 import {ArticleFeedRow} from '@/components/ArticleFeedRow';
 import {getBookmarks} from '@/components/BookmarkButton';
+import {useAuth} from '@/lib/auth-client';
 
 export default function Bookmarks() {
+  const {user, loading} = useAuth();
+  const router = useRouter();
   const [ids, setIds] = useState<string[]>([]);
+
+  useEffect(() => {
+    if (!loading && !user) router.replace(`/login?next=${encodeURIComponent('/bookmarks')}`);
+  }, [loading, user, router]);
 
   useEffect(() => {
     const sync = () => setIds(getBookmarks());
@@ -19,6 +27,10 @@ export default function Bookmarks() {
   }, []);
 
   const saved = articles.filter(article => ids.includes(article.slug));
+
+  if (loading || !user) {
+    return <main className="library-page bookmarks-page"><div className="library-wrap"><p role="status">ログインを確認しています…</p></div></main>;
+  }
 
   return (
     <main className="library-page bookmarks-page">
