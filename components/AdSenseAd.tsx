@@ -27,6 +27,6 @@ export function AdSenseAd({placement}:AdSenseAdProps){
   },[configured]);
 
   if(!adsenseClient)return <aside className={`adsense-ad adsense-ad-${placement}`} aria-label="広告"><span className="adsense-ad-placeholder">AdSense広告枠（設定待ち）</span></aside>;
-  if(!adsenseSlot)return null;
+  if(!adsenseSlot)return <aside className={`adsense-ad adsense-ad-${placement}`} aria-label="広告"><span className="adsense-ad-placeholder">広告</span></aside>;
   return <aside className={`adsense-ad adsense-ad-${placement}`} aria-label="広告"><ins ref={adRef} className="adsbygoogle" style={{display:'block'}} data-ad-client={adsenseClient} data-ad-slot={adsenseSlot} data-ad-format="auto" data-full-width-responsive="true"/></aside>;
 }
