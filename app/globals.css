@@ -667,7 +667,7 @@ h1,h2,h3,h4,h5,h6,.brand-wordmark{font-family:var(--potover-font-display)!import
 .dark-mode .roadmap-preview-card>span{color:var(--course-color)!important}
 .home-spotlight{padding-bottom:10px!important;border-bottom:0!important}
 .roadmap-preview{padding-top:18px!important}
-@media(min-width:701px){.modern-content{padding-top:40px!important}}
+@media(min-width:701px){.modern-content{padding-top:20px!important}}
 .roadmap-nav{position:relative;display:flex;align-items:center;height:38px}
 .site-header nav .roadmap-nav>button{height:30px!important;display:flex;align-items:center;gap:5px;padding:0 13px;border:0;border-radius:9999px;background:transparent;color:var(--color-text);font-size:12px;font-weight:600;letter-spacing:-.12px;line-height:1;cursor:pointer;transition:background .16s,color .16s}
 @media(min-width:901px){.roadmap-nav{height:100%}.site-header nav .roadmap-nav>button{height:44px!important;padding:0 15px;border-radius:10px;font-size:13px}}
