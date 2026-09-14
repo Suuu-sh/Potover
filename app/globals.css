@@ -1033,7 +1033,7 @@ h1,h2,h3,h4,h5,h6,.brand-wordmark{font-family:var(--potover-font-display)!import
   border-color:var(--color-accent)!important;
   color:var(--color-on-button)!important;
 }
-.roadmap-progress i,.curriculum-progress i,.course-progress-line i,.chapter-progress i,.level-bar span,.weekly-goal-meter>div,.roadmap-guide-icon,.next-lesson-feature svg,.topic-icon,.source-badge,.bookmark-icon,.feed-filter-button svg,.docs-index-search svg{
+.roadmap-progress i,.curriculum-progress i,.course-progress-line i,.level-bar span,.weekly-goal-meter>div,.roadmap-guide-icon,.next-lesson-feature svg,.topic-icon,.modern-topics-list>a>span,.source-badge,.bookmark-icon,.feed-filter-button svg,.docs-index-search svg{
   color:var(--color-accent)!important;
 }
 .roadmap-progress i,.curriculum-progress i,.course-progress-line i,.chapter-progress i,.level-bar span,.weekly-goal-meter>div{
