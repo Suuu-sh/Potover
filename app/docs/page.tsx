@@ -59,9 +59,9 @@ export default function Docs(){
     const params=new URLSearchParams(location.search);
     const urlQuery=params.get('q');
     const urlFilters=params.get('filters');
-    if(urlQuery!==null)setQuery(urlQuery);else if(user&&docsQuery)setQuery(docsQuery);
+    if(urlQuery!==null)setQuery(urlQuery);else setQuery(user?docsQuery:'');
     if(urlFilters!==null)setSelected(urlFilters?urlFilters.split(',').filter(value=>value&&(![READ_FILTER].includes(value)||Boolean(user))):[]);
-    else if(user)setSelected(docsFilters);
+    else setSelected(user?docsFilters:[]);
     setFiltersHydrated(true);
   },[authLoading,docsFilters,docsQuery,preferencesLoading,user]);
   useEffect(()=>{

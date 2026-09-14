@@ -12,9 +12,9 @@ it('does not allow unrelated origins',async()=>{
   const response=await local.fetch(new Request('http://localhost/health',{headers:{Origin:'https://example.com'}}),env);
   expect(response.headers.has('Access-Control-Allow-Origin')).toBe(false);
 });
-it('allows configured local origins in production CORS',async()=>{
+it('leaves production CORS unchanged',async()=>{
   const response=await production.fetch(new Request('https://api.test/health',{headers:{Origin:'http://127.0.0.1:3001'}}),env);
-  expect(response.headers.get('Access-Control-Allow-Origin')).toBe('http://127.0.0.1:3001');
+  expect(response.headers.get('Access-Control-Allow-Origin')).not.toBe('http://127.0.0.1:3001');
 });
 it.each(['/api/bookmarks','/api/learning-history','/api/preferences'])('requires authentication for %s',async pathname=>{
   const response=await production.fetch(new Request(`https://api.test${pathname}`),env);
