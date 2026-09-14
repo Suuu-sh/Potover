@@ -1548,23 +1548,24 @@ input:-webkit-autofill{-webkit-text-fill-color:var(--color-text);box-shadow:0 0 
 /* Profile dashboard: prioritize the next learning action and make progress scannable. */
 
 /* Account settings: a quiet navigation rail and a single settings surface. */
-.account-page{background:var(--color-canvas);color:var(--color-text);min-height:calc(100dvh - 64px);padding:24px}
-.account-layout{display:grid;grid-template-columns:136px minmax(0,1fr);gap:24px;max-width:1600px;min-height:calc(100dvh - 112px);margin:0 auto}
-.account-nav{display:flex;flex-direction:column;gap:16px;background:var(--color-surface);border-radius:16px;padding:18px 10px}
-.account-nav button{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:14px;min-height:110px;border:0;border-radius:10px;background:transparent;color:var(--color-muted);font:inherit;font-size:12px;cursor:pointer}
+.account-page{background:var(--color-canvas);color:var(--color-text);min-height:calc(100dvh - 64px);padding:20px}
+.account-layout{display:grid;grid-template-columns:112px minmax(0,1fr);gap:20px;max-width:1440px;min-height:calc(100dvh - 104px);margin:0 auto}
+.account-nav{display:flex;flex-direction:column;gap:8px;background:var(--color-surface);border-radius:12px;padding:12px 8px}
+.account-nav button{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px;min-height:78px;border:0;border-radius:8px;background:transparent;color:var(--color-muted);font:inherit;font-size:10px;cursor:pointer}
+.account-nav button svg{width:22px;height:22px}
 .account-nav button:hover{background:var(--color-hover)}
 .account-nav button[aria-current]{color:var(--color-accent);background:var(--color-selected)}
-.account-panel{min-width:0;background:var(--color-surface);border-radius:16px;padding:40px 48px}
-.account-panel h1{font-size:40px;line-height:1.2;font-weight:600;letter-spacing:-.8px;margin:0 0 18px}
-.account-description{color:var(--color-muted);font-size:16px;margin:0;line-height:1.7}
-.account-fields{margin:56px 0 0}
-.account-field{display:grid;grid-template-columns:210px minmax(0,1fr);gap:32px;align-items:start;margin-bottom:44px;font-size:17px;line-height:1.6}
-.account-field dt{padding-top:9px}
-.account-field dd{margin:0;padding-top:9px;overflow-wrap:anywhere}
-.account-field .potover-select{width:240px;max-width:100%}
-.account-field .potover-select-trigger{min-height:44px;font-size:15px}
-.account-hint{font-size:13px;line-height:1.7;color:var(--color-muted);margin:12px 0 0}
-.account-logout{padding:10px 28px;border:1px solid var(--color-border);border-radius:8px;background:var(--color-selected);color:var(--color-text);font:inherit;font-size:15px;cursor:pointer}
+.account-panel{min-width:0;background:var(--color-surface);border-radius:12px;padding:32px 40px}
+.account-panel h1{font-size:30px;line-height:1.2;font-weight:600;letter-spacing:-.4px;margin:0 0 10px}
+.account-description{color:var(--color-muted);font-size:13px;margin:0;line-height:1.6}
+.account-fields{margin:38px 0 0}
+.account-field{display:grid;grid-template-columns:180px minmax(0,1fr);gap:24px;align-items:start;margin-bottom:30px;font-size:14px;line-height:1.5}
+.account-field dt{padding-top:7px}
+.account-field dd{margin:0;padding-top:7px;overflow-wrap:anywhere}
+.account-field .potover-select{width:184px;max-width:100%}
+.account-field .potover-select-trigger{min-height:36px;padding:0 10px;font-size:13px}
+.account-hint{font-size:11px;line-height:1.6;color:var(--color-muted);margin:8px 0 0}
+.account-logout{padding:7px 18px;border:1px solid var(--color-border);border-radius:6px;background:var(--color-selected);color:var(--color-text);font:inherit;font-size:12px;cursor:pointer}
 .account-logout:hover{background:var(--color-hover)}
 .account-logout:disabled{opacity:.6;cursor:wait}
 .account-nav button:focus-visible,.account-logout:focus-visible{outline:2px solid var(--color-focus);outline-offset:3px}
@@ -1573,13 +1574,13 @@ input:-webkit-autofill{-webkit-text-fill-color:var(--color-text);box-shadow:0 0 
  .account-page{padding:16px}
  .account-layout{grid-template-columns:1fr;gap:16px;min-height:calc(100dvh - 96px)}
  .account-nav{flex-direction:row;gap:6px;padding:8px;align-self:start}
- .account-nav button{flex:1;min-height:72px;gap:8px;font-size:11px}
- .account-nav button svg{width:23px;height:23px}
- .account-panel{padding:28px 24px;min-height:460px}
- .account-panel h1{font-size:32px}
- .account-description{font-size:14px}
- .account-fields{margin-top:36px}
- .account-field{grid-template-columns:1fr;gap:6px;margin-bottom:32px;font-size:15px}
- .account-field dt{color:var(--color-muted);font-size:13px}
+ .account-nav button{flex:1;min-height:62px;gap:6px;font-size:10px}
+ .account-nav button svg{width:20px;height:20px}
+ .account-panel{padding:24px 20px;min-height:360px}
+ .account-panel h1{font-size:26px}
+ .account-description{font-size:12px}
+ .account-fields{margin-top:30px}
+ .account-field{grid-template-columns:1fr;gap:4px;margin-bottom:24px;font-size:13px}
+ .account-field dt{color:var(--color-muted);font-size:11px}
  .account-field dd{padding-top:0}
 }
