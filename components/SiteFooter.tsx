@@ -2,18 +2,51 @@
 
 import Image from 'next/image';
 import Link from 'next/link';
-import {ArrowUpRight} from 'lucide-react';
+import {ArrowRight, ArrowUpRight} from 'lucide-react';
 import {usePathname} from 'next/navigation';
 import {useAuth} from '@/lib/auth-client';
 import styles from './SiteFooter.module.css';
 
-const navigation=[{href:'/',label:'ホーム'},{href:'/docs',label:'探す'},{href:'/roadmap',label:'ロードマップ'},{href:'/bookmarks',label:'ブックマーク'},{href:'/profile',label:'アカウント'}];
+const siteNavigation=[{href:'/',label:'ホーム'},{href:'/docs',label:'記事・動画を探す'}];
+const learningNavigation=[{href:'/roadmap',label:'学習ロードマップ'},{href:'/bookmarks',label:'ブックマーク'}];
 const sources=[{href:'/docs?q=GTO%20Wizard',label:'GTO Wizard'},{href:'/docs?q=GTO%20Wizard%20Japan',label:'GTO Wizard Japan'}];
 
 export function SiteFooter(){
   const pathname=usePathname();
   const {user}=useAuth();
-  if(pathname.startsWith('/articles/'))return null;
-  const visibleNavigation=navigation.filter(item=>user||item.href!=='/roadmap');
-  return <footer className={styles.footer}><div className={styles.inner}><div className={styles.brandColumn}><Link href="/" className={styles.brand} aria-label="Potover サービスサイト"><span className={styles.brandMark}><Image className={styles.lightMark} src="/brand/potover-mark-light.png" alt="" width={34} height={34}/><Image className={styles.darkMark} src="/brand/potover-mark-dark.png" alt="" width={34} height={34}/></span><span>Potover</span></Link><p>ポーカーの学びを、ひとつの場所に。</p></div><div className={styles.linkGroup}><h2>コンテンツ</h2>{visibleNavigation.map(item=><Link href={item.href} key={item.href}>{item.label}</Link>)}</div><div className={styles.linkGroup}><h2>情報源</h2>{sources.map(item=><Link href={item.href} key={item.href}>{item.label}<ArrowUpRight size={13}/></Link>)}</div></div><div className={styles.bottom}><span>© {new Date().getFullYear()} Potover</span><span>最終更新：2026年9月1日</span></div></footer>;
+  if(pathname === '/login' || pathname.startsWith('/login/')) return null;
+  const visibleLearningNavigation=user?learningNavigation:[learningNavigation[1]];
+  return <footer className={styles.footer}>
+    <div className={styles.inner}>
+      <div className={styles.top}>
+        <div className={styles.brandColumn}>
+          <Link href="/" className={styles.brand} aria-label="Potover ホーム">
+            <span className={styles.brandMark}><Image className={styles.lightMark} src="/brand/potover-mark-light.png" alt="" width={38} height={38}/><Image className={styles.darkMark} src="/brand/potover-mark-dark.png" alt="" width={38} height={38}/></span>
+            <span>Potover</span>
+          </Link>
+          <p className={styles.tagline}>ポーカーの学びを、ひとつの場所に。</p>
+          <p className={styles.description}>記事や動画を探して、次に学ぶテーマを見つけよう。</p>
+          <Link className={styles.cta} href="/docs">記事・動画を探す <ArrowRight size={16} aria-hidden="true"/></Link>
+        </div>
+        <div className={styles.linkColumns}>
+          <nav className={styles.linkGroup} aria-label="サイトナビゲーション">
+            <h2>EXPLORE</h2>
+            {siteNavigation.map(item=><Link href={item.href} key={item.href}>{item.label}</Link>)}
+          </nav>
+          <nav className={styles.linkGroup} aria-label="学習ナビゲーション">
+            <h2>LEARN</h2>
+            {visibleLearningNavigation.map(item=><Link href={item.href} key={item.href}>{item.label}</Link>)}
+          </nav>
+          <nav className={styles.linkGroup} aria-label="情報源ナビゲーション">
+            <h2>SOURCES</h2>
+            {sources.map(item=><Link href={item.href} key={item.href}>{item.label}<ArrowUpRight size={13} aria-hidden="true"/></Link>)}
+          </nav>
+        </div>
+      </div>
+      <div className={styles.bottom}>
+        <span>© {new Date().getFullYear()} Potover</span>
+        <span>最終更新：2026年9月1日</span>
+      </div>
+    </div>
+  </footer>;
 }
