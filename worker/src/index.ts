@@ -1,6 +1,6 @@
 export interface Env { DB: { prepare: (query: string) => any }; BATCH_INGEST_TOKEN?: string; ENVIRONMENT?: string; }
 
-const allowedOrigins=new Set(['https://potover.com','https://www.potover.com','https://potover.pages.dev','http://localhost:3000','http://localhost:3001','http://127.0.0.1:3000','http://127.0.0.1:3001']);
+const allowedOrigins=new Set(['https://potover.com','https://www.potover.com','https://potover.pages.dev','http://localhost:3000','http://localhost:3001']);
 const isAllowedOrigin=(origin:string)=>allowedOrigins.has(origin)||/^https:\/\/[a-z0-9-]+\.potover\.pages\.dev$/.test(origin);
 const corsHeaders=(request:Request)=>{const origin=request.headers.get('origin')||'';return {'Access-Control-Allow-Origin':isAllowedOrigin(origin)?origin:'https://potover.com','Access-Control-Allow-Methods':'GET,POST,OPTIONS','Access-Control-Allow-Headers':'Content-Type,Authorization','Access-Control-Max-Age':'86400','Vary':'Origin'}};
 const json=(request:Request,body:unknown,init:ResponseInit={})=>new Response(JSON.stringify(body),{...init,headers:{'Content-Type':'application/json; charset=utf-8',...corsHeaders(request),...(init.headers||{})}});
