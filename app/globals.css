@@ -533,6 +533,7 @@ h1,h2,h3,h4,h5,h6,.brand-wordmark{font-family:var(--potover-font-display)!import
 }
 .dark-mode .site-header-search{background:var(--color-input)!important;border-color:var(--color-border)!important}
 .dark-mode .site-header-search input{background:transparent!important;color:var(--color-text)!important}
+
 .dark-mode .site-header-search input::placeholder,.dark-mode .site-header-search>svg{color:var(--color-muted)!important}
 @media(max-width:900px){
   .docs-v3 .feed-actions{display:flex!important;flex-direction:column!important;right:12px!important;bottom:12px!important;gap:7px!important}
@@ -1592,3 +1593,8 @@ input:-webkit-autofill{-webkit-text-fill-color:var(--color-text);box-shadow:0 0 
  .account-field dt{color:var(--color-muted);font-size:11px}
  .account-field dd{padding-top:0}
 }
+
+/* Put the modal title in the top block so the outline gets the full middle area. */
+.article-modal-header>div{min-width:0}
+.article-modal-header h1{max-width:100%;margin:14px 0 0;color:var(--color-text);font-size:clamp(23px,4vw,28px);line-height:1.25;letter-spacing:-.7px;overflow-wrap:anywhere}
+@media(max-width:700px){.article-modal-header h1{margin-top:12px;font-size:23px;line-height:1.3}}
