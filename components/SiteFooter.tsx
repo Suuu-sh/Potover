@@ -6,7 +6,7 @@ import {ArrowUpRight} from 'lucide-react';
 import {usePathname} from 'next/navigation';
 import styles from './SiteFooter.module.css';
 
-const navigation=[{href:'/home',label:'ホーム'},{href:'/docs',label:'探す'},{href:'/roadmap',label:'ロードマップ'},{href:'/bookmarks',label:'ブックマーク'},{href:'/profile',label:'プロフィール'}];
+const navigation=[{href:'/home',label:'ホーム'},{href:'/docs',label:'探す'},{href:'/roadmap',label:'ロードマップ'},{href:'/bookmarks',label:'ブックマーク'},{href:'/profile',label:'アカウント'}];
 const sources=[{href:'/docs?q=GTO%20Wizard',label:'GTO Wizard'},{href:'/docs?q=GTO%20Wizard%20Japan',label:'GTO Wizard Japan'}];
 
 export function SiteFooter(){
