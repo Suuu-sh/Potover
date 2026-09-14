@@ -1594,12 +1594,7 @@ input:-webkit-autofill{-webkit-text-fill-color:var(--color-text);box-shadow:0 0 
  .account-field dd{padding-top:0}
 }
 
-/* Keep the article-modal ad in the always-visible footer without crowding the controls. */
-.article-modal-footer{justify-content:space-between}
-.article-modal-footer>.adsense-ad-detail{flex:1;width:auto;min-width:0;min-height:90px;margin:0;border-radius:10px}
-.article-modal-actions{display:flex;align-items:center;justify-content:flex-end;gap:10px;flex:none}
-@media(max-width:700px){
-  .article-modal-footer{align-items:stretch;flex-direction:column;gap:10px}
-  .article-modal-footer>.adsense-ad-detail{width:100%;min-height:80px}
-  .article-modal-actions{justify-content:flex-end}
-}
+/* Put the modal title in the top block so the outline gets the full middle area. */
+.article-modal-header>div{min-width:0}
+.article-modal-header h1{max-width:100%;margin:14px 0 0;color:var(--color-text);font-size:clamp(23px,4vw,28px);line-height:1.25;letter-spacing:-.7px;overflow-wrap:anywhere}
+@media(max-width:700px){.article-modal-header h1{margin-top:12px;font-size:23px;line-height:1.3}}
