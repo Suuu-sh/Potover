@@ -37,9 +37,10 @@ describe('Kiro theme contract', () => {
     }
   });
 
-  it('preserves the saved theme before hydration without a separate dark palette', () => {
+  it('loads the account theme after hydration without a separate dark palette', () => {
     const layout = read('app/layout.tsx');
-    expect(layout).toContain("localStorage.getItem('potover-theme')");
+    expect(layout).toContain('UserPreferencesProvider');
+    expect(layout).not.toContain('localStorage');
     expect(layout).toContain("import './theme.css'");
     expect(layout).not.toContain('background:#');
   });

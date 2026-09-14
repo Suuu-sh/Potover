@@ -4,7 +4,7 @@ Generated with the built-in image generation tool on 2026-09-05.
 
 - Light: `public/brand/potover-mark-light.png`
 - Dark: `public/brand/potover-mark-dark.png`
-- Consumer: `components/SiteHeader.tsx`; follows the existing `potover-theme` selection.
+- Consumer: `components/SiteHeader.tsx`; follows the signed-in user's server-synced theme selection.
 - Light uses multiply blending; dark uses screen blending to integrate with the header surface.
 
 ## Prompt set

@@ -14,7 +14,7 @@ export function SiteHeader(){
   const pathname=usePathname();const router=useRouter();const {dark,setTheme}=useTheme();const [roadmapOpen,setRoadmapOpen]=useState(false);const roadmapMenuRef=useRef<HTMLDivElement>(null);const {user,loading}=useAuth();
 
   useEffect(()=>{const closeOnOutside=(event:PointerEvent)=>{if(!roadmapMenuRef.current?.contains(event.target as Node))setRoadmapOpen(false)};const closeOnEscape=(event:KeyboardEvent)=>{if(event.key==='Escape')setRoadmapOpen(false)};document.addEventListener('pointerdown',closeOnOutside);document.addEventListener('keydown',closeOnEscape);return()=>{document.removeEventListener('pointerdown',closeOnOutside);document.removeEventListener('keydown',closeOnEscape)}},[]);
-  function toggle(){setTheme(dark?'light':'dark')}
+  function toggle(){if(loading)return;if(!user){const next=`${location.pathname}${location.search}${location.hash}`;router.push(`/login?next=${encodeURIComponent(next)}&reason=preferences`);return}void setTheme(dark?'light':'dark')}
   const roadmapActive=pathname==='/roadmap'||pathname.startsWith('/roadmap/');
   const openRoadmap=()=>{if(!user){router.push(`/login?next=${encodeURIComponent('/roadmap')}`);return}setRoadmapOpen(open=>!open)};
   const glossaryActive=pathname==='/glossary'||pathname.startsWith('/glossary/');

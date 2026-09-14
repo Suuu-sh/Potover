@@ -1,18 +1,10 @@
 'use client';
-import {useEffect,useState} from 'react';
+import {useEffect} from 'react';
+import {useUserPreferences} from './user-preferences';
 export function useTheme(){
-  const [dark,setDark]=useState(false);
+  const {theme,setTheme}=useUserPreferences();
   useEffect(()=>{
-    const sync=()=>setDark(document.documentElement.classList.contains('dark-mode'));
-    sync();
-    const observer=new MutationObserver(sync);
-    observer.observe(document.documentElement,{attributes:true,attributeFilter:['class']});
-    return()=>observer.disconnect();
-  },[]);
-  const setTheme=(value:'light'|'dark')=>{
-    localStorage.setItem('potover-theme',value);
-    document.documentElement.classList.toggle('dark-mode',value==='dark');
-    setDark(value==='dark');
-  };
-  return {dark,setTheme};
+    document.documentElement.classList.toggle('dark-mode',theme==='dark');
+  },[theme]);
+  return {dark:theme==='dark',setTheme};
 }

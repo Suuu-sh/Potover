@@ -2,33 +2,26 @@
 
 import Link from 'next/link';
 import {ArrowRight, Bookmark as BookmarkIcon, LockKeyhole} from 'lucide-react';
-import {useEffect, useState} from 'react';
+import {useEffect} from 'react';
 import {useRouter} from 'next/navigation';
 
 import {articles} from '@/lib/data';
 import {ArticleFeedRow} from '@/components/ArticleFeedRow';
-import {getBookmarks} from '@/components/BookmarkButton';
+import {useBookmarks} from '@/lib/bookmarks';
 import {useAuth} from '@/lib/auth-client';
 
 export default function Bookmarks() {
   const {user, loading} = useAuth();
   const router = useRouter();
-  const [ids, setIds] = useState<string[]>([]);
+  const {slugs,loading:bookmarksLoading}=useBookmarks();
 
   useEffect(() => {
     if (!loading && !user) router.replace(`/login?next=${encodeURIComponent('/bookmarks')}`);
   }, [loading, user, router]);
 
-  useEffect(() => {
-    const sync = () => setIds(getBookmarks());
-    sync();
-    window.addEventListener('potover-bookmarks-changed', sync);
-    return () => window.removeEventListener('potover-bookmarks-changed', sync);
-  }, []);
+  const saved = articles.filter(article => slugs.includes(article.slug));
 
-  const saved = articles.filter(article => ids.includes(article.slug));
-
-  if (loading || !user) {
+  if (loading || !user || bookmarksLoading) {
     return <main className="library-page bookmarks-page"><div className="library-wrap"><p role="status">ログインを確認しています…</p></div></main>;
   }
 
@@ -57,7 +50,7 @@ export default function Bookmarks() {
         )}
         <div className="library-note">
           <LockKeyhole size={16} aria-hidden="true"/>
-          <span>このブラウザに保存されます。</span>
+          <span>アカウントに保存され、ログインした端末で同期されます。</span>
         </div>
       </div>
     </main>

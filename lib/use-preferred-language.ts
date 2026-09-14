@@ -1,14 +1,10 @@
 'use client';
 
-import {useEffect,useState} from 'react';
+import {useUserPreferences} from './user-preferences';
 
-export type PreferredLanguage='Japanese'|'English';
-const KEY='potover-language';
-const EVENT='potover-language-changed';
+export type {PreferredLanguage} from './user-preferences';
 
 export function usePreferredLanguage(){
-  const [language,setLanguageState]=useState<PreferredLanguage>('Japanese');
-  useEffect(()=>{const sync=()=>setLanguageState(localStorage.getItem(KEY)==='English'?'English':'Japanese');sync();window.addEventListener(EVENT,sync);return()=>window.removeEventListener(EVENT,sync)},[]);
-  const setLanguage=(next:PreferredLanguage)=>{localStorage.setItem(KEY,next);setLanguageState(next);window.dispatchEvent(new Event(EVENT))};
+  const {language,setLanguage}=useUserPreferences();
   return [language,setLanguage] as const;
 }
