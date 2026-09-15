@@ -18,6 +18,7 @@ const READ_FILTER='学習済み';
 const CONTENT_FILTERS=['記事','動画'] as const;
 const QUICK_FILTERS=[['Preflop','プリフロップ'],['Flop','フロップ'],['GTO','GTO'],['cash-game','キャッシュ'],['MTT','MTT']] as const;
 const PAGE_SIZE=20;
+const FEED_AD_INTERVAL=5;
 const SEARCH_ALIASES:Record<string,string[]>={
   'プリフロップ':['プリフロップ','preflop','pre-flop','pre flop'],
   'ポストフロップ':['ポストフロップ','postflop','post-flop','post flop','flop','turn','river'],
@@ -125,7 +126,7 @@ export default function Docs(){
         <AdSenseAd placement="feed"/>
         {(query||selected.length>0)&&<div className="active-filter-list" aria-label="選択中の絞り込み">{query&&<button type="button" onClick={()=>{setQuery('');const url=new URL(location.href);url.searchParams.delete('q');url.searchParams.delete('filters');history.replaceState(null,'',url)}} aria-label={`検索「${query}」を解除`}>検索：{query}<X size={14}/></button>}{selected.map(value=><button type="button" key={value} onClick={()=>toggle(value)} aria-label={`${contentLabel(value)}を解除`}>{contentLabel(value)}<X size={14}/></button>)}<button type="button" className="clear-filters" onClick={reset}>すべて解除</button></div>}
         {results.length===0?<div className="docs-empty"><BookOpen size={31}/><h2>条件に合うコンテンツがありません</h2><p>別のキーワードまたは条件を試してください。</p><button onClick={reset}>条件をリセット</button></div>:
-        <><div className="docs-feed-list">{visibleResults.map((article,index)=><Fragment key={article.slug}>{index===6&&<AdSenseAd placement="feed"/>}<ArticleFeedRow article={article} compactActions onTagClick={toggle}/></Fragment>)}</div><nav className="docs-pagination" aria-label="記事一覧のページ"><button type="button" onClick={()=>movePage(page-1)} disabled={page===1}><ChevronLeft size={16}/>前へ</button><span><strong>{page}</strong> / {pageCount}</span><button type="button" onClick={()=>movePage(page+1)} disabled={page===pageCount}>次へ<ChevronRight size={16}/></button></nav></>}
+        <><div className="docs-feed-list">{visibleResults.map((article,index)=><Fragment key={article.slug}><ArticleFeedRow article={article} compactActions onTagClick={toggle}/>{(index+1)%FEED_AD_INTERVAL===0&&<AdSenseAd placement="feed"/>}</Fragment>)}</div><nav className="docs-pagination" aria-label="記事一覧のページ"><button type="button" onClick={()=>movePage(page-1)} disabled={page===1}><ChevronLeft size={16}/>前へ</button><span><strong>{page}</strong> / {pageCount}</span><button type="button" onClick={()=>movePage(page+1)} disabled={page===pageCount}>次へ<ChevronRight size={16}/></button></nav></>}
       </section>
     </div>
 
