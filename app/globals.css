@@ -1439,14 +1439,19 @@ input:-webkit-autofill{-webkit-text-fill-color:var(--color-text);box-shadow:0 0 
   .site-header-search{display:none!important}
 }
 
-/* Desktop-width header at reduced widths: preserve all controls until the
-   search field is no longer able to retain its minimum readable width. */
+/* Desktop-width header at reduced widths: keep every control inside the
+   rounded shell without letting the search field overflow into the actions. */
 @media (min-width:981px) and (max-width:1180px){
   .site-header-inner,.docs-v3 .site-header-inner{
-    grid-template-columns:154px auto minmax(220px,1fr) auto!important;
+    grid-template-columns:154px auto minmax(0,1fr) auto!important;
+    gap:10px!important;
+    padding-left:16px!important;
+    padding-right:16px!important;
   }
   .site-header nav,.docs-v3 .site-header nav{display:flex!important;width:max-content!important;justify-self:start!important}
-  .site-header-search{display:flex!important;grid-column:auto!important;min-width:220px!important}
+  .site-header nav a,.docs-v3 .site-header nav a{padding-left:10px!important;padding-right:10px!important;font-size:12px!important}
+  .site-header nav .roadmap-nav>button{padding-left:10px!important;padding-right:10px!important;font-size:12px!important}
+  .site-header-search{display:flex!important;grid-column:auto!important;width:auto!important;min-width:0!important;max-width:none!important}
 }
 
 /* Compact widths: retain the same header shell and mark size, collapsing
