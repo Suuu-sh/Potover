@@ -8,7 +8,8 @@ const bytesToHex=(bytes:Uint8Array)=>Array.from(bytes,value=>value.toString(16).
 const hexToBytes=(hex:string)=>new Uint8Array(hex.match(/.{2}/g)?.map(byte=>parseInt(byte,16))||[]);
 const randomHex=(length:number)=>{const bytes=new Uint8Array(length);crypto.getRandomValues(bytes);return bytesToHex(bytes)};
 const sha256=async(value:string)=>bytesToHex(new Uint8Array(await crypto.subtle.digest('SHA-256',new TextEncoder().encode(value))));
-const hashPassword=async(password:string,saltHex:string)=>{const key=await crypto.subtle.importKey('raw',new TextEncoder().encode(password),'PBKDF2',false,['deriveBits']);const bits=await crypto.subtle.deriveBits({name:'PBKDF2',hash:'SHA-256',salt:hexToBytes(saltHex),iterations:120000},key,256);return bytesToHex(new Uint8Array(bits))};
+const PASSWORD_HASH_ITERATIONS=100000;
+const hashPassword=async(password:string,saltHex:string)=>{const key=await crypto.subtle.importKey('raw',new TextEncoder().encode(password),'PBKDF2',false,['deriveBits']);const bits=await crypto.subtle.deriveBits({name:'PBKDF2',hash:'SHA-256',salt:hexToBytes(saltHex),iterations:PASSWORD_HASH_ITERATIONS},key,256);return bytesToHex(new Uint8Array(bits))};
 const safeEqual=(left:string,right:string)=>{if(left.length!==right.length)return false;let result=0;for(let index=0;index<left.length;index++)result|=left.charCodeAt(index)^right.charCodeAt(index);return result===0};
 const normalizeEmail=(value:unknown)=>typeof value==='string'?value.trim().toLowerCase():'';
 const validEmail=(email:string)=>/^\S+@\S+\.\S+$/.test(email)&&email.length<=254;

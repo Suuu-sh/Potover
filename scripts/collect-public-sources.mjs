@@ -3,6 +3,19 @@ import { readFile, writeFile } from 'node:fs/promises';
 const headers = { 'user-agent': 'Potover metadata collector/0.2 (+https://github.com/Suuu-sh/Potover)' };
 const get = async (url) => { const response = await fetch(url, { headers, redirect: 'follow' }); if (!response.ok) throw new Error(`${response.status} ${url}`); return response.text(); };
 const decode = (value = '') => value.replace(/<!\[CDATA\[([\s\S]*?)\]\]>/g, '$1').replace(/\[\/?vc_[^\]]*\]/gi, ' ').replace(/&#(\d+);/g, (_, code) => String.fromCodePoint(Number(code))).replace(/&#x([0-9a-f]+);/gi, (_, code) => String.fromCodePoint(Number.parseInt(code, 16))).replace(/&nbsp;/g, ' ').replace(/&hellip;/g, '…').replace(/&#038;|&amp;/g, '&').replace(/&quot;/g, '"').replace(/&apos;|&#x27;/g, "'").replace(/&lt;/g, '<').replace(/&gt;/g, '>').replace(/<[^>]+>/g, ' ').replace(/\s+/g, ' ').trim();
+const splitSentences = (value) => value.match(/[^.!?。！？]+[.!?。！？]+|[^.!?。！？]+$/g)?.map((sentence) => sentence.trim()).filter(Boolean) || [];
+const openingSentences = (html, title) => {
+  const articleText = html
+    .replace(/<style[\s\S]*?<\/style>/gi, ' ')
+    .replace(/<script[\s\S]*?<\/script>/gi, ' ')
+    .replace(/<noscript[\s\S]*?<\/noscript>/gi, ' ')
+    .replace(/<\/?(?:p|div|br|h[1-6]|li|section|article|blockquote|tr|td)[^>]*>/gi, ' ')
+    .replace(/<[^>]+>/g, '');
+  const text = decode(articleText);
+  const titleText = title.trim();
+  const withoutTitle = text.toLocaleLowerCase().startsWith(titleText.toLocaleLowerCase()) ? text.slice(titleText.length).trim() : text;
+  return splitSentences(withoutTitle).slice(0, 3).join(' ').trim();
+};
 const absoluteUrl = (value, base) => { if (!value) return null; try { return new URL(decode(value), base).href; } catch { return null; } };
 const meta = (html, key) => { const escaped = key.replace(/[.*+?^${}()|[\]\\]/g, '\\$&'); const match = new RegExp(`<meta[^>]+(?:property|name|itemprop)=["']${escaped}["'][^>]+content=["']([^"']*)|<meta[^>]+content=["']([^"']*)["'][^>]+(?:property|name|itemprop)=["']${escaped}["']`, 'i').exec(html); return decode(match?.[1] || match?.[2] || ''); };
 const pageTitle = (html) => meta(html, 'og:title') || decode(/<title[^>]*>([\s\S]*?)<\/title>/i.exec(html)?.[1] || '');
@@ -43,7 +56,7 @@ for (const source of japaneseSources) {
   else database.sources.push(registeredSource);
   if (source.api) {
     let page = 1; let totalPages = 1; const collected = [];
-    do { const response = await fetch(`${source.api}?per_page=100&_embed&page=${page}`, { headers, redirect: 'follow' }); if (!response.ok) throw new Error(`${response.status} ${source.api}`); totalPages = Number(response.headers.get('x-wp-totalpages') || 1); const posts = await response.json(); for (const post of posts) { const title = decode(post.title?.rendered); let summary = decode(post.content?.rendered || post.excerpt?.rendered || ''); if (summary.startsWith(title)) summary = summary.slice(title.length).trim(); const article = item({ source: source.source, sourceSlug: source.sourceSlug, sourceUrl: source.sourceUrl, title, url: post.link, summary: (summary || title).slice(0, 280), publishedAt: post.date, imageUrl: post._embedded?.['wp:featuredmedia']?.[0]?.source_url, language: 'Japanese' }); article.author = decode(post._embedded?.author?.[0]?.name || '') || null; article.sourceModifiedAt = post.modified_gmt || null; collected.push(article); } page += 1; } while (page <= totalPages);
+    do { const response = await fetch(`${source.api}?per_page=100&_embed&page=${page}`, { headers, redirect: 'follow' }); if (!response.ok) throw new Error(`${response.status} ${source.api}`); totalPages = Number(response.headers.get('x-wp-totalpages') || 1); const posts = await response.json(); for (const post of posts) { const title = decode(post.title?.rendered); const content = post.content?.rendered || post.excerpt?.rendered || ''; const summary = openingSentences(content, title) || decode(content) || title; const article = item({ source: source.source, sourceSlug: source.sourceSlug, sourceUrl: source.sourceUrl, title, url: post.link, summary, publishedAt: post.date, imageUrl: post._embedded?.['wp:featuredmedia']?.[0]?.source_url, language: 'Japanese' }); article.author = decode(post._embedded?.author?.[0]?.name || '') || null; article.sourceModifiedAt = post.modified_gmt || null; collected.push(article); } page += 1; } while (page <= totalPages);
     additions.push(...collected); console.log(`${source.source}: refreshed ${collected.length}`); continue;
   }
   const homepage = await get(source.sourceUrl);

@@ -10,6 +10,7 @@ export type DocsFilters={query:string;selected:string[]};
 export type UserPreferences={language:PreferredLanguage;theme:ThemePreference;docsQuery:string;docsFilters:string[]};
 
 const defaults:UserPreferences={language:'Japanese',theme:'light',docsQuery:'',docsFilters:[]};
+const THEME_KEY='potover-theme';
 type UserPreferencesContextValue=UserPreferences&{loading:boolean;setLanguage:(value:PreferredLanguage)=>Promise<void>;setTheme:(value:ThemePreference)=>Promise<void>;setDocsFilters:(value:DocsFilters)=>Promise<void>};
 const UserPreferencesContext=createContext<UserPreferencesContextValue|null>(null);
 
@@ -17,16 +18,25 @@ function normalize(value:Partial<UserPreferences>):UserPreferences{
   return {language:value.language==='English'?'English':'Japanese',theme:value.theme==='dark'?'dark':'light',docsQuery:typeof value.docsQuery==='string'?value.docsQuery:'',docsFilters:Array.isArray(value.docsFilters)?value.docsFilters.filter(item=>typeof item==='string').slice(0,100):[]};
 }
 
+function readLocalTheme():ThemePreference{
+  if(typeof window==='undefined')return 'light';
+  try{return localStorage.getItem(THEME_KEY)==='dark'?'dark':'light'}catch{return 'light'}
+}
+
+function writeLocalTheme(value:ThemePreference){
+  try{localStorage.setItem(THEME_KEY,value)}catch{}
+}
+
 export function UserPreferencesProvider({children}:{children:React.ReactNode}){
   const {user,loading:authLoading}=useAuth();
-  const [preferences,setPreferences]=useState<UserPreferences>(defaults);
+  const [preferences,setPreferences]=useState<UserPreferences>(()=>normalize({theme:readLocalTheme()}));
   const [loading,setLoading]=useState(true);
   const saveQueue=useRef<Promise<void>>(Promise.resolve());
 
   useEffect(()=>{
     let active=true;
     if(authLoading){setLoading(true);return()=>{active=false}};
-    if(!user){setPreferences(defaults);setLoading(false);return()=>{active=false}};
+    if(!user){setPreferences(normalize({theme:readLocalTheme()}));setLoading(false);return()=>{active=false}};
     setLoading(true);
     userRequest<Partial<UserPreferences>>('/api/preferences').then(result=>{
       if(active)setPreferences(normalize(result));
@@ -39,7 +49,13 @@ export function UserPreferencesProvider({children}:{children:React.ReactNode}){
   useEffect(()=>{document.documentElement.classList.toggle('dark-mode',preferences.theme==='dark')},[preferences.theme]);
 
   const save=useCallback((patch:Partial<UserPreferences>)=>{
-    if(!user)return Promise.resolve();
+    if(!user){
+      if(patch.theme==='light'||patch.theme==='dark'){
+        setPreferences(current=>normalize({...current,theme:patch.theme}));
+        writeLocalTheme(patch.theme);
+      }
+      return Promise.resolve();
+    }
     setPreferences(current=>normalize({...current,...patch}));
     saveQueue.current=saveQueue.current.catch(()=>undefined).then(()=>userRequest('/api/preferences',{method:'POST',body:JSON.stringify(patch)}).then(()=>undefined));
     return saveQueue.current;
