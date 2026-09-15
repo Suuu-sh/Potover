@@ -1,5 +1,5 @@
 {
-  "collectedAt": "2026-09-14T08:37:35.825Z",
+  "collectedAt": "2026-09-15T08:27:26.931Z",
   "sources": [
     {
       "slug": "gto-wizard",
@@ -48740,7 +48740,9 @@
       "contentType": "article",
       "classification": {
         "difficulty": "intermediate",
-        "tags": []
+        "tags": [
+          "exploit"
+        ]
       },
       "sourceModifiedAt": "2026-08-22T10:37:44",
       "headings": [
@@ -48776,7 +48778,9 @@
       "contentType": "article",
       "classification": {
         "difficulty": "intermediate",
-        "tags": []
+        "tags": [
+          "mtt"
+        ]
       },
       "sourceModifiedAt": "2026-08-09T11:36:44",
       "headings": [
@@ -48862,7 +48866,9 @@
       "contentType": "article",
       "classification": {
         "difficulty": "intermediate",
-        "tags": []
+        "tags": [
+          "flop"
+        ]
       },
       "sourceModifiedAt": "2026-08-09T05:05:45",
       "headings": [
@@ -49015,6 +49021,7 @@
       "classification": {
         "difficulty": "intermediate",
         "tags": [
+          "icm",
           "mtt"
         ]
       },
@@ -49059,7 +49066,7 @@
       "imageUrl": "https://japan.gtowizard.com/wp-content/uploads/2026/07/Thumbnail.png",
       "contentType": "article",
       "classification": {
-        "difficulty": "intermediate",
+        "difficulty": "beginner",
         "tags": [
           "exploit"
         ]
@@ -49161,6 +49168,8 @@
       "classification": {
         "difficulty": "intermediate",
         "tags": [
+          "flop",
+          "gto",
           "exploit"
         ]
       },
@@ -49202,7 +49211,11 @@
       "contentType": "article",
       "classification": {
         "difficulty": "intermediate",
-        "tags": []
+        "tags": [
+          "preflop",
+          "flop",
+          "gto"
+        ]
       },
       "sourceModifiedAt": "2026-07-05T15:18:07",
       "headings": [
@@ -49385,7 +49398,9 @@
       "contentType": "article",
       "classification": {
         "difficulty": "intermediate",
-        "tags": []
+        "tags": [
+          "mtt"
+        ]
       },
       "sourceModifiedAt": "2026-06-04T09:23:38",
       "headings": [
@@ -49429,7 +49444,10 @@
       "contentType": "article",
       "classification": {
         "difficulty": "intermediate",
-        "tags": []
+        "tags": [
+          "preflop",
+          "flop"
+        ]
       },
       "sourceModifiedAt": "2026-05-22T12:41:38",
       "headings": [
@@ -49557,7 +49575,10 @@
       "contentType": "article",
       "classification": {
         "difficulty": "intermediate",
-        "tags": []
+        "tags": [
+          "flop",
+          "gto"
+        ]
       },
       "sourceModifiedAt": "2026-03-21T07:17:08",
       "headings": [
@@ -49598,7 +49619,12 @@
       "classification": {
         "difficulty": "intermediate",
         "tags": [
-          "exploit"
+          "preflop",
+          "flop",
+          "turn",
+          "river",
+          "exploit",
+          "bluff"
         ]
       },
       "sourceModifiedAt": "2026-03-17T05:15:40",
@@ -49638,7 +49664,7 @@
       "imageUrl": "https://japan.gtowizard.com/wp-content/uploads/2026/03/header-1-scaled-1.png",
       "contentType": "article",
       "classification": {
-        "difficulty": "intermediate",
+        "difficulty": "beginner",
         "tags": []
       },
       "sourceModifiedAt": "2026-03-15T04:55:39",
@@ -49802,6 +49828,10 @@
       "classification": {
         "difficulty": "intermediate",
         "tags": [
+          "preflop",
+          "flop",
+          "gto",
+          "exploit",
           "bluff"
         ]
       },
@@ -49894,7 +49924,9 @@
       "contentType": "article",
       "classification": {
         "difficulty": "intermediate",
-        "tags": []
+        "tags": [
+          "gto"
+        ]
       },
       "sourceModifiedAt": "2026-02-02T02:32:53",
       "headings": [
@@ -49977,7 +50009,7 @@
       "imageUrl": "https://japan.gtowizard.com/wp-content/uploads/2026/01/header-4.png",
       "contentType": "article",
       "classification": {
-        "difficulty": "intermediate",
+        "difficulty": "beginner",
         "tags": []
       },
       "sourceModifiedAt": "2026-01-10T06:22:47",
@@ -50027,7 +50059,9 @@
       "classification": {
         "difficulty": "intermediate",
         "tags": [
-          "turn"
+          "flop",
+          "turn",
+          "gto"
         ]
       },
       "sourceModifiedAt": "2026-01-14T03:43:32",
@@ -50064,7 +50098,9 @@
       "contentType": "article",
       "classification": {
         "difficulty": "intermediate",
-        "tags": []
+        "tags": [
+          "turn"
+        ]
       },
       "sourceModifiedAt": "2025-12-20T07:34:43",
       "headings": [
@@ -50101,7 +50137,8 @@
       "classification": {
         "difficulty": "intermediate",
         "tags": [
-          "flop"
+          "flop",
+          "cash-game"
         ]
       },
       "sourceModifiedAt": "2025-12-06T09:47:30",
@@ -50142,7 +50179,11 @@
       "contentType": "article",
       "classification": {
         "difficulty": "intermediate",
-        "tags": []
+        "tags": [
+          "preflop",
+          "flop",
+          "gto"
+        ]
       },
       "sourceModifiedAt": "2025-11-30T10:53:41",
       "headings": [
@@ -50195,6 +50236,8 @@
       "classification": {
         "difficulty": "intermediate",
         "tags": [
+          "flop",
+          "river",
           "bluff"
         ]
       },
@@ -50280,7 +50323,8 @@
         "difficulty": "intermediate",
         "tags": [
           "preflop",
-          "flop"
+          "flop",
+          "gto"
         ]
       },
       "sourceModifiedAt": "2025-11-03T03:27:08",
@@ -50313,7 +50357,10 @@
       "contentType": "article",
       "classification": {
         "difficulty": "intermediate",
-        "tags": []
+        "tags": [
+          "preflop",
+          "flop"
+        ]
       },
       "sourceModifiedAt": "2025-10-29T05:46:38",
       "headings": [
@@ -50365,7 +50412,9 @@
       "contentType": "article",
       "classification": {
         "difficulty": "intermediate",
-        "tags": []
+        "tags": [
+          "bluff"
+        ]
       },
       "sourceModifiedAt": "2025-10-30T04:47:44",
       "headings": [
@@ -50398,7 +50447,10 @@
       "classification": {
         "difficulty": "intermediate",
         "tags": [
-          "icm"
+          "flop",
+          "gto",
+          "icm",
+          "mtt"
         ]
       },
       "sourceModifiedAt": "2025-11-03T03:26:00",
@@ -50593,7 +50645,6 @@
         "difficulty": "intermediate",
         "tags": [
           "flop",
-          "gto",
           "mtt"
         ]
       },
@@ -50683,7 +50734,10 @@
       "contentType": "article",
       "classification": {
         "difficulty": "intermediate",
-        "tags": []
+        "tags": [
+          "flop",
+          "gto"
+        ]
       },
       "sourceModifiedAt": "2025-11-02T16:22:44",
       "headings": [
@@ -50715,7 +50769,10 @@
       "contentType": "article",
       "classification": {
         "difficulty": "intermediate",
-        "tags": []
+        "tags": [
+          "exploit",
+          "bluff"
+        ]
       },
       "sourceModifiedAt": "2025-09-08T01:43:12",
       "headings": [
@@ -50806,6 +50863,9 @@
       "classification": {
         "difficulty": "intermediate",
         "tags": [
+          "preflop",
+          "flop",
+          "gto",
           "cash-game"
         ]
       },
@@ -50884,6 +50944,8 @@
       "classification": {
         "difficulty": "intermediate",
         "tags": [
+          "preflop",
+          "flop",
           "gto"
         ]
       },
@@ -50962,6 +51024,7 @@
       "classification": {
         "difficulty": "intermediate",
         "tags": [
+          "preflop",
           "flop",
           "turn",
           "exploit"
@@ -51001,7 +51064,9 @@
       "contentType": "article",
       "classification": {
         "difficulty": "intermediate",
-        "tags": []
+        "tags": [
+          "cash-game"
+        ]
       },
       "sourceModifiedAt": "2025-07-10T02:52:12",
       "headings": [
@@ -51041,7 +51106,9 @@
       "contentType": "article",
       "classification": {
         "difficulty": "intermediate",
-        "tags": []
+        "tags": [
+          "mtt"
+        ]
       },
       "sourceModifiedAt": "2025-07-05T10:18:38",
       "headings": [
@@ -51086,6 +51153,8 @@
       "classification": {
         "difficulty": "intermediate",
         "tags": [
+          "preflop",
+          "flop",
           "cash-game"
         ]
       },
@@ -51160,7 +51229,7 @@
       "imageUrl": "https://japan.gtowizard.com/wp-content/uploads/2025/05/gto-wizard-preflop-raise-sizing-examining-2-key-factors-blogpost-thumbnail.png",
       "contentType": "article",
       "classification": {
-        "difficulty": "intermediate",
+        "difficulty": "beginner",
         "tags": [
           "preflop",
           "flop"
@@ -51300,7 +51369,10 @@
       "contentType": "article",
       "classification": {
         "difficulty": "intermediate",
-        "tags": []
+        "tags": [
+          "preflop",
+          "flop"
+        ]
       },
       "sourceModifiedAt": "2025-04-27T10:40:28",
       "headings": [
@@ -51332,7 +51404,9 @@
       "contentType": "article",
       "classification": {
         "difficulty": "intermediate",
-        "tags": []
+        "tags": [
+          "cash-game"
+        ]
       },
       "sourceModifiedAt": "2025-04-22T05:40:13",
       "headings": [
@@ -51384,7 +51458,10 @@
       "contentType": "article",
       "classification": {
         "difficulty": "intermediate",
-        "tags": []
+        "tags": [
+          "exploit",
+          "bluff"
+        ]
       },
       "sourceModifiedAt": "2025-04-20T08:33:10",
       "headings": [
@@ -51500,7 +51577,10 @@
       "contentType": "article",
       "classification": {
         "difficulty": "intermediate",
-        "tags": []
+        "tags": [
+          "flop",
+          "cash-game"
+        ]
       },
       "sourceModifiedAt": "2025-04-04T01:13:54",
       "headings": [
@@ -51896,8 +51976,7 @@
       "classification": {
         "difficulty": "intermediate",
         "tags": [
-          "river",
-          "bluff"
+          "river"
         ]
       },
       "sourceModifiedAt": "2025-02-21T12:00:56",
@@ -51987,7 +52066,7 @@
       "imageUrl": "https://japan.gtowizard.com/wp-content/uploads/2025/01/gto-wizard-the-math-of-multistreet-bluffs-blogpost-thumbnail.png",
       "contentType": "article",
       "classification": {
-        "difficulty": "intermediate",
+        "difficulty": "beginner",
         "tags": [
           "bluff"
         ]
@@ -52043,8 +52122,7 @@
       "classification": {
         "difficulty": "intermediate",
         "tags": [
-          "icm",
-          "mtt"
+          "icm"
         ]
       },
       "sourceModifiedAt": "2024-12-23T11:37:28",
@@ -52418,7 +52496,6 @@
           "flop",
           "turn",
           "river",
-          "gto",
           "exploit",
           "cash-game"
         ]
@@ -52655,11 +52732,8 @@
       "classification": {
         "difficulty": "intermediate",
         "tags": [
-          "preflop",
-          "flop",
           "icm",
-          "bluff",
-          "mtt"
+          "bluff"
         ]
       },
       "sourceModifiedAt": "2024-10-27T20:56:41",
@@ -52736,7 +52810,6 @@
       "classification": {
         "difficulty": "intermediate",
         "tags": [
-          "preflop",
           "flop",
           "cash-game"
         ]
@@ -52825,7 +52898,7 @@
       "imageUrl": "https://japan.gtowizard.com/wp-content/uploads/2024/08/1440x810-Blogpost-3-2.jpg",
       "contentType": "article",
       "classification": {
-        "difficulty": "beginner",
+        "difficulty": "intermediate",
         "tags": [
           "gto"
         ]
@@ -52881,9 +52954,7 @@
       "classification": {
         "difficulty": "intermediate",
         "tags": [
-          "preflop",
           "flop",
-          "turn",
           "gto",
           "mtt"
         ]
@@ -52967,8 +53038,7 @@
       "classification": {
         "difficulty": "intermediate",
         "tags": [
-          "gto",
-          "exploit"
+          "gto"
         ]
       },
       "sourceModifiedAt": "2024-10-20T11:04:13",
@@ -53065,10 +53135,7 @@
       "contentType": "article",
       "classification": {
         "difficulty": "intermediate",
-        "tags": [
-          "preflop",
-          "flop"
-        ]
+        "tags": []
       },
       "sourceModifiedAt": "2024-10-20T14:20:33",
       "headings": [
@@ -53121,8 +53188,7 @@
       "classification": {
         "difficulty": "intermediate",
         "tags": [
-          "gto",
-          "exploit"
+          "gto"
         ]
       },
       "sourceModifiedAt": "2024-10-20T06:51:57",
@@ -53443,9 +53509,7 @@
       "contentType": "article",
       "classification": {
         "difficulty": "intermediate",
-        "tags": [
-          "icm"
-        ]
+        "tags": []
       },
       "sourceModifiedAt": "2024-10-20T20:29:27",
       "headings": [
@@ -53727,10 +53791,7 @@
       "contentType": "article",
       "classification": {
         "difficulty": "intermediate",
-        "tags": [
-          "river",
-          "bluff"
-        ]
+        "tags": []
       },
       "sourceModifiedAt": "2024-08-18T14:44:12",
       "headings": [
@@ -53818,8 +53879,7 @@
         "difficulty": "intermediate",
         "tags": [
           "preflop",
-          "flop",
-          "gto"
+          "flop"
         ]
       },
       "sourceModifiedAt": "2024-10-20T06:48:58",
@@ -53968,9 +54028,7 @@
         "difficulty": "intermediate",
         "tags": [
           "flop",
-          "turn",
-          "river",
-          "bluff"
+          "turn"
         ]
       },
       "sourceModifiedAt": "2024-07-09T07:59:39",
@@ -54194,7 +54252,7 @@
       "imageUrl": "https://japan.gtowizard.com/wp-content/uploads/2024/06/variance_bankroll-1.png",
       "contentType": "article",
       "classification": {
-        "difficulty": "beginner",
+        "difficulty": "intermediate",
         "tags": []
       },
       "sourceModifiedAt": "2024-08-07T12:10:19",
@@ -54439,9 +54497,7 @@
       "contentType": "article",
       "classification": {
         "difficulty": "intermediate",
-        "tags": [
-          "gto"
-        ]
+        "tags": []
       },
       "sourceModifiedAt": "2024-05-22T06:31:25",
       "headings": [
@@ -54623,8 +54679,7 @@
         "difficulty": "intermediate",
         "tags": [
           "flop",
-          "turn",
-          "river"
+          "turn"
         ]
       },
       "sourceModifiedAt": "2024-05-06T14:22:55",
@@ -54668,8 +54723,7 @@
         "tags": [
           "preflop",
           "flop",
-          "turn",
-          "bluff"
+          "turn"
         ]
       },
       "sourceModifiedAt": "2024-05-06T14:34:07",
@@ -54710,11 +54764,7 @@
       "contentType": "article",
       "classification": {
         "difficulty": "intermediate",
-        "tags": [
-          "flop",
-          "turn",
-          "cash-game"
-        ]
+        "tags": []
       },
       "sourceModifiedAt": "2024-04-29T14:26:06",
       "headings": [
@@ -55047,7 +55097,8 @@
       "classification": {
         "difficulty": "intermediate",
         "tags": [
-          "gto"
+          "gto",
+          "exploit"
         ]
       },
       "sourceModifiedAt": "2026-08-08T17:18:22",
@@ -55133,7 +55184,7 @@
       "imageUrl": "https://japan.gtowizard.com/wp-content/uploads/2024/01/1920x1080-Blogpost-13.png",
       "contentType": "article",
       "classification": {
-        "difficulty": "beginner",
+        "difficulty": "intermediate",
         "tags": [
           "gto"
         ]
@@ -55188,7 +55239,10 @@
       "contentType": "article",
       "classification": {
         "difficulty": "intermediate",
-        "tags": []
+        "tags": [
+          "preflop",
+          "flop"
+        ]
       },
       "sourceModifiedAt": "2026-08-08T12:20:49",
       "headings": [
@@ -55215,7 +55269,7 @@
       "imageUrl": "https://japan.gtowizard.com/wp-content/uploads/2024/01/1280x720-Blogpost-4.png",
       "contentType": "article",
       "classification": {
-        "difficulty": "beginner",
+        "difficulty": "intermediate",
         "tags": []
       },
       "sourceModifiedAt": "2024-01-09T09:13:41",
@@ -55256,10 +55310,7 @@
       "contentType": "article",
       "classification": {
         "difficulty": "intermediate",
-        "tags": [
-          "gto",
-          "exploit"
-        ]
+        "tags": []
       },
       "sourceModifiedAt": "2026-01-22T03:21:07",
       "headings": [
@@ -55312,8 +55363,7 @@
       "classification": {
         "difficulty": "beginner",
         "tags": [
-          "gto",
-          "bluff"
+          "gto"
         ]
       },
       "sourceModifiedAt": "2026-01-11T12:34:56",
@@ -55408,7 +55458,9 @@
       "contentType": "article",
       "classification": {
         "difficulty": "intermediate",
-        "tags": []
+        "tags": [
+          "turn"
+        ]
       },
       "sourceModifiedAt": "2025-12-02T06:32:42",
       "headings": [
@@ -55500,7 +55552,10 @@
       "contentType": "article",
       "classification": {
         "difficulty": "intermediate",
-        "tags": []
+        "tags": [
+          "exploit",
+          "bluff"
+        ]
       },
       "sourceModifiedAt": "2026-08-08T17:28:51",
       "headings": [
@@ -55635,7 +55690,7 @@
       "imageUrl": "https://japan.gtowizard.com/wp-content/uploads/2023/12/1920x1080-Blogpost-16.png",
       "contentType": "article",
       "classification": {
-        "difficulty": "intermediate",
+        "difficulty": "beginner",
         "tags": []
       },
       "sourceModifiedAt": "2026-08-08T08:26:46",
@@ -55841,7 +55896,8 @@
       "classification": {
         "difficulty": "beginner",
         "tags": [
-          "icm"
+          "icm",
+          "mtt"
         ]
       },
       "sourceModifiedAt": "2026-08-08T11:52:37",
@@ -56793,7 +56849,7 @@
       "originalUrl": "https://japan.gtowizard.com/blog/exploiting-profiles-episode-iv-the-tag/",
       "author": "Andrew Brokos",
       "publishedAt": "2026-09-03T17:24:46",
-      "summary": ".shortcode-single-image-wrap.shortcode-single-image-ee272204aa16adb30901f41f05f29d3b.enable-bg-rollover .rollover i, .shortcode-single-image-wrap.shortcode-single-image-ee272204aa16adb30901f41f05f29d3b.enable-bg-rollover .rollover-video i { background: -webkit-linear-gradient(); ",
+      "summary": "他のプレイヤープロファイルとは異なり、TAG Regは特に大きなミスをしません。 チェックとフォールドへのインセンティブが僅かに高く、コールへのインセンティブが僅かに低く設定されています。 コールへのインセンティブが低いため、相対的にレイズの魅力が高まり、結果としてかなりアグレッシブになります。",
       "language": "Japanese",
       "imageUrl": "https://japan.gtowizard.com/wp-content/uploads/2026/09/01-hero-1.png",
       "contentType": "article",
@@ -56813,7 +56869,7 @@
       "originalUrl": "https://japan.gtowizard.com/blog/exploiting-profiles-episode-iii-the-maniac/",
       "author": "Andrew Brokos",
       "publishedAt": "2026-08-30T16:05:17",
-      "summary": ".shortcode-single-image-wrap.shortcode-single-image-774f056bb4dac24f187818a3f6df6e95.enable-bg-rollover .rollover i, .shortcode-single-image-wrap.shortcode-single-image-774f056bb4dac24f187818a3f6df6e95.enable-bg-rollover .rollover-video i { background: -webkit-linear-gradient(); ",
+      "summary": "マニアックとは？ ポーカーテーブルで何をもって「マニアック」と呼ぶかは、人によってイメージが異なるでしょう。 アグレッシブすぎる、不利なポジションから弱いハンドでプレイする、一度参加したポットを簡単には諦めない、といったプレイヤー像を思い浮かべるかもしれません。",
       "language": "Japanese",
       "imageUrl": "https://japan.gtowizard.com/wp-content/uploads/2026/09/01-hero.png",
       "contentType": "article",
@@ -56936,6 +56992,44 @@
         "difficulty": "intermediate",
         "tags": [
           "flop"
+        ]
+      }
+    },
+    {
+      "source": "PokerCoaching.com",
+      "sourceSlug": "pokercoaching",
+      "sourceUrl": "https://pokercoaching.com/blog/",
+      "title": "Playing a Draw From the Big Blind: T8o BB vs LJ at 30bb MTT",
+      "originalUrl": "https://pokercoaching.com/blog/draw-from-bb-t8o-bb-vs-lj-30bb-mtt/",
+      "author": null,
+      "publishedAt": "2026-09-14T11:00:00",
+      "summary": "Draws are where a lot of money is won and lost, and playing a draw from the big blind is especially tricky because you are out of position for the rest of the hand. The […]",
+      "language": "English",
+      "imageUrl": "https://pokercoaching.com/blog/wp-content/uploads/2026/09/Playing-a-Draw-From-the-Big-Blind-T8o-BB-vs-LJ-at-30bb-MTT.jpg",
+      "contentType": "article",
+      "classification": {
+        "difficulty": "intermediate",
+        "tags": [
+          "mtt"
+        ]
+      }
+    },
+    {
+      "source": "PokerNews",
+      "sourceSlug": "pokernews",
+      "sourceUrl": "https://www.pokernews.com/strategy/",
+      "title": "How Should You Respond to a 2x Open Blind-On-Blind?",
+      "originalUrl": "https://www.pokernews.com/strategy/how-should-you-respond-to-a-2x-open-blind-on-blind-52371.htm",
+      "author": null,
+      "publishedAt": null,
+      "summary": "What is the best strategy for playing blind on blind, including GTO strategy for differing stack depths from the small blind, as well as facing a SB open.",
+      "language": "English",
+      "imageUrl": "https://pnimg.net/w/articles/0/6aa/56d8c439de.jpg",
+      "contentType": "article",
+      "classification": {
+        "difficulty": "intermediate",
+        "tags": [
+          "gto"
         ]
       }
     }
