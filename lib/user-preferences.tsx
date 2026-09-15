@@ -29,7 +29,9 @@ function writeLocalTheme(value:ThemePreference){
 
 export function UserPreferencesProvider({children}:{children:React.ReactNode}){
   const {user,loading:authLoading}=useAuth();
-  const [preferences,setPreferences]=useState<UserPreferences>(()=>normalize({theme:readLocalTheme()}));
+  // Keep the server and first client render identical. The persisted theme is
+  // applied in the effect below, after hydration has attached link handlers.
+  const [preferences,setPreferences]=useState<UserPreferences>(defaults);
   const [loading,setLoading]=useState(true);
   const saveQueue=useRef<Promise<void>>(Promise.resolve());
 
