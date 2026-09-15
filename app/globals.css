@@ -1666,3 +1666,5 @@ input:-webkit-autofill{-webkit-text-fill-color:var(--color-text);box-shadow:0 0 
 @media(min-width:1001px){.docs-v3 .feed-toolbar{position:sticky!important;top:0!important;z-index:30!important}}
 @media(max-width:1000px){.docs-v3 .feed-toolbar{position:sticky!important;top:64px!important;z-index:30!important}}
 @media(prefers-reduced-motion:reduce){.docs-v3 .feed-toolbar{transition:none}.docs-v3 .feed-toolbar.is-scrolling{transform:none}}
+
+.page-heading-visually-hidden{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}

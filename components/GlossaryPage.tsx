@@ -16,20 +16,9 @@ export function GlossaryPage(){
     return matchesCategory&&(!normalizedQuery||searchable.includes(normalizedQuery));
   }),[category,normalizedQuery]);
 
-  return <main className="glossary-page shared-header-page">
+  return <main className="glossary-page shared-header-page" aria-labelledby="glossary-page-title">
     <div className="glossary-shell">
-      <header className="glossary-heading">
-        <div>
-          <p className="glossary-eyebrow">POKER GLOSSARY</p>
-          <h1>ポーカー用語集</h1>
-          <p>ポーカーの記事を読む前に知っておきたい言葉を、短くわかりやすくまとめました。</p>
-        </div>
-        <div className="glossary-heading-stat">
-          <BookOpenText size={22} aria-hidden="true"/>
-          <strong>{glossaryTerms.length}語</strong>
-          <span>基本用語から戦略用語まで</span>
-        </div>
-      </header>
+      <h1 id="glossary-page-title" className="page-heading-visually-hidden">ポーカー用語集</h1>
 
       <section className="glossary-toolbar" aria-label="用語集の検索と絞り込み">
         <label className="glossary-search">
