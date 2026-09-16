@@ -1,5 +1,5 @@
 {
-  "collectedAt": "2026-09-15T08:27:26.931Z",
+  "collectedAt": "2026-09-16T08:20:58.151Z",
   "sources": [
     {
       "slug": "gto-wizard",
@@ -57030,6 +57030,62 @@
         "difficulty": "intermediate",
         "tags": [
           "gto"
+        ]
+      }
+    },
+    {
+      "source": "PokerCoaching.com",
+      "sourceSlug": "pokercoaching",
+      "sourceUrl": "https://pokercoaching.com/blog/",
+      "title": "The 5 Levels of Poker Thinking (And How to Beat Each)",
+      "originalUrl": "https://pokercoaching.com/blog/the-5-levels-of-poker-thinking-and-how-to-beat-each/",
+      "author": null,
+      "publishedAt": "2026-09-15T12:18:12",
+      "summary": "Put your opponent on one exact hand and you will be wrong most of the time. That is not a knock on your reads, it is just arithmetic, because there are simply too many hands […]",
+      "language": "English",
+      "imageUrl": "https://pokercoaching.com/blog/wp-content/uploads/2026/09/range-vs-range-thinking.jpg",
+      "contentType": "article",
+      "classification": {
+        "difficulty": "intermediate",
+        "tags": []
+      }
+    },
+    {
+      "source": "PokerNews",
+      "sourceSlug": "pokernews",
+      "sourceUrl": "https://www.pokernews.com/strategy/",
+      "title": "Daniel Negreanu Faces a Brutal Decision in His HCL Debut",
+      "originalUrl": "https://www.pokernews.com/strategy/daniel-negreanu-faces-a-brutal-decision-in-his-hcl-debut-52323.htm",
+      "author": null,
+      "publishedAt": null,
+      "summary": "Already down big, Kid Poker found a hand worth fighting for. Then two stacks went in behind him",
+      "language": "English",
+      "imageUrl": "https://pnimg.net/w/articles/0/6a9/fccf09c4e0.jpg",
+      "contentType": "article",
+      "classification": {
+        "difficulty": "intermediate",
+        "tags": []
+      }
+    },
+    {
+      "source": "GTO Wizard",
+      "sourceSlug": "gto-wizard",
+      "sourceUrl": "https://blog.gtowizard.com",
+      "title": "Now Live: Preflop ICM Solving",
+      "originalUrl": "https://blog.gtowizard.com/preflop-icm-solving/",
+      "author": null,
+      "publishedAt": "2026-09-15T10:49:41.000Z",
+      "summary": "Solve any tournament spot in seconds: your own stacks, antes, payouts, and bounties, up to 9 players and 250bb deep, in fields as large as 4,096 runners. \n\nNodelock opponents, compare ICM against chip EV, and carry the ranges into 3-way postflop.",
+      "language": "English",
+      "imageUrl": "https://blog.gtowizard.com/content/2026/09/Header.png",
+      "contentType": "article",
+      "classification": {
+        "difficulty": "intermediate",
+        "tags": [
+          "preflop",
+          "flop",
+          "icm",
+          "mtt"
         ]
       }
     }
