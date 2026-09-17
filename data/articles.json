@@ -1,5 +1,5 @@
 {
-  "collectedAt": "2026-09-16T08:20:58.151Z",
+  "collectedAt": "2026-09-17T08:26:59.177Z",
   "sources": [
     {
       "slug": "gto-wizard",
@@ -57085,6 +57085,25 @@
           "preflop",
           "flop",
           "icm",
+          "mtt"
+        ]
+      }
+    },
+    {
+      "source": "PokerCoaching.com",
+      "sourceSlug": "pokercoaching",
+      "sourceUrl": "https://pokercoaching.com/blog/",
+      "title": "Thin Value Betting: KTs BB vs CO at 50bb MTT",
+      "originalUrl": "https://pokercoaching.com/blog/thin-value-kts-bb-vs-co-50bb-mtt/",
+      "author": null,
+      "publishedAt": "2026-09-16T11:00:00",
+      "summary": "Two of the most underrated skills in poker are refusing to fold too much and knowing how to squeeze value out of a marginal made hand. They show up in the same kind of spot: […]",
+      "language": "English",
+      "imageUrl": "https://pokercoaching.com/blog/wp-content/uploads/2026/09/Thin-Value-Betting-KTs-BB-vs-CO-at-50bb-MTT.jpg",
+      "contentType": "article",
+      "classification": {
+        "difficulty": "intermediate",
+        "tags": [
           "mtt"
         ]
       }
