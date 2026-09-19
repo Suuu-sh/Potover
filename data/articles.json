@@ -1,5 +1,5 @@
 {
-  "collectedAt": "2026-09-18T08:01:46.949Z",
+  "collectedAt": "2026-09-19T07:52:47.337Z",
   "sources": [
     {
       "slug": "gto-wizard",
@@ -57145,6 +57145,64 @@
           "flop",
           "gto",
           "icm"
+        ]
+      }
+    },
+    {
+      "source": "Upswing Poker",
+      "sourceSlug": "upswing-poker",
+      "sourceUrl": "https://upswingpoker.com/",
+      "title": "3 Hidden River Mistakes That Are Costing You Money",
+      "originalUrl": "https://upswingpoker.com/3-river-mistakes-costing-you-money/",
+      "author": null,
+      "publishedAt": "Fri, 18 Sep 2026 14:00:58 +0000",
+      "summary": "The river is the street where the gap between what you see in GTO models and what happens in reality is the largest. GTO strategy is risk-neutral. You’re not. This is the core issue that drives most of your mistakes. In this article, I am going to break down 3 river mistakes you’re making and… The post 3 Hidden River Mistakes That Are Costing You Money appeared first on Upswing Poker .",
+      "language": "English",
+      "imageUrl": "https://upswingpoker.com/wp-content/uploads/2026/06/1200x630-6.jpg",
+      "contentType": "article",
+      "classification": {
+        "difficulty": "intermediate",
+        "tags": [
+          "river",
+          "gto"
+        ]
+      }
+    },
+    {
+      "source": "PokerCoaching.com",
+      "sourceSlug": "pokercoaching",
+      "sourceUrl": "https://pokercoaching.com/blog/",
+      "title": "How Many Streets of Value: AQo CO vs UTG at 30bb MTT",
+      "originalUrl": "https://pokercoaching.com/blog/streets-of-value-aqo-co-vs-utg-30bb-mtt/",
+      "author": null,
+      "publishedAt": "2026-09-18T11:00:00",
+      "summary": "Deciding how many streets of value to bet is one of the most money-critical skills in poker, and top pair with a good kicker is where it bites hardest. Bet too few streets and you […]",
+      "language": "English",
+      "imageUrl": "https://pokercoaching.com/blog/wp-content/uploads/2026/09/How-Many-Streets-of-Value-AQo-CO-vs-UTG-at-30bb-MTT.jpg",
+      "contentType": "article",
+      "classification": {
+        "difficulty": "intermediate",
+        "tags": [
+          "mtt"
+        ]
+      }
+    },
+    {
+      "source": "PokerNews",
+      "sourceSlug": "pokernews",
+      "sourceUrl": "https://www.pokernews.com/strategy/",
+      "title": "Married to the Pair? Patrick Tardif Analyzes a Tough Turn Spot",
+      "originalUrl": "https://www.pokernews.com/strategy/married-to-the-pair-patrick-tardif-analyzes-tough-turn-spot-52221.htm",
+      "author": null,
+      "publishedAt": null,
+      "summary": "Is calling a turn jam worth it with thin equity? Poker Pro Patrick \"Egption\" Tardif breaks down hand ranges and pot odds in this QuintAce strategy quiz.",
+      "language": "English",
+      "imageUrl": "https://pnimg.net/w/articles/0/6a8/d500362dd4.jpg",
+      "contentType": "article",
+      "classification": {
+        "difficulty": "intermediate",
+        "tags": [
+          "turn"
         ]
       }
     }
