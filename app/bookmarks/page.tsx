@@ -39,7 +39,7 @@ export default function Bookmarks() {
               <h2 id="bookmark-empty-title">保存した記事はまだありません</h2>
               <p>気になる記事を保存して、あとから読み返せます。</p>
             </div>
-            <Link href="/docs">記事を探す <ArrowRight size={18} aria-hidden="true"/></Link>
+            <Link href="/explore">記事を探す <ArrowRight size={18} aria-hidden="true"/></Link>
           </section>
         ) : (
           <section className="docs-feed bookmark-docs-feed">

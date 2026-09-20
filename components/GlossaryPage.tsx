@@ -41,7 +41,7 @@ export function GlossaryPage(){
           <p>{term.definition}</p>
           <div className="glossary-card-footer">
             <div className="glossary-related-tags">{term.relatedTags.map(tag=><span key={tag}>{tag}</span>)}</div>
-            <Link href={`/docs?q=${encodeURIComponent(term.searchQuery)}`} aria-label={`${term.term}に関連する記事を探す`}>関連記事 <ArrowRight size={14} aria-hidden="true"/></Link>
+            <Link href={`/explore?q=${encodeURIComponent(term.searchQuery)}`} aria-label={`${term.term}に関連する記事を探す`}>関連記事 <ArrowRight size={14} aria-hidden="true"/></Link>
           </div>
         </article>)}
       </section>}

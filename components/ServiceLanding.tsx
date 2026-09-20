@@ -8,7 +8,7 @@ import {ScrollReveal} from './ScrollReveal';
 import styles from './ServiceLanding.module.css';
 
 const features = [
-  {title: '横断検索', body: '記事も動画も、キーワードでまとめて検索。', href: '/docs'},
+  {title: '横断検索', body: '記事も動画も、キーワードでまとめて検索。', href: '/explore'},
   {title: '学習ロードマップ', body: '目的やレベルに合わせて、学ぶ順番が見つかる。', href: '/roadmap'},
   {title: 'あとで読む', body: '気になるコンテンツを保存して、自分のペースで。', href: '/bookmarks'},
 ];
@@ -23,7 +23,7 @@ const sources = [
 ];
 
 const steps = [
-  {number: '01', icon: Search, title: '気になるテーマを探す。', body: 'プリフロップ、GTO、MTT。知りたいキーワードから、記事や動画を横断検索。言語でも絞り込めます。', href: '/docs', action: 'コンテンツを探す'},
+  {number: '01', icon: Search, title: '気になるテーマを探す。', body: 'プリフロップ、GTO、MTT。知りたいキーワードから、記事や動画を横断検索。言語でも絞り込めます。', href: '/explore', action: 'コンテンツを探す'},
   {number: '02', icon: BookOpen, title: '自分に合った順番で学ぶ。', body: '何から始めるか迷ったら、学習ロードマップへ。基礎から実戦的なテーマまで、次の一歩を見つけられます。', href: '/roadmap', action: 'ロードマップを見る'},
   {number: '03', icon: Bookmark, title: '読みたい記事を、手元に。', body: 'ログインしてブックマークを押すと、あとで読むリストへ。アカウントに保存されるので、どの端末からでも戻れます。', href: '/bookmarks', action: '保存した記事を見る'},
 ];
@@ -47,7 +47,7 @@ export function ServiceLanding() {
           <div className={styles.heroInner}>
             <div className={styles.heroCopy}>
               <h1 id="service-title">ポーカーの学びを、<br/>ひとつの場所に。</h1>
-              <Link className={styles.primaryAction} href="/docs">記事・動画を探す <ArrowRight size={26} aria-hidden="true"/></Link>
+              <Link className={styles.primaryAction} href="/explore">記事・動画を探す <ArrowRight size={26} aria-hidden="true"/></Link>
               <Link className={styles.textAction} href="/roadmap">ロードマップを見る <ArrowRight size={20} aria-hidden="true"/></Link>
             </div>
           </div>
@@ -99,14 +99,14 @@ export function ServiceLanding() {
 
         <section data-reveal className={styles.closing} aria-labelledby="closing-title">
           <p className={styles.eyebrow}>YOUR NEXT CHAPTER</p><h2 id="closing-title">次の学びを、ここから。</h2><p>まずは、気になるテーマをひとつ。登録なしで探せます。</p>
-          <Link className={styles.primaryAction} href="/docs">記事・動画を探す<ArrowRight size={24} aria-hidden="true"/></Link>
+          <Link className={styles.primaryAction} href="/explore">記事・動画を探す<ArrowRight size={24} aria-hidden="true"/></Link>
         </section>
       </main>
       </ScrollReveal>
 
       <footer className={styles.footer}>
         <div><Link className={styles.brand} href="/" aria-label="Potover サービスサイト"><Image className={styles.lightMark} src="/brand/potover-mark-light.png" alt="" width={34} height={34}/><Image className={styles.darkMark} src="/brand/potover-mark-dark.png" alt="" width={34} height={34}/><span>Potover</span></Link><p>ポーカーの学びを、ひとつの場所に。</p></div>
-        <nav aria-label="フッターナビゲーション"><Link href="/home">ホーム</Link><Link href="/docs">探す</Link><Link href="/roadmap">ロードマップ</Link><Link href="/bookmarks">ブックマーク</Link></nav>
+        <nav aria-label="フッターナビゲーション"><Link href="/home">ホーム</Link><Link href="/explore">探す</Link><Link href="/roadmap">ロードマップ</Link><Link href="/bookmarks">ブックマーク</Link></nav>
         <small>© {new Date().getFullYear()} Potover</small>
       </footer>
     </div>
