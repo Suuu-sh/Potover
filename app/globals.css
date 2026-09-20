@@ -1663,6 +1663,7 @@ input:-webkit-autofill{-webkit-text-fill-color:var(--color-text);box-shadow:0 0 
 .docs-v3 .feed-toolbar{transition:opacity .22s ease,transform .22s ease,background-color .22s ease,border-color .22s ease}
 .docs-v3 .feed-toolbar.is-scrolling{opacity:0;transform:translateY(-8px);pointer-events:none;background:transparent!important;border-color:transparent!important;box-shadow:none!important;color:transparent!important}
 .docs-v3 .feed-toolbar.is-scrolling *{color:transparent!important;border-color:transparent!important;background:transparent!important;box-shadow:none!important}
+.docs-v3 .feed-toolbar.is-scrolling,.docs-v3 .feed-toolbar.is-scrolling *{opacity:0!important;color:transparent!important;text-shadow:none!important}
 @media(min-width:1001px){.docs-v3 .feed-toolbar{position:sticky!important;top:0!important;z-index:30!important}}
 @media(max-width:1000px){.docs-v3 .feed-toolbar{position:sticky!important;top:64px!important;z-index:30!important}}
 @media(prefers-reduced-motion:reduce){.docs-v3 .feed-toolbar{transition:none}.docs-v3 .feed-toolbar.is-scrolling{transform:none}}
