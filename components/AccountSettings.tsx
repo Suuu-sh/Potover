@@ -1,9 +1,14 @@
 'use client';
+
 import {useEffect,useState} from 'react';
 import {useRouter} from 'next/navigation';
-import {BookOpen,Languages,Palette,UserCircle} from 'lucide-react';
+import {BadgeCheck,BookOpen,BookOpenCheck,Bookmark,Languages,LogOut,Mail,Palette,Rss,ShieldCheck,UserCircle} from 'lucide-react';
+
 import {useAuth} from '@/lib/auth-client';
+import {useBookmarks} from '@/lib/bookmarks';
+import {useLearningHistory} from '@/lib/learning-history';
 import {usePreferredLanguage, type PreferredLanguage} from '@/lib/use-preferred-language';
+import {useSourceFollows} from '@/lib/source-follows';
 import {useTheme} from '@/lib/use-theme';
 import {SelectMenu} from './SelectMenu';
 import {SourceDirectory} from './SourceDirectory';
@@ -11,12 +16,35 @@ import {SourceDirectory} from './SourceDirectory';
 const sections=[{id:'account',label:'アカウント',icon:UserCircle},{id:'language',label:'表示言語',icon:Languages},{id:'appearance',label:'外観',icon:Palette},{id:'sources',label:'ソース',icon:BookOpen}] as const;
 type Section=typeof sections[number]['id'];
 
+const sectionCopy:Record<Section,{title:string;description:string}>= {
+  account:{title:'アカウント',description:'登録情報と保存状況を確認できます。'},
+  language:{title:'表示言語',description:'Potoverで表示するコンテンツの言語を選択できます。'},
+  appearance:{title:'外観',description:'読みやすさに合わせてPotoverの表示テーマを選択できます。'},
+  sources:{title:'ソース',description:'気になる情報源をフォローして、学びたい記事を見つけやすくします。'},
+};
+
+function SettingCard({icon:Icon,eyebrow,title,description,children,hint}:{icon:typeof Languages;eyebrow:string;title:string;description:string;children:React.ReactNode;hint:string}){
+  return <article className="account-setting-card">
+    <div className="account-setting-icon"><Icon size={22} strokeWidth={1.7}/></div>
+    <div className="account-setting-copy">
+      <p className="account-card-eyebrow">{eyebrow}</p>
+      <h2>{title}</h2>
+      <p>{description}</p>
+      <div className="account-setting-control">{children}</div>
+      <span className="account-hint">{hint}</span>
+    </div>
+  </article>;
+}
+
 export function AccountSettings(){
   const {user,loading,logout}=useAuth();
   const router=useRouter();
   const [section,setSection]=useState<Section>('account');
   const [language,setLanguage]=usePreferredLanguage();
   const {dark,setTheme}=useTheme();
+  const {slugs,loading:bookmarksLoading}=useBookmarks();
+  const {events,loading:historyLoading}=useLearningHistory();
+  const {followedSources,loading:sourceLoading}=useSourceFollows();
   const [signingOut,setSigningOut]=useState(false);
   useEffect(()=>{if(!loading&&!user)router.replace('/login')},[loading,user,router]);
   if(loading||!user)return <div className="account-loading" role="status">読み込み中…</div>;
@@ -24,18 +52,47 @@ export function AccountSettings(){
     setSigningOut(true);
     try{await logout()}finally{router.replace('/login')}
   };
+  const copy=sectionCopy[section];
+  const stats=[
+    {icon:Bookmark,label:'ブックマーク',value:bookmarksLoading?'—':slugs.length},
+    {icon:BookOpenCheck,label:'学習済み',value:historyLoading?'—':events.length},
+    {icon:Rss,label:'フォロー中',value:sourceLoading?'—':followedSources.size},
+  ];
   return <div className="account-layout">
-    <nav className="account-nav" aria-label="アカウント設定">
-      {sections.map(({id,label,icon:Icon})=><button key={id} type="button" aria-current={section===id?'page':undefined} onClick={()=>setSection(id)}><Icon size={27} strokeWidth={1.5}/><span>{label}</span></button>)}
-    </nav>
+    <aside className="account-nav">
+      <div className="account-nav-profile">
+        <span className="account-nav-avatar"><UserCircle size={25} strokeWidth={1.5}/></span>
+        <span><strong>アカウント</strong><small>設定を管理</small></span>
+      </div>
+      <p className="account-nav-label">SETTINGS</p>
+      <nav aria-label="アカウント設定">
+        {sections.map(({id,label,icon:Icon})=><button key={id} type="button" aria-current={section===id?'page':undefined} onClick={()=>setSection(id)}><Icon size={21} strokeWidth={1.7}/><span>{label}</span></button>)}
+      </nav>
+      <div className="account-nav-note"><ShieldCheck size={16}/><span>設定はアカウントに保存されます。</span></div>
+    </aside>
     <section className="account-panel" aria-labelledby="account-title">
-      <h1 id="account-title">{section==='account'?'Account':section==='language'?'表示言語':section==='appearance'?'外観':'ソース'}</h1>
-      <p className="account-description">{section==='account'?'アカウント情報を確認・管理できます。':section==='language'?'表示するコンテンツの言語を選択できます。':section==='appearance'?'Potoverの表示テーマを選択できます。':'フォローする情報源を管理できます。'}</p>
-      {section==='sources'?<div className="account-source-directory"><SourceDirectory compact/></div>:<dl className="account-fields">
-        {section==='account'&&<><div className="account-field"><dt>メールアドレス</dt><dd>{user.email}</dd></div><div className="account-field"><dt>セッション</dt><dd><button type="button" className="account-logout" onClick={signOut} disabled={signingOut}>{signingOut?'ログアウト中…':'ログアウト'}</button></dd></div></>}
-        {section==='language'&&<div className="account-field"><dt>コンテンツの表示言語</dt><dd><SelectMenu ariaLabel="コンテンツの表示言語" value={language} onChange={value=>void setLanguage(value as PreferredLanguage)} options={[{value:'Japanese',label:'日本語'},{value:'English',label:'English'}]}/><p className="account-hint">アカウントに保存され、ログインした端末で同期されます。</p></dd></div>}
-        {section==='appearance'&&<div className="account-field"><dt>テーマ</dt><dd><SelectMenu ariaLabel="表示テーマ" value={dark?'dark':'light'} onChange={value=>void setTheme(value as 'light'|'dark')} options={[{value:'light',label:'ライト'},{value:'dark',label:'ダーク'}]}/><p className="account-hint">アカウントに保存され、ログインした端末で同期されます。</p></dd></div>}
-      </dl>}
+      <header className="account-page-heading">
+        <div><p className="account-page-eyebrow">ACCOUNT SETTINGS</p><h1 id="account-title">{copy.title}</h1><p className="account-description">{copy.description}</p></div>
+        <span className="account-status"><BadgeCheck size={15}/>ログイン中</span>
+      </header>
+
+      <div className="account-profile-card">
+        <span className="account-profile-avatar"><UserCircle size={34} strokeWidth={1.5}/></span>
+        <div className="account-profile-copy"><span className="account-card-eyebrow">YOUR POTOVER ACCOUNT</span><strong>{user.email}</strong><small>学習履歴と設定がこのアカウントに保存されます。</small></div>
+        <button type="button" className="account-logout" onClick={signOut} disabled={signingOut}><LogOut size={15}/>{signingOut?'ログアウト中…':'ログアウト'}</button>
+      </div>
+
+      <div className="account-stat-grid" aria-label="アカウントの利用状況">
+        {stats.map(({icon:Icon,label,value})=><div className="account-stat" key={label}><span><Icon size={17}/></span><strong>{value}</strong><small>{label}</small></div>)}
+      </div>
+
+      {section==='account'&&<div className="account-content-grid">
+        <article className="account-info-card"><span className="account-setting-icon"><Mail size={22}/></span><div><p className="account-card-eyebrow">LOGIN EMAIL</p><h2>メールアドレス</h2><p>ログインやアカウントの確認に使用します。</p><strong className="account-email">{user.email}</strong></div></article>
+        <aside className="account-help-card"><ShieldCheck size={21}/><div><h2>安心して学習を続けられます</h2><p>ブックマークや学習履歴は、ログインした端末で同期されます。</p></div></aside>
+      </div>}
+      {section==='language'&&<SettingCard icon={Languages} eyebrow="CONTENT LANGUAGE" title="コンテンツの表示言語" description="記事や動画を探すときの優先言語を選べます。" hint="変更内容はアカウントに保存され、ログインした端末で同期されます。"><SelectMenu ariaLabel="コンテンツの表示言語" value={language} onChange={value=>void setLanguage(value as PreferredLanguage)} options={[{value:'Japanese',label:'日本語'},{value:'English',label:'English'}]}/></SettingCard>}
+      {section==='appearance'&&<SettingCard icon={Palette} eyebrow="DISPLAY THEME" title="テーマ" description="明るい画面と暗い画面を、いつでも切り替えられます。" hint="テーマの設定はアカウントに保存され、次回ログイン時にも引き継がれます。"><SelectMenu ariaLabel="表示テーマ" value={dark?'dark':'light'} onChange={value=>void setTheme(value as 'light'|'dark')} options={[{value:'light',label:'ライト'},{value:'dark',label:'ダーク'}]}/></SettingCard>}
+      {section==='sources'&&<div className="account-source-directory"><SourceDirectory compact/></div>}
     </section>
   </div>;
 }
