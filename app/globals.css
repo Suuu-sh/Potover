@@ -1670,6 +1670,8 @@ input:-webkit-autofill{-webkit-text-fill-color:var(--color-text);box-shadow:0 0 
 
 .page-heading-visually-hidden{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
 
+.modern-pick-row:hover h3,.modern-pick-row:focus-visible h3{color:var(--color-accent)!important}
+
 /* Account dashboard: make the profile surface useful at a glance. */
 .account-page{padding:34px 24px 64px;background:var(--color-canvas);color:var(--color-text)}
 .account-layout{grid-template-columns:224px minmax(0,1fr);gap:24px;max-width:1280px;min-height:0;align-items:start}
