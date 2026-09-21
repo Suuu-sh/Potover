@@ -6,7 +6,10 @@ import Image from 'next/image';
 import {useRouter} from 'next/navigation';
 import {Eye,EyeOff,LockKeyhole,Mail} from 'lucide-react';
 import {useAuth} from '@/lib/auth-client';
+import {AuthRequestError} from '@/lib/auth-request';
 import styles from './Login.module.css';
+
+type FormError={message:string;retryable:boolean};
 
 export default function LoginPage(){
   const {login,register}=useAuth();
@@ -19,7 +22,7 @@ export default function LoginPage(){
   const [email,setEmail]=useState('');
   const [password,setPassword]=useState('');
   const [visible,setVisible]=useState(false);
-  const [error,setError]=useState('');
+  const [error,setError]=useState<FormError|null>(null);
   const [submitting,setSubmitting]=useState(false);
 
   useEffect(()=>{
@@ -31,11 +34,20 @@ export default function LoginPage(){
     setSourceNotice(params.get('reason')==='source');
   },[]);
 
-  async function submit(event:FormEvent){
-    event.preventDefault();setError('');setSubmitting(true);
+  async function submitForm(){
+    setError(null);setSubmitting(true);
     try{await (mode==='login'?login(email,password):register(email,password));router.push(returnTo)}
-    catch(reason){setError(reason instanceof Error?reason.message:'処理に失敗しました。')}
-    finally{setSubmitting(false)}
+    catch(reason){
+      setError({
+        message:reason instanceof Error?reason.message:'処理に失敗しました。',
+        retryable:reason instanceof AuthRequestError&&reason.retryable,
+      });
+    }finally{setSubmitting(false)}
+  }
+
+  async function submit(event:FormEvent){
+    event.preventDefault();
+    await submitForm();
   }
 
   return <main className={styles.page}>
@@ -44,8 +56,8 @@ export default function LoginPage(){
       <div className={styles.content}>
 
         <div className={styles.tabs} aria-label="アカウント操作">
-          <button aria-pressed={mode==='login'} disabled={submitting} onClick={()=>{setMode('login');setError('')}} type="button">ログイン</button>
-          <button aria-pressed={mode==='register'} disabled={submitting} onClick={()=>{setMode('register');setError('')}} type="button">新規登録</button>
+          <button aria-pressed={mode==='login'} disabled={submitting} onClick={()=>{setMode('login');setError(null)}} type="button">ログイン</button>
+          <button aria-pressed={mode==='register'} disabled={submitting} onClick={()=>{setMode('register');setError(null)}} type="button">新規登録</button>
         </div>
         <header className={styles.heading}>
           <h1 id="auth-heading">{mode==='login'?'おかえりなさい':'アカウントを作成'}</h1>
@@ -54,7 +66,7 @@ export default function LoginPage(){
         <form className={styles.form} onSubmit={submit} aria-busy={submitting}>
           <label><span>メールアドレス</span><div className={styles.input}><Mail size={20} aria-hidden="true"/><input autoComplete="email" inputMode="email" required type="email" value={email} onChange={event=>setEmail(event.target.value)} placeholder="you@example.com" disabled={submitting}/></div></label>
           <label><span>パスワード</span><div className={styles.input}><LockKeyhole size={20} aria-hidden="true"/><input autoComplete={mode==='login'?'current-password':'new-password'} minLength={8} required type={visible?'text':'password'} value={password} onChange={event=>setPassword(event.target.value)} placeholder="8文字以上" disabled={submitting}/><button aria-label={visible?'パスワードを隠す':'パスワードを表示'} aria-pressed={visible} onClick={()=>setVisible(value=>!value)} type="button">{visible?<EyeOff size={20}/>:<Eye size={20}/>}</button></div></label>
-          {error&&<p className={styles.error} role="alert">{error}</p>}
+          {error&&<div className={styles.error} role="alert"><p>{error.message}</p>{error.retryable&&<button className={styles.retry} type="button" onClick={()=>void submitForm()} disabled={submitting}>もう一度試す</button>}</div>}
           <button className={styles.submit} disabled={submitting} type="submit">{submitting?'処理中…':mode==='login'?'ログイン':'登録して始める'}</button>
         </form>
         <Link className={styles.back} href="/">ホームへ戻る</Link>

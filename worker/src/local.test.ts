@@ -20,3 +20,7 @@ it.each(['/api/bookmarks','/api/learning-history','/api/preferences'])('requires
   const response=await production.fetch(new Request(`https://api.test${pathname}`),env);
   expect(response.status).toBe(401);
 });
+it.each([['/api/auth/password','POST'],['/api/auth/account','DELETE']] as const)('requires authentication for %s',async(pathname,method)=>{
+  const response=await production.fetch(new Request(`https://api.test${pathname}`,{method}),env);
+  expect(response.status).toBe(401);
+});

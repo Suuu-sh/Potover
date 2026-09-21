@@ -21,7 +21,7 @@
 .submit{min-height:48px;border:0;border-radius:10px;background:var(--color-button);color:var(--color-on-button);font-weight:700;font-size:16px;cursor:pointer;transition:background .16s ease}
 .submit:hover{background:var(--color-button-hover)}
 .submit:disabled,.tabs button:disabled{opacity:.6;cursor:wait}
-.error{margin:0;padding:12px;border-radius:8px;color:var(--color-error);background:var(--color-error-soft);font-size:14px;line-height:1.6}
+.error{display:grid;gap:10px;margin:0;padding:12px;border-radius:8px;color:var(--color-error);background:var(--color-error-soft);font-size:14px;line-height:1.6}.error p{margin:0}.retry{justify-self:start;min-height:34px;padding:0 12px;border:1px solid currentColor;border-radius:999px;background:transparent;color:inherit;font:inherit;font-size:12px;font-weight:700;cursor:pointer}.retry:hover{background:color-mix(in srgb,currentColor 10%,transparent)}.retry:disabled{opacity:.6;cursor:wait}
 .back{display:block;width:fit-content;margin:22px auto 0;font-size:14px;color:var(--color-muted)}
 .back:hover{color:var(--color-text);text-decoration:underline}
 .page button:focus-visible,.page a:focus-visible{outline:2px solid var(--color-focus);outline-offset:4px}

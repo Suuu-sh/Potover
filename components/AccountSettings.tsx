@@ -1,8 +1,9 @@
 'use client';
 
 import {useEffect,useState} from 'react';
+import Link from 'next/link';
 import {useRouter} from 'next/navigation';
-import {BadgeCheck,BookOpen,BookOpenCheck,Bookmark,Languages,LogOut,Mail,Palette,Rss,ShieldCheck,UserCircle} from 'lucide-react';
+import {ArrowRight,BadgeCheck,BookOpen,BookOpenCheck,Bookmark,Languages,LogOut,Mail,Palette,Rss,ShieldCheck,UserCircle} from 'lucide-react';
 
 import {useAuth} from '@/lib/auth-client';
 import {useBookmarks} from '@/lib/bookmarks';
@@ -12,6 +13,7 @@ import {useSourceFollows} from '@/lib/source-follows';
 import {useTheme} from '@/lib/use-theme';
 import {SelectMenu} from './SelectMenu';
 import {SourceDirectory} from './SourceDirectory';
+import {AccountSecurity} from './AccountSecurity';
 
 const sections=[{id:'account',label:'アカウント',icon:UserCircle},{id:'language',label:'表示言語',icon:Languages},{id:'appearance',label:'外観',icon:Palette},{id:'sources',label:'ソース',icon:BookOpen}] as const;
 type Section=typeof sections[number]['id'];
@@ -53,6 +55,7 @@ export function AccountSettings(){
     try{await logout()}finally{router.replace('/login')}
   };
   const copy=sectionCopy[section];
+  const hasActivity=slugs.length>0||events.length>0||followedSources.size>0;
   const stats=[
     {icon:Bookmark,label:'ブックマーク',value:bookmarksLoading?'—':slugs.length},
     {icon:BookOpenCheck,label:'学習済み',value:historyLoading?'—':events.length},
@@ -86,10 +89,17 @@ export function AccountSettings(){
         {stats.map(({icon:Icon,label,value})=><div className="account-stat" key={label}><span><Icon size={17}/></span><strong>{value}</strong><small>{label}</small></div>)}
       </div>
 
-      {section==='account'&&<div className="account-content-grid">
+      {section==='account'&&<>
+      <div className="account-content-grid">
         <article className="account-info-card"><span className="account-setting-icon"><Mail size={22}/></span><div><p className="account-card-eyebrow">LOGIN EMAIL</p><h2>メールアドレス</h2><p>ログインやアカウントの確認に使用します。</p><strong className="account-email">{user.email}</strong></div></article>
         <aside className="account-help-card"><ShieldCheck size={21}/><div><h2>安心して学習を続けられます</h2><p>ブックマークや学習履歴は、ログインした端末で同期されます。</p></div></aside>
-      </div>}
+      </div>
+      <section className="account-next-step" aria-labelledby="account-next-step-title">
+        <div><p className="account-card-eyebrow">{hasActivity?'KEEP LEARNING':'GET STARTED'}</p><h2 id="account-next-step-title">{hasActivity?'次の学びを続ける':'最初の学びを見つける'}</h2><p>{hasActivity?'保存した記事や気になるテーマから、次に学ぶ内容を探せます。':'記事・動画や用語集から気になるテーマを選ぶと、ここに学習の記録が残ります。'}</p></div>
+        <div className="account-next-actions"><Link href="/explore">記事・動画を探す <ArrowRight size={15}/></Link><Link href="/glossary">用語集を見る <ArrowRight size={15}/></Link></div>
+      </section>
+      <AccountSecurity/>
+      </>}
       {section==='language'&&<SettingCard icon={Languages} eyebrow="CONTENT LANGUAGE" title="コンテンツの表示言語" description="記事や動画を探すときの優先言語を選べます。" hint="変更内容はアカウントに保存され、ログインした端末で同期されます。"><SelectMenu ariaLabel="コンテンツの表示言語" value={language} onChange={value=>void setLanguage(value as PreferredLanguage)} options={[{value:'Japanese',label:'日本語'},{value:'English',label:'English'}]}/></SettingCard>}
       {section==='appearance'&&<SettingCard icon={Palette} eyebrow="DISPLAY THEME" title="テーマ" description="明るい画面と暗い画面を、いつでも切り替えられます。" hint="テーマの設定はアカウントに保存され、次回ログイン時にも引き継がれます。"><SelectMenu ariaLabel="表示テーマ" value={dark?'dark':'light'} onChange={value=>void setTheme(value as 'light'|'dark')} options={[{value:'light',label:'ライト'},{value:'dark',label:'ダーク'}]}/></SettingCard>}
       {section==='sources'&&<div className="account-source-directory"><SourceDirectory compact/></div>}

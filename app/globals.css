@@ -1714,6 +1714,33 @@ input:-webkit-autofill{-webkit-text-fill-color:var(--color-text);box-shadow:0 0 
 .account-info-card>div>p:not(.account-card-eyebrow),.account-help-card p{margin:0;color:var(--color-muted);font-size:11px;line-height:1.7}
 .account-email{display:block;margin-top:15px;color:var(--color-text);font-size:13px;overflow-wrap:anywhere}
 .account-help-card>svg{flex:none;color:var(--color-accent)}
+.account-next-step{display:flex;align-items:center;justify-content:space-between;gap:24px;margin-top:14px;padding:20px;border:1px solid var(--color-border);border-radius:14px;background:var(--color-canvas)}
+.account-next-step h2{margin:6px 0 6px;color:var(--color-text);font-size:16px}
+.account-next-step p:not(.account-card-eyebrow){margin:0;color:var(--color-muted);font-size:11px;line-height:1.7}
+.account-next-actions{display:flex;flex-wrap:wrap;justify-content:flex-end;gap:8px;flex:none}
+.account-next-actions a{display:inline-flex;align-items:center;gap:6px;min-height:34px;padding:0 11px;border:1px solid var(--color-border);border-radius:999px;color:var(--color-text);font-size:10px;font-weight:700;white-space:nowrap}
+.account-next-actions a:hover{border-color:var(--color-accent);background:var(--color-hover);color:var(--color-accent)}
+.account-security-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px;margin-top:14px}
+.account-security-card{padding:20px;border:1px solid var(--color-border);border-radius:14px;background:var(--color-surface)}
+.account-security-heading{display:flex;align-items:flex-start;gap:13px}
+.account-security-heading h2{margin:6px 0 6px;color:var(--color-text);font-size:16px}
+.account-security-heading p:not(.account-card-eyebrow){margin:0;color:var(--color-muted);font-size:11px;line-height:1.7}
+.account-security-form{display:grid;gap:11px;margin-top:18px}
+.account-security-form label{display:grid;gap:6px}
+.account-security-form label>span{color:var(--color-muted);font-size:10px;font-weight:700}
+.account-form-input{width:100%;min-height:38px;padding:0 11px;border:1px solid var(--color-border);border-radius:9px;background:var(--color-input);color:var(--color-text);font:inherit;font-size:12px;outline:none}
+.account-form-input:focus{border-color:var(--color-focus);box-shadow:0 0 0 3px var(--color-accent-soft)}
+.account-primary-action,.account-danger-action{display:inline-flex;align-items:center;justify-content:center;gap:7px;min-height:36px;margin-top:3px;border:0;border-radius:9px;font:inherit;font-size:11px;font-weight:700;cursor:pointer}
+.account-primary-action{background:var(--color-button);color:var(--color-on-button)}
+.account-primary-action:hover{background:var(--color-button-hover)}
+.account-danger-icon{display:grid;place-items:center;flex:none;width:42px;height:42px;border-radius:11px;background:var(--color-error-soft);color:var(--color-error)}
+.account-danger-card{border-color:color-mix(in srgb,var(--color-error) 28%,var(--color-border))}
+.account-danger-action{border:1px solid var(--color-error);background:transparent;color:var(--color-error)}
+.account-danger-action:hover{background:var(--color-error-soft)}
+.account-primary-action:disabled,.account-danger-action:disabled{opacity:.6;cursor:wait}
+.account-feedback{margin:0;padding:9px 10px;border-radius:8px;font-size:10px;line-height:1.6}
+.account-feedback-error{background:var(--color-error-soft);color:var(--color-error)}
+.account-feedback-success{background:var(--color-success-soft);color:var(--color-success)}
 .account-setting-card{display:grid;grid-template-columns:42px minmax(0,1fr);gap:16px;padding:22px 20px;border:1px solid var(--color-border);border-radius:14px;background:var(--color-surface)}
 .account-setting-copy{min-width:0}
 .account-setting-copy h2{margin:6px 0 6px;color:var(--color-text);font-size:18px}
@@ -1751,6 +1778,9 @@ input:-webkit-autofill{-webkit-text-fill-color:var(--color-text);box-shadow:0 0 
   .account-stat strong{font-size:17px}
   .account-stat small{font-size:9px}
   .account-content-grid{grid-template-columns:1fr}
+  .account-next-step{display:block;padding:18px 14px}
+  .account-next-actions{justify-content:flex-start;margin-top:16px}
+  .account-security-grid{grid-template-columns:1fr}
   .account-setting-card{grid-template-columns:36px minmax(0,1fr);gap:12px;padding:18px 14px}
   .account-setting-icon{width:36px;height:36px;border-radius:10px}
   .account-setting-copy h2{font-size:16px}

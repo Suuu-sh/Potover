@@ -7,7 +7,7 @@ import {SESSION_TOKEN_KEY} from './user-api';
 import {createContext,useCallback,useContext,useEffect,useMemo,useState} from 'react';
 
 type User={id:string;email:string};
-type AuthContextValue={user:User|null;loading:boolean;login:(email:string,password:string)=>Promise<void>;register:(email:string,password:string)=>Promise<void>;logout:()=>Promise<void>};
+type AuthContextValue={user:User|null;loading:boolean;login:(email:string,password:string)=>Promise<void>;register:(email:string,password:string)=>Promise<void>;changePassword:(currentPassword:string,newPassword:string)=>Promise<void>;deleteAccount:(password:string)=>Promise<void>;logout:()=>Promise<void>};
 
 const API_URL=process.env.NEXT_PUBLIC_POTOVER_API_URL||'https://potover-api.suuu-sh.workers.dev';
 const AuthContext=createContext<AuthContextValue|null>(null);
@@ -24,8 +24,18 @@ export function AuthProvider({children}:{children:React.ReactNode}){
   const authenticate=useCallback(async(path:string,email:string,password:string)=>{const result=await request<{token:string;user:User}>(path,{method:'POST',body:JSON.stringify({email,password})});localStorage.setItem(SESSION_TOKEN_KEY,result.token);await migrateLegacyStorage();setUser(result.user)},[]);
   const login=useCallback((email:string,password:string)=>authenticate('/api/auth/login',email,password),[authenticate]);
   const register=useCallback((email:string,password:string)=>authenticate('/api/auth/register',email,password),[authenticate]);
+  const changePassword=useCallback(async(currentPassword:string,newPassword:string)=>{
+    const result=await request<{token:string;user:User}>('/api/auth/password',{method:'POST',body:JSON.stringify({currentPassword,newPassword})});
+    localStorage.setItem(SESSION_TOKEN_KEY,result.token);
+    setUser(result.user);
+  },[]);
+  const deleteAccount=useCallback(async(password:string)=>{
+    await request('/api/auth/account',{method:'DELETE',body:JSON.stringify({password})});
+    localStorage.removeItem(SESSION_TOKEN_KEY);
+    setUser(null);
+  },[]);
   const logout=useCallback(async()=>{try{await request('/api/auth/logout',{method:'POST'})}finally{localStorage.removeItem(SESSION_TOKEN_KEY);setUser(null)}},[]);
-  const value=useMemo(()=>({user,loading,login,register,logout}),[user,loading,login,register,logout]);
+  const value=useMemo(()=>({user,loading,login,register,changePassword,deleteAccount,logout}),[user,loading,login,register,changePassword,deleteAccount,logout]);
   return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>;
 }
 
