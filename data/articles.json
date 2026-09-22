@@ -1,5 +1,5 @@
 {
-  "collectedAt": "2026-09-21T08:39:14.988Z",
+  "collectedAt": "2026-09-22T08:18:40.127Z",
   "sources": [
     {
       "slug": "gto-wizard",
@@ -57203,6 +57203,46 @@
         "difficulty": "intermediate",
         "tags": [
           "turn"
+        ]
+      }
+    },
+    {
+      "source": "PokerCoaching.com",
+      "sourceSlug": "pokercoaching",
+      "sourceUrl": "https://pokercoaching.com/blog/",
+      "title": "Delayed Continuation Bet: Q9s BTN vs CO 50bb MTT",
+      "originalUrl": "https://pokercoaching.com/blog/delayed-continuation-bet-q9s-btn-vs-co-50bb-mtt/",
+      "author": null,
+      "publishedAt": "2026-09-21T11:00:00",
+      "summary": "Checking back the flop in position does not mean the hand is over. Many players treat a flop check as a white flag, planning to give up and showdown whatever air they have. That is […]",
+      "language": "English",
+      "imageUrl": "https://pokercoaching.com/blog/wp-content/uploads/2026/09/Delayed-Continuation-Bet-Q9s-BTN-vs-CO-50bb-MTT.jpg",
+      "contentType": "article",
+      "classification": {
+        "difficulty": "intermediate",
+        "tags": [
+          "flop",
+          "mtt"
+        ]
+      }
+    },
+    {
+      "source": "GTO Wizard",
+      "sourceSlug": "gto-wizard",
+      "sourceUrl": "https://blog.gtowizard.com",
+      "title": "Stealing and Restealing in Straddle+Ante Games",
+      "originalUrl": "https://blog.gtowizard.com/stealing-and-restealing-in-straddle-ante-games/",
+      "author": null,
+      "publishedAt": "2026-09-21T14:35:36.000Z",
+      "summary": "Most players treat straddle games like a regular game with bigger numbers. They're not.\n\nIt's a chain reaction that starts preflop and reshapes the entire hand. If you're playing straddle games the same as regular games, you're leaving a lot on the table.",
+      "language": "English",
+      "imageUrl": "https://blog.gtowizard.com/content/2026/09/header.png",
+      "contentType": "article",
+      "classification": {
+        "difficulty": "intermediate",
+        "tags": [
+          "preflop",
+          "flop"
         ]
       }
     }
