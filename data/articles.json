@@ -1,5 +1,5 @@
 {
-  "collectedAt": "2026-09-22T08:18:40.127Z",
+  "collectedAt": "2026-09-23T08:21:00.693Z",
   "sources": [
     {
       "slug": "gto-wizard",
@@ -57243,6 +57243,47 @@
         "tags": [
           "preflop",
           "flop"
+        ]
+      }
+    },
+    {
+      "source": "PokerCoaching.com",
+      "sourceSlug": "pokercoaching",
+      "sourceUrl": "https://pokercoaching.com/blog/",
+      "title": "When to Double Barrel the Turn as a Bluff",
+      "originalUrl": "https://pokercoaching.com/blog/when-to-double-barrel-the-turn-as-a-bluff/",
+      "author": null,
+      "publishedAt": "2026-09-22T08:53:41",
+      "summary": "You bet the flop with nothing, your opponent calls, and now the turn stares back at you. Most players either give up on the spot or fire again blindly, and both mistakes cost real money. […]",
+      "language": "English",
+      "imageUrl": "https://pokercoaching.com/blog/wp-content/uploads/2026/09/When-to-Double-Barrel-the-Turn-as-a-Bluff.jpg",
+      "contentType": "article",
+      "classification": {
+        "difficulty": "intermediate",
+        "tags": [
+          "flop",
+          "turn",
+          "bluff"
+        ]
+      }
+    },
+    {
+      "source": "PokerNews",
+      "sourceSlug": "pokernews",
+      "sourceUrl": "https://www.pokernews.com/strategy/",
+      "title": "GTO Wizard Analysis: The Hidden Mistakes in the $20M Ketola vs. Antonius Hand",
+      "originalUrl": "https://www.pokernews.com/strategy/gto-wizard-analysis-20m-ketola-vs-antonius-hand-52439.htm",
+      "author": null,
+      "publishedAt": null,
+      "summary": "We put the $20M Triton Jeju hand between Ossi Ketola and Patrik Antonius into GTO Wizard to analyze the straight flush, the bluff-catchers, and the fold.",
+      "language": "English",
+      "imageUrl": "https://pnimg.net/w/articles/0/6ab/29cbeb0f61.jpg",
+      "contentType": "article",
+      "classification": {
+        "difficulty": "intermediate",
+        "tags": [
+          "gto",
+          "bluff"
         ]
       }
     }
