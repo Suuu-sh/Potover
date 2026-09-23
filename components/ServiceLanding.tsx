@@ -65,7 +65,7 @@ export function ServiceLanding() {
 
         <section id="how-it-works" className={styles.learning} aria-labelledby="learning-title">
           <div data-reveal className={styles.sectionHeading}>
-            <p className={styles.eyebrow}>LESS SEARCHING. MORE LEARNING.</p>
+            
             <h2 id="learning-title">探し回る時間を、<br/>学ぶ時間へ。</h2>
             <p>情報が多いからこそ、学びへの道筋をシンプルに。</p>
           </div>
@@ -78,27 +78,27 @@ export function ServiceLanding() {
         </section>
 
         <section className={styles.roadmaps} aria-labelledby="roadmaps-title">
-          <div data-reveal className={styles.roadmapHeading}><p className={styles.eyebrow}>FIND YOUR PATH</p><h2 id="roadmaps-title">あなたの現在地から。</h2><p>基礎を知りたい人も、戦略を深めたい人も。</p></div>
-          <div data-reveal className={styles.roadmapVisual}><div><p className={styles.eyebrow}>LEARNING LIBRARY</p><h3>学ぶ順番が、見えてくる。</h3><p>テーマを探して、自分に合ったコースへ。</p></div><ServiceCharacter scene="roadmap"/></div>
+          <div data-reveal className={styles.roadmapHeading}><h2 id="roadmaps-title">あなたの現在地から。</h2><p>基礎を知りたい人も、戦略を深めたい人も。</p></div>
+          <div data-reveal className={styles.roadmapVisual}><div><h3>学ぶ順番が、見えてくる。</h3><p>テーマを探して、自分に合ったコースへ。</p></div><ServiceCharacter scene="roadmap"/></div>
           <div className={styles.roadmapGrid}>{roadmapSummaries.map((course, index) => <Link data-reveal data-reveal-delay={index * 90} className={styles.course} href={`/roadmap#${course.id}`} key={course.id}>
             <span className={styles.courseNumber}>0{index + 1}</span><h3>{course.title}</h3><p>{course.description}</p><span className={styles.courseAction}>コースを見る<ArrowUpRight size={22} aria-hidden="true"/></span>
           </Link>)}</div>
         </section>
 
         <section className={styles.sources} aria-labelledby="sources-title">
-          <div data-reveal className={styles.sourcesHeading}><p className={styles.eyebrow}>FROM THE COMMUNITY</p><h2 id="sources-title">学びの入口を、ひとつに。</h2><p>ポーカーを支えるさまざまな情報源から、次に読むコンテンツを見つけられます。</p></div>
+          <div data-reveal className={styles.sourcesHeading}><h2 id="sources-title">学びの入口を、ひとつに。</h2><p>ポーカーを支えるさまざまな情報源から、次に読むコンテンツを見つけられます。</p></div>
           <div className={styles.sourceGrid}>{sources.map((source, index) => <div data-reveal data-reveal-delay={index * 70} className={styles.sourceCard} key={source.name}><div className={styles.sourceLogo}><Image src={source.image} alt="" width={96} height={52} /></div><span>{source.name}</span></div>)}</div>
         </section>
 
         <section id="faq" className={styles.faq} aria-labelledby="faq-title">
-          <div data-reveal><p className={styles.eyebrow}>QUESTIONS & ANSWERS</p><h2 id="faq-title">よくある質問</h2></div>
+          <div data-reveal><h2 id="faq-title">よくある質問</h2></div>
           <div className={styles.questions}>{questions.map(({question, answer}) => <details data-reveal className={styles.question} key={question}>
             <summary>{question}<ChevronDown size={20} aria-hidden="true"/></summary><p>{answer}</p>
           </details>)}</div>
         </section>
 
         <section data-reveal className={styles.closing} aria-labelledby="closing-title">
-          <p className={styles.eyebrow}>YOUR NEXT CHAPTER</p><h2 id="closing-title">次の学びを、ここから。</h2><p>まずは、気になるテーマをひとつ。登録なしで探せます。</p>
+          <h2 id="closing-title">次の学びを、ここから。</h2><p>まずは、気になるテーマをひとつ。登録なしで探せます。</p>
           <Link className={styles.primaryAction} href="/explore">記事・動画を探す<ArrowRight size={24} aria-hidden="true"/></Link>
         </section>
       </main>

@@ -1817,3 +1817,16 @@ input:-webkit-autofill{-webkit-text-fill-color:var(--color-text);box-shadow:0 0 
 .glossary-preview-term{border-radius:6px!important}
 .glossary-preview-term-link{color:var(--color-muted)!important;font-weight:500!important}
 .modern-home .modern-section-head .home-section-heading small{color:var(--color-muted)!important;font-size:12px!important;font-weight:400!important;letter-spacing:0!important;margin:0!important}
+
+/* Site-wide: text is text. Accent stays on actions, active states and focus only. */
+.library-page,.glossary-page,.curriculum-page,.modern-sources{color:var(--color-text)!important}
+.glossary-heading h1,.glossary-card h2,.pageintro h1,.detail>h1,.bookmark-empty h2,.curriculum-index button div>strong,.modern-source-copy h2{color:var(--color-text)!important}
+.library-intro>p:last-child,.source-card-new p,.source-card-meta,.bookmark-copy span,.bookmark-meta,.library-note,.feed-copy>p,.feed-meta,.modern-sources header>div:first-child>span,.modern-sources header>div:last-child span,.modern-sources-head p,.modern-source-copy>p:nth-of-type(2),.modern-source-copy small,.pageintro>p,.detail>.summary,.detail>.meta,.detailbox p,.detail-points li>span,.glossary-heading>div:first-child>p:last-child,.glossary-heading-stat span,.glossary-card>p,.glossary-card-top>span,.glossary-preview-term-meta>span,.curriculum-heading p,.curriculum-heading>div>small,.curriculum-index>button,.curriculum-index i,.next-lesson>p,.next-lesson-feature>div:nth-child(2)>p,.next-lesson-feature>div:nth-child(2)>span,.lesson-list>header span,.lesson-list>a,.lesson-list>a>em,.pick-source,.pick-level,.pick-language,.pick-time,.source-lang{color:var(--color-muted)!important}
+.pageintro .eyebrow,.detail>.eyebrow,.glossary-eyebrow,.page-kicker,.card-label,.article-modal-header p,.next-lesson-feature>div:nth-child(2)>small,.docs-editorial-index header small{color:var(--color-muted)!important;letter-spacing:0!important;text-transform:none!important;font-weight:500!important}
+.glossary-heading-stat svg,.glossary-search>svg,.glossary-empty svg,.bookmark-empty svg,.modern-sources header>div:last-child svg{color:var(--color-muted)!important}
+.modern-source-link,.modern-sources-head a,.glossary-card-footer>a,.source-card-meta a,.library-toolbar a,.bookmark-meta a{color:var(--color-text)!important}
+.modern-source-link:hover,.modern-sources-head a:hover,.glossary-card-footer>a:hover{text-decoration:underline;text-underline-offset:4px}
+/* Flatter tags: plain labels instead of tinted pills. */
+.glossary-card-top>span,.glossary-preview-term-meta>span,.tag,.pill,.source-badge{background:transparent!important;border:1px solid var(--color-border-soft)!important;border-radius:4px!important}
+.glossary-card,.glossary-preview-term,.roadmap-guide,.shell.page .card,.detailbox,.bookmark-empty,.weekly-learning-card,.next-lesson,.lesson-list,.chapter-rest{border-radius:6px!important}
+.account-setting-icon,.account-danger-icon,.roadmap-guide-icon,.bookmark-icon{background:transparent!important;box-shadow:none!important}

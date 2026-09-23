@@ -31,7 +31,7 @@ export default function RoadmapPage(){
     <section className="curriculum-shell">
       <div className="curriculum-layout">
         <nav className="curriculum-index" aria-label={`${course.title}の章`}>
-          <div className="curriculum-index-label"><span>COURSE CONTENT</span><strong>{course.modules.length}章</strong></div>
+          <div className="curriculum-index-label"><span>目次</span><strong>{course.modules.length}章</strong></div>
           {course.modules.map((item,index)=>{const completedCount=item.articles.filter(article=>read.has(article.slug)).length;const complete=item.articles.length>0&&completedCount===item.articles.length;return <button key={item.title} className={index===activeModule?'is-active':''} aria-current={index===activeModule?'step':undefined} onClick={()=>setActiveModule(index)}><span>{complete?<Check/>:index+1}</span><div><small>第{index+1}章 · {completedCount}/{item.articles.length}</small><strong>{item.title}</strong><p>{item.description}</p><span className="chapter-progress"><i style={{width:`${item.articles.length?completedCount/item.articles.length*100:0}%`}}/></span></div></button>})}
         </nav>
         <div className="curriculum-main">

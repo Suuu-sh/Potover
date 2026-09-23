@@ -14,7 +14,6 @@ export default function Article({params}:{params:{slug:string}}){
     <div className="meta"><span className="pill gray">{a.language}</span><span>{a.publishedAt} · {a.contentType==='video'?`${a.minutes}分の動画`:`${a.minutes} min read`}</span></div>
     <div className="detailbox">
       <section className="detail-takeaways" aria-labelledby="article-outline-heading">
-        <p className="detail-kicker">{a.contentType==='video'?'IN THIS VIDEO':'IN THIS ARTICLE'}</p>
         <h2 id="article-outline-heading">{a.contentType==='video'?'動画の内容':'見出し'}</h2>
         <ol className="detail-points detail-outline">{a.headings.map((heading,index)=><li data-level={heading.level} key={`${a.slug}-heading-${index}`}><span>{String(index+1).padStart(2,'0')}</span><p>{heading.text}</p></li>)}</ol>
       </section>
