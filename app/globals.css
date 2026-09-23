@@ -1788,3 +1788,32 @@ input:-webkit-autofill{-webkit-text-fill-color:var(--color-text);box-shadow:0 0 
   .account-setting-copy>p:not(.account-card-eyebrow){font-size:11px}
   .account-setting-control .potover-select{min-width:160px}
 }
+
+/* Home: quieter, editorial treatment — Japanese headings, fewer tiles and accents. */
+.home-section-heading{flex-direction:row!important;align-items:baseline;gap:12px!important;flex-wrap:wrap}
+.home-section-heading h1,.home-section-heading h2{font-size:20px!important;font-weight:700!important;letter-spacing:.02em!important}
+.home-section-heading small{color:var(--color-muted)!important;font-size:12px!important;font-weight:400!important;letter-spacing:0!important}
+.modern-section-head>a,.roadmap-preview-actions>a,.glossary-preview .modern-section-head>a{color:var(--color-muted)!important;font-size:12px!important;font-weight:500!important}
+.modern-section-head>a:hover,.roadmap-preview-actions>a:hover,.glossary-preview .modern-section-head>a:hover{color:var(--color-text)!important;text-decoration:underline;text-underline-offset:4px}
+.modern-pick-row{margin-bottom:0!important;padding:20px 0!important;border-radius:0!important;background:transparent!important;border-bottom:1px solid var(--color-border-soft)!important}
+.modern-pick-row:last-child{border-bottom:0!important}
+.modern-pick-row>div>p{color:var(--color-muted)!important;font-size:11px!important}
+.modern-pick-row>div>p b{color:var(--color-text);font-weight:600}
+.modern-pick-row em{border:0!important;padding:0!important;background:transparent!important}
+.modern-pick-row em:before{content:'/';margin-right:9px;color:var(--color-border)}
+.modern-pick-row h3{font-size:17px!important;line-height:1.5!important}
+.modern-pick-image{border-radius:4px!important}
+.modern-topics-list{padding:0!important;background:transparent!important;border-radius:0!important}
+.modern-topics-list>a{grid-template-columns:minmax(0,1fr) 16px!important;min-height:64px!important;border-bottom:1px solid var(--color-border-soft)!important}
+.modern-topics-list>a:last-child{border-bottom:0!important}
+.modern-topics-list strong{font-size:14px!important}
+.modern-topics-list small{font-size:11px!important}
+.modern-topics-list>a:hover strong{text-decoration:underline;text-underline-offset:4px}
+.modern-topics-list>a>svg{opacity:0;transition:opacity .15s}
+.modern-topics-list>a:hover>svg{opacity:1}
+.roadmap-preview-card{grid-template-columns:minmax(0,1fr) 18px!important;border-radius:6px!important;border-top:3px solid var(--course-color)!important}
+.roadmap-preview-card:hover{transform:none!important}
+.roadmap-login-required{border-color:var(--color-border)!important;background:transparent!important;color:var(--color-muted)!important;font-weight:500!important}
+.glossary-preview-term{border-radius:6px!important}
+.glossary-preview-term-link{color:var(--color-muted)!important;font-weight:500!important}
+.modern-home .modern-section-head .home-section-heading small{color:var(--color-muted)!important;font-size:12px!important;font-weight:400!important;letter-spacing:0!important;margin:0!important}
