@@ -1830,3 +1830,20 @@ input:-webkit-autofill{-webkit-text-fill-color:var(--color-text);box-shadow:0 0 
 .glossary-card-top>span,.glossary-preview-term-meta>span,.tag,.pill,.source-badge{background:transparent!important;border:1px solid var(--color-border-soft)!important;border-radius:4px!important}
 .glossary-card,.glossary-preview-term,.roadmap-guide,.shell.page .card,.detailbox,.bookmark-empty,.weekly-learning-card,.next-lesson,.lesson-list,.chapter-rest{border-radius:6px!important}
 .account-setting-icon,.account-danger-icon,.roadmap-guide-icon,.bookmark-icon{background:transparent!important;box-shadow:none!important}
+/* Article outline: a plain table of contents rather than numbered tiles. */
+.article-detail-page .detail-outline{display:block!important;margin:0!important;padding:0!important}
+.article-detail-page .detail-outline li,.article-detail-page .detail-outline li:first-child{min-height:0!important;display:block!important;grid-template-columns:none!important;margin:0!important;padding:10px 0 10px 14px!important;border:0!important;border-left:2px solid var(--color-border-soft)!important;border-radius:0!important;background:transparent!important}
+.article-detail-page .detail-outline li[data-level="3"]{padding-left:30px!important}
+.article-detail-page .detail-outline li:hover{border-left-color:var(--color-text)!important}
+.article-detail-page .detail-outline p{margin:0!important;color:var(--color-text)!important;font-size:14px!important}
+/* Account & roadmap: fewer decorative badges. */
+.account-profile-avatar,.account-nav-avatar{background:transparent!important;color:var(--color-muted)!important;box-shadow:none!important}
+.account-status{background:transparent!important;border-color:var(--color-border-soft)!important;color:var(--color-muted)!important}
+.account-stat{display:flex!important;flex-direction:column;gap:2px;background:transparent!important;box-shadow:none!important}
+.account-stat strong{font-size:22px!important;color:var(--color-text)!important}
+.account-panel,.account-nav,.account-setting-card,.account-info-card,.account-security-card,.account-help-card,.account-profile-card,.account-next-step,.account-stat{border-radius:6px!important}
+.account-nav button[aria-current],.account-nav button.is-active{background:var(--color-selected)!important;color:var(--color-text)!important}
+.next-lesson-feature>b{background:transparent!important;border:1px solid var(--color-border)!important;color:var(--color-text)!important}
+.lesson-list>a>span:empty{background:transparent!important}
+.lesson-list header span,.next-lesson-label{background:transparent!important}
+.next-lesson-feature>b svg{color:var(--color-text)!important;stroke:currentColor!important}

@@ -3,7 +3,7 @@
 import {useEffect,useState} from 'react';
 import Link from 'next/link';
 import {useRouter} from 'next/navigation';
-import {ArrowRight,BadgeCheck,BookOpen,BookOpenCheck,Bookmark,Languages,LogOut,Mail,Palette,Rss,ShieldCheck,UserCircle} from 'lucide-react';
+import {ArrowRight,BadgeCheck,BookOpen,Languages,LogOut,Mail,Palette,ShieldCheck,UserCircle} from 'lucide-react';
 
 import {useAuth} from '@/lib/auth-client';
 import {useBookmarks} from '@/lib/bookmarks';
@@ -57,9 +57,9 @@ export function AccountSettings(){
   const copy=sectionCopy[section];
   const hasActivity=slugs.length>0||events.length>0||followedSources.size>0;
   const stats=[
-    {icon:Bookmark,label:'ブックマーク',value:bookmarksLoading?'—':slugs.length},
-    {icon:BookOpenCheck,label:'学習済み',value:historyLoading?'—':events.length},
-    {icon:Rss,label:'フォロー中',value:sourceLoading?'—':followedSources.size},
+    {label:'ブックマーク',value:bookmarksLoading?'—':slugs.length},
+    {label:'学習済み',value:historyLoading?'—':events.length},
+    {label:'フォロー中',value:sourceLoading?'—':followedSources.size},
   ];
   return <div className="account-layout">
     <aside className="account-nav">
@@ -86,7 +86,7 @@ export function AccountSettings(){
       </div>
 
       <div className="account-stat-grid" aria-label="アカウントの利用状況">
-        {stats.map(({icon:Icon,label,value})=><div className="account-stat" key={label}><span><Icon size={17}/></span><strong>{value}</strong><small>{label}</small></div>)}
+        {stats.map(({label,value})=><div className="account-stat" key={label}><strong>{value}</strong><small>{label}</small></div>)}
       </div>
 
       {section==='account'&&<>
