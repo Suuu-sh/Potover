@@ -32,15 +32,15 @@ export function SiteFooter(){
         </div>
         <div className={styles.linkColumns}>
           <nav className={styles.linkGroup} aria-label="サイトナビゲーション">
-            <h2>EXPLORE</h2>
+            <h2>探す</h2>
             {siteNavigation.map(item=><Link href={item.href} key={item.href}>{item.label}</Link>)}
           </nav>
           <nav className={styles.linkGroup} aria-label="学習ナビゲーション">
-            <h2>LEARN</h2>
+            <h2>学ぶ</h2>
             {visibleLearningNavigation.map(item=><Link href={item.href} key={item.href}>{item.label}</Link>)}
           </nav>
           <nav className={styles.linkGroup} aria-label="情報源ナビゲーション">
-            <h2>SOURCES</h2>
+            <h2>情報源</h2>
             {featuredSources.map(source=><Link href={`/explore?q=${encodeURIComponent(source.name)}`} key={source.slug}>{source.name}<ArrowUpRight size={13} aria-hidden="true"/></Link>)}
             <Link href="/sources">すべての情報源 <ArrowRight size={13} aria-hidden="true"/></Link>
           </nav>

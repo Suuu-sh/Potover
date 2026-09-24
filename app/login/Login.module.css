@@ -12,9 +12,9 @@
 .heading p{margin:0;font-size:14px;line-height:1.8;color:var(--color-muted)}
 .form{display:flex;flex-direction:column;gap:18px}
 .form label>span{display:block;margin-bottom:10px;font-size:14px;font-weight:600}
-.input{display:flex;align-items:center;gap:12px;border:1px solid var(--color-border);border-radius:12px;padding:0 16px;min-height:48px;background:var(--color-input)}
+.input{display:flex;align-items:center;gap:12px;border:1px solid var(--color-border);border-radius:6px;padding:0 16px;min-height:48px;background:var(--color-input)}
 .input:focus-within{border-color:var(--color-focus)}
-.input svg{flex:none;color:var(--color-accent)}
+.input svg{flex:none;color:var(--color-muted)}
 .input input{width:100%;min-width:0;border:0;outline:0;background:transparent;color:var(--color-text);font-size:16px;padding:12px 0}
 .input input::placeholder{color:var(--color-disabled)}
 .input button{display:grid;place-items:center;flex:none;width:40px;height:44px;margin-right:-8px;padding:0;border:0;background:transparent;cursor:pointer}

@@ -11,7 +11,7 @@ const featuredTerms=glossaryTerms.filter(term=>featuredGlossarySlugs.includes(te
 export function GlossaryPreview(){
   return <section className="glossary-preview" aria-label="ポーカー用語集">
     <div className="modern-section-head">
-      <HomeSectionHeading eyebrow="POKER GLOSSARY" title="ポーカー用語集"/>
+      <HomeSectionHeading title="ポーカー用語集" note="迷ったらここで確認"/>
       <Link href="/glossary">すべて見る <ArrowRight size={15} aria-hidden="true"/></Link>
     </div>
     <div className="glossary-preview-terms">

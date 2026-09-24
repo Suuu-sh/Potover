@@ -1,10 +1,10 @@
 type HomeSectionHeadingProps = {
-  eyebrow: string;
   title: string;
+  note?: string;
   level?: 'h1' | 'h2';
 };
 
-export function HomeSectionHeading({eyebrow,title,level='h2'}:HomeSectionHeadingProps){
+export function HomeSectionHeading({title,note,level='h2'}:HomeSectionHeadingProps){
   const Heading=level;
-  return <div className="home-section-heading"><small>{eyebrow}</small><Heading>{title}</Heading></div>;
+  return <div className="home-section-heading"><Heading>{title}</Heading>{note&&<small>{note}</small>}</div>;
 }
