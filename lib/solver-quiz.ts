@@ -1,30 +1,31 @@
-// SolveaGTO（SolveaAI Edge API）のプリフロップSolutionからクイズを作る。
+// SolveaGTOのExternal APIが配信する推定レンジ（/v1/estimated）からクイズを作る。
 export const SOLVER_API_URL=(process.env.NEXT_PUBLIC_SOLVEAAI_API_URL||'').replace(/\/+$/,'');
 
 export type Position='UTG'|'HJ'|'CO'|'BTN'|'SB'|'BB';
 
-type HistoryAction={position:Position;action:{type:string;sizeBb?:number}};
+export type SpotAction={position:Position;action:'fold'|'call'|'check'|'raise'|'all_in';sizeBb?:number};
 
-export type NodeSummary={
-  nodeId:string;
-  nodeType:string;
-  actingPosition:Position|null;
-  actionHistory:{actions:HistoryAction[]};
-  potBb:number;
+export type SpotOption={action:SpotAction['action'];sizeBb?:number};
+
+export type Stage='open'|'vs_open'|'vs_3bet'|'vs_4bet'|'vs_5bet'|'vs_limp';
+
+export type SpotSummary={
+  dataset:string;
+  spotId:string;
+  stage:Stage;
+  hero:Position;
   effectiveStackBb:number;
-  hasStrategy:boolean;
+  history:SpotAction[];
+  options:SpotOption[];
 };
 
-export type HandAggregate={hand:string;comboCount:number;actions:Record<string,number>};
+export type HandStrategy={hand:string;reachable:boolean;frequencies:Record<string,number>};
 
-export type SolutionNode=Omit<NodeSummary,'hasStrategy'>&{handAggregates:HandAggregate[]};
-
-export type SolutionSummary={solutionId:string;stackBb:number;solverVersion:string};
+export type SpotDetail=SpotSummary&{strategyType:string;hands:HandStrategy[]};
 
 export type QuizQuestion={
-  solutionId:string;
-  node:SolutionNode;
-  hand:HandAggregate;
+  spot:SpotDetail;
+  hand:HandStrategy;
   cards:[string,string];
   choices:string[];
 };
@@ -37,18 +38,28 @@ async function getJson<T>(path:string):Promise<T>{
   return response.json() as Promise<T>;
 }
 
-export const fetchSolutions=()=>getJson<SolutionSummary[]>('/v1/preflop/solutions');
-export const fetchNodes=(solutionId:string)=>getJson<NodeSummary[]>(`/v1/preflop/solutions/${encodeURIComponent(solutionId)}/nodes`);
-export const fetchNode=(solutionId:string,nodeId:string)=>getJson<SolutionNode>(`/v1/preflop/solutions/${encodeURIComponent(solutionId)}/nodes/${encodeURIComponent(nodeId)}`);
+export const fetchSpots=()=>getJson<SpotSummary[]>('/v1/estimated/spots');
+export const fetchSpot=(dataset:string,spotId:string)=>getJson<SpotDetail>(`/v1/estimated/datasets/${encodeURIComponent(dataset)}/spots/${encodeURIComponent(spotId)}`);
 
-export function quizNodes(nodes:NodeSummary[]){
-  return nodes.filter(node=>node.nodeType==='player_decision'&&node.hasStrategy&&node.actingPosition);
+export const stageLabels:Record<Stage,string>={
+  open:'オープン',
+  vs_open:'オープンへの応答',
+  vs_3bet:'3ベットへの応答',
+  vs_4bet:'4ベットへの応答',
+  vs_5bet:'5ベットへの応答',
+  vs_limp:'リンプへの応答',
+};
+
+export function optionKey({action,sizeBb}:SpotOption){
+  return action==='raise'?`raise_${sizeBb}`:action;
 }
 
-// ほぼ100%フォールドのハンドばかり出ないよう、判断の分かれるハンドを優先する。
-export function pickHand(hands:HandAggregate[],random=Math.random){
-  const interesting=hands.filter(hand=>(hand.actions.fold??0)<0.95);
-  const pool=interesting.length>0&&random()<0.8?interesting:hands;
+// 到達しないハンドは出題しない。ほぼ100%フォールドのハンドばかり出ないよう、判断の分かれるハンドを優先する。
+export function pickHand(hands:HandStrategy[],random=Math.random){
+  const reachable=hands.filter(hand=>hand.reachable);
+  const candidates=reachable.length>0?reachable:hands;
+  const interesting=candidates.filter(hand=>(hand.frequencies.fold??0)<0.95);
+  const pool=interesting.length>0&&random()<0.8?interesting:candidates;
   return pool[Math.floor(random()*pool.length)];
 }
 
@@ -61,51 +72,42 @@ export function handToCards(hand:string,random=Math.random):[string,string]{
   return [`${high}${SUITS[first]}`,`${low}${SUITS[second]}`];
 }
 
-const ACTION_ORDER=['fold','check','call','raise','all_in'];
-
-export function sortActions(actions:string[]){
-  const rank=(action:string)=>ACTION_ORDER.indexOf(action.split('_')[0]==='all'?'all_in':action.split('_')[0]);
-  const size=(action:string)=>Number(action.split('_')[1])||0;
-  return [...actions].sort((a,b)=>rank(a)-rank(b)||size(a)-size(b));
-}
-
-export function actionLabel(action:string){
-  if(action==='fold')return 'フォールド';
-  if(action==='check')return 'チェック';
-  if(action==='call')return 'コール';
-  if(action==='all_in')return 'オールイン';
-  const size=action.match(/^raise_([\d.]+)$/);
+export function actionLabel(key:string){
+  if(key==='fold')return 'フォールド';
+  if(key==='check')return 'チェック';
+  if(key==='call')return 'コール';
+  if(key==='all_in')return 'オールイン';
+  const size=key.match(/^raise_([\d.]+)$/);
   if(size)return `レイズ ${size[1]}bb`;
-  return action;
+  return key;
 }
 
-function historyActionLabel({type,sizeBb}:HistoryAction['action'],raiseCount:number){
-  if(type==='call')return 'コール';
-  if(type==='check')return 'チェック';
-  if(type==='all_in')return 'オールイン';
-  if(type==='raise'){
+function historyActionLabel({action,sizeBb}:SpotAction,raiseCount:number){
+  if(action==='call')return raiseCount===0?'リンプ':'コール';
+  if(action==='check')return 'チェック';
+  if(action==='all_in')return 'オールイン';
+  if(action==='raise'){
     const name=raiseCount===0?'オープン':`${raiseCount+2}ベット`;
     return sizeBb?`${sizeBb}bbで${name}`:name;
   }
-  return type;
+  return 'フォールド';
 }
 
-// 暗黙のフォールドは省き、参加したアクションだけを「UTG 2.5bbでオープン → CO 7.5bbで3ベット」のように並べる。
-export function describeHistory(actions:HistoryAction[],hero?:Position|null){
+// フォールドは省き、参加したアクションだけを「UTG 2.5bbでオープン → CO 8bbで3ベット」のように並べる。
+export function describeHistory(actions:SpotAction[],hero?:Position|null){
   let raiseCount=0;
-  const parts=actions.filter(item=>item.action.type!=='fold').map(item=>{
-    const label=`${item.position} ${historyActionLabel(item.action,raiseCount)}`;
-    if(item.action.type==='raise')raiseCount+=1;
+  const parts=actions.filter(item=>item.action!=='fold').map(item=>{
+    const label=`${item.position} ${historyActionLabel(item,raiseCount)}`;
+    if(item.action==='raise')raiseCount+=1;
     return label;
   });
   if(parts.length>0)return parts.join(' → ');
   return hero==='UTG'?'あなたが最初に行動します':'あなたの前は全員フォールド';
 }
 
-export function buildQuestion(solutionId:string,node:SolutionNode,random=Math.random):QuizQuestion{
-  const hand=pickHand(node.handAggregates,random);
-  const choices=sortActions(Array.from(new Set(node.handAggregates.flatMap(item=>Object.keys(item.actions)))));
-  return {solutionId,node,hand,cards:handToCards(hand.hand,random),choices};
+export function buildQuestion(spot:SpotDetail,random=Math.random):QuizQuestion{
+  const hand=pickHand(spot.hands,random);
+  return {spot,hand,cards:handToCards(hand.hand,random),choices:spot.options.map(optionKey)};
 }
 
 // 最頻アクションは正解。頻度25%以上は混合戦略として許容し、それ未満は不正解。
