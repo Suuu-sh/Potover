@@ -2,7 +2,7 @@ export interface Env { DB: { prepare: (query: string) => any }; BATCH_INGEST_TOK
 
 const allowedOrigins=new Set(['https://potover.com','https://www.potover.com','https://potover.pages.dev','http://localhost:3000','http://localhost:3001']);
 const isAllowedOrigin=(origin:string)=>allowedOrigins.has(origin)||/^https:\/\/[a-z0-9-]+\.potover\.pages\.dev$/.test(origin);
-const corsHeaders=(request:Request)=>{const origin=request.headers.get('origin')||'';return {'Access-Control-Allow-Origin':isAllowedOrigin(origin)?origin:'https://potover.com','Access-Control-Allow-Methods':'GET,POST,OPTIONS','Access-Control-Allow-Headers':'Content-Type,Authorization','Access-Control-Max-Age':'86400','Vary':'Origin'}};
+const corsHeaders=(request:Request)=>{const origin=request.headers.get('origin')||'';return {'Access-Control-Allow-Origin':isAllowedOrigin(origin)?origin:'https://potover.com','Access-Control-Allow-Methods':'GET,POST,DELETE,OPTIONS','Access-Control-Allow-Headers':'Content-Type,Authorization','Access-Control-Max-Age':'86400','Vary':'Origin'}};
 const json=(request:Request,body:unknown,init:ResponseInit={})=>new Response(JSON.stringify(body),{...init,headers:{'Content-Type':'application/json; charset=utf-8',...corsHeaders(request),...(init.headers||{})}});
 const bytesToHex=(bytes:Uint8Array)=>Array.from(bytes,value=>value.toString(16).padStart(2,'0')).join('');
 const hexToBytes=(hex:string)=>new Uint8Array(hex.match(/.{2}/g)?.map(byte=>parseInt(byte,16))||[]);
@@ -35,12 +35,42 @@ async function auth(request:Request,env:Env,mode:'login'|'register'){
   if(!user||!safeEqual(await hashPassword(password,user.password_salt),user.password_hash))return json(request,{error:'メールアドレスまたはパスワードが違います。'},{status:401});
   return json(request,{token:await createSession(env,user.id),user:{id:user.id,email:user.email}});
 }
+async function changePassword(request:Request,env:Env){
+  const user=await currentUser(request,env);if(!user)return json(request,{error:'ログインが必要です。'},{status:401});
+  let body:{currentPassword?:unknown;newPassword?:unknown};try{body=await request.json()}catch{return json(request,{error:'入力内容を確認してください。'},{status:400})}
+  const currentPassword=typeof body.currentPassword==='string'?body.currentPassword:'';
+  const newPassword=typeof body.newPassword==='string'?body.newPassword:'';
+  if(newPassword.length<8||newPassword.length>128)return json(request,{error:'新しいパスワードは8〜128文字で入力してください。'},{status:400});
+  if(currentPassword===newPassword)return json(request,{error:'現在のパスワードと異なるパスワードを設定してください。'},{status:400});
+  const row=await env.DB.prepare('SELECT password_hash,password_salt FROM users WHERE id=?').bind(user.id).first() as {password_hash:string;password_salt:string}|null;
+  if(!row||!safeEqual(await hashPassword(currentPassword,row.password_salt),row.password_hash))return json(request,{error:'現在のパスワードが違います。'},{status:401});
+  const passwordSalt=randomHex(16),passwordHash=await hashPassword(newPassword,passwordSalt);
+  await env.DB.prepare('UPDATE users SET password_hash=?,password_salt=? WHERE id=?').bind(passwordHash,passwordSalt,user.id).run();
+  await env.DB.prepare('DELETE FROM sessions WHERE user_id=?').bind(user.id).run();
+  return json(request,{token:await createSession(env,user.id),user});
+}
+async function deleteAccount(request:Request,env:Env){
+  const user=await currentUser(request,env);if(!user)return json(request,{error:'ログインが必要です。'},{status:401});
+  let body:{password?:unknown};try{body=await request.json()}catch{return json(request,{error:'入力内容を確認してください。'},{status:400})}
+  const password=typeof body.password==='string'?body.password:'';
+  const row=await env.DB.prepare('SELECT password_hash,password_salt FROM users WHERE id=?').bind(user.id).first() as {password_hash:string;password_salt:string}|null;
+  if(!row||!safeEqual(await hashPassword(password,row.password_salt),row.password_hash))return json(request,{error:'パスワードが違います。'},{status:401});
+  await env.DB.prepare('DELETE FROM sessions WHERE user_id=?').bind(user.id).run();
+  await env.DB.prepare('DELETE FROM source_follows WHERE user_id=?').bind(user.id).run();
+  await env.DB.prepare('DELETE FROM bookmarks WHERE user_id=?').bind(user.id).run();
+  await env.DB.prepare('DELETE FROM learning_history WHERE user_id=?').bind(user.id).run();
+  await env.DB.prepare('DELETE FROM user_preferences WHERE user_id=?').bind(user.id).run();
+  await env.DB.prepare('DELETE FROM users WHERE id=?').bind(user.id).run();
+  return json(request,{ok:true});
+}
 
 export default {async fetch(request:Request,env:Env){
   if(request.method==='OPTIONS')return new Response(null,{headers:corsHeaders(request)});const u=new URL(request.url);
   if(u.pathname==='/health')return json(request,{ok:true});
   if(u.pathname==='/api/auth/register'&&request.method==='POST')return auth(request,env,'register');
   if(u.pathname==='/api/auth/login'&&request.method==='POST')return auth(request,env,'login');
+  if(u.pathname==='/api/auth/password'&&request.method==='POST')return changePassword(request,env);
+  if(u.pathname==='/api/auth/account'&&request.method==='DELETE')return deleteAccount(request,env);
   if(u.pathname==='/api/auth/me'&&request.method==='GET'){const user=await currentUser(request,env);return user?json(request,{user}):json(request,{error:'ログインが必要です。'},{status:401})}
   if(u.pathname==='/api/auth/logout'&&request.method==='POST'){const token=bearerToken(request);if(token)await env.DB.prepare('DELETE FROM sessions WHERE token_hash=?').bind(await sha256(token)).run();return json(request,{ok:true})}
   if(u.pathname==='/api/bookmarks'&&request.method==='GET'){const user=await currentUser(request,env);if(!user)return json(request,{error:'ログインが必要です。'},{status:401});const {results}=await env.DB.prepare('SELECT article_slug FROM bookmarks WHERE user_id=? ORDER BY created_at DESC').bind(user.id).all();return json(request,{slugs:(results as {article_slug:string}[]).map(row=>row.article_slug)})}

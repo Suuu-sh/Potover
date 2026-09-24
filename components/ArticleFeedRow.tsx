@@ -2,12 +2,11 @@
 
 import Image from 'next/image';
 import {contentLabel} from '@/lib/content-labels';
-import {CalendarDays,Check,Clock3,ExternalLink,Globe2} from 'lucide-react';
+import {CalendarDays,Check,Clock3,Globe2} from 'lucide-react';
 
 import {Article} from '@/lib/data';
 import {BookmarkButton} from '@/components/BookmarkButton';
 import {SourceFollowButton} from '@/components/SourceFollowButton';
-import {LearningLink} from '@/components/LearningLink';
 import {useLearningHistory} from '@/lib/learning-history';
 import ArticleLink from '@/components/ArticleLink';
 
@@ -19,7 +18,7 @@ type ArticleFeedRowProps={article:Article;onTagClick?:(tag:string)=>void;compact
 export function ArticleFeedRow({article,onTagClick,compactActions=false}:ArticleFeedRowProps){
   const {hasRead}=useLearningHistory();
   const read=hasRead(article.slug);
-  const actionButtons=<><BookmarkButton slug={article.slug}/><LearningLink slug={article.slug} href={article.url} aria-label={article.contentType==='video'?'YouTubeで見る':'元記事を開く'}><ExternalLink size={20}/></LearningLink></>;
+  const actionButtons=<BookmarkButton slug={article.slug}/>;
   return <article className="docs-feed-row">
     <ArticleLink slug={article.slug} className="article-cover"><Image src={article.imageUrl||sourceImages[article.sourceSlug]||'/icon.png'} alt="" fill sizes="(max-width: 640px) 100vw, (max-width: 720px) 34vw, 280px"/></ArticleLink>
     <div className="feed-copy"><div className="feed-source"><span className="source-glyph">{sourceGlyphs[article.sourceSlug]||article.source.slice(0,1)}</span><strong>{article.source}</strong><SourceFollowButton sourceSlug={article.sourceSlug} sourceName={article.source}/><span className="content-kind">{article.contentType==='video'?'動画':'記事'}</span>{read&&<span className="read-status"><Check size={12} aria-hidden="true"/>{article.contentType==='video'?'視聴済み':'読了'}</span>}{compactActions&&<div className="feed-source-actions">{actionButtons}</div>}</div>

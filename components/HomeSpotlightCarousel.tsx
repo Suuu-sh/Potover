@@ -19,7 +19,7 @@ export function HomeSpotlightCarousel(){
   const [preferredLanguage]=usePreferredLanguage();
   const preferredSource=preferredLanguage==='Japanese'?'gto-wizard-japan':'gto-wizard';
   const recommendations=articles.filter(article=>article.sourceSlug===preferredSource);
-  const basePromos=[{href:'/docs',image:'/banners/potover-strategy-hero.png',label:'Potover Picks',title:'今週読むべきポーカー戦略'},...(recommendations.length?recommendations:articles).slice(0,6).map(article=>({href:`/articles/${article.slug}`,image:article.imageUrl||'/banners/range-map.png',label:article.source,title:article.title}))];
+  const basePromos=[{href:'/explore',image:'/banners/potover-strategy-hero.png',label:'Potover Picks',title:'今週読むべきポーカー戦略'},...(recommendations.length?recommendations:articles).slice(0,6).map(article=>({href:`/articles/${article.slug}`,image:article.imageUrl||'/banners/range-map.png',label:article.source,title:article.title}))];
   // Keep two copies ahead of the active set so the carousel can wrap without a visible jump.
   const promos=[...basePromos,...basePromos,...basePromos];
   const cycleWidthFor=(node:HTMLDivElement)=>{const cards=Array.from(node.querySelectorAll<HTMLElement>('.home-spotlight-card-shell'));return cards[basePromos.length]?cards[basePromos.length].offsetLeft-cards[0].offsetLeft:0};

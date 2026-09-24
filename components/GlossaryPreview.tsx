@@ -1,6 +1,7 @@
 import Link from 'next/link';
-import {ArrowRight, BookOpenText} from 'lucide-react';
+import {ArrowRight} from 'lucide-react';
 
+import {HomeSectionHeading} from '@/components/HomeSectionHeading';
 import {glossaryTerms} from '@/lib/glossary';
 
 const featuredGlossarySlugs=['equity','open-raise','icm'];
@@ -8,15 +9,10 @@ const featuredGlossarySlugs=['equity','open-raise','icm'];
 const featuredTerms=glossaryTerms.filter(term=>featuredGlossarySlugs.includes(term.slug));
 
 export function GlossaryPreview(){
-  return <section className="glossary-preview" aria-labelledby="glossary-preview-title">
-    <div className="glossary-preview-intro">
-      <div>
-        <span className="glossary-preview-icon"><BookOpenText size={20} aria-hidden="true"/></span>
-        <p className="glossary-preview-eyebrow">POKER GLOSSARY</p>
-        <h2 id="glossary-preview-title">プレイを支える、ポーカー用語</h2>
-        <p className="glossary-preview-lead">気になった言葉を短く確認して、次に読む記事を見つけよう。</p>
-      </div>
-      <Link href="/glossary">用語集を見る <ArrowRight size={15} aria-hidden="true"/></Link>
+  return <section className="glossary-preview" aria-label="ポーカー用語集">
+    <div className="modern-section-head">
+      <HomeSectionHeading title="ポーカー用語集" note="迷ったらここで確認"/>
+      <Link href="/glossary">すべて見る <ArrowRight size={15} aria-hidden="true"/></Link>
     </div>
     <div className="glossary-preview-terms">
       {featuredTerms.map(term=><Link href="/glossary" className="glossary-preview-term home-elevated-card" key={term.slug}>

@@ -12,28 +12,31 @@
     "collect:public-sources": "node scripts/collect-public-sources.mjs",
     "collect:youtube": "node scripts/collect-youtube.mjs",
     "enrich:headings": "node scripts/enrich-article-headings.mjs",
-    "build:pages": "next build",
+    "build:pages": "npm run build:production",
+    "build:production": "NEXT_PUBLIC_POTOVER_API_URL=https://potover-api.suuu-sh.workers.dev next build",
     "deploy:worker": "wrangler deploy --config worker/wrangler.jsonc",
     "deploy:pages": "wrangler pages deploy out --project-name potover",
     "theme:generate": "node scripts/generate-theme.mjs",
     "theme:check": "node scripts/generate-theme.mjs --check",
     "dev:local": "NEXT_PUBLIC_POTOVER_API_URL=http://127.0.0.1:8787 next dev --hostname 127.0.0.1 --port 3001",
+    "dev:all": "node scripts/dev-all.mjs",
     "dev:api": "wrangler dev --local --config worker/wrangler.local.jsonc",
     "db:local": "wrangler d1 migrations apply potover-local --local --config worker/wrangler.local.jsonc"
   },
   "dependencies": {
+    "lucide-react": "^0.468.0",
     "next": "14.2.15",
     "react": "18.3.1",
-    "react-dom": "18.3.1",
-    "lucide-react": "^0.468.0"
+    "react-dom": "18.3.1"
   },
   "devDependencies": {
     "@types/node": "^20.16.10",
     "@types/react": "^18.3.3",
     "@types/react-dom": "^18.3.0",
+    "eslint": "^8.57.1",
+    "eslint-config-next": "14.2.15",
     "typescript": "^5.6.3",
     "vitest": "^2.1.4",
-    "eslint": "^8.57.1",
-    "eslint-config-next": "14.2.15"
+    "wrangler": "^4.135.0"
   }
 }
