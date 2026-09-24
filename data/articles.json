@@ -1,5 +1,5 @@
 {
-  "collectedAt": "2026-09-23T08:21:00.693Z",
+  "collectedAt": "2026-09-24T08:12:37.761Z",
   "sources": [
     {
       "slug": "gto-wizard",
@@ -57284,6 +57284,28 @@
         "tags": [
           "gto",
           "bluff"
+        ]
+      }
+    },
+    {
+      "source": "PokerCoaching.com",
+      "sourceSlug": "pokercoaching",
+      "sourceUrl": "https://pokercoaching.com/blog/",
+      "title": "Middle Pair Facing a River Lead: Q8s BTN vs BB 100bb Cash",
+      "originalUrl": "https://pokercoaching.com/blog/middle-pair-river-lead-q8s-btn-vs-bb-100bb-cash/",
+      "author": null,
+      "publishedAt": "2026-09-23T11:00:00",
+      "summary": "One of the most common leaks in live poker is folding a perfectly good bluff-catcher because a big river bet looks scary. Players check a marginal made hand on the flop, check it again on […]",
+      "language": "English",
+      "imageUrl": "https://pokercoaching.com/blog/wp-content/uploads/2026/09/Middle-Pair-Facing-a-River-Lead-Q8s-BTN-vs-BB-100bb-Cash.jpg",
+      "contentType": "article",
+      "classification": {
+        "difficulty": "intermediate",
+        "tags": [
+          "flop",
+          "river",
+          "bluff",
+          "cash-game"
         ]
       }
     }
