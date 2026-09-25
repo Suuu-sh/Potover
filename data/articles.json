@@ -1,5 +1,5 @@
 {
-  "collectedAt": "2026-09-24T08:12:37.761Z",
+  "collectedAt": "2026-09-25T08:35:49.761Z",
   "sources": [
     {
       "slug": "gto-wizard",
@@ -57306,6 +57306,69 @@
           "river",
           "bluff",
           "cash-game"
+        ]
+      }
+    },
+    {
+      "source": "PokerCoaching.com",
+      "sourceSlug": "pokercoaching",
+      "sourceUrl": "https://pokercoaching.com/blog/",
+      "title": "Setting Up River Decisions Early (Plan the Hand in Advance)",
+      "originalUrl": "https://pokercoaching.com/blog/setting-up-river-decisions-early-plan-the-hand-in-advance/",
+      "author": null,
+      "publishedAt": "2026-09-24T08:54:28",
+      "summary": "The river feels like the hardest street in poker, and for most players it is. The pot is biggest, the decision is final, and no draw is coming to save anyone. But here is the […]",
+      "language": "English",
+      "imageUrl": "https://pokercoaching.com/blog/wp-content/uploads/2026/09/Setting-Up-River-Decisions-Early-Plan-the-Hand-in-Advance.jpg",
+      "contentType": "article",
+      "classification": {
+        "difficulty": "intermediate",
+        "tags": [
+          "river"
+        ]
+      }
+    },
+    {
+      "source": "AJPC",
+      "sourceSlug": "ajpc",
+      "sourceUrl": "https://www.ajpc.jp/",
+      "title": "2026年結果 - AJPC - 全日本ポーカー選手権 公式サイト",
+      "originalUrl": "https://www.ajpc.jp/ajpc2026result/",
+      "author": null,
+      "publishedAt": "2026-09-24T13:23:17+00:00",
+      "summary": "AJPC（全日本ポーカー選手権）2026の各トーナメントが終了しました。 メイントーナメント 結果 CHAMPION 松村 樹来 まつむら たつき 優勝 松村 樹来（まつむら たつき） 準優勝 知久 陽（ちく ひなた） […]",
+      "language": "Japanese",
+      "imageUrl": "https://www.ajpc.jp/wp/wp-content/uploads/2026/09/S__58826794_0.jpg",
+      "contentType": "article",
+      "classification": {
+        "difficulty": "intermediate",
+        "tags": [
+          "mtt"
+        ]
+      },
+      "sourceModifiedAt": "2026-09-24T13:26:47+00:00"
+    },
+    {
+      "source": "GTO Wizard",
+      "sourceSlug": "gto-wizard",
+      "sourceUrl": "https://www.youtube.com/@GTOWizard",
+      "title": "Chip Leader 3-Bets You at the Final Table. What Now?",
+      "originalUrl": "https://www.youtube.com/watch?v=A9F0BlFlULo",
+      "author": "GTO Wizard",
+      "publishedAt": "2026-09-24T15:12:29+00:00",
+      "summary": "You bust a tournament, and a week later you are still replaying one hand, unable to tell whether you made the correct play or not. In this video, Andrew Brokos rebuilds a hand from a final table he was sitting at, using Preflop ICM Solving in GTO Wizard AI, and tests whether his opponent's play can be justified. Preflo",
+      "language": "English",
+      "imageUrl": "https://i.ytimg.com/vi/A9F0BlFlULo/hqdefault.jpg",
+      "contentType": "video",
+      "durationSeconds": null,
+      "classification": {
+        "difficulty": "intermediate",
+        "tags": [
+          "preflop",
+          "flop",
+          "gto",
+          "icm",
+          "mtt"
         ]
       }
     }
