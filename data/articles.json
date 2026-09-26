@@ -1,5 +1,5 @@
 {
-  "collectedAt": "2026-09-25T08:35:49.761Z",
+  "collectedAt": "2026-09-26T08:22:40.134Z",
   "sources": [
     {
       "slug": "gto-wizard",
@@ -57369,6 +57369,43 @@
           "gto",
           "icm",
           "mtt"
+        ]
+      }
+    },
+    {
+      "source": "Upswing Poker",
+      "sourceSlug": "upswing-poker",
+      "sourceUrl": "https://upswingpoker.com/",
+      "title": "3 Common Spots Where Poker Players Aren’t Aggressive Enough",
+      "originalUrl": "https://upswingpoker.com/3-common-spots-where-poker-players-arent-aggressive-enough/",
+      "author": null,
+      "publishedAt": "Fri, 25 Sep 2026 14:00:41 +0000",
+      "summary": "Passivity gets a bad connotation in general, and it’s for a good reason. Passivity means accepting what happens without active response, initiative or resistance. Do you think we would’ve gotten where we are as a civilization if we had passively accepted our ancient state of living? Absolutely not. We were aggressive about improving our individual… The post 3 Common Spots Where Poker Players Aren’t Aggressive Enough appeared first on Upswing Poker .",
+      "language": "English",
+      "imageUrl": "https://upswingpoker.com/wp-content/uploads/2026/09/1200x630.jpg",
+      "contentType": "article",
+      "classification": {
+        "difficulty": "intermediate",
+        "tags": []
+      }
+    },
+    {
+      "source": "PokerCoaching.com",
+      "sourceSlug": "pokercoaching",
+      "sourceUrl": "https://pokercoaching.com/blog/",
+      "title": "Top Pair on a Bad Turn: ATo BTN vs BB at 100bb Cash",
+      "originalUrl": "https://pokercoaching.com/blog/top-pair-bad-turn-ato-btn-vs-bb-100bb-cash/",
+      "author": null,
+      "publishedAt": "2026-09-25T11:00:00",
+      "summary": "Top pair is only as strong as the board lets it be, and few cards expose that faster than an overcard that smashes into your opponent’s range. When the turn pairs a card you beat, […]",
+      "language": "English",
+      "imageUrl": "https://pokercoaching.com/blog/wp-content/uploads/2026/09/Top-Pair-on-a-Bad-Turn-ATo-BTN-vs-BB-at-100bb-Cash.jpg",
+      "contentType": "article",
+      "classification": {
+        "difficulty": "intermediate",
+        "tags": [
+          "turn",
+          "cash-game"
         ]
       }
     }
