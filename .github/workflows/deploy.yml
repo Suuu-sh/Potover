@@ -3,6 +3,8 @@ name: Deploy Potover
 on:
   push:
     branches: [main]
+    paths-ignore:
+      - data/articles.json
   workflow_dispatch:
 
 concurrency:
@@ -11,6 +13,7 @@ concurrency:
 
 jobs:
   verify:
+    if: github.ref == 'refs/heads/main'
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
@@ -21,13 +24,15 @@ jobs:
       - run: npm ci
       - run: npm run typecheck
       - run: npm test
+      - run: npm run build:production
 
   backend:
+    if: github.ref == 'refs/heads/main'
     name: Deploy backend Worker
     needs: verify
     runs-on: ubuntu-latest
     permissions:
-      contents: read
+      contents: write
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
@@ -35,6 +40,22 @@ jobs:
           node-version: 20
           cache: npm
       - run: npm ci
+      - name: Require the shared article-ingestion secret
+        env:
+          POTOVER_INGEST_TOKEN: ${{ secrets.POTOVER_INGEST_TOKEN }}
+        run: |
+          if [ -z "$POTOVER_INGEST_TOKEN" ]; then
+            echo "POTOVER_INGEST_TOKEN must be configured in GitHub Actions secrets." >&2
+            exit 1
+          fi
+      - name: Require explicit production publication approval
+        env:
+          POTOVER_PUBLICATION_READY: ${{ vars.POTOVER_PUBLICATION_READY }}
+        run: |
+          if [ "$POTOVER_PUBLICATION_READY" != "true" ]; then
+            echo "Production deployment is paused until the privacy policy and source permissions are approved." >&2
+            exit 1
+          fi
       - name: Apply D1 migrations
         uses: cloudflare/wrangler-action@v3
         with:
@@ -45,6 +66,16 @@ jobs:
           command: d1 migrations apply potover --remote
         env:
           CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+      - name: Configure the Worker ingestion secret
+        working-directory: worker
+        env:
+          BATCH_INGEST_TOKEN: ${{ secrets.POTOVER_INGEST_TOKEN }}
+        run: |
+          if [ -z "$BATCH_INGEST_TOKEN" ]; then
+            echo "POTOVER_INGEST_TOKEN must be configured in GitHub Actions secrets." >&2
+            exit 1
+          fi
+          printf '%s' "$BATCH_INGEST_TOKEN" | npx wrangler secret put BATCH_INGEST_TOKEN --config wrangler.jsonc
       - name: Deploy Worker
         uses: cloudflare/wrangler-action@v3
         with:
@@ -55,3 +86,16 @@ jobs:
           command: deploy --config wrangler.jsonc
         env:
           CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+      - name: Seed D1 from the existing dataset and publish a D1 snapshot
+        run: |
+          npm run sync:d1
+          if ! git diff --quiet -- data/articles.json; then
+            git config user.name 'github-actions[bot]'
+            git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+            git add data/articles.json
+            git commit -m "chore: publish D1 article snapshot"
+            git push
+          fi
+        env:
+          POTOVER_API_URL: https://potover-api.suuu-sh.workers.dev
+          POTOVER_INGEST_TOKEN: ${{ secrets.POTOVER_INGEST_TOKEN }}

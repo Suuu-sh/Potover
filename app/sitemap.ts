@@ -1,1 +1,9 @@
-import {MetadataRoute} from 'next'; import {articles} from '@/lib/data'; export default function sitemap():MetadataRoute.Sitemap{const base='https://potover.com';return [{url:base},{url:`${base}/home`},{url:`${base}/explore`},{url:`${base}/glossary`},{url:`${base}/roadmap`},{url:`${base}/bookmarks`},{url:`${base}/articles`},...articles.map(a=>({url:`${base}/articles/${a.slug}`}))]}
+import {MetadataRoute} from 'next';
+
+import {articles} from '@/lib/data';
+
+export default function sitemap():MetadataRoute.Sitemap{
+  const base='https://potover.com';
+  const pages=['','/home','/explore','/glossary','/roadmap','/bookmarks','/articles','/privacy','/terms','/contact'];
+  return [...pages.map(path=>({url:`${base}${path}`})),...articles.map(article=>({url:`${base}/articles/${article.slug}`}))];
+}

@@ -1,8 +1,21 @@
 # Deployment
 
-FrontendはCloudflare PagesのGit連携で、`main` へのpush（プルリクエストのマージを含む）時に自動デプロイします。BackendのWorkerのみ、`main`へのpushでGitHub Actionsが自動デプロイします。
+## 現在の公開状態
 
-## Cloudflare PagesのGit連携
+記事データの正本はCloudflare D1です。リポジトリの`data/articles.json`は、D1からPagesの静的ビルド時に生成する配信用スナップショットであり、正本ではありません。
+
+利用者データの保存期間と、複数の情報源の自動収集許諾が未確定のため、本番公開・記事収集は初期状態で停止しています。確認完了前に以下のGitHub変数を有効化しないでください。
+
+- `POTOVER_PUBLICATION_READY=true`: GitHub ActionsのVariablesとCloudflare Pagesのproduction環境変数の両方に設定すると、Worker/Pagesの本番ビルドを許可します。
+- `POTOVER_COLLECTION_APPROVED=true`: GitHub ActionsのVariablesに設定すると、日次コンテンツ収集とD1更新を許可します。公開承認と収集対象ごとの利用条件・robots.txtを確認してから設定してください。
+
+ビルドスクリプトは公開ゲートがない場合に失敗し、本番APIへの同期スクリプトは`POTOVER_API_URL`を明示しない限り実行しません。誤った本番更新を防ぐための意図的な動作です。
+
+## デプロイ構成
+
+FrontendはCloudflare PagesのGit連携で、`main`へのpush時に`npm run build:pages`を実行します。Pagesビルドは公開ゲート通過後にD1から記事スナップショットを取得してビルドします。BackendのWorkerは、`main`へのpush時にGitHub Actionsがマイグレーションを適用してからデプロイします。`workflow_dispatch`を`main`以外で実行しても本番デプロイしません。
+
+### Cloudflare PagesのGit連携
 
 Cloudflare Dashboardの Workers & Pages から `potover` を開き、Settings > Builds > Git repository でGitHubの `Suuu-sh/Potover` を接続してください。
 
@@ -10,17 +23,35 @@ Cloudflare Dashboardの Workers & Pages から `potover` を開き、Settings > 
 - Build command: `npm run build:pages`
 - Build output directory: `out`
 - Root directory: `/`
+- Production environment variables: `POTOVER_API_URL=https://potover-api.suuu-sh.workers.dev`、`POTOVER_PUBLICATION_READY=true`（承認後のみ）
 
-## GitHub Secrets
+### GitHub Secrets / Variables
 
 リポジトリの Settings > Secrets and variables > Actions に以下を登録します。
 
+**Secrets**
+
 - `CLOUDFLARE_API_TOKEN`: Workers と Pages のデプロイ権限を持つAPI Token
 - `CLOUDFLARE_ACCOUNT_ID`: `648687d1fdb3e6b3e539ebca5c4415a7`
+- `POTOVER_INGEST_TOKEN`: 記事同期用のランダムな秘密値。Workerの`BATCH_INGEST_TOKEN`にも同じ値を設定します。
 
-`CLOUDFLARE_API_TOKEN` はファイルやソースコードには保存しません。
+**Variables（運営者の確認完了後のみ）**
 
-## Google AdSense
+- `POTOVER_PUBLICATION_READY=true`: 本番公開の承認後に設定します。Cloudflare Pages production環境にも設定が必要です。
+- `POTOVER_COLLECTION_APPROVED=true`: `docs/sources.md`の収集対象ごとの利用条件を確認した後に設定します。
+
+`CLOUDFLARE_API_TOKEN`と`POTOVER_INGEST_TOKEN`はファイルやソースコードには保存しません。
+
+### 初回セットアップと記事同期
+
+1. Cloudflare Pages/Workersの接続、D1の`potover`データベース、GitHub Secretsを設定します。
+2. `main`への反映でWorkerのD1マイグレーションを適用し、Worker secretを登録します。
+3. 公開ゲートを解除してよい段階になったら、許諾を確認済みのデータだけを同期します。手動同期コマンドを実行するときは、接続先を必ず明示してください。`npm run sync:d1`はアップロード後、D1から`data/articles.json`を再生成します。
+4. PagesはD1を読み出して記事ページをビルドします。記事JSONを手編集しても正本には反映されません。
+
+`POTOVER_PUBLICATION_READY`が未設定の間、Pagesの本番ビルドとWorker本番デプロイは意図的に停止します。データ保存期間を決定し、プライバシーポリシーを確定し、収集対象の利用条件を確認した後にだけ公開ゲートを解除してください。
+
+### Google AdSense
 
 AdSenseを有効にする場合は、Cloudflare Pagesのビルド環境変数とローカルの`.env.local`に以下を設定します。
 

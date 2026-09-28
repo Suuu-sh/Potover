@@ -10,6 +10,7 @@ concurrency:
 
 jobs:
   collect:
+    if: vars.POTOVER_PUBLICATION_READY == 'true' && vars.POTOVER_COLLECTION_APPROVED == 'true'
     runs-on: ubuntu-latest
     timeout-minutes: 20
     permissions:
@@ -22,6 +23,11 @@ jobs:
       - run: npm run collect:public-sources
       - run: npm run collect:gtowizard
       - run: npm run collect:youtube
+      - name: Sync collected articles with D1 and export the canonical snapshot
+        run: npm run sync:d1
+        env:
+          POTOVER_API_URL: https://potover-api.suuu-sh.workers.dev
+          POTOVER_INGEST_TOKEN: ${{ secrets.POTOVER_INGEST_TOKEN }}
       - run: git config user.name 'github-actions[bot]'
       - run: git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
       - run: git add data/articles.json

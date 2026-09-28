@@ -1,7 +1,7 @@
 import {expect,it} from 'vitest';
 import local from './local';
 import production,{type Env} from './index';
-const env={} as Env;
+const env={DB:{prepare:()=>({first:async()=>({ok:1})})}} as Env;
 it.each(['http://127.0.0.1:3001','http://localhost:3001'])('allows local UI %s',async origin=>{
   for(const method of ['OPTIONS','GET']){
     const response=await local.fetch(new Request('http://localhost/health',{method,headers:{Origin:origin}}),env);
@@ -22,5 +22,17 @@ it.each(['/api/bookmarks','/api/learning-history','/api/preferences'])('requires
 });
 it.each([['/api/auth/password','POST'],['/api/auth/account','DELETE']] as const)('requires authentication for %s',async(pathname,method)=>{
   const response=await production.fetch(new Request(`https://api.test${pathname}`,{method}),env);
+  expect(response.status).toBe(401);
+});
+it('fails closed when the D1 article-ingestion secret is missing',async()=>{
+  const response=await production.fetch(new Request('https://api.test/api/articles',{
+    method:'POST',headers:{Authorization:'Bearer any-value','Content-Type':'application/json'},body:'{"articles":[]}',
+  }),{} as Env);
+  expect(response.status).toBe(503);
+});
+it('rejects an invalid D1 article-ingestion token before reading the body',async()=>{
+  const response=await production.fetch(new Request('https://api.test/api/articles',{
+    method:'POST',headers:{Authorization:'Bearer wrong','Content-Type':'application/json'},body:'not-json',
+  }),{...env,BATCH_INGEST_TOKEN:'expected'});
   expect(response.status).toBe(401);
 });
