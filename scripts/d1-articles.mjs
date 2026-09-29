@@ -48,11 +48,14 @@ export async function uploadArticles({apiUrl,token,filePath=COLLECTION_PATH}={})
   const articles=withStableSlugs(database);
   for(let offset=0;offset<articles.length;offset+=UPLOAD_BATCH_SIZE){
     const chunk=articles.slice(offset,offset+UPLOAD_BATCH_SIZE);
+    const isLastBatch=offset+chunk.length===articles.length;
     const result=await requestJson(`${base}/api/articles`,{
       method:'POST',
       headers:{Authorization:`Bearer ${token}`,'Content-Type':'application/json'},
       body:JSON.stringify({
-        collectedAt:database.collectedAt||new Date().toISOString(),
+        // Only mark the dataset as freshly collected after every article batch
+        // has been accepted by D1.
+        ...(isLastBatch?{collectedAt:database.collectedAt||new Date().toISOString()}:{}),
         sources:offset===0?database.sources:[],
         articles:chunk,
       }),

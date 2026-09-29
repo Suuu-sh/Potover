@@ -51,6 +51,8 @@ it('uploads bounded batches, sending source metadata only once',async()=>{
   expect(calls[1].body.articles).toHaveLength(1);
   expect(calls[0].body.sources).toEqual([source]);
   expect(calls[1].body.sources).toEqual([]);
+  expect(calls[0].body.collectedAt).toBeUndefined();
+  expect(calls[1].body.collectedAt).toBe('2026-09-28T00:00:00.000Z');
   expect(calls[0].headers.Authorization).toBe('Bearer local-secret');
   expect(calls[0].body.articles[0].slug).toBe('sample-article-0-1');
 });

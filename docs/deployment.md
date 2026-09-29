@@ -4,7 +4,7 @@
 
 記事データの正本はCloudflare D1です。リポジトリの`data/articles.json`は、D1からPagesの静的ビルド時に生成する配信用スナップショットであり、正本ではありません。
 
-利用者データの保存期間と、複数の情報源の自動収集許諾が未確定のため、本番公開・記事収集は初期状態で停止しています。確認完了前に以下のGitHub変数を有効化しないでください。
+利用者データの保存期間はプライバシーポリシーに定めています。複数の情報源の自動収集許諾が未確認のため、本番公開・記事収集は初期状態で停止しています。許諾確認と本番相当の動作確認が終わる前に以下のGitHub変数を有効化しないでください。
 
 - `POTOVER_PUBLICATION_READY=true`: GitHub ActionsのVariablesとCloudflare Pagesのproduction環境変数の両方に設定すると、Worker/Pagesの本番ビルドを許可します。
 - `POTOVER_COLLECTION_APPROVED=true`: GitHub ActionsのVariablesに設定すると、日次コンテンツ収集とD1更新を許可します。公開承認と収集対象ごとの利用条件・robots.txtを確認してから設定してください。
@@ -49,7 +49,7 @@ Cloudflare Dashboardの Workers & Pages から `potover` を開き、Settings > 
 3. 公開ゲートを解除してよい段階になったら、許諾を確認済みのデータだけを同期します。手動同期コマンドを実行するときは、接続先を必ず明示してください。`npm run sync:d1`はアップロード後、D1から`data/articles.json`を再生成します。
 4. PagesはD1を読み出して記事ページをビルドします。記事JSONを手編集しても正本には反映されません。
 
-`POTOVER_PUBLICATION_READY`が未設定の間、Pagesの本番ビルドとWorker本番デプロイは意図的に停止します。データ保存期間を決定し、プライバシーポリシーを確定し、収集対象の利用条件を確認した後にだけ公開ゲートを解除してください。
+`POTOVER_PUBLICATION_READY`が未設定の間、Pagesの本番ビルドとWorker本番デプロイは意図的に停止します。プライバシーポリシーの最終確認と収集対象の利用条件の確認を終えた後にだけ公開ゲートを解除してください。
 
 ### Google AdSense
 
