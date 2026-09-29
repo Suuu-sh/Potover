@@ -1,5 +1,5 @@
 {
-  "collectedAt": "2026-09-28T09:26:17.573Z",
+  "collectedAt": "2026-09-29T09:32:17.933Z",
   "sources": [
     {
       "slug": "gto-wizard",
@@ -56088,7 +56088,7 @@
       "language": "English",
       "imageUrl": "https://i.ytimg.com/vi/9_BjQ-xMFrk/hqdefault.jpg",
       "contentType": "video",
-      "durationSeconds": 23,
+      "durationSeconds": null,
       "classification": {
         "difficulty": "intermediate",
         "tags": []
@@ -56279,7 +56279,7 @@
       "language": "Japanese",
       "imageUrl": "https://i.ytimg.com/vi/PkIcmLym2w8/hqdefault.jpg",
       "contentType": "video",
-      "durationSeconds": 742,
+      "durationSeconds": null,
       "classification": {
         "difficulty": "intermediate",
         "tags": [
@@ -57137,7 +57137,7 @@
       "language": "English",
       "imageUrl": "https://i.ytimg.com/vi/yCP6QC2iUqo/hqdefault.jpg",
       "contentType": "video",
-      "durationSeconds": 59,
+      "durationSeconds": null,
       "classification": {
         "difficulty": "intermediate",
         "tags": [
@@ -57406,6 +57406,66 @@
         "tags": [
           "turn",
           "cash-game"
+        ]
+      }
+    },
+    {
+      "source": "PokerCoaching.com",
+      "sourceSlug": "pokercoaching",
+      "sourceUrl": "https://pokercoaching.com/blog/",
+      "title": "Checking Top Pair: QJs LJ vs BTN at 100bb Cash",
+      "originalUrl": "https://pokercoaching.com/blog/checking-top-pair-qjs-lj-vs-btn-100bb-cash/",
+      "author": null,
+      "publishedAt": "2026-09-28T11:00:00",
+      "summary": "Flopping top pair feels like a reason to start building a pot, but out of position it is often a reason to slow down. When you raise preflop and a tight player calls behind you, […]",
+      "language": "English",
+      "imageUrl": "https://pokercoaching.com/blog/wp-content/uploads/2026/09/Checking-Top-Pair-QJs-LJ-vs-BTN-at-100bb-Cash.jpg",
+      "contentType": "article",
+      "classification": {
+        "difficulty": "intermediate",
+        "tags": [
+          "preflop",
+          "flop",
+          "cash-game"
+        ]
+      }
+    },
+    {
+      "source": "PokerNews",
+      "sourceSlug": "pokernews",
+      "sourceUrl": "https://www.pokernews.com/strategy/",
+      "title": "How Strong is an Overpair? Would You Fold This Hand?",
+      "originalUrl": "https://www.pokernews.com/strategy/how-strong-is-an-overpair-would-you-fold-this-hand-52219.htm",
+      "author": null,
+      "publishedAt": null,
+      "summary": "Should you call off your entire stack with pocket eights? We break down opponent ranges, pot odds, and stack depth to evaluate this tough cash game spot.",
+      "language": "English",
+      "imageUrl": "https://pnimg.net/w/articles/0/6a8/d4fca114af.jpg",
+      "contentType": "article",
+      "classification": {
+        "difficulty": "intermediate",
+        "tags": [
+          "cash-game"
+        ]
+      }
+    },
+    {
+      "source": "GTO Wizard",
+      "sourceSlug": "gto-wizard",
+      "sourceUrl": "https://www.youtube.com/@GTOWizard",
+      "title": "How I Almost Won 10 Million with Han Feng & Joey Ingram",
+      "originalUrl": "https://www.youtube.com/watch?v=82EUwl_Kb5M",
+      "author": "GTO Wizard",
+      "publishedAt": "2026-09-28T13:30:08+00:00",
+      "summary": "📚 Unlock your poker potential with \"Daily Dose of GTO\". Download your free eBook today at and start mastering GTO in just 5 minutes per day! 🧙‍♂️GTO Wizard • Study any spot imaginable • Practice by playing vs. GTO • Analyze your hands with 1-click • Works on Desktop/Mobile/Tablet • Try it for free at • Join our disco",
+      "language": "English",
+      "imageUrl": "https://i.ytimg.com/vi/82EUwl_Kb5M/hqdefault.jpg",
+      "contentType": "video",
+      "durationSeconds": null,
+      "classification": {
+        "difficulty": "intermediate",
+        "tags": [
+          "gto"
         ]
       }
     }
