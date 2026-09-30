@@ -1,5 +1,5 @@
 {
-  "collectedAt": "2026-09-29T09:32:17.933Z",
+  "collectedAt": "2026-09-30T09:23:39.480Z",
   "sources": [
     {
       "slug": "gto-wizard",
@@ -21323,7 +21323,7 @@
       "title": "How to Plan Your Bet Sizing Across All Streets",
       "originalUrl": "https://pokercoaching.com/blog/how-to-plan-your-bet-sizing-across-all-streets/",
       "author": null,
-      "publishedAt": "2026-06-30T11:56:43",
+      "publishedAt": "2026-09-29T13:00:13",
       "summary": "Most players decide on a bet size by looking at the pot, picking a number that feels right, and moving on. They do the same on the next street. And the next. Then they arrive […]",
       "language": "English",
       "imageUrl": "https://pokercoaching.com/blog/wp-content/uploads/2026/06/How-to-Plan-Your-Bet-Sizing-Across-All-Streets.jpg",
@@ -56088,7 +56088,7 @@
       "language": "English",
       "imageUrl": "https://i.ytimg.com/vi/9_BjQ-xMFrk/hqdefault.jpg",
       "contentType": "video",
-      "durationSeconds": null,
+      "durationSeconds": 23,
       "classification": {
         "difficulty": "intermediate",
         "tags": []
@@ -56279,7 +56279,7 @@
       "language": "Japanese",
       "imageUrl": "https://i.ytimg.com/vi/PkIcmLym2w8/hqdefault.jpg",
       "contentType": "video",
-      "durationSeconds": null,
+      "durationSeconds": 742,
       "classification": {
         "difficulty": "intermediate",
         "tags": [
@@ -57137,7 +57137,7 @@
       "language": "English",
       "imageUrl": "https://i.ytimg.com/vi/yCP6QC2iUqo/hqdefault.jpg",
       "contentType": "video",
-      "durationSeconds": null,
+      "durationSeconds": 59,
       "classification": {
         "difficulty": "intermediate",
         "tags": [
@@ -57466,6 +57466,28 @@
         "difficulty": "intermediate",
         "tags": [
           "gto"
+        ]
+      }
+    },
+    {
+      "source": "PokerNews",
+      "sourceSlug": "pokernews",
+      "sourceUrl": "https://www.pokernews.com/strategy/",
+      "title": "Call or Fold? Solving Negreanu's WSOP Final Table Bustout With GTO Wizard",
+      "originalUrl": "https://www.pokernews.com/strategy/daniel-negreanu-tens-gto-wizard-icm-analysis-52492.htm",
+      "author": null,
+      "publishedAt": null,
+      "summary": "Daniel Negreanu snap-called with TT and busted in 4th. We ran the hand through GTO Wizard's new ICM preflop solver to see if it was a call or a fold.",
+      "language": "English",
+      "imageUrl": "https://pnimg.net/w/articles/0/6ab/b98e907edb.jpg",
+      "contentType": "article",
+      "classification": {
+        "difficulty": "intermediate",
+        "tags": [
+          "preflop",
+          "flop",
+          "gto",
+          "icm"
         ]
       }
     }
