@@ -1,5 +1,5 @@
 {
-  "collectedAt": "2026-09-30T09:23:39.480Z",
+  "collectedAt": "2026-10-01T09:51:01.944Z",
   "sources": [
     {
       "slug": "gto-wizard",
@@ -57456,8 +57456,8 @@
       "title": "How I Almost Won 10 Million with Han Feng & Joey Ingram",
       "originalUrl": "https://www.youtube.com/watch?v=82EUwl_Kb5M",
       "author": "GTO Wizard",
-      "publishedAt": "2026-09-28T13:30:08+00:00",
-      "summary": "📚 Unlock your poker potential with \"Daily Dose of GTO\". Download your free eBook today at and start mastering GTO in just 5 minutes per day! 🧙‍♂️GTO Wizard • Study any spot imaginable • Practice by playing vs. GTO • Analyze your hands with 1-click • Works on Desktop/Mobile/Tablet • Try it for free at • Join our disco",
+      "publishedAt": "2026-10-01T07:40:06+00:00",
+      "summary": "The 2026 WSOP Main Event final table. Millions on the line. Every decision under the brightest spotlight in poker. Joey Ingram and Han Feng will walk you through the hands, the pressure and the pivotal moments from one of the deepest tournament runs you will ever hear about firsthand.",
       "language": "English",
       "imageUrl": "https://i.ytimg.com/vi/82EUwl_Kb5M/hqdefault.jpg",
       "contentType": "video",
@@ -57465,7 +57465,7 @@
       "classification": {
         "difficulty": "intermediate",
         "tags": [
-          "gto"
+          "mtt"
         ]
       }
     },
@@ -57488,6 +57488,26 @@
           "flop",
           "gto",
           "icm"
+        ]
+      }
+    },
+    {
+      "source": "PokerCoaching.com",
+      "sourceSlug": "pokercoaching",
+      "sourceUrl": "https://pokercoaching.com/blog/",
+      "title": "Turning Two Pair in Position: A5s BTN vs UTG at 30bb MTT",
+      "originalUrl": "https://pokercoaching.com/blog/turning-two-pair-a5s-btn-vs-utg-30bb-mtt/",
+      "author": null,
+      "publishedAt": "2026-09-30T11:00:00",
+      "summary": "When a marginal pair suddenly improves to two pair, the instinct is to raise and “get the money in before I get outdrawn.” Most of the time that instinct is right, but there is an […]",
+      "language": "English",
+      "imageUrl": "https://pokercoaching.com/blog/wp-content/uploads/2026/09/Turning-Two-Pair-in-Position-A5s-BTN-vs-UTG-at-30bb-MTT.jpg",
+      "contentType": "article",
+      "classification": {
+        "difficulty": "intermediate",
+        "tags": [
+          "turn",
+          "mtt"
         ]
       }
     }
