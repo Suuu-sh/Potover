@@ -1,5 +1,5 @@
 {
-  "collectedAt": "2026-10-01T09:51:01.944Z",
+  "collectedAt": "2026-10-02T09:26:38.163Z",
   "sources": [
     {
       "slug": "gto-wizard",
@@ -57508,6 +57508,25 @@
         "tags": [
           "turn",
           "mtt"
+        ]
+      }
+    },
+    {
+      "source": "PokerNews",
+      "sourceSlug": "pokernews",
+      "sourceUrl": "https://www.pokernews.com/strategy/",
+      "title": "Learn Bet Sizing, In-Position Raising With GTO Wizard Coaches",
+      "originalUrl": "https://www.pokernews.com/strategy/gto-wizard-october-monthly-coaching-sessions-52519.htm",
+      "author": null,
+      "publishedAt": null,
+      "summary": "GTO Wizard is continuing to offer weekly live coaching sessions in October to give players a close-up look at how top pros navigate poker decisions.",
+      "language": "English",
+      "imageUrl": "https://pnimg.net/w/articles/0/6ab/ee5cc31e61.jpg",
+      "contentType": "article",
+      "classification": {
+        "difficulty": "intermediate",
+        "tags": [
+          "gto"
         ]
       }
     }
