@@ -74,7 +74,7 @@ export function AuthProvider({children}:{children:React.ReactNode}){
   const logout=useCallback(async()=>{sessionAttempt.current++;try{await request('/api/auth/logout',{method:'POST'})}finally{localStorage.removeItem(SESSION_TOKEN_KEY);setSessionError(null);setUser(null);setLoading(false)}},[]);
   const value=useMemo(()=>({user,loading,login,register,changePassword,deleteAccount,logout}),[user,loading,login,register,changePassword,deleteAccount,logout]);
   return <AuthContext.Provider value={value}>
-    {sessionError&&<div role="alert" style={{padding:'12px 20px',background:'var(--color-error-soft)',color:'var(--color-text)',display:'flex',gap:12,alignItems:'center',flexWrap:'wrap'}}>
+    {sessionError&&<div role="alert" style={{position:'relative',top:64,padding:'12px 20px',background:'var(--color-error-soft)',color:'var(--color-text)',display:'flex',gap:12,alignItems:'center',flexWrap:'wrap'}}>
       <span>{sessionError}</span>
       <button type="button" disabled={loading} onClick={()=>void loadSession()} style={{color:'var(--color-link)',textDecoration:'underline'}}>{loading?'確認中…':'もう一度試す'}</button>
     </div>}
