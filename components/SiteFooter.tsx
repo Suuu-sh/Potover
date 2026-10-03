@@ -8,7 +8,7 @@ import {useAuth} from '@/lib/auth-client';
 import {sources as sourceCatalog} from '@/lib/data';
 import styles from './SiteFooter.module.css';
 
-const siteNavigation=[{href:'/',label:'ホーム'},{href:'/explore',label:'記事・動画を探す'},{href:'/glossary',label:'ポーカー用語集'}];
+const siteNavigation=[{href:'/',label:'ホーム'},{href:'/explore',label:'記事・動画を探す'},{href:'/glossary',label:'ポーカー用語集'},{href:'/quiz',label:'レンジクイズ'}];
 const learningNavigation=[{href:'/roadmap',label:'学習ロードマップ'},{href:'/bookmarks',label:'ブックマーク'}];
 const featuredSourceSlugs=['gto-wizard-japan','gto-wizard','upswing-poker'];
 const featuredSources=featuredSourceSlugs.map(slug=>sourceCatalog.find(source=>source.slug===slug)).filter((source):source is (typeof sourceCatalog)[number]=>Boolean(source));
