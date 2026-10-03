@@ -1,5 +1,5 @@
 {
-  "collectedAt": "2026-10-02T09:26:38.163Z",
+  "collectedAt": "2026-10-03T08:56:25.036Z",
   "sources": [
     {
       "slug": "gto-wizard",
@@ -22213,7 +22213,7 @@
       "title": "The 5 Most Profitable Preflop Adjustments for Small-Stakes Poker",
       "originalUrl": "https://pokercoaching.com/blog/most-profitable-preflop-adjustments-for-small-stakes-poker/",
       "author": null,
-      "publishedAt": "2026-05-19T14:21:38",
+      "publishedAt": "2026-10-02T12:33:33",
       "summary": "Many players spend countless hours studying solver outputs, memorizing balanced ranges, and worrying about being “exploitable,” only to sit down in games where opponents fold too much, call too wide, and rarely apply pressure correctly. […]",
       "language": "English",
       "imageUrl": "https://pokercoaching.com/blog/wp-content/uploads/2025/12/Most-Profitable-Preflop-Adjustments-for-Small-Stakes-Poker.jpg",
@@ -57527,6 +57527,67 @@
         "difficulty": "intermediate",
         "tags": [
           "gto"
+        ]
+      }
+    },
+    {
+      "source": "Upswing Poker",
+      "sourceSlug": "upswing-poker",
+      "sourceUrl": "https://upswingpoker.com/",
+      "title": "Single Board Bomb Pots – The Complete NLH Strategy Guide",
+      "originalUrl": "https://upswingpoker.com/single-board-bomb-pots-the-complete-nlh-strategy-guide/",
+      "author": null,
+      "publishedAt": "Fri, 02 Oct 2026 14:00:04 +0000",
+      "summary": "On this page What Is a Single-Board Bomb Pot? Where You’ll Find Them Why Bomb Pots Play Differently Flop Strategy: Small, Tight, and Linear Turn and River Strategy Shallow Stacks Change the Math Four Common Leaks The Takeaway What Is a Single-Board Bomb Pot? Quick definition A single-board bomb pot is a No-Limit Hold’em hand… The post Single Board Bomb Pots – The Complete NLH Strategy Guide appeared first on Upswing Poker .",
+      "language": "English",
+      "imageUrl": "https://upswingpoker.com/wp-content/uploads/2026/09/1200x630-1.jpg",
+      "contentType": "article",
+      "classification": {
+        "difficulty": "intermediate",
+        "tags": [
+          "flop",
+          "turn",
+          "river"
+        ]
+      }
+    },
+    {
+      "source": "PokerCoaching.com",
+      "sourceSlug": "pokercoaching",
+      "sourceUrl": "https://pokercoaching.com/blog/",
+      "title": "Bottom Pair Facing Aggression: 54s BB vs HJ at 25bb MTT",
+      "originalUrl": "https://pokercoaching.com/blog/bottom-pair-54s-bb-vs-hj-25bb-mtt/",
+      "author": null,
+      "publishedAt": "2026-10-02T11:00:00",
+      "summary": "Most players see bottom pair on a scary river, decide they are beat, and fold without much thought. That reflex quietly costs them a lot of money. Bottom pair facing aggression is often a perfectly […]",
+      "language": "English",
+      "imageUrl": "https://pokercoaching.com/blog/wp-content/uploads/2026/09/Bottom-Pair-Facing-Aggression-54s-BB-vs-HJ-at-25bb-MTT.jpg",
+      "contentType": "article",
+      "classification": {
+        "difficulty": "intermediate",
+        "tags": [
+          "river",
+          "mtt"
+        ]
+      }
+    },
+    {
+      "source": "GTO Wizard",
+      "sourceSlug": "gto-wizard",
+      "sourceUrl": "https://www.youtube.com/@GTOWizard",
+      "title": "The Simplest Exploit in PLO Almost Feels Unfair",
+      "originalUrl": "https://www.youtube.com/watch?v=5LJKelCWKRk",
+      "author": "GTO Wizard",
+      "publishedAt": "2026-10-02T13:54:50+00:00",
+      "summary": "Everyone knows who the loose passive player at the table is, but knowing how to get max value from them is a different skill. FiveCardGuy, who beat 10/20 for years targeting these players, shows their single biggest leak and a simple exploit to punish it. What you'll learn: • How loose passive players actually react to",
+      "language": "English",
+      "imageUrl": "https://i.ytimg.com/vi/5LJKelCWKRk/hqdefault.jpg",
+      "contentType": "video",
+      "durationSeconds": null,
+      "classification": {
+        "difficulty": "intermediate",
+        "tags": [
+          "exploit"
         ]
       }
     }
