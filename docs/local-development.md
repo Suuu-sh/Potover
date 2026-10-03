@@ -16,3 +16,7 @@
 正本は`worker/wrangler.local.jsonc`、DBスキーマは`worker/migrations/`です。ローカル起動は必ず`--local`を使い、`--remote`やデプロイは行いません。ローカルDBは`.wrangler/`以下に保持されます。
 
 ログイン画面で接続エラーが出た場合は、まず`npm run dev:all`が起動しているか確認してください。ローカル専用エントリは`localhost:3000` / `127.0.0.1:3000`と`localhost:3001` / `127.0.0.1:3001`を許可し、本番のCORSは変更しません。
+
+## 必要なランタイム
+
+Node.js 24（`.nvmrc`）を使用します。`npm ci`後に`npm run verify`でCIと同じ検証、`npm run test:integration`で本番を使用しないworkerd/D1テストを実行できます。

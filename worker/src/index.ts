@@ -38,6 +38,43 @@ const json = (request: Request, body: unknown, init: ResponseInit = {}) =>
       ...(init.headers || {}),
     },
   });
+// Bound bytes while streaming, rather than trusting Content-Length or parsing
+// an arbitrarily large body first. Authentication remains ahead of ingestion.
+class RequestBodyError extends Error {
+  constructor(readonly status: 400 | 413) { super('Invalid request body'); }
+}
+async function readRequestObject(request: Request, maxBytes = 32 * 1024): Promise<Record<string, unknown>> {
+  const declaredLength = Number(request.headers.get('Content-Length'));
+  if (Number.isFinite(declaredLength) && declaredLength > maxBytes) throw new RequestBodyError(413);
+  const reader = request.body?.getReader();
+  if (!reader) throw new RequestBodyError(400);
+  const decoder = new TextDecoder();
+  let size = 0;
+  let text = '';
+  try {
+    while (true) {
+      const {done, value} = await reader.read();
+      if (done) break;
+      size += value.byteLength;
+      if (size > maxBytes) {
+        await reader.cancel();
+        throw new RequestBodyError(413);
+      }
+      text += decoder.decode(value, {stream: true});
+    }
+    text += decoder.decode();
+  } finally {
+    reader.releaseLock();
+  }
+  const value: unknown = JSON.parse(text);
+  if (!value || typeof value !== 'object' || Array.isArray(value)) throw new RequestBodyError(400);
+  return value as Record<string, unknown>;
+}
+const requestBodyError = (request: Request, error: unknown) => json(request, {
+  error: error instanceof RequestBodyError && error.status === 413
+    ? '送信データが大きすぎます。' : '入力内容を確認してください。',
+}, {status: error instanceof RequestBodyError ? error.status : 400});
+
 const bytesToHex = (bytes: Uint8Array) => Array.from(bytes, value => value.toString(16).padStart(2, '0')).join('');
 const hexToBytes = (hex: string) => new Uint8Array(hex.match(/.{2}/g)?.map(byte => parseInt(byte, 16)) || []);
 const randomHex = (length: number) => {
@@ -168,9 +205,9 @@ async function auth(request: Request, env: Env, mode: 'login' | 'register') {
   if (limited) return limited;
   let body: { email?: unknown; password?: unknown };
   try {
-    body = await request.json();
-  } catch {
-    return json(request, { error: '入力内容を確認してください。' }, { status: 400 });
+    body = await readRequestObject(request);
+  } catch (error) {
+    return requestBodyError(request, error);
   }
   const email = normalizeEmail(body.email);
   const password = typeof body.password === 'string' ? body.password : '';
@@ -201,9 +238,9 @@ async function changePassword(request: Request, env: Env) {
   if (!user) return json(request, { error: 'ログインが必要です。' }, { status: 401 });
   let body: { currentPassword?: unknown; newPassword?: unknown };
   try {
-    body = await request.json();
-  } catch {
-    return json(request, { error: '入力内容を確認してください。' }, { status: 400 });
+    body = await readRequestObject(request);
+  } catch (error) {
+    return requestBodyError(request, error);
   }
   const currentPassword = typeof body.currentPassword === 'string' ? body.currentPassword : '';
   const newPassword = typeof body.newPassword === 'string' ? body.newPassword : '';
@@ -220,9 +257,20 @@ async function changePassword(request: Request, env: Env) {
   }
   const passwordSalt = randomHex(16);
   const passwordHash = await hashPassword(newPassword, passwordSalt);
-  await env.DB.prepare('UPDATE users SET password_hash=?,password_salt=? WHERE id=?').bind(passwordHash, passwordSalt, user.id).run();
-  await env.DB.prepare('DELETE FROM sessions WHERE user_id=?').bind(user.id).run();
-  return json(request, { token: await createSession(env, user.id), user });
+  const token = randomHex(32);
+  const tokenHash = await sha256(token);
+  const now = new Date();
+  const expiresAt = new Date(now.getTime() + 30 * 24 * 60 * 60 * 1000).toISOString();
+  // D1 rolls back the whole batch if credential update, revocation, or the
+  // replacement session fails. Existing credentials remain usable on failure.
+  await env.DB.batch([
+    env.DB.prepare('UPDATE users SET password_hash=?,password_salt=?,last_activity_at=? WHERE id=?')
+      .bind(passwordHash, passwordSalt, now.toISOString(), user.id),
+    env.DB.prepare('DELETE FROM sessions WHERE user_id=?').bind(user.id),
+    env.DB.prepare('INSERT INTO sessions(token_hash,user_id,expires_at) VALUES(?,?,?)')
+      .bind(tokenHash, user.id, expiresAt),
+  ]);
+  return json(request, { token, user });
 }
 
 async function deleteAccount(request: Request, env: Env) {
@@ -230,9 +278,9 @@ async function deleteAccount(request: Request, env: Env) {
   if (!user) return json(request, { error: 'ログインが必要です。' }, { status: 401 });
   let body: { password?: unknown };
   try {
-    body = await request.json();
-  } catch {
-    return json(request, { error: '入力内容を確認してください。' }, { status: 400 });
+    body = await readRequestObject(request);
+  } catch (error) {
+    return requestBodyError(request, error);
   }
   const password = typeof body.password === 'string' ? body.password : '';
   const row = await env.DB.prepare('SELECT password_hash,password_salt FROM users WHERE id=?').bind(user.id).first() as
@@ -240,12 +288,14 @@ async function deleteAccount(request: Request, env: Env) {
   if (!row || !safeEqual(await hashPassword(password, row.password_salt), row.password_hash)) {
     return json(request, { error: 'パスワードが違います。' }, { status: 401 });
   }
-  await env.DB.prepare('DELETE FROM sessions WHERE user_id=?').bind(user.id).run();
-  await env.DB.prepare('DELETE FROM source_follows WHERE user_id=?').bind(user.id).run();
-  await env.DB.prepare('DELETE FROM bookmarks WHERE user_id=?').bind(user.id).run();
-  await env.DB.prepare('DELETE FROM learning_history WHERE user_id=?').bind(user.id).run();
-  await env.DB.prepare('DELETE FROM user_preferences WHERE user_id=?').bind(user.id).run();
-  await env.DB.prepare('DELETE FROM users WHERE id=?').bind(user.id).run();
+  await env.DB.batch([
+    env.DB.prepare('DELETE FROM sessions WHERE user_id=?').bind(user.id),
+    env.DB.prepare('DELETE FROM source_follows WHERE user_id=?').bind(user.id),
+    env.DB.prepare('DELETE FROM bookmarks WHERE user_id=?').bind(user.id),
+    env.DB.prepare('DELETE FROM learning_history WHERE user_id=?').bind(user.id),
+    env.DB.prepare('DELETE FROM user_preferences WHERE user_id=?').bind(user.id),
+    env.DB.prepare('DELETE FROM users WHERE id=?').bind(user.id),
+  ]);
   return json(request, { ok: true });
 }
 
@@ -410,9 +460,9 @@ async function ingestArticles(request: Request, env: Env) {
   }
   let body: any;
   try {
-    body = await request.json();
-  } catch {
-    return json(request, { error: 'JSONを読み取れませんでした。' }, { status: 400 });
+    body = await readRequestObject(request, 1024 * 1024);
+  } catch (error) {
+    return requestBodyError(request, error);
   }
   const sources = body?.sources ?? [];
   const articles = body?.articles ?? [];
@@ -475,7 +525,7 @@ async function handleUserData(request: Request, env: Env, url: URL) {
     const user = await currentUser(request, env);
     if (!user) return json(request, { error: 'ログインが必要です。' }, { status: 401 });
     let body: { slug?: unknown; saved?: unknown };
-    try { body = await request.json(); } catch { return json(request, { error: '入力内容を確認してください。' }, { status: 400 }); }
+    try { body = await readRequestObject(request); } catch (error) { return requestBodyError(request, error); }
     if (!validArticleSlug(body.slug) || typeof body.saved !== 'boolean') {
       return json(request, { error: 'ブックマークの内容を確認してください。' }, { status: 400 });
     }
@@ -495,7 +545,7 @@ async function handleUserData(request: Request, env: Env, url: URL) {
     const user = await currentUser(request, env);
     if (!user) return json(request, { error: 'ログインが必要です。' }, { status: 401 });
     let body: { slug?: unknown; openedAt?: unknown };
-    try { body = await request.json(); } catch { return json(request, { error: '入力内容を確認してください。' }, { status: 400 }); }
+    try { body = await readRequestObject(request); } catch (error) { return requestBodyError(request, error); }
     if (!validArticleSlug(body.slug)) return json(request, { error: '学習履歴の内容を確認してください。' }, { status: 400 });
     const requestedOpenedAt = typeof body.openedAt === 'string' && Number.isFinite(Date.parse(body.openedAt))
       ? new Date(body.openedAt) : null;
@@ -522,7 +572,7 @@ async function handleUserData(request: Request, env: Env, url: URL) {
     const user = await currentUser(request, env);
     if (!user) return json(request, { error: 'ログインが必要です。' }, { status: 401 });
     let body: { language?: unknown; theme?: unknown; docsQuery?: unknown; docsFilters?: unknown };
-    try { body = await request.json(); } catch { return json(request, { error: '入力内容を確認してください。' }, { status: 400 }); }
+    try { body = await readRequestObject(request); } catch (error) { return requestBodyError(request, error); }
     if (body.language !== undefined && body.language !== 'Japanese' && body.language !== 'English') {
       return json(request, { error: '表示言語を確認してください。' }, { status: 400 });
     }
@@ -563,7 +613,7 @@ async function handleUserData(request: Request, env: Env, url: URL) {
     const user = await currentUser(request, env);
     if (!user) return json(request, { error: 'ログインが必要です。' }, { status: 401 });
     let body: { sourceSlug?: unknown; followed?: unknown };
-    try { body = await request.json(); } catch { return json(request, { error: '入力内容を確認してください。' }, { status: 400 }); }
+    try { body = await readRequestObject(request); } catch (error) { return requestBodyError(request, error); }
     const sourceSlug = typeof body.sourceSlug === 'string' ? body.sourceSlug.trim() : '';
     if (!/^[a-z0-9-]+$/.test(sourceSlug)) return json(request, { error: 'ソースを確認できません。' }, { status: 400 });
     if (body.followed === true) await env.DB.prepare('INSERT OR IGNORE INTO source_follows(user_id,source_slug) VALUES(?,?)').bind(user.id, sourceSlug).run();

@@ -46,7 +46,7 @@ Cloudflare Dashboardの Workers & Pages から `potover` を開き、Settings > 
 
 1. Cloudflare Pages/Workersの接続、D1の`potover`データベース、GitHub Secretsを設定します。
 2. `main`への反映でWorkerのD1マイグレーションを適用し、Worker secretを登録します。
-3. 公開ゲートを解除してよい段階になったら、許諾を確認済みのデータだけを同期します。手動同期コマンドを実行するときは、接続先を必ず明示してください。`npm run sync:d1`はアップロード後、D1から`data/articles.json`を再生成します。
+3. 公開ゲートを解除してよい段階になったら、利用規約・ライセンス等で収集と掲載が認められたデータだけを同期します（条件に応じて個別許諾も確認）。手動同期コマンドを実行するときは、接続先を必ず明示してください。`npm run sync:d1`はアップロード後、D1から`data/articles.json`を再生成します。
 4. PagesはD1を読み出して記事ページをビルドします。記事JSONを手編集しても正本には反映されません。
 
 `POTOVER_PUBLICATION_READY`が未設定の間、Pagesの本番ビルドとWorker本番デプロイは意図的に停止します。プライバシーポリシーの最終確認と収集対象の利用条件の確認を終えた後にだけ公開ゲートを解除してください。
@@ -59,3 +59,16 @@ AdSenseを有効にする場合は、Cloudflare Pagesのビルド環境変数と
 - `NEXT_PUBLIC_ADSENSE_SLOT`: 表示用広告ユニットのスロットID（任意。空欄の場合はAdSenseのAuto adsを使用）
 
 サイトをAdSenseに登録して審査を申請し、ステータスが`Ready`になってから配信が始まります。ビルド時にPublisher IDが設定されている場合は、`/ads.txt`も自動生成されます。
+
+## リリースの検証と順序
+
+- `npm ci && npm run verify` で型・lint・unit・本番静的exportを確認します。
+- `npm run test:integration` は一時的なworkerd/SQLite D1に全6 migrationを適用し、登録・ログイン・ユーザーデータ・パスワード変更・退会・記事再同期を確認します。本番には接続しません。
+- `build:production` は`.env.local`にローカルAPI URLがあっても本番APIへ固定します。変更先はHTTPS originの`POTOVER_API_URL`で明示します。
+- D1未移行時のPages先行ビルドは失敗します。公開承認後はWorker migration/deploy → 承認済みseed → Pages再ビルドの順です。Pagesの失敗を成功扱いにしないでください。
+- deploy workflowのseedは`POTOVER_COLLECTION_APPROVED=true`がある場合だけ実行します。公開ゲート単独では記事を取り込みません。
+- 初回seedは現在の公開slugを維持します。以後はexportされたslugを保存し、新規記事だけURL由来IDを割り当てます。同期バッチはD1 Freeのquery上限も考慮して5件です。
+- 本番反映前にD1の復旧ポイントと既存データを確認します。失敗時は先行migrationをむやみに巻き戻さず、Workerの直前versionとPagesの直前deploymentへ戻せることを確認します。
+- `Potover_Batch`の別日次collectorは本体と二重実行になるため、運営者承認のうえ既存PR #1の停止方針と整合させます。
+
+本番設定変更、secret生成/登録、migration実行、main mergeおよびdeploymentはこの検証とは別の承認対象です。

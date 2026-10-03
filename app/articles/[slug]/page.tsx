@@ -4,8 +4,9 @@ import {LearningLink} from '@/components/LearningLink';
 import {AdSenseAd} from '@/components/AdSenseAd';
 
 export function generateStaticParams(){return articles.map(({slug})=>({slug}));}
-export default function Article({params}:{params:{slug:string}}){
-  const a=articles.find(x=>x.slug===params.slug);
+export default async function Article({params}:{params:Promise<{slug:string}>}){
+  const {slug}=await params;
+  const a=articles.find(x=>x.slug===slug);
   if(!a)return notFound();
 
   return <main className="shell page shared-header-page article-detail-page"><article className="detail">

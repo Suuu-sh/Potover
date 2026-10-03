@@ -12,7 +12,7 @@ await exportArticles({apiUrl});
 const npm=process.platform==='win32'?'npm.cmd':'npm';
 const result=spawnSync(npm,['run','build:production'],{
   stdio:'inherit',
-  env:{...process.env,NEXT_PUBLIC_POTOVER_API_URL:apiUrl},
+  env:{...process.env,POTOVER_API_URL:apiUrl,NEXT_PUBLIC_POTOVER_API_URL:apiUrl},
 });
 if(result.error)throw result.error;
 if(result.status!==0)process.exit(result.status??1);

@@ -1,5 +1,5 @@
 {
-  "collectedAt": "2026-09-28T09:26:17.573Z",
+  "collectedAt": "2026-10-03T08:56:25.036Z",
   "sources": [
     {
       "slug": "gto-wizard",
@@ -21323,7 +21323,7 @@
       "title": "How to Plan Your Bet Sizing Across All Streets",
       "originalUrl": "https://pokercoaching.com/blog/how-to-plan-your-bet-sizing-across-all-streets/",
       "author": null,
-      "publishedAt": "2026-06-30T11:56:43",
+      "publishedAt": "2026-09-29T13:00:13",
       "summary": "Most players decide on a bet size by looking at the pot, picking a number that feels right, and moving on. They do the same on the next street. And the next. Then they arrive […]",
       "language": "English",
       "imageUrl": "https://pokercoaching.com/blog/wp-content/uploads/2026/06/How-to-Plan-Your-Bet-Sizing-Across-All-Streets.jpg",
@@ -22213,7 +22213,7 @@
       "title": "The 5 Most Profitable Preflop Adjustments for Small-Stakes Poker",
       "originalUrl": "https://pokercoaching.com/blog/most-profitable-preflop-adjustments-for-small-stakes-poker/",
       "author": null,
-      "publishedAt": "2026-05-19T14:21:38",
+      "publishedAt": "2026-10-02T12:33:33",
       "summary": "Many players spend countless hours studying solver outputs, memorizing balanced ranges, and worrying about being “exploitable,” only to sit down in games where opponents fold too much, call too wide, and rarely apply pressure correctly. […]",
       "language": "English",
       "imageUrl": "https://pokercoaching.com/blog/wp-content/uploads/2025/12/Most-Profitable-Preflop-Adjustments-for-Small-Stakes-Poker.jpg",
@@ -57406,6 +57406,188 @@
         "tags": [
           "turn",
           "cash-game"
+        ]
+      }
+    },
+    {
+      "source": "PokerCoaching.com",
+      "sourceSlug": "pokercoaching",
+      "sourceUrl": "https://pokercoaching.com/blog/",
+      "title": "Checking Top Pair: QJs LJ vs BTN at 100bb Cash",
+      "originalUrl": "https://pokercoaching.com/blog/checking-top-pair-qjs-lj-vs-btn-100bb-cash/",
+      "author": null,
+      "publishedAt": "2026-09-28T11:00:00",
+      "summary": "Flopping top pair feels like a reason to start building a pot, but out of position it is often a reason to slow down. When you raise preflop and a tight player calls behind you, […]",
+      "language": "English",
+      "imageUrl": "https://pokercoaching.com/blog/wp-content/uploads/2026/09/Checking-Top-Pair-QJs-LJ-vs-BTN-at-100bb-Cash.jpg",
+      "contentType": "article",
+      "classification": {
+        "difficulty": "intermediate",
+        "tags": [
+          "preflop",
+          "flop",
+          "cash-game"
+        ]
+      }
+    },
+    {
+      "source": "PokerNews",
+      "sourceSlug": "pokernews",
+      "sourceUrl": "https://www.pokernews.com/strategy/",
+      "title": "How Strong is an Overpair? Would You Fold This Hand?",
+      "originalUrl": "https://www.pokernews.com/strategy/how-strong-is-an-overpair-would-you-fold-this-hand-52219.htm",
+      "author": null,
+      "publishedAt": null,
+      "summary": "Should you call off your entire stack with pocket eights? We break down opponent ranges, pot odds, and stack depth to evaluate this tough cash game spot.",
+      "language": "English",
+      "imageUrl": "https://pnimg.net/w/articles/0/6a8/d4fca114af.jpg",
+      "contentType": "article",
+      "classification": {
+        "difficulty": "intermediate",
+        "tags": [
+          "cash-game"
+        ]
+      }
+    },
+    {
+      "source": "GTO Wizard",
+      "sourceSlug": "gto-wizard",
+      "sourceUrl": "https://www.youtube.com/@GTOWizard",
+      "title": "How I Almost Won 10 Million with Han Feng & Joey Ingram",
+      "originalUrl": "https://www.youtube.com/watch?v=82EUwl_Kb5M",
+      "author": "GTO Wizard",
+      "publishedAt": "2026-10-01T07:40:06+00:00",
+      "summary": "The 2026 WSOP Main Event final table. Millions on the line. Every decision under the brightest spotlight in poker. Joey Ingram and Han Feng will walk you through the hands, the pressure and the pivotal moments from one of the deepest tournament runs you will ever hear about firsthand.",
+      "language": "English",
+      "imageUrl": "https://i.ytimg.com/vi/82EUwl_Kb5M/hqdefault.jpg",
+      "contentType": "video",
+      "durationSeconds": null,
+      "classification": {
+        "difficulty": "intermediate",
+        "tags": [
+          "mtt"
+        ]
+      }
+    },
+    {
+      "source": "PokerNews",
+      "sourceSlug": "pokernews",
+      "sourceUrl": "https://www.pokernews.com/strategy/",
+      "title": "Call or Fold? Solving Negreanu's WSOP Final Table Bustout With GTO Wizard",
+      "originalUrl": "https://www.pokernews.com/strategy/daniel-negreanu-tens-gto-wizard-icm-analysis-52492.htm",
+      "author": null,
+      "publishedAt": null,
+      "summary": "Daniel Negreanu snap-called with TT and busted in 4th. We ran the hand through GTO Wizard's new ICM preflop solver to see if it was a call or a fold.",
+      "language": "English",
+      "imageUrl": "https://pnimg.net/w/articles/0/6ab/b98e907edb.jpg",
+      "contentType": "article",
+      "classification": {
+        "difficulty": "intermediate",
+        "tags": [
+          "preflop",
+          "flop",
+          "gto",
+          "icm"
+        ]
+      }
+    },
+    {
+      "source": "PokerCoaching.com",
+      "sourceSlug": "pokercoaching",
+      "sourceUrl": "https://pokercoaching.com/blog/",
+      "title": "Turning Two Pair in Position: A5s BTN vs UTG at 30bb MTT",
+      "originalUrl": "https://pokercoaching.com/blog/turning-two-pair-a5s-btn-vs-utg-30bb-mtt/",
+      "author": null,
+      "publishedAt": "2026-09-30T11:00:00",
+      "summary": "When a marginal pair suddenly improves to two pair, the instinct is to raise and “get the money in before I get outdrawn.” Most of the time that instinct is right, but there is an […]",
+      "language": "English",
+      "imageUrl": "https://pokercoaching.com/blog/wp-content/uploads/2026/09/Turning-Two-Pair-in-Position-A5s-BTN-vs-UTG-at-30bb-MTT.jpg",
+      "contentType": "article",
+      "classification": {
+        "difficulty": "intermediate",
+        "tags": [
+          "turn",
+          "mtt"
+        ]
+      }
+    },
+    {
+      "source": "PokerNews",
+      "sourceSlug": "pokernews",
+      "sourceUrl": "https://www.pokernews.com/strategy/",
+      "title": "Learn Bet Sizing, In-Position Raising With GTO Wizard Coaches",
+      "originalUrl": "https://www.pokernews.com/strategy/gto-wizard-october-monthly-coaching-sessions-52519.htm",
+      "author": null,
+      "publishedAt": null,
+      "summary": "GTO Wizard is continuing to offer weekly live coaching sessions in October to give players a close-up look at how top pros navigate poker decisions.",
+      "language": "English",
+      "imageUrl": "https://pnimg.net/w/articles/0/6ab/ee5cc31e61.jpg",
+      "contentType": "article",
+      "classification": {
+        "difficulty": "intermediate",
+        "tags": [
+          "gto"
+        ]
+      }
+    },
+    {
+      "source": "Upswing Poker",
+      "sourceSlug": "upswing-poker",
+      "sourceUrl": "https://upswingpoker.com/",
+      "title": "Single Board Bomb Pots – The Complete NLH Strategy Guide",
+      "originalUrl": "https://upswingpoker.com/single-board-bomb-pots-the-complete-nlh-strategy-guide/",
+      "author": null,
+      "publishedAt": "Fri, 02 Oct 2026 14:00:04 +0000",
+      "summary": "On this page What Is a Single-Board Bomb Pot? Where You’ll Find Them Why Bomb Pots Play Differently Flop Strategy: Small, Tight, and Linear Turn and River Strategy Shallow Stacks Change the Math Four Common Leaks The Takeaway What Is a Single-Board Bomb Pot? Quick definition A single-board bomb pot is a No-Limit Hold’em hand… The post Single Board Bomb Pots – The Complete NLH Strategy Guide appeared first on Upswing Poker .",
+      "language": "English",
+      "imageUrl": "https://upswingpoker.com/wp-content/uploads/2026/09/1200x630-1.jpg",
+      "contentType": "article",
+      "classification": {
+        "difficulty": "intermediate",
+        "tags": [
+          "flop",
+          "turn",
+          "river"
+        ]
+      }
+    },
+    {
+      "source": "PokerCoaching.com",
+      "sourceSlug": "pokercoaching",
+      "sourceUrl": "https://pokercoaching.com/blog/",
+      "title": "Bottom Pair Facing Aggression: 54s BB vs HJ at 25bb MTT",
+      "originalUrl": "https://pokercoaching.com/blog/bottom-pair-54s-bb-vs-hj-25bb-mtt/",
+      "author": null,
+      "publishedAt": "2026-10-02T11:00:00",
+      "summary": "Most players see bottom pair on a scary river, decide they are beat, and fold without much thought. That reflex quietly costs them a lot of money. Bottom pair facing aggression is often a perfectly […]",
+      "language": "English",
+      "imageUrl": "https://pokercoaching.com/blog/wp-content/uploads/2026/09/Bottom-Pair-Facing-Aggression-54s-BB-vs-HJ-at-25bb-MTT.jpg",
+      "contentType": "article",
+      "classification": {
+        "difficulty": "intermediate",
+        "tags": [
+          "river",
+          "mtt"
+        ]
+      }
+    },
+    {
+      "source": "GTO Wizard",
+      "sourceSlug": "gto-wizard",
+      "sourceUrl": "https://www.youtube.com/@GTOWizard",
+      "title": "The Simplest Exploit in PLO Almost Feels Unfair",
+      "originalUrl": "https://www.youtube.com/watch?v=5LJKelCWKRk",
+      "author": "GTO Wizard",
+      "publishedAt": "2026-10-02T13:54:50+00:00",
+      "summary": "Everyone knows who the loose passive player at the table is, but knowing how to get max value from them is a different skill. FiveCardGuy, who beat 10/20 for years targeting these players, shows their single biggest leak and a simple exploit to punish it. What you'll learn: • How loose passive players actually react to",
+      "language": "English",
+      "imageUrl": "https://i.ytimg.com/vi/5LJKelCWKRk/hqdefault.jpg",
+      "contentType": "video",
+      "durationSeconds": null,
+      "classification": {
+        "difficulty": "intermediate",
+        "tags": [
+          "exploit"
         ]
       }
     }

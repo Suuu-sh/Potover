@@ -1,14 +1,16 @@
-export type AuthRequestErrorKind='network'|'invalid-response'|'server';
+export type AuthRequestErrorKind='network'|'invalid-response'|'server'|'client';
 
 export class AuthRequestError extends Error {
   readonly kind:AuthRequestErrorKind;
   readonly retryable:boolean;
+  readonly status:number|undefined;
 
-  constructor(message:string,kind:AuthRequestErrorKind){
+  constructor(message:string,kind:AuthRequestErrorKind,status?:number){
     super(message);
     this.name='AuthRequestError';
     this.kind=kind;
-    this.retryable=kind==='network'||kind==='server';
+    this.status=status;
+    this.retryable=kind==='network'||kind==='server'||(status!==undefined&&status>=500);
   }
 }
 
@@ -23,11 +25,12 @@ export async function authRequest<T>(url: string, options: RequestInit = {}): Pr
   try {
     body = await response.json();
   } catch {
-    throw new AuthRequestError('認証サービスから正しい応答を受け取れませんでした。時間をおいて再度お試しください。','invalid-response');
+    throw new AuthRequestError('認証サービスから正しい応答を受け取れませんでした。時間をおいて再度お試しください。','invalid-response',response.status);
   }
   if (!response.ok) {
-    if (response.status>=500) throw new AuthRequestError('認証サービスで問題が発生しました。時間をおいて再度お試しください。','server');
-    throw new Error(body.error || '入力内容を確認してください。');
+    if (response.status>=500) throw new AuthRequestError('認証サービスで問題が発生しました。時間をおいて再度お試しください。','server',response.status);
+    const message=body&&typeof body==='object'&&typeof body.error==='string'?body.error:'入力内容を確認してください。';
+    throw new AuthRequestError(message,'client',response.status);
   }
   return body;
 }

@@ -1,8 +1,10 @@
 import {readFile,rename,writeFile} from 'node:fs/promises';
+import {createHash} from 'node:crypto';
 
 export const COLLECTION_PATH='data/articles.json';
 const PAGE_SIZE=500;
-const UPLOAD_BATCH_SIZE=75;
+// Leave room for source lookups and metadata updates within D1 Free's 50-query limit.
+const UPLOAD_BATCH_SIZE=5;
 
 const articleSlug=(title,index)=>{
   const titleSlug=String(title||'').toLowerCase().replace(/[^a-z0-9]+/g,'-').replace(/^-|-$/g,'').slice(0,80);
@@ -31,9 +33,14 @@ function apiBase(value){
 }
 
 function withStableSlugs(database){
+  const migrated=Boolean(database.snapshotAt)||database.articles.some(article=>typeof article.slug==='string');
   return database.articles.map((article,index)=>({
     ...article,
-    slug:articleSlug(article.title,index),
+    // Preserve the initial public URLs, then retain D1 identity across reorder/title changes.
+    slug:typeof article.slug==='string'&&/^[a-z0-9][a-z0-9-]{0,159}$/.test(article.slug)
+      ?article.slug
+      :migrated?`article-${createHash('sha256').update(article.originalUrl).digest('hex').slice(0,24)}`
+        :articleSlug(article.title,index),
     sourceSlug:article.sourceSlug||database.sources.find(source=>source.name===article.source)?.slug||'gto-wizard',
     summary:String(article.summary||article.title||'').slice(0,2000),
   }));
@@ -81,9 +88,10 @@ export async function exportArticles({apiUrl,filePath=COLLECTION_PATH,guardAgain
     throw new Error(`D1 has ${total} articles but the current snapshot has ${current.articles.length}; seed/sync D1 before publishing`);
   }
   const articles=[...first.articles];
-  for(let offset=articles.length;offset<total;offset+=PAGE_SIZE){
+  while(articles.length<total){
+    const offset=articles.length;
     const page=await requestJson(`${base}/api/articles?limit=${PAGE_SIZE}&offset=${offset}`);
-    if(Number(page.total)!==total||!Array.isArray(page.articles)||page.articles.length===0){
+    if(Number(page.total)!==total||page.collectedAt!==first.collectedAt||!Array.isArray(page.articles)||page.articles.length===0){
       throw new Error('D1 changed while exporting; retry the snapshot after ingestion completes');
     }
     articles.push(...page.articles);
