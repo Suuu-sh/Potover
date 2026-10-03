@@ -33,7 +33,9 @@ export function AccountSecurity(){
   }
 
   async function submitDelete(event:FormEvent){
-    event.preventDefault();setDeleteFeedback(null);setDeletingAccount(true);
+    event.preventDefault();
+    if(!window.confirm('アカウントと保存したブックマーク・学習履歴・フォロー・設定を削除します。続けますか？'))return;
+    setDeleteFeedback(null);setDeletingAccount(true);
     try{await deleteAccount(deletePassword);router.replace('/login')}
     catch(reason){setDeleteFeedback({kind:'error',message:reason instanceof Error?reason.message:'アカウントを削除できませんでした。'});setDeletingAccount(false)}
   }

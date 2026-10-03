@@ -16,10 +16,23 @@ it('handles non-JSON errors',async()=>{
   vi.stubGlobal('fetch',vi.fn().mockResolvedValue(new Response('Bad Gateway',{status:502})));
   const error=await authRequest('/login').catch(reason=>reason);
   if(!(error instanceof AuthRequestError))throw new Error('Expected AuthRequestError');
-  expect(error).toMatchObject({kind:'invalid-response',retryable:false});
+  expect(error).toMatchObject({kind:'invalid-response',retryable:true,status:502});
   expect(error.message).toContain('正しい応答を受け取れません');
 });
 it('returns successful responses',async()=>{
   vi.stubGlobal('fetch',vi.fn().mockResolvedValue(Response.json({user:{id:'test'}})));
   await expect(authRequest('/me')).resolves.toEqual({user:{id:'test'}});
+});
+
+it('retains the HTTP status for expired-session decisions',async()=>{
+  vi.stubGlobal('fetch',vi.fn().mockResolvedValue(Response.json({error:'ログインが必要です。'},{status:401})));
+  await expect(authRequest('/me')).rejects.toMatchObject({kind:'client',status:401,retryable:false});
+});
+it('retains status even when an unauthorized response is not JSON',async()=>{
+  vi.stubGlobal('fetch',vi.fn().mockResolvedValue(new Response('Unauthorized',{status:401})));
+  await expect(authRequest('/me')).rejects.toMatchObject({kind:'invalid-response',status:401});
+});
+it('handles null JSON error bodies without losing their status',async()=>{
+  vi.stubGlobal('fetch',vi.fn().mockResolvedValue(Response.json(null,{status:403})));
+  await expect(authRequest('/me')).rejects.toMatchObject({kind:'client',status:403});
 });

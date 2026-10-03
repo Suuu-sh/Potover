@@ -11,9 +11,7 @@ import './globals.css';
 export const metadata={title:'Potover — ポーカー記事を、横断検索。',description:'良質なポーカー記事を、テーマ・言語から横断検索。'};
 export default function Layout({children}:{children:React.ReactNode}){
   return <html lang="ja" suppressHydrationWarning>
-    <head>
-      {adsenseClient&&<script async src={`https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=${adsenseClient}`} crossOrigin="anonymous"/>}
-    </head>
+    {adsenseClient?<head><script async src={`https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=${adsenseClient}`} crossOrigin="anonymous"/></head>:null}
     <body><AuthProvider><UserPreferencesProvider><BookmarksProvider><LearningHistoryProvider><ArticleModalProvider><SiteChrome>{children}</SiteChrome></ArticleModalProvider></LearningHistoryProvider></BookmarksProvider></UserPreferencesProvider></AuthProvider></body>
   </html>;
 }

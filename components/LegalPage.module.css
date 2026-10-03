@@ -1,0 +1,12 @@
+.page{max-width:920px;padding:42px 24px 88px}
+.heading{max-width:720px;padding:18px 0 34px;border-bottom:1px solid var(--color-border)}
+.eyebrow{margin:0 0 10px;color:var(--color-muted);font-size:11px;font-weight:700;letter-spacing:.12em}
+.heading h1{margin:0;color:var(--color-text);font-size:clamp(30px,5vw,42px);letter-spacing:-.04em}
+.heading>p:last-child{margin:12px 0 0;color:var(--color-muted);line-height:1.8}
+.sections{max-width:720px}
+.section{padding:26px 0 22px;border-bottom:1px solid var(--color-border)}
+.section h2{margin:0 0 12px;color:var(--color-text);font-size:18px}
+.section p{margin:8px 0 0;color:var(--color-muted);font-size:14px;line-height:1.9;overflow-wrap:anywhere}
+.section a{color:var(--color-text);text-underline-offset:3px}
+.updated{max-width:720px;margin:24px 0 0;color:var(--color-muted);font-size:12px}
+@media(max-width:700px){.page{padding:26px 18px 58px}.heading{padding:10px 0 26px}.section{padding:22px 0 18px}.section p{font-size:13px}}
