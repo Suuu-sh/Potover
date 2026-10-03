@@ -9,6 +9,8 @@
 
 `dev:all`はAPIと画面を同じコマンドで起動し、画面側のAPI URLもローカルへ固定します。ローカルと本番のアカウントは共有されません。
 
+ローカルQAでGoogle AdSenseへの通信を止める場合は、`NEXT_PUBLIC_ADSENSE_DISABLED=true npm run dev:all`（画面を個別起動する場合は`NEXT_PUBLIC_ADSENSE_DISABLED=true npm run dev:local`）を使用します。値が`true`と完全一致するときだけ広告スクリプトを挿入しません。未設定または`false`では既存の広告設定を維持します。フラグ変更後は画面の開発サーバーを再起動してください。本番環境の変数は変更しません。
+
 個別に起動したい場合は、`npm run dev:api`と`npm run dev:local`（127.0.0.1:3001）を使えます。本番用の静的ビルドは`npm run build:production`を使ってください。ローカル用の`.env.local`が本番ビルドへ混ざらないようにAPI URLを明示しています。
 
 `npm run sync:d1:upload` / `npm run sync:d1:export` / `npm run sync:d1`は接続先`POTOVER_API_URL`を必須とし、未指定時に本番APIへ接続しません。ローカルD1へ同期するときは、`POTOVER_API_URL=http://127.0.0.1:8787`とローカル専用`POTOVER_INGEST_TOKEN`を設定します。`npm run build:pages`は本番公開用で、公開承認ゲートとD1 URLが設定されていない場合に停止します。
