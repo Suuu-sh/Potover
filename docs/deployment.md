@@ -11,6 +11,8 @@
 
 ビルドスクリプトは公開ゲートがない場合に失敗し、本番APIへの同期スクリプトは`POTOVER_API_URL`を明示しない限り実行しません。誤った本番更新を防ぐための意図的な動作です。
 
+Cloudflare PagesのPreviewも同じ`npm run build:pages`を使う場合は公開ゲートで停止します。公開アクセス可能なPreviewへのデプロイも公開に当たるため、未承認の実記事データを掲載する目的でPreview環境に`POTOVER_PUBLICATION_READY=true`を設定しないでください。承認前の画面・認証検証は`docs/local-development.md`のローカルUIとローカルD1で行います。
+
 ## デプロイ構成
 
 FrontendはCloudflare PagesのGit連携で、`main`へのpush時に`npm run build:pages`を実行します。Pagesビルドは公開ゲート通過後にD1から記事スナップショットを取得してビルドします。BackendのWorkerは、`main`へのpush時にGitHub Actionsがマイグレーションを適用してからデプロイします。`workflow_dispatch`を`main`以外で実行しても本番デプロイしません。

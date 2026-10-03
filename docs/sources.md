@@ -20,7 +20,7 @@ MVPでは本文を保存せず、公開されているタイトル・URL・著�
 
 noteは現段階では収集対象にしない。許諾確認後のGitHub Actions定期実行は毎日12:00（日本時間）にSitemap/RSSを確認し、新規・更新記事と各記事の代表画像を更新する。本文は保存しない。
 
-YouTubeは公式RSSからタイトル・URL・公開日・説明・サムネイルを取得し、動画ページから再生時間のみ補完する。動画本体は保存しない。対象は `GTO Wizard`（`UCXSg1srGpJ67HuPTMm4w72g`）と `GTO Wizard Japan`（`UCe9X7pQ5R0LduvBkhmOnj7Q`）。
+YouTubeは公式RSSからタイトル・URL・公開日・説明・サムネイルを取得する。動画ページHTMLによる再生時間の補完と動画本体の保存は行わない。対象は `GTO Wizard`（`UCXSg1srGpJ67HuPTMm4w72g`）と `GTO Wizard Japan`（`UCe9X7pQ5R0LduvBkhmOnj7Q`）。
 
 
 ## GTO Wizard 実測結果（2026-08-31）
