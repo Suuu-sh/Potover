@@ -48,7 +48,12 @@ export function SiteFooter(){
       </div>
       <div className={styles.bottom}>
         <span>© {new Date().getFullYear()} Potover</span>
-        <span>最終更新：2026年9月1日</span>
+        <nav className={styles.legalLinks} aria-label="サービス情報">
+          <Link href="/privacy">プライバシーポリシー</Link>
+          <Link href="/terms">利用条件</Link>
+          <Link href="/contact">お問い合わせ</Link>
+        </nav>
+        <span>最終更新：2026年9月28日</span>
       </div>
     </div>
   </footer>;

@@ -77,7 +77,7 @@ export default function Explore(){
   const reset=()=>{setSelected([]);setQuery('');setIndexQuery('');setFilterDialogQuery('');const url=new URL(location.href);url.searchParams.delete('q');url.searchParams.delete('filters');history.replaceState(null,'',url)};
   const results=useMemo(()=>{
     const filtered=articles.filter(article=>{
-      const text=[article.title,article.summary,article.source,...article.tags,article.category,article.contentType==='video'?'動画 youtube video':'記事 article'].join(' ').toLowerCase();
+      const text=[article.title,article.source,...article.tags,article.category,article.contentType==='video'?'動画 youtube video':'記事 article'].join(' ').toLowerCase();
       const normalizedQuery=query.trim().toLowerCase();
       const queryTerms=SEARCH_ALIASES[normalizedQuery]||[normalizedQuery];
       const language=selected.filter(x=>['Japanese','English'].includes(x));

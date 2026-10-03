@@ -4,5 +4,6 @@
   "main": "src/index.ts",
   "compatibility_date": "2026-08-31",
   "observability": { "enabled": true },
+  "triggers": { "crons": ["0 3 * * *"] },
   "d1_databases": [{ "binding": "DB", "database_name": "potover", "database_id": "13afe288-d1c2-432f-803e-72727ebc849d", "migrations_dir": "./migrations" }]
 }

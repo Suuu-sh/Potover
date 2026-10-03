@@ -1,17 +1,16 @@
 'use client';
 
-import Image from 'next/image';
 import {contentLabel} from '@/lib/content-labels';
-import {CalendarDays,Check,Clock3,Globe2} from 'lucide-react';
+import {ArrowUpRight,BookOpen,CalendarDays,Check,Globe2,Play} from 'lucide-react';
 
 import {Article} from '@/lib/data';
 import {BookmarkButton} from '@/components/BookmarkButton';
+import {LearningLink} from '@/components/LearningLink';
 import {SourceFollowButton} from '@/components/SourceFollowButton';
 import {useLearningHistory} from '@/lib/learning-history';
 import ArticleLink from '@/components/ArticleLink';
 
-const sourceImages:Record<string,string>={'gto-wizard':'/sources/gto-wizard.png','gto-wizard-japan':'/sources/gto-wizard.png','upswing-poker':'/sources/upswing.png','pokernews':'/sources/pokernews.png','pokercoaching':'/sources/pokercoaching.png'};
-const sourceGlyphs:Record<string,string>={'gto-wizard':'W','upswing-poker':'U','pokernews':'P','pokercoaching':'P'};
+const sourceGlyphs:Record<string,string>={'gto-wizard':'W','gto-wizard-japan':'W','upswing-poker':'U','pokernews':'P','pokercoaching':'P'};
 
 type ArticleFeedRowProps={article:Article;onTagClick?:(tag:string)=>void;compactActions?:boolean};
 
@@ -20,11 +19,11 @@ export function ArticleFeedRow({article,onTagClick,compactActions=false}:Article
   const read=hasRead(article.slug);
   const actionButtons=<BookmarkButton slug={article.slug}/>;
   return <article className="docs-feed-row">
-    <ArticleLink slug={article.slug} className="article-cover"><Image src={article.imageUrl||sourceImages[article.sourceSlug]||'/icon.png'} alt="" fill sizes="(max-width: 640px) 100vw, (max-width: 720px) 34vw, 280px"/></ArticleLink>
+    <ArticleLink slug={article.slug} className="article-cover" aria-label={`${article.title}の詳細`} style={{display:'grid',placeItems:'center'}}>{article.contentType==='video'?<Play size={36} aria-hidden="true"/>:<BookOpen size={36} aria-hidden="true"/>}</ArticleLink>
     <div className="feed-copy"><div className="feed-source"><span className="source-glyph">{sourceGlyphs[article.sourceSlug]||article.source.slice(0,1)}</span><strong>{article.source}</strong><SourceFollowButton sourceSlug={article.sourceSlug} sourceName={article.source}/><span className="content-kind">{article.contentType==='video'?'動画':'記事'}</span>{read&&<span className="read-status"><Check size={12} aria-hidden="true"/>{article.contentType==='video'?'視聴済み':'読了'}</span>}{compactActions&&<div className="feed-source-actions">{actionButtons}</div>}</div>
-      <ArticleLink slug={article.slug} className="feed-card-link"><h2>{article.title}</h2></ArticleLink><p>{article.summary}</p>
-      <div className="feed-tags">{article.tags.slice(0,3).map(tag=><button key={tag} type="button" onClick={()=>onTagClick?.(tag)}>{contentLabel(tag)}</button>)}</div>
-      <div className="feed-meta"><span><Globe2 size={13}/>{contentLabel(article.language)}</span><span><CalendarDays size={13}/>{article.publishedAt}</span><span><Clock3 size={13}/>{article.contentType==='video'?`${article.minutes}分`:`${article.minutes}分で読了`}</span></div>
+      <ArticleLink slug={article.slug} className="feed-card-link"><h2>{article.title}</h2></ArticleLink>
+      <div className="feed-tags"><span className="tag">{contentLabel(article.category)}</span>{article.tags.slice(0,3).map(tag=><button key={tag} type="button" onClick={()=>onTagClick?.(tag)}>{contentLabel(tag)}</button>)}</div>
+      <div className="feed-meta"><span><Globe2 size={13}/>{contentLabel(article.language)}</span><span><CalendarDays size={13}/>{article.publishedAt}</span><LearningLink slug={article.slug} href={article.url}>{article.contentType==='video'?'元の動画を見る':'元記事を読む'} <ArrowUpRight size={13}/></LearningLink></div>
     </div>
     {!compactActions&&<div className="feed-actions">{actionButtons}</div>}
   </article>

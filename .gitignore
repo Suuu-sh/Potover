@@ -1,4 +1,5 @@
 node_modules/
+data/articles.public.json
 .next/
 out/
 .wrangler/
@@ -6,4 +7,5 @@ out/
 *.tsbuildinfo
 .env*
 !.env.example
+worker/.dev.vars
 .DS_Store
