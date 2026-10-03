@@ -15,6 +15,6 @@ export function LegalPage({title,description,sections}:{title:string;description
         {section.paragraphs.map((paragraph,index)=><p key={`${section.title}-${index}`}>{paragraph}</p>)}
       </section>)}
     </div>
-    <p className={styles.updated}>制定・最終更新日：2026年9月28日</p>
+    <p className={styles.updated}>最終更新日：2026年10月3日</p>
   </main>;
 }

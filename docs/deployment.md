@@ -2,7 +2,9 @@
 
 ## 現在の公開状態
 
-記事データの正本はCloudflare D1です。リポジトリの`data/articles.json`は、D1からPagesの静的ビルド時に生成する配信用スナップショットであり、正本ではありません。
+記事データの正本はCloudflare D1です。リポジトリの`data/articles.json`は従来の収集・内部同期データとして保持します。フロントエンドは直接importせず、許可項目だけを抽出した`data/articles.public.json`を使用します。この生成ファイルはGit管理外です。
+
+初回公開ではタイトル・元記事リンク・情報源・カテゴリ・日付等だけを配信します。Next.js設定の読込時に公開用JSONを生成し、Pagesでは匿名公開APIから別ファイルへ取得したスナップショットを再度許可項目に絞ってビルドします。概要・本文抜粋・見出し・画像URL等を画面上だけで隠してブラウザ用データへ残す設計にはしません。
 
 利用者データの保存期間はプライバシーポリシーに定めています。複数の情報源の自動収集許諾が未確認のため、本番公開・記事収集は初期状態で停止しています。許諾確認と本番相当の動作確認が終わる前に以下のGitHub変数を有効化しないでください。
 
@@ -49,11 +51,15 @@ Cloudflare Dashboardの Workers & Pages から `potover` を開き、Settings > 
 1. Cloudflare Pages/Workersの接続、D1の`potover`データベース、GitHub Secretsを設定します。
 2. `main`への反映でWorkerのD1マイグレーションを適用し、Worker secretを登録します。
 3. 公開ゲートを解除してよい段階になったら、利用規約・ライセンス等で収集と掲載が認められたデータだけを同期します（条件に応じて個別許諾も確認）。手動同期コマンドを実行するときは、接続先を必ず明示してください。`npm run sync:d1`はアップロード後、D1から`data/articles.json`を再生成します。
-4. PagesはD1を読み出して記事ページをビルドします。記事JSONを手編集しても正本には反映されません。
+4. PagesはD1の匿名公開APIを読み出して`data/articles.public.json`を作り、記事ページをビルドします。元の`data/articles.json`は上書きしません。`POTOVER_PUBLIC_DATA_INPUT`はこのビルド内部で設定する入力パスで、本番ダッシュボードへ追加する変数ではありません。記事JSONを手編集しても正本には反映されません。
+
+内部の`sync:d1:export`と`sync:d1`は、既存の`POTOVER_INGEST_TOKEN`を使って認証付き`GET /api/articles/export`から全保存項目を取得します。匿名の`GET /api/articles`は初回公開の許可項目のみを返します。内部export用tokenをPagesや公開URLへ渡す必要はありません。
 
 `POTOVER_PUBLICATION_READY`が未設定の間、Pagesの本番ビルドとWorker本番デプロイは意図的に停止します。プライバシーポリシーの最終確認と収集対象の利用条件の確認を終えた後にだけ公開ゲートを解除してください。
 
 ### Google AdSense
+
+初回公開から広告を有効にする方針です。既存のPublisher IDの既定動作を維持します。ローカルQAだけでは`NEXT_PUBLIC_ADSENSE_DISABLED=true`で外部広告スクリプトを止められます。本変更で本番環境変数やAdSenseの審査状態を変更・確認したことにはなりません。
 
 AdSenseを有効にする場合は、Cloudflare Pagesのビルド環境変数とローカルの`.env.local`に以下を設定します。
 

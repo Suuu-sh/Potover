@@ -299,7 +299,7 @@ async function deleteAccount(request: Request, env: Env) {
   return json(request, { ok: true });
 }
 
-function articleResponse(row: any) {
+function publicArticleResponse(row: any) {
   return {
     slug: row.slug,
     source: row.source,
@@ -307,17 +307,24 @@ function articleResponse(row: any) {
     sourceUrl: row.source_url || null,
     title: row.title,
     originalUrl: row.original_url,
-    author: row.author,
     publishedAt: row.published_at,
-    summary: row.summary,
     language: row.language,
-    imageUrl: row.image_url,
     contentType: row.content_type,
-    durationSeconds: row.duration_seconds,
     classification: { difficulty: row.difficulty, tags: parseStringArray(row.tags_json) },
+    category: row.category,
+  };
+}
+
+// Full source data is retained for authenticated collection/sync jobs only.
+function internalArticleResponse(row: any) {
+  return {
+    ...publicArticleResponse(row),
+    author: row.author,
+    summary: row.summary,
+    imageUrl: row.image_url,
+    durationSeconds: row.duration_seconds,
     headings: parseHeadings(row.headings_json),
     sourceModifiedAt: row.source_modified_at,
-    category: row.category,
   };
 }
 
@@ -327,8 +334,8 @@ function articleWhere(search: URLSearchParams) {
   const where: string[] = [];
   const args: string[] = [];
   if (query) {
-    where.push('(a.title LIKE ? OR a.summary LIKE ? OR a.tags_json LIKE ?)');
-    args.push(`%${query}%`, `%${query}%`, `%${query}%`);
+    where.push('(a.title LIKE ? OR a.tags_json LIKE ?)');
+    args.push(`%${query}%`, `%${query}%`);
   }
   if (source) {
     where.push('a.source_slug = ?');
@@ -337,7 +344,21 @@ function articleWhere(search: URLSearchParams) {
   return { clause: where.length ? ` WHERE ${where.join(' AND ')}` : '', args };
 }
 
-async function listArticles(request: Request, env: Env) {
+function authorizeArticleTransfer(request: Request, env: Env) {
+  if (!env.BATCH_INGEST_TOKEN) {
+    return json(request, { error: '記事取り込み用トークンが設定されていません。' }, { status: 503 });
+  }
+  if (request.headers.get('authorization') !== `Bearer ${env.BATCH_INGEST_TOKEN}`) {
+    return json(request, { error: 'Unauthorized' }, { status: 401 });
+  }
+  return null;
+}
+
+async function listArticles(request: Request, env: Env, internal = false) {
+  if (internal) {
+    const unauthorized = authorizeArticleTransfer(request, env);
+    if (unauthorized) return unauthorized;
+  }
   const url = new URL(request.url);
   const limitParam = Number(url.searchParams.get('limit') || 100);
   const offsetParam = Number(url.searchParams.get('offset') || 0);
@@ -345,14 +366,16 @@ async function listArticles(request: Request, env: Env) {
   const offset = Number.isFinite(offsetParam) ? Math.max(0, Math.min(Math.floor(offsetParam), 1000000)) : 0;
   const { clause, args } = articleWhere(url.searchParams);
   const totalRow = await env.DB.prepare(`SELECT COUNT(*) AS total FROM articles a${clause}`).bind(...args).first() as { total: number };
+  const columns = internal ? 'a.*' :
+    'a.slug,a.source,a.source_slug,a.title,a.original_url,a.published_at,a.language,a.content_type,a.difficulty,a.tags_json,a.category';
   const result = await env.DB.prepare(`
-    SELECT a.*,s.url AS source_url
+    SELECT ${columns},s.url AS source_url
     FROM articles a LEFT JOIN sources s ON s.slug=a.source_slug${clause}
     ORDER BY a.published_at DESC,a.slug ASC LIMIT ? OFFSET ?
   `).bind(...args, limit, offset).all();
   const metadata = await env.DB.prepare('SELECT value FROM app_metadata WHERE key=?').bind('collected_at').first() as { value: string } | null;
   return json(request, {
-    articles: (result.results || []).map(articleResponse),
+    articles: (result.results || []).map(internal ? internalArticleResponse : publicArticleResponse),
     total: Number(totalRow?.total || 0),
     offset,
     limit,
@@ -452,12 +475,8 @@ async function upsertArticle(env: Env, article: any) {
 }
 
 async function ingestArticles(request: Request, env: Env) {
-  if (!env.BATCH_INGEST_TOKEN) {
-    return json(request, { error: '記事取り込み用トークンが設定されていません。' }, { status: 503 });
-  }
-  if (request.headers.get('authorization') !== `Bearer ${env.BATCH_INGEST_TOKEN}`) {
-    return json(request, { error: 'Unauthorized' }, { status: 401 });
-  }
+  const unauthorized = authorizeArticleTransfer(request, env);
+  if (unauthorized) return unauthorized;
   let body: any;
   try {
     body = await readRequestObject(request, 1024 * 1024);
@@ -643,6 +662,7 @@ export default {
       return json(request, { ok: true, ingestConfigured: Boolean(env.BATCH_INGEST_TOKEN) });
     }
     if (url.pathname === '/api/articles' && request.method === 'GET') return listArticles(request, env);
+    if (url.pathname === '/api/articles/export' && request.method === 'GET') return listArticles(request, env, true);
     if (url.pathname === '/api/articles' && request.method === 'POST') return ingestArticles(request, env);
     if (url.pathname === '/api/sources' && request.method === 'GET') return listSources(request, env);
     const userDataResponse = await handleUserData(request, env, url);

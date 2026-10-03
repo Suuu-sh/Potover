@@ -170,6 +170,57 @@ describe('authentication and user input', () => {
 });
 
 describe('public article search', () => {
+  const storedArticle = {
+    slug: 'sample-article', source: 'Sample Source', source_slug: 'sample-source', source_url: 'https://example.test',
+    title: 'Sample title', original_url: 'https://example.test/article', published_at: '2026-10-01T00:00:00Z',
+    language: 'English', content_type: 'video', difficulty: 'beginner', tags_json: '["gto"]', category: 'GTO',
+    author: 'Sample author', summary: 'Private source summary', image_url: 'https://example.test/video-thumbnail.jpg',
+    duration_seconds: 123, headings_json: '[{"level":2,"text":"Private source heading"}]',
+    source_modified_at: '2026-10-02T00:00:00Z', excerpt: 'Private excerpt', raw_json: '{"private":true}',
+  };
+  const publicArticle = {
+    slug: 'sample-article', source: 'Sample Source', sourceSlug: 'sample-source', sourceUrl: 'https://example.test',
+    title: 'Sample title', originalUrl: 'https://example.test/article', publishedAt: '2026-10-01T00:00:00Z',
+    language: 'English', contentType: 'video', classification: {difficulty: 'beginner', tags: ['gto']}, category: 'GTO',
+  };
+  it.each(['', '?mode=internal&full=true&export=true'])('only publishes whitelisted metadata even with an ingestion token: %s', async query => {
+    const {DB, calls} = database({rows: [storedArticle], total: 1});
+    const request = new Request(`https://api.example.test/api/articles${query}`, {headers: {Authorization: 'Bearer test-token'}});
+    const response = await worker.fetch(request, {DB, BATCH_INGEST_TOKEN: 'test-token'});
+    expect(response.status).toBe(200);
+    expect(await response.json()).toEqual({articles: [publicArticle], total: 1, offset: 0, limit: 100, collectedAt: null});
+    const read = calls.find(call => call.operation === 'all')!;
+    expect(read.query).not.toMatch(/a\.\*|summary|headings|image_url|author|duration_seconds|source_modified_at/);
+  });
+  it.each([undefined, ''])('fails closed for full exports with no configured secret: %j', async token => {
+    const {DB, calls} = database({rows: [storedArticle], total: 1});
+    const response = await worker.fetch(new Request('https://api.example.test/api/articles/export'), {DB, BATCH_INGEST_TOKEN: token});
+    expect(response.status).toBe(503);
+    expect(calls).toHaveLength(0);
+  });
+  it.each([undefined, 'Bearer wrong-token', 'Bearer ', 'Basic test-token'])('rejects unauthorized full exports before database access: %j', async authorization => {
+    const {DB, calls} = database({rows: [storedArticle], total: 1});
+    const request = new Request('https://api.example.test/api/articles/export', {headers: authorization ? {Authorization: authorization} : {}});
+    const response = await worker.fetch(request, {DB, BATCH_INGEST_TOKEN: 'test-token'});
+    expect(response.status).toBe(401);
+    expect(await response.json()).toEqual({error: 'Unauthorized'});
+    expect(calls).toHaveLength(0);
+  });
+  it('preserves all existing source fields on authenticated full exports', async () => {
+    const {DB, calls} = database({rows: [storedArticle], total: 1});
+    const request = new Request('https://api.example.test/api/articles/export', {headers: {Authorization: 'Bearer test-token'}});
+    const response = await worker.fetch(request, {DB, BATCH_INGEST_TOKEN: 'test-token'});
+    expect(response.status).toBe(200);
+    expect(await response.json()).toEqual({
+      articles: [{...publicArticle, author: storedArticle.author, summary: storedArticle.summary,
+        imageUrl: storedArticle.image_url, durationSeconds: storedArticle.duration_seconds,
+        headings: [{level: 2, text: 'Private source heading'}], sourceModifiedAt: storedArticle.source_modified_at}],
+      total: 1, offset: 0, limit: 100, collectedAt: null,
+    });
+    expect(response.headers.get('Cache-Control')).toBe('no-store');
+    expect(calls.some(call => call.operation === 'all' && call.query.includes('SELECT a.*'))).toBe(true);
+    expect(calls.every(call => call.operation === 'first' || call.operation === 'all')).toBe(true);
+  });
   it('clamps pagination and binds query and source filters', async () => {
     const {DB, calls} = database();
     const query = "'; DROP TABLE users; --";
@@ -179,7 +230,8 @@ describe('public article search', () => {
     expect(response.status).toBe(200);
     const read = calls.find(call => call.operation === 'all');
     expect(read?.query).not.toContain(query);
-    expect(read?.values).toEqual([`%${query}%`, `%${query}%`, `%${query}%`, query, 1, 0]);
+    expect(read?.values).toEqual([`%${query}%`, `%${query}%`, query, 1, 0]);
+    expect(calls.every(call => !call.query.includes('a.summary'))).toBe(true);
   });
   it('uses safe defaults for non-finite pagination', async () => {
     const {DB, calls} = database();

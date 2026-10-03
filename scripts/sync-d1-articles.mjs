@@ -9,10 +9,10 @@ if(!apiUrl){
 }
 
 if(mode==='upload')await uploadArticles({apiUrl,token:process.env.POTOVER_INGEST_TOKEN});
-else if(mode==='export')await exportArticles({apiUrl});
+else if(mode==='export')await exportArticles({apiUrl,token:process.env.POTOVER_INGEST_TOKEN});
 else if(mode==='sync'){
   await uploadArticles({apiUrl,token:process.env.POTOVER_INGEST_TOKEN});
-  await exportArticles({apiUrl});
+  await exportArticles({apiUrl,token:process.env.POTOVER_INGEST_TOKEN});
 }else{
   console.error('Usage: node scripts/sync-d1-articles.mjs <upload|export|sync>');
   process.exitCode=2;

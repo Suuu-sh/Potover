@@ -1,5 +1,6 @@
 import {readFile,rename,writeFile} from 'node:fs/promises';
 import {createHash} from 'node:crypto';
+import {resolve} from 'node:path';
 
 export const COLLECTION_PATH='data/articles.json';
 const PAGE_SIZE=500;
@@ -73,12 +74,35 @@ export async function uploadArticles({apiUrl,token,filePath=COLLECTION_PATH}={})
   return {articles:articles.length,sources:database.sources.length};
 }
 
-export async function exportArticles({apiUrl,filePath=COLLECTION_PATH,guardAgainstShrink=true}={}){
+// Whitelist again when building public snapshots so even an older API response
+// cannot accidentally publish source excerpts or media through a static build.
+function publicArticle(article){
+  return {
+    slug:article.slug,
+    source:article.source,
+    sourceSlug:article.sourceSlug,
+    sourceUrl:article.sourceUrl,
+    title:article.title,
+    originalUrl:article.originalUrl,
+    publishedAt:article.publishedAt,
+    language:article.language,
+    contentType:article.contentType,
+    classification:{difficulty:article.classification?.difficulty,tags:article.classification?.tags},
+    category:article.category,
+  };
+}
+
+export async function exportArticles({apiUrl,token,filePath=COLLECTION_PATH,outputPath=filePath,mode='internal',guardAgainstShrink=true}={}){
+  if(mode!=='internal'&&mode!=='public')throw new Error('Article export mode must be internal or public');
+  if(mode==='internal'&&(typeof token!=='string'||!token.trim()))throw new Error('POTOVER_INGEST_TOKEN is required to export full articles from D1');
+  if(mode==='public'&&resolve(outputPath)===resolve(filePath))throw new Error('Public article exports require a separate outputPath to preserve the private source dataset');
   const base=apiBase(apiUrl);
   const current=JSON.parse(await readFile(filePath,'utf8'));
   const sourcesResult=await requestJson(`${base}/api/sources`);
   if(!Array.isArray(sourcesResult.sources)||sourcesResult.sources.length===0)throw new Error('D1 returned no sources; refusing to publish an empty snapshot');
-  const first=await requestJson(`${base}/api/articles?limit=${PAGE_SIZE}&offset=0`);
+  const endpoint=mode==='internal'?'/api/articles/export':'/api/articles';
+  const requestOptions=mode==='internal'?{headers:{Authorization:`Bearer ${token}`}}:{};
+  const first=await requestJson(`${base}${endpoint}?limit=${PAGE_SIZE}&offset=0`,requestOptions);
   const total=Number(first.total);
   if(!Number.isInteger(total)||total<=0)throw new Error('D1 returned no articles; refusing to publish an empty snapshot');
   if(!Array.isArray(first.articles)||first.articles.length===0||first.articles.length>total){
@@ -90,7 +114,7 @@ export async function exportArticles({apiUrl,filePath=COLLECTION_PATH,guardAgain
   const articles=[...first.articles];
   while(articles.length<total){
     const offset=articles.length;
-    const page=await requestJson(`${base}/api/articles?limit=${PAGE_SIZE}&offset=${offset}`);
+    const page=await requestJson(`${base}${endpoint}?limit=${PAGE_SIZE}&offset=${offset}`,requestOptions);
     if(Number(page.total)!==total||page.collectedAt!==first.collectedAt||!Array.isArray(page.articles)||page.articles.length===0){
       throw new Error('D1 changed while exporting; retry the snapshot after ingestion completes');
     }
@@ -103,12 +127,12 @@ export async function exportArticles({apiUrl,filePath=COLLECTION_PATH,guardAgain
   const snapshot={
     collectedAt,
     snapshotAt:new Date().toISOString(),
-    sources:sourcesResult.sources,
-    articles,
+    sources:mode==='public'?sourcesResult.sources.map(source=>({slug:source.slug,name:source.name,url:source.url,language:source.language})):sourcesResult.sources,
+    articles:mode==='public'?articles.map(publicArticle):articles,
   };
-  const temporaryPath=`${filePath}.tmp`;
+  const temporaryPath=`${outputPath}.tmp`;
   await writeFile(temporaryPath,`${JSON.stringify(snapshot,null,2)}\n`);
-  await rename(temporaryPath,filePath);
-  console.log(`Exported ${articles.length} D1 articles across ${sourcesResult.sources.length} sources to ${filePath}`);
+  await rename(temporaryPath,outputPath);
+  console.log(`Exported ${articles.length} D1 articles across ${sourcesResult.sources.length} sources to ${outputPath}`);
   return {articles:articles.length,sources:sourcesResult.sources.length};
 }

@@ -1,11 +1,12 @@
 'use client';
 
 import {createContext,useCallback,useContext,useEffect,useMemo,useState} from 'react';
-import {ArrowUpRight,BookOpen,X} from 'lucide-react';
+import {ArrowUpRight,CalendarDays,Globe2,X} from 'lucide-react';
 import {articles,Article} from '@/lib/data';
 import {BookmarkButton} from '@/components/BookmarkButton';
 import {LearningLink} from '@/components/LearningLink';
 import {AdSenseAd} from '@/components/AdSenseAd';
+import {contentLabel} from '@/lib/content-labels';
 
 type ArticleModalContextValue={openArticle:(slug:string)=>void;closeArticle:()=>void};
 const ArticleModalContext=createContext<ArticleModalContextValue|null>(null);
@@ -28,5 +29,5 @@ export function ArticleLink({slug,href,className,children,...props}:{slug:string
 }
 
 function ArticleModal({article,onClose}:{article:Article;onClose:()=>void}){
-  return <div className="article-modal-backdrop" role="presentation" onMouseDown={event=>{if(event.target===event.currentTarget)onClose()}}><section className="article-modal" role="dialog" aria-modal="true" aria-labelledby="article-modal-title"><header className="article-modal-header"><div><p>{article.contentType==='video'?'VIDEO':'ARTICLE'}</p><span>{article.source}</span><h1 id="article-modal-title">{article.title}</h1></div><button type="button" onClick={onClose} aria-label="詳細を閉じる"><X size={20}/></button></header><div className="article-modal-body"><section className="article-modal-outline" aria-labelledby="article-modal-outline-title"><div className="article-modal-section-heading"><BookOpen size={17}/><h2 id="article-modal-outline-title">{article.contentType==='video'?'動画の内容':'見出し'}</h2></div><ol>{article.headings.map((heading,index)=><li data-level={heading.level} key={`${article.slug}-modal-heading-${index}`}><span>{String(index+1).padStart(2,'0')}</span><p>{heading.text}</p></li>)}</ol></section><AdSenseAd placement="feed"/></div><footer className="article-modal-footer"><BookmarkButton slug={article.slug}/><LearningLink className="article-modal-cta" slug={article.slug} href={article.url}>{article.contentType==='video'?'YouTubeで見る':'元記事を読む'} <ArrowUpRight size={16}/></LearningLink></footer></section></div>;
+  return <div className="article-modal-backdrop" role="presentation" onMouseDown={event=>{if(event.target===event.currentTarget)onClose()}}><section className="article-modal" role="dialog" aria-modal="true" aria-labelledby="article-modal-title"><header className="article-modal-header"><div><p>{article.contentType==='video'?'VIDEO':'ARTICLE'}</p><span>{article.source}</span><h1 id="article-modal-title">{article.title}</h1></div><button type="button" onClick={onClose} aria-label="詳細を閉じる"><X size={20}/></button></header><div className="article-modal-body"><div className="article-modal-meta"><span><CalendarDays size={14} aria-hidden="true"/>{article.publishedAt}</span><span><Globe2 size={14} aria-hidden="true"/>{contentLabel(article.language)}</span><span>{contentLabel(article.category)}</span></div><div className="detail-tags" style={{marginTop:20}}>{article.tags.map(tag=><span className="tag" key={tag}>{contentLabel(tag)}</span>)}</div><p>本文・動画は提供元のサイトでご覧ください。</p><AdSenseAd placement="feed"/></div><footer className="article-modal-footer"><BookmarkButton slug={article.slug}/><LearningLink className="article-modal-cta" slug={article.slug} href={article.url}>{article.contentType==='video'?'元の動画を見る':'元記事を読む'} <ArrowUpRight size={16}/></LearningLink></footer></section></div>;
 }
