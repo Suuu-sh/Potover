@@ -18,6 +18,7 @@ async function fixture(value){
   return filePath;
 }
 
+const scopeFor=articles=>({version:'test',sources:['sample-source'],articles:articles.map(({slug,originalUrl,sourceSlug})=>({slug,originalUrl,sourceSlug}))});
 const source={slug:'sample-source',name:'Sample Source',url:'https://example.com',language:'English'};
 const article=(index)=>({
   source:source.name,
@@ -80,7 +81,7 @@ it('exports every authenticated D1 page and preserves the full source data and s
   const articleCalls=[];
   vi.stubGlobal('fetch',vi.fn(async(url,options)=>{
     const parsed=new URL(url);
-    if(parsed.pathname==='/api/sources')return Response.json({sources:[source]});
+    if(['/api/sources','/api/sources/export'].includes(parsed.pathname))return Response.json({sources:[source]});
     articleCalls.push({path:parsed.pathname,headers:options.headers});
     const offset=Number(parsed.searchParams.get('offset'));
     return Response.json({total:2,collectedAt:'2026-09-28T00:00:00.000Z',articles:storedArticles.slice(offset,offset+1)});
@@ -114,11 +115,11 @@ it('never falls back to public data or changes the raw snapshot after a rejected
   vi.stubGlobal('fetch',vi.fn(async url=>{
     const {pathname}=new URL(url);
     paths.push(pathname);
-    if(pathname==='/api/sources')return Response.json({sources:[source]});
+    if(pathname==='/api/sources/export')return Response.json({sources:[source]});
     return Response.json({error:'Unauthorized'},{status:401});
   }));
   await expect(exportArticles({apiUrl:'https://api.example.test',token:'wrong-token',filePath})).rejects.toThrow('Potover API 401');
-  expect(paths).toEqual(['/api/sources','/api/articles/export']);
+  expect(paths).toEqual(['/api/sources/export','/api/articles/export']);
   expect(await readFile(filePath,'utf8')).toBe(original);
 });
 
@@ -134,11 +135,11 @@ it('exports only public metadata to a separate file without credentials, includi
   vi.stubGlobal('fetch',vi.fn(async(url,options)=>{
     const parsed=new URL(url);
     calls.push({path:parsed.pathname,headers:options.headers});
-    if(parsed.pathname==='/api/sources')return Response.json({sources:[{...source,description:'Private description'}]});
+    if(['/api/sources','/api/sources/export'].includes(parsed.pathname))return Response.json({sources:[{...source,description:'Private description'}]});
     const offset=Number(parsed.searchParams.get('offset'));
     return Response.json({total:2,collectedAt:'2026-10-03T00:00:00Z',articles:storedArticles.slice(offset,offset+1)});
   }));
-  await exportArticles({apiUrl:'https://api.example.test',filePath,outputPath,mode:'public'});
+  await exportArticles({apiUrl:'https://api.example.test',filePath,outputPath,mode:'public',scope:scopeFor(storedArticles)});
   const snapshot=JSON.parse(await readFile(outputPath,'utf8'));
   expect(snapshot.articles).toEqual(storedArticles.map(row=>({
     slug:row.slug,source:row.source,sourceSlug:row.sourceSlug,sourceUrl:row.sourceUrl,title:row.title,
@@ -151,12 +152,31 @@ it('exports only public metadata to a separate file without credentials, includi
 });
 
 it('does not transmit a supplied token in public mode',async()=>{
-  const filePath=await fixture({sources:[source],articles:[article(0)]});
+  const publicArticle={...article(0),slug:'stable-0'};
+  const filePath=await fixture({sources:[source],articles:[publicArticle]});
   vi.stubGlobal('fetch',vi.fn(async(url,options)=>{
     expect(options.headers).toBeUndefined();
-    return new URL(url).pathname==='/api/sources'?Response.json({sources:[source]}):Response.json({total:1,articles:[article(0)]});
+    return new URL(url).pathname==='/api/sources'?Response.json({sources:[source]}):Response.json({total:1,articles:[publicArticle]});
   }));
-  await exportArticles({apiUrl:'https://api.example.test',filePath,outputPath:path.join(temporaryDirectory,'public.json'),mode:'public',token:'unneeded-token'});
+  await exportArticles({apiUrl:'https://api.example.test',filePath,outputPath:path.join(temporaryDirectory,'public.json'),mode:'public',token:'unneeded-token',scope:scopeFor([publicArticle])});
+});
+
+it.each(['missing','extra','wrong-slug','wrong-source','replaced-url','duplicate'])('rejects a public snapshot outside the exact approved identity set: %s',async variant=>{
+  const approved=[0,1].map(index=>({...article(index),slug:`stable-${index}`}));
+  const rows=structuredClone(approved);
+  if(variant==='missing')rows.pop();
+  if(variant==='extra')rows.push({...article(2),slug:'stable-2'});
+  if(variant==='wrong-slug')rows[0].slug='unapproved-slug';
+  if(variant==='wrong-source')rows[0].sourceSlug='unapproved-source';
+  if(variant==='replaced-url')rows[0].originalUrl='https://example.com/replaced';
+  if(variant==='duplicate')rows[1]=rows[0];
+  const filePath=await fixture({sources:[source],articles:approved});
+  const outputPath=path.join(temporaryDirectory,'public.json');
+  await writeFile(outputPath,'existing-public-snapshot');
+  vi.stubGlobal('fetch',vi.fn(async url=>new URL(url).pathname==='/api/sources'
+    ?Response.json({sources:[source]}):Response.json({total:rows.length,articles:rows})));
+  await expect(exportArticles({apiUrl:'https://api.example.test',filePath,outputPath,mode:'public',scope:scopeFor(approved),guardAgainstShrink:false})).rejects.toThrow();
+  expect(await readFile(outputPath,'utf8')).toBe('existing-public-snapshot');
 });
 
 it('refuses public exports that could overwrite the private source file',async()=>{
@@ -174,7 +194,7 @@ it('does not overwrite a larger current snapshot with a smaller D1 response',asy
   const original=await readFile(filePath,'utf8');
   vi.stubGlobal('fetch',vi.fn(async(url)=>{
     const parsed=new URL(url);
-    if(parsed.pathname==='/api/sources')return Response.json({sources:[source]});
+    if(['/api/sources','/api/sources/export'].includes(parsed.pathname))return Response.json({sources:[source]});
     return Response.json({total:1,articles:[{...article(0),slug:'d1-slug-1'}]});
   }));
 
@@ -205,7 +225,7 @@ it('continues from actual page length when the API returns short pages',async()=
   const offsets=[];
   vi.stubGlobal('fetch',vi.fn(async(url)=>{
     const parsed=new URL(url);
-    if(parsed.pathname==='/api/sources')return Response.json({sources:[source]});
+    if(['/api/sources','/api/sources/export'].includes(parsed.pathname))return Response.json({sources:[source]});
     const offset=Number(parsed.searchParams.get('offset'));offsets.push(offset);
     return Response.json({total:5,collectedAt:'2026-10-03T00:00:00Z',articles:rows.slice(offset,offset+2)});
   }));
@@ -219,7 +239,7 @@ it('does not publish pages from different collection snapshots',async()=>{
   const original=await readFile(filePath,'utf8');
   vi.stubGlobal('fetch',vi.fn(async(url)=>{
     const parsed=new URL(url);
-    if(parsed.pathname==='/api/sources')return Response.json({sources:[source]});
+    if(['/api/sources','/api/sources/export'].includes(parsed.pathname))return Response.json({sources:[source]});
     const offset=Number(parsed.searchParams.get('offset'));
     return Response.json({total:2,collectedAt:`2026-10-0${offset+1}T00:00:00Z`,articles:[{...article(offset),slug:`stable-${offset}`}]});
   }));

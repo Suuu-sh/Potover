@@ -17,6 +17,7 @@
     "sync:d1:upload": "node scripts/sync-d1-articles.mjs upload",
     "sync:d1:export": "node scripts/sync-d1-articles.mjs export",
     "sync:d1": "node scripts/sync-d1-articles.mjs sync",
+    "seed:d1:approved": "node scripts/seed-approved-articles.mjs",
     "deploy:worker": "wrangler deploy --config worker/wrangler.jsonc",
     "deploy:pages": "wrangler pages deploy out --project-name potover",
     "theme:generate": "node scripts/generate-theme.mjs",

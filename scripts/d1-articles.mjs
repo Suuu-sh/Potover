@@ -1,6 +1,7 @@
 import {readFile,rename,writeFile} from 'node:fs/promises';
 import {createHash} from 'node:crypto';
 import {resolve} from 'node:path';
+import {assertPublicScope,publicationScope} from './publication-scope.mjs';
 
 export const COLLECTION_PATH='data/articles.json';
 const PAGE_SIZE=500;
@@ -92,23 +93,26 @@ function publicArticle(article){
   };
 }
 
-export async function exportArticles({apiUrl,token,filePath=COLLECTION_PATH,outputPath=filePath,mode='internal',guardAgainstShrink=true}={}){
+export async function exportArticles({apiUrl,token,filePath=COLLECTION_PATH,outputPath=filePath,mode='internal',guardAgainstShrink=true,scope=publicationScope}={}){
   if(mode!=='internal'&&mode!=='public')throw new Error('Article export mode must be internal or public');
   if(mode==='internal'&&(typeof token!=='string'||!token.trim()))throw new Error('POTOVER_INGEST_TOKEN is required to export full articles from D1');
   if(mode==='public'&&resolve(outputPath)===resolve(filePath))throw new Error('Public article exports require a separate outputPath to preserve the private source dataset');
   const base=apiBase(apiUrl);
   const current=JSON.parse(await readFile(filePath,'utf8'));
-  const sourcesResult=await requestJson(`${base}/api/sources`);
+  const requestOptions=mode==='internal'?{headers:{Authorization:`Bearer ${token}`}}:{};
+  const sourcesResult=await requestJson(`${base}${mode==='internal'?'/api/sources/export':'/api/sources'}`,requestOptions);
   if(!Array.isArray(sourcesResult.sources)||sourcesResult.sources.length===0)throw new Error('D1 returned no sources; refusing to publish an empty snapshot');
   const endpoint=mode==='internal'?'/api/articles/export':'/api/articles';
-  const requestOptions=mode==='internal'?{headers:{Authorization:`Bearer ${token}`}}:{};
   const first=await requestJson(`${base}${endpoint}?limit=${PAGE_SIZE}&offset=0`,requestOptions);
   const total=Number(first.total);
   if(!Number.isInteger(total)||total<=0)throw new Error('D1 returned no articles; refusing to publish an empty snapshot');
   if(!Array.isArray(first.articles)||first.articles.length===0||first.articles.length>total){
     throw new Error('D1 returned an invalid first article page; refusing to publish an incomplete snapshot');
   }
-  if(guardAgainstShrink&&Array.isArray(current.articles)&&total<current.articles.length){
+  if(mode==='public'&&total!==scope.articles.length){
+    throw new Error(`D1 public snapshot has ${total} articles; approved scope requires exactly ${scope.articles.length}`);
+  }
+  if(mode==='internal'&&guardAgainstShrink&&Array.isArray(current.articles)&&total<current.articles.length){
     throw new Error(`D1 has ${total} articles but the current snapshot has ${current.articles.length}; seed/sync D1 before publishing`);
   }
   const articles=[...first.articles];
@@ -123,6 +127,7 @@ export async function exportArticles({apiUrl,token,filePath=COLLECTION_PATH,outp
   if(articles.length!==total||new Set(articles.map(article=>article.originalUrl)).size!==total){
     throw new Error('D1 export is incomplete or contains duplicate URLs; refusing to publish');
   }
+  if(mode==='public')assertPublicScope(articles,sourcesResult.sources,scope);
   const collectedAt=first.collectedAt||new Date().toISOString();
   const snapshot={
     collectedAt,

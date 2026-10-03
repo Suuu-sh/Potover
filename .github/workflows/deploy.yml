@@ -6,6 +6,11 @@ on:
     paths-ignore:
       - data/articles.json
   workflow_dispatch:
+    inputs:
+      seed_approved_snapshot:
+        description: 'Seed and verify the approved initial 9-source article snapshot once'
+        type: boolean
+        default: false
 
 concurrency:
   group: deploy-production
@@ -30,7 +35,7 @@ jobs:
     needs: verify
     runs-on: ubuntu-latest
     permissions:
-      contents: write
+      contents: read
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
@@ -86,17 +91,10 @@ jobs:
           command: deploy --config wrangler.jsonc
         env:
           CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
-      - name: Seed D1 from the existing dataset and publish a D1 snapshot
-        if: vars.POTOVER_COLLECTION_APPROVED == 'true'
-        run: |
-          npm run sync:d1
-          if ! git diff --quiet -- data/articles.json; then
-            git config user.name 'github-actions[bot]'
-            git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
-            git add data/articles.json
-            git commit -m "chore: publish D1 article snapshot"
-            git push
-          fi
+      - name: Seed and verify the explicitly approved initial snapshot
+        if: github.event_name == 'workflow_dispatch' && inputs.seed_approved_snapshot
+        run: npm run seed:d1:approved
         env:
           POTOVER_API_URL: https://potover-api.suuu-sh.workers.dev
           POTOVER_INGEST_TOKEN: ${{ secrets.POTOVER_INGEST_TOKEN }}
+          POTOVER_PUBLICATION_READY: ${{ vars.POTOVER_PUBLICATION_READY }}

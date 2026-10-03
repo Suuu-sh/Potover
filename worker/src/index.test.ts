@@ -1,5 +1,6 @@
 import {afterEach, describe, expect, it, vi} from 'vitest';
 import worker from './index';
+import publicationScope from '../../data/publication-scope.json';
 
 type Call = {query: string; values: unknown[]; operation: 'first' | 'all' | 'run' | 'batch'};
 function database(options: {user?: {id: string; email: string}; attempts?: number; rows?: unknown[]; total?: number; credentials?: {password_hash:string;password_salt:string}; batchError?: Error} = {}) {
@@ -172,17 +173,18 @@ describe('authentication and user input', () => {
 });
 
 describe('public article search', () => {
+  const identity = publicationScope.articles[0];
   const storedArticle = {
-    slug: 'sample-article', source: 'Sample Source', source_slug: 'sample-source', source_url: 'https://example.test',
-    title: 'Sample title', original_url: 'https://example.test/article', published_at: '2026-10-01T00:00:00Z',
+    slug: identity.slug, source: 'Sample Source', source_slug: identity.sourceSlug, source_url: 'https://example.test',
+    title: 'Sample title', original_url: identity.originalUrl, published_at: '2026-10-01T00:00:00Z',
     language: 'English', content_type: 'video', difficulty: 'beginner', tags_json: '["gto"]', category: 'GTO',
     author: 'Sample author', summary: 'Private source summary', image_url: 'https://example.test/video-thumbnail.jpg',
     duration_seconds: 123, headings_json: '[{"level":2,"text":"Private source heading"}]',
     source_modified_at: '2026-10-02T00:00:00Z', excerpt: 'Private excerpt', raw_json: '{"private":true}',
   };
   const publicArticle = {
-    slug: 'sample-article', source: 'Sample Source', sourceSlug: 'sample-source', sourceUrl: 'https://example.test',
-    title: 'Sample title', originalUrl: 'https://example.test/article', publishedAt: '2026-10-01T00:00:00Z',
+    slug: identity.slug, source: 'Sample Source', sourceSlug: identity.sourceSlug, sourceUrl: 'https://example.test',
+    title: 'Sample title', originalUrl: identity.originalUrl, publishedAt: '2026-10-01T00:00:00Z',
     language: 'English', contentType: 'video', classification: {difficulty: 'beginner', tags: ['gto']}, category: 'GTO',
   };
   it.each(['', '?mode=internal&full=true&export=true'])('only publishes whitelisted metadata even with an ingestion token: %s', async query => {
@@ -193,6 +195,16 @@ describe('public article search', () => {
     expect(await response.json()).toEqual({articles: [publicArticle], total: 1, offset: 0, limit: 100, collectedAt: null});
     const read = calls.find(call => call.operation === 'all')!;
     expect(read.query).not.toMatch(/a\.\*|summary|headings|image_url|author|duration_seconds|source_modified_at/);
+    const count = calls.find(call => call.query.includes('COUNT(*) AS total'))!;
+    for (const call of [read, count]) {
+      expect(call.query).toContain('JOIN json_each(?) AS publication_scope');
+      expect(call.query).toContain("a.slug=json_extract(publication_scope.value, '$.slug')");
+      expect(call.query).toContain("a.original_url=json_extract(publication_scope.value, '$.originalUrl')");
+      expect(call.query).toContain("a.source_slug=json_extract(publication_scope.value, '$.sourceSlug')");
+      expect(JSON.parse(call.values[0] as string)).toEqual(publicationScope.articles);
+    }
+    expect(count.values).toHaveLength(1);
+    expect(read.values).toHaveLength(3);
   });
   it.each([undefined, ''])('fails closed for full exports with no configured secret: %j', async token => {
     const {DB, calls} = database({rows: [storedArticle], total: 1});
@@ -221,6 +233,8 @@ describe('public article search', () => {
     });
     expect(response.headers.get('Cache-Control')).toBe('no-store');
     expect(calls.some(call => call.operation === 'all' && call.query.includes('SELECT a.*'))).toBe(true);
+    expect(calls.every(call => !call.query.includes('json_each'))).toBe(true);
+    expect(calls.find(call => call.operation === 'all')?.values).toEqual([100, 0]);
     expect(calls.every(call => call.operation === 'first' || call.operation === 'all')).toBe(true);
   });
   it('clamps pagination and binds query and source filters', async () => {
@@ -232,13 +246,56 @@ describe('public article search', () => {
     expect(response.status).toBe(200);
     const read = calls.find(call => call.operation === 'all');
     expect(read?.query).not.toContain(query);
-    expect(read?.values).toEqual([`%${query}%`, `%${query}%`, query, 1, 0]);
+    expect(read?.values).toEqual([JSON.stringify(publicationScope.articles), `%${query}%`, `%${query}%`, query, 1, 0]);
+    expect(calls.find(call => call.query.includes('COUNT(*) AS total'))?.values).toEqual(read?.values.slice(0, -2));
     expect(calls.every(call => !call.query.includes('a.summary'))).toBe(true);
   });
   it('uses safe defaults for non-finite pagination', async () => {
     const {DB, calls} = database();
     await worker.fetch(new Request('https://api.example.test/api/articles?limit=NaN&offset=Infinity'), {DB});
-    expect(calls.find(call => call.operation === 'all')?.values).toEqual([100, 0]);
+    expect(calls.find(call => call.operation === 'all')?.values).toEqual([JSON.stringify(publicationScope.articles), 100, 0]);
+  });
+});
+
+describe('public and internal sources', () => {
+  it('binds only the nine approved source slugs for anonymous reads', async () => {
+    const {DB, calls} = database();
+    expect((await worker.fetch(new Request('https://api.example.test/api/sources'), {DB})).status).toBe(200);
+    expect(calls).toHaveLength(1);
+    expect(calls[0].query).toContain('JOIN json_each(?) AS publication_scope ON s.slug=publication_scope.value');
+    expect(calls[0].values).toEqual([JSON.stringify(publicationScope.sources)]);
+    expect(publicationScope.sources).toHaveLength(9);
+    expect(publicationScope.sources).not.toContain('pokernews');
+    expect(publicationScope.sources).not.toContain('m-portal');
+  });
+  it('keeps the fixed article manifest unique and within the approved sources', () => {
+    expect(publicationScope.articles).toHaveLength(1244);
+    expect(new Set(publicationScope.articles.map(article => article.slug)).size).toBe(1244);
+    expect(new Set(publicationScope.articles.map(article => article.originalUrl)).size).toBe(1244);
+    expect(publicationScope.articles.every(article => publicationScope.sources.includes(article.sourceSlug))).toBe(true);
+  });
+  it.each([undefined, ''])('fails closed for source exports without a secret: %j', async token => {
+    const {DB, calls} = database();
+    const response = await worker.fetch(new Request('https://api.example.test/api/sources/export'), {DB, BATCH_INGEST_TOKEN: token});
+    expect(response.status).toBe(503);
+    expect(calls).toHaveLength(0);
+  });
+  it.each([undefined, 'Bearer wrong-token'])('rejects unauthorized source exports: %j', async authorization => {
+    const {DB, calls} = database();
+    const request = new Request('https://api.example.test/api/sources/export', {headers: authorization ? {Authorization: authorization} : {}});
+    expect((await worker.fetch(request, {DB, BATCH_INGEST_TOKEN: 'test-token'})).status).toBe(401);
+    expect(calls).toHaveLength(0);
+  });
+  it('preserves out-of-scope source metadata on authenticated export', async () => {
+    const rows = [{slug: 'pokernews', name: 'PokerNews', url: 'https://example.test', language: 'English'}];
+    const {DB, calls} = database({rows});
+    const request = new Request('https://api.example.test/api/sources/export', {headers: {Authorization: 'Bearer test-token'}});
+    const response = await worker.fetch(request, {DB, BATCH_INGEST_TOKEN: 'test-token'});
+    expect(response.status).toBe(200);
+    expect(await response.json()).toEqual({sources: rows});
+    expect(calls).toHaveLength(1);
+    expect(calls[0].query).not.toContain('json_each');
+    expect(calls[0].values).toEqual([]);
   });
 });
 

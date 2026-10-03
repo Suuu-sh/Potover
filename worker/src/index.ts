@@ -1,3 +1,5 @@
+import publicationScope from '../../data/publication-scope.json';
+
 export interface Env {
   DB: {
     prepare: (query: string) => any;
@@ -9,6 +11,15 @@ export interface Env {
 
 const USER_RETENTION_YEARS = 2;
 const RATE_LIMIT_RETENTION_MS = 24 * 60 * 60 * 1000;
+
+// Publication is a fixed identity allowlist, not permission to collect or delete.
+// One JSON binding keeps this independent of D1's SQL/parameter count limits.
+const publicArticlesJson = JSON.stringify(publicationScope.articles);
+const publicSourcesJson = JSON.stringify(publicationScope.sources);
+const publicArticleJoin = ` JOIN json_each(?) AS publication_scope
+  ON a.slug=json_extract(publication_scope.value, '$.slug')
+  AND a.original_url=json_extract(publication_scope.value, '$.originalUrl')
+  AND a.source_slug=json_extract(publication_scope.value, '$.sourceSlug')`;
 
 const allowedOrigins = new Set([
   'https://potover.com',
@@ -366,14 +377,16 @@ async function listArticles(request: Request, env: Env, internal = false) {
   const limit = Number.isFinite(limitParam) ? Math.max(1, Math.min(Math.floor(limitParam), 500)) : 100;
   const offset = Number.isFinite(offsetParam) ? Math.max(0, Math.min(Math.floor(offsetParam), 1000000)) : 0;
   const { clause, args } = articleWhere(url.searchParams);
-  const totalRow = await env.DB.prepare(`SELECT COUNT(*) AS total FROM articles a${clause}`).bind(...args).first() as { total: number };
+  const scopeJoin = internal ? '' : publicArticleJoin;
+  const bindings = internal ? args : [publicArticlesJson, ...args];
+  const totalRow = await env.DB.prepare(`SELECT COUNT(*) AS total FROM articles a${scopeJoin}${clause}`).bind(...bindings).first() as { total: number };
   const columns = internal ? 'a.*' :
     'a.slug,a.source,a.source_slug,a.title,a.original_url,a.published_at,a.language,a.content_type,a.difficulty,a.tags_json,a.category';
   const result = await env.DB.prepare(`
     SELECT ${columns},s.url AS source_url
-    FROM articles a LEFT JOIN sources s ON s.slug=a.source_slug${clause}
+    FROM articles a${scopeJoin} LEFT JOIN sources s ON s.slug=a.source_slug${clause}
     ORDER BY a.published_at DESC,a.slug ASC LIMIT ? OFFSET ?
-  `).bind(...args, limit, offset).all();
+  `).bind(...bindings, limit, offset).all();
   const metadata = await env.DB.prepare('SELECT value FROM app_metadata WHERE key=?').bind('collected_at').first() as { value: string } | null;
   return json(request, {
     articles: (result.results || []).map(internal ? internalArticleResponse : publicArticleResponse),
@@ -384,8 +397,14 @@ async function listArticles(request: Request, env: Env, internal = false) {
   });
 }
 
-async function listSources(request: Request, env: Env) {
-  const result = await env.DB.prepare('SELECT slug,name,url,language FROM sources ORDER BY name ASC').all();
+async function listSources(request: Request, env: Env, internal = false) {
+  if (internal) {
+    const unauthorized = authorizeArticleTransfer(request, env);
+    if (unauthorized) return unauthorized;
+  }
+  const scopeJoin = internal ? '' : ' JOIN json_each(?) AS publication_scope ON s.slug=publication_scope.value';
+  const statement = env.DB.prepare(`SELECT s.slug,s.name,s.url,s.language FROM sources s${scopeJoin} ORDER BY s.name ASC`);
+  const result = await (internal ? statement : statement.bind(publicSourcesJson)).all();
   return json(request, {
     sources: (result.results || []).map((row: any) => ({
       slug: row.slug,
@@ -666,6 +685,7 @@ export default {
     if (url.pathname === '/api/articles/export' && request.method === 'GET') return listArticles(request, env, true);
     if (url.pathname === '/api/articles' && request.method === 'POST') return ingestArticles(request, env);
     if (url.pathname === '/api/sources' && request.method === 'GET') return listSources(request, env);
+    if (url.pathname === '/api/sources/export' && request.method === 'GET') return listSources(request, env, true);
     const userDataResponse = await handleUserData(request, env, url);
     return userDataResponse || json(request, { error: 'Not Found' }, { status: 404 });
   },
