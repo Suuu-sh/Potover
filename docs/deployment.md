@@ -57,6 +57,14 @@ Cloudflare Dashboardの Workers & Pages から `potover` を開き、Settings > 
 
 `POTOVER_PUBLICATION_READY`が未設定の間、Pagesの本番ビルドとWorker本番デプロイは意図的に停止します。プライバシーポリシーの最終確認と収集対象の利用条件の確認を終えた後にだけ公開ゲートを解除してください。
 
+### 会員データの自動削除
+
+会員の自動削除は、Worker変数`POTOVER_ACCOUNT_RETENTION_ENABLED`が文字列`true`と完全一致する場合だけ実行します。既定は停止です。公開・収集のゲートとは独立しており、公開承認だけでこの変数を有効化しないでください。期限切れセッションとレート制限記録の掃除、本人が実行する退会は従来どおりです。
+
+`0007_verified_user_activity.sql`は既存のmigrationを変更せず、全既存会員の`last_activity_verified`を0で追加します。`0006`で登録日からコピーした日時を実利用日時として扱いません。以後の正常な認証利用だけが1へ更新し、自動削除を承認して有効化した場合も、確認済みの最終利用から2年を超える会員だけが対象です。未確認の既存会員の移行猶予・保持方針を別途確定し、本番公開前にポリシーとの整合を確認してください。
+
+このガードを持たない旧Workerは新しい変数を無視します。migration単独では旧Workerの削除を止められません。本番移行前に稼働中Workerのcronと復旧先を確認し、必要な停止措置を別途承認してください。ガードのない版や公開データの項目制限を持たない版へ、単純にロールバックしないでください。
+
 ### Google AdSense
 
 初回公開から広告を有効にする方針です。既存のPublisher IDの既定動作を維持します。ローカルQAだけでは`NEXT_PUBLIC_ADSENSE_DISABLED=true`で外部広告スクリプトを止められます。本変更で本番環境変数やAdSenseの審査状態を変更・確認したことにはなりません。
@@ -71,7 +79,7 @@ AdSenseを有効にする場合は、Cloudflare Pagesのビルド環境変数と
 ## リリースの検証と順序
 
 - `npm ci && npm run verify` で型・lint・unit・本番静的exportを確認します。
-- `npm run test:integration` は一時的なworkerd/SQLite D1に全6 migrationを適用し、登録・ログイン・ユーザーデータ・パスワード変更・退会・記事再同期を確認します。本番には接続しません。
+- `npm run test:integration` は一時的なworkerd/SQLite D1に全7 migrationを適用し、登録・ログイン・ユーザーデータ・パスワード変更・退会・記事再同期を確認します。本番には接続しません。
 - `build:production` は`.env.local`にローカルAPI URLがあっても本番APIへ固定します。変更先はHTTPS originの`POTOVER_API_URL`で明示します。
 - D1未移行時のPages先行ビルドは失敗します。公開承認後はWorker migration/deploy → 承認済みseed → Pages再ビルドの順です。Pagesの失敗を成功扱いにしないでください。
 - deploy workflowのseedは`POTOVER_COLLECTION_APPROVED=true`がある場合だけ実行します。公開ゲート単独では記事を取り込みません。

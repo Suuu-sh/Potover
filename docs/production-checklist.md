@@ -9,7 +9,8 @@
 - [x] 初回公開から広告を利用する。既存AdSenseの既定設定を維持し、ローカルQAの無効化フラグと区別する。
 - [ ] 問い合わせ窓口が受信でき、運営者情報や個人データに関する本人の求めへ実際に回答できることを確認する。
 
-- [x] アカウント情報、ブックマーク、学習履歴、設定は最終の認証済み利用から2年間保存し、退会時に稼働中のDBから削除する。
+- [x] 会員の自動削除は明示的な承認フラグがない限り停止し、登録日を実利用日時として扱わない。本人の退会時は稼働中のDBから削除する。
+- [ ] 最終の認証済み利用から2年間という保持方針と、利用日時が未確認の既存会員の移行措置を確定する。会員自動削除を有効にする場合は、対象件数・復旧地点・運営者の明示承認を別途確認する。
 - [x] IP由来レート制限データは日次の処理でおおむね24〜48時間以内に削除する。
 - [ ] `docs/sources.md`に列挙した各情報源について利用規約、robots.txt、RSS/APIの条件を確認し、収集可否を記録する。
 - [ ] 保存期間・外部委託先・問い合わせ先を含むプライバシーポリシーを最終確認する。
@@ -17,7 +18,8 @@
 
 ## 公開前の運用設定
 
-- [ ] Cloudflare D1の`potover`に全マイグレーションを適用する。
+- [ ] Cloudflare D1の`potover`に全マイグレーション（0001〜0007）を適用する。稼働中Workerのcronと安全な復旧先を事前確認し、旧Workerのままなら0007だけで会員削除を止められると考えない。
+- [ ] 会員自動削除の個別承認がない間、Worker変数`POTOVER_ACCOUNT_RETENTION_ENABLED`は未設定にする。
 - [ ] Worker secret `BATCH_INGEST_TOKEN`とGitHub Secret `POTOVER_INGEST_TOKEN`に同じランダム値を登録する。
 - [ ] GitHub Secrets `CLOUDFLARE_API_TOKEN` / `CLOUDFLARE_ACCOUNT_ID`と、Pages production環境変数`POTOVER_API_URL`を設定する。
 - [ ] 上の確認を完了するまで、GitHub Actions VariablesとCloudflare Pages production Variablesの`POTOVER_PUBLICATION_READY`を未設定のままにする。

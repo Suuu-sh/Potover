@@ -4,6 +4,7 @@ export interface Env {
     batch: (statements: any[]) => Promise<unknown>;
   };
   BATCH_INGEST_TOKEN?: string;
+  POTOVER_ACCOUNT_RETENTION_ENABLED?: string;
 }
 
 const USER_RETENTION_YEARS = 2;
@@ -159,7 +160,7 @@ async function createSession(env: Env, userId: string) {
   const tokenHash = await sha256(token);
   const now = new Date();
   const expiresAt = new Date(now.getTime() + 30 * 24 * 60 * 60 * 1000).toISOString();
-  await env.DB.prepare('UPDATE users SET last_activity_at=? WHERE id=?').bind(now.toISOString(), userId).run();
+  await env.DB.prepare('UPDATE users SET last_activity_at=?,last_activity_verified=1 WHERE id=?').bind(now.toISOString(), userId).run();
   await env.DB.prepare('INSERT INTO sessions(token_hash,user_id,expires_at) VALUES(?,?,?)').bind(tokenHash, userId, expiresAt).run();
   return token;
 }
@@ -172,7 +173,7 @@ async function currentUser(request: Request, env: Env) {
     'SELECT users.id,users.email FROM sessions JOIN users ON users.id=sessions.user_id WHERE sessions.token_hash=? AND sessions.expires_at>?',
   ).bind(tokenHash, new Date().toISOString()).first();
   if (row) {
-    await env.DB.prepare('UPDATE users SET last_activity_at=? WHERE id=?').bind(new Date().toISOString(), (row as { id: string }).id).run();
+    await env.DB.prepare('UPDATE users SET last_activity_at=?,last_activity_verified=1 WHERE id=?').bind(new Date().toISOString(), (row as { id: string }).id).run();
   }
   return row as { id: string; email: string } | null;
 }
@@ -264,7 +265,7 @@ async function changePassword(request: Request, env: Env) {
   // D1 rolls back the whole batch if credential update, revocation, or the
   // replacement session fails. Existing credentials remain usable on failure.
   await env.DB.batch([
-    env.DB.prepare('UPDATE users SET password_hash=?,password_salt=?,last_activity_at=? WHERE id=?')
+    env.DB.prepare('UPDATE users SET password_hash=?,password_salt=?,last_activity_at=?,last_activity_verified=1 WHERE id=?')
       .bind(passwordHash, passwordSalt, now.toISOString(), user.id),
     env.DB.prepare('DELETE FROM sessions WHERE user_id=?').bind(user.id),
     env.DB.prepare('INSERT INTO sessions(token_hash,user_id,expires_at) VALUES(?,?,?)')
@@ -671,21 +672,34 @@ export default {
 
   async scheduled(_controller: unknown, env: Env) {
     const now = new Date();
+    const statements = [
+      env.DB.prepare('DELETE FROM sessions WHERE expires_at <= ?').bind(now.toISOString()),
+      env.DB.prepare('DELETE FROM auth_rate_limits WHERE window_started_at < ?')
+        .bind(now.getTime() - RATE_LIMIT_RETENTION_MS),
+    ];
+
+    // Account deletion needs separate, explicit operational approval. Session
+    // and rate-limit housekeeping must not implicitly enable it.
+    if (env.POTOVER_ACCOUNT_RETENTION_ENABLED !== 'true') {
+      await env.DB.batch(statements);
+      return;
+    }
     const userCutoff = new Date(now);
     userCutoff.setUTCFullYear(userCutoff.getUTCFullYear() - USER_RETENTION_YEARS);
-    const inactiveUserIds = `SELECT id FROM users WHERE datetime(COALESCE(last_activity_at, created_at)) < datetime(?)`;
+    // 0006 copied created_at into legacy activity dates. Only timestamps written
+    // by actual authenticated use after 0007 are eligible for retention cleanup.
+    const inactiveUserCondition = 'last_activity_verified=1 AND datetime(last_activity_at) < datetime(?)';
+    const inactiveUserIds = `SELECT id FROM users WHERE ${inactiveUserCondition}`;
 
     // D1 batches are transactional. Delete related data and the inactive account
     // together so retries cannot leave a partially-retained account behind.
     await env.DB.batch([
-      env.DB.prepare('DELETE FROM sessions WHERE expires_at <= ?').bind(now.toISOString()),
-      env.DB.prepare('DELETE FROM auth_rate_limits WHERE window_started_at < ?')
-        .bind(now.getTime() - RATE_LIMIT_RETENTION_MS),
+      ...statements,
       env.DB.prepare(`DELETE FROM source_follows WHERE user_id IN (${inactiveUserIds})`).bind(userCutoff.toISOString()),
       env.DB.prepare(`DELETE FROM bookmarks WHERE user_id IN (${inactiveUserIds})`).bind(userCutoff.toISOString()),
       env.DB.prepare(`DELETE FROM learning_history WHERE user_id IN (${inactiveUserIds})`).bind(userCutoff.toISOString()),
       env.DB.prepare(`DELETE FROM user_preferences WHERE user_id IN (${inactiveUserIds})`).bind(userCutoff.toISOString()),
-      env.DB.prepare(`DELETE FROM users WHERE datetime(COALESCE(last_activity_at, created_at)) < datetime(?)`)
+      env.DB.prepare(`DELETE FROM users WHERE ${inactiveUserCondition}`)
         .bind(userCutoff.toISOString()),
     ]);
   },

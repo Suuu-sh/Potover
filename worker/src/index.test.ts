@@ -159,6 +159,8 @@ describe('authentication and user input', () => {
     expect(sessionWrite?.values[0]).toMatch(/^[a-f0-9]{64}$/);
     expect(sessionWrite?.values).not.toContain(body.token);
     expect(sessionWrite?.values[1]).toBe(body.user.id);
+    expect(calls.find(call=>call.query.startsWith('UPDATE users SET last_activity_at='))?.query)
+      .toContain('last_activity_verified=1');
   });
   it('always scopes bookmark reads to the authenticated user', async () => {
     const {DB, calls} = database({user: {id: 'user-a', email: 'a@example.test'}});
@@ -261,6 +263,7 @@ describe('atomic account changes',()=>{
     const batch=calls.find(call=>call.operation==='batch')!.values as {query:string;values:unknown[]}[];
     expect(batch).toHaveLength(3);
     expect(batch[0].query).toContain('UPDATE users SET password_hash=');
+    expect(batch[0].query).toContain('last_activity_verified=1');
     expect(batch[0].values[0]).not.toBe(credentials.password_hash);
     expect(batch[0].values[0]).not.toBe('replacement-password');
     expect(batch[0].values[3]).toBe(user.id);

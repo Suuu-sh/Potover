@@ -15,7 +15,8 @@ async function request(path,{method='GET',token,body,status=200}={}){
 }
 try{
   const db=await mf.getD1Database('DB');
-  for(const file of (await readdir('worker/migrations')).filter(file=>file.endsWith('.sql')).sort()){
+  const migrations=(await readdir('worker/migrations')).filter(file=>file.endsWith('.sql')).sort();
+  for(const file of migrations){
     const sql=await readFile(`worker/migrations/${file}`,'utf8');
     for(const statement of sql.split(';').map(value=>value.trim()).filter(Boolean))await db.prepare(statement).run();
   }
@@ -51,5 +52,5 @@ try{
   for(const table of ['users','sessions','bookmarks','learning_history','source_follows','user_preferences']){
     const row=await db.prepare(`SELECT COUNT(*) AS count FROM ${table}`).first();assert.equal(row.count,0,table);assertions++;
   }
-  console.log(`Local workerd/D1 checks passed (${assertions} API/database checks; 6 migrations). No production access.`);
+  console.log(`Local workerd/D1 checks passed (${assertions} API/database checks; ${migrations.length} migrations). No production access.`);
 }finally{await mf.dispose();}

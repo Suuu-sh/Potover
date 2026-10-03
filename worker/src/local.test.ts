@@ -36,7 +36,7 @@ it('rejects an invalid D1 article-ingestion token before reading the body',async
   }),{...env,BATCH_INGEST_TOKEN:'expected'});
   expect(response.status).toBe(401);
 });
-it('deletes inactive accounts and their data in one D1 batch after two years',async()=>{
+it('deletes verified inactive accounts in one D1 batch only after explicit approval',async()=>{
   const statements:{query:string;values:unknown[]}[]=[];
   const DB={
     prepare(query:string){return {bind(...values:unknown[]){return {query,values}}}},
@@ -45,10 +45,12 @@ it('deletes inactive accounts and their data in one D1 batch after two years',as
   vi.useFakeTimers();
   vi.setSystemTime(new Date('2026-09-29T03:00:00.000Z'));
   try{
-    await production.scheduled({}, {DB} as unknown as Env);
+    await production.scheduled({}, {DB,POTOVER_ACCOUNT_RETENTION_ENABLED:'true'} as unknown as Env);
     expect(statements).toHaveLength(7);
     expect(statements.slice(2,6).every(statement=>statement.query.includes('user_id IN (SELECT id FROM users'))).toBe(true);
     expect(statements[6].query).toContain('DELETE FROM users');
+    expect(statements.slice(2).every(statement=>statement.query.includes('last_activity_verified=1'))).toBe(true);
+    expect(statements.slice(2).every(statement=>!statement.query.includes('created_at'))).toBe(true);
     expect(statements[6].values[0]).toBe('2024-09-29T03:00:00.000Z');
     expect(statements[1].values[0]).toBe(new Date('2026-09-28T03:00:00.000Z').getTime());
   }finally{
