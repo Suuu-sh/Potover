@@ -189,9 +189,10 @@ describe('public article search', () => {
 });
 
 async function testCredentials(password:string){
-  const password_salt='00112233445566778899aabbccddeeff';
+  // Ephemeral salt for this mock only; no stored or external credentials.
+  const salt=crypto.getRandomValues(new Uint8Array(16));
+  const password_salt=Array.from(salt,byte=>byte.toString(16).padStart(2,'0')).join('');
   const key=await crypto.subtle.importKey('raw',new TextEncoder().encode(password),'PBKDF2',false,['deriveBits']);
-  const salt=new Uint8Array(password_salt.match(/.{2}/g)!.map(value=>parseInt(value,16)));
   const bits=await crypto.subtle.deriveBits({name:'PBKDF2',hash:'SHA-256',salt,iterations:100000},key,256);
   const password_hash=Array.from(new Uint8Array(bits),byte=>byte.toString(16).padStart(2,'0')).join('');
   return {password_hash,password_salt};
