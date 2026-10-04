@@ -43,7 +43,7 @@ export default function LoginPage(){
     try{await (mode==='login'?login(email,password):register(email,password));router.push(returnTo)}
     catch(reason){
       setError({
-        message:reason instanceof Error?reason.message:'処理に失敗しました。',
+        message:localGuestEnabled&&reason instanceof AuthRequestError&&reason.kind==='network'?'ローカルの認証APIに接続できません。npm run dev:all で起動するか、「ゲストで試す」を使ってください。':reason instanceof Error?reason.message:'処理に失敗しました。',
         retryable:reason instanceof AuthRequestError&&reason.retryable,
       });
     }finally{setSubmitting(false)}

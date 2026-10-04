@@ -232,3 +232,17 @@ html.dark-mode .modern-topics-list>a:hover{background:var(--color-selected)!impo
 @media(prefers-reduced-motion:reduce){
   *,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important}
 }
+
+/* ---------- Roadmap artwork ---------- */
+.next-lesson-image{position:relative!important;overflow:hidden!important;border-radius:var(--pv-radius-media)!important;isolation:isolate}
+.next-lesson-image img{transition:transform .6s var(--pv-ease)}
+.next-lesson-feature:hover .next-lesson-image img{transform:scale(1.045)}
+.lesson-list>a{grid-template-columns:24px 30px 88px minmax(0,1fr) 16px!important;gap:10px!important;padding-top:8px!important;padding-bottom:8px!important}
+.lesson-list>a>em{display:none!important}
+.lesson-list>a>span.lesson-thumb{position:relative!important;display:block!important;width:88px!important;height:auto!important;aspect-ratio:16/9;overflow:hidden!important;border:0!important;border-radius:8px!important;background:var(--color-selected)!important}
+.lesson-thumb small{display:none}
+.lesson-thumb>span{width:100%;height:100%}
+@media(max-width:560px){
+  .lesson-list>a{grid-template-columns:20px 26px 64px minmax(0,1fr) 14px!important;gap:8px!important}
+  .lesson-list>a>span.lesson-thumb{width:64px!important}
+}

@@ -326,5 +326,6 @@
   "ローカル開発専用。データはこのブラウザにだけ保存されます。": "Local development only. Data is saved in this browser only.",
   "ゲストではパスワードを変更できません。": "Guests cannot change the password.",
   "ローカルのゲストでは利用できない操作です。": "This action is not available for the local guest.",
-  "ゲストはローカル開発でのみ利用できます。": "Guest access is available only in local development."
+  "ゲストはローカル開発でのみ利用できます。": "Guest access is available only in local development.",
+  "ローカルの認証APIに接続できません。npm run dev:all で起動するか、「ゲストで試す」を使ってください。": "Cannot reach the local auth API. Start it with npm run dev:all, or use \"Try as guest\"."
 }
