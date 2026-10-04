@@ -15,7 +15,7 @@ it('uses the approved public operator name and reachable disclosure contact',()=
 });
 
 it('describes reduced search previews and enabled advertising without claiming source approval',()=>{
-  expect(readFileSync('components/pages/terms.tsx','utf8')).toContain('概要・本文抜粋・抽出見出し・元の解像度の画像・動画サムネイルは配信しません');
+  expect(readFileSync('components/pages/terms.tsx','utf8')).toContain('提供元の記事画像・動画サムネイル、概要・本文抜粋・抽出見出しは配信しません');
   expect(readFileSync('components/pages/privacy.tsx','utf8')).toContain('初回公開からGoogle AdSenseを利用');
   expect(readFileSync('docs/sources.md','utf8')).toContain('タイトル・リンク中心でも');
 });
@@ -31,11 +31,11 @@ it('states the conditional collection policy and current pause without a stale p
 
 it('describes the limited search basis, attribution and image-removal contact in both languages',()=>{
   const terms=readFileSync('components/pages/terms.tsx','utf8');
-  expect(terms).toContain('長辺160px以下');
-  expect(terms).toContain('著作権法第47条の5');
-  expect(terms).toContain('個別の許諾を得た');
+  expect(terms).toContain('AI生成');
+  expect(terms).toContain('ポーカー全般');
+  expect(terms).toContain('既存の検索タグは変更しません');
   expect(terms).toContain('表示停止・削除');
   const english=JSON.parse(readFileSync('lib/translations/en-legal.json','utf8'));
-  expect(Object.values(english).join(' ')).toContain('not a guarantee of legality');
+  expect(Object.values(english).join(' ')).toContain('does not guarantee an accurate assessment');
   expect(Object.values(english).join(' ')).toContain('does not connect the visitor');
 });
