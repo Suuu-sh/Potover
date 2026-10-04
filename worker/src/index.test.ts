@@ -1,6 +1,7 @@
 import {afterEach, describe, expect, it, vi} from 'vitest';
 import worker from './index';
 import publicationScope from '../../data/publication-scope.json';
+import previewManifest from '../../data/article-preview-manifest.json';
 
 type Call = {query: string; values: unknown[]; operation: 'first' | 'all' | 'run' | 'batch'};
 function database(options: {user?: {id: string; email: string}; attempts?: number; rows?: unknown[]; total?: number; credentials?: {password_hash:string;password_salt:string}; batchError?: Error} = {}) {
@@ -359,4 +360,15 @@ describe('atomic account changes',()=>{
     expect((await worker.fetch(post(path,body,method),{DB})).status).toBe(401);
     expect(calls.some(call=>call.operation==='batch')).toBe(false);
   });
+});
+
+it('exposes only a finite reviewed local preview for an exact approved API article',async()=>{
+  const image=previewManifest.articles[0];
+  const rows=[{slug:image.slug,source_slug:image.sourceSlug,original_url:image.originalUrl,content_type:'article',title:'Preview test',tags_json:'[]',image_url:'https://unreviewed.test/full.jpg'}];
+  const {DB,calls}=database({rows,total:1});
+  const response=await worker.fetch(new Request('https://api.example.test/api/articles'),{DB});
+  const body=await response.json() as any;
+  expect(body.articles[0].preview).toEqual({src:image.thumbnailPath,width:image.width,height:image.height,credit:image.sourceName});
+  expect(JSON.stringify(body)).not.toMatch(/originalImageUrl|unreviewed|imageUrl/);
+  expect(calls.find(c=>c.operation==='all')!.query).not.toContain('image_url');
 });

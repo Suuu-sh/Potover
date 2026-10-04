@@ -10,4 +10,7 @@ const result=spawnSync(process.execPath,['node_modules/next/dist/bin/next','buil
   stdio:'inherit',env:{...process.env,NEXT_PUBLIC_POTOVER_API_URL:url.origin},
 });
 if(result.error)throw result.error;
-process.exit(result.status??1);
+if(result.status!==0)process.exit(result.status??1);
+const verify=spawnSync(process.execPath,['scripts/verify-article-previews.mjs','--export'],{stdio:'inherit'});
+if(verify.error)throw verify.error;
+process.exit(verify.status??1);

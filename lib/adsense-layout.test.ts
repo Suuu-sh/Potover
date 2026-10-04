@@ -7,7 +7,7 @@ import {expect,it} from 'vitest';
 
 const {code}=transformSync(readFileSync('components/RootLayout.tsx','utf8'),{loader:'tsx',format:'cjs',jsx:'automatic'});
 const Passthrough=({children}:{children:ReactNode})=>children;
-const wrappers={LocaleProvider:Passthrough,SiteChrome:Passthrough,AuthProvider:Passthrough,ArticleModalProvider:Passthrough,BookmarksProvider:Passthrough,LearningHistoryProvider:Passthrough,UserPreferencesProvider:Passthrough};
+const wrappers={LocaleDocumentMetadata:()=>null,LocaleProvider:Passthrough,SiteChrome:Passthrough,AuthProvider:Passthrough,ArticleModalProvider:Passthrough,BookmarksProvider:Passthrough,LearningHistoryProvider:Passthrough,UserPreferencesProvider:Passthrough};
 
 function renderLayout(adsenseClient:string){
   const compiledModule={exports:{} as {RootLayout:(props:{children:ReactNode;locale:'ja'|'en'})=>ReactElement}};
@@ -16,7 +16,7 @@ function renderLayout(adsenseClient:string){
     if(name==='react/jsx-runtime')return jsxRuntime;
     if(name==='@/lib/adsense-config')return {adsenseClient};
     if(name.endsWith('.css'))return {};
-    if(name.startsWith('@/')||name==='./SiteChrome')return wrappers;
+    if(name.startsWith('@/')||name==='./SiteChrome'||name==='./LocaleDocumentMetadata')return wrappers;
     throw new Error(`Unexpected layout import: ${name}`);
   };
   new Function('require','module',code)(require,compiledModule);

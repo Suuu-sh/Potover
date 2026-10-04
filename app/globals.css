@@ -1849,7 +1849,7 @@ input:-webkit-autofill{-webkit-text-fill-color:var(--color-text);box-shadow:0 0 
 .next-lesson-feature>b svg{color:var(--color-text)!important;stroke:currentColor!important}
 
 /* Locale selection is independent of the saved preferred content language. */
-.language-switch{display:inline-flex;align-items:center;justify-content:center;min-width:38px;min-height:36px;padding:4px 7px;border:1px solid var(--color-border);border-radius:8px;color:var(--color-text);font-size:12px;font-weight:700;white-space:nowrap;text-decoration:none}
+.language-switch{background:transparent;cursor:pointer;font-family:inherit;display:inline-flex;align-items:center;justify-content:center;min-width:38px;min-height:36px;padding:4px 7px;border:1px solid var(--color-border);border-radius:8px;color:var(--color-text);font-size:12px;font-weight:700;white-space:nowrap;text-decoration:none}
 .language-switch:focus-visible{outline:2px solid var(--color-link);outline-offset:3px}
 html[lang="en"] .site-header nav{gap:14px}
 html[lang="en"] .site-header-search{min-width:100px}

@@ -1,12 +1,16 @@
 import {readFile,writeFile} from 'node:fs/promises';
 import {resolve} from 'node:path';
+import {readFileSync} from 'node:fs';
+import {createArticlePreviewLookup} from '../packages/publication/article-previews.mjs';
+const previewManifest=JSON.parse(readFileSync(new URL('../data/article-preview-manifest.json',import.meta.url),'utf8'));
 import {publicationScope,selectApprovedDataset} from './publication-scope.mjs';
 
 export const PUBLIC_ARTICLES_PATH='data/articles.public.json';
 const text=value=>typeof value==='string'?value:'';
 
 // Allowlist before bundling: hiding fields in React would still ship the raw JSON.
-export function projectPublicArticles(dataset,{scope=publicationScope}={}){
+export function projectPublicArticles(dataset,{scope=publicationScope,previews=previewManifest}={}){
+  const previewFor=createArticlePreviewLookup(previews);
   dataset=selectApprovedDataset(dataset,scope);
   return {
     collectedAt:text(dataset.collectedAt),
@@ -14,6 +18,7 @@ export function projectPublicArticles(dataset,{scope=publicationScope}={}){
     sources:dataset.sources.map(source=>({slug:text(source.slug),name:text(source.name),url:text(source.url),language:text(source.language)})),
     articles:dataset.articles.map(article=>({
       slug:article.slug,
+      ...(previewFor(article)?{preview:previewFor(article)}:{}),
       source:text(article.source),sourceSlug:text(article.sourceSlug)||'gto-wizard',sourceUrl:text(article.sourceUrl),
       title:text(article.title),originalUrl:text(article.originalUrl),publishedAt:article.publishedAt?text(article.publishedAt):null,
       language:text(article.language),contentType:article.contentType==='video'?'video':'article',
