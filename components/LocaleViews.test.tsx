@@ -68,7 +68,8 @@ describe('English server-rendered UI',()=>{
   });
   it('localizes sign-in and account/security settings',()=>{
     const login=render('components/pages/login.tsx');for(const copy of ['Welcome back','Email address','Password','At least 8 characters','Back to home'])expect(login).toContain(copy);
-    const account=render('components/AccountSettings.tsx','AccountSettings',{},'en',true);for(const copy of ['Account settings','Sign out','Change password','Delete account','This cannot be undone'])expect(account).toContain(copy);
+    const account=render('components/AccountSettings.tsx','AccountSettings',{},'en',true);for(const copy of ['Account settings','Sign out','Security'])expect(account).toContain(copy);
+    const security=render('components/AccountSecurity.tsx','AccountSecurity',{},'en',true);for(const copy of ['Change password','Delete account','This cannot be undone'])expect(security).toContain(copy);
   });
   it('translates owned glossary content and retains localized article links',()=>{
     const html=render('components/GlossaryPage.tsx','GlossaryPage');for(const copy of ['Poker glossary','Equity','Related articles'])expect(html).toContain(copy);
