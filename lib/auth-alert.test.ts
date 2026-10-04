@@ -20,6 +20,7 @@ function renderProvider(sessionError:string|null){
   const require=(name:string)=>{
     if(name==='react')return react;
     if(name==='react/jsx-runtime')return jsxRuntime;
+    if(name==='@/lib/i18n-client')return {useI18n:()=>({locale:'ja',t:<T,>(value:T)=>value,href:(value:string)=>value})};
     if(['./auth-request','./auth-session','./legacy-storage-migration','./user-api'].includes(name))return {};
     throw new Error(`Unexpected auth import: ${name}`);
   };

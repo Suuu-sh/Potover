@@ -1,4 +1,5 @@
 'use client';
+import {useI18n} from '@/lib/i18n-client';
 
 import {Check,Plus} from 'lucide-react';
 import {useState,type MouseEvent} from 'react';
@@ -6,6 +7,7 @@ import {useAuth} from '@/lib/auth-client';
 import {useSourceFollows} from '@/lib/source-follows';
 
 export function SourceFollowButton({sourceSlug,sourceName}:{sourceSlug:string;sourceName:string}){
+  const {t:uiText}=useI18n();
   const {user,loading:authLoading}=useAuth();
   const {loading:followLoading,isFollowed,toggleSource}=useSourceFollows();
   const [pending,setPending]=useState(false);
@@ -23,8 +25,8 @@ export function SourceFollowButton({sourceSlug,sourceName}:{sourceSlug:string;so
 
   if(authLoading||!user)return null;
 
-  return <button type="button" className={`source-follow-action${followed?' is-following':''}`} onClick={toggle} disabled={disabled} aria-pressed={followed} aria-label={followed?`${sourceName}のフォローを解除`:`${sourceName}をフォロー`} title={error||undefined}>
+  return <button type="button" className={`source-follow-action${followed?' is-following':''}`} onClick={toggle} disabled={disabled} aria-pressed={followed} aria-label={uiText(followed?`${sourceName}のフォローを解除`:`${sourceName}をフォロー`)} title={uiText(error||undefined)}>
     {followed?<Check size={12} aria-hidden="true"/>:<Plus size={12} aria-hidden="true"/>}
-    <span>{followed?'フォロー中':'フォロー'}</span>
+    <span>{uiText(followed?'フォロー中':'フォロー')}</span>
   </button>;
 }

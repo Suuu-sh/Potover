@@ -1,4 +1,5 @@
 'use client';
+import {useI18n} from '@/lib/i18n-client';
 
 import {authRequest} from './auth-request';
 import {restoreSession} from './auth-session';
@@ -19,6 +20,7 @@ async function request<T>(path:string,options:RequestInit={}){
 }
 
 export function AuthProvider({children}:{children:React.ReactNode}){
+  const {t:uiText}=useI18n();
   const [user,setUser]=useState<User|null>(null);
   const [loading,setLoading]=useState(true);
   const [sessionError,setSessionError]=useState<string|null>(null);
@@ -75,8 +77,8 @@ export function AuthProvider({children}:{children:React.ReactNode}){
   const value=useMemo(()=>({user,loading,login,register,changePassword,deleteAccount,logout}),[user,loading,login,register,changePassword,deleteAccount,logout]);
   return <AuthContext.Provider value={value}>
     {sessionError&&<div role="alert" style={{position:'relative',top:64,padding:'12px 20px',background:'var(--color-error-soft)',color:'var(--color-text)',display:'flex',gap:12,alignItems:'center',flexWrap:'wrap'}}>
-      <span>{sessionError}</span>
-      <button type="button" disabled={loading} onClick={()=>void loadSession()} style={{color:'var(--color-link)',textDecoration:'underline'}}>{loading?'確認中…':'もう一度試す'}</button>
+      <span>{uiText(sessionError)}</span>
+      <button type="button" disabled={loading} onClick={()=>void loadSession()} style={{color:'var(--color-link)',textDecoration:'underline'}}>{uiText(loading?'確認中…':'もう一度試す')}</button>
     </div>}
     {children}
   </AuthContext.Provider>;

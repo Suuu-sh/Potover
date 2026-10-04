@@ -1,6 +1,6 @@
 import {readFileSync} from 'node:fs';
 import {transformSync} from 'esbuild';
-import {createElement,type ComponentType,type ReactElement,type ReactNode} from 'react';
+import {createElement,type ComponentType,type ReactNode} from 'react';
 import * as React from 'react';
 import * as jsxRuntime from 'react/jsx-runtime';
 import {renderToStaticMarkup} from 'react-dom/server';
@@ -19,9 +19,10 @@ function loadView(path:string,extra=''){
   const compiledModule={exports:{} as Record<string,ComponentType<Record<string,unknown>>>};
   const require=(name:string)=>{
     if(name==='react/jsx-runtime')return jsxRuntime;
+    if(name==='@/lib/i18n-client')return {useI18n:()=>({locale:'ja',t:<T,>(value:T)=>value,href:(value:string)=>value})};
     if(name==='react')return React;
     if(name==='lucide-react')return new Proxy({},{get:()=>Empty});
-    if(name==='next/link'||name==='@/components/ArticleLink')return {__esModule:true,default:Link};
+    if(name==='next/link'||name==='@/components/LocaleLink'||name==='@/components/ArticleLink')return {__esModule:true,default:Link};
     if(name==='next/image')return {__esModule:true,default:({src}: {src:string})=>createElement('img',{src,alt:''})};
     if(name==='next/navigation')return {notFound:()=>{throw new Error('Not found')}};
     if(name==='@/lib/data')return {articles:[article]};
@@ -81,9 +82,9 @@ it('replaces the modal outline with source metadata, tags and the original-link 
   expect(html).not.toContain('<img');
 });
 
-it('renders direct article pages with original links and no extracted content',async()=>{
-  const view=loadView('app/articles/[slug]/page.tsx').default as unknown as (props:{params:Promise<{slug:string}>})=>Promise<ReactElement>;
-  const html=renderToStaticMarkup(await view({params:Promise.resolve({slug:article.slug})}));
+it('renders direct article pages with original links and no extracted content',()=>{
+  const view=loadView('components/pages/articles-slug.tsx').default;
+  const html=renderToStaticMarkup(createElement(view,{slug:article.slug}));
   expectTitleLinkMarkup(html);
   for(const text of ['Strategy','preflop','Bookmark'])expect(html).toContain(text);
   expect(html).not.toContain('<ol');
@@ -91,7 +92,7 @@ it('renders direct article pages with original links and no extracted content',a
 });
 
 it('renders the article index with original links and metadata',()=>{
-  const view=loadView('app/articles/page.tsx').default;
+  const view=loadView('components/pages/articles.tsx').default;
   const html=renderToStaticMarkup(createElement(view));
   expectTitleLinkMarkup(html);
   expect(html).not.toContain('<img');
@@ -106,6 +107,6 @@ it('uses source initials instead of third-party logo images',()=>{
 });
 
 it('keeps all public article consumers independent of removed fields',()=>{
-  const paths=['components/ArticleFeedRow.tsx','components/ModernHome.tsx','components/HomeSpotlightCarousel.tsx','components/EditorPicks.tsx','lib/article-modal.tsx','lib/roadmaps.ts','app/articles/page.tsx','app/articles/[slug]/page.tsx','app/explore/page.tsx','app/roadmap/page.tsx'];
+  const paths=['components/ArticleFeedRow.tsx','components/ModernHome.tsx','components/HomeSpotlightCarousel.tsx','components/EditorPicks.tsx','lib/article-modal.tsx','lib/roadmaps.ts','components/pages/articles.tsx','components/pages/articles-slug.tsx','components/pages/explore.tsx','components/pages/roadmap.tsx'];
   for(const path of paths)expect(readFileSync(path,'utf8'),path).not.toMatch(/\.(summary|headings|imageUrl|minutes)\b/);
 });
