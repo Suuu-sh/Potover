@@ -1,6 +1,6 @@
 // Local development guest: answers the account API inside the browser so signed-in
-// screens can be checked without the auth worker. Production builds compile this out
-// because NODE_ENV is fixed to "production" there.
+// screens can be checked without the auth worker. Production builds inline NODE_ENV as
+// "production", so the flag is false there and every entry point stays inert.
 export const localGuestEnabled=process.env.NODE_ENV==='development';
 export const LOCAL_GUEST_TOKEN='local-guest';
 export const LOCAL_GUEST_USER={id:'local-guest',email:'guest@localhost'};

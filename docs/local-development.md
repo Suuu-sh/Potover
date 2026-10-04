@@ -23,7 +23,7 @@ Next.js起動時に元データから`data/articles.public.json`を自動生成�
 
 認証APIを起動せずにログイン後の画面を確認したいときは、`npm run dev`などの開発サーバーで`/login/`を開き、「ゲストで試す」を押します。`guest@localhost`としてログインした状態になり、ブックマーク・学習履歴・設定・フォローはこのブラウザのlocalStorage（`potover-local-guest`）にだけ保存されます。APIへは通信しません。
 
-この機能は`NODE_ENV=development`のときだけ有効で、本番ビルドではボタンも処理も含まれません。実装は`lib/local-guest.ts`です。
+この機能は`NODE_ENV=development`のときだけ有効です。本番ビルドでは有効フラグが`false`に固定され、ボタンは表示されず、ゲスト用のトークンもAPIへの通信を置き換えません。実装は`lib/local-guest.ts`です。
 
 ログイン画面で接続エラーが出た場合は、まず`npm run dev:all`が起動しているか確認してください。ローカル専用エントリは`localhost:3000` / `127.0.0.1:3000`と`localhost:3001` / `127.0.0.1:3001`を許可し、本番のCORSは変更しません。
 
