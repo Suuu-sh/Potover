@@ -2,10 +2,11 @@
 import {useI18n} from '@/lib/i18n-client';
 import Link from '@/components/LocaleLink';
 import ArticleLink from '@/components/ArticleLink';
-import {ArrowRight,BookOpen,ExternalLink,Play} from 'lucide-react';
+import {ArrowRight,ExternalLink} from 'lucide-react';
 import {articles} from '@/lib/data';
+import {ArticleCover} from '@/components/ArticleCover';
 import {contentLabel} from '@/lib/content-labels';
 import {LearningLink} from '@/components/LearningLink';
 
 export function EditorPicks(){
-  const {t:uiText,href:localPath}=useI18n();return <section className="editor-picks"><div className="picks-head"><h2>{uiText("編集部のおすすめ")}</h2><Link href={localPath("/explore")}>{uiText("すべて見る ")}<ArrowRight size={15}/></Link></div><div className="pick-list">{articles.slice(0,3).map(a=><article className="pick-row" key={a.slug}><span className="pick-logo" style={{display:'grid',placeItems:'center'}}>{a.contentType==='video'?<Play size={28} aria-hidden="true"/>:<BookOpen size={28} aria-hidden="true"/>}</span><div className="pick-copy"><ArticleLink slug={a.slug}><h3>{a.title}</h3></ArticleLink><p>{uiText(contentLabel(a.category))}</p></div><span className="pick-source">{uiText(a.source)}</span><span className="pick-language">{uiText(contentLabel(a.language))}</span><span className="pick-time">{uiText(a.publishedAt)}</span><LearningLink slug={a.slug} href={localPath(a.url)} aria-label={uiText(`${a.title}を提供元で開く`)}><ExternalLink size={17}/></LearningLink></article>)}</div></section>}
+  const {t:uiText,href:localPath}=useI18n();return <section className="editor-picks"><div className="picks-head"><h2>{uiText("編集部のおすすめ")}</h2><Link href={localPath("/explore")}>{uiText("すべて見る ")}<ArrowRight size={15}/></Link></div><div className="pick-list">{articles.slice(0,3).map(a=><article className="pick-row" key={a.slug}><span className={`pick-logo pick-logo-${a.sourceSlug}`}><ArticleCover article={a} className="pick-article-image"/></span><div className="pick-copy"><ArticleLink slug={a.slug}><h3>{a.title}</h3></ArticleLink><p>{uiText(contentLabel(a.category))}</p></div><span className="pick-source">{uiText(a.source)}</span><span className="pick-language">{uiText(contentLabel(a.language))}</span><span className="pick-time">{uiText(a.publishedAt)}</span><LearningLink slug={a.slug} href={localPath(a.url)} aria-label={uiText(`${a.title}を提供元で開く`)}><ExternalLink size={17}/></LearningLink></article>)}</div></section>}

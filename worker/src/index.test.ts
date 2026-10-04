@@ -369,6 +369,7 @@ it('exposes only a finite reviewed local preview for an exact approved API artic
   const response=await worker.fetch(new Request('https://api.example.test/api/articles'),{DB});
   const body=await response.json() as any;
   expect(body.articles[0].preview).toEqual({src:image.thumbnailPath,width:image.width,height:image.height,credit:image.sourceName});
-  expect(JSON.stringify(body)).not.toMatch(/originalImageUrl|unreviewed|imageUrl/);
+  expect(JSON.stringify(body)).not.toMatch(/originalImageUrl|unreviewed/);
+  expect(body.articles[0].imageUrl).toBe(image.originalImageUrl);
   expect(calls.find(c=>c.operation==='all')!.query).not.toContain('image_url');
 });

@@ -2,7 +2,13 @@
 
 Reviewed: 2026-10-04 (UTC)
 
-## Result and release boundary
+## Subsequent restoration decision (2026-10-04)
+
+After viewing the limited pilot, the operator requested the actual previous image-heavy presentation. The restoration therefore reintroduces fixed existing image URLs in the three prior visual locations; it is not another small-thumbnail pilot. The explicit-license findings below remain unchanged. In particular, source-contract restrictions and the distinction between YouTube embedding and detached thumbnails have not been resolved by the UI request. Free access with advertising is not treated as noncommercial or automatic legal clearance. Larger original-image display is not claimed to fall within the prior 160px pilot analysis. Japanese/English user disclosures now explain direct third-party image requests and the absence of a blanket permission claim.
+
+No further source crawl, rights-holder outreach, access-denial bypass or full-resolution asset download was performed for the restoration. The one legacy plain-HTTP image is rejected. URL validation, local fallbacks and removal controls reduce technical exposure, but do not determine copyright legality.
+
+## Earlier pilot result and release boundary
 
 The explicit-license review did not find a blanket grant for original article images. That result is **not** a conclusion that every small preview requires individual permission. A second review assessed the statutory route below, which is the basis of the approved, limited pilot: **11 reduced previews**, not full-resolution restoration or permission-confirmed images.
 

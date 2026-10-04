@@ -1,4 +1,22 @@
-# Limited article-preview pilot
+# Restored image presentation
+
+The current restoration returns the pre-title-only visual treatment in ArticleFeedRow, EditorPicks and HomeSpotlightCarousel. It preserves the current same-URL JA/EN implementation, original links, account/security controls and the 1,244-link / 9-source identity scope. It does not restore source excerpts, headings or excluded PokerNews/m Portal entries.
+
+`data/article-cover-manifest.json` pins the exact archived image URL against each approved source/slug/original-article URL. There are 1,239 HTTPS references (including 36 YouTube thumbnail references), 4 existing local LasVegas fallback references and 1 rejected old HTTP AJPC URL. The latter uses the safe placeholder; HTTPS is not guessed. No new original image bytes were fetched or added to this change. Matching an allowlisted URL does not establish licensing, current availability or the absence of redirects at its host.
+
+The public JSON and anonymous API now intentionally include `imageUrl` for valid pinned entries. No other archived fields are promoted. Browser images use `unoptimized` and `referrerPolicy="no-referrer"`: the browser contacts the provider directly; IP/browser information and possibly cookies may reach that provider. No arbitrary server-side image proxy is introduced. Failed loads use a local icon without transport changes or retry loops. Titles and source identities remain visible; image-card clicks restore the prior article/modal behavior.
+
+This is broader than the 11-image, ≤160px statutory pilot documented below. Neither the larger/direct display, free access, advertising support, OG metadata, nor the source URL validator is described as rights-holder permission or worldwide legal clearance. The source-policy limitations recorded in [the review](article-image-review.md) remain material.
+
+## Unified removal controls
+
+- Set the cover manifest `enabled` to false, add a source slug to `disabledSources`, or add an article slug to `disabledArticles`. These controls suppress both `imageUrl` and the older `preview` data and prune affected local preview assets from new exports.
+- Existing source/article `enabled:false` controls in `data/article-preview-manifest.json` also suppress the corresponding restored cover references. Previously recorded removals are not bypassed.
+- Rebuild and deploy matching Pages/Worker versions; verify references are absent. Direct source-hosted files remain controlled by their providers. The earlier runbook's old-deployment, public Git history and third-party-copy limitations still apply.
+- `/contact` and `/terms` retain the rights/removal contact. Review a complaint and disable the relevant display while resolving it; removal does not erase any prior liability or establish the original use's lawfulness.
+
+## Historical 11-image pilot and retained local asset validation
+
 
 The pilot adds 11 source-linked cover previews to discovery/feed and article-index cards: 6 ポーカーアカデミー, 3 ポーカー道, 2 AJPC. All existing 1,244 links, 9 sources and slugs remain unchanged. No raw collection, automated collection gate, full-text field, video preview, hero background or decorative editorial image is enabled.
 

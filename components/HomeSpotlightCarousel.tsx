@@ -3,9 +3,10 @@ import {useI18n} from '@/lib/i18n-client';
 
 import Image from 'next/image';
 import Link from '@/components/LocaleLink';
-import {ArrowRight,ArrowUpRight} from 'lucide-react';
+import {ArrowRight} from 'lucide-react';
 import {useEffect,useRef} from 'react';
-import {LearningLink} from '@/components/LearningLink';
+import ArticleLink from '@/components/ArticleLink';
+import {ArticleCover} from '@/components/ArticleCover';
 
 import {articles,Article} from '@/lib/data';
 import {contentLabel} from '@/lib/content-labels';
@@ -17,7 +18,7 @@ function SpotlightCard({item,index}:{item:SpotlightItem;index:number}){
   const {t:uiText,href:localPath}=useI18n();
   if(item.article){
     const article=item.article;
-    return <LearningLink slug={article.slug} href={localPath(article.url)} className="home-spotlight-card"><div style={{inset:20,display:'flex',flexDirection:'column',justifyContent:'center',gap:12}}><p style={{margin:0,fontSize:11,color:'var(--color-muted)'}}>{uiText(article.source)} · {uiText(contentLabel(article.category))} · {uiText(article.publishedAt)}</p><h3 style={{margin:0,fontSize:18,lineHeight:1.35,display:'-webkit-box',WebkitLineClamp:4,WebkitBoxOrient:'vertical',overflow:'hidden'}}>{article.title}</h3><p style={{margin:0,display:'flex',alignItems:'center',gap:5,fontSize:12}}>{uiText(article.contentType==='video'?'元の動画を見る':'元記事を読む')} <ArrowUpRight size={14}/></p></div></LearningLink>;
+    return <ArticleLink slug={article.slug} className="home-spotlight-card"><ArticleCover article={article} fill priority={index<3} sizes="(max-width: 700px) 82vw, 430px"/><span/><div><small>{uiText(article.source)} · {uiText(contentLabel(article.category))}</small><h2>{article.title}</h2><b>{uiText("見る ")}<ArrowRight size={14}/></b></div></ArticleLink>;
   }
   return <Link className="home-spotlight-card" href={localPath(item.href)}>{item.image&&<Image src={item.image} alt="" fill priority={index<3} sizes="(max-width: 700px) 82vw, 430px"/>}<span/><div><small>{uiText(item.label)}</small><h2>{uiText(item.title)}</h2><b>{uiText("見る ")}<ArrowRight size={14}/></b></div></Link>;
 }

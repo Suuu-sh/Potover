@@ -5,6 +5,7 @@ import * as React from 'react';
 import * as jsxRuntime from 'react/jsx-runtime';
 import {renderToStaticMarkup} from 'react-dom/server';
 import {expect,it} from 'vitest';
+import {safeArticleCover} from '../packages/publication/article-covers.mjs';
 
 const article={slug:'title-link-test',title:'Original strategy title',source:'Example Poker',sourceSlug:'example-poker',difficulty:'Beginner',language:'English',publishedAt:'2026-10-03',tags:['preflop'],category:'Strategy',url:'https://example.com/original',contentType:'article',summary:'LEGACY_EXCERPT',headings:[{text:'LEGACY_HEADING',level:2}],imageUrl:'https://example.com/legacy-image.png',minutes:9876};
 type LinkProps={children?:ReactNode;slug?:string;href?:string;className?:string};
@@ -14,7 +15,7 @@ const BookmarkButton=()=>createElement('button',null,'Bookmark');
 const SourceFollowButton=()=>createElement('button',null,'Follow source');
 const auxiliary={HomeSpotlightCarousel:Empty,RoadmapPreview:Empty,RoadmapGuide:Empty,GlossaryPreview:Empty,HomeSectionHeading:Empty,AdSenseAd:Empty};
 
-function loadView(path:string,extra=''){
+function loadView(path:string,extra='',dataArticle=article){
   const {code}=transformSync(readFileSync(path,'utf8')+extra,{loader:'tsx',format:'cjs',jsx:'automatic'});
   const compiledModule={exports:{} as Record<string,ComponentType<Record<string,unknown>>>};
   const require=(name:string)=>{
@@ -25,11 +26,12 @@ function loadView(path:string,extra=''){
     if(name==='next/link'||name==='@/components/LocaleLink'||name==='@/components/ArticleLink')return {__esModule:true,default:Link};
     if(name==='next/image')return {__esModule:true,default:({src}: {src:string})=>createElement('img',{src,alt:''})};
     if(name==='next/navigation')return {notFound:()=>{throw new Error('Not found')}};
-    if(name==='@/lib/data')return {articles:[article]};
+    if(name==='@/lib/data')return {articles:[dataArticle]};
     if(name==='@/lib/content-labels')return {contentLabel:(label:string)=>label};
     if(name==='@/lib/learning-history')return {useLearningHistory:()=>({hasRead:()=>true})};
     if(name==='@/lib/auth-client')return {useAuth:()=>({user:null})};
     if(name==='@/lib/use-preferred-language')return {usePreferredLanguage:()=>['English']};
+    if(name==='@/components/ArticleCover')return {ArticleCover:({article}:any)=>{const src=safeArticleCover(article.imageUrl,{...article,originalUrl:article.url});return src?createElement('img',{src,alt:''}):null}};
     if(name==='@/components/ArticlePreview')return {ArticlePreview:()=>null};
     if(name==='@/components/LearningLink')return {LearningLink:Link};
     if(name==='@/components/BookmarkButton')return {BookmarkButton};
@@ -66,10 +68,10 @@ it('renders text-focused home picks and editor picks with direct original links'
   }
 });
 
-it('retains only the Potover-owned promotional artwork in the spotlight carousel',()=>{
+it('retains promotional artwork and rejects unapproved article images in the spotlight carousel',()=>{
   const {HomeSpotlightCarousel}=loadView('components/HomeSpotlightCarousel.tsx');
   const html=renderToStaticMarkup(createElement(HomeSpotlightCarousel));
-  expectTitleLinkMarkup(html);
+  expect(html).toContain(article.title);expect(html).toContain(article.source);expect(html).toContain(`/articles/${article.slug}`);expect(html).not.toContain('LEGACY_EXCERPT');
   const images=Array.from(html.matchAll(/<img[^>]+src="([^"]+)"/g),match=>match[1]);
   expect(images).toEqual(Array(3).fill('/banners/potover-strategy-hero.png'));
 });
@@ -110,4 +112,16 @@ it('uses source initials instead of third-party logo images',()=>{
 it('keeps all public article consumers independent of removed fields',()=>{
   const paths=['components/ArticleFeedRow.tsx','components/ModernHome.tsx','components/HomeSpotlightCarousel.tsx','components/EditorPicks.tsx','lib/article-modal.tsx','lib/roadmaps.ts','components/pages/articles.tsx','components/pages/articles-slug.tsx','components/pages/explore.tsx','components/pages/roadmap.tsx'];
   for(const path of paths)expect(readFileSync(path,'utf8'),path).not.toMatch(/\.(summary|headings|imageUrl|minutes)\b/);
+});
+
+it('restores approved image references in feed, editor picks and the original spotlight frames',()=>{
+  const restored={...article,sourceSlug:'gto-wizard',source:'GTO Wizard',url:'https://blog.gtowizard.com/original/',imageUrl:'https://blog.gtowizard.com/content/cover.jpg'};
+  for(const [path,name,props] of [
+    ['components/ArticleFeedRow.tsx','ArticleFeedRow',{article:restored}],
+    ['components/EditorPicks.tsx','EditorPicks',{}],
+    ['components/HomeSpotlightCarousel.tsx','HomeSpotlightCarousel',{}],
+  ] as const){
+    const View=loadView(path,'',restored)[name];const html=renderToStaticMarkup(createElement(View,props));
+    expect(html).toContain(restored.imageUrl);expect(html).toContain(restored.title);expect(html).toContain(restored.source);expect(html).not.toContain('LEGACY_EXCERPT');expect(html).not.toContain('LEGACY_HEADING');
+  }
 });
