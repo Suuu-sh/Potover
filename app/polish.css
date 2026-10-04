@@ -41,7 +41,12 @@ p{text-wrap:pretty}
     box-shadow:var(--pv-shadow-float)!important;
   }
 }
-.site-header nav{gap:4px!important}
+.site-header nav{gap:4px!important;min-width:max-content}
+/* Let the search field give way so longer (English) nav labels never run under it. */
+@media(min-width:1181px){
+  .site-header .site-header-inner{grid-template-columns:154px max-content minmax(220px,1fr) auto!important}
+  .site-header .site-header-search{width:100%!important;max-width:350px!important;min-width:0!important;justify-self:end}
+}
 .site-header nav a,.docs-v3 .site-header nav a,.site-header nav .roadmap-nav>button{
   height:36px!important;align-self:center;border-radius:999px!important;
   transition:background .2s var(--pv-ease),color .2s var(--pv-ease),box-shadow .2s var(--pv-ease)!important;
@@ -181,6 +186,14 @@ html.dark-mode .modern-topics-list>a:hover{background:var(--color-selected)!impo
 .docs-feed-row .feed-tags .tag,.docs-feed-row .feed-tags button,.docs-feed-row .content-kind{border-radius:999px!important}
 .docs-feed-row .feed-meta{font-size:11px!important}
 .feed-toolbar{border-radius:var(--pv-radius-card)!important;box-shadow:var(--pv-shadow-rest)!important}
+/* Phones: one compact row — count on the left, filter pill on the right. */
+@media(max-width:700px){
+  .docs-v3 .docs-feed .feed-toolbar,.dark-mode .docs-v3 .docs-feed .feed-toolbar{flex-direction:row!important;align-items:center!important;justify-content:space-between!important;gap:12px!important;min-height:0!important;padding:8px 8px 8px 16px!important}
+  .docs-v3 .docs-feed .feed-toolbar>span{width:auto!important;height:auto!important;line-height:1.2}
+  .docs-v3 .docs-feed .feed-toolbar strong{font-size:17px!important}
+  .docs-v3 .docs-feed .feed-toolbar-controls{display:flex!important;width:auto!important;gap:8px!important}
+  .docs-v3 .docs-feed .feed-filter-button{width:auto!important;min-height:0!important;height:34px!important;padding:0 14px!important;border-radius:999px!important}
+}
 .feed-filter-button,.docs-pagination button{transition:background .2s var(--pv-ease),border-color .2s var(--pv-ease),color .2s var(--pv-ease)!important}
 .feed-filter-button:hover,.docs-pagination button:not(:disabled):hover{border-color:var(--color-accent)!important;color:var(--color-accent)!important}
 .docs-index-search{border-radius:var(--pv-radius-control)!important;transition:border-color .2s var(--pv-ease),box-shadow .2s var(--pv-ease)!important}
