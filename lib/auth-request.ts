@@ -1,3 +1,5 @@
+import {handleLocalGuestRequest,isLocalGuestRequest} from './local-guest';
+
 export type AuthRequestErrorKind='network'|'invalid-response'|'server'|'client';
 
 export class AuthRequestError extends Error {
@@ -17,7 +19,10 @@ export class AuthRequestError extends Error {
 export async function authRequest<T>(url: string, options: RequestInit = {}): Promise<T> {
   let response: Response;
   try {
-    response = await fetch(url, options);
+    if (isLocalGuestRequest(options)) {
+      const result = handleLocalGuestRequest(url, options, localStorage);
+      response = new Response(JSON.stringify(result.body), {status: result.status, headers: {'Content-Type': 'application/json'}});
+    } else response = await fetch(url, options);
   } catch {
     throw new AuthRequestError('認証サービスに接続できませんでした。少し待ってから、もう一度お試しください。','network');
   }
