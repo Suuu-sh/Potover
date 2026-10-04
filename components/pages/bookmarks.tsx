@@ -1,0 +1,60 @@
+'use client';
+import {useI18n} from '@/lib/i18n-client';
+
+import Link from '@/components/LocaleLink';
+import {ArrowRight, Bookmark as BookmarkIcon, LockKeyhole} from 'lucide-react';
+import {useEffect} from 'react';
+import {useRouter} from '@/lib/locale-router';
+
+import {articles} from '@/lib/data';
+import {ArticleFeedRow} from '@/components/ArticleFeedRow';
+import {useBookmarks} from '@/lib/bookmarks';
+import {useAuth} from '@/lib/auth-client';
+
+export default function Bookmarks() {
+  const {t:uiText,href:localPath}=useI18n();
+  const {user, loading} = useAuth();
+  const router = useRouter();
+  const {slugs,loading:bookmarksLoading}=useBookmarks();
+
+  useEffect(() => {
+    if (!loading && !user) router.replace(`/login?next=${encodeURIComponent('/bookmarks')}`);
+  }, [loading, user, router]);
+
+  const saved = articles.filter(article => slugs.includes(article.slug));
+
+  if (loading || !user || bookmarksLoading) {
+    return <main className="library-page bookmarks-page"><div className="library-wrap"><p role="status">{uiText("ログインを確認しています…")}</p></div></main>;
+  }
+
+  return (
+    <main className="library-page bookmarks-page">
+      <div className="library-wrap">
+        <div className="library-toolbar">
+          <h1>{uiText("保存した記事")}</h1>
+          <span>{uiText(saved.length)}{uiText("件")}</span>
+        </div>
+        {saved.length === 0 ? (
+          <section className="bookmark-empty" aria-labelledby="bookmark-empty-title">
+            <BookmarkIcon className="bookmark-empty-icon" size={40} aria-hidden="true"/>
+            <div className="bookmark-empty-copy">
+              <h2 id="bookmark-empty-title">{uiText("保存した記事はまだありません")}</h2>
+              <p>{uiText("気になる記事を保存して、あとから読み返せます。")}</p>
+            </div>
+            <Link href={localPath("/explore")}>{uiText("記事を探す ")}<ArrowRight size={18} aria-hidden="true"/></Link>
+          </section>
+        ) : (
+          <section className="docs-feed bookmark-docs-feed">
+            <div className="docs-feed-list">
+              {saved.map(article => <ArticleFeedRow article={article} compactActions key={article.slug}/>)}
+            </div>
+          </section>
+        )}
+        <div className="library-note">
+          <LockKeyhole size={16} aria-hidden="true"/>
+          <span>{uiText("アカウントに保存され、ログインした端末で同期されます。")}</span>
+        </div>
+      </div>
+    </main>
+  );
+}

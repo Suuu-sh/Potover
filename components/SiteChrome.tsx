@@ -1,6 +1,6 @@
 'use client';
 
-import {usePathname} from 'next/navigation';
+import {usePathname} from '@/lib/locale-router';
 import {SiteHeader} from './SiteHeader';
 import {SiteFooter} from './SiteFooter';
 import {SourceFollowProvider} from '@/lib/source-follows';

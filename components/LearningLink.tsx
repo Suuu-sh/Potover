@@ -1,6 +1,8 @@
 'use client';
+import {useI18n} from '@/lib/i18n-client';
 import {ReactNode} from 'react';
 import {useAuth} from '@/lib/auth-client';
 import {useLearningHistory} from '@/lib/learning-history';
 type Props={slug:string;href:string;children:ReactNode;className?:string;'aria-label'?:string};
-export function LearningLink({slug,href,children,className,...props}:Props){const {user}=useAuth();const {recordLearning}=useLearningHistory();function open(event:React.MouseEvent<HTMLAnchorElement>){if(event.button!==0||event.metaKey||event.ctrlKey||event.shiftKey||event.altKey)return;if(user)void recordLearning(slug).catch(()=>undefined)}return <a {...props} className={className} href={href} target="_blank" rel="noopener noreferrer" onClick={open}>{children}</a>}
+export function LearningLink({slug,href,children,className,...props}:Props){
+  const {href:localPath}=useI18n();const {user}=useAuth();const {recordLearning}=useLearningHistory();function open(event:React.MouseEvent<HTMLAnchorElement>){if(event.button!==0||event.metaKey||event.ctrlKey||event.shiftKey||event.altKey)return;if(user)void recordLearning(slug).catch(()=>undefined)}return <a {...props} className={className} href={localPath(href)} target="_blank" rel="noopener noreferrer" onClick={open}>{children}</a>}

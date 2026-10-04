@@ -1,0 +1,48 @@
+'use client';
+import {useI18n} from '@/lib/i18n-client';
+
+import {ArrowRight,BookOpen,CalendarDays,Check,CheckCircle2,LockKeyhole,Play} from 'lucide-react';
+import {useEffect,useMemo,useState} from 'react';
+import {useRouter} from '@/lib/locale-router';
+import {useLearningHistory} from '@/lib/learning-history';
+import {moduleArticles,roadmaps} from '@/lib/roadmaps';
+import {usePreferredLanguage} from '@/lib/use-preferred-language';
+import {useAuth} from '@/lib/auth-client';
+import ArticleLink from '@/components/ArticleLink';
+import {AdSenseAd} from '@/components/AdSenseAd';
+import {LearningLink} from '@/components/LearningLink';
+import {contentLabel} from '@/lib/content-labels';
+
+export default function RoadmapPage(){
+  const {t:uiText,href:localPath,locale}=useI18n();
+  const {user,loading}=useAuth();
+  const router=useRouter();
+  const [language]=usePreferredLanguage();
+  const {events}=useLearningHistory();
+  const read=useMemo(()=>new Set(events.map(item=>item.slug)),[events]);
+  const [activeCourse,setActiveCourse]=useState(0);
+  const [activeModule,setActiveModule]=useState(0);
+  useEffect(()=>{if(!loading&&!user)router.replace(`/login?next=${encodeURIComponent('/roadmap')}`)},[loading,user,router]);
+  useEffect(()=>{const syncCourse=()=>{const courseId=window.location.hash.replace(/^#/,'');const index=roadmaps.findIndex(item=>item.id===courseId);if(index>=0){setActiveCourse(index);setActiveModule(0)}};syncCourse();window.addEventListener('hashchange',syncCourse);return()=>window.removeEventListener('hashchange',syncCourse)},[]);
+  const courses=useMemo(()=>roadmaps.map(course=>{const modules=course.modules.map(roadmapModule=>({...roadmapModule,articles:moduleArticles(roadmapModule,language,5)}));const slugs=Array.from(new Set(modules.flatMap(roadmapModule=>roadmapModule.articles.map(article=>article.slug))));const completed=slugs.filter(slug=>read.has(slug)).length;return {...course,modules,total:slugs.length,completed,progress:slugs.length?Math.round(completed/slugs.length*100):0}}),[language,read]);
+  if(loading||!user)return <main className="curriculum-page"><p role="status">{uiText("ログインを確認しています…")}</p></main>;
+  const course=courses[activeCourse];
+  const roadmapModule=course.modules[activeModule];
+  const nextArticle=roadmapModule.articles.find(article=>!read.has(article.slug))||roadmapModule.articles[0];
+  return <main className="curriculum-page">
+    <section className="curriculum-shell">
+      <div className="curriculum-layout">
+        <nav className="curriculum-index" aria-label={uiText(`${course.title}の章`)}>
+          <div className="curriculum-index-label"><span>{uiText("目次")}</span><strong>{uiText(course.modules.length)}{uiText("章")}</strong></div>
+          {course.modules.map((item,index)=>{const completedCount=item.articles.filter(article=>read.has(article.slug)).length;const complete=item.articles.length>0&&completedCount===item.articles.length;return <button key={item.title} className={index===activeModule?'is-active':''} aria-current={index===activeModule?'step':undefined} onClick={()=>setActiveModule(index)}><span>{complete?<Check/>:index+1}</span><div><small>{locale==='en'?`Chapter ${index+1} · `: `第${index+1}章 · `}{uiText(completedCount)}/{uiText(item.articles.length)}</small><strong>{uiText(item.title)}</strong><p>{uiText(item.description)}</p><span className="chapter-progress"><i style={{width:`${item.articles.length?completedCount/item.articles.length*100:0}%`}}/></span></div></button>})}
+        </nav>
+        <div className="curriculum-main">
+          {nextArticle&&<section className="next-lesson"><div className="next-lesson-label"><span>{uiText("次に読む記事")}</span><small>{locale==='en'?`Chapter ${activeModule+1}`:`第${activeModule+1}章`}</small></div><ArticleLink slug={nextArticle.slug} className="next-lesson-feature"><div className="next-lesson-image" style={{display:'grid',placeItems:'center'}}>{nextArticle.contentType==='video'?<Play size={36} aria-hidden="true"/>:<BookOpen size={36} aria-hidden="true"/>}</div><div><small>{uiText(activeModule+1)}.{uiText(Math.max(1,roadmapModule.articles.findIndex(article=>article.slug===nextArticle.slug)+1))}</small><h2 lang={nextArticle.language==='English'?'en':'ja'}>{nextArticle.title}</h2><p>{uiText(nextArticle.source)} · {uiText(contentLabel(nextArticle.category))}</p><span><CalendarDays/> {uiText(nextArticle.publishedAt)} <i><BookOpen/>{uiText("おすすめ")}</i></span></div><b><ArrowRight/></b></ArticleLink><LearningLink className="cta" slug={nextArticle.slug} href={localPath(nextArticle.url)}>{uiText(nextArticle.contentType==='video'?'元の動画を見る':'元記事を読む')} ↗</LearningLink></section>}
+          <section className="lesson-list"><header><h2>{uiText("この章のレッスン")}</h2><span>{uiText(roadmapModule.articles.filter(article=>read.has(article.slug)).length)} / {uiText(roadmapModule.articles.length)} {uiText(" 完了")}</span></header>{roadmapModule.articles.map((article,index)=><ArticleLink slug={article.slug} key={article.slug} className={read.has(article.slug)?'is-read':article.slug===nextArticle?.slug?'is-current':''}><span aria-hidden="true">{read.has(article.slug)?<Check/>:null}</span><strong>{uiText(activeModule+1)}.{uiText(index+1)}</strong><div><b>{article.title}</b><small>{uiText(article.source)}</small></div><em>{uiText(article.publishedAt)}</em><ArrowRight/></ArticleLink>)}</section>
+          <div className="chapter-rest">{course.modules.filter((_,index)=>index!==activeModule).map((item,index)=><button key={item.title} onClick={()=>setActiveModule(course.modules.indexOf(item))}>{index+2>activeModule?<LockKeyhole/>:<CheckCircle2/>}<strong>{locale==='en'?`Chapter ${course.modules.indexOf(item)+1} · `:`第${course.modules.indexOf(item)+1}章　`}{uiText(item.title)}</strong><span>{uiText(item.articles.length)}{uiText("レッスン")}</span><ArrowRight/></button>)}</div>
+        </div>
+      </div>
+      <AdSenseAd placement="feed"/>
+    </section>
+  </main>
+}

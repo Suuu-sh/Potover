@@ -1847,3 +1847,27 @@ input:-webkit-autofill{-webkit-text-fill-color:var(--color-text);box-shadow:0 0 
 .lesson-list>a>span:empty{background:transparent!important}
 .lesson-list header span,.next-lesson-label{background:transparent!important}
 .next-lesson-feature>b svg{color:var(--color-text)!important;stroke:currentColor!important}
+
+/* Locale selection is independent of the saved preferred content language. */
+.language-switch{display:inline-flex;align-items:center;justify-content:center;min-width:38px;min-height:36px;padding:4px 7px;border:1px solid var(--color-border);border-radius:8px;color:var(--color-text);font-size:12px;font-weight:700;white-space:nowrap;text-decoration:none}
+.language-switch:focus-visible{outline:2px solid var(--color-link);outline-offset:3px}
+html[lang="en"] .site-header nav{gap:14px}
+html[lang="en"] .site-header-search{min-width:100px}
+html[lang="en"] .modern-topics-list small{line-height:1.45}
+html[lang="en"] .home-spotlight-card h2{max-width:300px}
+@media(max-width:1100px){html[lang="en"] .site-header-search{display:none}}
+@media(max-width:700px){.language-switch{min-width:32px;padding:4px;font-size:11px}}
+.content-language-notice{max-width:1240px;margin:20px auto 0;padding:0 24px;color:var(--color-muted);font-size:13px;line-height:1.6}
+/* The added language control and longer English labels need a compact tablet header. */
+@media(min-width:761px) and (max-width:980px){
+  .site-header-inner,.docs-v3 .site-header-inner{display:flex!important;justify-content:space-between!important;gap:12px!important}
+  .site-header nav,.docs-v3 .site-header nav,.site-header-search{display:none!important}
+  .site-header .atlas-actions{margin-left:auto!important}
+  .site-header .mobile-navigation{display:block;position:relative}
+  .site-header .atlas-actions .bookmarks-action,.site-header .atlas-actions .login-action,.site-header .atlas-actions .profile-action{display:none!important}
+  .site-header .mobile-navigation-toggle{display:grid;place-items:center;width:40px;height:40px;padding:0;border:1px solid var(--color-border);border-radius:50%;background:transparent;color:var(--color-text);cursor:pointer}
+  .site-header .mobile-navigation-links{position:absolute;right:0;top:calc(100% + 12px);width:300px;display:grid;gap:4px;padding:8px;border:1px solid var(--color-border);border-radius:12px;background:var(--color-chrome);z-index:100}
+  .site-header .atlas-actions .mobile-navigation-links a{display:flex!important;align-items:center;gap:12px;width:100%!important;height:auto!important;min-height:44px;padding:10px!important;border:0!important;border-radius:8px!important;color:var(--color-text)!important;text-decoration:none}
+}
+.site-header .atlas-actions>.language-switch{width:auto!important;min-width:38px!important;height:36px!important;padding:4px 7px!important;border-radius:8px!important}
+@media(min-width:981px) and (max-width:1100px){html[lang="en"] .site-header-search{display:flex!important}}
