@@ -1,0 +1,216 @@
+/*
+ * Polish layer: depth, motion, rhythm and type refinements applied on top of globals.css.
+ * Colors are untouched — every value resolves through the existing --color-* tokens in app/theme.css.
+ * Shadows only use --color-shadow (Kiro's widget shadow token) at reduced strength.
+ */
+:root{
+  --pv-radius-card:14px;
+  --pv-radius-media:10px;
+  --pv-radius-control:10px;
+  --pv-ease:cubic-bezier(.22,.61,.36,1);
+  --pv-shadow-rest:0 1px 2px color-mix(in srgb,var(--color-shadow) 22%,transparent);
+  --pv-shadow-hover:0 18px 36px -18px color-mix(in srgb,var(--color-shadow) 75%,transparent),0 4px 10px -4px color-mix(in srgb,var(--color-shadow) 30%,transparent);
+  --pv-shadow-float:0 10px 30px -14px color-mix(in srgb,var(--color-shadow) 60%,transparent);
+  --pv-ring:0 0 0 3px var(--color-accent-soft);
+  --pv-hover-border:color-mix(in srgb,var(--color-accent) 45%,var(--color-border));
+}
+html.dark-mode{
+  --pv-shadow-rest:0 1px 2px color-mix(in srgb,var(--color-shadow) 60%,transparent);
+  --pv-shadow-hover:0 20px 40px -18px var(--color-shadow),0 4px 12px -4px color-mix(in srgb,var(--color-shadow) 70%,transparent);
+  --pv-shadow-float:0 12px 32px -12px var(--color-shadow);
+}
+
+/* ---------- Base type & rendering ---------- */
+html{-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;text-rendering:optimizeLegibility}
+h1,h2,h3,.brand-wordmark{font-feature-settings:'palt' 1;text-wrap:balance}
+p{text-wrap:pretty}
+::selection{background:var(--color-selection)}
+:where(a,button,input,select,textarea,[tabindex]):focus-visible{outline:2px solid var(--color-focus);outline-offset:2px}
+*{scrollbar-width:thin;scrollbar-color:var(--color-border) transparent}
+
+/* Gentle entrance for every routed page. */
+@keyframes pv-rise{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+.app-shell>main{animation:pv-rise .45s var(--pv-ease) both}
+
+/* ---------- Header ---------- */
+@media(min-width:901px){
+  .site-header .site-header-inner,.docs-v3 .site-header .site-header-inner,
+  .dark-mode .site-header .site-header-inner,.dark-mode .docs-v3 .site-header .site-header-inner{
+    background:color-mix(in srgb,var(--color-chrome) 84%,transparent)!important;
+    -webkit-backdrop-filter:blur(18px) saturate(1.25);backdrop-filter:blur(18px) saturate(1.25);
+    box-shadow:var(--pv-shadow-float)!important;
+  }
+}
+.site-header nav{gap:4px!important}
+.site-header nav a,.docs-v3 .site-header nav a,.site-header nav .roadmap-nav>button{
+  height:36px!important;align-self:center;border-radius:999px!important;
+  transition:background .2s var(--pv-ease),color .2s var(--pv-ease),box-shadow .2s var(--pv-ease)!important;
+}
+.site-header nav a.is-active,.docs-v3 .site-header nav a.is-active,.site-header nav .roadmap-nav>button.is-active,
+.dark-mode .site-header nav a.is-active,.dark-mode .docs-v3 .site-header nav a.is-active,.dark-mode .site-header nav .roadmap-nav>button.is-active{
+  background:var(--color-surface)!important;box-shadow:var(--pv-shadow-rest),inset 0 0 0 1px var(--color-border-soft)!important;
+}
+.site-header nav a.is-active::after,.docs-v3 .site-header nav a.is-active::after,.site-header nav .roadmap-nav>button.is-active::after,
+.dark-mode .site-header nav a.is-active::after,.dark-mode .docs-v3 .site-header nav a.is-active::after,.dark-mode .site-header nav .roadmap-nav>button.is-active::after{display:none!important}
+.site-header .atlas-actions>a,.site-header .atlas-actions>button,.site-header .theme-toggle{transition:background .2s var(--pv-ease),border-color .2s var(--pv-ease),color .2s var(--pv-ease),transform .2s var(--pv-ease)!important}
+.site-header .atlas-actions>a:active,.site-header .atlas-actions>button:active{transform:scale(.94)}
+.site-header-search{transition:border-color .2s var(--pv-ease),box-shadow .2s var(--pv-ease)!important}
+.site-header-search:focus-within{border-color:var(--color-accent)!important;box-shadow:var(--pv-ring)!important}
+.site-header-search button{transition:background .2s var(--pv-ease),transform .2s var(--pv-ease)!important}
+.site-header-search button:hover{transform:translateX(1px)}
+.roadmap-nav-menu{border-radius:var(--pv-radius-card)!important;box-shadow:var(--pv-shadow-hover)!important;animation:pv-pop .18s var(--pv-ease) both}
+.roadmap-nav-menu a{border-radius:var(--pv-radius-control)!important;transition:background .16s var(--pv-ease)!important}
+.mobile-navigation-links{border-radius:var(--pv-radius-card)!important;box-shadow:var(--pv-shadow-hover)!important;animation:pv-pop .18s var(--pv-ease) both}
+@keyframes pv-pop{from{opacity:0;transform:translateY(-4px) scale(.98)}to{opacity:1;transform:none}}
+
+/* ---------- Section headings ---------- */
+.home-section-heading h1,.home-section-heading h2{font-size:22px!important;font-weight:700!important;letter-spacing:.01em!important;display:flex;align-items:center;gap:10px}
+.modern-section-head .home-section-heading h2::before,.modern-section-head .home-section-heading h1::before{content:'';width:4px;height:1em;border-radius:2px;background:var(--color-accent);flex:none}
+.modern-section-head>a,.roadmap-preview-actions>a,.modern-sources-head>a{
+  display:inline-flex!important;align-items:center;gap:6px;padding:7px 12px!important;border-radius:999px;
+  transition:background .2s var(--pv-ease),color .2s var(--pv-ease)!important;
+}
+.modern-section-head>a:hover,.roadmap-preview-actions>a:hover,.modern-sources-head>a:hover{background:var(--color-hover);color:var(--color-accent)!important;text-decoration:none!important}
+.modern-section-head .home-section-heading h2,.modern-section-head>a,.roadmap-preview-actions>a,.roadmap-login-required{white-space:nowrap}
+@media(max-width:560px){
+  .home-section-heading h1,.home-section-heading h2{font-size:20px!important}
+  .modern-section-head>a,.roadmap-preview-actions>a{padding:6px 8px!important}
+  .modern-section-head{flex-wrap:wrap!important;row-gap:6px!important}
+  .modern-section-head>.home-section-heading{min-width:max-content!important;flex:1 1 auto}
+  .roadmap-preview-actions,.modern-section-head>a{margin-left:auto!important}
+}
+.modern-section-head>a svg,.roadmap-preview-actions>a svg,.modern-sources-head>a svg{transition:transform .2s var(--pv-ease)}
+.modern-section-head>a:hover svg,.roadmap-preview-actions>a:hover svg,.modern-sources-head>a:hover svg{transform:translateX(3px)}
+
+/* ---------- Shared card behaviour ---------- */
+.home-elevated-card,.glossary-card,.docs-v3 .docs-feed-row,.bookmark-docs-feed .docs-feed-row,.roadmap-course,.roadmap-guide{
+  transition:transform .28s var(--pv-ease),box-shadow .28s var(--pv-ease),border-color .28s var(--pv-ease),background .28s var(--pv-ease)!important;
+}
+.home-spotlight-card-shell,.roadmap-preview-card,.glossary-preview-term,.glossary-card,.docs-v3 .docs-feed-row,.bookmark-docs-feed .docs-feed-row{
+  border-radius:var(--pv-radius-card)!important;box-shadow:var(--pv-shadow-rest)!important;
+}
+.roadmap-preview-card:hover,.glossary-preview-term:hover,.glossary-card:hover,
+.docs-v3 .docs-feed-row:hover,.bookmark-docs-feed .docs-feed-row:hover,
+.dark-mode .roadmap-preview-card:hover,.dark-mode .glossary-preview-term:hover,.dark-mode .glossary-card:hover,
+.dark-mode .docs-v3 .docs-feed-row:hover,.dark-mode .bookmark-docs-feed .docs-feed-row:hover{
+  transform:translateY(-3px)!important;box-shadow:var(--pv-shadow-hover)!important;border-color:var(--pv-hover-border)!important;
+}
+/* Feed rows keep their surface on hover instead of the flat tint. */
+.docs-v3 .docs-feed-row:hover,.bookmark-docs-feed .docs-feed-row:hover,
+.dark-mode .docs-v3 .docs-feed-row:hover,.dark-mode .bookmark-docs-feed .docs-feed-row:hover{background:var(--color-surface)!important}
+
+/* Media zoom inside interactive cards. */
+.home-spotlight-card>img,.modern-pick-image img,.docs-feed-row .article-cover img,.modern-pick-image>*{transition:transform .6s var(--pv-ease)!important}
+.home-spotlight-card-shell:hover .home-spotlight-card>img,
+.modern-pick-row:hover .modern-pick-image img,.modern-pick-row:hover .modern-pick-image>*,
+.docs-feed-row:hover .article-cover img{transform:scale(1.045)!important}
+.article-cover,.modern-pick-image{overflow:hidden!important;border-radius:var(--pv-radius-media)!important;isolation:isolate}
+
+/* ---------- Home: spotlight rail ---------- */
+.home-spotlight-card-shell{transition:transform .32s var(--pv-ease),box-shadow .32s var(--pv-ease)!important}
+.home-spotlight-card-shell:hover,.dark-mode .home-spotlight-card-shell:hover{transform:translateY(-4px)!important;box-shadow:var(--pv-shadow-hover)!important}
+.home-spotlight-card{border-radius:calc(var(--pv-radius-card) - 4px)!important;overflow:hidden}
+.home-spotlight-card h2{font-size:21px!important;line-height:1.4!important;letter-spacing:.01em}
+.modern-home .home-spotlight-card small{
+  display:inline-block;padding:4px 9px;border-radius:999px;font-size:10px!important;letter-spacing:.06em;
+  background:color-mix(in srgb,var(--color-on-artwork) 16%,transparent);
+  -webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px);
+}
+.modern-home .home-spotlight-card b{display:inline-flex;align-items:center;gap:6px}
+.modern-home .home-spotlight-card b svg{transition:transform .2s var(--pv-ease)}
+.home-spotlight-card-shell:hover .home-spotlight-card b svg{transform:translateX(3px)}
+
+/* ---------- Home: featured rows & topics ---------- */
+.modern-pick-row,.dark-mode .modern-pick-row{
+  margin-left:-14px!important;margin-right:-14px!important;padding-left:14px!important;padding-right:14px!important;
+  border-radius:var(--pv-radius-card)!important;
+}
+.modern-pick-row:hover,.dark-mode .modern-pick-row:hover{background:var(--color-surface)!important;box-shadow:var(--pv-shadow-hover)!important;transform:translateY(-2px)!important;border-color:transparent!important}
+.modern-pick-row:hover+.modern-pick-row{border-top-color:transparent!important}
+/* Dark mode paints rows as one surface panel: keep it aligned and round only its outer corners. */
+html.dark-mode .modern-pick-row{margin-left:0!important;margin-right:0!important;border-radius:0!important}
+html.dark-mode .modern-pick-row:first-child{border-radius:var(--pv-radius-card) var(--pv-radius-card) 0 0!important}
+html.dark-mode .modern-pick-row:last-child{border-radius:0 0 var(--pv-radius-card) var(--pv-radius-card)!important}
+html.dark-mode .modern-pick-row:hover{border-radius:var(--pv-radius-card)!important;background:var(--color-selected)!important}
+.modern-pick-row h3{font-weight:700!important;transition:color .2s var(--pv-ease)}
+.modern-pick-row:hover h3{color:var(--color-accent)!important}
+.modern-pick-row>div>p,.modern-pick-row small{font-size:12px!important}
+
+.modern-topics-list>a{
+  margin:0 -12px;padding-left:12px!important;padding-right:12px!important;border-radius:var(--pv-radius-control);
+  transition:background .2s var(--pv-ease)!important;
+}
+.modern-topics-list>a:hover{background:var(--color-surface)!important}
+html.dark-mode .modern-topics-list>a{margin:0;border-radius:0}
+html.dark-mode .modern-topics-list>a:hover{background:var(--color-selected)!important}
+.modern-topics-list>a strong{transition:color .2s var(--pv-ease)}
+.modern-topics-list>a:hover strong{color:var(--color-accent)!important;text-decoration:none!important}
+.modern-topics-list>a:hover,.modern-topics-list>a:hover *{text-decoration:none!important}
+.modern-topics-list>a>svg{transition:transform .2s var(--pv-ease),color .2s var(--pv-ease)}
+.modern-topics-list>a:hover>svg{transform:translateX(4px);color:var(--color-accent)}
+.modern-topics-list small{font-size:12px!important}
+
+/* ---------- Roadmap preview ---------- */
+.roadmap-preview-card h3{font-size:17px!important;font-weight:700!important}
+.roadmap-preview-card>svg{transition:transform .2s var(--pv-ease),color .2s var(--pv-ease)}
+.roadmap-preview-card:hover>svg{transform:translateX(4px);color:var(--color-accent)}
+.roadmap-progress,.dark-mode .roadmap-progress{height:6px!important;border:0!important;border-radius:999px!important;overflow:hidden}
+.roadmap-progress i{border-radius:999px!important;transition:width .6s var(--pv-ease)}
+.roadmap-progress-caption small{font-size:11px!important}
+.roadmap-login-required{border-radius:999px!important;font-size:11px!important}
+
+/* ---------- Glossary ---------- */
+.glossary-preview-term h3,.glossary-card h2{font-size:21px!important;font-weight:700!important}
+.glossary-preview-term p,.glossary-card p{font-size:13px!important;line-height:1.75!important}
+.glossary-card-top>span,.glossary-preview-term-meta>span{border-radius:999px!important;padding:3px 9px!important;font-size:10px!important}
+.glossary-preview-term-link svg,.glossary-card-footer>a svg{transition:transform .2s var(--pv-ease)}
+.glossary-preview-term:hover .glossary-preview-term-link svg,.glossary-card-footer>a:hover svg{transform:translateX(3px)}
+.glossary-search{border-radius:999px!important;transition:border-color .2s var(--pv-ease),box-shadow .2s var(--pv-ease)!important}
+.glossary-search:focus-within{border-color:var(--color-accent)!important;box-shadow:var(--pv-ring)!important}
+.glossary-categories button{font-size:12px!important;padding:8px 14px!important;transition:background .2s var(--pv-ease),border-color .2s var(--pv-ease),color .2s var(--pv-ease),transform .2s var(--pv-ease)!important}
+.glossary-categories button:active{transform:scale(.96)}
+.glossary-related-tags span{border-radius:999px!important}
+/* Equal-height cards per row; the footer sits on the bottom edge. */
+.glossary-grid{align-items:stretch!important}
+.glossary-card .glossary-card-footer{margin-top:auto!important;padding-top:16px}
+.glossary-preview-term-link{font-size:12px!important}
+
+/* ---------- Explore ---------- */
+.docs-feed-row .feed-copy h2{font-weight:700!important;transition:color .2s var(--pv-ease)}
+.docs-feed-row:hover .feed-copy h2{color:var(--color-accent)!important}
+.docs-feed-row .feed-tags .tag,.docs-feed-row .feed-tags button,.docs-feed-row .content-kind{border-radius:999px!important}
+.docs-feed-row .feed-meta{font-size:11px!important}
+.feed-toolbar{border-radius:var(--pv-radius-card)!important;box-shadow:var(--pv-shadow-rest)!important}
+.feed-filter-button,.docs-pagination button{transition:background .2s var(--pv-ease),border-color .2s var(--pv-ease),color .2s var(--pv-ease)!important}
+.feed-filter-button:hover,.docs-pagination button:not(:disabled):hover{border-color:var(--color-accent)!important;color:var(--color-accent)!important}
+.docs-index-search{border-radius:var(--pv-radius-control)!important;transition:border-color .2s var(--pv-ease),box-shadow .2s var(--pv-ease)!important}
+.docs-index-search:focus-within{border-color:var(--color-accent)!important;box-shadow:var(--pv-ring)!important}
+.docs-index-group label,.docs-index-group button{border-radius:8px;transition:background .16s var(--pv-ease),color .16s var(--pv-ease)}
+.docs-index-group label:hover,.docs-index-group button:hover{background:var(--color-hover)}
+.bookmark-action{transition:background .2s var(--pv-ease),color .2s var(--pv-ease),transform .2s var(--pv-ease)!important}
+.bookmark-action:active{transform:scale(.9)}
+.filter-dialog{animation:pv-slide .26s var(--pv-ease) both}
+.filter-dialog-backdrop{-webkit-backdrop-filter:blur(4px);backdrop-filter:blur(4px);animation:pv-fade .2s ease both}
+@keyframes pv-slide{from{transform:translateX(24px);opacity:0}to{transform:none;opacity:1}}
+@keyframes pv-fade{from{opacity:0}to{opacity:1}}
+
+/* ---------- Sources ---------- */
+.modern-source-row:hover,.dark-mode .modern-source-row:hover{background:var(--color-hover)!important}
+.modern-source-logo{border-radius:12px!important;overflow:hidden;box-shadow:var(--pv-shadow-rest)}
+.modern-source-row{transition:background .2s var(--pv-ease)!important}
+.modern-source-row h2{font-weight:700!important}
+.modern-source-link svg{transition:transform .2s var(--pv-ease)}
+.modern-source-row:hover .modern-source-link svg{transform:translateX(3px)}
+
+/* ---------- Article modal ---------- */
+.article-modal{border-radius:18px!important;box-shadow:var(--pv-shadow-hover)!important;animation:pv-pop .24s var(--pv-ease) both}
+.article-modal-backdrop{-webkit-backdrop-filter:blur(6px);backdrop-filter:blur(6px);animation:pv-fade .2s ease both}
+
+/* ---------- Buttons ---------- */
+.article-modal-cta,.docs-empty button,.bookmark-empty a,.glossary-empty button{transition:background .2s var(--pv-ease),transform .2s var(--pv-ease),box-shadow .2s var(--pv-ease)!important}
+.article-modal-cta:hover,.docs-empty button:hover,.bookmark-empty a:hover,.glossary-empty button:hover{transform:translateY(-1px);box-shadow:var(--pv-shadow-float)}
+.article-modal-cta:active,.docs-empty button:active,.bookmark-empty a:active,.glossary-empty button:active{transform:scale(.98)}
+
+@media(prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important}
+}

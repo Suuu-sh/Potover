@@ -10,6 +10,7 @@ import {UserPreferencesProvider} from '@/lib/user-preferences';
 import {adsenseClient} from '@/lib/adsense-config';
 import '@/app/theme.css';
 import '@/app/globals.css';
+import '@/app/polish.css';
 export function RootLayout({children}:{children:React.ReactNode}){
   return <html lang="ja" suppressHydrationWarning>
     {adsenseClient?<head><script async src={`https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=${adsenseClient}`} crossOrigin="anonymous"/></head>:null}
