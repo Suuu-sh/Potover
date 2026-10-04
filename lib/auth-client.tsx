@@ -4,12 +4,13 @@ import {useI18n} from '@/lib/i18n-client';
 import {authRequest} from './auth-request';
 import {restoreSession} from './auth-session';
 import {migrateLegacyStorage} from './legacy-storage-migration';
+import {LOCAL_GUEST_TOKEN,LOCAL_GUEST_USER,localGuestEnabled} from './local-guest';
 import {SESSION_TOKEN_KEY} from './user-api';
 
 import {createContext,useCallback,useContext,useEffect,useMemo,useRef,useState} from 'react';
 
 type User={id:string;email:string};
-type AuthContextValue={user:User|null;loading:boolean;login:(email:string,password:string)=>Promise<void>;register:(email:string,password:string)=>Promise<void>;changePassword:(currentPassword:string,newPassword:string)=>Promise<void>;deleteAccount:(password:string)=>Promise<void>;logout:()=>Promise<void>};
+type AuthContextValue={user:User|null;loading:boolean;login:(email:string,password:string)=>Promise<void>;register:(email:string,password:string)=>Promise<void>;changePassword:(currentPassword:string,newPassword:string)=>Promise<void>;deleteAccount:(password:string)=>Promise<void>;logout:()=>Promise<void>;loginAsGuest:()=>void};
 
 const API_URL=process.env.NEXT_PUBLIC_POTOVER_API_URL||'https://potover-api.suuu-sh.workers.dev';
 const AuthContext=createContext<AuthContextValue|null>(null);
@@ -57,6 +58,13 @@ export function AuthProvider({children}:{children:React.ReactNode}){
       if(attempt===sessionAttempt.current){setUser(result.user);setSessionError(null)}
     }finally{if(attempt===sessionAttempt.current)setLoading(false)}
   },[]);
+  // Local development only: signs in without the auth worker (see lib/local-guest.ts).
+  const loginAsGuest=useCallback(()=>{
+    if(!localGuestEnabled)throw new Error('ゲストはローカル開発でのみ利用できます。');
+    sessionAttempt.current++;
+    localStorage.setItem(SESSION_TOKEN_KEY,LOCAL_GUEST_TOKEN);
+    setUser(LOCAL_GUEST_USER);setSessionError(null);setLoading(false);
+  },[]);
   const login=useCallback((email:string,password:string)=>authenticate('/api/auth/login',email,password),[authenticate]);
   const register=useCallback((email:string,password:string)=>authenticate('/api/auth/register',email,password),[authenticate]);
   const changePassword=useCallback(async(currentPassword:string,newPassword:string)=>{
@@ -74,7 +82,7 @@ export function AuthProvider({children}:{children:React.ReactNode}){
     setUser(null);
   },[]);
   const logout=useCallback(async()=>{sessionAttempt.current++;try{await request('/api/auth/logout',{method:'POST'})}finally{localStorage.removeItem(SESSION_TOKEN_KEY);setSessionError(null);setUser(null);setLoading(false)}},[]);
-  const value=useMemo(()=>({user,loading,login,register,changePassword,deleteAccount,logout}),[user,loading,login,register,changePassword,deleteAccount,logout]);
+  const value=useMemo(()=>({user,loading,login,register,changePassword,deleteAccount,logout,loginAsGuest}),[user,loading,login,register,changePassword,deleteAccount,logout,loginAsGuest]);
   return <AuthContext.Provider value={value}>
     {sessionError&&<div role="alert" style={{position:'relative',top:64,padding:'12px 20px',background:'var(--color-error-soft)',color:'var(--color-text)',display:'flex',gap:12,alignItems:'center',flexWrap:'wrap'}}>
       <span>{uiText(sessionError)}</span>

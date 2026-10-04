@@ -3,10 +3,11 @@
 import {usePathname} from '@/lib/locale-router';
 import {SiteHeader} from './SiteHeader';
 import {SiteFooter} from './SiteFooter';
+import {MobileTabBar} from './MobileTabBar';
 import {SourceFollowProvider} from '@/lib/source-follows';
 
 export function SiteChrome({children}: {children: React.ReactNode}) {
   const pathname = usePathname();
 
-  return <SourceFollowProvider><SiteHeader/><div className="app-shell">{children}</div>{pathname.replace(/\/$/, '') !== '/login' && <SiteFooter/>}</SourceFollowProvider>;
+  return <SourceFollowProvider><SiteHeader/><div className="app-shell">{children}</div>{pathname.replace(/\/$/, '') !== '/login' && <SiteFooter/>}<MobileTabBar/></SourceFollowProvider>;
 }
