@@ -327,5 +327,7 @@
   "ゲストではパスワードを変更できません。": "Guests cannot change the password.",
   "ローカルのゲストでは利用できない操作です。": "This action is not available for the local guest.",
   "ゲストはローカル開発でのみ利用できます。": "Guest access is available only in local development.",
-  "ローカルの認証APIに接続できません。npm run dev:all で起動するか、「ゲストで試す」を使ってください。": "Cannot reach the local auth API. Start it with npm run dev:all, or use \"Try as guest\"."
+  "ローカルの認証APIに接続できません。npm run dev:all で起動するか、「ゲストで試す」を使ってください。": "Cannot reach the local auth API. Start it with npm run dev:all, or use \"Try as guest\".",
+  "セキュリティ": "Security",
+  "パスワードの変更とアカウントの削除ができます。": "Change your password or delete your account."
 }

@@ -246,3 +246,45 @@ html.dark-mode .modern-topics-list>a:hover{background:var(--color-selected)!impo
   .lesson-list>a{grid-template-columns:20px 26px 64px minmax(0,1fr) 14px!important;gap:8px!important}
   .lesson-list>a>span.lesson-thumb{width:64px!important}
 }
+
+/* ---------- Account (simple, one screen per section) ---------- */
+.account-simple{align-items:start}
+.account-simple .account-nav{padding:10px!important}
+.account-simple .account-nav nav{display:grid;gap:2px}
+.account-simple .account-nav nav button{min-height:44px!important;padding:0 14px!important;border-radius:var(--pv-radius-control)!important;font-size:14px!important}
+.account-simple .account-panel{padding:32px 36px!important}
+.account-simple .account-page-heading{margin-bottom:24px!important}
+.account-simple .account-page-heading h1{font-size:28px!important;margin:0 0 6px!important}
+.account-simple .account-page-heading p{margin:0!important}
+.account-simple .account-profile-card{padding:18px 20px!important;border-radius:var(--pv-radius-card)!important}
+.account-simple .account-stat-grid{margin-top:14px!important;gap:12px!important}
+.account-simple .account-stat{padding:16px!important;border-radius:var(--pv-radius-card)!important}
+.account-simple .account-stat strong{font-size:26px!important}
+.account-choices{display:grid;gap:8px;max-width:420px}
+.account-choices button{display:flex;align-items:center;justify-content:space-between;min-height:52px;padding:0 18px;border:1px solid var(--color-border);border-radius:var(--pv-radius-control);background:var(--color-surface);color:var(--color-text);font:inherit;font-size:15px;font-weight:600;cursor:pointer;transition:border-color .2s var(--pv-ease),background .2s var(--pv-ease),color .2s var(--pv-ease)}
+.account-choices button:hover{border-color:var(--pv-hover-border)}
+.account-choices button[aria-checked=true]{border-color:var(--color-accent);background:var(--color-accent-soft);color:var(--color-accent)}
+/* Sources: compact two-column list without descriptions so it fits one screen. */
+.account-simple .account-source-directory .modern-sources-head{display:none!important}
+.account-simple .account-source-directory .modern-source-list{display:grid!important;grid-template-columns:repeat(2,minmax(0,1fr))!important;gap:8px!important;border:0!important}
+.account-simple .account-source-directory .modern-source-row{display:grid!important;grid-template-columns:36px minmax(0,1fr)!important;align-items:center!important;gap:12px!important;min-height:0!important;padding:10px 12px!important;border:1px solid var(--color-border-soft)!important;border-radius:var(--pv-radius-control)!important}
+.account-simple .account-source-directory .modern-source-logo{width:36px!important;height:36px!important;font-size:11px!important}
+.account-simple .account-source-directory .modern-source-copy{display:grid!important;grid-template-columns:minmax(0,1fr) auto;align-items:center;gap:0 10px}
+.account-simple .account-source-directory .modern-source-copy h2{grid-column:1;grid-row:1;margin:0!important;font-size:15px!important;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.account-simple .account-source-directory .modern-source-copy>p:first-child{grid-column:2;grid-row:1/3;margin:0!important;display:flex;align-items:center;gap:6px}
+.account-simple .account-source-directory .modern-source-copy>p:first-child>span,.account-simple .account-source-directory .modern-source-copy>p:first-child>a{display:none!important}
+.account-simple .account-source-directory .modern-source-copy>p:nth-of-type(2),.account-simple .account-source-directory .modern-source-link{display:none!important}
+.account-simple .account-source-directory .modern-source-copy small{grid-column:1;grid-row:2;font-size:12px!important}
+/* Security: password and deletion side by side. */
+.account-simple .account-security-grid{display:grid!important;grid-template-columns:repeat(2,minmax(0,1fr))!important;gap:14px!important;margin:0!important}
+.account-simple .account-security-card{padding:20px!important;border-radius:var(--pv-radius-card)!important}
+.account-simple .account-security-form{gap:10px!important}
+@media(max-width:900px){
+  .account-simple .account-panel{padding:22px 18px!important}
+  .account-simple .account-source-directory .modern-source-list,.account-simple .account-security-grid{grid-template-columns:1fr!important}
+}
+@media(max-width:900px){
+  .account-simple .account-nav{padding:6px!important;overflow-x:auto;scrollbar-width:none}
+  .account-simple .account-nav nav{display:flex!important;flex-wrap:nowrap!important;gap:4px!important}
+  .account-simple .account-nav nav button{flex:none!important;flex-direction:row!important;gap:6px!important;width:auto!important;min-height:38px!important;padding:0 12px!important;white-space:nowrap!important;font-size:13px!important;border-radius:999px!important}
+}
