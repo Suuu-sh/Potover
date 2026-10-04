@@ -26,17 +26,17 @@ function isSafeLocalPath(value:string):boolean{
     return true;
   }catch{return false;}
 }
-/** Locale changes affect internal pages only, never assets, APIs or source URLs. */
+/** Both interface languages use the same URLs; normalize legacy /en links only. */
 export function localePath(value:string,locale:Locale):string{return localizePath(value,locale,0);}
 function localizePath(value:string,locale:Locale,depth:number):string{
   // Explicit external links are preserved, but internal inputs must never become external.
   if(!value.startsWith('/')||value.startsWith('//'))return value;
-  const home=locale==='en'?'/en':'/';
+  const home='/';
   if(!isSafeLocalPath(value))return home;
   const url=new URL(value,PUBLIC_SITE_URL);
   if(/\.[a-z0-9]+$/i.test(url.pathname)||url.pathname.startsWith('/api/'))return value;
   const path=stripLocale(url.pathname);
-  url.pathname=locale==='en'?`/en${path==='/'?'':path}`:path;
+  url.pathname=path;
   const next=url.searchParams.get('next');
   if(depth<2&&next&&isSafeLocalPath(next))url.searchParams.set('next',localizePath(next,locale,depth+1));
   const result=`${url.pathname}${url.search}${url.hash}`;
@@ -96,5 +96,5 @@ export function pageMetadata(path:string,locale:Locale,articleTitle?:string):Met
   const normalized=canonicalPath(path);
   const title=articleTitle?`${articleTitle} — Potover`:(pageTitles[normalized]||pageTitles['/'])[locale==='en'?1:0];
   const description=locale==='en'?'Discover poker articles and videos across multiple sources. Search by topic and content language. Original content stays on the publisher’s website.':'良質なポーカー記事を、テーマ・言語から横断検索。本文・動画は提供元のサイトでご覧ください。';
-  return {title,description,alternates:{canonical:pageUrl(path,locale),languages:{ja:pageUrl(path,'ja'),en:pageUrl(path,'en'),'x-default':pageUrl(path,'ja')}},openGraph:{title,description,url:pageUrl(path,locale),locale:locale==='en'?'en_US':'ja_JP',alternateLocale:locale==='en'?'ja_JP':'en_US',siteName:'Potover',type:'website'},...(['/login','/profile','/bookmarks'].includes(normalized)?{robots:{index:false,follow:true}}:{})};
+  return {title,description,alternates:{canonical:pageUrl(path,locale)},openGraph:{title,description,url:pageUrl(path,locale),locale:locale==='en'?'en_US':'ja_JP',siteName:'Potover',type:'website'},...(['/login','/profile','/bookmarks'].includes(normalized)?{robots:{index:false,follow:true}}:{})};
 }

@@ -5,29 +5,29 @@ import {contentQueryTerms,matchesFilterSearch} from './content-search';
 import {glossaryTerms} from './glossary';
 import {roadmapSummaries} from './roadmap-summary';
 
-describe('explicit interface locales',()=>{
+describe('shared URLs for interface languages',()=>{
   it('recognizes only the complete English path prefix',()=>{
     expect(localeFromPath('/en/explore/')).toBe('en');expect(localeFromPath('/english')).toBe('ja');
     expect(stripLocale('/en')).toBe('/');expect(stripLocale('/en/explore/')).toBe('/explore/');
   });
   it('preserves query, filters and fragment when switching locales',()=>{
     const original='/explore?filters=English,Preflop&q=3-bet#topics';const english=localePath(original,'en');
-    expect(english.startsWith('/en/explore?')).toBe(true);const parsed=new URL(english,'https://potover.pages.dev');
+    expect(english.startsWith('/explore?')).toBe(true);const parsed=new URL(english,'https://potover.pages.dev');
     expect(parsed.searchParams.get('filters')).toBe('English,Preflop');expect(parsed.searchParams.get('q')).toBe('3-bet');expect(parsed.hash).toBe('#topics');
     expect(localePath(english,'ja')).toBe(localePath(original,'ja'));expect(localePath(english,'en')).toBe(english);
   });
   it('keeps the intended page and locale through sign-in',()=>{
     const path=localePath('/login?next='+encodeURIComponent('/roadmap#cash')+'&reason=bookmark','en');
-    const parsed=new URL(path,'https://potover.pages.dev');expect(parsed.pathname).toBe('/en/login');expect(parsed.searchParams.get('next')).toBe('/en/roadmap#cash');
-    expect(parsed.searchParams.get('reason')).toBe('bookmark');expect(safeReturnPath('/explore?q=ICM','en')).toBe('/en/explore?q=ICM');
+    const parsed=new URL(path,'https://potover.pages.dev');expect(parsed.pathname).toBe('/login');expect(parsed.searchParams.get('next')).toBe('/roadmap#cash');
+    expect(parsed.searchParams.get('reason')).toBe('bookmark');expect(safeReturnPath('/explore?q=ICM','en')).toBe('/explore?q=ICM');
   });
   it.each([null,'https://example.com','//example.com','/\\example.com','/\n/evil','/%2f%2fevil','/%5cevil','/%0a/evil','/%'])('rejects unsafe login return target %s',value=>{
-    expect(safeReturnPath(value,'en')).toBe('/en/profile');
+    expect(safeReturnPath(value,'en')).toBe('/profile');
   });
   it.each(['/en//example.com/path','/a/..//example.com/path','/en/..//example.com/path','/en/%2fexample.com/path','/a/%2e%2e//example.com/path','/en/a/..//example.com/path'])('rejects a normalized or localized protocol-relative return target %s',value=>{
     for(const locale of ['ja','en'] as const){
       const result=safeReturnPath(value,locale);
-      expect(result).toBe(locale==='en'?'/en/profile':'/profile');
+      expect(result).toBe('/profile');
       expect(result.startsWith('//')).toBe(false);
       expect(new URL(result,'https://potover.pages.dev').origin).toBe('https://potover.pages.dev');
       expect(new URL(localePath(result,locale),'https://potover.pages.dev').origin).toBe('https://potover.pages.dev');
@@ -43,7 +43,7 @@ describe('explicit interface locales',()=>{
   it('preserves legitimate normalized local return paths and their query/fragment',()=>{
     expect(safeReturnPath('/articles/../explore?q=ICM&filters=English#topics','ja')).toBe('/explore?q=ICM&filters=English#topics');
     expect(safeReturnPath('/en/explore?q=ICM&filters=English#topics','ja')).toBe('/explore?q=ICM&filters=English#topics');
-    expect(safeReturnPath('/articles/../explore?q=ICM&filters=English#topics','en')).toBe('/en/explore?q=ICM&filters=English#topics');
+    expect(safeReturnPath('/articles/../explore?q=ICM&filters=English#topics','en')).toBe('/explore?q=ICM&filters=English#topics');
   });
   it('bounds work on nested sign-in return queries',()=>{let destination='/profile';for(let index=0;index<80;index++)destination='/login?next='+encodeURIComponent(destination);expect(()=>localePath(destination,'en')).not.toThrow();});
   it('does not prefix source links, assets, APIs, anchors, or emails',()=>{
@@ -60,20 +60,20 @@ describe('explicit interface locales',()=>{
 });
 
 describe('localized SEO and route coverage',()=>{
-  it('has reciprocal canonicals, hreflang and x-default',()=>{
-    for(const locale of ['ja','en'] as const){const metadata=pageMetadata('/sources',locale);expect(metadata.alternates?.canonical).toBe(pageUrl('/sources',locale));expect(metadata.alternates?.languages).toEqual({ja:'https://potover.pages.dev/sources/',en:'https://potover.pages.dev/en/sources/','x-default':'https://potover.pages.dev/sources/'});}
+  it('uses one canonical URL with no artificial language alternates',()=>{
+    for(const locale of ['ja','en'] as const){const metadata=pageMetadata('/sources',locale);expect(metadata.alternates?.canonical).toBe(pageUrl('/sources',locale));expect(metadata.alternates?.canonical).toBe('https://potover.pages.dev/sources/');expect(metadata.alternates?.languages).toBeUndefined();}
   });
   it('canonicalizes old home/docs aliases without redirecting Japanese users',()=>{
-    expect(canonicalPath('/home/')).toBe('/');expect(pageUrl('/docs','en')).toBe('https://potover.pages.dev/en/explore/');
+    expect(canonicalPath('/home/')).toBe('/');expect(pageUrl('/docs','en')).toBe('https://potover.pages.dev/explore/');
   });
   it('keeps original titles in article metadata',()=>{
     expect(pageMetadata('/articles/example','en','元の記事タイトル').title).toBe('元の記事タイトル — Potover');
   });
-  it('exports equivalent routes in both locales',()=>{
+  it('exports one shared route set and legacy redirects',()=>{
     for(const route of ['','home/','docs/','explore/','articles/','articles/[slug]/','sources/','glossary/','roadmap/','bookmarks/','profile/','login/','terms/','privacy/','contact/']){
-      expect(existsSync(`app/(ja)/${route}page.tsx`)).toBe(true);expect(existsSync(`app/(english)/en/${route}page.tsx`)).toBe(true);
+      expect(existsSync(`app/(ja)/${route}page.tsx`)).toBe(true);expect(existsSync(`app/(english)/en/${route}page.tsx`)).toBe(false);
     }
-    expect(readFileSync('app/(english)/en/layout.tsx','utf8')).toContain('locale="en"');expect(readFileSync('app/(ja)/layout.tsx','utf8')).toContain('locale="ja"');
+    expect(readFileSync('app/(ja)/layout.tsx','utf8')).toContain('<RootLayout>');expect(readFileSync('public/_redirects','utf8')).toContain('/en/articles/:slug /articles/:slug/ 301');
   });
 });
 
@@ -87,7 +87,7 @@ describe('English discovery and owned learning content',()=>{
     for(const course of roadmapSummaries)for(const copy of [course.title,course.description,course.navDescription])expect(englishTranslations[copy]).toBeTruthy();
     expect(glossaryTerms[0].term).toBe('エクイティ');
   });
-  it('distinguishes preferred content language from the interface route',()=>{
+  it('distinguishes preferred content language from the interface choice',()=>{
     expect(translate('コンテンツの表示言語','en')).toBe('Preferred content language');
     const preference=readFileSync('lib/use-preferred-language.ts','utf8');expect(preference).toContain("!user&&locale==='en'?'English':language");
   });
