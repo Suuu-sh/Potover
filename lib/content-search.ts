@@ -9,3 +9,11 @@ const topics=[
 ] as const;
 export function contentQueryTerms(query:string):readonly string[]{const normalized=query.trim().toLowerCase();return topics.find(([keys])=>(keys as readonly string[]).includes(normalized))?.[1]||[normalized];}
 export function matchesFilterSearch(value:string,query:string,locale:Locale){return `${value} ${translate(value,locale)}`.toLowerCase().includes(query.trim().toLowerCase());}
+
+export const CASH_GAME_FILTER='cash-game';
+/** Keep old saved/URL values working while both filter controls use one tag. */
+export function canonicalContentFilter(value:string):string{
+  return ['cash game','cash-game','キャッシュ'].includes(value.trim().toLowerCase())?CASH_GAME_FILTER:value;
+}
+export function normalizeContentFilters(values:string[]):string[]{return Array.from(new Set(values.map(canonicalContentFilter)));}
+export function matchesContentTopic(text:string,filter:string):boolean{return text.toLowerCase().includes(canonicalContentFilter(filter).toLowerCase());}

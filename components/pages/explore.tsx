@@ -6,7 +6,7 @@ import {createPortal} from 'react-dom';
 import {BookOpen,Check,ChevronLeft,ChevronRight,Circle,RotateCcw,Search,SlidersHorizontal,X} from 'lucide-react';
 
 import {ArticleFeedRow} from '@/components/ArticleFeedRow';
-import {contentQueryTerms} from '@/lib/content-search';
+import {CASH_GAME_FILTER,canonicalContentFilter,contentQueryTerms,matchesContentTopic,normalizeContentFilters} from '@/lib/content-search';
 import {contentLabel} from '@/lib/content-labels';
 import {articles as initialArticles,Article,sources} from '@/lib/data';
 import {useLearningHistory} from '@/lib/learning-history';
@@ -17,11 +17,11 @@ import {usePreferredLanguage} from '@/lib/use-preferred-language';
 const sourceNames=sources.map(source=>source.name);
 const READ_FILTER='学習済み';
 const CONTENT_FILTERS=['記事','動画'] as const;
-const QUICK_FILTERS=[['Preflop','プリフロップ'],['Flop','フロップ'],['GTO','GTO'],['cash-game','キャッシュ'],['MTT','MTT']] as const;
+const QUICK_FILTERS=[['Preflop','プリフロップ'],['Flop','フロップ'],['GTO','GTO'],[CASH_GAME_FILTER,'キャッシュ'],['MTT','MTT']] as const;
 const PAGE_SIZE=20;
 const groups=[
   {title:'ストリート',items:['Preflop','Flop','Turn','River']},
-  {title:'戦略・テーマ',items:['GTO','Bluff','ICM','Exploit','Cash Game','MTT']},
+  {title:'戦略・テーマ',items:['GTO','Bluff','ICM','Exploit',CASH_GAME_FILTER,'MTT']},
   {title:'言語',items:['Japanese','English']},
   {title:'種類',items:[...CONTENT_FILTERS]},
   {title:'ソース',items:sourceNames},
@@ -54,8 +54,8 @@ export default function Explore(){
     const urlQuery=params.get('q');
     const urlFilters=params.get('filters');
     if(urlQuery!==null)setQuery(urlQuery);else setQuery(user?docsQuery:'');
-    if(urlFilters!==null)setSelected(urlFilters?urlFilters.split(',').filter(value=>value&&(![READ_FILTER].includes(value)||Boolean(user))):[]);
-    else setSelected(user?docsFilters:[]);
+    if(urlFilters!==null)setSelected(normalizeContentFilters(urlFilters?urlFilters.split(',').filter(value=>value&&(![READ_FILTER].includes(value)||Boolean(user))):[]));
+    else setSelected(normalizeContentFilters(user?docsFilters:[]));
     setFiltersHydrated(true);
   },[authLoading,docsFilters,docsQuery,preferencesLoading,user]);
   useEffect(()=>{
@@ -68,7 +68,7 @@ export default function Explore(){
     history.replaceState(null,'',url);
     return()=>{if(saveTimer!==undefined)window.clearTimeout(saveTimer)};
   },[filtersHydrated,preferencesLoading,query,selected,setDocsFilters,user]);
-  const toggle=(value:string)=>setSelected(old=>old.includes(value)?old.filter(x=>x!==value):[...old,value]);
+  const toggle=(value:string)=>{const canonical=canonicalContentFilter(value);setSelected(old=>old.includes(canonical)?old.filter(x=>x!==canonical):[...old,canonical])};
   const reset=()=>{setSelected([]);setQuery('');setIndexQuery('');setFilterDialogQuery('');const url=new URL(location.href);url.searchParams.delete('q');url.searchParams.delete('filters');history.replaceState(null,'',url)};
   const results=useMemo(()=>{
     const filtered=articles.filter(article=>{
@@ -80,7 +80,7 @@ export default function Explore(){
       const contentFilters=selected.filter(x=>CONTENT_FILTERS.includes(x as typeof CONTENT_FILTERS[number]));
       const readOnly=selected.includes(READ_FILTER);
       const topics=selected.filter(x=>x!==READ_FILTER&&!language.includes(x)&&!sourceFilters.includes(x)&&!contentFilters.includes(x as typeof CONTENT_FILTERS[number]));
-      return (!normalizedQuery||queryTerms.some(term=>text.includes(term)))&&(!language.length||language.includes(article.language))&&(!sourceFilters.length||sourceFilters.includes(article.source))&&(!contentFilters.length||contentFilters.includes(article.contentType==='video'?'動画':'記事'))&&(!readOnly||readSlugs.has(article.slug))&&(!topics.length||topics.some(x=>text.includes(x.toLowerCase())));
+      return (!normalizedQuery||queryTerms.some(term=>text.includes(term)))&&(!language.length||language.includes(article.language))&&(!sourceFilters.length||sourceFilters.includes(article.source))&&(!contentFilters.length||contentFilters.includes(article.contentType==='video'?'動画':'記事'))&&(!readOnly||readSlugs.has(article.slug))&&(!topics.length||topics.some(x=>matchesContentTopic(text,x)));
     });
     return [...filtered].sort((a,b)=>(Number(b.language===preferredLanguage)-Number(a.language===preferredLanguage))||(preferredLanguage==='Japanese'?Number(b.sourceSlug==='gto-wizard-japan')-Number(a.sourceSlug==='gto-wizard-japan'):0));
   },[query,selected,preferredLanguage,readSlugs]);
@@ -88,12 +88,12 @@ export default function Explore(){
   const visibleResults=results.slice((page-1)*PAGE_SIZE,page*PAGE_SIZE);
   const normalizedIndexQuery=indexQuery.trim().toLowerCase();
   const visibleContentFilters=CONTENT_FILTERS.filter(label=>!normalizedIndexQuery||`${label} ${uiText(label)}`.toLowerCase().includes(normalizedIndexQuery));
-  const visibleQuickFilters=QUICK_FILTERS.filter(([value,label])=>!normalizedIndexQuery||`${value} ${label}`.toLowerCase().includes(normalizedIndexQuery));
+  const visibleQuickFilters=QUICK_FILTERS.filter(([value,label])=>!normalizedIndexQuery||`${value} ${label} ${uiText(label)}`.toLowerCase().includes(normalizedIndexQuery));
   const normalizedFilterDialogQuery=filterDialogQuery.trim().toLowerCase();
   const visibleFilterGroups=groups.filter(group=>user||group.title!=='学習状況').map(group=>({...group,items:group.items.filter(item=>!normalizedFilterDialogQuery||`${item} ${contentLabel(item)} ${uiText(contentLabel(item))}`.toLowerCase().includes(normalizedFilterDialogQuery))})).filter(group=>group.items.length>0);
   const selectedContentTypes=selected.filter(value=>CONTENT_FILTERS.includes(value as typeof CONTENT_FILTERS[number]));
   const countArticles=articles.filter(article=>!selectedContentTypes.length||selectedContentTypes.includes(article.contentType==='video'?'動画':'記事'));
-  const filterCount=(item:string)=>(CONTENT_FILTERS.includes(item as typeof CONTENT_FILTERS[number])?articles:countArticles).filter(article=>item==='記事'?article.contentType!=='video':item==='動画'?article.contentType==='video':item==='学習済み'?readSlugs.has(article.slug):['Japanese','English'].includes(item)?article.language===item:sourceNames.includes(item)?article.source===item:[...article.tags,article.category].some(value=>value.toLowerCase().includes(item.toLowerCase()))).length;
+  const filterCount=(item:string)=>(CONTENT_FILTERS.includes(item as typeof CONTENT_FILTERS[number])?articles:countArticles).filter(article=>item==='記事'?article.contentType!=='video':item==='動画'?article.contentType==='video':item==='学習済み'?readSlugs.has(article.slug):['Japanese','English'].includes(item)?article.language===item:sourceNames.includes(item)?article.source===item:[...article.tags,article.category].some(value=>matchesContentTopic(value,item))).length;
   useEffect(()=>{setPage(1)},[query,selected,preferredLanguage]);
   useEffect(()=>{
     const feed=document.querySelector<HTMLElement>('.docs-feed');
