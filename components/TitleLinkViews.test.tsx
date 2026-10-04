@@ -30,7 +30,7 @@ function loadView(path:string,extra=''){
     if(name==='@/lib/learning-history')return {useLearningHistory:()=>({hasRead:()=>true})};
     if(name==='@/lib/auth-client')return {useAuth:()=>({user:null})};
     if(name==='@/lib/use-preferred-language')return {usePreferredLanguage:()=>['English']};
-    if(name==='@/components/ArticlePreview')return {ArticlePreview:()=>null};
+    if(name==='@/components/ArticleArtwork')return {ArticleArtwork:({article:value}:{article:typeof article})=>createElement('span',{'data-owned-art-for':value.slug})};
     if(name==='@/components/LearningLink')return {LearningLink:Link};
     if(name==='@/components/BookmarkButton')return {BookmarkButton};
     if(name==='@/components/SourceFollowButton')return {SourceFollowButton};
@@ -57,11 +57,12 @@ it('keeps the feed title, original link, source, date, category, bookmark, follo
   expect(html).not.toContain('<img');
 });
 
-it('renders text-focused home picks and editor picks with direct original links',()=>{
+it('renders owned-artwork slots in home picks and editor picks with direct original links',()=>{
   for(const [path,name] of [['components/ModernHome.tsx','ModernHome'],['components/EditorPicks.tsx','EditorPicks']]){
     const view=loadView(path)[name];
     const html=renderToStaticMarkup(createElement(view));
     expectTitleLinkMarkup(html);
+    expect(html).toContain(`data-owned-art-for="${article.slug}"`);
     expect(html).not.toContain('<img');
   }
 });
@@ -69,9 +70,9 @@ it('renders text-focused home picks and editor picks with direct original links'
 it('retains only the Potover-owned promotional artwork in the spotlight carousel',()=>{
   const {HomeSpotlightCarousel}=loadView('components/HomeSpotlightCarousel.tsx');
   const html=renderToStaticMarkup(createElement(HomeSpotlightCarousel));
-  expectTitleLinkMarkup(html);
+  expect(html).toContain(article.title);expect(html).toContain(article.source);expect(html).toContain(`/articles/${article.slug}`);expect(html).not.toContain('LEGACY_EXCERPT');
   const images=Array.from(html.matchAll(/<img[^>]+src="([^"]+)"/g),match=>match[1]);
-  expect(images).toEqual(Array(3).fill('/banners/potover-strategy-hero.png'));
+  expect(images).toEqual(Array(3).fill('/topic-art/general.webp'));
 });
 
 it('replaces the modal outline with source metadata, tags and the original-link action',()=>{
@@ -110,4 +111,9 @@ it('uses source initials instead of third-party logo images',()=>{
 it('keeps all public article consumers independent of removed fields',()=>{
   const paths=['components/ArticleFeedRow.tsx','components/ModernHome.tsx','components/HomeSpotlightCarousel.tsx','components/EditorPicks.tsx','lib/article-modal.tsx','lib/roadmaps.ts','components/pages/articles.tsx','components/pages/articles-slug.tsx','components/pages/explore.tsx','components/pages/roadmap.tsx'];
   for(const path of paths)expect(readFileSync(path,'utf8'),path).not.toMatch(/\.(summary|headings|imageUrl|minutes)\b/);
+});
+
+it('gives article-index artwork a responsive block containing box',()=>{
+  const css=readFileSync('app/globals.css','utf8');
+  expect(css).toMatch(/\.articles-clean \.article-cover\{[^}]*display:block;[^}]*width:100%;[^}]*height:auto;[^}]*aspect-ratio:16\/9/);
 });

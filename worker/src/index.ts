@@ -1,7 +1,7 @@
 import publicationScope from '../../data/publication-scope.json';
-import previewManifest from '../../data/article-preview-manifest.json';
-import {createArticlePreviewLookup} from '../../packages/publication/article-previews.mjs';
-const previewFor=createArticlePreviewLookup(previewManifest);
+import artManifest from '../../data/owned-topic-art.json';
+import {createTopicArtLookup} from '../../packages/publication/topic-art.mjs';
+const artFor=createTopicArtLookup(artManifest);
 
 export interface Env {
   DB: {
@@ -331,8 +331,8 @@ function articleMetadataResponse(row: any) {
 }
 
 function publicArticleResponse(row: any) {
-  const preview=previewFor({slug:row.slug,sourceSlug:row.source_slug,originalUrl:row.original_url,contentType:row.content_type});
-  return {...articleMetadataResponse(row),...(preview?{preview}:{})};
+  const metadata=articleMetadataResponse(row);
+  return {...metadata,illustration:artFor(metadata)};
 }
 
 // Full source data is retained for authenticated collection/sync jobs only.

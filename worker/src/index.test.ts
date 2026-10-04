@@ -1,7 +1,9 @@
 import {afterEach, describe, expect, it, vi} from 'vitest';
 import worker from './index';
 import publicationScope from '../../data/publication-scope.json';
-import previewManifest from '../../data/article-preview-manifest.json';
+import artManifest from '../../data/owned-topic-art.json';
+import {createTopicArtLookup} from '../../packages/publication/topic-art.mjs';
+const artFor=createTopicArtLookup(artManifest);
 
 type Call = {query: string; values: unknown[]; operation: 'first' | 'all' | 'run' | 'batch'};
 function database(options: {user?: {id: string; email: string}; attempts?: number; rows?: unknown[]; total?: number; credentials?: {password_hash:string;password_salt:string}; batchError?: Error} = {}) {
@@ -193,7 +195,7 @@ describe('public article search', () => {
     const request = new Request(`https://api.example.test/api/articles${query}`, {headers: {Authorization: 'Bearer test-token'}});
     const response = await worker.fetch(request, {DB, BATCH_INGEST_TOKEN: 'test-token'});
     expect(response.status).toBe(200);
-    expect(await response.json()).toEqual({articles: [publicArticle], total: 1, offset: 0, limit: 100, collectedAt: null});
+    expect(await response.json()).toEqual({articles: [{...publicArticle,illustration:artFor(publicArticle)}], total: 1, offset: 0, limit: 100, collectedAt: null});
     const read = calls.find(call => call.operation === 'all')!;
     expect(read.query).not.toMatch(/a\.\*|summary|headings|image_url|author|duration_seconds|source_modified_at/);
     const count = calls.find(call => call.query.includes('COUNT(*) AS total'))!;
@@ -362,13 +364,14 @@ describe('atomic account changes',()=>{
   });
 });
 
-it('exposes only a finite reviewed local preview for an exact approved API article',async()=>{
-  const image=previewManifest.articles[0];
-  const rows=[{slug:image.slug,source_slug:image.sourceSlug,original_url:image.originalUrl,content_type:'article',title:'Preview test',tags_json:'[]',image_url:'https://unreviewed.test/full.jpg'}];
+it('publishes only owned topic artwork instead of raw or former preview images',async()=>{
+  const identity=publicationScope.articles[0];
+  const rows=[{slug:identity.slug,source_slug:identity.sourceSlug,original_url:identity.originalUrl,content_type:'article',title:'Preflop strategy',tags_json:'["preflop"]',image_url:'https://unreviewed.test/full.jpg'}];
   const {DB,calls}=database({rows,total:1});
   const response=await worker.fetch(new Request('https://api.example.test/api/articles'),{DB});
   const body=await response.json() as any;
-  expect(body.articles[0].preview).toEqual({src:image.thumbnailPath,width:image.width,height:image.height,credit:image.sourceName});
-  expect(JSON.stringify(body)).not.toMatch(/originalImageUrl|unreviewed|imageUrl/);
+  expect(body.articles[0].illustration).toEqual(artFor({title:'Preflop strategy',tags:['preflop']}));
+  expect(JSON.stringify(body)).not.toMatch(/originalImageUrl|unreviewed|imageUrl|article-previews/);
+  expect(body.articles[0]).not.toHaveProperty('preview');
   expect(calls.find(c=>c.operation==='all')!.query).not.toContain('image_url');
 });

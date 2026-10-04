@@ -1,0 +1,94 @@
+{
+  "version": 1,
+  "generatedAt": "2026-10-04",
+  "assets": [
+    {
+      "id": "general",
+      "src": "/topic-art/general.webp",
+      "width": 1280,
+      "height": 720,
+      "bytes": 48170,
+      "sha256": "bdc8c6037573af001ef1c24c558f68c7b983fe0d6ce502c64afa274f42c6bbf8",
+      "sourceWidth": 1672,
+      "sourceHeight": 941,
+      "origin": "generated-for-potover"
+    },
+    {
+      "id": "preflop",
+      "src": "/topic-art/preflop.webp",
+      "width": 1280,
+      "height": 720,
+      "bytes": 48260,
+      "sha256": "0f5c2ab7737981ae40c4e111e6c951798e24af46d6e8b93098259ef30ea4c678",
+      "sourceWidth": 1672,
+      "sourceHeight": 941,
+      "origin": "generated-for-potover"
+    },
+    {
+      "id": "postflop",
+      "src": "/topic-art/postflop.webp",
+      "width": 1280,
+      "height": 720,
+      "bytes": 46808,
+      "sha256": "91dd3e75f4ed695e5a9c64bf4015808f39ad5fdea39f06e3c353fff46a41be6f",
+      "sourceWidth": 1672,
+      "sourceHeight": 941,
+      "origin": "generated-for-potover"
+    },
+    {
+      "id": "gto",
+      "src": "/topic-art/gto.webp",
+      "width": 1280,
+      "height": 720,
+      "bytes": 43372,
+      "sha256": "25c6bcd8bdb4e3c79534d18cf6e7d45286d564d2131ac6384b4049533ea6a5d1",
+      "sourceWidth": 1672,
+      "sourceHeight": 941,
+      "origin": "generated-for-potover"
+    },
+    {
+      "id": "exploit",
+      "src": "/topic-art/exploit.webp",
+      "width": 1280,
+      "height": 720,
+      "bytes": 51510,
+      "sha256": "6c2c1ab412dcc35f91fe53b2fcea062f1687fd2e74560c174236c9f869dd7fda",
+      "sourceWidth": 1672,
+      "sourceHeight": 941,
+      "origin": "generated-for-potover"
+    },
+    {
+      "id": "tournament",
+      "src": "/topic-art/tournament.webp",
+      "width": 1280,
+      "height": 720,
+      "bytes": 37992,
+      "sha256": "5b3a135476fb3c1592f6d4c7cb247ec02618cacfc5f5cfbfaeb9f50b9c48f6fe",
+      "sourceWidth": 1672,
+      "sourceHeight": 941,
+      "origin": "generated-for-potover"
+    },
+    {
+      "id": "mental",
+      "src": "/topic-art/mental.webp",
+      "width": 1280,
+      "height": 720,
+      "bytes": 31452,
+      "sha256": "fa178df0e2852d3e73a2f84d83cb80a6256608c79a59e98913c89cc675c1e1da",
+      "sourceWidth": 1672,
+      "sourceHeight": 941,
+      "origin": "generated-for-potover"
+    },
+    {
+      "id": "cash",
+      "src": "/topic-art/cash.webp",
+      "width": 1280,
+      "height": 720,
+      "bytes": 56564,
+      "sha256": "e2ef508feb356ff9d61e27350a3ff7820b8839d1d0e4bdac29d9cc80c39c3850",
+      "sourceWidth": 1672,
+      "sourceHeight": 941,
+      "origin": "generated-for-potover"
+    }
+  ]
+}
