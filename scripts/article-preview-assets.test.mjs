@@ -42,3 +42,20 @@ it('permits a complete takedown with all sources off and both asset directories 
     await expect(validateArticlePreviewAssets(manifest,scope,{root:dir})).rejects.toThrow();
   }finally{await rm(dir,{recursive:true,force:true})}
 });
+
+it('applies cover global/source/article removal switches to legacy preview export bytes',async()=>{
+  const {applyCoverSuppressions}=await import('../packages/publication/article-covers.mjs');
+  const covers=JSON.parse(await readFile('data/article-cover-manifest.json','utf8'));
+  for(const patch of [m=>m.enabled=false,m=>m.disabledSources.push(manifest.articles[0].sourceSlug),m=>m.disabledArticles.push(manifest.articles[0].slug)]){
+    const dir=await mkdtemp(join(tmpdir(),'potover-combined-removal-'));
+    try{
+      await mkdir(join(dir,'article-previews'));
+      for(const item of manifest.articles)await copyFile(`public${item.thumbnailPath}`,join(dir,'article-previews',item.thumbnailPath.split('/').at(-1)));
+      const updated=structuredClone(covers);patch(updated);
+      const effective=applyCoverSuppressions(manifest,updated);
+      const result=await validateArticlePreviewAssets(effective,scope,{exportDirectory:dir});
+      expect(result.enabled).toBeLessThan(11);
+      await expect(readFile(join(dir,'article-previews',manifest.articles[0].thumbnailPath.split('/').at(-1)))).rejects.toThrow();
+    }finally{await rm(dir,{recursive:true,force:true})}
+  }
+});

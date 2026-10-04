@@ -1,5 +1,6 @@
 // Ephemeral workerd + SQLite-backed D1 verification. No remote account or credentials.
 import assert from 'node:assert/strict';
+import {safeArticleCover} from '../packages/publication/article-covers.mjs';
 import {readFile,readdir} from 'node:fs/promises';
 import {build} from 'esbuild';
 import {Miniflare,convertV4MiniflareOptions} from 'miniflare';
@@ -84,7 +85,7 @@ try{
   const scoped=await request('/api/articles?q=Scope%20fixture');
   assert.equal(scoped.total,3);
   assert.deepEqual(scoped.articles.map(value=>value.slug),[otherSource.slug,second.slug,first.slug]);
-  assert.ok(scoped.articles.every(value=>!('summary' in value)&&!('headings' in value)&&!('imageUrl' in value)));
+  assert.ok(scoped.articles.every(value=>!('summary' in value)&&!('headings' in value)&&(!value.imageUrl||safeArticleCover(value.imageUrl,value)===value.imageUrl)));
   // Query, source, and pagination operate on the same scoped set as total.
   const page=await request(`/api/articles?q=Scope%20fixture&source=${first.sourceSlug}&limit=1&offset=1`);
   assert.equal(page.total,2);assert.equal(page.limit,1);assert.equal(page.offset,1);

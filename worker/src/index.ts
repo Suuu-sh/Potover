@@ -2,6 +2,9 @@ import publicationScope from '../../data/publication-scope.json';
 import previewManifest from '../../data/article-preview-manifest.json';
 import {createArticlePreviewLookup} from '../../packages/publication/article-previews.mjs';
 const previewFor=createArticlePreviewLookup(previewManifest);
+import coverManifest from '../../data/article-cover-manifest.json';
+import {createArticleCoverLookup} from '../../packages/publication/article-covers.mjs';
+const {coverFor,suppressed}=createArticleCoverLookup(coverManifest,publicationScope,previewManifest);
 
 export interface Env {
   DB: {
@@ -331,8 +334,9 @@ function articleMetadataResponse(row: any) {
 }
 
 function publicArticleResponse(row: any) {
-  const preview=previewFor({slug:row.slug,sourceSlug:row.source_slug,originalUrl:row.original_url,contentType:row.content_type});
-  return {...articleMetadataResponse(row),...(preview?{preview}:{})};
+  const article={slug:row.slug,sourceSlug:row.source_slug,originalUrl:row.original_url,contentType:row.content_type};
+  const preview=suppressed(article)?undefined:previewFor(article);const imageUrl=coverFor(article);
+  return {...articleMetadataResponse(row),...(preview?{preview}:{}),...(imageUrl?{imageUrl}:{})};
 }
 
 // Full source data is retained for authenticated collection/sync jobs only.

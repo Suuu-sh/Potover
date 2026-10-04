@@ -96,7 +96,7 @@ it('loads only the generated public projection into the application',async()=>{
   const source=await readFile('lib/data.ts','utf8');
   expect(source).toContain("from '@/data/articles.public.json'");
   expect(source).not.toContain("from '@/data/articles.json'");
-  expect(source).not.toMatch(/summary|headings|imageUrl|durationSeconds|buildFallbackHeadings/);
+  expect(source).not.toMatch(/summary|headings|durationSeconds|buildFallbackHeadings/);
 });
 
 it('projects exactly the reviewed local previews and ignores injected raw image fields',async()=>{
@@ -107,9 +107,19 @@ it('projects exactly the reviewed local previews and ignores injected raw image 
   for(const item of m.articles){
     const article=projected.articles.find(a=>a.slug===item.slug);
     expect(article.preview).toMatchObject({src:item.thumbnailPath,width:item.width,height:item.height});
-    expect(JSON.stringify(projected)).not.toContain(item.originalImageUrl);
+    expect(JSON.stringify(article.preview)).not.toContain(item.originalImageUrl);
   }
   expect(projectPublicArticles(projected)).toEqual(projected);
   const off=structuredClone(m);off.sources.forEach(s=>s.enabled=false);
   expect(projectPublicArticles(raw,{previews:off}).articles.some(a=>a.preview)).toBe(false);
+});
+
+it('restores only pinned safe cover URLs, never arbitrary injected raw images',async()=>{
+  const raw=JSON.parse(await readFile('data/articles.json','utf8'));
+  const first=raw.articles[0];const expected=first.imageUrl;first.imageUrl='https://evil.test/new.jpg';
+  const projected=projectPublicArticles(raw);
+  expect(projected.articles[0].imageUrl).toBe(expected);
+  expect(projected.articles.filter(a=>a.imageUrl)).toHaveLength(1243);
+  expect(JSON.stringify(projected)).not.toContain('evil.test');
+  expect(projected.articles.every(a=>!('summary'in a)&&!('headings'in a))).toBe(true);
 });
