@@ -29,7 +29,7 @@ Selection reasons: tags821, clear mental/bankroll title clues29, explicit beginn
 
 `scripts/public-articles.mjs` and the anonymous Worker API derive the same `illustration` object from sanitized metadata and `data/owned-topic-art.json`. The object contains only the known topic, first-party path, label and dimensions. Input `imageUrl`, old `preview`, summaries and headings are ignored by public projection. Authenticated internal exports and the 1,406-record raw archive remain unchanged.
 
-`ArticleArtwork` accepts only the eight fixed `/topic-art/*.webp` paths and renders an icon if the descriptor is invalid or the asset fails. It is used by feed cards, EditorPicks, homepage recommendations and the article index. Larger visual frames return without any provider-image loading. The first promo uses General Poker artwork. Topic art does not contact source image servers; existing site hosting, account and advertising behavior is unchanged.
+`ArticleArtwork` accepts only the eight fixed `/topic-art/*.webp` paths and renders an icon if the descriptor is invalid or the asset fails. It is used by feed cards, EditorPicks, homepage carousel recommendations, homepage Featured rows (ModernHome) and the article index. Larger visual frames return without any provider-image loading. The first promo uses General Poker artwork. Topic art does not contact source image servers; existing site hosting, account and advertising behavior is unchanged.
 
 ## Release validation and removal
 

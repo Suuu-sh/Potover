@@ -30,7 +30,7 @@ function loadView(path:string,extra=''){
     if(name==='@/lib/learning-history')return {useLearningHistory:()=>({hasRead:()=>true})};
     if(name==='@/lib/auth-client')return {useAuth:()=>({user:null})};
     if(name==='@/lib/use-preferred-language')return {usePreferredLanguage:()=>['English']};
-    if(name==='@/components/ArticleArtwork')return {ArticleArtwork:()=>null};
+    if(name==='@/components/ArticleArtwork')return {ArticleArtwork:({article:value}:{article:typeof article})=>createElement('span',{'data-owned-art-for':value.slug})};
     if(name==='@/components/LearningLink')return {LearningLink:Link};
     if(name==='@/components/BookmarkButton')return {BookmarkButton};
     if(name==='@/components/SourceFollowButton')return {SourceFollowButton};
@@ -57,11 +57,12 @@ it('keeps the feed title, original link, source, date, category, bookmark, follo
   expect(html).not.toContain('<img');
 });
 
-it('renders text-focused home picks and editor picks with direct original links',()=>{
+it('renders owned-artwork slots in home picks and editor picks with direct original links',()=>{
   for(const [path,name] of [['components/ModernHome.tsx','ModernHome'],['components/EditorPicks.tsx','EditorPicks']]){
     const view=loadView(path)[name];
     const html=renderToStaticMarkup(createElement(view));
     expectTitleLinkMarkup(html);
+    expect(html).toContain(`data-owned-art-for="${article.slug}"`);
     expect(html).not.toContain('<img');
   }
 });
