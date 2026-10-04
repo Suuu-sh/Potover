@@ -1,4 +1,7 @@
 import publicationScope from '../../data/publication-scope.json';
+import previewManifest from '../../data/article-preview-manifest.json';
+import {createArticlePreviewLookup} from '../../packages/publication/article-previews.mjs';
+const previewFor=createArticlePreviewLookup(previewManifest);
 
 export interface Env {
   DB: {
@@ -311,7 +314,7 @@ async function deleteAccount(request: Request, env: Env) {
   return json(request, { ok: true });
 }
 
-function publicArticleResponse(row: any) {
+function articleMetadataResponse(row: any) {
   return {
     slug: row.slug,
     source: row.source,
@@ -327,10 +330,15 @@ function publicArticleResponse(row: any) {
   };
 }
 
+function publicArticleResponse(row: any) {
+  const preview=previewFor({slug:row.slug,sourceSlug:row.source_slug,originalUrl:row.original_url,contentType:row.content_type});
+  return {...articleMetadataResponse(row),...(preview?{preview}:{})};
+}
+
 // Full source data is retained for authenticated collection/sync jobs only.
 function internalArticleResponse(row: any) {
   return {
-    ...publicArticleResponse(row),
+    ...articleMetadataResponse(row),
     author: row.author,
     summary: row.summary,
     imageUrl: row.image_url,

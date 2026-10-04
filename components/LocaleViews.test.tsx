@@ -75,7 +75,7 @@ describe('English server-rendered UI',()=>{
     expect(html).not.toContain('現在のハンド');expect(html).toContain('href="/explore?q=equity"');
   });
   it('renders the faithful English legal/contact copy',()=>{
-    const privacy=render('components/pages/privacy.tsx');expect(privacy).toContain('Suu');expect(privacy).toContain('potover39@gmail.com');expect(privacy).toContain('two years');expect(privacy).toContain('preferred content language');expect(privacy).toContain('Automated collection is currently paused.');expect(privacy).toContain('not treated as permission or a license');expect(privacy).not.toContain('We will not launch');expect(privacy).not.toContain('such as display language');expect(privacy).not.toContain('個人情報');
+    const privacy=render('components/pages/privacy.tsx');expect(privacy).toContain('Suu');expect(privacy).toContain('potover39@gmail.com');expect(privacy).toContain('two years');expect(privacy).toContain('preferred content language');expect(privacy).toContain('Scheduled automated collection is currently paused.');expect(privacy).toContain('not treated as permission or a license');expect(privacy).not.toContain('We will not launch');expect(privacy).not.toContain('such as display language');expect(privacy).not.toContain('個人情報');
     const terms=render('components/pages/terms.tsx');expect(terms).toContain('Terms');expect(terms).toContain('thumbnails');expect(terms).not.toContain('利用条件');
   });
   it('retains Japanese UI and original Japanese source titles',()=>{

@@ -1,0 +1,580 @@
+{
+  "version": 1,
+  "legalBasis": "jp-search-minor-use",
+  "maxLongEdge": 160,
+  "checkedAt": "2026-10-04T05:51:31.242619Z",
+  "sources": [
+    {
+      "sourceSlug": "poker-academy-jp",
+      "sourceName": "ポーカーアカデミー",
+      "enabled": true,
+      "originalHosts": [
+        "pokeracademy.jp"
+      ],
+      "imageHosts": [
+        "pokeracademy.jp"
+      ],
+      "robotsUrl": "https://pokeracademy.jp/robots.txt",
+      "termsUrls": [
+        "https://pokeracademy.jp/privacy-policy/",
+        "https://pokeracademy.jp/partner/"
+      ],
+      "checkedAt": "2026-10-04T05:51:31.242619Z",
+      "robotsCheckedAt": "2026-10-04T05:48:51.795560Z",
+      "robotsText": "User-agent: *\nDisallow: /wp-admin/\nAllow: /wp-admin/admin-ajax.php\n\nSitemap: https://pokeracademy.jp/wp-sitemap.xml\n",
+      "robotsResponseXRobotsTag": null,
+      "termsCheckedAt": "2026-10-04T05:49:00.636366Z",
+      "termsReview": "no-explicit-image-republication-ban-found",
+      "notes": "Enabled only for the individually listed pilot articles. Rights remain with their holders; this is not an individual license or blanket source permission. Robots.txt response headers are not article/image directives."
+    },
+    {
+      "sourceSlug": "poker-dou",
+      "sourceName": "ポーカー道",
+      "enabled": true,
+      "originalHosts": [
+        "www.pokerdou.com"
+      ],
+      "imageHosts": [
+        "www.pokerdou.com"
+      ],
+      "robotsUrl": "https://www.pokerdou.com/robots.txt",
+      "termsUrls": [
+        "https://www.pokerdou.com/about/",
+        "https://www.pokerdou.com/poker-link/link-bana/"
+      ],
+      "checkedAt": "2026-10-04T05:51:31.242619Z",
+      "robotsCheckedAt": "2026-10-04T05:49:05.496333Z",
+      "robotsText": "# START YOAST BLOCK\n# ---------------------------\nUser-agent: *\nDisallow:\n\nSitemap: https://www.pokerdou.com/sitemap_index.xml\n# ---------------------------\n# END YOAST BLOCK",
+      "robotsResponseXRobotsTag": "noindex, follow",
+      "termsCheckedAt": "2026-10-04T05:49:20.026101Z",
+      "termsReview": "no-explicit-image-republication-ban-found",
+      "notes": "Enabled only for the individually listed pilot articles. Rights remain with their holders; this is not an individual license or blanket source permission. Robots.txt response headers are not article/image directives."
+    },
+    {
+      "sourceSlug": "ajpc",
+      "sourceName": "AJPC",
+      "enabled": true,
+      "originalHosts": [
+        "www.ajpc.jp"
+      ],
+      "imageHosts": [
+        "www.ajpc.jp"
+      ],
+      "robotsUrl": "https://www.ajpc.jp/robots.txt",
+      "termsUrls": [
+        "https://www.ajpc.jp/aup/"
+      ],
+      "checkedAt": "2026-10-04T05:51:31.242619Z",
+      "robotsCheckedAt": "2026-10-04T05:49:30.888441Z",
+      "robotsText": "User-agent: *\nDisallow: /wp/wp-admin/\nAllow: /wp/wp-admin/admin-ajax.php\n\nUser-agent: *\nDisallow: /wp/wp-content/uploads/wpo/wpo-plugins-tables-list.json\n\n# START YOAST BLOCK\n# ---------------------------\nUser-agent: *\nDisallow:\n\nSitemap: https://www.ajpc.jp/sitemap_index.xml\n# ---------------------------\n# END YOAST BLOCK",
+      "robotsResponseXRobotsTag": "noindex, follow",
+      "termsCheckedAt": "2026-10-04T05:49:37.463444Z",
+      "termsReview": "no-explicit-image-republication-ban-found",
+      "notes": "Enabled only for the individually listed pilot articles. Rights remain with their holders; this is not an individual license or blanket source permission. Robots.txt response headers are not article/image directives."
+    }
+  ],
+  "articles": [
+    {
+      "slug": "gtowizard-content-552",
+      "sourceSlug": "poker-academy-jp",
+      "sourceName": "ポーカーアカデミー",
+      "originalUrl": "https://pokeracademy.jp/tilt-profile/",
+      "originalImageUrl": "https://pokeracademy.jp/wp-content/uploads/2021/03/Group-16-1.png",
+      "width": 160,
+      "height": 95,
+      "author": null,
+      "checkedAt": "2026-10-04T05:49:45.938230Z",
+      "thumbnailPath": "/article-previews/14efa85d2804358c55810a3ac202bab8841e3d95565aa7391ce23fa768b44f74.webp",
+      "enabled": true,
+      "legalBasis": "jp-search-minor-use",
+      "evidence": {
+        "pageUrl": "https://pokeracademy.jp/tilt-profile/",
+        "robotsUrl": "https://pokeracademy.jp/robots.txt",
+        "termsUrls": [
+          "https://pokeracademy.jp/privacy-policy/",
+          "https://pokeracademy.jp/partner/"
+        ],
+        "pageStatus": 200,
+        "imageStatus": 200,
+        "pageMetaRobots": [
+          "max-image-preview:large"
+        ],
+        "pageXRobotsTag": [],
+        "imageXRobotsTag": [],
+        "robotsAllowed": true,
+        "termsReview": "no-explicit-image-republication-ban-found",
+        "visualReview": "Article-specific tilt-profile cover with fire typography; no substantive teaching diagram.",
+        "sourceWidth": 540,
+        "sourceHeight": 320,
+        "imageSource": "current-page-og-image",
+        "imageContentType": "image/png",
+        "imageSha256": "14efa85d2804358c55810a3ac202bab8841e3d95565aa7391ce23fa768b44f74",
+        "originalImageSha256": "c3b0398f3ac802953cfe0d9e434e03333c91cf51dc528abd260d40d81936e676",
+        "byteLength": 5204,
+        "pageCheckedAt": "2026-10-04T05:49:45.938230Z",
+        "imageCheckedAt": "2026-10-04T05:49:45.938230Z",
+        "robotsCheckedAt": "2026-10-04T05:48:51.795560Z",
+        "termsCheckedAt": "2026-10-04T05:49:00.636366Z",
+        "fetchTransport": "Python urllib.request over HTTPS with the default Python-urllib user agent; no authentication, cookies, proxy spoofing, or access-denial retries.",
+        "transform": "Pillow EXIF orientation normalization, RGB conversion, proportional LANCZOS thumbnail limited to 160x160, WebP quality=80/method=6; no crop or upscale; metadata omitted."
+      }
+    },
+    {
+      "slug": "gtowizard-content-556",
+      "sourceSlug": "poker-academy-jp",
+      "sourceName": "ポーカーアカデミー",
+      "originalUrl": "https://pokeracademy.jp/injustice-tilt/",
+      "originalImageUrl": "https://pokeracademy.jp/wp-content/uploads/2021/03/Group-22-2.png",
+      "width": 160,
+      "height": 95,
+      "author": null,
+      "checkedAt": "2026-10-04T05:49:45.941177Z",
+      "thumbnailPath": "/article-previews/1e408a36b8be2e503996bb2899648e389f81e680924f8018a693fbb4430b73e4.webp",
+      "enabled": true,
+      "legalBasis": "jp-search-minor-use",
+      "evidence": {
+        "pageUrl": "https://pokeracademy.jp/injustice-tilt/",
+        "robotsUrl": "https://pokeracademy.jp/robots.txt",
+        "termsUrls": [
+          "https://pokeracademy.jp/privacy-policy/",
+          "https://pokeracademy.jp/partner/"
+        ],
+        "pageStatus": 200,
+        "imageStatus": 200,
+        "pageMetaRobots": [
+          "max-image-preview:large"
+        ],
+        "pageXRobotsTag": [],
+        "imageXRobotsTag": [],
+        "robotsAllowed": true,
+        "termsReview": "no-explicit-image-republication-ban-found",
+        "visualReview": "Article-specific dark storm-themed cover; no substantive teaching diagram.",
+        "sourceWidth": 540,
+        "sourceHeight": 320,
+        "imageSource": "current-page-og-image",
+        "imageContentType": "image/png",
+        "imageSha256": "1e408a36b8be2e503996bb2899648e389f81e680924f8018a693fbb4430b73e4",
+        "originalImageSha256": "27057e8f995e2e733de99076203b119ee0116259f58ec6a71f107464f257bbd3",
+        "byteLength": 1102,
+        "pageCheckedAt": "2026-10-04T05:49:45.941177Z",
+        "imageCheckedAt": "2026-10-04T05:49:45.941177Z",
+        "robotsCheckedAt": "2026-10-04T05:48:51.795560Z",
+        "termsCheckedAt": "2026-10-04T05:49:00.636366Z",
+        "fetchTransport": "Python urllib.request over HTTPS with the default Python-urllib user agent; no authentication, cookies, proxy spoofing, or access-denial retries.",
+        "transform": "Pillow EXIF orientation normalization, RGB conversion, proportional LANCZOS thumbnail limited to 160x160, WebP quality=80/method=6; no crop or upscale; metadata omitted."
+      }
+    },
+    {
+      "slug": "gtowizard-content-560",
+      "sourceSlug": "poker-academy-jp",
+      "sourceName": "ポーカーアカデミー",
+      "originalUrl": "https://pokeracademy.jp/feature-level-up/",
+      "originalImageUrl": "https://pokeracademy.jp/wp-content/uploads/2021/06/Group-25-4.png",
+      "width": 160,
+      "height": 95,
+      "author": null,
+      "checkedAt": "2026-10-04T05:49:46.095283Z",
+      "thumbnailPath": "/article-previews/b606e11a372efca16ecb471e26ecc8234521e280ae8b87b426efa87e6ed0cd03.webp",
+      "enabled": true,
+      "legalBasis": "jp-search-minor-use",
+      "evidence": {
+        "pageUrl": "https://pokeracademy.jp/feature-level-up/",
+        "robotsUrl": "https://pokeracademy.jp/robots.txt",
+        "termsUrls": [
+          "https://pokeracademy.jp/privacy-policy/",
+          "https://pokeracademy.jp/partner/"
+        ],
+        "pageStatus": 200,
+        "imageStatus": 200,
+        "pageMetaRobots": [
+          "max-image-preview:large"
+        ],
+        "pageXRobotsTag": [],
+        "imageXRobotsTag": [],
+        "robotsAllowed": true,
+        "termsReview": "no-explicit-image-republication-ban-found",
+        "visualReview": "Article-specific improving-skills cover with cards and title typography; no substantive teaching diagram.",
+        "sourceWidth": 1080,
+        "sourceHeight": 640,
+        "imageSource": "current-page-og-image",
+        "imageContentType": "image/png",
+        "imageSha256": "b606e11a372efca16ecb471e26ecc8234521e280ae8b87b426efa87e6ed0cd03",
+        "originalImageSha256": "a20703d38c039b05b5d4f3748165c903c68b4091a576608eab3e5edd78e2f9d4",
+        "byteLength": 2318,
+        "pageCheckedAt": "2026-10-04T05:49:46.095283Z",
+        "imageCheckedAt": "2026-10-04T05:49:46.095283Z",
+        "robotsCheckedAt": "2026-10-04T05:48:51.795560Z",
+        "termsCheckedAt": "2026-10-04T05:49:00.636366Z",
+        "fetchTransport": "Python urllib.request over HTTPS with the default Python-urllib user agent; no authentication, cookies, proxy spoofing, or access-denial retries.",
+        "transform": "Pillow EXIF orientation normalization, RGB conversion, proportional LANCZOS thumbnail limited to 160x160, WebP quality=80/method=6; no crop or upscale; metadata omitted."
+      }
+    },
+    {
+      "slug": "gtowizard-content-564",
+      "sourceSlug": "poker-academy-jp",
+      "sourceName": "ポーカーアカデミー",
+      "originalUrl": "https://pokeracademy.jp/bankroll/",
+      "originalImageUrl": "https://pokeracademy.jp/wp-content/uploads/2021/06/Group-42.png",
+      "width": 160,
+      "height": 95,
+      "author": null,
+      "checkedAt": "2026-10-04T05:49:54.753365Z",
+      "thumbnailPath": "/article-previews/b4430009a7d8e69756a339d5f924b623ee6f50dc594278dd25e4a0cccf12cbfb.webp",
+      "enabled": true,
+      "legalBasis": "jp-search-minor-use",
+      "evidence": {
+        "pageUrl": "https://pokeracademy.jp/bankroll/",
+        "robotsUrl": "https://pokeracademy.jp/robots.txt",
+        "termsUrls": [
+          "https://pokeracademy.jp/privacy-policy/",
+          "https://pokeracademy.jp/partner/"
+        ],
+        "pageStatus": 200,
+        "imageStatus": 200,
+        "pageMetaRobots": [
+          "max-image-preview:large"
+        ],
+        "pageXRobotsTag": [],
+        "imageXRobotsTag": [],
+        "robotsAllowed": true,
+        "termsReview": "no-explicit-image-republication-ban-found",
+        "visualReview": "Article-specific bankroll-management cover with poker table and title typography; no substantive teaching diagram.",
+        "sourceWidth": 1080,
+        "sourceHeight": 640,
+        "imageSource": "current-page-og-image",
+        "imageContentType": "image/png",
+        "imageSha256": "b4430009a7d8e69756a339d5f924b623ee6f50dc594278dd25e4a0cccf12cbfb",
+        "originalImageSha256": "dc39655495ee5cbf29e934572bdde04823e9c341f3e0361af161310ebed6d508",
+        "byteLength": 3348,
+        "pageCheckedAt": "2026-10-04T05:49:54.753365Z",
+        "imageCheckedAt": "2026-10-04T05:49:54.753365Z",
+        "robotsCheckedAt": "2026-10-04T05:48:51.795560Z",
+        "termsCheckedAt": "2026-10-04T05:49:00.636366Z",
+        "fetchTransport": "Python urllib.request over HTTPS with the default Python-urllib user agent; no authentication, cookies, proxy spoofing, or access-denial retries.",
+        "transform": "Pillow EXIF orientation normalization, RGB conversion, proportional LANCZOS thumbnail limited to 160x160, WebP quality=80/method=6; no crop or upscale; metadata omitted."
+      }
+    },
+    {
+      "slug": "gtowizard-content-569",
+      "sourceSlug": "poker-academy-jp",
+      "sourceName": "ポーカーアカデミー",
+      "originalUrl": "https://pokeracademy.jp/manners/",
+      "originalImageUrl": "https://pokeracademy.jp/wp-content/uploads/2021/06/Group-42-1.png",
+      "width": 160,
+      "height": 95,
+      "author": null,
+      "checkedAt": "2026-10-04T05:49:54.616012Z",
+      "thumbnailPath": "/article-previews/7066cb7408a29c496be825c354bfe0d02e827df9faf117f19e82fb80135ac2a6.webp",
+      "enabled": true,
+      "legalBasis": "jp-search-minor-use",
+      "evidence": {
+        "pageUrl": "https://pokeracademy.jp/manners/",
+        "robotsUrl": "https://pokeracademy.jp/robots.txt",
+        "termsUrls": [
+          "https://pokeracademy.jp/privacy-policy/",
+          "https://pokeracademy.jp/partner/"
+        ],
+        "pageStatus": 200,
+        "imageStatus": 200,
+        "pageMetaRobots": [
+          "max-image-preview:large"
+        ],
+        "pageXRobotsTag": [],
+        "imageXRobotsTag": [],
+        "robotsAllowed": true,
+        "termsReview": "no-explicit-image-republication-ban-found",
+        "visualReview": "Article-specific manners cover with poker table and title typography; no substantive teaching diagram.",
+        "sourceWidth": 1080,
+        "sourceHeight": 640,
+        "imageSource": "current-page-og-image",
+        "imageContentType": "image/png",
+        "imageSha256": "7066cb7408a29c496be825c354bfe0d02e827df9faf117f19e82fb80135ac2a6",
+        "originalImageSha256": "8d7a0f036bb296637a2fda2fcd58cef7b8cf7f416d053afe43a93809563a6c76",
+        "byteLength": 3142,
+        "pageCheckedAt": "2026-10-04T05:49:54.616012Z",
+        "imageCheckedAt": "2026-10-04T05:49:54.616012Z",
+        "robotsCheckedAt": "2026-10-04T05:48:51.795560Z",
+        "termsCheckedAt": "2026-10-04T05:49:00.636366Z",
+        "fetchTransport": "Python urllib.request over HTTPS with the default Python-urllib user agent; no authentication, cookies, proxy spoofing, or access-denial retries.",
+        "transform": "Pillow EXIF orientation normalization, RGB conversion, proportional LANCZOS thumbnail limited to 160x160, WebP quality=80/method=6; no crop or upscale; metadata omitted."
+      }
+    },
+    {
+      "slug": "gto-563",
+      "sourceSlug": "poker-academy-jp",
+      "sourceName": "ポーカーアカデミー",
+      "originalUrl": "https://pokeracademy.jp/what-is-gto/",
+      "originalImageUrl": "https://pokeracademy.jp/wp-content/uploads/2021/06/Group-25-3.png",
+      "width": 160,
+      "height": 95,
+      "author": null,
+      "checkedAt": "2026-10-04T05:49:54.597915Z",
+      "thumbnailPath": "/article-previews/cf4970a9ce1baca6d0fbe3dff6334db84e864b50b6bbcf6f84ab04dca01ccd26.webp",
+      "enabled": true,
+      "legalBasis": "jp-search-minor-use",
+      "evidence": {
+        "pageUrl": "https://pokeracademy.jp/what-is-gto/",
+        "robotsUrl": "https://pokeracademy.jp/robots.txt",
+        "termsUrls": [
+          "https://pokeracademy.jp/privacy-policy/",
+          "https://pokeracademy.jp/partner/"
+        ],
+        "pageStatus": 200,
+        "imageStatus": 200,
+        "pageMetaRobots": [
+          "max-image-preview:large"
+        ],
+        "pageXRobotsTag": [],
+        "imageXRobotsTag": [],
+        "robotsAllowed": true,
+        "termsReview": "no-explicit-image-republication-ban-found",
+        "visualReview": "Article-specific GTO introduction cover with cards and title typography; no substantive teaching diagram.",
+        "sourceWidth": 1080,
+        "sourceHeight": 640,
+        "imageSource": "current-page-og-image",
+        "imageContentType": "image/png",
+        "imageSha256": "cf4970a9ce1baca6d0fbe3dff6334db84e864b50b6bbcf6f84ab04dca01ccd26",
+        "originalImageSha256": "97c3b3070bc870cee63bfd37666215fad28ac08ae1a3bf29d68f9595cdfd8983",
+        "byteLength": 2226,
+        "pageCheckedAt": "2026-10-04T05:49:54.597915Z",
+        "imageCheckedAt": "2026-10-04T05:49:54.597915Z",
+        "robotsCheckedAt": "2026-10-04T05:48:51.795560Z",
+        "termsCheckedAt": "2026-10-04T05:49:00.636366Z",
+        "fetchTransport": "Python urllib.request over HTTPS with the default Python-urllib user agent; no authentication, cookies, proxy spoofing, or access-denial retries.",
+        "transform": "Pillow EXIF orientation normalization, RGB conversion, proportional LANCZOS thumbnail limited to 160x160, WebP quality=80/method=6; no crop or upscale; metadata omitted."
+      }
+    },
+    {
+      "slug": "gtowizard-content-859",
+      "sourceSlug": "poker-dou",
+      "sourceName": "ポーカー道",
+      "originalUrl": "https://www.pokerdou.com/texasholdem-first/aboutpoker/",
+      "originalImageUrl": "https://www.pokerdou.com/wp-content/uploads/2011/06/39E89B87-7B0A-49D6-9194-0255B3736709.png",
+      "width": 160,
+      "height": 84,
+      "author": "鮫肌",
+      "checkedAt": "2026-10-04T05:50:08.936653Z",
+      "thumbnailPath": "/article-previews/c696804d906695cc77d086e37cfdfcf40ca2d5fe41d59f5b630e939f70079c8e.webp",
+      "enabled": true,
+      "legalBasis": "jp-search-minor-use",
+      "evidence": {
+        "pageUrl": "https://www.pokerdou.com/texasholdem-first/aboutpoker/",
+        "robotsUrl": "https://www.pokerdou.com/robots.txt",
+        "termsUrls": [
+          "https://www.pokerdou.com/about/",
+          "https://www.pokerdou.com/poker-link/link-bana/"
+        ],
+        "pageStatus": 200,
+        "imageStatus": 200,
+        "pageMetaRobots": [
+          "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1"
+        ],
+        "pageXRobotsTag": [],
+        "imageXRobotsTag": [],
+        "robotsAllowed": true,
+        "termsReview": "no-explicit-image-republication-ban-found",
+        "visualReview": "Article-specific poker introduction title cover with blurred chips; no substantive teaching diagram.",
+        "sourceWidth": 1200,
+        "sourceHeight": 627,
+        "imageSource": "current-page-og-image",
+        "imageContentType": "image/png",
+        "imageSha256": "c696804d906695cc77d086e37cfdfcf40ca2d5fe41d59f5b630e939f70079c8e",
+        "originalImageSha256": "22b2180ffff113119f631efeb23dde664ffaeaa6026b0ebc03d323e7bf5f1bee",
+        "byteLength": 1922,
+        "pageCheckedAt": "2026-10-04T05:50:08.936653Z",
+        "imageCheckedAt": "2026-10-04T05:50:08.936653Z",
+        "robotsCheckedAt": "2026-10-04T05:49:05.496333Z",
+        "termsCheckedAt": "2026-10-04T05:49:20.026101Z",
+        "fetchTransport": "Python urllib.request over HTTPS with the default Python-urllib user agent; no authentication, cookies, proxy spoofing, or access-denial retries.",
+        "transform": "Pillow EXIF orientation normalization, RGB conversion, proportional LANCZOS thumbnail limited to 160x160, WebP quality=80/method=6; no crop or upscale; metadata omitted."
+      }
+    },
+    {
+      "slug": "gtowizard-content-863",
+      "sourceSlug": "poker-dou",
+      "sourceName": "ポーカー道",
+      "originalUrl": "https://www.pokerdou.com/texasholdem-basics/manner/",
+      "originalImageUrl": "https://www.pokerdou.com/wp-content/uploads/2011/08/EECBBD0C-37BC-4DB9-8CC5-EAF8314C6AD1.png",
+      "width": 160,
+      "height": 84,
+      "author": "鮫肌",
+      "checkedAt": "2026-10-04T05:50:09.078025Z",
+      "thumbnailPath": "/article-previews/87023ec9803c2734be42c0b4831c17a81ddb5a1247996ef3c52c218e5fcb9fd0.webp",
+      "enabled": true,
+      "legalBasis": "jp-search-minor-use",
+      "evidence": {
+        "pageUrl": "https://www.pokerdou.com/texasholdem-basics/manner/",
+        "robotsUrl": "https://www.pokerdou.com/robots.txt",
+        "termsUrls": [
+          "https://www.pokerdou.com/about/",
+          "https://www.pokerdou.com/poker-link/link-bana/"
+        ],
+        "pageStatus": 200,
+        "imageStatus": 200,
+        "pageMetaRobots": [
+          "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1"
+        ],
+        "pageXRobotsTag": [],
+        "imageXRobotsTag": [],
+        "robotsAllowed": true,
+        "termsReview": "no-explicit-image-republication-ban-found",
+        "visualReview": "Article-specific poker-manners title cover; no substantive teaching diagram.",
+        "sourceWidth": 1200,
+        "sourceHeight": 628,
+        "imageSource": "current-page-og-image",
+        "imageContentType": "image/png",
+        "imageSha256": "87023ec9803c2734be42c0b4831c17a81ddb5a1247996ef3c52c218e5fcb9fd0",
+        "originalImageSha256": "045e4275a5fe088dbdc89cf808cf85936f4c056dfbdd7a66fbd74720a4175175",
+        "byteLength": 2594,
+        "pageCheckedAt": "2026-10-04T05:50:09.078025Z",
+        "imageCheckedAt": "2026-10-04T05:50:09.078025Z",
+        "robotsCheckedAt": "2026-10-04T05:49:05.496333Z",
+        "termsCheckedAt": "2026-10-04T05:49:20.026101Z",
+        "fetchTransport": "Python urllib.request over HTTPS with the default Python-urllib user agent; no authentication, cookies, proxy spoofing, or access-denial retries.",
+        "transform": "Pillow EXIF orientation normalization, RGB conversion, proportional LANCZOS thumbnail limited to 160x160, WebP quality=80/method=6; no crop or upscale; metadata omitted."
+      }
+    },
+    {
+      "slug": "gtowizard-content-864",
+      "sourceSlug": "poker-dou",
+      "sourceName": "ポーカー道",
+      "originalUrl": "https://www.pokerdou.com/texasholdem-beginning/bluff/",
+      "originalImageUrl": "https://www.pokerdou.com/wp-content/uploads/2011/08/D988F108-2E02-4718-A60A-D45F339489FB.png",
+      "width": 160,
+      "height": 84,
+      "author": "鮫肌",
+      "checkedAt": "2026-10-04T05:50:08.881064Z",
+      "thumbnailPath": "/article-previews/b6e53034197444d39a86a1a2c5c1e5c62ed079add614818a75a4425abcc2ffc6.webp",
+      "enabled": true,
+      "legalBasis": "jp-search-minor-use",
+      "evidence": {
+        "pageUrl": "https://www.pokerdou.com/texasholdem-beginning/bluff/",
+        "robotsUrl": "https://www.pokerdou.com/robots.txt",
+        "termsUrls": [
+          "https://www.pokerdou.com/about/",
+          "https://www.pokerdou.com/poker-link/link-bana/"
+        ],
+        "pageStatus": 200,
+        "imageStatus": 200,
+        "pageMetaRobots": [
+          "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1"
+        ],
+        "pageXRobotsTag": [],
+        "imageXRobotsTag": [],
+        "robotsAllowed": true,
+        "termsReview": "no-explicit-image-republication-ban-found",
+        "visualReview": "Article-specific bluff title artwork using truth/lie sign imagery; no substantive teaching diagram.",
+        "sourceWidth": 1200,
+        "sourceHeight": 628,
+        "imageSource": "current-page-og-image",
+        "imageContentType": "image/png",
+        "imageSha256": "b6e53034197444d39a86a1a2c5c1e5c62ed079add614818a75a4425abcc2ffc6",
+        "originalImageSha256": "2e9e7347f3cbf2258c39c11bbdbb11272ce23ea652dd5d02074003f29e25d555",
+        "byteLength": 2580,
+        "pageCheckedAt": "2026-10-04T05:50:08.881064Z",
+        "imageCheckedAt": "2026-10-04T05:50:08.881064Z",
+        "robotsCheckedAt": "2026-10-04T05:49:05.496333Z",
+        "termsCheckedAt": "2026-10-04T05:49:20.026101Z",
+        "fetchTransport": "Python urllib.request over HTTPS with the default Python-urllib user agent; no authentication, cookies, proxy spoofing, or access-denial retries.",
+        "transform": "Pillow EXIF orientation normalization, RGB conversion, proportional LANCZOS thumbnail limited to 160x160, WebP quality=80/method=6; no crop or upscale; metadata omitted."
+      }
+    },
+    {
+      "slug": "ajpc2014-ajpc-1150",
+      "sourceSlug": "ajpc",
+      "sourceName": "AJPC",
+      "originalUrl": "https://www.ajpc.jp/ajpc2014-outline/",
+      "originalImageUrl": "https://www.ajpc.jp/wp/wp-content/uploads/2014/02/top-2014-2-1.jpg",
+      "width": 160,
+      "height": 66,
+      "author": "ajpc_admin",
+      "checkedAt": "2026-10-04T05:50:20.993692Z",
+      "thumbnailPath": "/article-previews/7b61e318e31ca230572b444bd76a0831f9e1068c766c62d3bbb9e653183513cc.webp",
+      "enabled": true,
+      "legalBasis": "jp-search-minor-use",
+      "evidence": {
+        "pageUrl": "https://www.ajpc.jp/ajpc2014-outline/",
+        "robotsUrl": "https://www.ajpc.jp/robots.txt",
+        "termsUrls": [
+          "https://www.ajpc.jp/aup/"
+        ],
+        "pageStatus": 200,
+        "imageStatus": 200,
+        "pageMetaRobots": [
+          "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1"
+        ],
+        "pageXRobotsTag": [],
+        "imageXRobotsTag": [],
+        "robotsAllowed": true,
+        "termsReview": "no-explicit-image-republication-ban-found",
+        "visualReview": "Event-specific AJPC 2014 promotional cover; no teaching diagram or participant portrait.",
+        "sourceWidth": 850,
+        "sourceHeight": 350,
+        "imageSource": "current-page-og-image",
+        "imageContentType": "image/jpeg",
+        "imageSha256": "7b61e318e31ca230572b444bd76a0831f9e1068c766c62d3bbb9e653183513cc",
+        "originalImageSha256": "0e25957220ce225468243f46b2c125b2a31717159823999aa3be8c1591854e9b",
+        "byteLength": 4920,
+        "pageCheckedAt": "2026-10-04T05:50:20.993692Z",
+        "imageCheckedAt": "2026-10-04T05:50:20.993692Z",
+        "robotsCheckedAt": "2026-10-04T05:49:30.888441Z",
+        "termsCheckedAt": "2026-10-04T05:49:37.463444Z",
+        "fetchTransport": "Python urllib.request over HTTPS with the default Python-urllib user agent; no authentication, cookies, proxy spoofing, or access-denial retries.",
+        "transform": "Pillow EXIF orientation normalization, RGB conversion, proportional LANCZOS thumbnail limited to 160x160, WebP quality=80/method=6; no crop or upscale; metadata omitted."
+      }
+    },
+    {
+      "slug": "ajpc2026-ajpc-1153",
+      "sourceSlug": "ajpc",
+      "sourceName": "AJPC",
+      "originalUrl": "https://www.ajpc.jp/ajpc2026overview/",
+      "originalImageUrl": "https://www.ajpc.jp/wp/wp-content/uploads/2026/06/2fa3b98706640864424bb5e8c2212d43.png",
+      "width": 113,
+      "height": 160,
+      "author": "onishijyunpei",
+      "checkedAt": "2026-10-04T05:50:21.938682Z",
+      "thumbnailPath": "/article-previews/1f0a691d903a13f0adb49fc70e5142f7019cb8d76d627743ae93d12163397639.webp",
+      "enabled": true,
+      "legalBasis": "jp-search-minor-use",
+      "evidence": {
+        "pageUrl": "https://www.ajpc.jp/ajpc2026overview/",
+        "robotsUrl": "https://www.ajpc.jp/robots.txt",
+        "termsUrls": [
+          "https://www.ajpc.jp/aup/"
+        ],
+        "pageStatus": 200,
+        "imageStatus": 200,
+        "pageMetaRobots": [
+          "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1"
+        ],
+        "pageXRobotsTag": [],
+        "imageXRobotsTag": [],
+        "robotsAllowed": true,
+        "termsReview": "no-explicit-image-republication-ban-found",
+        "visualReview": "Event-specific AJPC 2026 promotional poster; no teaching diagram or participant portrait.",
+        "sourceWidth": 612,
+        "sourceHeight": 868,
+        "imageSource": "current-page-og-image",
+        "imageContentType": "image/png",
+        "imageSha256": "1f0a691d903a13f0adb49fc70e5142f7019cb8d76d627743ae93d12163397639",
+        "originalImageSha256": "eaf4d8b6b9fc4e62bc5f2f478c336ee39da369f8527552a1b0385bdd4f29a6f4",
+        "byteLength": 4824,
+        "pageCheckedAt": "2026-10-04T05:50:21.938682Z",
+        "imageCheckedAt": "2026-10-04T05:50:21.938682Z",
+        "robotsCheckedAt": "2026-10-04T05:49:30.888441Z",
+        "termsCheckedAt": "2026-10-04T05:49:37.463444Z",
+        "fetchTransport": "Python urllib.request over HTTPS with the default Python-urllib user agent; no authentication, cookies, proxy spoofing, or access-denial retries.",
+        "transform": "Pillow EXIF orientation normalization, RGB conversion, proportional LANCZOS thumbnail limited to 160x160, WebP quality=80/method=6; no crop or upscale; metadata omitted."
+      }
+    }
+  ],
+  "exclusions": [
+    {
+      "slug": "ajpc2017-ajpc-1088",
+      "sourceSlug": "ajpc",
+      "originalUrl": "https://www.ajpc.jp/satellite-resurts2017-tokyo/",
+      "reason": "Participant group photo adds little identification value at 160px; excluded from the cover-focused pilot.",
+      "checkedAt": "2026-10-04T05:50:20.455459Z"
+    }
+  ]
+}
