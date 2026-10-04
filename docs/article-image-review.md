@@ -1,3 +1,5 @@
+> Historical review. The current implementation uses eight AI-generated Potover topic illustrations instead of source article images. The 11-source-image pilot is retired from current app/API output and build assets. See [owned topic artwork](owned-topic-art.md). This record does not activate any source-image permissions or publication.
+
 # Original article-image publication review
 
 Reviewed: 2026-10-04 (UTC)

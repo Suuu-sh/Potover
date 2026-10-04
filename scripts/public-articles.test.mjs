@@ -18,7 +18,7 @@ it('allows only public link metadata and never mutates source data',()=>{
   const original=JSON.stringify(dataset);
   const result=projectPublicArticles(dataset,{scope});
   expect(JSON.stringify(result)).not.toContain('PRIVATE_SENTINEL');
-  expect(Object.keys(result.articles[0]).sort()).toEqual(['classification','contentType','language','originalUrl','publishedAt','slug','source','sourceSlug','sourceUrl','title'].sort());
+  expect(Object.keys(result.articles[0]).sort()).toEqual(['illustration','classification','contentType','language','originalUrl','publishedAt','slug','source','sourceSlug','sourceUrl','title'].sort());
   expect(result.articles[0]).toMatchObject({title:'Public title',originalUrl:'https://example.test/article',slug:'public-title-19'});
   expect(JSON.stringify(dataset)).toBe(original);
 });
@@ -99,17 +99,13 @@ it('loads only the generated public projection into the application',async()=>{
   expect(source).not.toMatch(/summary|headings|imageUrl|durationSeconds|buildFallbackHeadings/);
 });
 
-it('projects exactly the reviewed local previews and ignores injected raw image fields',async()=>{
+it('assigns only owned illustrations to all records and ignores source image/preview fields',async()=>{
   const raw=JSON.parse(await readFile('data/articles.json','utf8'));
-  const m=JSON.parse(await readFile('data/article-preview-manifest.json','utf8'));
+  raw.articles[0].preview={src:'https://evil.test/image.webp'};
   const projected=projectPublicArticles(raw);
-  expect(projected.articles.filter(a=>a.preview)).toHaveLength(11);
-  for(const item of m.articles){
-    const article=projected.articles.find(a=>a.slug===item.slug);
-    expect(article.preview).toMatchObject({src:item.thumbnailPath,width:item.width,height:item.height});
-    expect(JSON.stringify(projected)).not.toContain(item.originalImageUrl);
-  }
+  expect(projected.articles).toHaveLength(1244);
+  expect(new Set(projected.articles.map(a=>a.illustration.src)).size).toBe(8);
+  for(const a of projected.articles){expect(a.illustration.src).toMatch(/^\/topic-art\/[a-z]+\.webp$/);expect(a).not.toHaveProperty('imageUrl');expect(a).not.toHaveProperty('preview');}
   expect(projectPublicArticles(projected)).toEqual(projected);
-  const off=structuredClone(m);off.sources.forEach(s=>s.enabled=false);
-  expect(projectPublicArticles(raw,{previews:off}).articles.some(a=>a.preview)).toBe(false);
+  for(const a of raw.articles)if(a.imageUrl?.startsWith('https:'))expect(JSON.stringify(projected)).not.toContain(a.imageUrl);
 });
