@@ -65,7 +65,12 @@ p{text-wrap:pretty}
 .site-header-search button:hover{transform:translateX(1px)}
 .roadmap-nav-menu{border-radius:var(--pv-radius-card)!important;box-shadow:var(--pv-shadow-hover)!important;animation:pv-pop .18s var(--pv-ease) both}
 .roadmap-nav-menu a{border-radius:var(--pv-radius-control)!important;transition:background .16s var(--pv-ease)!important}
-.mobile-navigation-links{border-radius:var(--pv-radius-card)!important;box-shadow:var(--pv-shadow-hover)!important;animation:pv-pop .18s var(--pv-ease) both}
+/* Phones use the bottom tab bar for pages; bookmarks stay one tap away in the header. */
+@media(max-width:900px){
+  .site-header .atlas-actions .bookmarks-action{display:grid!important}
+  /* Keep page content and the footer clear of the fixed tab bar (components/MobileTabBar). */
+  body{padding-bottom:calc(64px + env(safe-area-inset-bottom))}
+}
 @keyframes pv-pop{from{opacity:0;transform:translateY(-4px) scale(.98)}to{opacity:1;transform:none}}
 
 /* ---------- Section headings ---------- */
