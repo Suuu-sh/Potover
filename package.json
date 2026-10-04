@@ -3,7 +3,7 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
-    "build": "next build",
+    "build": "next build && node scripts/verify-article-previews.mjs --export",
     "start": "next start",
     "lint": "eslint app components lib worker/src packages --ext .ts,.tsx",
     "typecheck": "next typegen && tsc --noEmit",
@@ -19,7 +19,7 @@
     "sync:d1": "node scripts/sync-d1-articles.mjs sync",
     "seed:d1:approved": "node scripts/seed-approved-articles.mjs",
     "deploy:worker": "wrangler deploy --config worker/wrangler.jsonc",
-    "deploy:pages": "wrangler pages deploy out --project-name potover",
+    "deploy:pages": "node scripts/verify-article-previews.mjs --export && wrangler pages deploy out --project-name potover",
     "theme:generate": "node scripts/generate-theme.mjs",
     "theme:check": "node scripts/generate-theme.mjs --check",
     "dev:local": "NEXT_PUBLIC_POTOVER_API_URL=http://127.0.0.1:8787 next dev --hostname 127.0.0.1 --port 3001",

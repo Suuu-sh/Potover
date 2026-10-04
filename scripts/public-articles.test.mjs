@@ -98,3 +98,18 @@ it('loads only the generated public projection into the application',async()=>{
   expect(source).not.toContain("from '@/data/articles.json'");
   expect(source).not.toMatch(/summary|headings|imageUrl|durationSeconds|buildFallbackHeadings/);
 });
+
+it('projects exactly the reviewed local previews and ignores injected raw image fields',async()=>{
+  const raw=JSON.parse(await readFile('data/articles.json','utf8'));
+  const m=JSON.parse(await readFile('data/article-preview-manifest.json','utf8'));
+  const projected=projectPublicArticles(raw);
+  expect(projected.articles.filter(a=>a.preview)).toHaveLength(11);
+  for(const item of m.articles){
+    const article=projected.articles.find(a=>a.slug===item.slug);
+    expect(article.preview).toMatchObject({src:item.thumbnailPath,width:item.width,height:item.height});
+    expect(JSON.stringify(projected)).not.toContain(item.originalImageUrl);
+  }
+  expect(projectPublicArticles(projected)).toEqual(projected);
+  const off=structuredClone(m);off.sources.forEach(s=>s.enabled=false);
+  expect(projectPublicArticles(raw,{previews:off}).articles.some(a=>a.preview)).toBe(false);
+});

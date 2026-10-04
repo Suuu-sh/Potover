@@ -30,6 +30,7 @@ function loadView(path:string,extra=''){
     if(name==='@/lib/learning-history')return {useLearningHistory:()=>({hasRead:()=>true})};
     if(name==='@/lib/auth-client')return {useAuth:()=>({user:null})};
     if(name==='@/lib/use-preferred-language')return {usePreferredLanguage:()=>['English']};
+    if(name==='@/components/ArticlePreview')return {ArticlePreview:()=>null};
     if(name==='@/components/LearningLink')return {LearningLink:Link};
     if(name==='@/components/BookmarkButton')return {BookmarkButton};
     if(name==='@/components/SourceFollowButton')return {SourceFollowButton};
