@@ -321,5 +321,10 @@
   "絞り込み条件を確認してください。": "Please check your filters.",
   "表示言語を確認してください。": "Please check the content language.",
   "送信データが大きすぎます。": "The submitted data is too large.",
-  "コンテンツの優先言語": "Preferred content language"
+  "コンテンツの優先言語": "Preferred content language",
+  "ゲストで試す": "Try as guest",
+  "ローカル開発専用。データはこのブラウザにだけ保存されます。": "Local development only. Data is saved in this browser only.",
+  "ゲストではパスワードを変更できません。": "Guests cannot change the password.",
+  "ローカルのゲストでは利用できない操作です。": "This action is not available for the local guest.",
+  "ゲストはローカル開発でのみ利用できます。": "Guest access is available only in local development."
 }

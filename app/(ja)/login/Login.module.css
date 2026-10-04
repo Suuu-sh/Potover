@@ -22,6 +22,11 @@
 .submit:hover{background:var(--color-button-hover);transform:translateY(-1px);box-shadow:0 12px 24px -12px var(--color-button)}.submit:active{transform:scale(.98)}
 .submit:disabled,.tabs button:disabled{opacity:.6;cursor:wait}
 .error{display:grid;gap:10px;margin:0;padding:12px;border-radius:8px;color:var(--color-error);background:var(--color-error-soft);font-size:14px;line-height:1.6}.error p{margin:0}.retry{justify-self:start;min-height:34px;padding:0 12px;border:1px solid currentColor;border-radius:999px;background:transparent;color:inherit;font:inherit;font-size:12px;font-weight:700;cursor:pointer}.retry:hover{background:color-mix(in srgb,currentColor 10%,transparent)}.retry:disabled{opacity:.6;cursor:wait}
+.guest{display:grid;gap:8px;margin-top:18px;padding-top:18px;border-top:1px dashed var(--color-border);text-align:center}
+.guest button{min-height:46px;border:1px solid var(--color-border);border-radius:12px;background:var(--color-surface);color:var(--color-text);font-weight:700;font-size:15px;cursor:pointer;transition:border-color .16s ease,color .16s ease,background .16s ease}
+.guest button:hover{border-color:var(--color-accent);color:var(--color-accent);background:var(--color-accent-soft)}
+.guest button:disabled{opacity:.6;cursor:wait}
+.guest small{color:var(--color-muted);font-size:12px;line-height:1.6}
 .back{display:block;width:fit-content;margin:22px auto 0;font-size:14px;color:var(--color-muted)}
 .back:hover{color:var(--color-text);text-decoration:underline}
 .page button:focus-visible,.page a:focus-visible{outline:2px solid var(--color-focus);outline-offset:4px}

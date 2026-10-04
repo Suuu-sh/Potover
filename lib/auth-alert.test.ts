@@ -21,7 +21,7 @@ function renderProvider(sessionError:string|null){
     if(name==='react')return react;
     if(name==='react/jsx-runtime')return jsxRuntime;
     if(name==='@/lib/i18n-client')return {useI18n:()=>({locale:'ja',t:<T,>(value:T)=>value,href:(value:string)=>value})};
-    if(['./auth-request','./auth-session','./legacy-storage-migration','./user-api'].includes(name))return {};
+    if(['./auth-request','./auth-session','./legacy-storage-migration','./local-guest','./user-api'].includes(name))return {};
     throw new Error(`Unexpected auth import: ${name}`);
   };
   // Render presentation only; session requests and effects are intentionally inert.

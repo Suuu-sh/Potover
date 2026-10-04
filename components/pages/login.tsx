@@ -9,13 +9,14 @@ import {Eye,EyeOff,LockKeyhole,Mail} from 'lucide-react';
 import {useAuth} from '@/lib/auth-client';
 import {safeReturnPath} from '@/lib/i18n';
 import {AuthRequestError} from '@/lib/auth-request';
+import {localGuestEnabled} from '@/lib/local-guest';
 import styles from '@/app/(ja)/login/Login.module.css';
 
 type FormError={message:string;retryable:boolean};
 
 export default function LoginPage(){
   const {t:uiText,href:localPath,locale}=useI18n();
-  const {login,register}=useAuth();
+  const {login,register,loginAsGuest}=useAuth();
   const router=useRouter();
   const [returnTo,setReturnTo]=useState(localPath('/profile'));
   const [bookmarkNotice,setBookmarkNotice]=useState(false);
@@ -72,6 +73,7 @@ export default function LoginPage(){
           {error&&<div className={styles.error} role="alert"><p>{uiText(error.message)}</p>{error.retryable&&<button className={styles.retry} type="button" onClick={()=>void submitForm()} disabled={submitting}>{uiText("もう一度試す")}</button>}</div>}
           <button className={styles.submit} disabled={submitting} type="submit">{uiText(submitting?'処理中…':mode==='login'?'ログイン':'登録して始める')}</button>
         </form>
+        {localGuestEnabled&&<div className={styles.guest}><button type="button" disabled={submitting} onClick={()=>{loginAsGuest();router.push(returnTo)}}>{uiText("ゲストで試す")}</button><small>{uiText("ローカル開発専用。データはこのブラウザにだけ保存されます。")}</small></div>}
         <Link className={styles.back} href={localPath("/")}>{uiText("ホームへ戻る")}</Link>
       </div>
     </section>
