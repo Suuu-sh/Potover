@@ -1,7 +1,8 @@
 'use client';
+import {useI18n} from '@/lib/i18n-client';
 
 import Image from 'next/image';
-import Link from 'next/link';
+import Link from '@/components/LocaleLink';
 import {ArrowUpRight, Menu, X} from 'lucide-react';
 import {useEffect, useRef, useState} from 'react';
 import styles from './ServiceLanding.module.css';
@@ -13,6 +14,7 @@ const navigation = [
 ];
 
 export function ServiceHeader() {
+  const {t:uiText,href:localPath}=useI18n();
   const [open, setOpen] = useState(false);
   const header = useRef<HTMLElement>(null);
   const trigger = useRef<HTMLButtonElement>(null);
@@ -38,23 +40,23 @@ export function ServiceHeader() {
 
   return (
     <header className={styles.header} ref={header}>
-      <a className={styles.skipLink} href="#main-content">本文へ移動</a>
+      <a className={styles.skipLink} href={localPath("#main-content")}>{uiText("本文へ移動")}</a>
       <div className={styles.headerInner}>
-        <Link href="/" className={styles.brand} aria-label="Potover サービスサイト">
+        <Link href={localPath("/")} className={styles.brand} aria-label={uiText("Potover サービスサイト")}>
           <Image className={styles.lightMark} src="/brand/potover-mark-light.png" alt="" width={40} height={40} priority/><Image className={styles.darkMark} src="/brand/potover-mark-dark.png" alt="" width={40} height={40} priority/>
           <span>Potover</span>
         </Link>
-        <nav className={styles.desktopNav} aria-label="サービスナビゲーション">
-          {navigation.map(item => <a href={item.href} key={item.href}>{item.label}</a>)}
+        <nav className={styles.desktopNav} aria-label={uiText("サービスナビゲーション")}>
+          {navigation.map(item => <a href={localPath(item.href)} key={item.href}>{uiText(item.label)}</a>)}
         </nav>
-        <Link href="/home" className={styles.openApp}>アプリを開く <ArrowUpRight size={20} aria-hidden="true"/></Link>
-        <button className={styles.menuButton} type="button" ref={trigger} aria-label={open ? 'メニューを閉じる' : 'メニューを開く'} aria-expanded={open} aria-controls="service-mobile-navigation" onClick={() => setOpen(value => !value)}>
+        <Link href={localPath("/home")} className={styles.openApp}>{uiText("アプリを開く ")}<ArrowUpRight size={20} aria-hidden="true"/></Link>
+        <button className={styles.menuButton} type="button" ref={trigger} aria-label={uiText(open ? 'メニューを閉じる' : 'メニューを開く')} aria-expanded={open} aria-controls="service-mobile-navigation" onClick={() => setOpen(value => !value)}>
           {open ? <X size={23} aria-hidden="true"/> : <Menu size={23} aria-hidden="true"/>}
         </button>
       </div>
-      {open && <nav id="service-mobile-navigation" className={styles.mobileNav} aria-label="モバイルサービスナビゲーション">
-        {navigation.map(item => <a href={item.href} key={item.href} onClick={() => setOpen(false)}>{item.label}<ArrowUpRight size={18} aria-hidden="true"/></a>)}
-        <Link href="/home" onClick={() => setOpen(false)}>アプリを開く<ArrowUpRight size={18} aria-hidden="true"/></Link>
+      {open && <nav id="service-mobile-navigation" className={styles.mobileNav} aria-label={uiText("モバイルサービスナビゲーション")}>
+        {navigation.map(item => <a href={localPath(item.href)} key={item.href} onClick={() => setOpen(false)}>{uiText(item.label)}<ArrowUpRight size={18} aria-hidden="true"/></a>)}
+        <Link href={localPath("/home")} onClick={() => setOpen(false)}>{uiText("アプリを開く")}<ArrowUpRight size={18} aria-hidden="true"/></Link>
       </nav>}
     </header>
   );

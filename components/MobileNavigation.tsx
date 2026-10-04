@@ -1,13 +1,15 @@
 'use client';
+import {useI18n} from '@/lib/i18n-client';
 
-import Link from 'next/link';
+import Link from '@/components/LocaleLink';
 import {Bookmark,BookOpenText,Compass,Home,Map,Menu,UserCircle,UserRoundPlus,X} from 'lucide-react';
-import {usePathname} from 'next/navigation';
+import {usePathname} from '@/lib/locale-router';
 import {useEffect,useRef,useState} from 'react';
 
 type Props={accountHref:string;accountLabel:string;showRoadmap:boolean;roadmapHref?:string};
 
 export function MobileNavigation({accountHref,accountLabel,showRoadmap,roadmapHref='/roadmap'}:Props){
+  const {t:uiText,href:localPath}=useI18n();
   const pathname=usePathname();
   const [open,setOpen]=useState(false);
   const root=useRef<HTMLDivElement>(null);
@@ -20,9 +22,9 @@ export function MobileNavigation({accountHref,accountLabel,showRoadmap,roadmapHr
     document.addEventListener('keydown',escape);
     return()=>{document.removeEventListener('pointerdown',outside);document.removeEventListener('keydown',escape)};
   },[open]);
-  const links=[{href:'/',label:'ホーム',Icon:Home},{href:'/explore',label:'探す',Icon:Compass},...(showRoadmap?[{href:roadmapHref,label:'ロードマップ',Icon:Map}]:[]),{href:'/glossary',label:'用語集',Icon:BookOpenText},{href:'/bookmarks',label:'ブックマーク',Icon:Bookmark},{href:accountHref,label:accountLabel,Icon:accountLabel==='アカウント'?UserCircle:UserRoundPlus}];
+  const links=[{href:'/',label:'ホーム',Icon:Home},{href:'/explore',label:'探す',Icon:Compass},...(showRoadmap?[{href:roadmapHref,label:'ロードマップ',Icon:Map}]:[]),{href:'/glossary',label:'用語集',Icon:BookOpenText},{href:'/bookmarks',label:'ブックマーク',Icon:Bookmark},{href:accountHref,label:accountLabel,Icon:accountHref.endsWith('/profile')?UserCircle:UserRoundPlus}];
   return <div className="mobile-navigation" ref={root}>
-    <button className="mobile-navigation-toggle" ref={trigger} type="button" aria-label={open?'メニューを閉じる':'メニューを開く'} aria-expanded={open} aria-controls="mobile-navigation-links" onClick={()=>setOpen(value=>!value)}>{open?<X size={20}/>:<Menu size={20}/>}</button>
-    {open&&<div id="mobile-navigation-links" className="mobile-navigation-links" role="navigation" aria-label="モバイルナビゲーション">{links.map(({href,label,Icon})=><Link key={href} href={href} aria-label={label} title={label} aria-current={pathname===href||pathname.startsWith(`${href}/`)?'page':undefined} onClick={()=>setOpen(false)}><Icon size={19} aria-hidden="true"/><span>{label}</span></Link>)}</div>}
+    <button className="mobile-navigation-toggle" ref={trigger} type="button" aria-label={uiText(open?'メニューを閉じる':'メニューを開く')} aria-expanded={open} aria-controls="mobile-navigation-links" onClick={()=>setOpen(value=>!value)}>{open?<X size={20}/>:<Menu size={20}/>}</button>
+    {open&&<div id="mobile-navigation-links" className="mobile-navigation-links" role="navigation" aria-label={uiText("モバイルナビゲーション")}>{links.map(({href,label,Icon})=><Link key={href} href={localPath(href)} aria-label={uiText(label)} title={uiText(label)} aria-current={pathname===href||pathname.startsWith(`${href}/`)?'page':undefined} onClick={()=>setOpen(false)}><Icon size={19} aria-hidden="true"/><span>{uiText(label)}</span></Link>)}</div>}
   </div>;
 }

@@ -3,7 +3,7 @@ import {readFileSync} from 'node:fs';
 import {execFileSync} from 'node:child_process';
 import theme from './kiro-theme.json';
 
-const styles = ['app/login/Login.module.css', 'app/globals.css', 'components/SiteFooter.module.css', 'components/ServiceLanding.module.css', 'components/ServiceCharacter.module.css'];
+const styles = ['app/(ja)/login/Login.module.css', 'app/globals.css', 'components/SiteFooter.module.css', 'components/ServiceLanding.module.css', 'components/ServiceCharacter.module.css'];
 const read = (file: string) => readFileSync(file, 'utf8');
 
 describe('Kiro theme contract', () => {
@@ -38,10 +38,10 @@ describe('Kiro theme contract', () => {
   });
 
   it('loads the account theme after hydration without a separate dark palette', () => {
-    const layout = read('app/layout.tsx');
+    const layout = read('components/RootLayout.tsx');
     expect(layout).toContain('UserPreferencesProvider');
     expect(layout).not.toContain('localStorage');
-    expect(layout).toContain("import './theme.css'");
+    expect(layout).toContain("import '@/app/theme.css'");
     expect(layout).not.toContain('background:#');
   });
 

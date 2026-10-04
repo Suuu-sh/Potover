@@ -1,4 +1,5 @@
 'use client';
+import {useI18n} from '@/lib/i18n-client';
 
 import {createContext,useCallback,useContext,useEffect,useMemo,useState} from 'react';
 import {ArrowUpRight,CalendarDays,Globe2,X} from 'lucide-react';
@@ -12,6 +13,7 @@ type ArticleModalContextValue={openArticle:(slug:string)=>void;closeArticle:()=>
 const ArticleModalContext=createContext<ArticleModalContextValue|null>(null);
 
 export function ArticleModalProvider({children}:{children:React.ReactNode}){
+  const {t:uiText,href:localPath}=useI18n();
   const [slug,setSlug]=useState<string|null>(null);
   const article=slug?articles.find(item=>item.slug===slug)||null:null;
   const closeArticle=useCallback(()=>setSlug(null),[]);
@@ -24,10 +26,12 @@ export function ArticleModalProvider({children}:{children:React.ReactNode}){
 export function useArticleModal(){const value=useContext(ArticleModalContext);if(!value)throw new Error('useArticleModal must be used inside ArticleModalProvider');return value}
 
 export function ArticleLink({slug,href,className,children,...props}:{slug:string;href?:string;className?:string;children:React.ReactNode;[key:string]:unknown}){
+  const {t:uiText,href:localPath}=useI18n();
   const {openArticle}=useArticleModal();
-  return <a {...props} className={className} href={href||`/articles/${slug}`} onClick={event=>{if(event.button!==0||event.metaKey||event.ctrlKey||event.shiftKey||event.altKey)return;event.preventDefault();openArticle(slug)}}>{children}</a>;
+  return <a {...props} className={className} href={localPath(href||`/articles/${slug}`)} onClick={event=>{if(event.button!==0||event.metaKey||event.ctrlKey||event.shiftKey||event.altKey)return;event.preventDefault();openArticle(slug)}}>{children}</a>;
 }
 
 function ArticleModal({article,onClose}:{article:Article;onClose:()=>void}){
-  return <div className="article-modal-backdrop" role="presentation" onMouseDown={event=>{if(event.target===event.currentTarget)onClose()}}><section className="article-modal" role="dialog" aria-modal="true" aria-labelledby="article-modal-title"><header className="article-modal-header"><div><p>{article.contentType==='video'?'VIDEO':'ARTICLE'}</p><span>{article.source}</span><h1 id="article-modal-title">{article.title}</h1></div><button type="button" onClick={onClose} aria-label="詳細を閉じる"><X size={20}/></button></header><div className="article-modal-body"><div className="article-modal-meta"><span><CalendarDays size={14} aria-hidden="true"/>{article.publishedAt}</span><span><Globe2 size={14} aria-hidden="true"/>{contentLabel(article.language)}</span><span>{contentLabel(article.category)}</span></div><div className="detail-tags" style={{marginTop:20}}>{article.tags.map(tag=><span className="tag" key={tag}>{contentLabel(tag)}</span>)}</div><p>本文・動画は提供元のサイトでご覧ください。</p><AdSenseAd placement="feed"/></div><footer className="article-modal-footer"><BookmarkButton slug={article.slug}/><LearningLink className="article-modal-cta" slug={article.slug} href={article.url}>{article.contentType==='video'?'元の動画を見る':'元記事を読む'} <ArrowUpRight size={16}/></LearningLink></footer></section></div>;
+  const {t:uiText,href:localPath}=useI18n();
+  return <div className="article-modal-backdrop" role="presentation" onMouseDown={event=>{if(event.target===event.currentTarget)onClose()}}><section className="article-modal" role="dialog" aria-modal="true" aria-labelledby="article-modal-title"><header className="article-modal-header"><div><p>{uiText(article.contentType==='video'?'VIDEO':'ARTICLE')}</p><span>{uiText(article.source)}</span><h1 id="article-modal-title">{article.title}</h1></div><button type="button" onClick={onClose} aria-label={uiText("詳細を閉じる")}><X size={20}/></button></header><div className="article-modal-body"><div className="article-modal-meta"><span><CalendarDays size={14} aria-hidden="true"/>{uiText(article.publishedAt)}</span><span><Globe2 size={14} aria-hidden="true"/>{uiText(contentLabel(article.language))}</span><span>{uiText(contentLabel(article.category))}</span></div><div className="detail-tags" style={{marginTop:20}}>{article.tags.map(tag=><span className="tag" key={tag}>{uiText(contentLabel(tag))}</span>)}</div><p>{uiText("本文・動画は提供元のサイトでご覧ください。")}</p><AdSenseAd placement="feed"/></div><footer className="article-modal-footer"><BookmarkButton slug={article.slug}/><LearningLink className="article-modal-cta" slug={article.slug} href={localPath(article.url)}>{uiText(article.contentType==='video'?'元の動画を見る':'元記事を読む')} <ArrowUpRight size={16}/></LearningLink></footer></section></div>;
 }

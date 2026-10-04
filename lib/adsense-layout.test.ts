@@ -5,22 +5,22 @@ import * as jsxRuntime from 'react/jsx-runtime';
 import {renderToStaticMarkup} from 'react-dom/server';
 import {expect,it} from 'vitest';
 
-const {code}=transformSync(readFileSync('app/layout.tsx','utf8'),{loader:'tsx',format:'cjs',jsx:'automatic'});
+const {code}=transformSync(readFileSync('components/RootLayout.tsx','utf8'),{loader:'tsx',format:'cjs',jsx:'automatic'});
 const Passthrough=({children}:{children:ReactNode})=>children;
-const wrappers={SiteChrome:Passthrough,AuthProvider:Passthrough,ArticleModalProvider:Passthrough,BookmarksProvider:Passthrough,LearningHistoryProvider:Passthrough,UserPreferencesProvider:Passthrough};
+const wrappers={LocaleProvider:Passthrough,SiteChrome:Passthrough,AuthProvider:Passthrough,ArticleModalProvider:Passthrough,BookmarksProvider:Passthrough,LearningHistoryProvider:Passthrough,UserPreferencesProvider:Passthrough};
 
 function renderLayout(adsenseClient:string){
-  const compiledModule={exports:{} as {default:(props:{children:ReactNode})=>ReactElement}};
+  const compiledModule={exports:{} as {RootLayout:(props:{children:ReactNode;locale:'ja'|'en'})=>ReactElement}};
   // Isolate the real root layout from app providers and CSS for this HTML contract.
   const require=(name:string)=>{
     if(name==='react/jsx-runtime')return jsxRuntime;
     if(name==='@/lib/adsense-config')return {adsenseClient};
     if(name.endsWith('.css'))return {};
-    if(name.startsWith('@/'))return wrappers;
+    if(name.startsWith('@/')||name==='./SiteChrome')return wrappers;
     throw new Error(`Unexpected layout import: ${name}`);
   };
   new Function('require','module',code)(require,compiledModule);
-  return renderToStaticMarkup(compiledModule.exports.default({children:createElement('p',null,'Local QA')}));
+  return renderToStaticMarkup(compiledModule.exports.RootLayout({children:createElement('p',null,'Local QA'),locale:'ja'}));
 }
 
 it('leaves head creation to Next metadata when AdSense is disabled',()=>{
