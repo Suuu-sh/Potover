@@ -63,5 +63,5 @@ it('keeps English deletion confirmation and the post-delete route in the selecte
   const view=deleteForm(true,'en');
   await view.submit({preventDefault:vi.fn()});
   expect(view.confirm).toHaveBeenCalledWith('This will delete your account, bookmarks, learning history, followed sources and settings. Continue?');
-  expect(view.replace).toHaveBeenCalledExactlyOnceWith('/en/login');
+  expect(view.replace).toHaveBeenCalledExactlyOnceWith('/login');
 });

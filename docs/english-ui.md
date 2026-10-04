@@ -1,24 +1,30 @@
-# English interface
+# Interface languages on shared URLs
 
-The explicit English entry point is `/en/`. Japanese URLs remain at `/` and their existing paths. Both languages share the same UI and state logic under `components/pages/`; route wrappers under `app/(ja)/` and `app/(english)/en/` provide metadata and server-rendered document language. There is no geolocation or browser-language redirect.
+Japanese and English use the same URLs, including `/`, `/explore/`, and article pages. The first client render selects Japanese when the browser's primary language is Japanese (`ja` or `ja-*`), and English otherwise. A manual choice takes priority and persists in this browser's local storage under `potover.interface-language`. The choice also synchronizes across tabs. If storage is unavailable, switching still works for the current page session.
 
-## Navigation and content
+The header language button changes the interface in place. It does not navigate, create a history entry, or rewrite the current path, query, filter parameters, fragment, or sign-in return destination. Shared page components remain mounted so input state is retained. Language is a browser preference, so copying a page URL does not encode the sender's chosen interface language.
 
-- The header language link preserves the current path, query, filters, and fragment in its rendered href, including copy-link and modified-click actions. The control is a non-interactive label during the static-export fallback until client URL state is available. It also adjusts a login return destination to the selected locale.
-- `LocaleLink` and the locale router preserve locale for internal navigation. Original publisher links and asset/API paths are left untouched.
-- Interface language is separate from the saved preferred content language. Signed-out English visitors get English-first recommendations; signed-in users keep their saved preference. Switching UI language does not overwrite preferences.
-- Article titles and publisher names are original source data. Language badges explain whether the linked content is English or Japanese. No translated article body, excerpt, extracted heading, or thumbnail is added.
+## Rendering and discovery
+
+The static export provides Japanese HTML as the no-JavaScript and hydration fallback. The browser applies its selected UI language after hydration and updates the document language and page title. There is one canonical URL and one sitemap entry per public page. Separate language-path hreflang alternatives are not advertised because these are not separate pages.
+
+Previously shared `/en` URLs are compatibility redirects declared in `public/_redirects` for Cloudflare Pages. They lead to the unprefixed URL; the browser preference still determines the interface language. Known pages have explicit redirects, and article redirects always start with the literal `/articles/` prefix, keeping malformed input from creating an external destination. Redirect query/fragment preservation must be checked on a Pages preview because the Next development server does not interpret this file.
+
+## Content and state
+
+- Interface language is separate from saved preferred content language. Signed-out English visitors get English-first recommendations; signed-in users keep their saved preference. Switching UI language does not overwrite account preferences.
+- Article titles and publisher names remain original source data. Language badges identify whether the linked content is English or Japanese. No translated article body, excerpt, extracted heading, or thumbnail is added.
 - Glossary and roadmap descriptions are Potover's own copy and have English dictionary entries.
-- The approved public projection, publication manifest, collectors, ingestion authorization, source set, and retention gates are unchanged.
+- The public projection, publication manifest, collectors, ingestion authorization, source set, and retention gates are unchanged.
 
 ## Translation maintenance
 
-`lib/translations/en.json` contains interface copy, `en-learning.json` owned learning copy, and `en-legal.json` faithful policy translations. The original Japanese string is the key. Only display boundaries call `uiText`; stored filter values and source titles are not translated. Add tests when changing dynamic labels, route helpers, or a shared component.
+`lib/translations/en.json` contains interface copy, `en-learning.json` owned learning copy, and `en-legal.json` policy translations. The original Japanese string is the key. Only display boundaries call `uiText`; stored filter values and source titles are not translated.
 
-The privacy policy reflects the operator's conditional collection policy: assess each source's terms, robots.txt and access restrictions; collect automatically only where there is no explicit prohibition and restrictions can be followed. Absence of a prohibition is not a license. Collection remains paused until source-by-source assessment and a separate operational activation; this interface change does not enable collection or expand the public manifest. The existing glossary descriptions of equity, odds and PKO have simplifications that should be reviewed separately in both languages.
+The privacy policy reflects the operator's conditional collection policy: assess each source's terms, robots.txt and access restrictions; collect automatically only where there is no explicit prohibition and restrictions can be followed. Absence of a prohibition is not a license. Collection remains paused until source-by-source assessment and a separate operational activation. The existing glossary descriptions of equity, odds and PKO have simplifications that should be reviewed separately in both languages.
 
 ## Verification and release
 
-Run `npm run verify`, then `node scripts/verify-locales.mjs` against the generated production export. The latter checks all 2,516 content-route HTML files, document language, canonical/hreflang links, sitemap article entries, English/Japanese homepage labels, and the 1,244-article / 9-source public scope. Static generation is limited to two workers to fit smaller build runners.
+Run `npm run verify`, then `node scripts/verify-locales.mjs` against the generated production export. The latter checks all 1,258 shared content-route HTML files, canonical links, the 1,253-entry sitemap, legacy redirects, and the 1,244-article / 9-source public scope. Static generation is limited to two workers to fit smaller build runners.
 
-Before production release, perform browser QA on an authorized preview: desktop/tablet/phone layout, language switching with filters and fragments, search and filter dialogs, article modal close/back behavior, sign-in interruption/retry, original source links, bookmarks/follows, settings, and account-security confirmation. Use isolated test accounts and no production credential changes. A build or draft branch is not evidence that `/en/` is live.
+Before production release, check an authorized Pages preview: first-visit language, both switch directions on the same URL, reload persistence, browser preference override, query/filter/fragment preservation, form-state retention, original article links, legacy `/en` redirects, responsive navigation, and signed-out sign-in destinations. Do not use production-account mutations for UI QA. A local build or preview is not evidence that the revision is live in production.

@@ -53,13 +53,13 @@ describe('English server-rendered UI',()=>{
   it('localizes navigation and search destinations while offering an explicit Japanese switch',()=>{
     const html=render('components/SiteHeader.tsx','SiteHeader');
     for(const word of ['Home','Explore','Roadmaps','Glossary','Switch to dark mode'])expect(html).toContain(word);
-    for(const href of ['/en/explore','/en/bookmarks','/en/login'])expect(html).toContain(`href="${href}"`);
-    expect(html).toContain('action="/en/explore"');expect(html).toContain('lang="ja"');
+    for(const href of ['/explore','/bookmarks','/login'])expect(html).toContain(`href="${href}"`);
+    expect(html).toContain('action="/explore"');expect(html).toContain('lang="ja"');
   });
   it('renders an English home without translating original article titles',()=>{
     const html=render('components/ModernHome.tsx','ModernHome');
     for(const word of ['Featured articles','Explore by topic','Learning roadmaps','Poker glossary','An original English title','Titles stay in their original language'])expect(html).toContain(word);
-    expect(html).toContain('href="/en/explore');expect(html).not.toContain('注目の記事');
+    expect(html).toContain('href="/explore');expect(html).not.toContain('注目の記事');
   });
   it('renders English discovery controls with accurate content-language labels',()=>{
     const html=render('components/pages/explore.tsx');
@@ -72,7 +72,7 @@ describe('English server-rendered UI',()=>{
   });
   it('translates owned glossary content and retains localized article links',()=>{
     const html=render('components/GlossaryPage.tsx','GlossaryPage');for(const copy of ['Poker glossary','Equity','Related articles'])expect(html).toContain(copy);
-    expect(html).not.toContain('現在のハンド');expect(html).toContain('href="/en/explore?q=equity"');
+    expect(html).not.toContain('現在のハンド');expect(html).toContain('href="/explore?q=equity"');
   });
   it('renders the faithful English legal/contact copy',()=>{
     const privacy=render('components/pages/privacy.tsx');expect(privacy).toContain('Suu');expect(privacy).toContain('potover39@gmail.com');expect(privacy).toContain('two years');expect(privacy).toContain('preferred content language');expect(privacy).toContain('Automated collection is currently paused.');expect(privacy).toContain('not treated as permission or a license');expect(privacy).not.toContain('We will not launch');expect(privacy).not.toContain('such as display language');expect(privacy).not.toContain('個人情報');
@@ -81,19 +81,4 @@ describe('English server-rendered UI',()=>{
   it('retains Japanese UI and original Japanese source titles',()=>{
     const html=render('components/ModernHome.tsx','ModernHome',{},'ja');expect(html).toContain('注目の記事');expect(html).toContain('翻訳しない原題');expect(html).toContain('href="/explore"');expect(html).not.toContain('Featured articles');
   });
-});
-
-
-it('the rendered language href preserves query, filters and fragment for ordinary and modified clicks',()=>{
-  const Component=view('components/LanguageSwitcher.tsx','en',false,{pathname:'/en/explore',search:'?q=ICM&filters=English',hash:'#topics'}).LanguageSwitcher;
-  const html=renderToStaticMarkup(React.createElement(Component));
-  expect(html).toContain('href="/explore?q=ICM&amp;filters=English#topics"');
-  expect(html).not.toContain('href="/explore"');
-});
-
-it('a rerendered language href reflects updated URL filters and fragment without a click handler',()=>{
-  const Component=view('components/LanguageSwitcher.tsx','ja',false,{pathname:'/explore',search:'?q=GTO&filters=Japanese%2CPreflop',hash:'#results'}).LanguageSwitcher;
-  const html=renderToStaticMarkup(React.createElement(Component));
-  expect(html).toContain('href="/en/explore?q=GTO&amp;filters=Japanese%2CPreflop#results"');
-  expect(readFileSync('components/LanguageSwitcher.tsx','utf8')).not.toContain('onClick');
 });
